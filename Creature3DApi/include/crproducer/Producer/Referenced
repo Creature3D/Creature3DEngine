@@ -1,0 +1,207 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+
+#ifndef PRODUCER_REFERENCED
+#define PRODUCER_REFERENCED 1
+
+#include <CRProducer/Producer/Export>
+
+// When building Producer with Java bindings we derive from NoodleGlue::CBridgable
+// and disable the local ref/unref as this is done in Noodleglue
+//#define PRODUCER_JAVA_BUILD
+
+#ifdef PRODUCER_JAVA_BUILD
+#include <NoodleGlue/Bridgable.h>
+#endif
+
+#include <iostream>
+#include <typeinfo>
+
+
+namespace Producer {
+
+#ifndef PRODUCER_JAVA_BUILD
+
+/** Base class from providing referencing counted objects.*/
+class PR_EXPORT Referenced
+{
+    public:
+        Referenced() { _refCount=0; }
+        Referenced(const Referenced&) { _refCount=0; }
+
+        inline Referenced& operator = (Referenced&) { return *this; }
+
+        /** increment the reference count by one, indicating that 
+            this object has another pointer which is referencing it.*/
+        inline void ref() const { ++_refCount; }
+        
+        /** decrement the reference count by one, indicating that 
+            a pointer to this object is referencing it.  If the
+            reference count goes to zero, it is assumed that this object
+            is no longer referenced and is automatically deleted.*/
+        inline void unref() const { --_refCount; 
+                                     if (_refCount==0) 
+                                     {
+                                         delete this; 
+                                     }
+                                     else if( _refCount<0) throw 1;  }
+        
+        /** decrement the reference count by one, indicating that 
+            a pointer to this object is referencing it.  However, do
+            not delete it, even if ref count goes to 0.  Warning, unref_nodelete() 
+            should only be called if the user knows exactly who will
+            be resonsible for, one should prefer unref() over unref_nodelete() 
+            as the later can lead to memory leaks.*/
+        inline void unref_nodelete() const { --_refCount; }
+        
+        /** return the number pointers currently referencing this object. */
+        inline int getReferenceCount() const { return _refCount; }
+
+    protected:
+        virtual ~Referenced()
+    {
+            if (_refCount>0)
+            {
+              std::cerr <<"Warning: deleting still referenced object "<<this<<" of type '"<<typeid(this).name()<<"'"<<std::endl;
+              std::cerr <<"         the final reference count was "<<_refCount<<", memory corruption possible."<<std::endl;
+            }
+    }
+        mutable int _refCount;
+};
+#else
+/** Java wrappers use the CBridgable base-class for referencing
+* and garbage collection.
+*/
+class PR_EXPORT Referenced : public NoodleGlue::CBridgable 
+{
+    public:
+        /// Method not used in NoodleGlue referencing 
+        inline void unref_nodelete() const { --_refCount; }
+
+    protected:
+        virtual ~Referenced() {}
+};
+#endif
+
+/** Smart pointer for handling referenced counted objects.*/
+template<class T>
+class ref_ptr
+{
+
+    public:
+        typedef T element_type;
+
+        ref_ptr() :_ptr(0L) {}
+        ref_ptr(T* t):_ptr(t)              { if (_ptr) _ptr->ref(); }
+        ref_ptr(const ref_ptr& rp):_ptr(rp._ptr)  { if (_ptr) _ptr->ref(); }
+        ~ref_ptr()                         { if (_ptr)
+                                             { 
+                                                 _ptr->unref(); 
+                                                 _ptr = 0L;
+                                             }
+                                           }
+
+        inline ref_ptr& operator = (const ref_ptr& rp)
+        {
+            if (_ptr==rp._ptr) return *this;
+            T* tmp_ptr = _ptr;
+            _ptr = rp._ptr;
+            if (_ptr) _ptr->ref();
+            // unref second to prevent any deletion of any object which might
+            // be referenced by the other object. i.e rp is child of the
+            // original _ptr.
+            if (tmp_ptr) tmp_ptr->unref();
+            return *this;
+        }
+
+        inline ref_ptr& operator = (T* ptr)
+        {
+            if (_ptr==ptr) return *this;
+            T* tmp_ptr = _ptr;
+            _ptr = ptr;
+            if (_ptr) _ptr->ref();
+            // unref second to prevent any deletion of any object which might
+            // be referenced by the other object. i.e rp is child of the
+            // original _ptr.
+            if (tmp_ptr) tmp_ptr->unref();
+            return *this;
+        }
+
+        inline bool operator == (const ref_ptr& rp) const
+        {
+            return (_ptr==rp._ptr);
+        }
+
+        inline bool operator == (const T* ptr) const
+        {
+            return (_ptr==ptr);
+        }
+
+        inline bool operator != (const ref_ptr& rp) const
+        {
+            return (_ptr!=rp._ptr);
+        }
+
+        inline bool operator != (const T* ptr) const
+        {
+            return (_ptr!=ptr);
+        }
+
+        inline bool operator < (const ref_ptr& rp) const
+        {
+            return (_ptr<rp._ptr);
+        }
+
+        inline bool operator > (const ref_ptr& rp) const
+        {
+            return (_ptr>rp._ptr);
+        }
+
+        inline bool operator > (const T* ptr) const
+        {
+            return (_ptr>ptr);
+        }
+
+        inline T& operator*()  { return *_ptr; }
+
+        inline const T& operator*() const { return *_ptr; }
+
+        inline T* operator->() { return _ptr; }
+
+        inline const T* operator->() const   { return _ptr; }
+
+    inline bool operator!() const    { return _ptr==0L; }
+
+    inline bool valid() const    { return _ptr!=0L; }
+        
+        inline T* get() { return _ptr; }
+
+        inline const T* get() const { return _ptr; }
+
+        /** take control over the object pointed to by ref_ptr, unreference but do not delete even if ref count goes to 0,
+          * return the pointer to the object.
+          * Note, do not use this unless you are 100% sure your code handles the deletion of the object correctly, and
+          * only use when absolutely required.*/
+        inline T* take() { T* tmp=_ptr; if (_ptr) _ptr->unref_nodelete(); _ptr=0; return tmp;}
+
+    private:
+        T* _ptr;
+};
+
+
+template <class T> class Reffed : public T, public Referenced {};
+
+}
+
+#endif

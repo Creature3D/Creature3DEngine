@@ -1,0 +1,53 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef PRODUCER_VERSION_HEADER // oops
+#define PRODUCER_VERSION_HEADER 1
+
+#include <Producer/Export>
+#include <iostream>
+
+namespace Producer {
+
+
+class PR_EXPORT Version {
+    public:
+        Version();
+
+        unsigned int getMajor() { return _major; }
+        unsigned int getMinor() { return _minor; }
+        unsigned int getRelease() { return _release; }
+        unsigned int getRevision() { return _revision; }
+
+       friend inline std::ostream& operator << (std::ostream& output, const Version& );
+
+    private:
+        unsigned int _major;
+        unsigned int _minor;
+        unsigned int _release;
+        unsigned int _revision;
+}; 
+
+
+inline std::ostream& operator << (std::ostream& out, const Version& version)
+{
+    out     << version._major << "."
+            << version._minor << "."
+            << version._release;
+    return out; 
+}
+
+
+}
+
+#endif

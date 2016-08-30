@@ -1,0 +1,286 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef PRODUCER_CAMERA_GROUP
+#define PRODUCER_CAMERA_GROUP
+
+#include <CRProducer/Producer/Export>
+#include <CRProducer/Producer/Referenced>
+
+#include <stdio.h>
+#include <vector>
+
+#include <CRCore/thread/crBarrier.h>
+
+#include <CRProducer/Producer/CameraConfig>
+
+namespace Producer {
+
+class PR_EXPORT CameraGroup : public Referenced
+{
+    public :
+        enum ThreadingModel {
+            SingleThreaded,
+            ThreadPerRenderSurface,
+            ThreadPerCamera,
+            ThreadPerCameraEx // add by wch
+        };
+
+        class Callback: public virtual Referenced  
+        {
+            public:
+                Callback() {}
+                virtual void operator()(const CameraGroup &) = 0;
+            protected:
+                virtual ~Callback(){};
+        };
+
+        CameraGroup(); 
+        CameraGroup( CameraConfig *cfg);
+        //CameraGroup( const std::string& configFile );
+
+
+        CameraConfig *getCameraConfig();
+        const CameraConfig *getCameraConfig() const;
+
+        void setStackSize( size_t size );
+
+        /** Set the threading model and then call realize().*/
+        virtual bool realize( ThreadingModel thread_model,Producer::Window parentWnd,Producer::Window renderWnd);
+
+        /** realize implemention.*/
+        virtual bool realize(Producer::Window parentWnd,Producer::Window renderWnd);
+        
+        bool isRealized() const { return _realized; }
+        bool waitForRealize();
+        bool validForRendering() const;
+
+        void setViewByLookat( float eyex, float eyey, float eyez,
+                              float centerx, float centery, float centerz,
+                              float upx, float upy, float upz );
+        void setViewByLookat( const Vec3& eye,
+                              const Vec3& center,
+                              const Vec3& up );
+                              
+        virtual void setViewByMatrix( const Producer::Matrix & );
+
+        unsigned int getNumberOfCameras() const;
+        Camera *getCamera(int i); 
+        const Camera *getCamera(int i) const; 
+
+        virtual void cull_update( );//add by wch
+        virtual void draw( );//add by wch
+        virtual void update( ){}//add by wch
+        
+        virtual void frame( );
+        virtual void sync( );
+
+        void advance();
+
+        void setSceneHandler( Camera::SceneHandler * );
+
+
+        void setInstrumentationMode( bool flag );
+        bool getInstrumentationMode() const { return _instrumented; }
+
+
+        struct FrameStats
+        {
+            unsigned int _frameNumber;
+            Camera::TimeStamp      _startOfFrame;
+            Camera::TimeStamp      _startOfUpdate;
+            Camera::TimeStamp      _endOfUpdate;
+            std::vector <Camera::FrameTimeStampSet> _frameTimeStampSets;
+
+            unsigned int getFrameNumber() const 
+            { return _frameNumber; }
+
+            Camera::TimeStamp getStartOfFrame() const { return _startOfFrame; }
+
+            unsigned int getNumFrameTimeStampSets() const 
+            { return _frameTimeStampSets.size(); }
+
+            const Camera::FrameTimeStampSet &getFrameTimeStampSet(unsigned int index) const
+            { return _frameTimeStampSets[index]; }
+
+            FrameStats &operator = (const FrameStats &rhs )
+            {
+                if(this == &rhs) return (*this);
+                _frameNumber = rhs._frameNumber;
+                _startOfFrame = rhs._startOfFrame;
+                _startOfUpdate = rhs._startOfUpdate;
+                _endOfUpdate = rhs._endOfUpdate;
+                _frameTimeStampSets = rhs._frameTimeStampSets;
+                return (*this);
+            }
+        };
+
+        const FrameStats &getFrameStats() const { return _frameStats; }
+
+        class PR_EXPORT StatsHandler :public virtual Producer::Referenced 
+        {
+            public:
+              StatsHandler();
+              virtual ~StatsHandler();
+              virtual void operator()(const CameraGroup &) = 0;
+        };
+
+        void setStatsHandler( StatsHandler * sh) { _statsHandler = sh; }
+
+        void setBlockOnVsync(bool block );
+        bool getBlockOnVsync() { return _block_on_vsync; }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        /** Convenience method for setting the Lens Perspective.
+            See Camera::Lens::setPerspective(). */
+        void setLensPerspective( double hfov, double vfov, 
+                        double nearClip, double farClip )
+        { if( _lens.valid() ) _lens->setPerspective(hfov,vfov,nearClip,farClip); }
+
+        /** Convenience method for setting the Lens Frustum.
+            See Camera::Lens::setFrustum(). */
+        void setLensFrustum( double left, double right, 
+                                 double bottom, double top, 
+                                 double nearClip, double farClip )
+        { if( _lens.valid() ) _lens->setFrustum(left,right,bottom,top,nearClip, farClip); }
+
+        /** Convenience method for setting the lens Orthographic projection.
+            See Camera::Lens::setOrtho() */ 
+        void setLensOrtho( double left, double right, 
+                        double bottom, double top, 
+                        double nearClip, double farClip )
+        { if( _lens.valid() ) _lens->setOrtho( left, right, bottom, top, nearClip, farClip); }
+
+        /** Convenience method for converting the Perpective lens to an 
+            Orthographic lens. see Camera::lens:convertToOrtho() */
+        bool convertLensToOrtho( float d) 
+        { 
+            if( _lens.valid() )
+                return _lens->convertToOrtho(d); 
+                return false;    
+        }
+
+
+        /** Convenience method for converting the Orthographic lens to an 
+            Perspective lens. see Camera::lens:convertToPerspective() */
+        bool convertLensToPerspective( float d) 
+        { 
+            if( _lens.valid() ) 
+            return _lens->convertToPerspective(d); 
+            return false;    
+        }
+
+        /** Convenience method for getting the lens projection type.
+            See Camera::Lens::setAspectRatio() */
+        Camera::Lens::Projection getLensProjectionType() 
+        { 
+            if( _lens.valid() )
+                return _lens->getProjectionType(); 
+               return Camera::Lens::Perspective;
+        }
+
+        /** Convenience method for getting the Lens parameters.  
+            See Camera::Lens::apply() */
+        void getLensParams( double &left, double &right, double &bottom, double &top,
+                            double &nearClip, double &farClip)
+        { if( _lens.valid() ) _lens->getParams(left,right, bottom, top, nearClip, farClip ); }
+
+        /** Convenience method for getting the Lens Horizontal field of view.  
+            See Camera::Lens::getHorizontalFov() */
+        float getLensHorizontalFov() 
+        { 
+            if( _lens.valid() ) return _lens->getHorizontalFov(); 
+            return 0.0f;
+        }
+
+        /** Convenience method for getting the Lens Horizontal field of view.  
+            See Camera::Lens::getVerticalFov() */
+        float getLensVerticalFov() 
+        { 
+            if( _lens.valid() ) 
+            return _lens->getVerticalFov(); 
+               return 0.0f;    
+        }
+
+        /** Convenience method for setting AutoAspect on the lens.
+            See Camera::Lens::setAutoAspect() */
+        void setLensAutoAspect(bool ar) {if( _lens.valid() )  _lens->setAutoAspect(ar); }
+
+        /** Convenience method for getting AutoAspect on the lens.
+            See Camera::Lens::getAutoAspect() */
+        bool getLensAutoAspect() 
+        { 
+            if( _lens.valid() ) 
+            return _lens->getAutoAspect(); 
+            else
+            return false;
+        }
+
+        /** Convenience method for setting the lens Aspect Ratio.
+            See Camera::Lens::setAspectRatio() */
+        void setLensAspectRatio( double aspectRatio ) 
+        { if( _lens.valid() ) _lens->setAspectRatio(aspectRatio); }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        virtual void cancelCameraThreads(); // add by wch
+		virtual void releaseUpdateThreads(); // add by wch
+    protected :
+
+        virtual ~CameraGroup();
+
+        ref_ptr<CameraConfig > _cfg;
+        Producer::ref_ptr<Camera::Lens> _lens;
+        Producer::ref_ptr<StatsHandler>_statsHandler;
+
+        ThreadingModel         _thread_model;
+        ref_ptr<RefBarrier>    _syncBarrier;
+        ref_ptr<RefBarrier>    _frameBarrier;
+        
+        ref_ptr<RefBarrier>    _cullBarrier;  //add by wch
+        ref_ptr<RefBarrier>    _updateBarrier; //add by wch
+        ref_ptr<RefBarrier>    _drawBarrier; //add by wch
+        
+        bool                   _realized;
+        size_t                 _stack_size;
+        unsigned int           _frame_count;
+        unsigned int           _sync_count;
+        bool                   _instrumented;
+        Timer                  _timer;
+        Timer_t                _initTime;
+        Timer_t                _startOfFrame;
+        Timer_t                _startOfUpdate;
+        Timer_t                _endOfUpdate;
+        FrameStats             _frameStats;
+        bool                   _block_on_vsync;
+
+        void _initVariables();
+        void _frame();
+        void _frameInstrumented();
+        void _sync();
+        void _syncInstrumented(bool);
+        void _updateStats();
+        void _initLens();
+        void _threadPerCameraFrame();
+        void _singleThreadedFrame();
+        void _cull_update(); //add by wch
+        void _cull_updateInstrumented(); //add by wch
+        void _draw(); //add by wch
+        void _drawInstrumented(); //add by wch
+};
+
+
+
+}
+
+#endif
+

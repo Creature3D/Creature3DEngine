@@ -1,0 +1,680 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef PRODUCER_CAMERA
+#define PRODUCER_CAMERA
+
+#include <CRProducer/Producer/Export>
+#include <CRProducer/Producer/Referenced>
+
+#include <vector>
+
+#include <CRProducer/Producer/RefOpenThreads>
+
+#include <CRProducer/Producer/Math>
+#include <CRProducer/Producer/RenderSurface>
+#include <CRProducer/Producer/Timer>
+
+namespace Producer {
+
+class CameraGroup;
+class Cull_UpdateThread; //add by wch
+class DrawThread;        //add by wch
+/**
+    \class Camera
+    \brief A Camera provides a programming interface for 3D 
+    graphics applications by means of an abstract camera analogy 
+
+    The Camera contains a Lens class and has a RenderSurface.  Methods 
+    are provided to give the programmer control over the OpenGL PROJECTION 
+    matrix throught the Lens and over the initial MODELVIEW matrix through 
+    the camera's position and attitude.  
+
+    The programmer must provide a class derived from Camera::SceneHandler
+    to prepare and render the scene.  The Camera does not provide direct 
+    control over rendering itself.  
+*/
+      
+
+
+class PR_EXPORT Camera : public CRCore::crThread, public Referenced
+{
+friend class Cull_UpdateThread; //add by wch
+friend class DrawThread; //add by wch
+    public :
+         /** 
+            \class SceneHandler
+            \brief A Scene Handler handles the preparation and rendering
+                   of a scene for Camera
+         */
+
+        class SceneHandler : public Referenced
+        {
+            public :
+                SceneHandler() {}
+
+                /** useAutoView() indicates to the Camera whether it should
+                    set the PROJECTION and MODELVIEW matrices by applying the
+                    Lens and PositionAndAttitudeMatrix.  Return false, if 
+                    it is intended that the Matrix manipulation occur in a 
+                    local method.  */
+                virtual bool useAutoView() { return true; }
+
+                /** Prepare the scene by sorting, and 
+                    ordering for optimal rendering */
+                virtual void cull( Camera &) {}
+
+                virtual void update( Camera &) {} //add by wch
+
+                /** clears the screen. */ 
+                virtual void clear( Camera &camera ) { camera.clear(); }
+
+                /** The draw() method must be implemented by 
+                    the derived class for rendering the scene */
+                virtual void draw( Camera &) = 0;
+
+                /** If implemented, will override all of
+                    the functionality of the Camera::frame().  Must return
+                    true if override is the intent. */
+                virtual bool frame( Camera &) { return false;}
+                
+				virtual void release(){} //add by wch
+
+				virtual void init() {} //add by wch
+				
+            protected:
+                virtual ~SceneHandler() {}
+        };
+
+        /** 
+            \class Callback
+            \brief Pure virtual class for specifying Camera callbacks */
+        class Callback : public virtual Referenced 
+        {
+            public:
+                Callback() {}
+                /** The () operator is called and passed a reference
+                    to the Camera class that called it. */
+                virtual void operator()(const Camera &) = 0;
+
+            protected:
+                virtual ~Callback(){}
+        };
+
+        /** 
+            \class UpdateCallback
+            \brief Pure virtual class for specifying Camera callbacks,
+            passed a non-const camera for the purpose of updating the 
+            Camera's state
+         */
+        class UpdateCallback : public virtual Referenced 
+        {
+            public:
+                UpdateCallback() {}
+                /** The () operator is called and passed a reference
+                    to the Camera class that called it. */
+                virtual void operator()(Camera &)  = 0;
+            protected:
+                virtual ~UpdateCallback(){}
+        };
+
+        /** 
+            \class Lens
+            \brief A Lens provides control over the PROJECTION matrix.
+
+            It is entirely contained within the Camera class.  A Lens may 
+            be of type Perspective or Orthographic and set with one of the 
+            setFrustum, setProjection() or setOrtho().  The Lens type is 
+            implied by the method used to set it */ 
+        class PR_EXPORT Lens : public Referenced 
+        {
+            public :
+
+                /** Projection types */
+                enum Projection {
+                    Perspective,
+                    Orthographic,
+                    Manual
+                };
+
+                Lens();
+
+                /** setMatrix() exists to allow external projection-management tools
+                    (like elumens' spiclops) to do their magic and still work with producer */
+                void setMatrix( const Matrix::value_type matrix[16] );
+
+                /** Set the Projection type to be of Perspective and provide
+                    the following parameters to set the Projection matrix.
+                         hfov  - Horizontal Field of View in degrees
+                         vfov  - Vertical Field of View in degrees
+                         nearClip  - Distance from the viewer to the near plane of the 
+                                 viewing frustum.
+                         farClip   - Distance from the viewer to the far plane of the 
+                                 viewing frustum.
+                         xshear- Assymetrical shear in viewing frustum in the horizontal 
+                                 direction.  Value given in normalized device coordinates 
+                                 (see setShear() below).
+                         yshear- Assymetrical shear in viewing frustum in the vertical 
+                                 direction.  Value given in normalized device coordinates 
+                                 (see setShear() below).
+                 */
+                void setPerspective( double hfov, double vfov, 
+                        double nearClip, double farClip );
+
+                /** Set the Projection type to be of Perspective and provide
+                    the dimensions of the left, right, bottom, top, nearClip and farClip
+                    extents of the viewing frustum as indicated.
+                         xshear- Assymetrical shear in viewing frustum in the horizontal 
+                                 direction.  Value given in normalized device coordinates 
+                                 (see setShear() below).
+                         yshear- Assymetrical shear in viewing frustum in the vertical 
+                                 direction.  Value given in normalized device coordinates 
+                                 (see setShear() below).
+                 */
+                void setFrustum( double left, double right, 
+                                 double bottom, double top, 
+                                 double nearClip, double farClip );
+
+                /** Set the Projection type to be of Orthographic and provide
+                     the left, right, bottom dimensions of the 2D rectangle*/
+                   void setOrtho( double left, double right, 
+                        double bottom, double top, 
+                        double nearClip, double farClip  );
+
+                /** convertToOrtho() converts the current perspective view to an 
+                    orthographic view with dimensions that conserve the scale of the 
+                    objects at distance d. 
+                    convertToPerspective() converts the current orthographic view 
+                    to a perspective view with parameters that conserve the scale of
+                    objects at distance d. */
+                bool convertToOrtho( float d);
+                bool convertToPerspective( float d);
+
+                /** apply the lens.  This generates a projection matrix for OpenGL */
+                void apply(float xshear=0.0f, float yshear=0.0);
+                void generateMatrix( float xshear, float yshear, Matrix::value_type matrix[16] );
+                Projection getProjectionType() const { return _projection; }
+                void getParams( double &left, double &right, double &bottom, double &top,
+                                double &nearClip, double &farClip ); //, double &xshear, double &yshear );
+
+                float getHorizontalFov() const { return rad2deg(_hfov); }
+                float getVerticalFov() const { return rad2deg(_vfov); }
+                void setAutoAspect(bool ar) { _auto_aspect = ar; }
+                bool getAutoAspect() const { return _auto_aspect; }
+                void setAspectRatio( double aspectRatio );
+                double getAspectRatio() { return _aspect_ratio; }
+                
+                void setNearAndFarClip(double nearClip, double farClip); //add by wuch
+                void setPerspective2( double fovy, double aspectRatio, double nearClip, double farClip );
+            protected:
+                ~Lens(){}
+
+                /* Internal convenience methods */
+                bool getFrustum( double& left, double& right,
+                                       double& bottom, double& top,
+                                       double& zNear, double& zFar ) const;
+                bool getOrtho( double& left, double& right,
+                                       double& bottom, double& top,
+                                       double& zNear, double& zFar ) const;
+
+
+            private :
+   
+                GLdouble _ortho_left, _ortho_right, _ortho_bottom, _ortho_top;
+                GLdouble _left, _right, _bottom, _top, _nearClip, _farClip;
+                Projection _projection;
+                double _aspect_ratio;
+                bool _auto_aspect;
+                float _hfov, _vfov;
+                Matrix::value_type _matrix[16];
+
+            private :
+                void _updateFOV( void );
+        };
+
+        struct Offset {
+            enum MultiplyMethod {
+                PreMultiply,
+                PostMultiply
+            };
+            double _xshear;
+            double _yshear;
+            Matrix::value_type _matrix[16];
+            MultiplyMethod _multiplyMethod;
+            Offset():
+                _xshear(0.0),
+                _yshear(0.0),
+                _multiplyMethod(PreMultiply) {}
+        };
+
+        enum StatsID {
+            BeginCameraFrame,
+              BeginCull,
+                BeginPreCullCallbacks,
+                EndPreCullCallbacks,
+                BeginInnerCull,
+                EndInnerCull,
+                BeginPostCullCallbacks,
+                EndPostCullCallbacks,
+              EndCull,
+            Vsync,
+              BeginDraw,
+                BeginClear,
+                EndClear,
+                BeginPreDrawCallbacks,
+                EndPreDrawCallbacks,
+                BeginInnerDraw,
+                EndInnerDraw,
+                BeginPostDrawCallbacks,
+                EndPostDrawCallbacks,
+                BeginPostSwapCallbacks,
+                EndPostSwapCallbacks,
+              EndDraw,
+            EndCameraFrame,
+            LastStatsID
+          };
+
+        typedef double TimeStamp;
+        class FrameTimeStampSet
+        {
+            public:
+              FrameTimeStampSet() {}
+              inline void clear() { memset(_stamps, 0, sizeof(_stamps)); }
+              TimeStamp &operator[]( StatsID id ) { return _stamps[id]; }
+              const TimeStamp &operator[]( StatsID id ) const { return _stamps[id]; }
+              inline void setFrameNumber(unsigned int count) { _frameNumber = count; }
+              inline unsigned int getFrameNumber() { return _frameNumber; }
+
+            private:
+               unsigned int _frameNumber;
+               TimeStamp _stamps[LastStatsID];
+        };
+
+    public :
+        Camera( void );
+
+        void enable() { _enabled = true; }
+        void disable() { _enabled = false; }
+        bool isEnabled() const { return _enabled; }
+
+        void frame( bool doSwap=true ) ;
+        void cull_update(); //add by wch
+        void draw( bool doSwap=true ); //add by wch
+        void setSceneHandler( SceneHandler *sh ) { _sh = sh; }
+        SceneHandler *getSceneHandler() { return _sh.get(); }
+        const SceneHandler *getSceneHandler() const { return _sh.get(); }
+
+        void setRenderSurface( RenderSurface *rs ) { _rs = rs; }
+        RenderSurface *getRenderSurface() { return _rs.get(); }
+        const RenderSurface *getRenderSurface() const { return _rs.get(); }
+
+        void setRenderSurfaceWindowRectangle( int x, int y, unsigned int width, unsigned int height, bool resize=true )
+        { _rs->setWindowRectangle(x,y,width,height, resize); }
+
+        void  setLens( Lens *lens ) 
+        { 
+            if( _lens.get() != lens )
+                _lens = lens; 
+        }
+
+        Lens *getLens() { return _lens.get(); }
+        const Lens *getLens() const { return _lens.get(); }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        /** Convenience method for setting the Lens Perspective.
+            See Camera::Lens::setPerspective(). */
+        void setLensPerspective( double hfov, double vfov, 
+                        double nearClip, double farClip,
+                        double xshear=0, double yshear=0 )
+        { 
+            _offset._xshear = xshear;
+            _offset._yshear = yshear;
+            _lens->setPerspective(hfov,vfov,nearClip,farClip);
+        }
+        
+        /*void setLensNearAndFarClip(double nearClip, double farClip) //add by wuch
+        {
+            _lens->setNearAndFarClip(nearClip,farClip);
+        }*/
+
+        /** Convenience method for setting the Lens Frustum.
+            See Camera::Lens::setFrustum(). */
+        void setLensFrustum( double left, double right, 
+                                 double bottom, double top, 
+                                 double nearClip, double farClip,
+                                 double xshear=0, double yshear=0 )
+        { 
+            _offset._xshear = xshear;
+            _offset._yshear = yshear;
+            _lens->setFrustum(left,right,bottom,top,nearClip, farClip); 
+        }
+
+        /** Convenience method for setting the lens Orthographic projection.
+            See Camera::Lens::setOrtho() */ 
+        void setLensOrtho( double left, double right, 
+                        double bottom, double top, 
+                        double nearClip, double farClip ,
+                        double xshear=0, double yshear=0 )
+        { 
+            _offset._xshear = xshear;
+            _offset._yshear = yshear;
+            _lens->setOrtho( left, right, bottom, top, nearClip, farClip); 
+        }
+
+        /** Convenience method for setting the lens shear. See Camera::Lens::setShear()*/
+        void setLensShear( double xshear, double yshear )
+        { 
+            _offset._xshear = xshear;
+            _offset._yshear = yshear;
+        }
+
+        /** Convenience method for getting the lens shear. See Camera::Lens::getShear() */
+        void getLensShear( double &xshear, double &yshear )
+        { 
+            xshear = _offset._xshear;
+            yshear = _offset._yshear;
+        }
+
+        /** Convenience method for converting the Perpective lens to an 
+            Orthographic lens. see Camera::lens:convertToOrtho() */
+        bool convertLensToOrtho( float d) { return _lens->convertToOrtho(d); }
+
+        /** Convenience method for converting the Orthographic lens to an 
+            Perspective lens. see Camera::lens:convertToPerspective() */
+        bool convertLensToPerspective( float d) { return _lens->convertToPerspective(d); }
+
+        /** Convenience method for getting the lens projection type.
+            See Camera::Lens::setAspectRatio() */
+        Lens::Projection getLensProjectionType() { return _lens->getProjectionType(); }
+
+        /** Convenience method for applying the lens.  See Camera::Lens::apply() */
+        void applyLens() { _lens->apply(_offset._xshear, _offset._yshear); }
+
+        /** Convenience method for getting the Lens parameters.  
+            See Camera::Lens::apply() */
+        void getLensParams( double &left, double &right, double &bottom, double &top,
+                            double &nearClip, double &farClip, double &xshear, double &yshear )
+        {
+            _lens->getParams(left,right,bottom,top,nearClip,farClip );
+            xshear = _offset._xshear;
+            yshear = _offset._yshear;
+        }
+
+        /** Convenience method for getting the Lens Horizontal field of view.  
+            See Camera::Lens::getHorizontalFov() */
+        float getLensHorizontalFov() { return _lens->getHorizontalFov(); }
+
+        /** Convenience method for getting the Lens Horizontal field of view.  
+            See Camera::Lens::getVerticalFov() */
+        float getLensVerticalFov() { return _lens->getVerticalFov(); }
+
+        /** Convenience method for setting the Lens ProjectionMatrix.
+            See Camera::Lens::setMatrix() */
+        // DEPRECATE
+        //void setLensMatrix( float mat[16] ) { _lens->setMatrix(mat); }
+
+        /** Convenience method for getting the Lens ProjectionMatrix.
+            See Camera::Lens::getMatrix() */
+        void getLensMatrix(Matrix::value_type matrix[16] )
+        { 
+            _lens->generateMatrix(_offset._xshear, _offset._yshear, matrix );
+        }
+
+        /** Convenience method for setting AutoAspect on the lens.
+            See Camera::Lens::setAutoAspect() */
+        void setLensAutoAspect(bool ar) { _lens->setAutoAspect(ar); }
+
+        /** Convenience method for getting AutoAspect on the lens.
+            See Camera::Lens::getAutoAspect() */
+        bool getLensAutoAspect() { return _lens->getAutoAspect(); }
+
+        /** Convenience method for setting the lens Aspect Ratio.
+            See Camera::Lens::setAspectRatio() */
+        void setLensAspectRatio( double aspectRatio ) { _lens->setAspectRatio(aspectRatio); }
+        double getLensAspectRatio() { return _lens->getAspectRatio(); }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        void setProjectionRectangle( const float left, const float right,
+                                const float bottom, const float top );
+
+        void getProjectionRectangle( float &left, float &right,
+                                float &bottom, float &top ) const;
+
+        void setProjectionRectangle( int x, int y, unsigned int width, unsigned int height );
+        void getProjectionRectangle( int &x, int &y, unsigned int &width, unsigned int &height ) const ;
+
+        Matrix::value_type *getProjectionMatrix () 
+        { 
+            _lens->generateMatrix(_offset._xshear, _offset._yshear, _projectionMatrix ); 
+            return _projectionMatrix;
+        }
+
+        void setViewByLookat( float eyex, float eyey, float eyez,
+                      float centerx, float centery, float centerz,
+                      float upx, float upy, float upz );
+        void setViewByLookat( const Vec3 &eye, const Vec3 &center, const Vec3 &up );
+        void setViewByMatrix( const Matrix &mat );
+        void setFocalDistance( double focal_distance ) { _focal_distance = focal_distance; }
+        const Matrix::value_type *getViewMatrix( void ) const;
+        const Matrix::value_type *getPositionAndAttitudeMatrix( void ) const { return _viewMatrix; }
+        void applyView();
+
+        void setOffset( const Matrix::value_type matrix[16], 
+                        Matrix::value_type _xshear=0.0, 
+                        Matrix::value_type _yshear=0.0); 
+        void setOffset( double _xshear, double _yshear); 
+        void setOffsetMultiplyMethod( Offset::MultiplyMethod method )
+        {
+            _offset._multiplyMethod = method;
+        }
+
+
+        void setClearColor( float red, float green, float blue, float alpha);
+        void getClearColor( float& red, float& green, float& blue, float& alpha);
+        
+        void clear( void );
+        
+        inline void advance( void ) 
+        {
+            _rs->swapBuffers(); 
+            if( postSwapCallbacks.size() )
+			{
+				std::vector <ref_ptr<Callback> >::iterator p;
+				for( p = postSwapCallbacks.begin(); p != postSwapCallbacks.end(); p++ )
+					(*((*p).get()))(*this);
+			}
+        }
+        
+        void sync(int n=1) { _rs->sync(n); }
+
+        void setUpdateCallback( UpdateCallback *cb ) 
+        {
+            _updateCallback = cb;
+        }
+
+        void addPreFrameCallback( Callback *cb ) 
+        {
+            preFrameCallbacks.push_back( cb );
+        }
+
+        void addPostFrameCallback( Callback *cb ) 
+        {
+            postFrameCallbacks.push_back( cb );
+        }
+
+        void addPreCullCallback( Callback *cb ) 
+        { 
+            preCullCallbacks.push_back( cb ); 
+        }
+
+        bool removePreCullCallback( Callback *cb );
+
+        void addPostCullCallback( Callback *cb ) 
+        { 
+            postCullCallbacks.push_back( cb ); 
+        }
+        bool removePostCullCallback( Callback *cb );
+
+        void addPreDrawCallback( Callback *cb ) 
+        { 
+            preDrawCallbacks.push_back( cb ); 
+        }
+        bool removePreDrawCallback( Callback *cb ) ;
+
+        void addPostDrawCallback( Callback *cb ) 
+        { 
+            postDrawCallbacks.push_back( cb ); 
+        }
+        bool removePostDrawCallback( Callback *cb ) ;
+
+        void addPostSwapCallback( Callback *cb )
+        {
+            postSwapCallbacks.push_back( cb );
+        }
+
+        bool removePostSwapCallback( Callback *cb );
+
+        virtual int cancel();
+
+        void run( void );
+        void setSyncBarrier( Producer::RefBarrier *b );
+        void setFrameBarrier( Producer::RefBarrier *b );
+
+        void setCullBarrier( Producer::RefBarrier *b );  //add by wch
+        void setUpdateBarrier( Producer::RefBarrier *b );  //add by wch
+        void setDrawBarrier( Producer::RefBarrier *b );  //add by wch
+ 
+        void setInitTime( Timer_t initTime ) { _initTime = initTime; }
+        const FrameTimeStampSet &getFrameStats(); 
+
+        void setInstrumentationMode( bool mode ) { _instrumented = mode; }
+        bool getInstrumentationMode() const { return _instrumented; }
+        void setBlockOnVsync(bool block ) {_block_on_vsync = block; }
+        bool getBlockOnVsync() const {return _block_on_vsync; }
+
+        void setIndex( unsigned int index ) { _index = index; }
+        unsigned int getIndex() const { return _index; }
+
+        void setShareLens( bool flag ) { _shareLens = flag; }
+        bool getShareLens() { return _shareLens; }
+        void setShareView( bool flag ) { _shareView = flag; }
+        bool getShareView() { return _shareView; }
+
+        double getTimeOfLastVSync() { return (double)_syncTick; }
+        double getTimeOfNextVSync() { return (double)_syncTick+1; }
+
+        void initChildThread(); //add by wch
+        void startChildThread();
+        Cull_UpdateThread *getCull_UpdateThread(){ return _cull_updatethread.get(); } //add by wch
+        DrawThread *getDrawThread(){ return _drawthread.get(); } //add by wch
+        
+        void setDone(bool done) { _done = done; }  //add by wch
+    protected :
+
+        virtual ~Camera( void );
+        Producer::ref_ptr<Lens>                     _lens;
+        Producer::ref_ptr<Producer::RenderSurface>  _rs;
+        Producer::ref_ptr<SceneHandler>             _sh;
+        unsigned int                                _index;
+
+        ref_ptr<UpdateCallback> _updateCallback;
+        std::vector < ref_ptr<Callback> > preFrameCallbacks;
+        std::vector < ref_ptr<Callback> > preCullCallbacks;
+        std::vector < ref_ptr<Callback> > postCullCallbacks;
+        std::vector < ref_ptr<Callback> > preDrawCallbacks;
+        std::vector < ref_ptr<Callback> > postDrawCallbacks;
+        std::vector < ref_ptr<Callback> > postSwapCallbacks;
+        std::vector < ref_ptr<Callback> > postFrameCallbacks;
+
+    private :
+        bool _initialized;
+        bool _initialize(void);
+
+        bool _enabled;
+
+        float _projrectLeft,
+              _projrectRight,
+              _projrectBottom,
+              _projrectTop;
+
+        Offset _offset;
+        Matrix::value_type _projectionMatrix[16];
+        Matrix::value_type _viewMatrix[16];
+        float  _clear_color[4];
+        double _focal_distance;
+
+
+        friend class Producer::CameraGroup;
+        ref_ptr <RefBarrier>     _syncBarrier;
+        ref_ptr <RefBarrier>     _frameBarrier;
+
+        ref_ptr<RefBarrier>    _cullBarrier;   //add by wch
+        ref_ptr<RefBarrier>    _updateBarrier; //add by wch
+        ref_ptr<RefBarrier>    _drawBarrier; //add by wch
+        
+        Timer_t _initTime;
+        Timer_t _syncTick;
+        
+        void _cull_update(); //add by wch
+        void _cull_updateInstrumented(); //add by wch
+        void _draw(bool); //add by wch
+        void _drawInstrumented(bool); //add by wch
+
+        void _frame(bool);
+        void _frameInstrumented(bool);
+        bool _instrumented;
+        Timer _timer;
+        unsigned int _frameCount;
+        FrameTimeStampSet _frameStamps;
+        bool _block_on_vsync;
+
+        bool _shareLens;
+        bool _shareView;
+        
+        bool _done;
+		
+        bool _removeCallback( std::vector < ref_ptr<Callback> > &callbackList, Callback *callback );
+        
+        ref_ptr<Cull_UpdateThread> _cull_updatethread;
+        ref_ptr<DrawThread>        _drawthread;
+};
+
+class PR_EXPORT Cull_UpdateThread: public CRCore::crThread, public Referenced //add by wch
+{
+public:
+    virtual void run( void ); 
+
+    Cull_UpdateThread( Camera * camera ):_camera(camera) {}
+protected:
+    virtual ~Cull_UpdateThread();
+private:
+    Camera* _camera;
+};
+        
+class PR_EXPORT DrawThread: public CRCore::crThread, public Referenced //add by wch
+{
+public:
+    virtual void run( void );
+
+    DrawThread( Camera * camera ):_camera(camera) {}
+protected: 
+    virtual ~DrawThread();
+private:
+    Camera* _camera;        
+};
+
+}
+
+#endif
+

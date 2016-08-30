@@ -1,0 +1,312 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef _PRODUCER_RENDER_SURFACE_EVENTS_H
+#define _PRODUCER_RENDER_SURFACE_EVENTS_H
+
+#include <CRProducer/Producer/Export>
+#include <CRProducer/Producer/Referenced>
+
+#ifdef  _WIN32_IMPLEMENTATION
+
+#define ROBERTS_EXPERIMENTAL_EVENT_QUEUE
+#ifdef ROBERTS_EXPERIMENTAL_EVENT_QUEUE
+    #include <list>
+#else
+    #include <deque>
+#endif
+
+#include <CRProducer/Producer/RenderSurface>
+#include <CRProducer/Producer/Block>
+#include <CRProducer/Producer/Keyboard>
+#include <CRProducer/Producer/KeyboardMouse>
+
+#include <CRCore/thread/crScopedLock.h>
+
+namespace Producer {
+
+
+class Event :public Referenced {
+    public:
+        enum Type {
+            KeyPress,
+            KeyRelease,
+            ButtonPress,
+            DoubleButtonPress,
+            ButtonRelease,
+            MouseMotion, 
+            MouseScroll,
+            ButtonMotion,
+            WindowConfig,
+            Timer,
+            Shutdown,
+            //WindowFocus,
+            InputChar,
+			WindowRestored,
+        };
+
+        enum Mask {
+            KeyPressMask          = 0x001,
+            KeyReleaseMask        = 0x002,
+            ButtonPressMask       = 0x004,
+            DoubleButtonPressMask = 0x008,
+            ButtonReleaseMask     = 0x010,
+            MouseMotionMask       = 0x020,
+            MouseScrollMask       = 0x040,
+            ButtonMotionMask      = 0x080,
+            WindowConfigMask      = 0x100,
+            TimerMask             = 0x200,
+            ShutdownMask          = 0x400,
+            InputCharMask		  = 0x800,
+			WindowRestoredMask    = 0x1000,
+        };
+
+        Event( Window win, Type type ) : _win(win), _type(type) {}
+        virtual ~Event() {}
+        Type type() { return _type; }
+        Window window() { return _win; }
+    protected:
+        Window _win;
+        Type _type;
+};
+
+#ifdef ROBERTS_EXPERIMENTAL_EVENT_QUEUE
+
+class EventQueue : public Producer::Referenced
+{
+    public:
+    
+        bool empty() const
+        {
+            CRCore::ScopedLock<CRCore::crMutex> lock(_mutex);
+            return _events.empty();
+        }
+    
+        void waitWhileEmpty() const
+        {
+            while( empty() )
+                CRCore::crThread::yieldCurrentThread();
+        }
+
+        Producer::ref_ptr<Producer::Event>& front()
+        {
+            CRCore::ScopedLock<CRCore::crMutex> lock(_mutex);
+            return _events.front();
+        }
+        
+        const Producer::ref_ptr<Producer::Event>& front() const
+        {
+            CRCore::ScopedLock<CRCore::crMutex> lock(_mutex);
+            return _events.front();
+        }
+
+        void pop_front()
+        {
+            CRCore::ScopedLock<CRCore::crMutex> lock(_mutex);
+            _events.pop_front();
+        }
+        
+        void push_back(const Producer::ref_ptr<Producer::Event>& event)
+        {
+            CRCore::ScopedLock<CRCore::crMutex> lock(_mutex);
+            _events.push_back(event);
+        }
+  
+  protected:
+  
+        virtual ~EventQueue() {}
+    
+        typedef std::list< Producer::ref_ptr<Event> >  Events;
+        
+        Events                      _events;
+        mutable CRCore::crMutex  _mutex;
+};
+
+#else // !ROBERTS_EXPERIMENTAL_EVENT_QUEUE
+
+typedef BlockingQueue <Producer::ref_ptr<Event> > EventQueue;
+
+#endif
+
+class KeyPressEvent : public Event
+{
+    public :  
+        KeyPressEvent( Window win, unsigned short key ): Event(win, Event::KeyPress), _key( key ) {}
+        unsigned short key() const { return _key; }
+
+    protected:
+        virtual ~KeyPressEvent() {}
+
+    private:
+        unsigned short _key;
+};
+
+class KeyReleaseEvent : public Event
+{
+    public: 
+        KeyReleaseEvent( Window win, unsigned short key ) : Event(win, Event::KeyRelease), _key(key) {}
+        unsigned short key() const { return _key; }
+    protected:
+        virtual ~KeyReleaseEvent() {}
+    private:
+        unsigned short _key;
+}; 
+
+class InputCharEvent : public Event
+{
+    public: 
+        InputCharEvent( Window win, wchar_t c ) : Event(win, Event::InputChar), _char(c) {}
+        wchar_t getChar() const { return _char; }
+    protected:
+        virtual ~InputCharEvent() {}
+    private:
+        wchar_t _char;
+};
+
+class ButtonPressEvent : public Event
+{
+    public:
+        ButtonPressEvent(Window win, unsigned int button, int mx, int my) : 
+            Event(win, Event::ButtonPress), _button(button), _mx(mx), _my(my) {}
+        int mx() const { return _mx; }
+        int my() const { return _my; }
+
+        unsigned int button() const { return _button; }
+
+    protected:
+        virtual ~ButtonPressEvent() {}
+
+    private:
+        unsigned int _button;
+        int _mx, _my;
+};
+
+class ButtonReleaseEvent : public Event
+{
+    public:
+        ButtonReleaseEvent(Window win, unsigned int button, int mx, int my) : 
+            Event(win, Event::ButtonRelease), _button(button), _mx(mx), _my(my) {}
+        int mx() const { return _mx; }
+        int my() const { return _my; }
+
+        unsigned int button() const { return _button; }
+    protected:
+        virtual ~ButtonReleaseEvent() {}
+    private:
+        unsigned int _button;
+        int _mx, _my;
+};
+
+class DoubleButtonPressEvent : public Event
+{
+    public:
+    DoubleButtonPressEvent(Window win, unsigned int button, int mx, int my) : 
+        Event(win, Event::DoubleButtonPress), _button(button), _mx(mx), _my(my) {}
+    virtual ~DoubleButtonPressEvent() {}
+    int mx() const { return _mx; }
+    int my() const { return _my; }
+
+    unsigned int button() const { return _button; }
+    private:
+    unsigned int _button;
+    int _mx, _my;
+};
+
+class MouseMotionEvent : public Event
+{
+    public:
+    MouseMotionEvent( Window win, int mx, int my ) : Event(win, Event::MouseMotion), 
+            _mx(mx), _my(my) {}
+    virtual ~MouseMotionEvent() {}
+    int mx() const { return _mx; }
+    int my() const { return _my; }
+    private:
+    int _mx, _my;
+};
+
+class MouseScrollEvent : public Event
+{
+    public:
+        MouseScrollEvent(Window win, KeyboardMouseCallback::ScrollingMotion scroll ) : 
+            Event( win, Event::MouseScroll ), _scroll(scroll) {}
+
+        virtual ~MouseScrollEvent() {}
+
+        KeyboardMouseCallback::ScrollingMotion scrollingMotion() { return _scroll; }
+
+    private:
+        KeyboardMouseCallback::ScrollingMotion _scroll;
+};
+
+class WindowConfigEvent : public Event 
+{
+    public:
+        WindowConfigEvent( Window win, int x, int y, unsigned int width, unsigned int height ):
+            Event(win, Event::WindowConfig),
+            _x(x), _y(y), _width(width), _height(height) {}
+        virtual ~WindowConfigEvent() {}
+        int x() const { return _x; }
+        int y() const { return _y; }
+        unsigned int winWidth() const { return _width; }
+        unsigned int winHeight() const { return _height; }
+    private:
+        int _x, _y;
+        unsigned int _width, _height;
+};
+
+/*class WindowFocusEvent : public Event 
+{
+    public:
+        WindowFocusEvent( Window win, int focus, Window transferwin ):
+            Event(win, Event::WindowFocus),
+            _focus(focus), _transferwin(transferwin) {}
+        virtual ~WindowFocusEvent() {}
+        int focus() const { return _focus; }
+        Window getTransferWin() const { return _transferwin; }
+    private:
+        int _focus; ///0:lost focus 1:set focus
+        Window _transferwin; //如果_focus == 0: _transferwin表示将要获得焦点的窗口句柄，否则_transferwin表示将要失去焦点的窗口句柄
+};*/
+
+class TimerEvent : public Event 
+{
+    public:
+        TimerEvent(Window win, unsigned int id) : Event(win, Event::Timer), _id(id) {}
+        virtual ~TimerEvent() {}
+        unsigned int id() const { return _id; }
+    private:
+        unsigned int _id;
+};
+
+class ShutdownEvent : public Event
+{
+    public:
+        ShutdownEvent(Window win, int flg): Event(win, Event::Shutdown),_flg(flg){}
+		int flg() const { return _flg; }
+    private:
+        int _flg;
+};
+
+class WindowRestoredEvent : public Event
+{
+    public:
+        WindowRestoredEvent(Window win, int flg): Event(win, Event::WindowRestored),_flg(flg){}
+		int flg() const { return _flg; }
+    private:
+        int _flg;//1 restored, 0 minisize
+};
+
+}
+
+#endif
+#endif

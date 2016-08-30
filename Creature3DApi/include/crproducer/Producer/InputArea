@@ -1,0 +1,69 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef PRODUCER_INPUT_AREA
+#define PRODUCER_INPUT_AREA
+
+#include <CRProducer/Producer/Export>
+#include <CRProducer/Producer/Referenced>
+
+#include <vector>
+
+#include <CRProducer/Producer/Types>
+
+namespace Producer{
+
+class RenderSurface;
+
+
+class PR_EXPORT InputArea: public Referenced
+{
+    public:
+
+        InputArea();
+
+        void    addRenderSurface( Producer::RenderSurface *rs );
+        bool    isRealized();
+        bool    waitForRealize();
+    
+        unsigned int getNumRenderSurfaces();
+        RenderSurface *getRenderSurface(unsigned int index);
+
+        unsigned int getNumWindows();
+        Window  getWindow(unsigned int index);
+        
+        void    normalizeMouseMotion( Window win, int mx, int my, float &nmx, float &nmy);
+        void    transformMouseMotion( Window win, int mx, int my, float &nmx, float &nmy);
+
+        void    normalizeXY( float &x, float &y );
+
+        void    getExtents( float &minX, float &maxX, float &minY, float &maxY );
+        void    getCenter( float &cx, float &cy );
+
+
+    protected:
+
+        virtual ~InputArea();
+
+        std::vector<RenderSurface *> _mapdata;
+
+        bool _init();
+        bool _initialized;
+        float _minX, _maxX, _minY, _maxY;
+        bool    _waitForRealize();
+
+};
+
+}
+
+#endif

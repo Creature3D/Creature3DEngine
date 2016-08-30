@@ -1,0 +1,119 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+
+#ifndef PRODUCER_KEYBOARD_MOUSE
+#define PRODUCER_KEYBOARD_MOUSE 1
+
+#include <CRCore/thread/crThread.h>
+
+#include <CRProducer/Producer/Export>
+#include <CRProducer/Producer/Referenced>
+
+#include <CRProducer/Producer/Types>
+#include <CRProducer/Producer/BlockingQueue>
+#include <CRProducer/Producer/RenderSurface>
+#include <CRProducer/Producer/InputArea>
+#include <CRProducer/Producer/Keyboard>
+
+namespace Producer {
+
+class KeyboardMouseImplementation;
+
+class PR_EXPORT KeyboardMouseCallback : public Referenced 
+{
+   
+    public :
+        KeyboardMouseCallback( ) { }
+        enum ScrollingMotion {
+            ScrollNone,
+            ScrollUp,
+            ScrollDown
+        };
+        virtual void mouseScroll( ScrollingMotion ) {}
+        virtual void mouseMotion( float, float) {}
+        virtual void passiveMouseMotion( float, float) {}
+        virtual void buttonPress( float, float, unsigned int ) {}
+        virtual void doubleButtonPress( float, float, unsigned int ) {}
+        virtual void buttonRelease( float, float, unsigned int ) {}
+        virtual void keyPress( KeyCharacter ) {}
+        virtual void keyRelease( KeyCharacter ) {}
+        virtual void specialKeyPress( KeyCharacter ) {}
+        virtual void specialKeyRelease( KeyCharacter ) {}
+        virtual void inputChar( wchar_t c ) {}
+        virtual void shutdown(int flg) {}
+        virtual bool idle() { return false; }
+        virtual void windowConfig( int x, int y, unsigned int width, unsigned int height ){}
+        //virtual void windowFocus( int focus, Window transferwin ){}
+		virtual void windowRestored(int flg) {}
+    protected:
+        ~KeyboardMouseCallback() {}
+};
+
+class PR_EXPORT KeyboardMouse : public CRCore::crThread, public Referenced
+{
+    public :
+        KeyboardMouse(Producer::RenderSurface *rs);
+
+        KeyboardMouse(Producer::InputArea *inputArea);
+            
+        void update(KeyboardMouseCallback &, bool block=false);
+            
+        void setCallback( KeyboardMouseCallback *cb );
+        KeyboardMouseCallback *getCallback() { return _cb.get(); }
+            
+        void positionPointer( float x, float y );
+            
+        Producer::RenderSurface *getRenderSurface() { return _rs.get(); }
+        const Producer::RenderSurface *getRenderSurface() const { return _rs.get(); }
+
+        Producer::InputArea *getInputArea() { return _inputArea.get(); }
+        const Producer::InputArea *getInputArea() const { return _inputArea.get(); }
+
+        /** compute, from normalized mouse coords (x,y) the,  for the specified 
+          * RenderSurface, the pixel coordinates (pixel_x,pixel_y). return true 
+          * if pixel_x and pixel_y have been successful computed, otherwise return 
+          * false with pixel_x and pixel_y left unchanged.*/
+        bool computePixelCoords(float x, float y, RenderSurface* rs, float& pixel_x, float& pixel_y); 
+
+        /** Set auto repeat mode  to On (true) or Off (false) 
+          * When auto repeat is On, keys will send repeated keypress/keyRelease 
+          * events, if a key is continously held down.  Settings for keypress
+          * rates and delay are windowing system specific and out of the scope 
+          * of Producer.
+          * 
+          * For X11 systems, autorepeat mode is enabled/disabled for local client
+          * testing of key repeats only.  The global Xserver setting may not agree 
+          * with local settings.  That is, getAutoRepeatMode may be true, meaning
+          * that Producer will be looking for keys to repeat, even if the global 
+          * setting is set to false. 
+          */
+        void setAutoRepeatMode( bool );
+        bool getAutoRepeatMode();
+
+    protected:
+
+        virtual ~KeyboardMouse();
+        Producer::ref_ptr< KeyboardMouseImplementation > _implementation;
+        Producer::ref_ptr< Producer::RenderSurface >_rs;
+        Producer::ref_ptr< Producer::InputArea >_inputArea;
+        Producer::ref_ptr< KeyboardMouseCallback >_cb;
+        bool _initialized;
+        bool init();
+        virtual void run();
+
+    private:
+};
+
+}
+#endif

@@ -1,0 +1,66 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef _PRODUCER_BLOCKING_QUEUE
+#define _PRODUCER_BLOCKING_QUEUE 1
+
+#include <deque>
+
+#include <CRProducer/Producer/Referenced>
+#include <CRProducer/Producer/Block>
+
+#include <CRCore/thread/crMutex.h>
+
+
+namespace Producer {
+
+template <class T>
+class BlockingQueue : public Referenced, public std::deque<T>
+{
+    public:
+        BlockingQueue() 
+        { 
+            _block = new Producer::Block;
+        }
+
+        void waitWhileEmpty() 
+        {
+            if( this->empty() )
+                _block->reset();
+            _block->block();
+        }
+
+        void push_back(const T &val)
+        {
+            CRCore::ScopedLock<CRCore::crMutex> lock(_mut);
+
+#if defined(WIN32) && !defined(__GNUC__)
+using namespace std;
+            deque<T>::push_back(val);
+#else
+            std::deque<T>::push_back(val);
+#endif
+            _block->release();
+        }
+
+    protected:
+        ~BlockingQueue() {}
+
+    private:
+        Producer::ref_ptr<Block> _block;
+        CRCore::crMutex _mut;
+};
+
+}
+
+#endif

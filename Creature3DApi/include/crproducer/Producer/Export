@@ -1,0 +1,74 @@
+/* -*-c++-*- Producer - Copyright (C) 2001-2004  Don Burns
+ *
+ * This library is open source and may be redistributed and/or modified under
+ * the terms of the OpenSceneGraph Public License (OSGPL) version 0.0 or
+ * (at your option) any later version.  The full license is in LICENSE file
+ * included with this distribution, and on the openscenegraph.org website.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * OpenSceneGraph Public License for more details.
+ */
+
+#ifndef PRODUCER_EXPORT
+#define PRODUCER_EXPORT 1
+
+#if defined(_MSC_VER)
+    #pragma warning( disable : 4244 )
+    #pragma warning( disable : 4251 )
+    #pragma warning( disable : 4267 )
+    #pragma warning( disable : 4275 )
+    #pragma warning( disable : 4290 )
+    #pragma warning( disable : 4786 )
+    #pragma warning( disable : 4541 )
+    #pragma warning( disable : 4800 )
+    #pragma warning( disable : 4996 )
+#endif
+
+#if defined(_MSC_VER) || defined(__CYGWIN__) || defined(__MINGW32__) || defined( __BCPLUSPLUS__)  || defined( __MWERKS__)
+#  if defined( _LIB ) || defined( USE_STATIC )
+#    define PR_EXPORT
+#  elif defined( CRPRODUCER_LIBRARY )
+#    define PR_EXPORT   __declspec(dllexport)
+#  else
+#    define PR_EXPORT   __declspec(dllimport)
+#  endif /* PR_LIBRARY versus STATIC */
+#else
+#  define PR_EXPORT
+#endif
+//#  define PR_EXPORT
+
+// set up define for whether member templates are supported by VisualStudio compilers.
+#ifdef _MSC_VER
+# if (_MSC_VER >= 1300)
+#  define __STL_MEMBER_TEMPLATES
+# endif
+#endif
+
+/* Define NULL pointer value */
+
+#ifndef NULL
+#ifdef  __cplusplus
+#define NULL    0
+#else
+#define NULL    ((void *)0)
+#endif
+#endif
+
+#ifdef WIN32
+#  define _WIN32_IMPLEMENTATION 1
+#elif defined(__APPLE__) 
+#  if defined (__USE_OSX_CGL_IMPLEMENTATION__)
+#    define _OSX_CGL_IMPLEMENTATION 1
+#  elif defined (__USE_OSX_AGL_IMPLEMENTATION__)
+#    define _OSX_AGL_IMPLEMENTATION 1
+#  else
+#    define _X11_IMPLEMENTATION 1
+#  endif
+#else 
+#  define _X11_IMPLEMENTATION 1
+#endif
+
+
+#endif
