@@ -1,0 +1,43 @@
+MingW specific information for GNE.
+
+If you have an old GCC 2.95 system, note that you will need to add OLD_CPP=1
+to your make line.
+
+Detailed instructions are provided in the GNE tutorials.  You can view them
+online at http://www.rit.edu/~jpw9607/gne/tutorials/mingwinstall.htm.
+
+Installation:
+
+Install HawkNL.  HawkNL has its own installation process, which does involve
+a makefile.
+
+Install Boost.  GNE does not make use of any of the compiled parts of Boost,
+so no compilation is needed.
+
+If you did not install HawkNL and Boost into your compiler's default search
+paths, you need to give paths to the files in the LibPaths.mak file.
+
+Inside a command prompt, type:
+
+fixming
+
+Which should give you a short description of the makefile options. Now type:
+
+make
+
+To compile the library and examples. Now type:
+
+make install
+
+To install GNE. Should you ever wish to uninstall all the files installed by
+this from your system (and it might be a good idea before upgrading to a newer
+version as well), use:
+
+make uninstall
+
+NOTE: MINGDIR must be set for make install to work.  It will install the files
+into MINGDIR/include and MINGDIR/lib.
+
+Example:
+SET MINGDIR=C:\mingw
+make install

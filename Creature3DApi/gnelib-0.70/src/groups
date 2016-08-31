@@ -1,0 +1,51 @@
+//This file only contains the information useful for the Modules page of the
+//documentation - There is no code here.
+
+/**
+ * @defgroup internal Internal Classes
+ *
+ * These items are used only internally by the library in the normal cases.
+ * This documentation is provided for those curious about some of the inner
+ * workings of the library, or who want to extend on the functionality of
+ * the library internals.
+ *
+ * The typical user should not need to pay attention to any of these items.
+ */
+ 
+/**
+ * @defgroup midlevel Mid-Level API
+ *
+ * This is the original API, which is completed.  The mid-level API works
+ * with connections and packets.  It provides the basics of communications
+ * between two computers.  The high-level API expands from these classes to
+ * provide high-level functionality.
+ *
+ * @see highlevel
+ */
+ 
+/**
+ * @defgroup highlevel High-Level API
+ *
+ * This API is still very much in progress.  Unlike the mid-level API, the
+ * high-level API deals with servers, players, and objects.
+ *
+ * @see midlevel
+ */
+ 
+/**
+ * @defgroup threading Threading API
+ *
+ * This low-level API provides a framework for creating multi-threaded
+ * applications.
+ */
+ 
+/**
+ * @defgroup console Console API
+ *
+ * This low-level API provides multithreaded console access in multiple
+ * environments.  It should be robust enough to support text-based interfaces
+ * for server programs, to make them more friendly to be run remotely from
+ * UNIX and UNIX-like systems.
+ *
+ * The API is also used as an I/O system for the GNE examples
+ */

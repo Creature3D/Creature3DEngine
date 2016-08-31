@@ -1,0 +1,24 @@
+MSVC-specific information for GNE.
+
+The main platform support for GNE is MSVC, so this port should be the least
+quirky.  The MSVC workspace file in the root directory of the project should
+contain everything needed to compile the library and the examples.
+
+INSTALLATION INSTRUCTIONS:
+
+You can view detailed installation instructions at
+http://www.rit.edu/~jpw9607/gne/tutorials/msvcinstall.htm
+
+NOTE: GNE only works under MSVC.NET or later.  MSVC6 will not work.
+
+If you cannot view the tutorial, here is a short set of instructions for the
+knowledgable:
+
+Install HawkNL, preferably with NL_WIN_THREADS defined.  You need to make sure
+that HawkNL is visible in your compiler's include paths by adding the HawkNL
+directory.
+
+The same applies for Boost, although Boost does not need to be compiled first.
+
+Then load the gne.sln namespace and compile.  It will generate gne.lib or
+gned.lib depending on release or debug mode.

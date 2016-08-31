@@ -1,0 +1,324 @@
+GNE 0.55 to 0.70
+  Added ErrorCode User for user-inherited Error objects.
+  Throwing exceptions during readPacket and writePacket is now allowed.
+  RawPacket class was retired and replaced by the new safer class Buffer.
+    RawPacket's name was confusing, and did not have strong protection against
+    overflow and underflow.
+  Fixed a extremely unlikely condition where a SyncConnection may be waiting
+    forever to get its next packet.
+  Major reworking of the connecting code, and added a state to Connection to
+    help keep track of things.  These changes fixed some bugs including at
+    least one deadlock, and increased robustness when GNE is shutdown while
+    a Connection is connecting (so it can fail and quit early).
+  Complete reexamination and major overhaul of event generation to listeners,
+    and the synchronization that occured as a result.  Hopefully this will
+    get rid of the deadlocks and hopefully most if not all of the remaining
+    bugs dealing with connections.
+  Fixed 2 memory leaks in Connection.
+  Fixed overflow bugs in Time.
+  The debug log isn't shutdown when an explicit GNE::shutdownGNE call is
+    made.  This resolves some hard-to-avoid crashes when using the gnedbg
+    macros.  Instead logging runs in its own atexit after GNE's.
+  Added the PacketStream::writePacket method taking a SmartPtr.
+  LockObject nad LockObjectEx added.  These work on SynchronizedObjects like
+    gout.
+  onTimeout events were being generated even when the timeout value was set to
+    0.
+  Like Connections and Timers, ServerConnectionListeners can live after
+    being "lost".  The method ServerConnectionListener::closeAllListeners was
+    added.
+  Thread::requestAllShutdown, Timer::stopAll, Connection::disconnectAll
+    methods added.
+  optional clearOnExit param to Console::initConsole
+  Thread::waitForAllThreads didn't work right at all.  How did I miss that?!
+  Major API changes, see http://www.rit.edu/~jpw9607/gne/apichanges.htm
+    There were a LOT of changes not listed here.  That document covers most of
+    what is not listed here.
+  Added Console::mclearConsole method.
+  Added ObjectBroker, ObjectBrokerClient, ObjectBrokerServer.
+  Added ChannelProvider and ChannelPacket to add in channel functionality into
+    GNE.
+  Added clock synchronization capability into the PingPacket class.
+  Added copy constructor and operator= to Time class.
+  Modified exisiting packet classes and examples to use RawPacket::getSizeOf.
+  Added RawPacket::getSizeOf functions.  You should now use these rather than
+    the sizeof operator when determining the serialized size of the packet.
+  Added RawPacket operators to read and write GNE::Time objects.
+  Added operators *, /, *=, /= for integers in the Time class.
+  Added Time::getTotalmSec, to return total milliseconds time.
+  Added a debugging system for mutexes which is active when compiling GNE in
+    debugging mode.  It detects the following cases:
+    * If you try to release a mutex you have not acquired, or if you try to
+      release a mutex that the current thread does not own.
+    * If you try to destroy a mutex that is still locked.
+    The mutex now keeps track of a recursive count, and who owns it, which can
+      be viewed easily when debugging by most debuggers.
+  Added the ConsoleBuffer and TextConsole classes, a word-wrapping window
+    that supports scrolling, and an arbitrary rendering device.
+  Changed header include scheme to get rid of any extra header files I could,
+    most notably my main goal was to get rid of forcing the user to have
+    windows.h included indirectly through gnelib.h.
+
+GNE 0.49 to 0.55
+  Now features an interactive and intelligent batch file installation script.
+    Run installmsvc.bat to use it.  Let me know if you have problems.
+    Also has an installer for mingw, called installming.bat
+  Calling getNameByAddress on an invalid address no longer makes an attempt
+    to resolve it when it knows it will fail.  Before the lookup would take
+    some time and return "Bad address" but now it returns "invalid address"
+    immediately.
+  Added Thread::yield.
+  Removed the onWritingDone method from ConnectionListener.  This concept has
+    been replaced by the more flexible and efficent PacketFeeder callback
+    object.
+  Added static methods in RawPacket for finding serialized string size
+    suitable for using in a packet's getSize method.
+  Added and implemented connection timeouts which generate an onTimeout event
+    after a given time of idleness on a connection which can be used to
+    discover dropped connections or slow connections.
+  Added overloaded version of ConditionVariable::wait to wait until a given
+    absolute time as specified by a GNE::Time object.
+  Added the ConnectionParams class to help simplify setting up connections and
+    to allow better forward compatability to ease the addition of expected
+    expansions of abilities of connections.
+  Implemented thread priorities for Win32.
+  Ported the threading implementation from pthreads-win32 to use native win32
+    threads.  That in conjuction with HawkNL's NL_WIN_THREADS option means
+    pthreads-win32 is NO LONGER needed for GNE!
+  Added MSVC.NET support by adding solution and project files.
+
+GNE 0.45 to 0.49
+  Added Thread::waitForAllThreads to verify the completion of detached
+    threads, and updated the exthreads example to test/show this new method.
+  Added a += operator to the Time class: operator+=(const Time& rhs)
+  Exception scheme changed.  Exception specifiers were removed because it was
+    found that they can be problematic with some compilers and cause
+    undesired behavior with intermediate functions if they are changed.
+    Catch statements should now catch Error& instead of Error to allow for
+    polymorphic errors.  An Error hierarcy was added to better describe
+    errors and increase client code's ability to handle and interpret those
+    errors.
+  GNE::Thread::getID is now a private method, because the underlying thread
+    implementation might change in the future.
+  GNE now compiles against the C runtime dynamically rather than statically,
+    which is better in many different ways and starts to pave the path
+    towards GNE becoming a DLL itself.  The examples are 1/2 to 1/3 the size!
+  Small updates to the exballs Allegro example, which has been around since
+    the first GNE release ;).  We almost forgot about it.
+  New example/game expong.
+  Fixes in the connection and handshaking process with error handling
+  Slight fix in RawPacket when sending 0 byte strings.
+  Fixed a bug in CustomPacket that did not allow it to be transfered over a
+    SyncConnection, the very purpose it was most meant to serve.
+  Added the ability to wait on a counter and decrement it, so that it is
+    suitable to use to control or throttle the timing of another thread.
+  Modified the examples a little to use the rate controls more/better.
+  Implemented bandwidth control as per the GNE protocol spec.
+  Modified the PacketStream API to fit the new rate control scheme.
+  Created and implemented new Class, RateAdjustPacket, to implement the
+    packet from the GNE protocol spec.
+  Fixed a memory leak in the PacketStream destructor that did not properly
+    free all memory for used packets.
+  Graceful disconnects are now detected and handled through the onExit event.
+  ExitPackets are now sent when a connection closes, as per the GNE protocol
+    specification.
+  Created and implemented the ExitPacket class.
+  Fixed an event syncronization bug in SyncConnection that caused an assert
+    to fail in onDisconnect.
+  Now if a listener for a Connection is NULL the event thread is halted
+    until a listener is set.  Before, it was an error to have a NULL listener
+    but now you can set a NULL listener to temporarily hold events.
+  Fixed an acquire/release bug in exsynchello's usage of gout.
+  Fixed thread-related bug in ServerConnection dtor.
+  Implemented PacketStream::waitToSendAll and added timeout option.
+  Fixed a bug in ConnectionEventGenerator where it can try to start an event
+    on a listener that was just unregistered, and this would cause an access
+    violation as unregistration invalidates the iterator.
+  Fixed a bug where a deadlock was likely to occur when a write failed.
+  exrawtest updated to test endianness of the RawPacket.
+  Due to a new feature in HawkNL, GNE now sends all data in little endian
+    format which is consistant with the GNE protocol spec.
+  Added Time::toString and the ability to output it to an ostream.
+  New example exping to show and test PingPacket.
+  Added ID attribute to every GNE Packet class.
+  A new class PingPacket to handle pinging.
+  Removed the timestamp value from the Packet class.  That should have been
+    removed long ago.  Another packet will eventually be created that
+    supports timestamps.
+  A mutex was no longer needed in Connection and was causing deadlocks, so it
+    was removed.  The mutex was left over from the old event system before it
+    was rewritten.
+  Handshaking as specified in the GNE protocol specs is now implemented.
+  When an unreliable connection does not exist, packets marked as being sent
+    over the unreliable packet stream are sent over the reliable stream
+    instead.
+  Added adjustCount function in the Counter class.
+  RawPacket class updated to use the GNE protocol data types.  Nulls are now
+    allowed in the middle of strings.  Max string size is 255 bytes.
+  RawPacket example updated to better test new GNE protocol requirements.
+  More work on exnetperf to handle more clients and better format the data.
+  Added the LockMutex class as a convenience.  It locks a mutex on creation
+    and unlocks it on deletion which is useful for use in functions with many
+    exit points, or functions that throw exceptions.
+  Fixed a bug with an assert being outside of a guarded section and actually
+    causing errors it was supposed to fix.
+
+GNE 0.4 to 0.45
+  Fixed a threading bug in the Connection class that needed mutexes that
+    caused problems on shutdown and startup.
+  onConnect and onNewConn can now decide to refuse connections at that point
+    by throwing an Error of type ConnectionRefused.
+  PacketStream::run() leaked memory as it forgot to destroy the packets that
+    were copied in PacketStream::writePacket() when it sent them.
+  PacketStream forgot to destroy the data in its queues when it gets
+    destroyed.
+  The mutex class now allows recursive locks.  Previously not all platforms
+    supported it, but you can make one yourself and I think the demand is
+    more for recursive than non-recursive mutexes.
+  Fixed memory leaks related to the previously described thread-related bugs
+    in the connecting code.
+  Fixed LOADS of thread-related bugs in the connecting code where errors
+    might occur, espically if the connection was completed and all data
+    transfered before the code finished (this is likely in the examples where
+    only one simple packet is being sent).
+  Added CustomPacket::getMaxUserDataSize to let the user know how large the
+    hosted RawPacket can be.
+  Made Timer more robust and safe to call from its callback and from multiple
+    threads at the same time.  Also gave user option to wait in stopTimer.
+  Solaris makefiles and fix script added.  Compiles on Solaris using the GNU
+    tools and compiler.  Officially tested with gcc 2.95.2 and an UltraSparc
+    processor, but should also work with Intel and/or gcc 3.x.
+  getch() doesn't busy-wait and cause 100% CPU usage under UNIX anymore.
+  Fixed obscure and ironically small race condition while setting the
+    connecting flags which could cause recursive deletions and onDisconnects.
+    Ironic because out of all of the code, the condition only can occur
+    if the threads switched between two unconditional boolean assignments,
+    but it happened.  I guess it was good to find it now rather than later!
+  You can now delete the connection associated with a ConnectionListener in
+    onDisconnect (previously you could never do this).  You can still delete
+    it from any thread other than the EventThread at any time.
+  Bugfixes related to Win32 Console I/O.  Now properly detects size in Win 2k
+    and clears the screen on exit (to be consistant with curses, and to not
+    clobber the command prompt if it exists).
+  Slight modifications to the Thread API -- shouldn't affect user programs
+    though but adds a few capabilites like overloading Thread::start().
+  New and very much improved event handling system "under the hood" which has
+    its own thread now.  This will fix a lot of threading-related bugs and
+    cut down on the complexity of ConnectionListener implementations A LOT.
+  Implemented and refined the API related to getting Connection stats.
+  Due to some issues, Connection::Stats is now no longer a nested class and
+    is now called ConnectionStats.
+  New example exnetperf.  Don't pay attention too much to the values as it
+    is still being completed.  When the GNE protocol is finished it will act
+    appropriately.
+  Added the CustomPacket class, which allows you to send data without
+    creating a packet to encapsulate it.
+  GCC 2.9x support!  MingW and GCC 2.9x in Linux should work again with the
+    old libstdc++.  See the readme.mingw and readme.linux for more info.
+
+GNE 0.003 to 0.4
+  A new example exsynchello which is fully compatable with exhello and does
+    the same thing, but with SyncConnection only.
+  New include structure and method of inclusion, although more typing and
+    perhaps less flexible, now works properly on all platforms without name
+    changing and small cludges and hacks.
+  Some of the examples make use of these new I/O classes even though using
+    mprintf was perfectly fine to get some testing for these classes.
+  Implemented new streambufs to be used with ostream and istream, so now two
+    classes gout and gin exist that work even when curses is active, since they
+    make use of the Console class I/O functions.  Both styles of I/O may be
+    mixed.  The examples have been updated due to this change.
+  Fixed a deadlock bug that occurs when GNE is shut down.
+  Lots of improvements, additions, and optimizations for the Console class and
+    API.
+  Making GNE work with Linux out of the box.
+  Added SyncConnection class for syncronous communications over a Connection.
+  Added ConnectionListener class.  Events go there now.
+  ServerConnectionCreator class is gone now.  ServerConnectionListener now
+    has the needed function, and other event handling changes in that class
+    as well.
+  Completely changed the Connection API
+  Added onDisconnect event.
+  Improvements with Error generation and handling.
+  Added test/example exaddr for the Address class.
+  Added GNE::Address class which changes things everywhere, but is many many
+    times nicer due to implicit conversions and encapsulation.
+  Cleaned up exhello example, more complete code.
+  Improved functions dealing with NLaddress, added GNE::addressToString.
+  Fixed C callback in Thread so that Thread::run is now protected rather than
+    public as it should be, and Thread::end is now private rather than
+    public, as it very definately should be.
+  Made ClientConnection::open a little more friendly.
+  Modifications to the event system, onDisconnect event, and error events
+    split into two categories.  Error objects now passed by const reference.
+  A few bug fixes.
+  Added the SocketPair class to separate shared properties between Connection
+    and SyncConnection.
+  Removed the OnReceiveEventClass.  onReceive events are now forced to be
+    "non-blocking" as there is now only a single event thread.  Multiple
+    event threads were found to be overly confusing and complex to the
+    developers and users, with very little to no potential benefits.  If you
+    need to "block" in an event (other than onNewConn), spawn a new thread.
+  Created a new class, Error, that replaces the Connection::FailureType enum,
+    and allows the user some shortcuts and a better way to get a textual
+    description of the error.
+
+GNE 0.002 to 0.003
+  Renamed the Time.h header file to TimeGne.h to resolve conflicts with the
+    standard header file time.h.
+  Implemented an internal debugging system that is started and configured on
+    the user's demands.  The user can also use functions to write to this
+    conditionally generated log file.  Each message has a type/level number
+    assigned to it, so you can phase out certain messages.
+  Fixed deadlock bug in event handlers.
+  More work on error codes and error reporting.
+  ConnectionEventGenerator now creates threads for onReceive events
+  New class OnReceiveEventThread
+  Implemented code in Connection to parse packets and use PacketStream
+  Implemented the PacketStream class
+  Added PacketParser namespace with packet parsing functions, which will be
+    used internally by GNE, but the user could use them too (but won't need to).
+  New example exrawtest.
+  Entire library now in the GNE namespace.  Examples updated.  GNE and Console
+    classes now namespaces instead of "static" classes.
+  New example expacket.
+  New example exhello.
+  Implemented the RawPacket class.
+  Major API changes/additions/deletions in the Connection classes.
+    This API is still very much in developement and working, so do
+    not rely upon it being fixed right now.
+  Changed examples to use new Console functions and GNE::NO_NET.
+  Added function in Console to set the window title where possible.
+  Added function in Console to get width and height of window.
+  Special version of Thread::sleep(int) for Windows.
+  Implemented the Counter class, and updated extimer to use it.
+
+GNE 0.001 to 0.002
+  Added a new example, exinput.
+  Added an Allegro example, exballs.
+  More functions in the Time class for working with Time objects.
+  Basic MingW support.
+  Removed GNE::exit(), when it was discovered that atexit and destructors are
+    not called.  Now you must join all threads that might be running, for them
+    to terminate properly.
+  GNE and the Console portion shutdown automatically on exit now.  This was
+    neccessary because the main thread might not be able to shutdown GNE if
+    it exits before the other threads.
+  Added the Console class, a file for basic cross-platform console functions
+    used for the examples and for console-only based servers.  Examples have
+    been updated to use this class.
+  Added exuptime example.
+  Added extimer example.
+  Implemented Timer class.
+  Added a buildall project for building the lib and all examples.
+
+GNE 0.001 -- Initial Release
+  Released for those wanting to help with GNE's makefiles and packaging.
+  Contains stubs, doxygen cfg file, requirements document, UML models.
+  Also contains project files for MSVC.
+  Classes Implemented:
+    Thread
+    Mutex
+    ConditionVariable
+  Example programs:
+    exthreads

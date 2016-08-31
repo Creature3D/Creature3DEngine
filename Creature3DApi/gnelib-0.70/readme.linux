@@ -1,0 +1,60 @@
+Linux(Unix) specific information for GNE.
+
+If you have an old GCC 2.95 system, note that you will need to add OLD_CPP=1
+to your make line.
+
+Detailed instructions are provided in the GNE tutorials.  You can view them
+online at http://www.rit.edu/~jpw9607/gne/tutorials/linuxinstall.htm.
+
+1. ncurses
+
+GNE uses the ncurses library.  GNE was created with the libncurses5.2 library,
+others may or may not work.  In all of the distributions I've used,
+libncurses-devel comes with it which installs everything you need.
+
+2. Installation
+
+Install HawkNL.  HawkNL has its own installation process, which does involve
+a makefile.
+
+Install Boost.  GNE does not make use of any of the compiled parts of Boost,
+so no compilation is needed.
+
+If you did not install HawkNL and Boost into your compiler's default search
+paths, you need to give paths to the files in the LibPaths.mak file.
+
+In a shell, execute:
+
+fixlinux.sh
+
+Which should give you a short description of the makefile options. Now type:
+
+make
+
+To compile the library and examples. Then type:
+
+make install
+
+To install GNE into the following default locations:
+
+/usr/local/lib/libgnelib.a
+/usr/local/include/gnelib.h
+
+Should you ever wish to uninstall these two installed files from your system
+(and it might be a good idea before upgrading to a newer version as well),
+use:
+
+make uninstall
+
+3. Documentation
+
+After installing, you may want to generate the documentation using doxygen.
+Doxygen can be found in many distributions, or at the Doxygen website (see
+the Readme file).
+
+You can also download the documentation, beginner's guide, and GNE tutorials
+from the GNE website.
+
+If you wish to generate the documentation, use the following command:
+
+doxygen doxygen.cfg

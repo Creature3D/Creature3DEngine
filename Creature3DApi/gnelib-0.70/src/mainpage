@@ -1,0 +1,264 @@
+//This file only contains the information useful for the main page of the
+//documentation - There is no code here.
+
+/** \mainpage %GNE -- Game Networking Engine
+
+See the Readme file and the specific readme for your compiler (ie readme.vc
+for MSVC) for requirements and installation instructions.
+
+\section toc Table Of Contents
+<ul>
+  <li> \ref beg </li>
+    <ul>
+      <li> \ref threads </li>
+      <li> \ref console </li>
+      <li> \ref core </li>
+      <li> \ref highlevel </li>
+    </ul>
+  <li> \ref improve </li>
+  <li> \ref moreinfo </li>
+</ul>
+
+\section beg Beginner's Guide to GNE
+
+This section has some information that will help you get started with using
+%GNE.  The purpose of this guide is not to teach you everything about %GNE but
+instead as overview to understand the basics of how %GNE works and to point
+you to the examples and documentation to learn to code for %GNE.
+
+There is now available a new %GNE tutorial for making %GNE programs, meant for
+the beginning user.  You can find it in the docs package or on the %GNE
+website.  Originally this beginner's guide was the only help for %GNE, so the
+tutorial overlaps this guide.  However, the tutorial goes in depth and
+explains the code, whereas this guide is a general outline of the library.
+
+Do not forget that there are lots of examples and tests in the examples
+directory.  After reading this guide you'll probably want to examine the
+examples to see some sample code.  exaddr, expacket, and exhello are good
+examples to look at first.  The example expong is the first example game
+using %GNE and shows the basics of how to create a framework for a %GNE game.
+
+There are several parts and services that the %GNE library provides.
+
+<ul>
+  <li> \ref base </li>
+  <li> \ref threads </li>
+  <li> \ref console </li>
+  <li> \ref core </li>
+  <li> \ref highlevel </li>
+  <li> \ref lists </li>
+</ul>
+
+Throughout this guide, there will be classes marked with a star (*).  These
+classes are ones that you probably could not make program without using them,
+and you'll probably want to learn them first.
+
+Classes that are not listed are ones that are used mostly by %GNE itself and
+you'll probably not need to use them directly in normal circumstances.
+
+\ref toc
+
+  \subsection base Base API
+
+  The GNE namespace contains the functions you need to initialize %GNE and
+  miscellaneous functions to interact with the library.  The base API also
+  consists of the classes:
+
+  <ul>
+    <li> GNE::Time - to represent times and time differences </li>
+    <li> GNE::Address  - to represent and resolve network addresses and
+          names</li>
+    <li> GNE::Error - to represent error messages </li>
+  </ul>
+
+  \ref toc
+
+  \subsection threads Threading API
+
+  The following classes are in the threading API.
+
+  <ul>
+    <li> GNE::Thread * </li>
+    <li> GNE::Mutex * </li>
+    <li> GNE::LockMutex </li>
+    <li> GNE::ConditionVariable </li>
+    <li> GNE::Timer </li>
+    <li> GNE::TimerCallback </li>
+    <li> GNE::Counter </li>
+  </ul>
+  
+  Threads are used throughout %GNE.  You will need a basic understanding of
+  threads to use %GNE.  You won't need to create any threads yourself, but
+  you receive events in different threads from your game engine, so you will
+  need to understand when to use mutexes to guard your game engine's data.
+
+  For those of you who have used Allegro, the Allegro timers and their
+  callbacks are done in threads, and so are %GNE's timers and events.
+
+  Basically, what a mutex does is it only allows one thread into a section
+  of code at a time.  You should use a mutex around a section of code that
+  accesses any data on the heap (ie static variables or allocated using new
+  or malloc) that is shared by more than one thread.
+
+  For more information a link to a pthreads tutorial:
+  http://www.llnl.gov/computing/tutorials/workshops/workshop/pthreads/MAIN.html
+  
+  %GNE uses pthreads internally.  You can pick up on threading concepts and
+  examples in this tutorial although obviously the functions don't apply as
+  you should use the threading classes.  You'll want to focus espically on
+  the area of detaching, joining, and mutexes.  After you read that check the
+  documentation for the %GNE classes to see the differences.
+
+  \ref toc
+
+  \subsection console Console API
+
+  The following things are in the Console API:
+
+  <ul>
+    <li> The GNE::Console namespace with C-style I/O functions </li>
+    <li> The GNE::Console::gout object (works similar to cout) </li>
+    <li> The GNE::Console::gin object (works similar to cin) </li>
+    <li> The GNE::Console::acquire and GNE::Console::release ConsoleMutex
+          objects for gout </li>
+    <li> The GNE::Console::ConsoleManipulator class GNE::Console::moveTo </li>
+  </ul>
+
+  Standard C/C++ only allows for line buffered input and output.  It does not
+  allow for output the same time as input, nor does it allow the user to get
+  input without the user pressing enter or reposition the cursor.  These
+  features are useful for game servers so that one can implement a console
+  where the user can input/chat while other messages are being outputted.
+  Additionally, the standard C/C++ I/O is not thread-safe.
+
+  %GNE provides multithreaded console I/O which you can use to make
+  text-based servers, consoles, or chat programs.  See the exinput example
+  for sample code using the %GNE Console API, although every %GNE example
+  makes use of the %GNE Console API.
+  
+  \ref toc
+
+  \subsection core Core Connection API
+
+  This is the heart of %GNE.  The Connection API consists of:
+
+  <ul>
+    <li> GNE::Connection * </li>
+    <li> GNE::PacketStream * </li>
+    <li> GNE::PacketFeeder </li>
+    <li> GNE::ConnectionListener * </li>
+    <li> GNE::ClientConnection * </li>
+    <li> GNE::ServerConnection * </li>
+    <li> GNE::SyncConnection * </li>
+    <li> GNE::ServerConnectionListener * </li>
+    <li> GNE::Packet * </li>
+    <li> GNE::RawPacket * </li>
+  </ul>
+  
+  The %Connection API provides the classes to send data between computers.
+  Connections in %GNE handle bandwith controls, do version and error checking,
+  parse packets, and more.
+
+  Learning this part of %GNE can be a little confusing at first as to what
+  classes to use and when you use them.  The exhello example shows the
+  minimum proper code to set up your connections.
+
+  Connection is the base class of every %GNE connection.  While you won't
+  directly create an object of type Connection, you will use the methods of
+  this class, and espically the PacketStream that it contains.
+
+  Connections generate events and send them to a ConnectionListener.  You will
+  need to create your own ConnectionListener and a large part of your
+  networking logic will be in this class.  The ConnectionListener is what
+  actually makes the connection do anything useful.
+
+  When you are ready to make a connection, you will need on the server side
+  your own ServerConnectionListener to listen for incoming connections, and
+  of course a ConnectionListener to provide the actual server's functionality.
+
+  On the client side you will use a ClientConnection and a ConnectionListener
+  to connect to this server.
+
+  The PacketStream represents an outgoing and an incoming queue of packets.
+  To get sent packets, use GNE::PacketStream::getNextPacket to receive the
+  next incoming packet.  Use GNE::PacketStream::writePacket to send one.
+  
+  PacketStreams can also be tied with a PacketFeeder.  A PacketFeeder
+  provides a way to feed a continuous stream of packets that is based on the
+  bandwidth of the connection.  For example if you wanted your client to send
+  update packets as fast as it can, but you always want to send the latest
+  information, what you would do is create a packet, send it, wait for it to
+  be sent (based on the bandwidth of the connection), and then repeat again.
+  In GNE a PacketFeeder provides this sort of functionality.
+
+  To send and receive packets, you will want to derive your own packet class
+  from GNE::Packet and register it with GNE::PacketParser::registerPackets.
+  Override all of the relevant functions in Packet and in the writePacket and
+  readPacket functions will be the only place you are likely to use the
+  GNE::RawPacket class.  The RawPacket represents the serialized form of a
+  packet.  Use it similarly to cout or cin.  Seeing the expacket example is
+  probably the best way to learn how to make your own packets.
+
+  Once you make your own packet types and register them, %GNE will be able
+  to recognize and parse these packets and be able to send and receive them
+  through the PacketStream as it would any other packet.
+
+  You only have to use SyncConnection when connecting, and even then, only to
+  get a pointer to the Connection object.  But the SyncConnection is a
+  helpful class to write connecting code or to do connections where you are
+  sending a packet and are waiting for a specific response packet.  See the
+  exsynchello example for a version of exhello using SyncConnections rather
+  than the PacketStream, and further note that exhello and exsynchello are
+  completely compatable with each other -- so they are doing the SAME thing
+  over the network but are simply just two ways of doing it.
+  
+  \ref toc
+
+  \subsection highlevel High Level API
+
+  The high level API will sit on top of all of the previously described
+  classes and will be the actual "game engine" part of %GNE.  After the low
+  level part is "completed" with %GNE 0.5, work on the high level API will
+  start.
+
+  This API will contain classes to manage unique player IDs and data, manage
+  a list of players, and handle things like text communication amongst the
+  players.
+
+  \ref toc
+
+  \subsection lists List Server API
+
+  After the completion of the high level API a way to interact with list
+  servers to search for games will be added.  Hopefully the %GNE team will
+  be able to find a permanent connection and hardware to sponsor a master
+  list service that anyone using GNE will be able to easily register their
+  game servers on.
+
+  The list service was meant to address one of the largest problems with
+  independent multiplayer games -- finding others who have the game to play
+  with.  The service will act as services like Battle.NET or Half-Life's game
+  lists do.  Initially only a searchable database of current game servers
+  will exist but afterwards chat/IM/login functionality might be added.
+    
+\section improve Helping with GNE
+
+Development of a good API will require the input of many people to assure its
+usability, performance, flexibility, and functionality.  If you are using %GNE,
+I encourage you to join the discussions about %GNE on the gnelib-users list, or
+simply provide feedback, suggestions, and comments on your experience with %GNE
+to me at the %GNE website.
+
+\ref toc
+
+\section moreinfo More Information / Website
+
+For more information, try the %GNE website: http://www.rit.edu/~jpw9607/ <br>
+Or the %GNE SourgeForge site: http://www.sf.net/projects/gnelib/
+
+There is also a mailing list called gnelib-users on the sourceforge website:
+http://lists.sourceforge.net/mailman/listinfo/gnelib-users
+  
+\ref toc
+
+*/

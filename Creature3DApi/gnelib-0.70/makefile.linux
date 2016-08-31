@@ -1,0 +1,26 @@
+# linux specific makefile
+
+include makefile.gcc
+
+# set up all the variables used in the main makefile
+
+CP                   = cp
+RM                   = rm -f
+MKDIR                = mkdir
+RMDIR                = rm -rf
+
+EXAMPLE_LIBS         = $(LIB_STATIC) -lNL -lncurses -lpthread
+
+CPPFLAGS            += -D_XOPEN_SOURCE=500
+
+EXE_MASK             = examples/bin/%
+
+EXAMPLES_DIR         = examples/bin
+
+EXAMPLE_EXE          = $(addprefix examples/bin/,$(notdir $(basename $(EXAMPLE_O))))
+
+LIB_STATIC           = lib/linux/$(LIB_STATIC_NAME)
+
+LIBDIR               = /usr/local/lib/
+
+INCDIR               = /usr/local/include/
