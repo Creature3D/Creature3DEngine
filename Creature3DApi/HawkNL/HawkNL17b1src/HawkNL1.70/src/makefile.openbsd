@@ -1,0 +1,66 @@
+############################### Configuration ##################################
+PREFIX=/usr/local
+LIBDIR = $(PREFIX)/lib
+INCDIR = $(PREFIX)/include
+########################## Configuration ends here #############################
+CC = gcc
+AR = ar crus
+RANLIB = ranlib
+MAJOR_VERSION = 1
+MINOR_VERSION = 7
+PATCH_LEVEL = 0
+VERSION = $(MAJOR_VERSION).$(MINOR_VERSION).$(PATCH_LEVEL)
+INCLUDE = -I../include
+LIBNAME = NL
+OUTPUT = lib$(LIBNAME).so.$(VERSION)
+STATIC = lib$(LIBNAME).a
+OPTFLAGS = -funroll-all-loops -ffast-math -fomit-frame-pointer -pthread -O2 -D_GNU_SOURCE -D_REENTRANT
+CFLAGS = -Wall -fPIC $(INCLUDE) $(OPTFLAGS)
+LIBFLAGS = -shared -Wl,-soname,NL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic
+OBJECTS = crc.o errorstr.o nl.o sock.o group.o loopback.o err.o hthread.o htmutex.o htcondition.o nltime.o
+#
+all: $(OBJECTS)
+	$(CC) -o $(OUTPUT) $(OBJECTS) $(LIBFLAGS) $(CFLAGS)
+	$(AR) $(STATIC) $(OBJECTS)
+	$(RANLIB) $(STATIC)
+#
+nl.o : nlinternal.h nl.c
+sock.o : nlinternal.h sock.h sock.c
+errorstr.o : nlinternal.h errorstr.c
+crc.o : ../include/nl.h crc.c
+group.o : nlinternal.h group.c
+loopback.o : nlinternal.h loopback.h loopback.c
+err.o : nlinternal.h err.c
+hthread.o : htinternal.h hthread.c
+htmutex.o : htinternal.h htmutex.c
+htcondition.0 : htinternal.h htcondition.c
+nltime.o : nlinternal.h nltime.c
+#
+install:
+	cp $(OUTPUT) $(LIBDIR)
+	cp $(STATIC) $(LIBDIR)
+	chmod 644 $(LIBDIR)/$(OUTPUT)
+	ln -fs $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+	ln -fs $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
+	ln -fs $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
+	ln -fs $(LIBDIR)/$(OUTPUT) $(LIBDIR)/$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+	ln -fs $(LIBDIR)/$(OUTPUT) $(LIBDIR)/$(LIBNAME).so.$(MAJOR_VERSION)
+	ln -fs $(LIBDIR)/$(OUTPUT) $(LIBDIR)/$(LIBNAME).so
+	cp ../include/nl.h $(INCDIR)/nl.h
+	chmod 644 $(INCDIR)/nl.h
+	@echo ""
+	@echo "*************************************************"
+	@echo "* Installed HawkNL.                             *"
+	@echo "*************************************************"
+#
+uninstall:
+	rm -f $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+	rm -f $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+	rm -f $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
+	rm -f $(LIBDIR)/lib$(LIBNAME).so
+	rm -f $(LIBDIR)/$(STATIC)
+	rm -f $(INCDIR)/nl.h
+#
+.PHONY : clean
+clean:
+	rm $(OBJECTS) $(OUTPUT) $(STATIC)

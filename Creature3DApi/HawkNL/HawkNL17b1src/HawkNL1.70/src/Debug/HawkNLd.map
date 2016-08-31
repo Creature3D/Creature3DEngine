@@ -1,0 +1,947 @@
+ HawkNLd
+
+ Timestamp is 507feeb5 (Thu Oct 18 19:57:41 2012)
+
+ Preferred load address is 10000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000c7ecH .text                   CODE
+ 0002:00000000 00000188H .idata$5                DATA
+ 0002:00000188 00000004H .CRT$XCA                DATA
+ 0002:0000018c 00000004H .CRT$XCZ                DATA
+ 0002:00000190 00000004H .CRT$XIA                DATA
+ 0002:00000194 00000004H .CRT$XIAA               DATA
+ 0002:00000198 00000004H .CRT$XIC                DATA
+ 0002:0000019c 00000004H .CRT$XIZ                DATA
+ 0002:000001a0 00000240H .rdata                  DATA
+ 0002:000003e0 00000084H .rdata$debug            DATA
+ 0002:00000470 00000004H .rdata$sxdata           DATA
+ 0002:00000474 00000004H .rtc$IAA                DATA
+ 0002:00000478 00000004H .rtc$IZZ                DATA
+ 0002:0000047c 00000004H .rtc$TAA                DATA
+ 0002:00000480 00000004H .rtc$TZZ                DATA
+ 0002:00000488 00000064H .xdata$x                DATA
+ 0002:000004ec 0000003cH .idata$2                DATA
+ 0002:00000528 00000014H .idata$3                DATA
+ 0002:0000053c 00000188H .idata$4                DATA
+ 0002:000006c4 00000466H .idata$6                DATA
+ 0002:00000b30 00000cc3H .edata                  DATA
+ 0003:00000000 00001584H .data                   DATA
+ 0003:00001588 000007f0H .bss                    DATA
+ 0004:00000000 00000058H .rsrc$01                DATA
+ 0004:00000060 00000180H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       __except_list              00000000     <absolute>
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0000:00009876       __fltused                  00009876     <absolute>
+ 0000:00009876       __ldused                   00009876     <absolute>
+ 0000:00000000       ___ImageBase               10000000     <linker-defined>
+ 0001:00000000       _nlGetCRC16@8              10001000 f   crc.obj
+ 0001:00000070       _nlGetCRC32@8              10001070 f   crc.obj
+ 0001:000000e0       _nlGetError@0              100010e0 f   err.obj
+ 0001:00000140       _nlSetError                10001140 f   err.obj
+ 0001:00000180       _nlGetErrorStr@4           10001180 f   errorstr.obj
+ 0001:00000380       _nlGetSystemErrorStr@4     10001380 f   errorstr.obj
+ 0001:000007c0       _nlGroupCreate@0           100017c0 f   group.obj
+ 0001:000009f0       _nlGroupDestroy@4          100019f0 f   group.obj
+ 0001:00000b20       _nlGroupAddSocket@8        10001b20 f   group.obj
+ 0001:00000de0       _nlGroupGetSockets@12      10001de0 f   group.obj
+ 0001:00000e50       _nlGroupDeleteSocket@8     10001e50 f   group.obj
+ 0001:00001030       _nlGroupInit               10002030 f   group.obj
+ 0001:000010b0       _nlGroupShutdown           100020b0 f   group.obj
+ 0001:00001120       _nlGroupLock               10002120 f   group.obj
+ 0001:00001130       _nlGroupUnlock             10002130 f   group.obj
+ 0001:00001140       _nlGroupGetSocketsINT      10002140 f   group.obj
+ 0001:00001220       _nlGroupGetFdset           10002220 f   group.obj
+ 0001:00001390       _nlFD_CLR                  10002390 f i group.obj
+ 0001:00001410       _nlFD_SET                  10002410 f i group.obj
+ 0001:00001440       _htCondInit@4              10002440 f   htcondition.obj
+ 0001:000014c0       _htCondWait@8              100024c0 f   htcondition.obj
+ 0001:00001560       _htCondSignal@4            10002560 f   htcondition.obj
+ 0001:000015c0       _htCondBroadcast@4         100025c0 f   htcondition.obj
+ 0001:00001620       _htCondDestroy@4           10002620 f   htcondition.obj
+ 0001:000016a0       _htThreadCreate@12         100026a0 f   hthread.obj
+ 0001:00001720       _htThreadYield@0           10002720 f   hthread.obj
+ 0001:00001730       _htThreadJoin@8            10002730 f   hthread.obj
+ 0001:00001770       _htThreadSleep@4           10002770 f   hthread.obj
+ 0001:000017d0       _htMutexInit@4             100027d0 f   htmutex.obj
+ 0001:00001830       _htMutexLock@4             10002830 f   htmutex.obj
+ 0001:000018a0       _htMutexUnlock@4           100028a0 f   htmutex.obj
+ 0001:00001910       _htMutexDestroy@4          10002910 f   htmutex.obj
+ 0001:00001970       _ipx_Init                  10002970 f   ipx.obj
+ 0001:000019d0       _ipx_Shutdown              100029d0 f   ipx.obj
+ 0001:000019e0       _ipx_AcceptConnection      100029e0 f   ipx.obj
+ 0001:00001bc0       _ipx_Open                  10002bc0 f   ipx.obj
+ 0001:00001be0       _ipx_AddrToString          10002be0 f   ipx.obj
+ 0001:00001cf0       _ipx_StringToAddr          10002cf0 f   ipx.obj
+ 0001:00002190       _ipx_GetLocalAddr          10003190 f   ipx.obj
+ 0001:000021e0       _ipx_GetAllLocalAddr       100031e0 f   ipx.obj
+ 0001:00002210       _ipx_SetLocalAddr          10003210 f   ipx.obj
+ 0001:00002230       _ipx_GetNameFromAddr       10003230 f   ipx.obj
+ 0001:00002250       _ipx_GetNameFromAddrAsync  10003250 f   ipx.obj
+ 0001:00002270       _ipx_GetAddrFromName       10003270 f   ipx.obj
+ 0001:00002350       _ipx_GetAddrFromNameAsync  10003350 f   ipx.obj
+ 0001:00002370       _ipx_AddrCompare           10003370 f   ipx.obj
+ 0001:000023f0       _ipx_GetPortFromAddr       100033f0 f   ipx.obj
+ 0001:00002410       _ipx_SetAddrPort           10003410 f   ipx.obj
+ 0001:00002430       _ipx_Hint                  10003430 f   ipx.obj
+ 0001:00002490       _ipx_SetSocketOpt          10003490 f   ipx.obj
+ 0001:00002550       _ipx_GetSocketOpt          10003550 f   ipx.obj
+ 0001:00002690       _ipx_GetPort               10003690 f   ipx.obj
+ 0001:000029e0       _loopback_Init             100039e0 f   loopback.obj
+ 0001:00002a00       _loopback_Shutdown         10003a00 f   loopback.obj
+ 0001:00002a10       _loopback_Listen           10003a10 f   loopback.obj
+ 0001:00002a90       _loopback_AcceptConnection 10003a90 f   loopback.obj
+ 0001:00002d60       _loopback_Open             10003d60 f   loopback.obj
+ 0001:00002f80       _loopback_Connect          10003f80 f   loopback.obj
+ 0001:00003270       _loopback_Close            10004270 f   loopback.obj
+ 0001:000033a0       _loopback_Read             100043a0 f   loopback.obj
+ 0001:000035d0       _loopback_Write            100045d0 f   loopback.obj
+ 0001:00003960       _loopback_AddrToString     10004960 f   loopback.obj
+ 0001:00003990       _loopback_StringToAddr     10004990 f   loopback.obj
+ 0001:00003a20       _loopback_GetLocalAddr     10004a20 f   loopback.obj
+ 0001:00003a70       _loopback_GetAllLocalAddr  10004a70 f   loopback.obj
+ 0001:00003aa0       _loopback_SetLocalAddr     10004aa0 f   loopback.obj
+ 0001:00003ac0       _loopback_GetNameFromAddr  10004ac0 f   loopback.obj
+ 0001:00003af0       _loopback_GetNameFromAddrAsync 10004af0 f   loopback.obj
+ 0001:00003b10       _loopback_GetAddrFromName  10004b10 f   loopback.obj
+ 0001:00003b30       _loopback_GetAddrFromNameAsync 10004b30 f   loopback.obj
+ 0001:00003b50       _loopback_AddrCompare      10004b50 f   loopback.obj
+ 0001:00003b80       _loopback_GetPortFromAddr  10004b80 f   loopback.obj
+ 0001:00003ba0       _loopback_SetAddrPort      10004ba0 f   loopback.obj
+ 0001:00003bc0       _loopback_GetSystemError   10004bc0 f   loopback.obj
+ 0001:00003bd0       _loopback_PollGroup        10004bd0 f   loopback.obj
+ 0001:000040e0       _loopback_PollSocket       100050e0 f   loopback.obj
+ 0001:00004290       _loopback_Hint             10005290 f   loopback.obj
+ 0001:000042e0       _loopback_SetSocketOpt     100052e0 f   loopback.obj
+ 0001:00004340       _loopback_GetSocketOpt     10005340 f   loopback.obj
+ 0001:00004760       _nlTime@4                  10005760 f   nltime.obj
+ 0001:00004a90       _sock_Init                 10005a90 f   sock.obj
+ 0001:00004b40       _sock_Shutdown             10005b40 f   sock.obj
+ 0001:00004ba0       _sock_Listen               10005ba0 f   sock.obj
+ 0001:00004cd0       _sock_AcceptConnection     10005cd0 f   sock.obj
+ 0001:00004ee0       _sock_Open                 10005ee0 f   sock.obj
+ 0001:00004f00       _sock_Connect              10005f00 f   sock.obj
+ 0001:00005150       _sock_Close                10006150 f   sock.obj
+ 0001:00005270       _sock_Read                 10006270 f   sock.obj
+ 0001:00005590       _sock_Write                10006590 f   sock.obj
+ 0001:00005940       _sock_AddrToString         10006940 f   sock.obj
+ 0001:00005a10       _sock_StringToAddr         10006a10 f   sock.obj
+ 0001:00005b10       _sock_GetLocalAddr         10006b10 f   sock.obj
+ 0001:00005bc0       _sock_GetAllLocalAddr      10006bc0 f   sock.obj
+ 0001:00005e10       _sock_SetLocalAddr         10006e10 f   sock.obj
+ 0001:00005e30       _sock_GetNameFromAddr      10006e30 f   sock.obj
+ 0001:00005fb0       _sock_GetNameFromAddrAsync 10006fb0 f   sock.obj
+ 0001:00006060       _sock_GetAddrFromName      10007060 f   sock.obj
+ 0001:00006230       _sock_GetAddrFromNameAsync 10007230 f   sock.obj
+ 0001:00006300       _sock_AddrCompare          10007300 f   sock.obj
+ 0001:00006350       _sock_GetPortFromAddr      10007350 f   sock.obj
+ 0001:00006370       _sock_SetAddrPort          10007370 f   sock.obj
+ 0001:00006390       _sock_GetSystemError       10007390 f   sock.obj
+ 0001:000063d0       _sock_PollGroup            100073d0 f   sock.obj
+ 0001:000068b0       _sock_PollSocket           100078b0 f   sock.obj
+ 0001:00006ae0       _sock_Hint                 10007ae0 f   sock.obj
+ 0001:00006bb0       _sock_SetSocketOpt         10007bb0 f   sock.obj
+ 0001:00006d20       _sock_GetSocketOpt         10007d20 f   sock.obj
+ 0001:00007240       _sock_Error                10008240 f   sock.obj
+ 0001:000072c0       _sock_SetBlocking          100082c0 f   sock.obj
+ 0001:00007310       _sock_SetBroadcast         10008310 f   sock.obj
+ 0001:00007350       _sock_SetReuseAddr         10008350 f   sock.obj
+ 0001:00007990       _sock_OpenINT              10008990 f   sock.obj
+ 0001:00008f10       _nlWSAFDIsSet              10009f10 f i sock.obj
+ 0001:00008f60       _nlListen@4                10009f60 f   nl.obj
+ 0001:00008ff0       _nlAcceptConnection@4      10009ff0 f   nl.obj
+ 0001:00009090       _nlOpen@8                  1000a090 f   nl.obj
+ 0001:000090d0       _nlConnect@8               1000a0d0 f   nl.obj
+ 0001:00009180       _nlClose@4                 1000a180 f   nl.obj
+ 0001:00009260       _nlRead@12                 1000a260 f   nl.obj
+ 0001:00009340       _nlWrite@12                1000a340 f   nl.obj
+ 0001:00009520       _nlGetSocketStat@8         1000a520 f   nl.obj
+ 0001:000096a0       _nlClearSocketStat@8       1000a6a0 f   nl.obj
+ 0001:000098c0       _nlPollGroup@20            1000a8c0 f   nl.obj
+ 0001:00009920       _nlPollSocket@12           1000a920 f   nl.obj
+ 0001:00009990       _nlHint@8                  1000a990 f   nl.obj
+ 0001:000099d0       _nlSetSocketOpt@12         1000a9d0 f   nl.obj
+ 0001:00009a40       _nlGetSocketOpt@8          1000aa40 f   nl.obj
+ 0001:00009aa0       _nlAddrToString@8          1000aaa0 f   nl.obj
+ 0001:00009b00       _nlStringToAddr@8          1000ab00 f   nl.obj
+ 0001:00009b80       _nlGetRemoteAddr@8         1000ab80 f   nl.obj
+ 0001:00009c50       _nlSetRemoteAddr@8         1000ac50 f   nl.obj
+ 0001:00009d10       _nlGetLocalAddr@8          1000ad10 f   nl.obj
+ 0001:00009dd0       _nlGetAllLocalAddr@4       1000add0 f   nl.obj
+ 0001:00009e20       _nlSetLocalAddr@4          1000ae20 f   nl.obj
+ 0001:00009e70       _nlGetNameFromAddr@8       1000ae70 f   nl.obj
+ 0001:00009ed0       _nlGetNameFromAddrAsync@8  1000aed0 f   nl.obj
+ 0001:00009f30       _nlGetAddrFromName@8       1000af30 f   nl.obj
+ 0001:00009fb0       _nlGetAddrFromNameAsync@8  1000afb0 f   nl.obj
+ 0001:0000a030       _nlAddrCompare@8           1000b030 f   nl.obj
+ 0001:0000a090       _nlGetPortFromAddr@4       1000b090 f   nl.obj
+ 0001:0000a0e0       _nlSetAddrPort@8           1000b0e0 f   nl.obj
+ 0001:0000a140       _nlInit@0                  1000b140 f   nl.obj
+ 0001:0000a2e0       _nlShutdown@0              1000b2e0 f   nl.obj
+ 0001:0000a490       _nlSelectNetwork@4         1000b490 f   nl.obj
+ 0001:0000a560       _nlGetString@4             1000b560 f   nl.obj
+ 0001:0000a690       _nlGetInteger@4            1000b690 f   nl.obj
+ 0001:0000a750       _nlGetBoolean@4            1000b750 f   nl.obj
+ 0001:0000a7d0       _nlClear@4                 1000b7d0 f   nl.obj
+ 0001:0000aa70       _nlGetSystemError@0        1000ba70 f   nl.obj
+ 0001:0000aa90       _nlEnable@4                1000ba90 f   nl.obj
+ 0001:0000ab40       _nlDisable@4               1000bb40 f   nl.obj
+ 0001:0000abf0       _nlSwaps@4                 1000bbf0 f   nl.obj
+ 0001:0000ac30       _nlSwapl@4                 1000bc30 f   nl.obj
+ 0001:0000ac80       _nlSwapf@4                 1000bc80 f   nl.obj
+ 0001:0000acb0       _nlSwapd@8                 1000bcb0 f   nl.obj
+ 0001:0000ad50       _nlGetNewSocket            1000bd50 f   nl.obj
+ 0001:0000af90       _nlIsValidSocket           1000bf90 f   nl.obj
+ 0001:0000b000       _nlLockSocket              1000c000 f   nl.obj
+ 0001:0000b080       _nlUnlockSocket            1000c080 f   nl.obj
+ 0001:0000b250       _nlFreeSocket              1000c250 f   nl.obj
+ 0001:0000b5ee       _WSASetLastError@4         1000c5ee f   wsock32:WSOCK32.dll
+ 0001:0000b5f4       _WSAGetLastError@0         1000c5f4 f   wsock32:WSOCK32.dll
+ 0001:0000b5fa       _accept@12                 1000c5fa f   wsock32:WSOCK32.dll
+ 0001:0000b600       _bind@12                   1000c600 f   wsock32:WSOCK32.dll
+ 0001:0000b606       _closesocket@4             1000c606 f   wsock32:WSOCK32.dll
+ 0001:0000b60c       _connect@12                1000c60c f   wsock32:WSOCK32.dll
+ 0001:0000b612       _getsockname@12            1000c612 f   wsock32:WSOCK32.dll
+ 0001:0000b618       _htons@4                   1000c618 f   wsock32:WSOCK32.dll
+ 0001:0000b61e       _ntohs@4                   1000c61e f   wsock32:WSOCK32.dll
+ 0001:0000b624       _recvfrom@24               1000c624 f   wsock32:WSOCK32.dll
+ 0001:0000b62a       _sendto@24                 1000c62a f   wsock32:WSOCK32.dll
+ 0001:0000b630       _socket@12                 1000c630 f   wsock32:WSOCK32.dll
+ 0001:0000b636       _WSAStartup@8              1000c636 f   wsock32:WSOCK32.dll
+ 0001:0000b63c       _WSACleanup@0              1000c63c f   wsock32:WSOCK32.dll
+ 0001:0000b642       _ioctlsocket@12            1000c642 f   wsock32:WSOCK32.dll
+ 0001:0000b648       _getsockopt@20             1000c648 f   wsock32:WSOCK32.dll
+ 0001:0000b64e       _htonl@4                   1000c64e f   wsock32:WSOCK32.dll
+ 0001:0000b654       _listen@8                  1000c654 f   wsock32:WSOCK32.dll
+ 0001:0000b65a       _ntohl@4                   1000c65a f   wsock32:WSOCK32.dll
+ 0001:0000b660       _recv@16                   1000c660 f   wsock32:WSOCK32.dll
+ 0001:0000b666       _select@20                 1000c666 f   wsock32:WSOCK32.dll
+ 0001:0000b66c       _send@16                   1000c66c f   wsock32:WSOCK32.dll
+ 0001:0000b672       _setsockopt@20             1000c672 f   wsock32:WSOCK32.dll
+ 0001:0000b678       _shutdown@8                1000c678 f   wsock32:WSOCK32.dll
+ 0001:0000b67e       _gethostbyaddr@12          1000c67e f   wsock32:WSOCK32.dll
+ 0001:0000b684       _gethostbyname@4           1000c684 f   wsock32:WSOCK32.dll
+ 0001:0000b68a       _gethostname@8             1000c68a f   wsock32:WSOCK32.dll
+ 0001:0000b690       _TlsAlloc@0                1000c690 f   kernel32:KERNEL32.dll
+ 0001:0000b696       _TlsGetValue@4             1000c696 f   kernel32:KERNEL32.dll
+ 0001:0000b69c       _TlsSetValue@8             1000c69c f   kernel32:KERNEL32.dll
+ 0001:0000b6a2       _FormatMessageA@28         1000c6a2 f   kernel32:KERNEL32.dll
+ 0001:0000b6a8       _CloseHandle@4             1000c6a8 f   kernel32:KERNEL32.dll
+ 0001:0000b6ae       _CreateEventA@16           1000c6ae f   kernel32:KERNEL32.dll
+ 0001:0000b6b4       _PulseEvent@4              1000c6b4 f   kernel32:KERNEL32.dll
+ 0001:0000b6ba       _WaitForMultipleObjects@16 1000c6ba f   kernel32:KERNEL32.dll
+ 0001:0000b6c0       _SetLastError@4            1000c6c0 f   kernel32:KERNEL32.dll
+ 0001:0000b6c6       _WaitForSingleObject@8     1000c6c6 f   kernel32:KERNEL32.dll
+ 0001:0000b6cc       _Sleep@4                   1000c6cc f   kernel32:KERNEL32.dll
+ 0001:0000b6d2       _GetExitCodeThread@8       1000c6d2 f   kernel32:KERNEL32.dll
+ 0001:0000b6d8       _InitializeCriticalSection@4 1000c6d8 f   kernel32:KERNEL32.dll
+ 0001:0000b6de       _EnterCriticalSection@4    1000c6de f   kernel32:KERNEL32.dll
+ 0001:0000b6e4       _LeaveCriticalSection@4    1000c6e4 f   kernel32:KERNEL32.dll
+ 0001:0000b6ea       _DeleteCriticalSection@4   1000c6ea f   kernel32:KERNEL32.dll
+ 0001:0000b6f0       _GetCurrentThreadId@0      1000c6f0 f   kernel32:KERNEL32.dll
+ 0001:0000b6f6       _QueryPerformanceCounter@4 1000c6f6 f   kernel32:KERNEL32.dll
+ 0001:0000b6fc       _QueryPerformanceFrequency@4 1000c6fc f   kernel32:KERNEL32.dll
+ 0001:0000b702       _GetTickCount@0            1000c702 f   kernel32:KERNEL32.dll
+ 0001:0000b708       _memcpy                    1000c708 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b70e       _memset                    1000c70e f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b714       _free                      1000c714 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b71a       _malloc                    1000c71a f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b720       _realloc                   1000c720 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b726       _printf                    1000c726 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b72c       __beginthreadex            1000c72c f   MSVCRTD:MSVCR110D.dll
+ 0001:0000b740       ___raise_securityfailure   1000c740 f   MSVCRTD:gs_report.obj
+ 0001:0000b790       ___report_gsfailure        1000c790 f   MSVCRTD:gs_report.obj
+ 0001:0000b8a0       ___report_rangecheckfailure 1000c8a0 f   MSVCRTD:gs_report.obj
+ 0001:0000b8b0       ___report_securityfailure  1000c8b0 f   MSVCRTD:gs_report.obj
+ 0001:0000b990       ___report_securityfailureEx 1000c990 f   MSVCRTD:gs_report.obj
+ 0001:0000bab6       _memcmp                    1000cab6 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000babc       _sscanf                    1000cabc f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bac2       _sprintf                   1000cac2 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bac8       _strcpy                    1000cac8 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bace       _strcmp                    1000cace f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bad4       _strlen                    1000cad4 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bada       __errno                    1000cada f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bae0       @__security_check_cookie@4 1000cae0 f   MSVCRTD:secchk.obj
+ 0001:0000baf0       _strchr                    1000caf0 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000baf6       _atoi                      1000caf6 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bafc       __time64                   1000cafc f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bb10       __alldiv                   1000cb10 f   MSVCRTD:lldiv.obj
+ 0001:0000bbc0       __allmul                   1000cbc0 f   MSVCRTD:llmul.obj
+ 0001:0000bbf4       __snprintf                 1000cbf4 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bbfa       _memmove                   1000cbfa f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bc00       _strcspn                   1000cc00 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bc06       _strncpy                   1000cc06 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bc10       __chkstk                   1000cc10 f   MSVCRTD:chkstk.obj
+ 0001:0000bc10       __alloca_probe             1000cc10     MSVCRTD:chkstk.obj
+ 0001:0000bc3c       _strncat                   1000cc3c f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bc42       _strrchr                   1000cc42 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000bcd0       _NtCurrentTeb              1000ccd0 f i MSVCRTD:crtdll.obj
+ 0001:0000bce0       __CRT_INIT@12              1000cce0 f   MSVCRTD:crtdll.obj
+ 0001:0000bfc0       __DllMainCRTStartup@12     1000cfc0 f   MSVCRTD:crtdll.obj
+ 0001:0000c1b0       __crt_debugger_hook        1000d1b0 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1b6       ___crtUnhandledException   1000d1b6 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1bc       ___crtTerminateProcess     1000d1bc f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1c2       ___CppXcptFilter           1000d1c2 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1c8       __amsg_exit                1000d1c8 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1ce       __malloc_dbg               1000d1ce f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1d4       __free_dbg                 1000d1d4 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1da       __CrtSetCheckCount         1000d1da f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c1e0       __FindPESection            1000d1e0 f   MSVCRTD:pesect.obj
+ 0001:0000c260       __IsNonwritableInCurrentImage 1000d260 f   MSVCRTD:pesect.obj
+ 0001:0000c390       __ValidateImageBase        1000d390 f   MSVCRTD:pesect.obj
+ 0001:0000c3f0       ___atonexitinit            1000d3f0 f   MSVCRTD:atonexit.obj
+ 0001:0000c4a0       __onexit                   1000d4a0 f   MSVCRTD:atonexit.obj
+ 0001:0000c5a0       _atexit                    1000d5a0 f   MSVCRTD:atonexit.obj
+ 0001:0000c5d0       ___security_init_cookie    1000d5d0 f   MSVCRTD:gs_support.obj
+ 0001:0000c6b0       _DllMain@12                1000d6b0 f   MSVCRTD:dllmain.obj
+ 0001:0000c6e0       __RTC_Initialize           1000d6e0 f   MSVCRTD:initsect.obj
+ 0001:0000c710       __RTC_Terminate            1000d710 f   MSVCRTD:initsect.obj
+ 0001:0000c736       __initterm                 1000d736 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c73c       __initterm_e               1000d73c f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c750       ___clean_type_info_names   1000d750 f   MSVCRTD:tncleanup.obj
+ 0001:0000c770       __except_handler4          1000d770 f   MSVCRTD:chandler4gs.obj
+ 0001:0000c798       __lock                     1000d798 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c79e       __unlock                   1000d79e f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c7a4       __CrtDbgReportW            1000d7a4 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c7aa       __calloc_dbg               1000d7aa f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c7b0       ___dllonexit               1000d7b0 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c7b6       ___clean_type_info_names_internal 1000d7b6 f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c7bc       __except_handler4_common   1000d7bc f   MSVCRTD:MSVCR110D.dll
+ 0001:0000c7c2       _IsDebuggerPresent@0       1000d7c2 f   kernel32:KERNEL32.dll
+ 0001:0000c7c8       _IsProcessorFeaturePresent@4 1000d7c8 f   kernel32:KERNEL32.dll
+ 0001:0000c7ce       _EncodePointer@4           1000d7ce f   kernel32:KERNEL32.dll
+ 0001:0000c7d4       _DecodePointer@4           1000d7d4 f   kernel32:KERNEL32.dll
+ 0001:0000c7da       _GetSystemTimeAsFileTime@4 1000d7da f   kernel32:KERNEL32.dll
+ 0001:0000c7e0       _GetTickCount64@0          1000d7e0 f   kernel32:KERNEL32.dll
+ 0001:0000c7e6       _DisableThreadLibraryCalls@4 1000d7e6 f   kernel32:KERNEL32.dll
+ 0002:00000000       __imp__DisableThreadLibraryCalls@4 1000e000     kernel32:KERNEL32.dll
+ 0002:00000004       __imp__GetTickCount64@0    1000e004     kernel32:KERNEL32.dll
+ 0002:00000008       __imp__GetSystemTimeAsFileTime@4 1000e008     kernel32:KERNEL32.dll
+ 0002:0000000c       __imp__DecodePointer@4     1000e00c     kernel32:KERNEL32.dll
+ 0002:00000010       __imp__EncodePointer@4     1000e010     kernel32:KERNEL32.dll
+ 0002:00000014       __imp__IsProcessorFeaturePresent@4 1000e014     kernel32:KERNEL32.dll
+ 0002:00000018       __imp__IsDebuggerPresent@0 1000e018     kernel32:KERNEL32.dll
+ 0002:0000001c       __imp__GetTickCount@0      1000e01c     kernel32:KERNEL32.dll
+ 0002:00000020       __imp__QueryPerformanceFrequency@4 1000e020     kernel32:KERNEL32.dll
+ 0002:00000024       __imp__QueryPerformanceCounter@4 1000e024     kernel32:KERNEL32.dll
+ 0002:00000028       __imp__GetCurrentThreadId@0 1000e028     kernel32:KERNEL32.dll
+ 0002:0000002c       __imp__DeleteCriticalSection@4 1000e02c     kernel32:KERNEL32.dll
+ 0002:00000030       __imp__LeaveCriticalSection@4 1000e030     kernel32:KERNEL32.dll
+ 0002:00000034       __imp__EnterCriticalSection@4 1000e034     kernel32:KERNEL32.dll
+ 0002:00000038       __imp__InitializeCriticalSection@4 1000e038     kernel32:KERNEL32.dll
+ 0002:0000003c       __imp__GetExitCodeThread@8 1000e03c     kernel32:KERNEL32.dll
+ 0002:00000040       __imp__Sleep@4             1000e040     kernel32:KERNEL32.dll
+ 0002:00000044       __imp__WaitForSingleObject@8 1000e044     kernel32:KERNEL32.dll
+ 0002:00000048       __imp__SetLastError@4      1000e048     kernel32:KERNEL32.dll
+ 0002:0000004c       __imp__WaitForMultipleObjects@16 1000e04c     kernel32:KERNEL32.dll
+ 0002:00000050       __imp__PulseEvent@4        1000e050     kernel32:KERNEL32.dll
+ 0002:00000054       __imp__CreateEventA@16     1000e054     kernel32:KERNEL32.dll
+ 0002:00000058       __imp__CloseHandle@4       1000e058     kernel32:KERNEL32.dll
+ 0002:0000005c       __imp__FormatMessageA@28   1000e05c     kernel32:KERNEL32.dll
+ 0002:00000060       __imp__TlsSetValue@8       1000e060     kernel32:KERNEL32.dll
+ 0002:00000064       __imp__TlsGetValue@4       1000e064     kernel32:KERNEL32.dll
+ 0002:00000068       __imp__TlsAlloc@0          1000e068     kernel32:KERNEL32.dll
+ 0002:0000006c       \177KERNEL32_NULL_THUNK_DATA 1000e06c     kernel32:KERNEL32.dll
+ 0002:00000070       __imp__strncat             1000e070     MSVCRTD:MSVCR110D.dll
+ 0002:00000074       __imp__strrchr             1000e074     MSVCRTD:MSVCR110D.dll
+ 0002:00000078       __imp___crt_debugger_hook  1000e078     MSVCRTD:MSVCR110D.dll
+ 0002:0000007c       __imp____crtTerminateProcess 1000e07c     MSVCRTD:MSVCR110D.dll
+ 0002:00000080       __imp____CppXcptFilter     1000e080     MSVCRTD:MSVCR110D.dll
+ 0002:00000084       __imp___amsg_exit          1000e084     MSVCRTD:MSVCR110D.dll
+ 0002:00000088       __imp___malloc_dbg         1000e088     MSVCRTD:MSVCR110D.dll
+ 0002:0000008c       __imp___free_dbg           1000e08c     MSVCRTD:MSVCR110D.dll
+ 0002:00000090       __imp___CrtSetCheckCount   1000e090     MSVCRTD:MSVCR110D.dll
+ 0002:00000094       __imp___initterm           1000e094     MSVCRTD:MSVCR110D.dll
+ 0002:00000098       __imp___initterm_e         1000e098     MSVCRTD:MSVCR110D.dll
+ 0002:0000009c       __imp___lock               1000e09c     MSVCRTD:MSVCR110D.dll
+ 0002:000000a0       __imp___unlock             1000e0a0     MSVCRTD:MSVCR110D.dll
+ 0002:000000a4       __imp___CrtDbgReportW      1000e0a4     MSVCRTD:MSVCR110D.dll
+ 0002:000000a8       __imp___calloc_dbg         1000e0a8     MSVCRTD:MSVCR110D.dll
+ 0002:000000ac       __imp____dllonexit         1000e0ac     MSVCRTD:MSVCR110D.dll
+ 0002:000000b0       __imp___onexit             1000e0b0     MSVCRTD:MSVCR110D.dll
+ 0002:000000b4       __imp____clean_type_info_names_internal 1000e0b4     MSVCRTD:MSVCR110D.dll
+ 0002:000000b8       __imp___except_handler4_common 1000e0b8     MSVCRTD:MSVCR110D.dll
+ 0002:000000bc       __imp____crtUnhandledException 1000e0bc     MSVCRTD:MSVCR110D.dll
+ 0002:000000c0       __imp__memcpy              1000e0c0     MSVCRTD:MSVCR110D.dll
+ 0002:000000c4       __imp__memset              1000e0c4     MSVCRTD:MSVCR110D.dll
+ 0002:000000c8       __imp__free                1000e0c8     MSVCRTD:MSVCR110D.dll
+ 0002:000000cc       __imp__malloc              1000e0cc     MSVCRTD:MSVCR110D.dll
+ 0002:000000d0       __imp__realloc             1000e0d0     MSVCRTD:MSVCR110D.dll
+ 0002:000000d4       __imp__printf              1000e0d4     MSVCRTD:MSVCR110D.dll
+ 0002:000000d8       __imp___beginthreadex      1000e0d8     MSVCRTD:MSVCR110D.dll
+ 0002:000000dc       __imp__memcmp              1000e0dc     MSVCRTD:MSVCR110D.dll
+ 0002:000000e0       __imp__sscanf              1000e0e0     MSVCRTD:MSVCR110D.dll
+ 0002:000000e4       __imp__sprintf             1000e0e4     MSVCRTD:MSVCR110D.dll
+ 0002:000000e8       __imp__strcpy              1000e0e8     MSVCRTD:MSVCR110D.dll
+ 0002:000000ec       __imp__strcmp              1000e0ec     MSVCRTD:MSVCR110D.dll
+ 0002:000000f0       __imp__strlen              1000e0f0     MSVCRTD:MSVCR110D.dll
+ 0002:000000f4       __imp___errno              1000e0f4     MSVCRTD:MSVCR110D.dll
+ 0002:000000f8       __imp__strchr              1000e0f8     MSVCRTD:MSVCR110D.dll
+ 0002:000000fc       __imp__atoi                1000e0fc     MSVCRTD:MSVCR110D.dll
+ 0002:00000100       __imp___time64             1000e100     MSVCRTD:MSVCR110D.dll
+ 0002:00000104       __imp___snprintf           1000e104     MSVCRTD:MSVCR110D.dll
+ 0002:00000108       __imp__memmove             1000e108     MSVCRTD:MSVCR110D.dll
+ 0002:0000010c       __imp__strcspn             1000e10c     MSVCRTD:MSVCR110D.dll
+ 0002:00000110       __imp__strncpy             1000e110     MSVCRTD:MSVCR110D.dll
+ 0002:00000114       \177MSVCR110D_NULL_THUNK_DATA 1000e114     MSVCRTD:MSVCR110D.dll
+ 0002:00000118       __imp__gethostname@8       1000e118     wsock32:WSOCK32.dll
+ 0002:0000011c       __imp__gethostbyname@4     1000e11c     wsock32:WSOCK32.dll
+ 0002:00000120       __imp__gethostbyaddr@12    1000e120     wsock32:WSOCK32.dll
+ 0002:00000124       __imp__shutdown@8          1000e124     wsock32:WSOCK32.dll
+ 0002:00000128       __imp__setsockopt@20       1000e128     wsock32:WSOCK32.dll
+ 0002:0000012c       __imp__send@16             1000e12c     wsock32:WSOCK32.dll
+ 0002:00000130       __imp__select@20           1000e130     wsock32:WSOCK32.dll
+ 0002:00000134       __imp__recv@16             1000e134     wsock32:WSOCK32.dll
+ 0002:00000138       __imp__ntohl@4             1000e138     wsock32:WSOCK32.dll
+ 0002:0000013c       __imp__listen@8            1000e13c     wsock32:WSOCK32.dll
+ 0002:00000140       __imp__htonl@4             1000e140     wsock32:WSOCK32.dll
+ 0002:00000144       __imp__getsockopt@20       1000e144     wsock32:WSOCK32.dll
+ 0002:00000148       __imp__ioctlsocket@12      1000e148     wsock32:WSOCK32.dll
+ 0002:0000014c       __imp__WSACleanup@0        1000e14c     wsock32:WSOCK32.dll
+ 0002:00000150       __imp__WSAStartup@8        1000e150     wsock32:WSOCK32.dll
+ 0002:00000154       __imp__socket@12           1000e154     wsock32:WSOCK32.dll
+ 0002:00000158       __imp__sendto@24           1000e158     wsock32:WSOCK32.dll
+ 0002:0000015c       __imp__recvfrom@24         1000e15c     wsock32:WSOCK32.dll
+ 0002:00000160       __imp__ntohs@4             1000e160     wsock32:WSOCK32.dll
+ 0002:00000164       __imp__htons@4             1000e164     wsock32:WSOCK32.dll
+ 0002:00000168       __imp__getsockname@12      1000e168     wsock32:WSOCK32.dll
+ 0002:0000016c       __imp__connect@12          1000e16c     wsock32:WSOCK32.dll
+ 0002:00000170       __imp__closesocket@4       1000e170     wsock32:WSOCK32.dll
+ 0002:00000174       __imp__bind@12             1000e174     wsock32:WSOCK32.dll
+ 0002:00000178       __imp__accept@12           1000e178     wsock32:WSOCK32.dll
+ 0002:0000017c       __imp__WSAGetLastError@0   1000e17c     wsock32:WSOCK32.dll
+ 0002:00000180       __imp__WSASetLastError@4   1000e180     wsock32:WSOCK32.dll
+ 0002:00000184       \177WSOCK32_NULL_THUNK_DATA 1000e184     wsock32:WSOCK32.dll
+ 0002:00000188       ___xc_a                    1000e188     MSVCRTD:cinitexe.obj
+ 0002:0000018c       ___xc_z                    1000e18c     MSVCRTD:cinitexe.obj
+ 0002:00000190       ___xi_a                    1000e190     MSVCRTD:cinitexe.obj
+ 0002:0000019c       ___xi_z                    1000e19c     MSVCRTD:cinitexe.obj
+ 0002:000001e0       __pRawDllMain              1000e1e0     MSVCRTD:crtdll.obj
+ 0002:000001e0       __pDefaultRawDllMain       1000e1e0     MSVCRTD:crtdll.obj
+ 0002:000001e4       ??_C@_0DA@FJPPCPEH@f?3?2dd?2vctools?2crt_bld?2self_x86?2c@ 1000e1e4     MSVCRTD:crtdll.obj
+ 0002:00000218       ??_C@_1LK@BJHNKBFO@?$AA?$CI?$AA_?$AA_?$AAo?$AAn?$AAe?$AAx?$AAi?$AAt?$AAe?$AAn?$AAd?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AAN?$AAU?$AAL?$AAL?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA_?$AA_?$AAo?$AAn?$AAe?$AAx?$AAi?$AAt@ 1000e218     MSVCRTD:atonexit.obj
+ 0002:000002d4       ??_C@_15GANGMFKL@?$AA?$CF?$AAs?$AA?$AA@ 1000e2d4     MSVCRTD:atonexit.obj
+ 0002:000002e0       ??_C@_1GE@KOKOIPKN@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA_?$AAb?$AAl?$AAd?$AA?2?$AAs?$AAe?$AAl?$AAf?$AA_?$AAx?$AA8?$AA6?$AA?2?$AAc@ 1000e2e0     MSVCRTD:atonexit.obj
+ 0002:00000344       ??_C@_0DC@KIAPAJCJ@f?3?2dd?2vctools?2crt_bld?2self_x86?2c@ 1000e344     MSVCRTD:atonexit.obj
+ 0002:00000378       ?ProcessDetach@NativeDll@<CrtImplementationDetails>@@0IB 1000e378     MSVCRTD:initsect.obj
+ 0002:0000037c       ?ProcessAttach@NativeDll@<CrtImplementationDetails>@@0IB 1000e37c     MSVCRTD:initsect.obj
+ 0002:00000380       ?ThreadAttach@NativeDll@<CrtImplementationDetails>@@0IB 1000e380     MSVCRTD:initsect.obj
+ 0002:00000384       ?ThreadDetach@NativeDll@<CrtImplementationDetails>@@0IB 1000e384     MSVCRTD:initsect.obj
+ 0002:00000388       ?ProcessVerifier@NativeDll@<CrtImplementationDetails>@@0IB 1000e388     MSVCRTD:initsect.obj
+ 0002:0000038c       ?value@?$_Sizeof@U_Nil@std@@U12@U12@U12@U12@U12@U12@U12@@std@@2IB 1000e38c     MSVCRTD:tncleanup.obj
+ 0002:00000390       ?value@?$integral_constant@_N$0A@@std@@2_NB 1000e390     MSVCRTD:tncleanup.obj
+ 0002:00000391       ?value@?$integral_constant@_N$00@std@@2_NB 1000e391     MSVCRTD:tncleanup.obj
+ 0002:00000398       __load_config_used         1000e398     MSVCRTD:loadcfg.obj
+ 0002:00000470       ___safe_se_handler_table   1000e470     <linker-defined>
+ 0002:00000474       ___rtc_iaa                 1000e474     MSVCRTD:initsect.obj
+ 0002:00000478       ___rtc_izz                 1000e478     MSVCRTD:initsect.obj
+ 0002:0000047c       ___rtc_taa                 1000e47c     MSVCRTD:initsect.obj
+ 0002:00000480       ___rtc_tzz                 1000e480     MSVCRTD:initsect.obj
+ 0002:000004ec       __IMPORT_DESCRIPTOR_WSOCK32 1000e4ec     wsock32:WSOCK32.dll
+ 0002:00000500       __IMPORT_DESCRIPTOR_KERNEL32 1000e500     kernel32:KERNEL32.dll
+ 0002:00000514       __IMPORT_DESCRIPTOR_MSVCR110D 1000e514     MSVCRTD:MSVCR110D.dll
+ 0002:00000528       __NULL_IMPORT_DESCRIPTOR   1000e528     wsock32:WSOCK32.dll
+ 0003:000011c4       _backlog                   100111c4     sock.obj
+ 0003:00001558       _nlState                   10011558     nl.obj
+ 0003:00001574       ___security_cookie         10011574     MSVCRTD:gs_cookie.obj
+ 0003:00001578       ___security_cookie_complement 10011578     MSVCRTD:gs_cookie.obj
+ 0003:00001580       ___native_dllmain_reason   10011580     MSVCRTD:natstart.obj
+ 0003:00001754       _reuseaddress              10011754     sock.obj
+ 0003:00001794       _nlSockets                 10011794     nl.obj
+ 0003:00001d5c       ?__type_info_root_node@@3U__type_info_node@@A 10011d5c     MSVCRTD:tncleanup.obj
+ 0003:00001d64       ___native_startup_lock     10011d64     <common>
+ 0003:00001d68       ___native_startup_state    10011d68     <common>
+ 0003:00001d6c       ___onexitend               10011d6c     <common>
+ 0003:00001d70       ___onexitbegin             10011d70     <common>
+ 0003:00001d74       ___dyn_tls_init_callback   10011d74     <common>
+
+ entry point at        0001:0000bfc0
+
+ Static symbols
+
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     kernel32:KERNEL32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     wsock32:WSOCK32.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0000:fffec000       .debug$S                   10000000     MSVCRTD:MSVCR110D.dll
+ 0001:0000030c       $LN36                      1000130c     errorstr.obj
+ 0001:000006a8       $LN60                      100016a8     errorstr.obj
+ 0001:00000758       $LN59                      10001758     errorstr.obj
+ 0001:00001790       _threadfunc@4              10002790 f   hthread.obj
+ 0001:000025a0       _ipx_GetHostAddress        100035a0 f   ipx.obj
+ 0001:000026e0       _ipx_AcceptIPX             100036e0 f   ipx.obj
+ 0001:00004380       _loopback_getNextPort      10005380 f   loopback.obj
+ 0001:000043d0       _loopback_ScanPort         100053d0 f   loopback.obj
+ 0001:000044b0       _loopback_TryPort          100054b0 f   loopback.obj
+ 0001:00004530       _loopback_WritePacket      10005530 f   loopback.obj
+ 0001:00004940       _time                      10005940 f   nltime.obj
+ 0001:00004960       _myftime                   10005960 f   nltime.obj
+ 0001:00004a70       _time                      10005a70 f   sock.obj
+ 0001:00006b94       $LN17                      10007b94     sock.obj
+ 0001:00006cdc       $LN19                      10007cdc     sock.obj
+ 0001:00006cf0       $LN18                      10007cf0     sock.obj
+ 0001:00006db0       $LN13                      10007db0     sock.obj
+ 0001:00006dc4       $LN12                      10007dc4     sock.obj
+ 0001:00006df0       _sock_getNextPort          10007df0 f   sock.obj
+ 0001:00006e40       _sock_bind                 10007e40 f   sock.obj
+ 0001:00006ee0       _sock_connect              10007ee0 f   sock.obj
+ 0001:00006f50       _sock_WritePacketCheckPending 10007f50 f   sock.obj
+ 0001:00007020       _sock_rpThread             10008020 f   sock.obj
+ 0001:000071a0       _sock_AddSocket            100081a0 f   sock.obj
+ 0001:00007200       _sock_DeleteSocket         10008200 f   sock.obj
+ 0001:000073a0       _sock_SetTCPNoDelay        100083a0 f   sock.obj
+ 0001:00007430       _sock_SetMulticastTTL      10008430 f   sock.obj
+ 0001:000074c0       _sock_SetSocketOptions     100084c0 f   sock.obj
+ 0001:000075b0       _sock_GetHostAddress       100085b0 f   sock.obj
+ 0001:00007660       _sock_GetPort              10008660 f   sock.obj
+ 0001:000076b0       _sock_AcceptUDP            100086b0 f   sock.obj
+ 0001:00007d10       $LN30                      10008d10     sock.obj
+ 0001:00007d30       _sock_ConnectUDP           10008d30 f   sock.obj
+ 0001:00008110       _sock_ConnectUDPAsynchInt  10009110 f   sock.obj
+ 0001:00008150       _sock_ConnectUDPAsynch     10009150 f   sock.obj
+ 0001:000081d0       _sock_ConnectMulticast     100091d0 f   sock.obj
+ 0001:000082e0       _sock_ReadPacket           100092e0 f   sock.obj
+ 0001:00008ae0       _allocateBuffer            10009ae0 f   sock.obj
+ 0001:00008c10       _sock_WritePacket          10009c10 f   sock.obj
+ 0001:00008e70       _sock_GetNameFromAddrAsyncInt 10009e70 f   sock.obj
+ 0001:00008ec0       _sock_GetAddrFromNameAsyncInt 10009ec0 f   sock.obj
+ 0001:0000967c       $LN18                      1000a67c     nl.obj
+ 0001:00009898       $LN17                      1000a898     nl.obj
+ 0001:0000a720       $LN15                      1000b720     nl.obj
+ 0001:0000a7c0       $LN12                      1000b7c0     nl.obj
+ 0001:0000aa40       $LN23                      1000ba40     nl.obj
+ 0001:0000ab04       $LN12                      1000bb04     nl.obj
+ 0001:0000ab1c       $LN11                      1000bb1c     nl.obj
+ 0001:0000abb4       $LN12                      1000bbb4     nl.obj
+ 0001:0000abcc       $LN11                      1000bbcc     nl.obj
+ 0001:0000ad30       _time                      1000bd30 f   nl.obj
+ 0001:0000b0c0       _isSafeString              1000c0c0 f   nl.obj
+ 0001:0000b130       _safecat                   1000c130 f   nl.obj
+ 0001:0000b1b0       _nlReturnSocket            1000c1b0 f   nl.obj
+ 0001:0000b2d0       _nlUpdateStats             1000c2d0 f   nl.obj
+ 0001:0000b4f0       _nlUpdateInStats           1000c4f0 f   nl.obj
+ 0001:0000b530       _nlUpdateOutStats          1000c530 f   nl.obj
+ 0001:0000b570       _nlUpdateSocketInStats     1000c570 f   nl.obj
+ 0001:0000b5b0       _nlUpdateSocketOutStats    1000c5b0 f   nl.obj
+ 0001:0000bb10       $$000000                   1000cb10     MSVCRTD:lldiv.obj
+ 0001:0000bbc0       $$000000                   1000cbc0     MSVCRTD:llmul.obj
+ 0001:0000bc10       $$000000                   1000cc10     MSVCRTD:chkstk.obj
+ 0001:0000bc50       _pre_c_init                1000cc50 f   MSVCRTD:crtdll.obj
+ 0001:0000bff0       ___DllMainCRTStartup       1000cff0 f   MSVCRTD:crtdll.obj
+ 0002:00000194       _pcinit                    1000e194     MSVCRTD:crtdll.obj
+ 0002:00000198       _pinit                     1000e198     MSVCRTD:atonexit.obj
+ 0002:000001d8       _GS_ExceptionPointers      1000e1d8     MSVCRTD:gs_report.obj
+ 0002:00000488       __sehtable$___DllMainCRTStartup 1000e488     MSVCRTD:crtdll.obj
+ 0002:000004b0       __sehtable$__IsNonwritableInCurrentImage 1000e4b0     MSVCRTD:pesect.obj
+ 0002:000004d0       __sehtable$__onexit        1000e4d0     MSVCRTD:atonexit.obj
+ 0002:000006c4       .idata$6                   1000e6c4     wsock32:WSOCK32.dll
+ 0002:00000852       .idata$6                   1000e852     kernel32:KERNEL32.dll
+ 0002:0000094c       .idata$6                   1000e94c     MSVCRTD:MSVCR110D.dll
+ 0002:00000b30       .edata                     1000eb30     HawkNLd.exp
+ 0002:00000b58       rgpv                       1000eb58     HawkNLd.exp
+ 0002:00000d5c       rgszName                   1000ed5c     HawkNLd.exp
+ 0002:00000f60       rgwOrd                     1000ef60     HawkNLd.exp
+ 0002:00001062       szName                     1000f062     HawkNLd.exp
+ 0002:0000106d       $N00001                    1000f06d     HawkNLd.exp
+ 0002:00001080       $N00002                    1000f080     HawkNLd.exp
+ 0002:00001091       $N00003                    1000f091     HawkNLd.exp
+ 0002:0000109f       $N00004                    1000f09f     HawkNLd.exp
+ 0002:000010af       $N00005                    1000f0af     HawkNLd.exp
+ 0002:000010bd       $N00006                    1000f0bd     HawkNLd.exp
+ 0002:000010cf       $N00007                    1000f0cf     HawkNLd.exp
+ 0002:000010de       $N00008                    1000f0de     HawkNLd.exp
+ 0002:000010ed       $N00009                    1000f0ed     HawkNLd.exp
+ 0002:000010fe       $N00010                    1000f0fe     HawkNLd.exp
+ 0002:00001111       $N00011                    1000f111     HawkNLd.exp
+ 0002:00001121       $N00012                    1000f121     HawkNLd.exp
+ 0002:00001132       $N00013                    1000f132     HawkNLd.exp
+ 0002:00001143       $N00014                    1000f143     HawkNLd.exp
+ 0002:00001159       $N00015                    1000f159     HawkNLd.exp
+ 0002:0000116a       $N00016                    1000f16a     HawkNLd.exp
+ 0002:0000117c       $N00017                    1000f17c     HawkNLd.exp
+ 0002:00001187       $N00018                    1000f187     HawkNLd.exp
+ 0002:0000119c       $N00019                    1000f19c     HawkNLd.exp
+ 0002:000011a7       $N00020                    1000f1a7     HawkNLd.exp
+ 0002:000011b4       $N00021                    1000f1b4     HawkNLd.exp
+ 0002:000011c1       $N00022                    1000f1c1     HawkNLd.exp
+ 0002:000011cd       $N00023                    1000f1cd     HawkNLd.exp
+ 0002:000011e2       $N00024                    1000f1e2     HawkNLd.exp
+ 0002:000011fc       $N00025                    1000f1fc     HawkNLd.exp
+ 0002:00001211       $N00026                    1000f211     HawkNLd.exp
+ 0002:00001221       $N00027                    1000f221     HawkNLd.exp
+ 0002:0000122f       $N00028                    1000f22f     HawkNLd.exp
+ 0002:0000123d       $N00029                    1000f23d     HawkNLd.exp
+ 0002:0000124b       $N00030                    1000f24b     HawkNLd.exp
+ 0002:0000125c       $N00031                    1000f25c     HawkNLd.exp
+ 0002:0000126c       $N00032                    1000f26c     HawkNLd.exp
+ 0002:0000127e       $N00033                    1000f27e     HawkNLd.exp
+ 0002:00001293       $N00034                    1000f293     HawkNLd.exp
+ 0002:000012ad       $N00035                    1000f2ad     HawkNLd.exp
+ 0002:000012c2       $N00036                    1000f2c2     HawkNLd.exp
+ 0002:000012d5       $N00037                    1000f2d5     HawkNLd.exp
+ 0002:000012e7       $N00038                    1000f2e7     HawkNLd.exp
+ 0002:000012fa       $N00039                    1000f2fa     HawkNLd.exp
+ 0002:00001309       $N00040                    1000f309     HawkNLd.exp
+ 0002:0000131d       $N00041                    1000f31d     HawkNLd.exp
+ 0002:00001334       $N00042                    1000f334     HawkNLd.exp
+ 0002:00001348       $N00043                    1000f348     HawkNLd.exp
+ 0002:00001359       $N00044                    1000f359     HawkNLd.exp
+ 0002:00001370       $N00045                    1000f370     HawkNLd.exp
+ 0002:00001382       $N00046                    1000f382     HawkNLd.exp
+ 0002:00001398       $N00047                    1000f398     HawkNLd.exp
+ 0002:000013a2       $N00048                    1000f3a2     HawkNLd.exp
+ 0002:000013ac       $N00049                    1000f3ac     HawkNLd.exp
+ 0002:000013b8       $N00050                    1000f3b8     HawkNLd.exp
+ 0002:000013c2       $N00051                    1000f3c2     HawkNLd.exp
+ 0002:000013d2       $N00052                    1000f3d2     HawkNLd.exp
+ 0002:000013e3       $N00053                    1000f3e3     HawkNLd.exp
+ 0002:000013ee       $N00054                    1000f3ee     HawkNLd.exp
+ 0002:00001401       $N00055                    1000f401     HawkNLd.exp
+ 0002:00001412       $N00056                    1000f412     HawkNLd.exp
+ 0002:00001424       $N00057                    1000f424     HawkNLd.exp
+ 0002:00001437       $N00058                    1000f437     HawkNLd.exp
+ 0002:0000144a       $N00059                    1000f44a     HawkNLd.exp
+ 0002:00001458       $N00060                    1000f458     HawkNLd.exp
+ 0002:0000146a       $N00061                    1000f46a     HawkNLd.exp
+ 0002:00001475       $N00062                    1000f475     HawkNLd.exp
+ 0002:00001480       $N00063                    1000f480     HawkNLd.exp
+ 0002:0000148b       $N00064                    1000f48b     HawkNLd.exp
+ 0002:00001496       $N00065                    1000f496     HawkNLd.exp
+ 0002:000014a0       $N00066                    1000f4a0     HawkNLd.exp
+ 0002:000014ac       $N00067                    1000f4ac     HawkNLd.exp
+ 0002:000014bc       $N00068                    1000f4bc     HawkNLd.exp
+ 0002:000014ca       $N00069                    1000f4ca     HawkNLd.exp
+ 0002:000014d5       $N00070                    1000f4d5     HawkNLd.exp
+ 0002:000014e2       $N00071                    1000f4e2     HawkNLd.exp
+ 0002:000014ed       $N00072                    1000f4ed     HawkNLd.exp
+ 0002:000014fc       $N00073                    1000f4fc     HawkNLd.exp
+ 0002:00001508       $N00074                    1000f508     HawkNLd.exp
+ 0002:00001514       $N00075                    1000f514     HawkNLd.exp
+ 0002:00001522       $N00076                    1000f522     HawkNLd.exp
+ 0002:00001531       $N00077                    1000f531     HawkNLd.exp
+ 0002:0000153e       $N00078                    1000f53e     HawkNLd.exp
+ 0002:0000154c       $N00079                    1000f54c     HawkNLd.exp
+ 0002:0000155a       $N00080                    1000f55a     HawkNLd.exp
+ 0002:0000156d       $N00081                    1000f56d     HawkNLd.exp
+ 0002:0000157b       $N00082                    1000f57b     HawkNLd.exp
+ 0002:0000158a       $N00083                    1000f58a     HawkNLd.exp
+ 0002:00001592       $N00084                    1000f592     HawkNLd.exp
+ 0002:000015a4       $N00085                    1000f5a4     HawkNLd.exp
+ 0002:000015ac       $N00086                    1000f5ac     HawkNLd.exp
+ 0002:000015b6       $N00087                    1000f5b6     HawkNLd.exp
+ 0002:000015c0       $N00088                    1000f5c0     HawkNLd.exp
+ 0002:000015c9       $N00089                    1000f5c9     HawkNLd.exp
+ 0002:000015db       $N00090                    1000f5db     HawkNLd.exp
+ 0002:000015f2       $N00091                    1000f5f2     HawkNLd.exp
+ 0002:00001604       $N00092                    1000f604     HawkNLd.exp
+ 0002:00001611       $N00093                    1000f611     HawkNLd.exp
+ 0002:0000161c       $N00094                    1000f61c     HawkNLd.exp
+ 0002:00001627       $N00095                    1000f627     HawkNLd.exp
+ 0002:00001632       $N00096                    1000f632     HawkNLd.exp
+ 0002:00001640       $N00097                    1000f640     HawkNLd.exp
+ 0002:0000164d       $N00098                    1000f64d     HawkNLd.exp
+ 0002:0000165c       $N00099                    1000f65c     HawkNLd.exp
+ 0002:0000166e       $N00100                    1000f66e     HawkNLd.exp
+ 0002:00001685       $N00101                    1000f685     HawkNLd.exp
+ 0002:00001697       $N00102                    1000f697     HawkNLd.exp
+ 0002:000016a7       $N00103                    1000f6a7     HawkNLd.exp
+ 0002:000016b7       $N00104                    1000f6b7     HawkNLd.exp
+ 0002:000016c3       $N00105                    1000f6c3     HawkNLd.exp
+ 0002:000016d4       $N00106                    1000f6d4     HawkNLd.exp
+ 0002:000016e8       $N00107                    1000f6e8     HawkNLd.exp
+ 0002:000016f9       $N00108                    1000f6f9     HawkNLd.exp
+ 0002:00001707       $N00109                    1000f707     HawkNLd.exp
+ 0002:0000171b       $N00110                    1000f71b     HawkNLd.exp
+ 0002:0000172a       $N00111                    1000f72a     HawkNLd.exp
+ 0002:0000173c       $N00112                    1000f73c     HawkNLd.exp
+ 0002:00001743       $N00113                    1000f743     HawkNLd.exp
+ 0002:0000174a       $N00114                    1000f74a     HawkNLd.exp
+ 0002:00001753       $N00115                    1000f753     HawkNLd.exp
+ 0002:0000175a       $N00116                    1000f75a     HawkNLd.exp
+ 0002:00001766       $N00117                    1000f766     HawkNLd.exp
+ 0002:0000176d       $N00118                    1000f76d     HawkNLd.exp
+ 0002:0000177d       $N00119                    1000f77d     HawkNLd.exp
+ 0002:0000178b       $N00120                    1000f78b     HawkNLd.exp
+ 0002:0000179a       $N00121                    1000f79a     HawkNLd.exp
+ 0002:000017aa       $N00122                    1000f7aa     HawkNLd.exp
+ 0002:000017b5       $N00123                    1000f7b5     HawkNLd.exp
+ 0002:000017c4       $N00124                    1000f7c4     HawkNLd.exp
+ 0002:000017cc       $N00125                    1000f7cc     HawkNLd.exp
+ 0002:000017d4       $N00126                    1000f7d4     HawkNLd.exp
+ 0002:000017dc       $N00127                    1000f7dc     HawkNLd.exp
+ 0002:000017e4       $N00128                    1000f7e4     HawkNLd.exp
+ 0002:000017eb       $N00129                    1000f7eb     HawkNLd.exp
+ 0003:00000000       _crc16tab                  10010000     crc.obj
+ 0003:00000200       _crc32tab                  10010200     crc.obj
+ 0003:00000600       _key                       10010600     err.obj
+ 0003:00000608       $SG36876                   10010608     errorstr.obj
+ 0003:0000061c       $SG36879                   1001061c     errorstr.obj
+ 0003:0000063c       $SG36882                   1001063c     errorstr.obj
+ 0003:0000064c       $SG36885                   1001064c     errorstr.obj
+ 0003:0000065c       $SG36888                   1001065c     errorstr.obj
+ 0003:00000674       $SG36891                   10010674     errorstr.obj
+ 0003:00000690       $SG36894                   10010690     errorstr.obj
+ 0003:000006b0       $SG36897                   100106b0     errorstr.obj
+ 0003:000006e0       $SG36900                   100106e0     errorstr.obj
+ 0003:00000700       $SG36903                   10010700     errorstr.obj
+ 0003:00000724       $SG36906                   10010724     errorstr.obj
+ 0003:00000738       $SG36909                   10010738     errorstr.obj
+ 0003:0000075c       $SG36912                   1001075c     errorstr.obj
+ 0003:00000780       $SG36915                   10010780     errorstr.obj
+ 0003:00000794       $SG36918                   10010794     errorstr.obj
+ 0003:000007c0       $SG36921                   100107c0     errorstr.obj
+ 0003:000007d8       $SG36924                   100107d8     errorstr.obj
+ 0003:000007e8       $SG36927                   100107e8     errorstr.obj
+ 0003:000007fc       $SG36930                   100107fc     errorstr.obj
+ 0003:00000818       $SG36933                   10010818     errorstr.obj
+ 0003:00000834       $SG36936                   10010834     errorstr.obj
+ 0003:00000848       $SG36939                   10010848     errorstr.obj
+ 0003:00000874       $SG36942                   10010874     errorstr.obj
+ 0003:00000898       $SG36945                   10010898     errorstr.obj
+ 0003:000008c8       $SG36948                   100108c8     errorstr.obj
+ 0003:000008f4       $SG36951                   100108f4     errorstr.obj
+ 0003:0000090c       $SG36954                   1001090c     errorstr.obj
+ 0003:00000934       $SG36957                   10010934     errorstr.obj
+ 0003:00000970       $SG36960                   10010970     errorstr.obj
+ 0003:00000994       $SG36963                   10010994     errorstr.obj
+ 0003:000009ac       $SG36704                   100109ac     errorstr.obj
+ 0003:000009b8       $SG36707                   100109b8     errorstr.obj
+ 0003:000009dc       $SG36710                   100109dc     errorstr.obj
+ 0003:00000a04       $SG36713                   10010a04     errorstr.obj
+ 0003:00000a20       $SG36716                   10010a20     errorstr.obj
+ 0003:00000a34       $SG36719                   10010a34     errorstr.obj
+ 0003:00000a50       $SG36722                   10010a50     errorstr.obj
+ 0003:00000a78       $SG36725                   10010a78     errorstr.obj
+ 0003:00000a90       $SG36728                   10010a90     errorstr.obj
+ 0003:00000ab4       $SG36731                   10010ab4     errorstr.obj
+ 0003:00000acc       $SG36734                   10010acc     errorstr.obj
+ 0003:00000af0       $SG36737                   10010af0     errorstr.obj
+ 0003:00000b24       $SG36740                   10010b24     errorstr.obj
+ 0003:00000b54       $SG36743                   10010b54     errorstr.obj
+ 0003:00000b74       $SG36746                   10010b74     errorstr.obj
+ 0003:00000b98       $SG36749                   10010b98     errorstr.obj
+ 0003:00000bb4       $SG36752                   10010bb4     errorstr.obj
+ 0003:00000bd4       $SG36755                   10010bd4     errorstr.obj
+ 0003:00000bf0       $SG36758                   10010bf0     errorstr.obj
+ 0003:00000c14       $SG36761                   10010c14     errorstr.obj
+ 0003:00000c3c       $SG36764                   10010c3c     errorstr.obj
+ 0003:00000c6c       $SG36767                   10010c6c     errorstr.obj
+ 0003:00000c88       $SG36770                   10010c88     errorstr.obj
+ 0003:00000cac       $SG36773                   10010cac     errorstr.obj
+ 0003:00000cc4       $SG36776                   10010cc4     errorstr.obj
+ 0003:00000cd8       $SG36779                   10010cd8     errorstr.obj
+ 0003:00000cec       $SG36782                   10010cec     errorstr.obj
+ 0003:00000cfc       $SG36785                   10010cfc     errorstr.obj
+ 0003:00000d14       $SG36788                   10010d14     errorstr.obj
+ 0003:00000d2c       $SG36791                   10010d2c     errorstr.obj
+ 0003:00000d3c       $SG36794                   10010d3c     errorstr.obj
+ 0003:00000d54       $SG36797                   10010d54     errorstr.obj
+ 0003:00000d68       $SG36800                   10010d68     errorstr.obj
+ 0003:00000d80       $SG36803                   10010d80     errorstr.obj
+ 0003:00000da8       $SG36806                   10010da8     errorstr.obj
+ 0003:00000dcc       $SG36809                   10010dcc     errorstr.obj
+ 0003:00000dec       $SG36812                   10010dec     errorstr.obj
+ 0003:00000e2c       $SG36815                   10010e2c     errorstr.obj
+ 0003:00000e50       $SG36818                   10010e50     errorstr.obj
+ 0003:00000e70       $SG36821                   10010e70     errorstr.obj
+ 0003:00000ec0       $SG36824                   10010ec0     errorstr.obj
+ 0003:00000f04       $SG36827                   10010f04     errorstr.obj
+ 0003:00000f1c       $SG36830                   10010f1c     errorstr.obj
+ 0003:00000f3c       $SG36833                   10010f3c     errorstr.obj
+ 0003:00000f60       $SG36836                   10010f60     errorstr.obj
+ 0003:00000f84       $SG36839                   10010f84     errorstr.obj
+ 0003:00000f98       $SG36842                   10010f98     errorstr.obj
+ 0003:00000fb0       $SG36845                   10010fb0     errorstr.obj
+ 0003:00000fc0       $SG36848                   10010fc0     errorstr.obj
+ 0003:00000fd8       $SG36851                   10010fd8     errorstr.obj
+ 0003:00000ff0       $SG36854                   10010ff0     errorstr.obj
+ 0003:00001018       $SG36881                   10011018     group.obj
+ 0003:00001064       $SG36854                   10011064     group.obj
+ 0003:000010a0       $SG38595                   100110a0     ipx.obj
+ 0003:000010bc       $SG38610                   100110bc     ipx.obj
+ 0003:000010d4       $SG38613                   100110d4     ipx.obj
+ 0003:000010ec       $SG38705                   100110ec     ipx.obj
+ 0003:0000111c       $SG38721                   1001111c     ipx.obj
+ 0003:00001120       $SG38728                   10011120     ipx.obj
+ 0003:00001124       $SG38735                   10011124     ipx.obj
+ 0003:00001128       $SG38742                   10011128     ipx.obj
+ 0003:0000112c       $SG38749                   1001112c     ipx.obj
+ 0003:00001130       $SG38756                   10011130     ipx.obj
+ 0003:00001134       $SG38763                   10011134     ipx.obj
+ 0003:00001138       $SG38770                   10011138     ipx.obj
+ 0003:0000113c       $SG38777                   1001113c     ipx.obj
+ 0003:00001140       $SG38784                   10011140     ipx.obj
+ 0003:00001144       $SG38791                   10011144     ipx.obj
+ 0003:00001148       $SG38840                   10011148     ipx.obj
+ 0003:00001158       $SG38844                   10011158     ipx.obj
+ 0003:00001160       _newport                   10011160     loopback.obj
+ 0003:00001164       $SG38740                   10011164     loopback.obj
+ 0003:00001174       $SG38784                   10011174     loopback.obj
+ 0003:00001180       $SG38785                   10011180     loopback.obj
+ 0003:00001188       ?needinit@?1??myftime@@9@9 10011188     nltime.obj
+ 0003:0000118c       ?needinit@?1??nlTime@@9@9  1001118c     nltime.obj
+ 0003:00001190       $SG38958                   10011190     sock.obj
+ 0003:000011ab       _needThread                100111ab     sock.obj
+ 0003:000011ac       $SG38998                   100111ac     sock.obj
+ 0003:000011c8       _multicastTTL              100111c8     sock.obj
+ 0003:000011cc       _nextport                  100111cc     sock.obj
+ 0003:000011d0       $SG39553                   100111d0     sock.obj
+ 0003:000011e0       $SG39555                   100111e0     sock.obj
+ 0003:000011f4       $SG39570                   100111f4     sock.obj
+ 0003:00001208       $SG39678                   10011208     sock.obj
+ 0003:00001210       $SG39690                   10011210     sock.obj
+ 0003:0000121c       $SG39749                   1001121c     sock.obj
+ 0003:00001220       $SG39755                   10011220     sock.obj
+ 0003:00001224       $SG38780                   10011224     sock.obj
+ 0003:00001240       $SG38795                   10011240     sock.obj
+ 0003:00001258       $SG38798                   10011258     sock.obj
+ 0003:00001270       _nlMaxNumsockets           10011270     nl.obj
+ 0003:00001274       $SG35019                   10011274     nl.obj
+ 0003:000012b0       _netdrivers                100112b0     nl.obj
+ 0003:000014a0       $SG35012                   100114a0     nl.obj
+ 0003:000014a8       $SG35014                   100114a8     nl.obj
+ 0003:00001504       $SG35017                   10011504     nl.obj
+ 0003:00001514       $SG35022                   10011514     nl.obj
+ 0003:0000151c       $SG35024                   1001151c     nl.obj
+ 0003:0000155c       $SG35707                   1001155c     nl.obj
+ 0003:00001570       $SG35722                   10011570     nl.obj
+ 0003:00001588       ?temp@?3??nlGetSystemErrorStr@@9@9 10011588     errorstr.obj
+ 0003:00001688       _nlnextgroup               10011688     group.obj
+ 0003:0000168c       _nlnumgroups               1001168c     group.obj
+ 0003:00001690       _grouplock                 10011690     group.obj
+ 0003:00001694       _groups                    10011694     group.obj
+ 0003:00001698       _ipxport                   10011698     ipx.obj
+ 0003:0000169c       _ipx_ouraddress            1001169c     ipx.obj
+ 0003:000016c4       _ipx_ouraddress_copy       100116c4     ipx.obj
+ 0003:000016ec       _reuseaddress              100116ec     loopback.obj
+ 0003:000016f0       _loopback_ouraddress       100116f0     loopback.obj
+ 0003:00001718       _loopgroup                 10011718     loopback.obj
+ 0003:0000171c       _portlock                  1001171c     loopback.obj
+ 0003:00001720       ?haspcounter@?1??nlTime@@9@9 10011720     nltime.obj
+ 0003:00001728       ?currentseconds@?1??myftime@@9@9 10011728     nltime.obj
+ 0003:00001730       ?currentmseconds@?1??myftime@@9@9 10011730     nltime.obj
+ 0003:00001734       ?lastmseconds@?1??myftime@@9@9 10011734     nltime.obj
+ 0003:00001738       ?freq@?1??nlTime@@9@9      10011738     nltime.obj
+ 0003:00001740       ?lastcount@?1??nlTime@@9@9 10011740     nltime.obj
+ 0003:00001748       ?currenttime@?1??nlTime@@9@9 10011748     nltime.obj
+ 0003:00001755       _nlTCPNoDelay              10011755     sock.obj
+ 0003:00001758       _alladdr                   10011758     sock.obj
+ 0003:0000175c       _rpSocketCount             1001175c     sock.obj
+ 0003:00001760       _rpBufferedCount           10011760     sock.obj
+ 0003:00001764       ?sockets@?1??sock_rpThread@@9@9 10011764     sock.obj
+ 0003:00001768       ?maxsockets@?1??sock_rpThread@@9@9 10011768     sock.obj
+ 0003:0000176c       _ouraddress                1001176c     sock.obj
+ 0003:00001770       _bindaddress               10011770     sock.obj
+ 0003:00001774       _portlock                  10011774     sock.obj
+ 0003:00001778       _rpGroup                   10011778     sock.obj
+ 0003:0000177c       _rpMutex                   1001177c     sock.obj
+ 0003:00001780       _nlBlocking                10011780     nl.obj
+ 0003:00001784       _nlNextsocket              10011784     nl.obj
+ 0003:00001788       _nlNumsockets              10011788     nl.obj
+ 0003:0000178c       _nlInitCount               1001178c     nl.obj
+ 0003:00001790       _driver                    10011790     nl.obj
+ 0003:00001798       _socklock                  10011798     nl.obj
+ 0003:0000179c       _instatlock                1001179c     nl.obj
+ 0003:000017a0       _outstatlock               100117a0     nl.obj
+ 0003:000017a8       _nlInstats                 100117a8     nl.obj
+ 0003:000017f0       _nlOutstats                100117f0     nl.obj
+ 0003:00001838       ?vstring@?1??nlGetString@@9@9 10011838     nl.obj
+ 0003:00001938       ?tstring@?1??nlGetString@@9@9 10011938     nl.obj
+ 0003:00001a38       _GS_ExceptionRecord        10011a38     MSVCRTD:gs_report.obj
+ 0003:00001a88       _GS_ContextRecord          10011a88     MSVCRTD:gs_report.obj
+ 0003:00001d54       _DebuggerWasPresent        10011d54     MSVCRTD:gs_report.obj
+ 0003:00001d58       ___proc_attached           10011d58     MSVCRTD:crtdll.obj
+ 0004:00000060       $R000000                   10012060     * linker generated manifest res *

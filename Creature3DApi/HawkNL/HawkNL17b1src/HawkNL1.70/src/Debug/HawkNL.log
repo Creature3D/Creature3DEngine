@@ -1,0 +1,298 @@
+﻿生成启动时间为 2013/11/20 17:47:08。
+     1>项目“F:\CAI工作室\Develop\Creature3DApi\HawkNL\HawkNL17b1src\HawkNL1.70\HawkNL.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Iinclude\ /Isrc\win32\ /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm- /EHsc /MDd /GS /fp:precise /Za /Zc:wchar_t /Zc:forScope /Fo".\src\Debug\\" /Fd".\src\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt src\crc.c
+         crc.c
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Iinclude\ /Isrc\win32\ /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\src\Debug\\" /Fd".\src\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt src\err.c src\errorstr.c src\group.c src\htcondition.c src\hthread.c src\htmutex.c src\ipx.c src\loopback.c src\nltime.c src\sock.c
+         err.c
+         errorstr.c
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(84): warning C4005: “EWOULDBLOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(132) : 参见“EWOULDBLOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(85): warning C4005: “EINPROGRESS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(104) : 参见“EINPROGRESS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(86): warning C4005: “EALREADY”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(95) : 参见“EALREADY”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(87): warning C4005: “ENOTSOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(120) : 参见“ENOTSOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(88): warning C4005: “EDESTADDRREQ”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(101) : 参见“EDESTADDRREQ”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(89): warning C4005: “EMSGSIZE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(107) : 参见“EMSGSIZE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(90): warning C4005: “EPROTOTYPE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(128) : 参见“EPROTOTYPE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(91): warning C4005: “ENOPROTOOPT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(115) : 参见“ENOPROTOOPT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(92): warning C4005: “EPROTONOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(127) : 参见“EPROTONOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(94): warning C4005: “EOPNOTSUPP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(122) : 参见“EOPNOTSUPP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(96): warning C4005: “EAFNOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(94) : 参见“EAFNOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(97): warning C4005: “EADDRINUSE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(92) : 参见“EADDRINUSE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(98): warning C4005: “EADDRNOTAVAIL”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(93) : 参见“EADDRNOTAVAIL”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(99): warning C4005: “ENETDOWN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(108) : 参见“ENETDOWN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(100): warning C4005: “ENETUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(110) : 参见“ENETUNREACH”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(101): warning C4005: “ENETRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(109) : 参见“ENETRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(102): warning C4005: “ECONNABORTED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(98) : 参见“ECONNABORTED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(103): warning C4005: “ECONNRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(100) : 参见“ECONNRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(104): warning C4005: “ENOBUFS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(111) : 参见“ENOBUFS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(105): warning C4005: “EISCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(105) : 参见“EISCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(106): warning C4005: “ENOTCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(118) : 参见“ENOTCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(109): warning C4005: “ECONNREFUSED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(99) : 参见“ECONNREFUSED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(110): warning C4005: “ELOOP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(106) : 参见“ELOOP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(112): warning C4005: “EHOSTUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(102) : 参见“EHOSTUNREACH”的前一个定义
+         group.c
+     1>src\group.c(335): warning C4013: “printf”未定义；假设外部返回 int
+         htcondition.c
+     1>C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(130): warning C4005: “ETIMEDOUT”: 宏重定义
+                 f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\htinternal.h(50) : 参见“ETIMEDOUT”的前一个定义
+         hthread.c
+     1>C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(130): warning C4005: “ETIMEDOUT”: 宏重定义
+                 f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\htinternal.h(50) : 参见“ETIMEDOUT”的前一个定义
+         htmutex.c
+     1>C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(130): warning C4005: “ETIMEDOUT”: 宏重定义
+                 f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\htinternal.h(50) : 参见“ETIMEDOUT”的前一个定义
+         ipx.c
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(84): warning C4005: “EWOULDBLOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(132) : 参见“EWOULDBLOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(85): warning C4005: “EINPROGRESS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(104) : 参见“EINPROGRESS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(86): warning C4005: “EALREADY”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(95) : 参见“EALREADY”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(87): warning C4005: “ENOTSOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(120) : 参见“ENOTSOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(88): warning C4005: “EDESTADDRREQ”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(101) : 参见“EDESTADDRREQ”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(89): warning C4005: “EMSGSIZE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(107) : 参见“EMSGSIZE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(90): warning C4005: “EPROTOTYPE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(128) : 参见“EPROTOTYPE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(91): warning C4005: “ENOPROTOOPT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(115) : 参见“ENOPROTOOPT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(92): warning C4005: “EPROTONOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(127) : 参见“EPROTONOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(94): warning C4005: “EOPNOTSUPP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(122) : 参见“EOPNOTSUPP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(96): warning C4005: “EAFNOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(94) : 参见“EAFNOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(97): warning C4005: “EADDRINUSE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(92) : 参见“EADDRINUSE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(98): warning C4005: “EADDRNOTAVAIL”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(93) : 参见“EADDRNOTAVAIL”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(99): warning C4005: “ENETDOWN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(108) : 参见“ENETDOWN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(100): warning C4005: “ENETUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(110) : 参见“ENETUNREACH”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(101): warning C4005: “ENETRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(109) : 参见“ENETRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(102): warning C4005: “ECONNABORTED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(98) : 参见“ECONNABORTED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(103): warning C4005: “ECONNRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(100) : 参见“ECONNRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(104): warning C4005: “ENOBUFS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(111) : 参见“ENOBUFS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(105): warning C4005: “EISCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(105) : 参见“EISCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(106): warning C4005: “ENOTCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(118) : 参见“ENOTCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(109): warning C4005: “ECONNREFUSED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(99) : 参见“ECONNREFUSED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(110): warning C4005: “ELOOP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(106) : 参见“ELOOP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(112): warning C4005: “EHOSTUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(102) : 参见“EHOSTUNREACH”的前一个定义
+     1>src\ipx.c(222): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(110) : 参见“strcpy”的声明
+     1>src\ipx.c(353): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+     1>src\ipx.c(374): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(375): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(376): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(377): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(378): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(379): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(380): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(381): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(382): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(383): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(386): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\ipx.c(437): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+     1>src\ipx.c(442): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+         loopback.c
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(84): warning C4005: “EWOULDBLOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(132) : 参见“EWOULDBLOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(85): warning C4005: “EINPROGRESS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(104) : 参见“EINPROGRESS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(86): warning C4005: “EALREADY”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(95) : 参见“EALREADY”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(87): warning C4005: “ENOTSOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(120) : 参见“ENOTSOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(88): warning C4005: “EDESTADDRREQ”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(101) : 参见“EDESTADDRREQ”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(89): warning C4005: “EMSGSIZE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(107) : 参见“EMSGSIZE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(90): warning C4005: “EPROTOTYPE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(128) : 参见“EPROTOTYPE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(91): warning C4005: “ENOPROTOOPT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(115) : 参见“ENOPROTOOPT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(92): warning C4005: “EPROTONOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(127) : 参见“EPROTONOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(94): warning C4005: “EOPNOTSUPP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(122) : 参见“EOPNOTSUPP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(96): warning C4005: “EAFNOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(94) : 参见“EAFNOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(97): warning C4005: “EADDRINUSE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(92) : 参见“EADDRINUSE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(98): warning C4005: “EADDRNOTAVAIL”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(93) : 参见“EADDRNOTAVAIL”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(99): warning C4005: “ENETDOWN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(108) : 参见“ENETDOWN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(100): warning C4005: “ENETUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(110) : 参见“ENETUNREACH”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(101): warning C4005: “ENETRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(109) : 参见“ENETRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(102): warning C4005: “ECONNABORTED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(98) : 参见“ECONNABORTED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(103): warning C4005: “ECONNRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(100) : 参见“ECONNRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(104): warning C4005: “ENOBUFS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(111) : 参见“ENOBUFS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(105): warning C4005: “EISCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(105) : 参见“EISCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(106): warning C4005: “ENOTCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(118) : 参见“ENOTCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(109): warning C4005: “ECONNREFUSED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(99) : 参见“ECONNREFUSED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(110): warning C4005: “ELOOP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(106) : 参见“ELOOP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(112): warning C4005: “EHOSTUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(102) : 参见“EHOSTUNREACH”的前一个定义
+     1>src\loopback.c(664): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+     1>src\loopback.c(723): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+         nltime.c
+         sock.c
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(84): warning C4005: “EWOULDBLOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(132) : 参见“EWOULDBLOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(85): warning C4005: “EINPROGRESS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(104) : 参见“EINPROGRESS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(86): warning C4005: “EALREADY”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(95) : 参见“EALREADY”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(87): warning C4005: “ENOTSOCK”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(120) : 参见“ENOTSOCK”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(88): warning C4005: “EDESTADDRREQ”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(101) : 参见“EDESTADDRREQ”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(89): warning C4005: “EMSGSIZE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(107) : 参见“EMSGSIZE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(90): warning C4005: “EPROTOTYPE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(128) : 参见“EPROTOTYPE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(91): warning C4005: “ENOPROTOOPT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(115) : 参见“ENOPROTOOPT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(92): warning C4005: “EPROTONOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(127) : 参见“EPROTONOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(94): warning C4005: “EOPNOTSUPP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(122) : 参见“EOPNOTSUPP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(96): warning C4005: “EAFNOSUPPORT”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(94) : 参见“EAFNOSUPPORT”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(97): warning C4005: “EADDRINUSE”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(92) : 参见“EADDRINUSE”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(98): warning C4005: “EADDRNOTAVAIL”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(93) : 参见“EADDRNOTAVAIL”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(99): warning C4005: “ENETDOWN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(108) : 参见“ENETDOWN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(100): warning C4005: “ENETUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(110) : 参见“ENETUNREACH”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(101): warning C4005: “ENETRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(109) : 参见“ENETRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(102): warning C4005: “ECONNABORTED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(98) : 参见“ECONNABORTED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(103): warning C4005: “ECONNRESET”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(100) : 参见“ECONNRESET”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(104): warning C4005: “ENOBUFS”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(111) : 参见“ENOBUFS”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(105): warning C4005: “EISCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(105) : 参见“EISCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(106): warning C4005: “ENOTCONN”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(118) : 参见“ENOTCONN”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(109): warning C4005: “ECONNREFUSED”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(99) : 参见“ECONNREFUSED”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(110): warning C4005: “ELOOP”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(106) : 参见“ELOOP”的前一个定义
+     1>f:\cai工作室\develop\creature3dapi\hawknl\hawknl17b1src\hawknl1.70\src\wsock.h(112): warning C4005: “EHOSTUNREACH”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\errno.h(102) : 参见“EHOSTUNREACH”的前一个定义
+     1>src\sock.c(702): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(110) : 参见“strcpy”的声明
+     1>src\sock.c(1975): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+     1>src\sock.c(1980): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : 参见“sprintf”的声明
+     1>src\sock.c(1991): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\sock.c(2138): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(349) : 参见“_snprintf”的声明
+     1>src\sock.c(2142): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(191) : 参见“strncpy”的声明
+     1>src\sock.c(2150): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(191) : 参见“strncpy”的声明
+     1>src\sock.c(2159): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(191) : 参见“strncpy”的声明
+     1>src\sock.c(2227): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(191) : 参见“strncpy”的声明
+     1>src\sock.c(2236): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(311) : 参见“sscanf”的声明
+     1>src\sock.c(2287): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(191) : 参见“strncpy”的声明
+         正在生成代码...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Iinclude\ /Isrc\win32\ /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"src\Debug/" /Fd"src\Debug/vc110.pdb" /Gd /TC /analyze- /errorReport:prompt src\nl.c
+         nl.c
+     1>src\nl.c(216): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(182) : 参见“strncat”的声明
+     1>src\nl.c(1431): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(191) : 参见“strncpy”的声明
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\lib\HawkNLd.dll" /VERSION:"0.5" /INCREMENTAL:NO /NOLOGO /LIBPATH:src\win32\ pthreadVCE.lib odbc32.lib odbccp32.lib wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:".\src\hawknld.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\src\Debug\HawkNLd.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\lib\HawkNLd.lib" /MACHINE:X86 /SAFESEH /DLL .\src\Debug\crc.obj
+         .\src\Debug\err.obj
+         .\src\Debug\errorstr.obj
+         .\src\Debug\group.obj
+         .\src\Debug\htcondition.obj
+         .\src\Debug\hthread.obj
+         .\src\Debug\htmutex.obj
+         .\src\Debug\ipx.obj
+         .\src\Debug\loopback.obj
+         .\src\Debug\nltime.obj
+         .\src\Debug\sock.obj
+         src\Debug/nl.obj
+            正在创建库 .\lib\HawkNLd.lib 和对象 .\lib\HawkNLd.exp
+         HawkNL.vcxproj -> F:\CAI工作室\Develop\Creature3DApi\HawkNL\HawkNL17b1src\HawkNL1.70\.\lib\HawkNLd.dll
+     1>已完成生成项目“F:\CAI工作室\Develop\Creature3DApi\HawkNL\HawkNL17b1src\HawkNL1.70\HawkNL.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.23

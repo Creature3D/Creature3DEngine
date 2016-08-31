@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{c2c1517a-03a7-435a-aa94-5024d1a0d7ba}</UniqueIdentifier>
+      <Extensions>.c</Extensions>
+    </Filter>
+    <Filter Include="Include Files">
+      <UniqueIdentifier>{3fb12c07-1339-4790-b99d-76d666257131}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+    <Filter Include="Doc Files">
+      <UniqueIdentifier>{33b3e49f-7356-4de6-9a8a-203e138a327f}</UniqueIdentifier>
+      <Extensions>.txt</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\crc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\err.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\errorstr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\group.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\htcondition.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hthread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\htmutex.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ipx.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\loopback.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nltime.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sock.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\htinternal.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ipx.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\loopback.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nl.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nlinternal.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parallel.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\serial.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sock.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\wsock.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\NLchanges.txt">
+      <Filter>Doc Files</Filter>
+    </Text>
+    <Text Include="src\readme.txt">
+      <Filter>Doc Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
