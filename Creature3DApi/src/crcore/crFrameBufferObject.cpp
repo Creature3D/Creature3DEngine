@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 // initial FBO support written by Marco Jez, June 2005.
 
 #include <CRCore/crFrameBufferObject.h>

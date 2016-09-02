@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 #include <CRCore/crDepthSortTriangleOperator.h>
 #include <CRCore/crMath.h>
 #include <CRCore/crNotify.h>

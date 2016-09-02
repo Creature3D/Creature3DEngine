@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 #include <CRCore/crScissor.h>
 #include <CRCore/crVector4.h>
 #include <CRCore/crArgumentParser.h>

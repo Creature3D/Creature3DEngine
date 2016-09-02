@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 #include <CRCore/crColorMask.h>
 #include <CRCore/crState.h>
 #include <CRCore/crNotify.h>
