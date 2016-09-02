@@ -1,0 +1,9 @@
+; Creature3DX.def : 定义模块参数。
+
+LIBRARY      "Creature3DX.OCX"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE

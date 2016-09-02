@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="Plugin Flt"
+	ProjectGUID="{F8A83F68-403D-40D9-93DD-24F4BB2B50E8}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAId.lib CRCored.lib CRIOManagerd.lib CRPhysicsd.lib CRRenderd.lib CRUtild.lib OpenThreadsWin32d.lib"
+				OutputFile="../../../bin/Plugin_fltd.dll"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile="$(OutDir)/CRPlugin Flt.pdb"
+				SubSystem="0"
+				ImportLibrary="../../../lib/Plugin_fltd.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="FALSE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="TRUE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="TRUE"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAI.lib CRCore.lib CRIOManager.lib CRPhysics.lib CRRender.lib CRUtil.lib OpenThreadsWin32.lib"
+				OutputFile="../../../bin/Plugin_flt.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="FALSE"
+				SubSystem="0"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="../../../lib/Plugin_flt.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_ALL|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="3"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="TRUE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRCore.lib CRIOManager.lib CRPhysics.lib CRUtil.lib"
+				OutputFile="../../../bin/Plugin_flt.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="FALSE"
+				SubSystem="0"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="../../../lib/Plugin_flt.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_D|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAId.lib CRCored.lib CRIOManagerd.lib CRPhysicsd.lib CRUtild.lib"
+				OutputFile="../../../bin/Plugin_fltd.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="TRUE"
+				SubSystem="0"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				ImportLibrary="../../../lib/Plugin_fltd.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="RDebug|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include;&quot;..\..\..\ode-0.11.1\include&quot;;&quot;..\..\..\ode-0.11.1\ode\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAId.lib CRCored.lib CRIOManagerd.lib CRPhysicsd.lib CRRenderd.lib CRUtild.lib OpenThreadsWin32d.lib"
+				OutputFile="../../../bin/Plugin_fltd.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="TRUE"
+				SubSystem="0"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				ImportLibrary="../../../lib/Plugin_fltd.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_DX|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAId.lib CRCored.lib CRIOManagerd.lib CRPhysicsd.lib CRUtild.lib OpenThreadsWin32d.lib"
+				OutputFile="../../../bin/Plugin_fltd.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="TRUE"
+				SubSystem="0"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				ImportLibrary="../../../lib/Plugin_fltd.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_ALLX|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="3"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="../../../include/plugin;../../../include;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="TRUE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRCore.lib CRIOManager.lib CRPhysics.lib CRUtil.lib OpenThreadsWin32.lib"
+				OutputFile="../../../bin/Plugin_flt.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="../../../lib"
+				GenerateDebugInformation="FALSE"
+				SubSystem="0"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="../../../lib/Plugin_flt.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="源文件"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\BoundingVolumeRecords.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\BSPRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ColorPaletteRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\CommentRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ControlRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\DofRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ExtensionRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ExternalRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\FaceRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\flt.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\flt2osg.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\FltFile.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\GeoSetBuilder.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\GroupRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\HeaderRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\Input.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\InstanceRecords.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LightPointPaletteRecords.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LightPointRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LightPointSystemRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LightSourcePaletteRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LightSourceRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LocalVertexPoolRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LodRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\LongIDRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\MaterialPaletteRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\MeshPrimitiveRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\MeshRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\MultiTextureRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ObjectRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\OldMaterialPaletteRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\OldVertexRecords.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\Pool.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ReaderWriterATTR.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\ReaderWriterFLT.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\Record.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\RecordVisitor.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\Registry.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\RoadRecords.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\SwitchRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\TextureMappingPaletteRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\TexturePaletteRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\TransformationRecords.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\UnknownRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\UVListRecord.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\PlugIn\Plugin FLT\VertexPoolRecords.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="头文件"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\AttrData.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\BoundingVolumeRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\BSPRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\ColorPaletteRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\CommentRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\ControlRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\DofRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\ExtensionRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\ExternalRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\FaceRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\flt.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\flt2osg.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\FltFile.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\FltRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\GeoSetBuilder.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\GroupRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\HeaderRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\Input.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\InstanceRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LightPointPaletteRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LightPointRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LightPointSystemRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LightSourcePaletteRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LightSourceRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LocalVertexPoolRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LodRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\LongIDRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\MaterialPaletteRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\MeshPrimitiveRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\MeshRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\MultiTextureRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\ObjectRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\OldMaterialPaletteRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\OldVertexRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\opcodes.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\Pool.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\ReaderWriterFLT.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\Record.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\RecordVisitor.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\Registry.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\RoadRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\SwitchRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\TextureMappingPaletteRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\TexturePaletteRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\TransformationRecords.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\UnknownRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\UVListRecord.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin Flt\VertexPoolRecords.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="资源文件"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

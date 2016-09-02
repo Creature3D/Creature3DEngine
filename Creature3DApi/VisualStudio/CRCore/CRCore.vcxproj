@@ -1,0 +1,940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="JXJRelease|Win32">
+      <Configuration>JXJRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RDebug|Win32">
+      <Configuration>RDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ALLX|Win32">
+      <Configuration>Release_ALLX</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ALL|Win32">
+      <Configuration>Release_ALL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DX|Win32">
+      <Configuration>Release_DX</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_D|Win32">
+      <Configuration>Release_D</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="SSDDebug|Win32">
+      <Configuration>SSDDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="SSDRelease|Win32">
+      <Configuration>SSDRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FFC2087A-7859-47B1-A7A0-DA98FD1AFF32}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>D:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenThreadsWin32d.lib;oded.lib;oalppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/CRCored.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)CRCore.pdb</ProgramDatabaseFile>
+      <SubSystem>NotSet</SubSystem>
+      <ImportLibrary>../../lib/CRCored.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenThreadsWin32.lib;ode.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../../bin/CRCore.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\CRCore.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ode_single.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>
+      </StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ode_single.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>
+      </StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ode_single.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ode_singled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ode_singled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\GameClient\bin\
+copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.11.1\include;..\..\ode-0.11.1\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenThreadsWin32d.lib;ode_singled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../../bin/CRCored.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary>..\..\lib\CRCored.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenThreadsWin32d.lib;ode_singled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../../bin/CRCored.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary>..\..\lib\CRCored.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CR_LIBRARY;dSINGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenThreadsWin32.lib;ode_single.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>../../bin/CRCore.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\CRCore.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\crcore\crAITaskManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crAlphaFunc.cpp" />
+    <ClCompile Include="..\..\src\crcore\crAnimationPath.cpp" />
+    <ClCompile Include="..\..\src\crcore\crArgumentParser.cpp" />
+    <ClCompile Include="..\..\src\crcore\crArray.cpp" />
+    <ClCompile Include="..\..\src\crcore\crAudioStream.cpp" />
+    <ClCompile Include="..\..\src\crcore\crAutoTransform.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBase.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBillboard.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBlendColor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBlendEquation.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBlendFunc.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBlockDetectThread.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBlowFish.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBoundingBox.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBoundingSphere.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBrain.cpp" />
+    <ClCompile Include="..\..\src\crcore\crBufferObject.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCalcNodeParentsMatrixVisitor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCameraNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCameraView.cpp" />
+    <ClCompile Include="..\..\src\crcore\crClampColor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crClearNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crClipNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crClipPlane.cpp" />
+    <ClCompile Include="..\..\src\crcore\crClusterCullingCallback.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCollideCallback.cpp" />
+    <ClCompile Include="..\..\src\crcore\crColorMask.cpp" />
+    <ClCompile Include="..\..\src\crcore\crColorMatrix.cpp" />
+    <ClCompile Include="..\..\src\crcore\crConvexPlanarOccluder.cpp" />
+    <ClCompile Include="..\..\src\crcore\crConvexPlanarPolygon.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCoordinateSystemNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCopyOp.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCullFace.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCullingSet.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCullSettings.cpp" />
+    <ClCompile Include="..\..\src\crcore\crCullStack.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDataManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDB.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDepth.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDisplaySettings.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDOFTransform.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDrawable.cpp" />
+    <ClCompile Include="..\..\src\crcore\crDrawPixels.cpp" />
+    <ClCompile Include="..\..\src\crcore\crEffectSequenceManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crEnvironmentManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crEventCallbackManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crEventGroup.cpp" />
+    <ClCompile Include="..\..\src\crcore\crEventMsg.cpp" />
+    <ClCompile Include="..\..\src\crcore\crFilterRenderManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crFog.cpp" />
+    <ClCompile Include="..\..\src\crcore\crFrameBufferObject.cpp" />
+    <ClCompile Include="..\..\src\crcore\crFrameStamp.cpp" />
+    <ClCompile Include="..\..\src\crcore\crFrontFace.cpp" />
+    <ClCompile Include="..\..\src\crcore\crGeometry.cpp" />
+    <ClCompile Include="..\..\src\crcore\crGraphicsContext.cpp" />
+    <ClCompile Include="..\..\src\crcore\crGraphicsThread.cpp" />
+    <ClCompile Include="..\..\src\crcore\crGroup.cpp" />
+    <ClCompile Include="..\..\src\crcore\crHandleManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crHint.cpp" />
+    <ClCompile Include="..\..\src\crcore\crImage.cpp" />
+    <ClCompile Include="..\..\src\crcore\crImageSequence.cpp" />
+    <ClCompile Include="..\..\src\crcore\crImageStream.cpp" />
+    <ClCompile Include="..\..\src\crcore\crImageUtils.cpp" />
+    <ClCompile Include="..\..\src\crcore\crIntersectVisitor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crKdTree.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLight.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLightModel.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLightSource.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLightSourceManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLineSegment.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLineStipple.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLineWidth.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLod.cpp" />
+    <ClCompile Include="..\..\src\crcore\crLogicOp.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMaterial.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMaterialStateSetManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMatrixd.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMatrixf.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMatrixTransform.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMultisample.cpp" />
+    <ClCompile Include="..\..\src\crcore\crMultiSwitch.cpp" />
+    <ClCompile Include="..\..\src\crcore\crNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crNodeCallback.cpp" />
+    <ClCompile Include="..\..\src\crcore\crNodeTrackerCallback.cpp" />
+    <ClCompile Include="..\..\src\crcore\crNodeVisitor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crNotify.cpp" />
+    <ClCompile Include="..\..\src\crcore\crObject.cpp" />
+    <ClCompile Include="..\..\src\crcore\crOccluderNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPagedLOD.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPoint.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPointSprite.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPolygonMode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPolygonOffset.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPolygonStipple.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPositionAttitudeTransform.cpp" />
+    <ClCompile Include="..\..\src\crcore\crPrimitive.cpp" />
+    <ClCompile Include="..\..\src\crcore\crProgram.cpp" />
+    <ClCompile Include="..\..\src\crcore\crProjection.cpp" />
+    <ClCompile Include="..\..\src\crcore\crProxyNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crQuat.cpp" />
+    <ClCompile Include="..\..\src\crcore\crRenderToTexture.cpp" />
+    <ClCompile Include="..\..\src\crcore\crRenderToTextureManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crScissor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crSearchNodeBYNameVisitor.cpp" />
+    <ClCompile Include="..\..\src\crcore\crSequence.cpp" />
+    <ClCompile Include="..\..\src\crcore\crShadeModel.cpp" />
+    <ClCompile Include="..\..\src\crcore\crShader.cpp" />
+    <ClCompile Include="..\..\src\crcore\crShaderManager.cpp" />
+    <ClCompile Include="..\..\src\crcore\crShadowVolumeOccluder.cpp" />
+    <ClCompile Include="..\..\src\crcore\crShape.cpp" />
+    <ClCompile Include="..\..\src\crcore\crShapeDrawable.cpp" />
+    <ClCompile Include="..\..\src\crcore\crState.cpp" />
+    <ClCompile Include="..\..\src\crcore\crStateAttribute.cpp" />
+    <ClCompile Include="..\..\src\crcore\crStateSet.cpp" />
+    <ClCompile Include="..\..\src\crcore\crStatistics.cpp" />
+    <ClCompile Include="..\..\src\crcore\crStencil.cpp" />
+    <ClCompile Include="..\..\src\crcore\crStencilTwoSided.cpp" />
+    <ClCompile Include="..\..\src\crcore\crStreamBuf.cpp" />
+    <ClCompile Include="..\..\src\crcore\crSwitch.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexEnv.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexEnvCombine.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexEnvFilter.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexGen.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexGenNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexMat.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexture.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexture1D.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexture2D.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexture2DArray.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexture2DMultisample.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTexture3D.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTextureCubeMap.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTextureRectangle.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTimer.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTransferFunction.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTransform.cpp" />
+    <ClCompile Include="..\..\src\crcore\crTraverseStringNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\crUniform.cpp" />
+    <ClCompile Include="..\..\src\crcore\crUniversalHandles.cpp" />
+    <ClCompile Include="..\..\src\crcore\crViewport.cpp" />
+    <ClCompile Include="..\..\src\crcore\crWidgetNode.cpp" />
+    <ClCompile Include="..\..\src\crcore\dxtctool.cpp" />
+    <ClCompile Include="..\..\include\crgl\GL2Extensions.cpp" />
+    <ClCompile Include="..\..\include\crgl\GLExtensions.cpp" />
+    <ClCompile Include="..\..\src\crcore\Referenced.cpp" />
+    <ClCompile Include="..\..\src\crcore\thread\crCriticalMutex.cpp" />
+    <ClCompile Include="..\..\src\crcore\thread\crWIN32Condition.cpp" />
+    <ClCompile Include="..\..\src\crcore\thread\crWin32Mutex.cpp" />
+    <ClCompile Include="..\..\src\crcore\thread\crWin32Thread.cpp" />
+    <ClCompile Include="..\..\src\crcore\thread\crWin32ThreadBarrier.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\crcore\crBlockDetectThread.h" />
+    <ClInclude Include="..\..\include\crcore\crCalcNodeParentsMatrixVisitor.h" />
+    <ClInclude Include="..\..\include\crcore\crStatistics.h" />
+    <ClInclude Include="..\..\include\crcore\thread\crCriticalMutex.h" />
+    <ClInclude Include="..\..\src\crcore\crBlowFish.h" />
+    <ClInclude Include="..\..\src\crcore\crEndian.h" />
+    <ClInclude Include="..\..\src\crcore\thread\crHandleHolder.h" />
+    <ClInclude Include="..\..\src\crcore\thread\crWin32BarrierPrivateData.h" />
+    <ClInclude Include="..\..\src\crcore\thread\crWin32Condition.h" />
+    <ClInclude Include="..\..\src\crcore\thread\crWin32ConditionPrivateData.h" />
+    <ClInclude Include="..\..\src\crcore\thread\crWin32MutexPrivateData.h" />
+    <ClInclude Include="..\..\src\crcore\thread\crWin32ThreadPrivateData.h" />
+    <ClInclude Include="..\..\include\crcore\buffered_value.h" />
+    <ClInclude Include="..\..\include\crcore\crAITaskManager.h" />
+    <ClInclude Include="..\..\include\crcore\crAlphaFunc.h" />
+    <ClInclude Include="..\..\include\crcore\crAnimationPath.h" />
+    <ClInclude Include="..\..\include\crcore\crArgumentParser.h" />
+    <ClInclude Include="..\..\include\crcore\crArray.h" />
+    <ClInclude Include="..\..\include\crcore\crAutoTransform.h" />
+    <ClInclude Include="..\..\include\crcore\crBase.h" />
+    <ClInclude Include="..\..\include\crcore\crBillboard.h" />
+    <ClInclude Include="..\..\include\crcore\crBlendColor.h" />
+    <ClInclude Include="..\..\include\crcore\crBlendEquation.h" />
+    <ClInclude Include="..\..\include\crcore\crBlendFunc.h" />
+    <ClInclude Include="..\..\include\crcore\crBoundingBox.h" />
+    <ClInclude Include="..\..\include\crcore\crBoundingSphere.h" />
+    <ClInclude Include="..\..\include\crcore\crBoundsChecking.h" />
+    <ClInclude Include="..\..\include\crcore\crBrain.h" />
+    <ClInclude Include="..\..\include\crcore\crBufferObject.h" />
+    <ClInclude Include="..\..\include\crcore\crCameraNode.h" />
+    <ClInclude Include="..\..\include\crcore\crCameraView.h" />
+    <ClInclude Include="..\..\include\crcore\crClampColor.h" />
+    <ClInclude Include="..\..\include\crcore\crClearNode.h" />
+    <ClInclude Include="..\..\include\crcore\crClipNode.h" />
+    <ClInclude Include="..\..\include\crcore\crClipPlane.h" />
+    <ClInclude Include="..\..\include\crcore\crClusterCullingCallback.h" />
+    <ClInclude Include="..\..\include\crcore\crCollideCallback.h" />
+    <ClInclude Include="..\..\include\crcore\crColorMask.h" />
+    <ClInclude Include="..\..\include\crcore\crColorMatrix.h" />
+    <ClInclude Include="..\..\include\crcore\crConvexPlanarOccluder.h" />
+    <ClInclude Include="..\..\include\crcore\crConvexPlanarPolygon.h" />
+    <ClInclude Include="..\..\include\crcore\crCoordinateSystemNode.h" />
+    <ClInclude Include="..\..\include\crcore\crCopyOp.h" />
+    <ClInclude Include="..\..\include\crcore\crCullFace.h" />
+    <ClInclude Include="..\..\include\crcore\crCullingSet.h" />
+    <ClInclude Include="..\..\include\crcore\crCullSettings.h" />
+    <ClInclude Include="..\..\include\crcore\crCullStack.h" />
+    <ClInclude Include="..\..\include\crcore\crDataManager.h" />
+    <ClInclude Include="..\..\include\crcore\crDB.h" />
+    <ClInclude Include="..\..\include\crcore\crDepth.h" />
+    <ClInclude Include="..\..\include\crcore\crDisplaySettings.h" />
+    <ClInclude Include="..\..\include\crcore\crDOFTransform.h" />
+    <ClInclude Include="..\..\include\crcore\crDrawable.h" />
+    <ClInclude Include="..\..\include\crcore\crDrawPixels.h" />
+    <ClInclude Include="..\..\include\crcore\crEffectSequenceManager.h" />
+    <ClInclude Include="..\..\include\crcore\crEnvironmentManager.h" />
+    <ClInclude Include="..\..\include\crcore\crEventCallbackManager.h" />
+    <ClInclude Include="..\..\include\crcore\crEventGroup.h" />
+    <ClInclude Include="..\..\include\crcore\crEventMsg.h" />
+    <ClInclude Include="..\..\include\crcore\crEventMsgVisitor.h" />
+    <ClInclude Include="..\..\include\crcore\crExport.h" />
+    <ClInclude Include="..\..\include\crcore\crFilterRenderManager.h" />
+    <ClInclude Include="..\..\include\crcore\crFog.h" />
+    <ClInclude Include="..\..\include\crcore\crFrameBufferObject.h" />
+    <ClInclude Include="..\..\include\crcore\crFrameStamp.h" />
+    <ClInclude Include="..\..\include\crcore\crFrontFace.h" />
+    <ClInclude Include="..\..\include\crcore\crGeometry.h" />
+    <ClInclude Include="..\..\include\crcore\crGraphicsContext.h" />
+    <ClInclude Include="..\..\include\crcore\crGraphicsThread.h" />
+    <ClInclude Include="..\..\include\crcore\crGroup.h" />
+    <ClInclude Include="..\..\include\crcore\crHandleManager.h" />
+    <ClInclude Include="..\..\include\crcore\crHint.h" />
+    <ClInclude Include="..\..\include\crcore\crImage.h" />
+    <ClInclude Include="..\..\include\crcore\crImageSequence.h" />
+    <ClInclude Include="..\..\include\crcore\crImageStream.h" />
+    <ClInclude Include="..\..\include\crcore\crImageUtils.h" />
+    <ClInclude Include="..\..\include\crcore\crIntersectVisitor.h" />
+    <ClInclude Include="..\..\include\crcore\crKdTree.h" />
+    <ClInclude Include="..\..\include\crcore\crLight.h" />
+    <ClInclude Include="..\..\include\crcore\crLightModel.h" />
+    <ClInclude Include="..\..\include\crcore\crLightSource.h" />
+    <ClInclude Include="..\..\include\crcore\crLightSourceManager.h" />
+    <ClInclude Include="..\..\include\crcore\crLineSegment.h" />
+    <ClInclude Include="..\..\include\crcore\crLineStipple.h" />
+    <ClInclude Include="..\..\include\crcore\crLineWidth.h" />
+    <ClInclude Include="..\..\include\crcore\crLod.h" />
+    <ClInclude Include="..\..\include\crcore\crLogicOp.h" />
+    <ClInclude Include="..\..\include\crcore\crMaterial.h" />
+    <ClInclude Include="..\..\include\crcore\crMaterialStateSetManager.h" />
+    <ClInclude Include="..\..\include\crcore\crMath.h" />
+    <ClInclude Include="..\..\include\crcore\crMatrix.h" />
+    <ClInclude Include="..\..\include\crcore\crMatrixd.h" />
+    <ClInclude Include="..\..\include\crcore\crMatrixf.h" />
+    <ClInclude Include="..\..\include\crcore\crMatrixTransform.h" />
+    <ClInclude Include="..\..\include\crcore\crMultisample.h" />
+    <ClInclude Include="..\..\include\crcore\crMultiSwitch.h" />
+    <ClInclude Include="..\..\include\crcore\crNode.h" />
+    <ClInclude Include="..\..\include\crcore\crNodeCallback.h" />
+    <ClInclude Include="..\..\include\crcore\crNodeTrackerCallback.h" />
+    <ClInclude Include="..\..\include\crcore\crNodeVisitor.h" />
+    <ClInclude Include="..\..\include\crcore\crNotify.h" />
+    <ClInclude Include="..\..\include\crcore\crObject.h" />
+    <ClInclude Include="..\..\include\crcore\crOccluderNode.h" />
+    <ClInclude Include="..\..\include\crcore\crPagedLOD.h" />
+    <ClInclude Include="..\..\include\crcore\crPlane.h" />
+    <ClInclude Include="..\..\include\crcore\crPoint.h" />
+    <ClInclude Include="..\..\include\crcore\crPointSprite.h" />
+    <ClInclude Include="..\..\include\crcore\crPolygonMode.h" />
+    <ClInclude Include="..\..\include\crcore\crPolygonOffset.h" />
+    <ClInclude Include="..\..\include\crcore\crPolygonStipple.h" />
+    <ClInclude Include="..\..\include\crcore\crPolytope.h" />
+    <ClInclude Include="..\..\include\crcore\crPositionAttitudeTransform.h" />
+    <ClInclude Include="..\..\include\crcore\crPrimitive.h" />
+    <ClInclude Include="..\..\include\crcore\crProgram.h" />
+    <ClInclude Include="..\..\include\crcore\crProjection.h" />
+    <ClInclude Include="..\..\include\crcore\crProxyNode.h" />
+    <ClInclude Include="..\..\include\crcore\crQuat.h" />
+    <ClInclude Include="..\..\include\crcore\crRange.h" />
+    <ClInclude Include="..\..\include\crcore\crRenderToTexture.h" />
+    <ClInclude Include="..\..\include\crcore\crRenderToTextureManager.h" />
+    <ClInclude Include="..\..\include\crcore\crScissor.h" />
+    <ClInclude Include="..\..\include\crcore\crSearchNodeBYNameVisitor.h" />
+    <ClInclude Include="..\..\include\crcore\crSequence.h" />
+    <ClInclude Include="..\..\include\crcore\crShadeModel.h" />
+    <ClInclude Include="..\..\include\crcore\crShader.h" />
+    <ClInclude Include="..\..\include\crcore\crShaderManager.h" />
+    <ClInclude Include="..\..\include\crcore\crShadowVolumeOccluder.h" />
+    <ClInclude Include="..\..\include\crcore\crShape.h" />
+    <ClInclude Include="..\..\include\crcore\crShapeDrawable.h" />
+    <ClInclude Include="..\..\include\crcore\crState.h" />
+    <ClInclude Include="..\..\include\crcore\crStateAttribute.h" />
+    <ClInclude Include="..\..\include\crcore\crStateSet.h" />
+    <ClInclude Include="..\..\include\crcore\crStencil.h" />
+    <ClInclude Include="..\..\include\crcore\crStencilTwoSided.h" />
+    <ClInclude Include="..\..\include\crcore\crStreamBuf.h" />
+    <ClInclude Include="..\..\include\crcore\crSwitch.h" />
+    <ClInclude Include="..\..\include\crcore\crTexEnv.h" />
+    <ClInclude Include="..\..\include\crcore\crTexEnvCombine.h" />
+    <ClInclude Include="..\..\include\crcore\crTexEnvFilter.h" />
+    <ClInclude Include="..\..\include\crcore\crTexGen.h" />
+    <ClInclude Include="..\..\include\crcore\crTexGenNode.h" />
+    <ClInclude Include="..\..\include\crcore\crTexMat.h" />
+    <ClInclude Include="..\..\include\crcore\crTexture.h" />
+    <ClInclude Include="..\..\include\crcore\crTexture1D.h" />
+    <ClInclude Include="..\..\include\crcore\crTexture2D.h" />
+    <ClInclude Include="..\..\include\crcore\crTexture2DArray.h" />
+    <ClInclude Include="..\..\include\crcore\crTexture2DMultisample.h" />
+    <ClInclude Include="..\..\include\crcore\crTexture3D.h" />
+    <ClInclude Include="..\..\include\crcore\crTextureCubeMap.h" />
+    <ClInclude Include="..\..\include\crcore\crTextureRectangle.h" />
+    <ClInclude Include="..\..\include\crcore\crTimer.h" />
+    <ClInclude Include="..\..\include\crcore\crTransferFunction.h" />
+    <ClInclude Include="..\..\include\crcore\crTransform.h" />
+    <ClInclude Include="..\..\include\crcore\crTraverseStringNode.h" />
+    <ClInclude Include="..\..\include\crcore\crTriangleFunctor.h" />
+    <ClInclude Include="..\..\include\crcore\crTriangleIndexFunctor.h" />
+    <ClInclude Include="..\..\include\crcore\crUniform.h" />
+    <ClInclude Include="..\..\include\crcore\crUniversalHandles.h" />
+    <ClInclude Include="..\..\include\crcore\crVector2.h" />
+    <ClInclude Include="..\..\include\crcore\crVector3.h" />
+    <ClInclude Include="..\..\include\crcore\crVector4.h" />
+    <ClInclude Include="..\..\include\crcore\crViewport.h" />
+    <ClInclude Include="..\..\include\crcore\crWchMsg.h" />
+    <ClInclude Include="..\..\include\crcore\crWidgetNode.h" />
+    <ClInclude Include="..\..\include\crcore\dxtctool.h" />
+    <ClInclude Include="..\..\include\crcore\fast_back_stack.h" />
+    <ClInclude Include="..\..\include\crgl\GL2Extensions.h" />
+    <ClInclude Include="..\..\include\crgl\GLExtensions.h" />
+    <ClInclude Include="..\..\include\crcore\io_utils.h" />
+    <ClInclude Include="..\..\include\crcore\ref_ptr.h" />
+    <ClInclude Include="..\..\include\crcore\Referenced.h" />
+    <ClInclude Include="..\..\include\crcore\RefNodePath.h" />
+    <ClInclude Include="..\..\include\crcore\thread\crBarrier.h" />
+    <ClInclude Include="..\..\include\crcore\thread\crCondition.h" />
+    <ClInclude Include="..\..\include\crcore\thread\crMutex.h" />
+    <ClInclude Include="..\..\include\crcore\thread\crScopedLock.h" />
+    <ClInclude Include="..\..\include\crcore\thread\crThread.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crAlphaFuncDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crClipPlaneDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crColorMaskDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crColorMatrixDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crCullFaceDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crDepthDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crDrawableDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crFogDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crFrontFaceDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crGeometryDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crHintDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crLightDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crLightModelDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crLineStippleDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crLineWidthDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crLogicOpDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crMaterialDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crPointDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crPointSpriteDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crPolygonModeDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crPolygonOffsetDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crPolygonStippleDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crPrimitiveDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crSceneViewDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crShadeModelDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crShapeDrawableDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crStateDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crStencilDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crTexEnvCombineDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crTexEnvDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crTexEnvFilterDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crTexGenDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crTexMatDrv.h" />
+    <ClInclude Include="..\..\src\Driver\GLDrv\crViewPortDrv.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

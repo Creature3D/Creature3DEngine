@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="JXJRelease|Win32">
+      <Configuration>JXJRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RDebug|Win32">
+      <Configuration>RDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ALLX|Win32">
+      <Configuration>Release_ALLX</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ALL|Win32">
+      <Configuration>Release_ALL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DX|Win32">
+      <Configuration>Release_DX</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_D|Win32">
+      <Configuration>Release_D</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="SSDDebug|Win32">
+      <Configuration>SSDDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="SSDRelease|Win32">
+      <Configuration>SSDRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{738FB3E0-E483-4C7E-ACFD-5420DF4D1115}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>Plugin_cre</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>D:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'">
+    <OutDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'">
+    <OutDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./;../../../include/plugin;../../../include;../../../src;../../../3rdparty/include;..\..\..\gnelib-0.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRAId.lib;CRALd.lib;CRCored.lib;CRUtild.lib;CRGLTextd.lib;CRIOManagerd.lib;CRPhysicsd.lib;OpenThreadsWin32d.lib;CREventExtendd.lib;CRGUId.lib;rcfgscriptd.lib;rvrutilsd.lib;ReplicantBodyd.lib;CRParticled.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/Plugin_cred.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Plugin ive.pdb</ProgramDatabaseFile>
+      <SubSystem>NotSet</SubSystem>
+      <ImportLibrary>..\..\..\lib\Plugin_cred.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRAI.lib;CRAL.lib;CRCore.lib;CRUtil.lib;CRGLText.lib;CRIOManager.lib;CRPhysics.lib;OpenThreadsWin32.lib;CREventExtend.lib;CRGUI.lib;rcfgscript.lib;rvrutils.lib;ReplicantBody.lib;CRParticle.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/Plugin_cre.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\..\lib\Plugin_cre.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALL|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../src/plugin;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRAL.lib;CRCore.lib;CRUtil.lib;CRText.lib;CRIOManager.lib;CRPhysics.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;vrutils.lib;ReplicantBody.lib;CRParticle.lib;CRTerrain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../src/plugin;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>
+      </StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCore.lib;CRUtil.lib;CRText.lib;CRIOManager.lib;CRPhysics.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;vrutils.lib;ReplicantBody.lib;CRParticle.lib;CRTerrain.lib;CRNetApp.lib;CRDownload.lib;CRUI.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../src/plugin;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>
+      </StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCore.lib;CRUtil.lib;CRText.lib;CRIOManager.lib;CRPhysics.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;vrutils.lib;ReplicantBody.lib;CRParticle.lib;CRTerrain.lib;CRNetApp.lib;CRDownload.lib;CRUI.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;../../../src/plugin;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRALd.lib;CRCored.lib;CRUtild.lib;CRTextd.lib;CRIOManagerd.lib;CRPhysicsd.lib;CREncapsulationd.lib;CRGUId.lib;ConfigScriptd.lib;vrutilsd.lib;ReplicantBodyd.lib;CRParticled.lib;CRTerraind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;../../../src/plugin;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCored.lib;CRUtild.lib;CRTextd.lib;CRIOManagerd.lib;CRPhysicsd.lib;CREncapsulationd.lib;CRGUId.lib;ConfigScriptd.lib;vrutilsd.lib;ReplicantBodyd.lib;CRParticled.lib;CRTerraind.lib;CRNetAppd.lib;CRDownloadd.lib;CRUId.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\GameClient\bin\
+copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Game\bin\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;../../../src/plugin;..\..\..\ode-0.11.1\include;..\..\..\ode-0.11.1\ode\src;..\..\..\include\AL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRALd.lib;CRCored.lib;CRUtild.lib;CRGLTextd.lib;CRIOManagerd.lib;CRPhysicsd.lib;OpenThreadsWin32d.lib;CREncapsulationd.lib;CRGUId.lib;rcfgscriptd.lib;rvrutilsd.lib;ReplicantBodyd.lib;CRParticled.lib;CRRenderd.lib;CRTerraind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/Plugin_cred.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary>..\..\..\lib\Plugin_cred.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;../../../src/plugin;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRALd.lib;CRCored.lib;CRUtild.lib;CRTextd.lib;CRIOManagerd.lib;CRPhysicsd.lib;OpenThreadsWin32d.lib;CREncapsulationd.lib;CRGUId.lib;rcfgscriptd.lib;rvrutilsd.lib;ReplicantBodyd.lib;CRParticled.lib;CRTerraind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/Plugin_cred.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary>..\..\..\lib\Plugin_cred.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../src/plugin;..\..\..\include\AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRAL.lib;CRCore.lib;CRUtil.lib;CRText.lib;CRIOManager.lib;CRPhysics.lib;OpenThreadsWin32.lib;CREncapsulation.lib;CRGUI.lib;rcfgscript.lib;rvrutils.lib;ReplicantBody.lib;CRParticle.lib;CRTerrain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/Plugin_cre.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\..\lib\Plugin_cre.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crAlphaFunc.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crAnimationPath.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crAnimationPathCallback.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crBase.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crBillboard.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crBlendFunc.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crBrain.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crCameraNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crCameraView.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crClipNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crClipPlane.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crClusterCullingCallback.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crCollideCallback.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crConvexPlanarOccluder.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crConvexPlanarPolygon.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crCoordinateSystemNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crCullFace.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDataInputStream.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDataOutputStream.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDB.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDepth.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDOFTransform.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDrawable.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDrawArrayLengths.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDrawArrays.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDrawElementsUByte.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDrawElementsUInt.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crDrawElementsUShort.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crEllipsoidModel.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crEventGroup.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crEventMsg.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crException.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crExternFileLoadVisitor.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crFog.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crFrontFace.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crGeometry.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crGroup.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crImage.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crJoint.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crLight.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crLightModel.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crLightSource.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crLineWidth.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crLod.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crMaterial.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crMatrixTransform.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crMatterGroup.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crMatterObject.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crMultiSwitch.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crObject.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crOccluderNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crPagedLOD.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crParticleEffect.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crPoint.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crPolygonMode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crPolygonOffset.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crPositionAttitudeTransform.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crPrimitive.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crProgram.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crProxyNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crReaderWriterCRE.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crSequence.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crShadeModel.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crShader.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crShape.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crShapeDrawable.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crStateSet.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crSwitch.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTerrainTile.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexEnv.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexEnvCombine.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexGen.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexGenNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexMat.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crText.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexture.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexture1D.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexture2D.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTexture3D.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTextureCubeMap.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTransform.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crTraverseStringNode.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crUniform.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin cre\crWidgetNode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crAlphaFunc.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crAnimationPath.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crAnimationPathCallback.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crBase.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crBillboard.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crBlendFunc.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crBrain.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crCameraNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crCameraView.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crClipNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crClipPlane.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crClusterCullingCallback.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crCollideCallback.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crConvexPlanarOccluder.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crConvexPlanarPolygon.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crCoordinateSystemNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crCullFace.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDataInputStream.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDataOutputStream.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDataTypeSize.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDB.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDepth.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDOFTransform.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDrawable.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDrawArrayLengths.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDrawArrays.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDrawElementsUByte.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDrawElementsUInt.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crDrawElementsUShort.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crEllipsoidModel.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crEventGroup.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crEventMsg.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crException.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crExternFileLoadVisitor.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crFog.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crFrontFace.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crGeometry.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crGroup.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crImage.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crJoint.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crLight.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crLightModel.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crLightSource.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crLineWidth.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crLod.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crMaterial.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crMatrixTransform.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crMatterGroup.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crMatterObject.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crMultiSwitch.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crObject.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crOccluderNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crPagedLOD.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crParticleEffect.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crPoint.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crPolygonMode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crPolygonOffset.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crPositionAttitudeTransform.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crPrimitive.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crProgram.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crProxyNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crReadWrite.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crSequence.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crShadeModel.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crShader.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crShape.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crShapeDrawable.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crStateSet.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crSwitch.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTerrainTile.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexEnv.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexEnvCombine.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexGen.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexGenNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexMat.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crText.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexture.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexture1D.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexture2D.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTexture3D.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTextureCubeMap.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTransform.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crTraverseStringNode.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crUniform.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin cre\crWidgetNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ConfigScript\ConfigScript.vcxproj">
+      <Project>{f4b6ac9f-790d-4636-97e0-c9b51830c6e9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRCore\CRCore.vcxproj">
+      <Project>{ffc2087a-7859-47b1-a7a0-da98fd1aff32}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CREncapsulation\CREncapsulation.vcxproj">
+      <Project>{56cdd93b-4a8d-4633-b514-88822a1d3586}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRGUI\CRGUI.vcxproj">
+      <Project>{144ca0ce-67af-464b-8c88-5537afa22ce6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRIOManager\CRIOManager.vcxproj">
+      <Project>{fd8131ad-6eef-4ba8-a39a-3f0eea93d5a8}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRParticle\CRParticle.vcxproj">
+      <Project>{1e4885e4-b662-434a-a67f-dc04671b8385}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRProducer\CRProducer.vcxproj">
+      <Project>{f23047e2-00bc-4458-81c0-e5852de3771b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRTerrain\CRTerrain.vcxproj">
+      <Project>{c091ba35-9ed8-4630-866f-7e5667613ec8}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRText\CRText.vcxproj">
+      <Project>{79da265d-ebf5-47fd-99b4-dd00f217d9e1}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRUtil\CRUtil.vcxproj">
+      <Project>{9c2afbe1-78cc-4824-bbdf-885f8c84706b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ReplicantBody\ReplicantBody.vcxproj">
+      <Project>{425382f3-f108-412a-bfb7-6f48acb5bdc2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\vrutils\vrutils.vcxproj">
+      <Project>{0cff4640-3e9a-408d-ba43-d691c339c195}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="Plugin cre"
+	ProjectGUID="{738FB3E0-E483-4C7E-ACFD-5420DF4D1115}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="./;../../../include/plugin;../../../include;../../../src;../../../3rdparty/include;&quot;..\..\..\gnelib-0.70\include&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAId.lib CRALd.lib CRCored.lib CRUtild.lib CRGLTextd.lib CRIOManagerd.lib CRPhysicsd.lib OpenThreadsWin32d.lib CREventExtendd.lib CRGUId.lib rcfgscriptd.lib rvrutilsd.lib ReplicantBodyd.lib CRParticled.lib"
+				OutputFile="../../../bin/Plugin_cred.dll"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile="$(OutDir)/Plugin ive.pdb"
+				SubSystem="0"
+				ImportLibrary="..\..\..\lib\Plugin_cred.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="FALSE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="TRUE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="TRUE"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAI.lib CRAL.lib CRCore.lib CRUtil.lib CRGLText.lib CRIOManager.lib CRPhysics.lib OpenThreadsWin32.lib CREventExtend.lib CRGUI.lib rcfgscript.lib rvrutils.lib ReplicantBody.lib CRParticle.lib"
+				OutputFile="../../../bin/Plugin_cre.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="FALSE"
+				SubSystem="0"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="..\..\..\lib\Plugin_cre.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_ALL|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="3"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;&quot;..\..\..\gnelib-0.70\include&quot;;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;;../../../src/plugin;..\..\..\include\AL;&quot;..\..\..\cal3d-0.11.0\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="TRUE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAL.lib CRCore.lib CRUtil.lib CRText.lib CRIOManager.lib CRPhysics.lib CREncapsulation.lib CRGUI.lib rcfgscript.lib rvrutils.lib ReplicantBody.lib CRParticle.lib CRTerrain.lib"
+				OutputFile="../../../bin/Plugin_cre.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="FALSE"
+				SubSystem="0"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="..\..\..\lib\Plugin_cre.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_D|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;&quot;..\..\..\gnelib-0.70\include&quot;;../../../src/plugin;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;;..\..\..\include\AL;&quot;..\..\..\cal3d-0.11.0\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRALd.lib CRCored.lib CRUtild.lib CRTextd.lib CRIOManagerd.lib CRPhysicsd.lib CREncapsulationd.lib CRGUId.lib rcfgscriptd.lib rvrutilsd.lib ReplicantBodyd.lib CRParticled.lib CRTerraind.lib"
+				OutputFile="../../../bin/Plugin_cred.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="TRUE"
+				SubSystem="0"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				ImportLibrary="..\..\..\lib\Plugin_cred.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="RDebug|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;&quot;..\..\..\gnelib-0.70\include&quot;;../../../src/plugin;&quot;..\..\..\ode-0.11.1\include&quot;;&quot;..\..\..\ode-0.11.1\ode\src&quot;;..\..\..\include\AL"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRALd.lib CRCored.lib CRUtild.lib CRGLTextd.lib CRIOManagerd.lib CRPhysicsd.lib OpenThreadsWin32d.lib CREncapsulationd.lib CRGUId.lib rcfgscriptd.lib rvrutilsd.lib ReplicantBodyd.lib CRParticled.lib CRRenderd.lib CRTerraind.lib"
+				OutputFile="../../../bin/Plugin_cred.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="TRUE"
+				SubSystem="0"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				ImportLibrary="..\..\..\lib\Plugin_cred.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_DX|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				GlobalOptimizations="FALSE"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="0"
+				OmitFramePointers="FALSE"
+				EnableFiberSafeOptimizations="FALSE"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="FALSE"
+				AdditionalIncludeDirectories="../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;&quot;..\..\..\gnelib-0.70\include&quot;;../../../src/plugin;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;;..\..\..\include\AL;&quot;..\..\..\cal3d-0.11.0\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="FALSE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRALd.lib CRCored.lib CRUtild.lib CRTextd.lib CRIOManagerd.lib CRPhysicsd.lib OpenThreadsWin32d.lib CREncapsulationd.lib CRGUId.lib rcfgscriptd.lib rvrutilsd.lib ReplicantBodyd.lib CRParticled.lib CRTerraind.lib"
+				OutputFile="../../../bin/Plugin_cred.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="TRUE"
+				SubSystem="0"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+				ImportLibrary="..\..\..\lib\Plugin_cred.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release_ALLX|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="TRUE"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
+				EnableFiberSafeOptimizations="TRUE"
+				OptimizeForProcessor="3"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="../../../include/plugin;./;../../../src;../../../include;../../../3rdparty/include;&quot;..\..\..\gnelib-0.70\include&quot;;&quot;..\..\..\ode-0.12\include&quot;;&quot;..\..\..\ode-0.12\ode\src&quot;;../../../src/plugin;..\..\..\include\AL;&quot;..\..\..\cal3d-0.11.0\src&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL"
+				StringPooling="TRUE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="TRUE"
+				EnableEnhancedInstructionSet="1"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CRAL.lib CRCore.lib CRUtil.lib CRText.lib CRIOManager.lib CRPhysics.lib OpenThreadsWin32.lib CREncapsulation.lib CRGUI.lib rcfgscript.lib rvrutils.lib ReplicantBody.lib CRParticle.lib CRTerrain.lib"
+				OutputFile="../../../bin/Plugin_cre.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../../lib;..\..\..\3rdparty\lib\"
+				IgnoreDefaultLibraryNames="LIBC"
+				GenerateDebugInformation="FALSE"
+				SubSystem="0"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="..\..\..\lib\Plugin_cre.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="源文件"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crAlphaFunc.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crAnimationPath.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crAnimationPathCallback.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crBase.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crBillboard.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crBlendFunc.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crBrain.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crCameraNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crCameraView.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crClipNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crClipPlane.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crClusterCullingCallback.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crCollideCallback.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crConvexPlanarOccluder.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crConvexPlanarPolygon.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crCoordinateSystemNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crCullFace.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDataInputStream.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDataOutputStream.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDB.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDepth.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDOFTransform.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDrawable.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDrawArrayLengths.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDrawArrays.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDrawElementsUByte.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDrawElementsUInt.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crDrawElementsUShort.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crEllipsoidModel.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crEventGroup.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crEventMsg.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crException.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crExternFileLoadVisitor.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crFog.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crFrontFace.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crGeometry.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crGroup.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crImage.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crJoint.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crLight.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crLightModel.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crLightSource.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crLineWidth.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crLod.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crMaterial.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crMatrixTransform.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crMatterGroup.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crMatterObject.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crMultiSwitch.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crObject.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crOccluderNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crPagedLOD.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crParticleEffect.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crPoint.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crPolygonMode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crPolygonOffset.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crPositionAttitudeTransform.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crPrimitive.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crProgram.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crProxyNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crReaderWriterCRE.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crSequence.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crShadeModel.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crShader.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crShape.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crShapeDrawable.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crSoundNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crSoundState.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crStateSet.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crSwitch.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTerrainTile.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexEnv.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexEnvCombine.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexGen.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexGenNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexMat.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crText.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexture.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexture1D.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexture2D.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTexture3D.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTextureCubeMap.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTransform.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crTraverseStringNode.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crUniform.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\src\Plugin\Plugin cre\crWidgetNode.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="头文件"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crAlphaFunc.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crAnimationPath.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crAnimationPathCallback.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crBase.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crBillboard.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crBlendFunc.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crBrain.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crCameraNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crCameraView.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crClipNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crClipPlane.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crClusterCullingCallback.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crCollideCallback.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crConvexPlanarOccluder.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crConvexPlanarPolygon.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crCoordinateSystemNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crCullFace.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDataInputStream.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDataOutputStream.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDataTypeSize.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDB.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDepth.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDOFTransform.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDrawable.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDrawArrayLengths.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDrawArrays.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDrawElementsUByte.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDrawElementsUInt.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crDrawElementsUShort.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crEllipsoidModel.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crEventGroup.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crEventMsg.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crException.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crExternFileLoadVisitor.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crFog.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crFrontFace.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crGeometry.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crGroup.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crImage.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crJoint.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crLight.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crLightModel.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crLightSource.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crLineWidth.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crLod.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crMaterial.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crMatrixTransform.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crMatterGroup.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crMatterObject.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crMultiSwitch.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crObject.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crOccluderNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crPagedLOD.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crParticleEffect.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crPoint.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crPolygonMode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crPolygonOffset.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crPositionAttitudeTransform.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crPrimitive.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crProgram.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crProxyNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crReadWrite.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crSequence.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crShadeModel.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crShader.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crShape.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crShapeDrawable.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crSoundNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crSoundState.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crStateSet.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crSwitch.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTerrainTile.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexEnv.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexEnvCombine.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexGen.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexGenNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexMat.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crText.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexture.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexture1D.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexture2D.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTexture3D.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTextureCubeMap.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTransform.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crTraverseStringNode.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crUniform.h">
+			</File>
+			<File
+				RelativePath="..\..\..\include\Plugin\Plugin cre\crWidgetNode.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="资源文件"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

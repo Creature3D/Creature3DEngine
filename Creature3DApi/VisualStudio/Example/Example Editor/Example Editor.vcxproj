@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="JXJRelease|Win32">
+      <Configuration>JXJRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RDebug|Win32">
+      <Configuration>RDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_ALLX|Win32">
+      <Configuration>Release_ALLX</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DX|Win32">
+      <Configuration>Release_DX</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_D|Win32">
+      <Configuration>Release_D</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="SSDDebug|Win32">
+      <Configuration>SSDDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="SSDRelease|Win32">
+      <Configuration>SSDRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0DA68BA4-F9CF-4C74-815D-6195308E91DD}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Creature3D</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Jiangxingjue</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Jiangxingjue</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'">
+    <OutDir>..\..\..\..\GameClient\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Bin\Creature3Dd</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <EmbedManifest>true</EmbedManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
+    <OutDir>D:\JXJ\trunk\JXJClientCook</OutDir>
+    <IntDir>D:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Bin\Creature3Dd</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <EmbedManifest>true</EmbedManifest>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'">
+    <OutDir>..\..\..\..\GameClient\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Bin\Creature3Dd</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>..\..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Creature3D</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)Example Editor.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Example ModelView.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRAL.lib;CRCore.lib;CRIOManager.lib;CRParticle.lib;CRPhysics.lib;CRProducer.lib;CRUtil.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;openalpp.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;CRText.lib;CRNet.lib;CRNetApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>
+      </StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRParticle.lib;CRPhysics.lib;CRProducer.lib;CRUtil.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;CRText.lib;CRNet.lib;CRSound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>
+      </StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRParticle.lib;CRPhysics.lib;CRProducer.lib;CRUtil.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;CRText.lib;CRNet.lib;CRSound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_D|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRALd.lib;CRCored.lib;CRIOManagerd.lib;CRParticled.lib;CRPhysicsd.lib;CRProducerd.lib;CRUtild.lib;vrutilsd.lib;ReplicantBodyd.lib;cal3d_d.lib;openalppd.lib;CREncapsulationd.lib;CRGUId.lib;ConfigScriptd.lib;CRTextd.lib;CRNetd.lib;CRNetAppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <StackCommitSize>0</StackCommitSize>
+      <LargeAddressAware />
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCored.lib;CRIOManagerd.lib;CRParticled.lib;CRPhysicsd.lib;CRProducerd.lib;CRUtild.lib;vrutilsd.lib;ReplicantBodyd.lib;cal3d_d.lib;CREncapsulationd.lib;CRGUId.lib;ConfigScriptd.lib;CRTextd.lib;CRNetd.lib;CRNetAppd.lib;CRSoundd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <StackCommitSize>0</StackCommitSize>
+      <LargeAddressAware>
+      </LargeAddressAware>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RDebug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.11.1\include;..\..\..\ode-0.11.1\ode\src;../../../include/AL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRAId.lib;CRALd.lib;CRCored.lib;CRIOManagerd.lib;CRParticled.lib;CRPhysicsd.lib;CRProducerd.lib;CRUtild.lib;CRRenderd.lib;rvrutilsd.lib;ReplicantBodyd.lib;OpenThreadsWin32d.lib;cal3d.lib;openalppd.lib;CREncapsulationd.lib;CRGUId.lib;rcfgscriptd.lib;CRGLTextd.lib;CRNetd.lib;CRNetAppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/Creature3Dd.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <StackCommitSize>0</StackCommitSize>
+      <LargeAddressAware />
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DX|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_ACTIVEX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRALd.lib;CRCored.lib;CRIOManagerd.lib;CRParticled.lib;CRPhysicsd.lib;CRProducerd.lib;CRUtild.lib;vrutilsd.lib;ReplicantBodyd.lib;cal3d_d.lib;openalppd.lib;CREncapsulationd.lib;CRGUId.lib;ConfigScriptd.lib;CRTextd.lib;CRNetd.lib;CRNetAppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <StackCommitSize>0</StackCommitSize>
+      <LargeAddressAware />
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <ImportLibrary />
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_ALLX|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_ACTIVEX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRParticle.lib;CRPhysics.lib;CRProducer.lib;CRUtil.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;CRText.lib;CRNet.lib;CRSound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../../lib;..\..\..\cal3d-0.11.0\bin\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary />
+      <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Game\script\AITaskManager.cfg" />
+    <None Include="..\..\..\..\Game\script\CameraManager.cfg" />
+    <None Include="..\..\..\..\Game\script\cursor.cfg" />
+    <None Include="..\..\..\..\Game\script\EffectParticleManager.cfg" />
+    <None Include="..\..\..\..\Game\script\EffectSequenceManager.cfg" />
+    <None Include="..\..\..\..\Game\script\filter.cfg" />
+    <None Include="..\..\..\..\Game\script\Hypertext.cfg" />
+    <None Include="..\..\..\..\Game\script\ImageStreamManager.cfg" />
+    <None Include="..\..\..\..\Game\script\init.cfg" />
+    <None Include="..\..\..\..\Game\script\Leneffect.cfg" />
+    <None Include="..\..\..\..\Game\script\renderToTexture.cfg" />
+    <None Include="..\..\..\..\Game\script\RunGame.cfg" />
+    <None Include="..\..\..\..\Game\script\ShaderManager.cfg" />
+    <None Include="..\..\..\..\Game\script\sound0.cfg" />
+    <None Include="..\..\..\..\Game\script\sound1.cfg" />
+    <None Include="..\..\..\..\Game\script\stage.cfg" />
+    <None Include="..\..\..\..\Game\script\textattr.cfg" />
+    <None Include="..\..\..\..\Game\script\WeaponManager.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\DisplaySetting.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorAttr.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorCamera.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorCharacter.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorDof.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorDrawable.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorLight.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorLoad.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorLod.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorMovies.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorNodeTree.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorPagedLod.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorParticle.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorPostProcess.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorSequence.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorSwitch.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorTerrain.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorUI.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\EditorVolume.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\Emain.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\Esave.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\esc.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\Esplash.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\loading.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\login\Login.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\netgame\GameList.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\netgame\NetNotify.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\Chat.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatCreateGroup.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatGame.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatGroup.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatMain.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatMsg.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatQuery.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatQueryFriend.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatQueryGroup.cfg" />
+    <None Include="..\..\..\..\Game\script\ui\singlegame\singlegame.cfg" />
+    <None Include="..\..\..\..\Game\script\bot\Editor.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\concrete.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\concrete2.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\FAEB_MOAB_B_aircraft.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\FAEB_MOAB_B_fly.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\FAEB_MOAB_B_ground.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\fire.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\fire0.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\ground.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\human_ground_Landfall.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\human_ground_Run.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\leaves.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\M16_fire1.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\SOD_BLG66_B_fly.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\SOD_BLG66_B_ground.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\stone.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\stone2.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\UGB_KAB500KR_B_aircraft.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\UGB_KAB500KR_B_fly.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\UGB_KAB500KR_B_ground.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\wood.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\wood2.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\XMAA_AA12_B_aircraft.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\XMAA_AA12_B_fly.cfg" />
+    <None Include="..\..\..\..\Game\script\Particle\XMAA_AA12_B_ground.cfg" />
+    <None Include="..\..\..\..\Game\script\brain\brain.cfg" />
+    <None Include="..\..\..\..\Game\script\brain\Login.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_cameraview.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_close.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_collidemap.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_exportrtt.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_frame.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_rttmode.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_scroll.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_topview.cfg" />
+    <None Include="..\..\..\..\Game\script\3dui\ui_window.cfg" />
+    <None Include="..\..\..\..\Game\script\EventScript\test.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\gnelib-0.70\gne.vcxproj">
+      <Project>{f5030cde-42c7-499d-befb-2e7af162a1a5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ConfigScript\ConfigScript.vcxproj">
+      <Project>{f4b6ac9f-790d-4636-97e0-c9b51830c6e9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRCore\CRCore.vcxproj">
+      <Project>{ffc2087a-7859-47b1-a7a0-da98fd1aff32}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRDataBase\CRDataBase.vcxproj">
+      <Project>{f6a44743-a627-4826-ac60-9737cc2745e9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CREncapsulation\CREncapsulation.vcxproj">
+      <Project>{56cdd93b-4a8d-4633-b514-88822a1d3586}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRGUI\CRGUI.vcxproj">
+      <Project>{144ca0ce-67af-464b-8c88-5537afa22ce6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRIOManager\CRIOManager.vcxproj">
+      <Project>{fd8131ad-6eef-4ba8-a39a-3f0eea93d5a8}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRNetApp\CRNetApp.vcxproj">
+      <Project>{64f125a6-e15d-4f1e-85f4-60783ec01423}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRNet\CRNet.vcxproj">
+      <Project>{d24d5e5a-f7c9-4a9d-811d-c897e490e8f4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRParticle\CRParticle.vcxproj">
+      <Project>{1e4885e4-b662-434a-a67f-dc04671b8385}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRPhysics\CRPhysics.vcxproj">
+      <Project>{6034d703-009f-4266-a8b2-a54d126270b2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRProducer\CRProducer.vcxproj">
+      <Project>{f23047e2-00bc-4458-81c0-e5852de3771b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRTerrain\CRTerrain.vcxproj">
+      <Project>{c091ba35-9ed8-4630-866f-7e5667613ec8}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRText\CRText.vcxproj">
+      <Project>{79da265d-ebf5-47fd-99b4-dd00f217d9e1}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CRUtil\CRUtil.vcxproj">
+      <Project>{9c2afbe1-78cc-4824-bbdf-885f8c84706b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ReplicantBody\ReplicantBody.vcxproj">
+      <Project>{425382f3-f108-412a-bfb7-6f48acb5bdc2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\vrutils\vrutils.vcxproj">
+      <Project>{0cff4640-3e9a-408d-ba43-d691c339c195}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\icons\cre_icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\icons\creature3d.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\icons\resource.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="头文件\Script">
+      <UniqueIdentifier>{844c6db8-b4b4-4510-ab85-50771a5013cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Script\FirstGame">
+      <UniqueIdentifier>{9a679978-dc25-4f1c-9e2e-f32b57516a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Script\StarOceanLanes">
+      <UniqueIdentifier>{033c0e85-08bb-4b98-b65f-408db9a37fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Script\SNS">
+      <UniqueIdentifier>{7b192f9a-16df-4fa3-928a-09a06964ff26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Script\Tank">
+      <UniqueIdentifier>{0f29a048-9e95-4155-9f8c-5370a13cf829}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\icons\cre_icon.rc">
+      <Filter>源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="crNetServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Game\Client.cfg">
+      <Filter>头文件</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\ChatServerEvent.cfg">
+      <Filter>头文件\Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ClientEvent.cfg">
+      <Filter>头文件\Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\NetSceneManager.cfg">
+      <Filter>头文件\Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\SceneServerEvent.cfg">
+      <Filter>头文件\Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\Server.cfg">
+      <Filter>头文件\Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\FirstGame\GameClient.cfg">
+      <Filter>头文件\Script\FirstGame</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\FirstGame\GameServer.cfg">
+      <Filter>头文件\Script\FirstGame</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\StarOceanLanes\GameServer.cfg">
+      <Filter>头文件\Script\StarOceanLanes</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\Sns\GameServer.cfg">
+      <Filter>头文件\Script\SNS</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\Tank\GameClient.cfg">
+      <Filter>头文件\Script\Tank</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\server\Tank\GameServer.cfg">
+      <Filter>头文件\Script\Tank</Filter>
+    </None>
+  </ItemGroup>
+</Project>

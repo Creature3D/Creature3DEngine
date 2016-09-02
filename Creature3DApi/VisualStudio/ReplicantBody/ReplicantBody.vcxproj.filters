@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{bc402a3a-fa3e-4ef5-a492-9b3c65df0026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Creature3D">
+      <UniqueIdentifier>{2c3b21b3-0339-4148-9b06-61692c4c7c2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{a8edecc2-ffa0-4e77-83bb-6cae05e4dddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Creature3D">
+      <UniqueIdentifier>{ca6bd6e6-6d86-4e25-86bb-700168777e60}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\rbody\ActAttributes.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\ActionConflicts.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\ActRequestArg.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Animation.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationActionHandler.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationActive.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationActivityHandler.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationBase.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationBlend.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationCombine.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationDegree.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationHandler.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationScript.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationSpeed.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\AnimationSuccessors.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Body.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Cal3dBase.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\CoreBody.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\MaterialSet.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Mesh.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\NameBase.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\NamedCoreBodies.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Creature3D\crCharacterSystemUpdater.cpp">
+      <Filter>Source files\Creature3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Creature3D\CreBody.cpp">
+      <Filter>Source files\Creature3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Creature3D\ReplicantBodyMgr.cpp">
+      <Filter>Source files\Creature3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rbody\Creature3D\SubMeshDrawable.cpp">
+      <Filter>Source files\Creature3D</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\rbody\ActAttributes.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\ActionConflicts.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\ActionRequest.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\ActRequestArg.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Animation.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationActionHandler.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationActive.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationActivityHandler.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationBase.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationBlend.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationCombine.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationDegree.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationHandler.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationScript.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationSpeed.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\AnimationSuccessors.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Body.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Cal3dBase.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\config_error.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\CoreBody.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\export.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\global.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\InBetweenActivity.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\MaterialSet.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Mesh.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\NameBase.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\NamedCoreBodies.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Creature3D\crCharacterSystemUpdater.h">
+      <Filter>Header files\Creature3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Creature3D\CreBody.h">
+      <Filter>Header files\Creature3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Creature3D\CreCollectTransforms.h">
+      <Filter>Header files\Creature3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Creature3D\ReplicantBodyMgr.h">
+      <Filter>Header files\Creature3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rbody\Creature3D\SubMeshDrawable.h">
+      <Filter>Header files\Creature3D</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

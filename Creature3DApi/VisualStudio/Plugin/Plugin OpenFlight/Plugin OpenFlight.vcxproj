@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{91236D2E-3540-4DCE-A2C1-AE75C0E15B05}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>PluginOpenFlight</RootNamespace>
+    <ProjectName>Plugin_Fltw</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>D:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../include/plugin;../../../include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>CRCored.lib;CRIOManagerd.lib;CRPhysicsd.lib;CRUtild.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../include/plugin;../../../include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRPhysics.lib;CRUtil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\AttrData.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\DataInputStream.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\DataOutputStream.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\Document.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\ExportOptions.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\FltExportVisitor.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\FltWriteResult.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\LightSourcePaletteManager.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\MaterialPaletteManager.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\opcodes.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\Pools.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\Record.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\RecordInputStream.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\Registry.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\TexturePaletteManager.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\types.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\Utils.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\Vertex.h" />
+    <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\VertexPaletteManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\AncillaryRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\AttrData.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\ControlRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\DataInputStream.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\DataOutputStream.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\Document.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\expAncillaryRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\expControlRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\expGeometryRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\ExportOptions.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\expPrimaryRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\FltExportVisitor.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\GeometryRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\LightPointRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\LightSourcePaletteManager.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\MaterialPaletteManager.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\PaletteRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\Pools.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\PrimaryRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\ReaderWriterATTR.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\ReaderWriterFLT.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\Record.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\RecordInputStream.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\Registry.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\ReservedRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\RoadRecords.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\TexturePaletteManager.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\Vertex.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\VertexPaletteManager.cpp" />
+    <ClCompile Include="..\..\..\src\Plugin\Plugin OpenFlight\VertexRecords.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

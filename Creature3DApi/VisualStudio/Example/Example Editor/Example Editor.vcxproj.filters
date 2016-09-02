@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="源文件\资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{9fb255f3-d37e-4a25-b1ec-1470450d61aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\ui">
+      <UniqueIdentifier>{d70433b3-72fc-449a-8245-2d327abc62b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\ui\login">
+      <UniqueIdentifier>{51b8e7ce-0490-466c-aae7-b19f88dedc15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\ui\netgame">
+      <UniqueIdentifier>{4c686efe-3659-4621-8920-c9f577026641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\ui\chat">
+      <UniqueIdentifier>{52940844-1b74-44cd-b54d-2fdfea124f21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\ui\singlegame">
+      <UniqueIdentifier>{1c613913-b004-4292-9620-187fce0961b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\bot">
+      <UniqueIdentifier>{3d4c6343-22ae-4708-8d10-b3b74fdc9154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Particle">
+      <UniqueIdentifier>{e8157d99-101e-47bc-93ff-df67e231998e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\brain">
+      <UniqueIdentifier>{f510b5df-a782-4874-ad8d-971f66463bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\3dui">
+      <UniqueIdentifier>{6329f19b-935b-4f49-8812-6481377f589c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\EventScript">
+      <UniqueIdentifier>{96def6be-10e5-4ced-ac8e-c8fa505ada65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Game\script\AITaskManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\CameraManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\cursor.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\EffectParticleManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\EffectSequenceManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\filter.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Hypertext.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ImageStreamManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\init.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Leneffect.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\renderToTexture.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\RunGame.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ShaderManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\sound0.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\sound1.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\stage.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\textattr.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\WeaponManager.cfg">
+      <Filter>Script</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\DisplaySetting.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorAttr.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorCamera.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorCharacter.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorDof.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorDrawable.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorLight.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorLoad.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorLod.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorMovies.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorNodeTree.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorPagedLod.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorParticle.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorPostProcess.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorSequence.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorSwitch.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorTerrain.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorUI.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\EditorVolume.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\Emain.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\Esave.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\esc.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\Esplash.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\loading.cfg">
+      <Filter>Script\ui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\login\Login.cfg">
+      <Filter>Script\ui\login</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\netgame\GameList.cfg">
+      <Filter>Script\ui\netgame</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\netgame\NetNotify.cfg">
+      <Filter>Script\ui\netgame</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\Chat.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatCreateGroup.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatGame.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatGroup.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatMain.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatMsg.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatQuery.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatQueryFriend.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\chat\ChatQueryGroup.cfg">
+      <Filter>Script\ui\chat</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\ui\singlegame\singlegame.cfg">
+      <Filter>Script\ui\singlegame</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\bot\Editor.cfg">
+      <Filter>Script\bot</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\concrete.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\concrete2.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\FAEB_MOAB_B_aircraft.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\FAEB_MOAB_B_fly.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\FAEB_MOAB_B_ground.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\fire.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\fire0.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\ground.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\human_ground_Landfall.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\human_ground_Run.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\leaves.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\M16_fire1.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\SOD_BLG66_B_fly.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\SOD_BLG66_B_ground.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\stone.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\stone2.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\UGB_KAB500KR_B_aircraft.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\UGB_KAB500KR_B_fly.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\UGB_KAB500KR_B_ground.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\wood.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\wood2.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\XMAA_AA12_B_aircraft.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\XMAA_AA12_B_fly.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\Particle\XMAA_AA12_B_ground.cfg">
+      <Filter>Script\Particle</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\brain\brain.cfg">
+      <Filter>Script\brain</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\brain\Login.cfg">
+      <Filter>Script\brain</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_cameraview.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_close.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_collidemap.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_exportrtt.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_frame.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_rttmode.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_scroll.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_topview.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\3dui\ui_window.cfg">
+      <Filter>Script\3dui</Filter>
+    </None>
+    <None Include="..\..\..\..\Game\script\EventScript\test.cfg">
+      <Filter>Script\EventScript</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\icons\cre_icon.rc">
+      <Filter>源文件\资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\icons\creature3d.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\icons\resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,50 @@
+// Creature3DX.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+//产生类型库(Creature3DX.tlb)，该类型库将成为 
+// Creature3DX.ocx 中的资源。
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(25A06DDE-B9A0-47B9-903B-166FBD064449), version(1.0),
+  helpfile("Creature3DX.hlp"),
+  helpstring("Creature3DX ActiveX 控件模块"),
+  control ]
+library Creature3DXLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CCreature3DXCtrl 的主调度接口
+
+	[ uuid(714D2510-9A0C-4498-BF39-33DB1779EB67),
+	  helpstring("Creature3DX Control 的调度接口")]
+	dispinterface _DCreature3DX
+	{
+		properties:
+		methods:
+	};
+
+	//  CCreature3DXCtrl 的事件调度接口
+
+	[ uuid(9666DF6A-6072-4696-98F0-6CA909ECDA27),
+	  helpstring("Creature3DX Control 的事件接口") ]
+	dispinterface _DCreature3DXEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CCreature3DXCtrl 的类信息
+
+	[ uuid(5D2EE22E-ECFE-440A-8D48-86EDDA433995),
+	  helpstring("Creature3DX Control"), control ]
+	coclass Creature3DX
+	{
+		[default] dispinterface _DCreature3DX;
+		[default, source] dispinterface _DCreature3DXEvents;
+	};
+
+};

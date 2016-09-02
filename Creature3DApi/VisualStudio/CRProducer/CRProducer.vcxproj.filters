@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="源文件\Producer">
+      <UniqueIdentifier>{a024e45a-4175-4a98-9826-e1e44ecbc04c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="头文件\Producer">
+      <UniqueIdentifier>{796e129d-13a8-44f7-bfdd-720bee00ea21}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\crproducer\avi_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crCameraGroup.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crEventAdapter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crGraphicsContextImplementation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crKeyboardMouseCallback.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crKeyboardMouseHandle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crSceneHandler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\crViewer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\Camera.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\CameraConfig.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\CameraGroup.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\InputArea.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\Keyboard.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\KeyboardMouse.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\RenderSurface.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\RenderSurface_OSX_CGL.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\RenderSurface_Win32.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\RenderSurface_X11.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\Timer.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\VisualChooser.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crproducer\Producer\WGLExtensions.cpp">
+      <Filter>源文件\Producer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\crproducer\Producer\WGLExtensions.h">
+      <Filter>源文件\Producer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\avi_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crCameraGroup.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crEventAdapter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crExport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crGraphicsContextImplementation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crGUIEventAdapter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crKeyboardMouseCallback.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crKeyboardMouseHandle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crSceneHandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crproducer\crViewer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\include\crproducer\Producer\Block">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\BlockingQueue">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Camera">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\CameraConfig">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\CameraGroup">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Events">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Export">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\InputArea">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Keyboard">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\KeyboardMouse">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Math">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Referenced">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\RefOpenThreads">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\RenderSurface">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Timer">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\Types">
+      <Filter>头文件\Producer</Filter>
+    </None>
+    <None Include="..\..\include\crproducer\Producer\VisualChooser">
+      <Filter>头文件\Producer</Filter>
+    </None>
+  </ItemGroup>
+</Project>
