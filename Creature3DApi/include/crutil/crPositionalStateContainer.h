@@ -10,7 +10,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
-//Modified by Îâ²Æ»ª
 #ifndef CRUTIL_POSTIONALSTATECONTIANER
 #define CRUTIL_POSTIONALSTATECONTIANER 1
 

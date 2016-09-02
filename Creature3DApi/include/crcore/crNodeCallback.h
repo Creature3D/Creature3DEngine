@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by Îâ²Æ»ª
 #ifndef CRCORE_NODECALLBACK_H
 #define CRCORE_NODECALLBACK_H 1
 

@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by Îâ²Æ»ª
 #ifndef CRCORE_CROBJECT_H
 #define CRCORE_CROBJECT_H
 

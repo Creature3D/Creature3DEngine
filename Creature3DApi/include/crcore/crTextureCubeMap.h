@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 #ifndef CRCORE_CRTEXTURECUBEMAP_H
 #define CRCORE_CRTEXTURECUBEMAP_H 1
 

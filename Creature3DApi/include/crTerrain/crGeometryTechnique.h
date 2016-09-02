@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 #ifndef CRTERRAIN_CRGEOMETRYTECHNIQUE
 #define CRTERRAIN_CRGEOMETRYTECHNIQUE 1
 

@@ -10,6 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
+//Modified by 吴财华
 #ifndef CRPARTICLE_PARTICLESYSTEM
 #define CRPARTICLE_PARTICLESYSTEM 1
 
