@@ -1,0 +1,229 @@
+/* Creature3D - Online Game Engine, Copyright (C) 2005 Îâ²Æ»ª(26756325@qq.com)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+*/
+#include <CRCore/crBase.h>
+#include <CRCore/crEndian.h>
+#include <CRCore/crNotify.h>
+#include <CRCore/crBlowFish.h>
+#include <CRCore/crTimer.h>
+#include <CRCore/crBrain.h>
+#include <CRCore/crStreamBuf.h>
+#include <Plugin cre/wucaihua>
+#include <fstream>
+#include <string>
+#include <windows.h>
+using namespace CRCore;
+
+void writeCookedFile( const std::string& fileName )
+{
+    std::string savefilename = crArgumentParser::getFileNameEliminateExt(fileName) + ".cook";
+
+	std::ifstream sourceFile;
+	sourceFile.open(fileName.c_str(), std::ios_base::in|std::ios::binary);
+	if(!sourceFile)
+	{
+		//CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<savefilename<<"\""<<std::endl;
+		return;
+	}
+
+	sourceFile.seekg(0, std::ios::end);
+	int length = sourceFile.tellg();
+	int residue = length%8;
+	int bufsize = residue>0?length+8-residue:length;
+	char *text = new char[bufsize];
+	memset(text,0,bufsize);
+	sourceFile.seekg(0, std::ios::beg);
+	sourceFile.read(text, length);
+	sourceFile.close();
+
+	crBlowfish BF;
+	char code[MAX_PASSWD+1];
+	memcpy(code,ZhangYanyan,MAX_PASSWD);
+	code[MAX_PASSWD] = '\0';
+	for (int i=0;i<MAX_PASSWD;i++)
+		CRCore::ENDIAN(code[i]);
+	BF.setPasswd(code);
+	
+	BF.encrypt((void *)text,bufsize);
+
+	for (int i=0;i<bufsize;i++)
+		CRCore::ENDIAN(text[i]);
+
+    char sizechar[4];
+	memcpy(sizechar,(char*)&bufsize,4);
+	for (int i=0;i<4;i++)
+		CRCore::ENDIAN(sizechar[i]);
+
+	char realsizechar[4];
+	memcpy(realsizechar,(char*)&length,4);
+	for (int i=0;i<4;i++)
+		CRCore::ENDIAN(realsizechar[i]);
+
+	std::ofstream fout;
+	fout.open(savefilename.c_str(), std::ios::binary);
+	fout.write(text,bufsize);
+	fout.write(sizechar,4);
+	fout.write(realsizechar,4);
+	fout.close();
+	free(text);
+}
+
+bool loadCookedFile( const std::string& fileName )
+{
+	std::string cookFileName = crArgumentParser::getFileNameEliminateExt(fileName) + ".cook";
+
+	std::ifstream sourceFile;
+	sourceFile.open(cookFileName.c_str(), std::ios_base::in|std::ios::binary);
+	if(!sourceFile)
+	{
+		//CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<cookFileName<<"\""<<std::endl;
+		return false;
+	}
+
+	sourceFile.seekg(0, std::ios::end);
+	int length = sourceFile.tellg();
+	char *text = new char[length];
+	sourceFile.seekg(0, std::ios::beg);
+	sourceFile.read(text, length);
+	sourceFile.close();
+
+	for(char *p = text; p < text+length; p++)
+	{
+		ENDIAN(*p);
+	}
+
+	int realbufsize;
+	memcpy((char*)&realbufsize,text+length-4,4);
+	
+	int bufsize;
+	memcpy((char*)&bufsize,text+length-8,4);
+
+	crBlowfish BF;
+	char code[MAX_PASSWD+1];
+	memcpy(code,ZhangYanyan,MAX_PASSWD);
+	code[MAX_PASSWD] = '\0';
+	for (int i=0;i<MAX_PASSWD;i++)
+		CRCore::ENDIAN(code[i]);
+	BF.setPasswd(code);
+
+	BF.decrypt(text,bufsize);
+
+	std::ofstream fout;
+	std::string strfile = fileName+crArgumentParser::appItoa(GetCurrentProcessId());
+	fout.open(strfile.c_str(), std::ios::binary);
+	fout.write(text,realbufsize);
+	fout.close();
+	free(text);
+	
+	return true;
+}
+
+void writeCookedFileM( const std::string& fileName )
+{
+    std::string savefilename = crArgumentParser::getFileNameEliminateExt(fileName) + ".mcook";
+
+	crStreamBuf *stream = crBrain::getInstance()->openMemFile(fileName,std::ios::in);
+    if(!stream)
+	{
+		//CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<savefilename<<"\""<<std::endl;
+		return;
+	}
+	int length = stream->getBufSize();
+	int residue = length%8;
+	int bufsize = residue>0?length+8-residue:length;
+	char *text = new char[bufsize];
+	memset(text,0,bufsize);
+	memcpy(text,stream->getBuf(),stream->getBufSize());
+	crBrain::getInstance()->closeMemFile(stream);
+
+	crBlowfish BF;
+	char code[LOW_PASSWD+1];
+	memcpy(code,ZhangYanyan,LOW_PASSWD);
+	code[LOW_PASSWD] = '\0';
+	for (int i=0;i<LOW_PASSWD;i++)
+		CRCore::ENDIAN(code[i]);
+	BF.setPasswd(code);
+
+	BF.encrypt((void *)text,bufsize);
+
+	for (int i=0;i<bufsize;i++)
+		CRCore::ENDIAN(text[i]);
+
+    char sizechar[4];
+	memcpy(sizechar,(char*)&bufsize,4);
+	for (int i=0;i<4;i++)
+		CRCore::ENDIAN(sizechar[i]);
+
+	char realsizechar[4];
+	memcpy(realsizechar,(char*)&length,4);
+	for (int i=0;i<4;i++)
+		CRCore::ENDIAN(realsizechar[i]);
+
+	stream = crBrain::getInstance()->openMemFile(savefilename,std::ios::out);
+    stream->createBuf(bufsize+8);
+    stream->write(text,bufsize);
+    stream->write(sizechar,4);
+    stream->write(realsizechar,4);
+	crBrain::getInstance()->closeMemFile(stream);
+	free(text);
+}
+
+bool loadCookedFileM( const std::string& fileName )
+{
+	std::string cookFileName = crArgumentParser::getFileNameEliminateExt(fileName) + ".mcook";
+
+	crStreamBuf *stream = crBrain::getInstance()->openMemFile(cookFileName,std::ios::in);
+	if(!stream)
+	{
+		//CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<cookFileName<<"\""<<std::endl;
+		return false;
+	}
+	int length = stream->getBufSize();
+	char *text = new char[length];
+	memcpy(text,stream->getBuf(),stream->getBufSize());
+	crBrain::getInstance()->closeMemFile(stream);
+
+	for(char *p = text; p < text+length; p++)
+	{
+		ENDIAN(*p);
+	}
+
+	do {
+		int realbufsize;
+		memcpy((char*)&realbufsize,text+length-4,4);
+		if(realbufsize<=0 || realbufsize>length)
+		    break;
+		int bufsize;
+		memcpy((char*)&bufsize,text+length-8,4);
+		if(bufsize<=0 || bufsize<realbufsize || bufsize>length)
+		    break;
+		
+		crBlowfish BF;
+		char code[LOW_PASSWD+1];
+		memcpy(code,ZhangYanyan,LOW_PASSWD);
+		code[LOW_PASSWD] = '\0';
+		for (int i=0;i<LOW_PASSWD;i++)
+			CRCore::ENDIAN(code[i]);
+		BF.setPasswd(code);
+
+		if(!BF.decrypt(text,bufsize))
+			break;
+		stream = crBrain::getInstance()->openMemFile(fileName,std::ios::out);
+		stream->createBuf(realbufsize);
+		stream->write(text,realbufsize);
+		crBrain::getInstance()->closeMemFile(stream);
+		free(text);
+		return true;
+	}while(0);
+	free(text);
+	return false;
+}

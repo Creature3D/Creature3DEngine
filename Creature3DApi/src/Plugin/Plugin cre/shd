@@ -1,0 +1,1382 @@
+/* Creature3D - Online Game Engine, Copyright (C) 2005 吴财华(26756325@qq.com)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+*/
+#include <CRCore/crBase.h>
+#include <CRCore/crEndian.h>
+#include <CRCore/crNotify.h>
+#include <CRCore/crBlowFish.h>
+#include <CRCore/crArgumentParser.h>
+#include <CRCore/crProgram.h>
+#include <CRCore/crShader.h>
+#include <CRCore/crStateSet.h>
+#include <CRCore/crShaderManager.h>
+#include <CRCore/crLightSourceManager.h>
+#include <CRCore/crTimer.h>
+#include <fstream>
+#include <string>
+#include "..\..\..\programs\zhangyanyan"
+#include "rcfg/ConfigScriptOO.h"
+#include <sys/stat.h>
+#include <CRIOManager/crCookFile.h>
+using namespace CRCore;
+
+//std::string getRtglmHead(std::string & shaderName,int d,int s,int bump,bool hasLightmap,bool effectByShadow,bool hasEnvmap,bool hasEmissive,bool hasDiffuse,int specular,
+//    bool fadeIn, bool fadeOut,bool hasNM,bool hasDM,bool hasEM,bool hasSM,
+//    bool NT2,bool NM2,bool MultNT2,bool NT3,bool NM3,bool MultNT3,
+//    bool DT2,bool DM2,bool MultDT2,bool DT3,bool DM3,bool MultDT3,
+//    bool ET2,bool EM2,bool MultET2,bool ET3,bool EM3,bool MultET3,
+//    bool ST2,bool SM2,bool MultST2,bool ST3,bool SM3,bool MultST3)
+//{
+//	std::string str;
+//	//switch(l)
+//	//{
+//	//case 0:
+//	//	shaderName = "sun";
+//	//	break;
+//	//case 1:
+//	//	shaderName = "sun_direct";
+//	//	str = "#define sun_direct\n";
+//	//	break;
+//	//case 2:
+//	//	shaderName = "sun_spot";
+//	//	str = "#define sun_spot\n";
+//	//	break;
+//	//case 3:
+//	//	shaderName = "sun_direct2";
+//	//	str = "#define sun_direct2\n";
+//	//	break;
+//	//case 4:
+//	//	shaderName = "sun_spot2";
+//	//	str = "#define sun_spot2\n";
+//	//	break;
+//	//case 5:
+//	//	shaderName = "sun_spot_direct";
+//	//	str = "#define sun_spot_direct\n";
+//	//	break;
+//	//}
+//	shaderName = "sun";
+//	char buf[8];
+//	if(d > 0)
+//	{
+//		sprintf(buf,"direct%d\0",d);
+//		shaderName += buf;
+//		str = "#define ";
+//		str +=  buf;
+//		str += '\n';
+//
+//		if(s>0)
+//		{
+//			sprintf(buf,"spot%d\0",s);
+//			shaderName += buf;
+//			str += "#define ";
+//			str += buf;
+//			str += '\n';
+//		}
+//	}
+//	else if(s > 0)
+//	{
+//		sprintf(buf,"spot%d\0",s);
+//		shaderName += buf;
+//		str = "#define ";
+//		str +=  buf;
+//		str += '\n';
+//	}
+//
+//	switch(bump)
+//	{
+//	case 0:
+//		break;
+//	case 1:
+//		shaderName += "_normal";
+//		str += "#define _normal\n";
+//		break;
+//	case 2:
+//		shaderName += "_parallax";
+//		str += "#define _parallax\n";
+//		break;
+//	}
+//
+//	if(hasLightmap)
+//	{
+//		shaderName += "_smap";
+//		str += "#define _smap\n";
+//	}
+//	if(effectByShadow)
+//	{
+//		shaderName += "_rts";
+//		str += "#define _rts\n";
+//	}
+//	if(hasEnvmap)
+//	{
+//		shaderName += "_env";
+//		str += "#define _env\n";
+//	}
+//	if(hasEmissive)
+//	{
+//		shaderName += "_emissive";
+//		str += "#define _emissive\n";
+//	}
+//	if(hasDiffuse)
+//	{
+//		shaderName += "_diffuse";
+//		str += "#define _diffuse\n";
+//	}
+//
+//	switch(specular)
+//	{
+//	case 0:
+//		break;
+//	case 1:
+//		shaderName += "_specular3";
+//		str += "#define _specular3\n";
+//		break;
+//	case 2:
+//		shaderName += "_specular4";
+//		str += "#define _specular4\n";
+//		break;
+//	}
+//	if(fadeIn)
+//	{
+//		shaderName += "_fi";
+//		str += "#define FadeIn\n";
+//	}
+//	if(fadeOut)
+//	{
+//		shaderName += "_fo";
+//		str += "#define FadeOut\n";
+//	}
+//	if(hasNM)
+//	{
+//		shaderName += "_NM";
+//		str += "#define _NM\n";
+//	}
+//	if(hasDM)
+//	{
+//		shaderName += "_DM";
+//		str += "#define _DM\n";
+//	}
+//	if(hasEM)
+//	{
+//		shaderName += "_EM";
+//		str += "#define _EM\n";
+//	}
+//	if(hasSM)
+//	{
+//		shaderName += "_SM";
+//		str += "#define _SM\n";
+//	}
+//	if(NT2)
+//	{
+//		shaderName += "_NT2";
+//		str += "#define _NT2\n";
+//	}
+//	if(NM2)
+//	{
+//		shaderName += "_NM2";
+//		str += "#define _NM2\n";
+//	}
+//	if(MultNT2)
+//	{
+//		shaderName += "_MULTNT2";
+//		str += "#Ddefine _MULTNT2\n";
+//	}
+//	if(NT3)
+//	{
+//		shaderName += "_NT3";
+//		str += "#define _NT3\n";
+//	}
+//	if(NM3)
+//	{
+//		shaderName += "_NM3";
+//		str += "#define _NM3\n";
+//	}
+//	if(MultNT3)
+//	{
+//		shaderName += "_MULTNT3";
+//		str += "#define _MULTNT3\n";
+//	}
+//	if(DT2)
+//	{
+//		shaderName += "_DT2";
+//		str += "#define _DT2\n";
+//	}
+//	if(DM2)
+//	{
+//		shaderName += "_DM2";
+//		str += "#define _DM2\n";
+//	}
+//	if(MultDT2)
+//	{
+//		shaderName += "_MULTDT2";
+//		str += "#define _MULTDT2\n";
+//	}	
+//	if(DT3)
+//	{
+//		shaderName += "_DT3";
+//		str += "#define _DT3\n";
+//	}
+//	if(DM3)
+//	{
+//		shaderName += "_DM3";
+//		str += "#define _DM3\n";
+//	}
+//	if(MultDT3)
+//	{
+//		shaderName += "_MULTDT3";
+//		str += "#define _MULTDT3\n";
+//	}
+//	if(ET2)
+//	{
+//		shaderName += "_ET2";
+//		str += "#define _ET2\n";
+//	}
+//	if(EM2)
+//	{
+//		shaderName += "_EM2";
+//		str += "#define _EM2\n";
+//	}
+//	if(MultET2)
+//	{
+//		shaderName += "_MULTET2";
+//		str += "#define _MULTET2\n";
+//	}	
+//	if(ET3)
+//	{
+//		shaderName += "_ET3";
+//		str += "#define _ET3\n";
+//	}
+//	if(EM3)
+//	{
+//		shaderName += "_EM3";
+//		str += "#define _EM3\n";
+//	}
+//	if(MultET3)
+//	{
+//		shaderName += "_MULTET3";
+//		str += "#define _MULTET3\n";
+//	}
+//	if(ST2)
+//	{
+//		shaderName += "_ST2";
+//		str += "#define _ST2\n";
+//	}
+//	if(SM2)
+//	{
+//		shaderName += "_SM2";
+//		str += "#define _SM2\n";
+//	}
+//	if(MultST2)
+//	{
+//		shaderName += "_MULTST2";
+//		str += "#define _MULTST2\n";
+//	}	
+//	if(ST3)
+//	{
+//		shaderName += "_ST3";
+//		str += "#define _ST3\n";
+//	}
+//	if(SM3)
+//	{
+//		shaderName += "_SM3";
+//		str += "#define _SM3\n";
+//	}
+//	if(MultST3)
+//	{
+//		shaderName += "_MULTST3";
+//		str += "#define _MULTST3\n";
+//	}
+//	return str;
+//}
+//
+//std::string getRtplmHead(std::string & shaderName, int d,int s,int bump,bool hasEnvmap,bool hasDiffuse,int specular,
+//    bool hasNM,bool hasDM,bool hasSM,
+//    bool NT2,bool NM2,bool MultNT2,bool NT3,bool NM3,bool MultNT3,
+//    bool DT2,bool DM2,bool MultDT2,bool DT3,bool DM3,bool MultDT3,
+//    bool ST2,bool SM2,bool MultST2,bool ST3,bool SM3,bool MultST3)
+//{
+//	std::string str;
+//
+//	char buf[8];
+//	if(d > 0)
+//	{
+//		sprintf(buf,"direct%d\0",d);
+//		shaderName = buf;
+//		str = "#define ";
+//		str +=  buf;
+//		str += '\n';
+//
+//		if(s>0)
+//		{
+//			sprintf(buf,"spot%d\0",s);
+//			shaderName += buf;
+//			str += "#define ";
+//			str += buf;
+//			str += '\n';
+//		}
+//	}
+//	else
+//	{
+//		sprintf(buf,"spot%d\0",s);
+//		shaderName = buf;
+//		str = "#define ";
+//		str +=  buf;
+//		str += '\n';
+//	}
+//
+//	switch(bump)
+//	{
+//	case 0:
+//		break;
+//	case 1:
+//		shaderName += "_normal";
+//		str += "#define _normal\n";
+//		break;
+//	case 2:
+//		shaderName += "_parallax";
+//		str += "#define _parallax\n";
+//		break;
+//	}
+//
+//	if(hasEnvmap)
+//	{
+//		shaderName += "_env";
+//		str += "#define _env\n";
+//	}
+//
+//	if(hasDiffuse)
+//	{
+//		shaderName += "_diffuse";
+//		str += "#define _diffuse\n";
+//	}
+//
+//	switch(specular)
+//	{
+//	case 0:
+//		break;
+//	case 1:
+//		shaderName += "_specular3";
+//		str += "#define _specular3\n";
+//		break;
+//	case 2:
+//		shaderName += "_specular4";
+//		str += "#define _specular4\n";
+//		break;
+//	}
+//	
+//	if(hasNM)
+//	{
+//		shaderName += "_NM";
+//		str += "#define _NM\n";
+//	}
+//	if(hasDM)
+//	{
+//		shaderName += "_DM";
+//		str += "#define _DM\n";
+//	}
+//	if(hasSM)
+//	{
+//		shaderName += "_SM";
+//		str += "#define _SM\n";
+//	}
+//	if(NT2)
+//	{
+//		shaderName += "_NT2";
+//		str += "#define _NT2\n";
+//	}
+//	if(NM2)
+//	{
+//		shaderName += "_NM2";
+//		str += "#define _NM2\n";
+//	}
+//	if(MultNT2)
+//	{
+//		shaderName += "_MULTNT2";
+//		str += "#Ddefine _MULTNT2\n";
+//	}
+//	if(NT3)
+//	{
+//		shaderName += "_NT3";
+//		str += "#define _NT3\n";
+//	}
+//	if(NM3)
+//	{
+//		shaderName += "_NM3";
+//		str += "#define _NM3\n";
+//	}
+//	if(MultNT3)
+//	{
+//		shaderName += "_MULTNT3";
+//		str += "#define _MULTNT3\n";
+//	}
+//	if(DT2)
+//	{
+//		shaderName += "_DT2";
+//		str += "#define _DT2\n";
+//	}
+//	if(DM2)
+//	{
+//		shaderName += "_DM2";
+//		str += "#define _DM2\n";
+//	}
+//	if(MultDT2)
+//	{
+//		shaderName += "_MULTDT2";
+//		str += "#define _MULTDT2\n";
+//	}	
+//	if(DT3)
+//	{
+//		shaderName += "_DT3";
+//		str += "#define _DT3\n";
+//	}
+//	if(DM3)
+//	{
+//		shaderName += "_DM3";
+//		str += "#define _DM3\n";
+//	}
+//	if(MultDT3)
+//	{
+//		shaderName += "_MULTDT3";
+//		str += "#define _MULTDT3\n";
+//	}
+//	if(ST2)
+//	{
+//		shaderName += "_ST2";
+//		str += "#define _ST2\n";
+//	}
+//	if(SM2)
+//	{
+//		shaderName += "_SM2";
+//		str += "#define _SM2\n";
+//	}
+//	if(MultST2)
+//	{
+//		shaderName += "_MULTST2";
+//		str += "#define _MULTST2\n";
+//	}	
+//	if(ST3)
+//	{
+//		shaderName += "_ST3";
+//		str += "#define _ST3\n";
+//	}
+//	if(SM3)
+//	{
+//		shaderName += "_SM3";
+//		str += "#define _SM3\n";
+//	}
+//	if(MultST3)
+//	{
+//		shaderName += "_MULTST3";
+//		str += "#define _MULTST3\n";
+//	}	
+//	return str;
+//}
+//
+//std::string getNoLightHead(std::string & shaderName,bool isEmissive, bool hasDetal,bool hasLightmap,bool hasEnvmap,bool fadeIn, bool fadeOut)
+//{
+//	std::string str;
+//	if(isEmissive)
+//	{
+//		shaderName = "emissive";
+//		str += "#define emissive\n";
+//	}
+//	else
+//	{
+//		shaderName = "diffuse";
+//	}
+//
+//	if(hasDetal)
+//	{
+//		shaderName += "_detal";
+//		str += "#define _detal\n";
+//	}
+//	if(hasLightmap)
+//	{
+//		shaderName += "_smap";
+//		str += "#define _smap\n";
+//	}
+//	if(hasEnvmap)
+//	{
+//		shaderName += "_env";
+//		str += "#define _env\n";
+//	}
+//	if(fadeIn)
+//	{
+//		shaderName += "_fi";
+//		str += "#define FadeIn\n";
+//	}
+//	if(fadeOut)
+//	{
+//		shaderName += "_fo";
+//		str += "#define FadeOut\n";
+//	}
+//	return str;
+//}
+
+//std::string getWaterHead(std::string & shaderName,bool hasColor,bool hasLightmap,bool effectByShadow,bool hasEnvmap,bool hasEmissive,bool hasDiffuse,int specular,bool fadeIn, bool fadeOut)
+//{
+//	shaderName = "water";
+//	std::string str;
+//	if(hasColor)
+//	{
+//		shaderName += "_color";
+//		str += "#define _color\n";
+//	}
+//	if(hasLightmap)
+//	{
+//		shaderName += "_smap";
+//		str += "#define _smap\n";
+//	}
+//	if(effectByShadow)
+//	{
+//		shaderName += "_rts";
+//		str += "#define _rts\n";
+//	}
+//	if(hasEnvmap)
+//	{
+//		shaderName += "_env";
+//		str += "#define _env\n";
+//	}
+//	if(hasEmissive)
+//	{
+//		shaderName += "_emissive";
+//		str += "#define _emissive\n";
+//	}
+//	if(hasDiffuse)
+//	{
+//		shaderName += "_diffuse";
+//		str += "#define _diffuse\n";
+//	}
+//	switch(specular)
+//	{
+//	case 0:
+//		break;
+//	case 1:
+//		shaderName += "_specular3";
+//		str += "#define _specular3\n";
+//		break;
+//	case 2:
+//		shaderName += "_specular4";
+//		str += "#define _specular4\n";
+//		break;
+//	}
+//	if(fadeIn)
+//	{
+//		shaderName += "_fi";
+//		str += "#define FadeIn\n";
+//	}
+//	if(fadeOut)
+//	{
+//		shaderName += "_fo";
+//		str += "#define FadeOut\n";
+//	}
+//	return str;
+//}
+//
+void createShader(const std::string& shaderName,const std::string& temp_vp, const std::string& temp_fp, bool addT, bool addB)
+{
+	ref_ptr<crStateSet> shader_ss;
+	CRCore::ref_ptr<CRCore::crProgram> program;
+	CRCore::ref_ptr<CRCore::crShader> shader;
+
+	program = new CRCore::crProgram;
+	program->setName(shaderName);
+
+	//CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): shaderName = "<<shaderName.c_str()<<std::endl;
+	//CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): rtglmHeadStr = "<<rtglmHeadStr.c_str()<<std::endl;
+	//CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): temp_vp = "<<temp_vp.c_str()<<std::endl;
+	shader = new CRCore::crShader(CRCore::crShader::VERTEX,temp_vp);
+	shader->setName(shaderName+"_vp");
+	program->addShader(shader.get());
+
+	//CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): temp_fp = "<<temp_fp.c_str()<<std::endl;
+	shader = new crShader(CRCore::crShader::FRAGMENT,temp_fp);
+	shader->setName(shaderName+"_fp");
+	program->addShader(shader.get());
+
+	if(addT) program->addBindAttribLocation("tangent",ATTRIBUTE_TANGENT);
+	if(addB) program->addBindAttribLocation("binormal",ATTRIBUTE_BINORMAL);
+
+	shader_ss = new crStateSet;
+	shader_ss->setAttributeAndModes(program.get(),CRCore::crStateAttribute::ON);
+	shader_ss->setMode(GL_LIGHTING, crStateAttribute::OVERRIDE|crStateAttribute::OFF);
+	shader_ss->setName(shaderName);
+	crShaderManager::getInstance()->insertShaderStateSet(shader_ss.get());
+}
+bool loadShaderSourceFromFile( const std::string& fileName, std::string &out_vp, std::string &out_fp )
+{
+	std::ifstream sourceFile;
+	sourceFile.open(fileName.c_str(), std::ios_base::in|std::ios::binary);
+	if(!sourceFile)
+	{
+		CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<fileName<<"\""<<std::endl;
+		return false;
+	}
+
+	sourceFile.seekg(0, std::ios::end);
+	int length = sourceFile.tellg();
+	char *text = new char[length];
+	sourceFile.seekg(0, std::ios::beg);
+	sourceFile.read(text, length);
+	sourceFile.close();
+
+	for(char *p = text; p < text+length; p++)
+	{
+		ENDIAN(*p);
+	}
+
+	int realbufsize;
+	memcpy((char*)&realbufsize,text+length-4,4);
+	
+	int bufsize;
+	memcpy((char*)&bufsize,text+length-8,4);
+
+	crBlowfish BF;
+	char code[MAX_PASSWD+1];
+	memcpy(code,WuCaihua,MAX_PASSWD);
+	code[MAX_PASSWD] = '\0';
+	for (int i=0;i<MAX_PASSWD;i++)
+		CRCore::ENDIAN(code[i]);
+	BF.setPasswd(code);
+
+	BF.decrypt(text,bufsize);
+
+	for (int i=0;i<bufsize;i++)
+		CRCore::ENDIAN(text[i]);
+
+	text = crArgumentParser::trim(text);
+
+	char *vp_s = strstr(text,"{****Creature3D Vertex shader****}");
+	vp_s += strlen("{****Creature3D Vertex shader****}");
+	char *vp_e = strstr(text,"{****Creature3D Fragment shader****}");
+
+	char *fp_s = strstr(text,"{****Creature3D Fragment shader****}");
+	fp_s += strlen("{****Creature3D Fragment shader****}");
+	char *fp_e = strstr(text,"{****end****}");
+
+	length = int(vp_e - vp_s);
+	out_vp.reserve(length);
+	out_vp.insert(0,vp_s,length);
+
+	length = int(fp_e - fp_s);
+	out_fp.reserve(length);
+	out_fp.insert(0,fp_s,length);
+
+	crArgumentParser::trim(const_cast<char *>(out_vp.c_str()));
+	crArgumentParser::trim(const_cast<char *>(out_fp.c_str()));
+
+	//CRCore::notify(CRCore::ALWAYS)<<"load vp: "<<out_vp<<std::endl;
+	//CRCore::notify(CRCore::ALWAYS)<<"load fp: "<<out_fp<<std::endl;
+
+	delete [] text;
+	return true;
+}
+
+void loadShaderManagerCfg()
+{
+	//CRCore::Timer_t start_tick = CRCore::Timer::instance()->tick();
+ //   CRCore::Timer_t end_tick;
+    
+	rcfg::ConfigScript cfg_script;
+	std::string scriptParserHeader = "# Creature3D Script Parser v1.0";
+
+	CRIOManager::crLoadCookFile scopedLoad("script/ShaderManager.cfg");
+
+	struct stat buf;
+	if (stat( scopedLoad.getFileName().c_str(), &buf )) 
+	{
+		CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): file open error"<<std::endl;
+		return;
+	}
+
+	if (!cfg_script.Open(scopedLoad.getFileName(), scriptParserHeader))
+	{
+		CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): "<<cfg_script.GetLastError()<<std::endl;
+		return;
+	}
+	std::string str;
+	//int int1;
+	int nglsl = 1;
+	int addT = 0;
+	int addB = 0;
+	ref_ptr<crStateSet> shader_ss;
+	std::string vp,fp;
+	std::string temp_vp,temp_fp;
+	std::string headStr;
+	std::string shaderName;
+	if(loadShaderSourceFromFile("media/materials/programs/rtglm.shader",vp,fp))
+	{
+		crShaderManager::getInstance()->pushString(vp);
+		crShaderManager::getInstance()->pushString(fp);
+		////CRCore::ref_ptr<CRCore::crProgram> program;
+		////CRCore::ref_ptr<CRCore::crShader> shader;
+		//int d = 0;
+		//int s = 0;
+		//int bump = 0;
+		//int hasLightmap = 0;
+		//int effectByShadow = 0;
+		//int hasEnvmap = 0;
+		//int hasEmissive = 0;
+		//int hasDiffuse = 0;
+		//int specular = 0;
+		//
+		//int hasNM = 0;
+		//int hasDM = 0;
+		//int hasEM = 0;
+		//int hasSM = 0;
+		//
+		//int NT2 = 0;
+		//int NM2 = 0;
+		//int MultNT2 = 0;
+		//int NT3 = 0;
+		//int NM3 = 0;
+		//int MultNT3 = 0;
+		//
+		//int DT2 = 0;
+		//int DM2 = 0;
+		//int MultDT2 = 0;
+		//int DT3 = 0;
+		//int DM3 = 0;
+		//int MultDT3 = 0;
+		//
+		//int ET2 = 0;
+		//int EM2 = 0;
+		//int MultET2 = 0;
+		//int ET3 = 0;
+		//int EM3 = 0;
+		//int MultET3 = 0;
+		//
+		//int ST2 = 0;
+		//int SM2 = 0;
+		//int MultST2 = 0;
+		//int ST3 = 0;
+		//int SM3 = 0;
+		//int MultST3 = 0;
+		//						
+		//for(d = 0; d<4; ++d)
+		//{
+		//	for(s = 0; s<4; ++s)
+		//	{
+		//		if(d+s>3) continue;
+		//		for(bump = 1; bump <3; ++bump)
+		//		{//必须提供bumpmap，如果平滑，可以是flat_normal
+		//			for(hasLightmap = 0; hasLightmap<2; ++hasLightmap)
+		//			{
+		//				for(effectByShadow = 0; effectByShadow<2; ++effectByShadow)
+		//				{
+		//					for(hasEnvmap = 0; hasEnvmap<2; ++hasEnvmap)
+		//					{
+		//						for(hasEmissive = 0; hasEmissive<2; ++hasEmissive)
+		//						{
+		//							for(hasDiffuse = 0; hasDiffuse<2; ++hasDiffuse)
+		//							{
+		//								for(specular = 0; specular<3; ++specular)
+		//								{
+		//									for(hasNM = 0; hasNM<2; ++hasNM)
+		//									{
+		//									for(hasDM = 0; hasDM<2; ++hasDM)
+		//									{
+		//									for(hasEM = 0; hasEM<2; ++hasEM)
+		//									{
+		//									for(hasSM = 0; hasSM<2; ++hasSM)
+		//									{
+		//									for(NT2 = 0; NT2<2; ++NT2)
+		//									{
+		//									for(NM2 = 0; NM2<2; ++NM2)
+		//									{
+		//									for(MultNT2 = 0; MultNT2<2; ++MultNT2)
+		//									{
+		//									for(NT3 = 0; NT3<2; ++NT3)
+		//									{
+		//									for(NM3 = 0; NM3<2; ++NM3)
+		//									{
+		//									for(MultNT3 = 0; MultNT3<2; ++MultNT3)
+		//									{
+		//									for(DT2 = 0; DT2<2; ++DT2)
+		//									{
+		//									for(DM2 = 0; DM2<2; ++DM2)
+		//									{
+		//									for(MultDT2 = 0; MultDT2<2; ++MultDT2)
+		//									{
+		//									for(DT3 = 0; DT3<2; ++DT3)
+		//									{
+		//									for(DM3 = 0; DM3<2; ++DM3)
+		//									{
+		//									for(MultDT3 = 0; MultDT3<2; ++MultDT3)
+		//									{
+		//									for(ET2 = 0; ET2<2; ++ET2)
+		//									{
+		//									for(EM2 = 0; EM2<2; ++EM2)
+		//									{
+		//									for(MultET2 = 0; MultET2<2; ++MultET2)
+		//									{
+		//									for(ET3 = 0; ET3<2; ++ET3)
+		//									{
+		//									for(EM3 = 0; EM3<2; ++EM3)
+		//									{
+		//									for(MultET3 = 0; MultET3<2; ++MultET3)
+		//									{	
+		//									for(ST2 = 0; ST2<2; ++ST2)
+		//									{
+		//									for(SM2 = 0; SM2<2; ++SM2)
+		//									{
+		//									for(MultST2 = 0; MultST2<2; ++MultST2)
+		//									{
+		//									for(ST3 = 0; ST3<2; ++ST3)
+		//									{
+		//									for(SM3 = 0; SM3<2; ++SM3)
+		//									{
+		//									for(MultST3 = 0; MultST3<2; ++MultST3)
+		//									{																																																																																																																																														
+		//										//bool fadeIn;
+		//										//bool fadeOut;
+		//										shaderName.clear();
+		//										headStr = getRtglmHead(shaderName,d,s,bump,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,0,0,
+		//										                       hasNM,hasDM,hasEM,hasSM,
+		//										                       NT2,NM2,MultNT2,NT3,NM3,MultNT3,
+		//										                       DT2,DM2,MultDT2,DT3,DM3,MultDT3,
+		//										                       ET2,EM2,MultET2,ET3,EM3,MultET3,
+		//										                       ST2,SM2,MultST2,ST3,SM3,MultST3);
+		//										temp_vp = headStr + vp;
+		//										temp_fp = headStr + fp;
+		//										createShader(shaderName,temp_vp,temp_fp,true,true);
+
+		//										//shaderName.clear();
+		//										//headStr = getRtglmHead(shaderName,l,bump,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,0,1);
+		//										//temp_vp = headStr + vp;
+		//										//temp_fp = headStr + fp;
+		//										//createShader(shaderName,temp_vp,temp_fp,true,true);
+
+		//										//shaderName.clear();
+		//										//headStr = getRtglmHead(shaderName,l,bump,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,1,0);
+		//										//temp_vp = headStr + vp;
+		//										//temp_fp = headStr + fp;
+		//										//createShader(shaderName,temp_vp,temp_fp,true,true);
+
+		//										//shaderName.clear();
+		//										//headStr = getRtglmHead(shaderName,l,bump,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,1,1);
+		//										//temp_vp = headStr + vp;
+		//										//temp_fp = headStr + fp;
+		//										//createShader(shaderName,temp_vp,temp_fp,true,true);
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//									}
+		//								}
+		//							}
+		//						}
+		//					}
+		//				}
+		//			}
+		//		}
+		//	}
+		//}
+	}
+
+	//CRCore::notify(CRCore::NOTICE)<<"CREncapsulation::loadShaderManagerCfg(): Shader Size = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;
+
+	vp.clear();
+	fp.clear();
+
+	if(loadShaderSourceFromFile("media/materials/programs/rtplm.shader",vp,fp))
+	{
+		crShaderManager::getInstance()->pushString(vp);
+		crShaderManager::getInstance()->pushString(fp);
+		//不计算淡入淡出
+		//CRCore::ref_ptr<CRCore::crProgram> program;
+		//CRCore::ref_ptr<CRCore::crShader> shader;
+		//int d = 0;
+		//int s = 0;
+		//int bump = 0;
+		//int hasEnvmap = 0;
+		//int hasDiffuse = 0;
+		//int specular = 0;
+		//
+		//int hasNM = 0;
+		//int hasDM = 0;
+		//int hasEM = 0;
+		//int hasSM = 0;
+		//
+		//int NT2 = 0;
+		//int NM2 = 0;
+		//int MultNT2 = 0;
+		//int NT3 = 0;
+		//int NM3 = 0;
+		//int MultNT3 = 0;
+		//
+		//int DT2 = 0;
+		//int DM2 = 0;
+		//int MultDT2 = 0;
+		//int DT3 = 0;
+		//int DM3 = 0;
+		//int MultDT3 = 0;
+		//
+		//int ET2 = 0;
+		//int EM2 = 0;
+		//int MultET2 = 0;
+		//int ET3 = 0;
+		//int EM3 = 0;
+		//int MultET3 = 0;
+		//
+		//int ST2 = 0;
+		//int SM2 = 0;
+		//int MultST2 = 0;
+		//int ST3 = 0;
+		//int SM3 = 0;
+		//int MultST3 = 0;
+		//for(d = 0; d<6; ++d)
+		//{
+		//	for(s = 0; s<6; ++s)
+		//	{
+		//		if(d+s>5 || d+s == 0) continue;
+		//		for(bump = 1; bump <3; ++bump)
+		//		{
+		//			for(hasEnvmap = 0; hasEnvmap<2; ++hasEnvmap)
+		//			{
+		//				for(hasDiffuse = 0; hasDiffuse<2; ++hasDiffuse)
+		//				{
+		//					for(specular = 0; specular<3; ++specular)
+		//					{
+		//						for(hasNM = 0; hasNM<2; ++hasNM)
+		//						{
+		//						for(hasDM = 0; hasDM<2; ++hasDM)
+		//						{
+		//						for(hasSM = 0; hasSM<2; ++hasSM)
+		//						{
+		//						for(NT2 = 0; NT2<2; ++NT2)
+		//						{
+		//						for(NM2 = 0; NM2<2; ++NM2)
+		//						{
+		//						for(MultNT2 = 0; MultNT2<2; ++MultNT2)
+		//						{
+		//						for(NT3 = 0; NT3<2; ++NT3)
+		//						{
+		//						for(NM3 = 0; NM3<2; ++NM3)
+		//						{
+		//						for(MultNT3 = 0; MultNT3<2; ++MultNT3)
+		//						{
+		//						for(DT2 = 0; DT2<2; ++DT2)
+		//						{
+		//						for(DM2 = 0; DM2<2; ++DM2)
+		//						{
+		//						for(MultDT2 = 0; MultDT2<2; ++MultDT2)
+		//						{
+		//						for(DT3 = 0; DT3<2; ++DT3)
+		//						{
+		//						for(DM3 = 0; DM3<2; ++DM3)
+		//						{
+		//						for(MultDT3 = 0; MultDT3<2; ++MultDT3)
+		//						{
+		//						for(ST2 = 0; ST2<2; ++ST2)
+		//						{
+		//						for(SM2 = 0; SM2<2; ++SM2)
+		//						{
+		//						for(MultST2 = 0; MultST2<2; ++MultST2)
+		//						{
+		//						for(ST3 = 0; ST3<2; ++ST3)
+		//						{
+		//						for(SM3 = 0; SM3<2; ++SM3)
+		//						{
+		//						for(MultST3 = 0; MultST3<2; ++MultST3)
+		//						{
+		//							shaderName.clear();
+		//							headStr = getRtplmHead(shaderName,d,s,bump,hasEnvmap,hasDiffuse,specular,
+		//													hasNM,hasDM,hasSM,
+		//										            NT2,NM2,MultNT2,NT3,NM3,MultNT3,
+		//										            DT2,DM2,MultDT2,DT3,DM3,MultDT3,
+		//										            ST2,SM2,MultST2,ST3,SM3,MultST3);
+		//							temp_vp = headStr + vp;
+		//							temp_fp = headStr + fp;
+		//							createShader(shaderName,temp_vp,temp_fp,true,true);
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}
+		//						}									
+		//					}
+		//				}
+		//			}
+		//		}
+		//	}
+		//}
+	}
+
+	//CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): Shader Size = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;
+
+	vp.clear();
+	fp.clear();
+
+	if(loadShaderSourceFromFile("media/materials/programs/noLight.shader",vp,fp))
+	{
+		crShaderManager::getInstance()->pushString(vp);
+		crShaderManager::getInstance()->pushString(fp);
+		////CRCore::ref_ptr<CRCore::crProgram> program;
+		////CRCore::ref_ptr<CRCore::crShader> shader;
+		//int isEmissive = 0;
+		//int hasDetal = 0;
+		//int hasLightmap = 0;
+		//int hasEnvmap = 0;
+		//for(isEmissive = 0; isEmissive<2; ++isEmissive)
+		//{
+		//	for(hasDetal = 0; hasDetal<2; ++hasDetal)
+		//	{
+		//		for(hasLightmap = 0; hasLightmap<2; ++hasLightmap)
+		//		{
+		//			for(hasEnvmap = 0; hasEnvmap<2; ++hasEnvmap)
+		//			{
+		//				//bool fadeIn;
+		//				//bool fadeOut;
+		//				shaderName.clear();
+		//				headStr = getNoLightHead(shaderName,isEmissive,hasDetal,hasLightmap,hasEnvmap,0,0);
+		//				temp_vp = headStr + vp;
+		//				temp_fp = headStr + fp;
+		//				createShader(shaderName,temp_vp,temp_fp,false,false);
+
+		//				shaderName.clear();
+		//				headStr = getNoLightHead(shaderName,isEmissive,hasDetal,hasLightmap,hasEnvmap,0,1);
+		//				temp_vp = headStr + vp;
+		//				temp_fp = headStr + fp;
+		//				createShader(shaderName,temp_vp,temp_fp,false,false);
+
+		//				shaderName.clear();
+		//				headStr = getNoLightHead(shaderName,isEmissive,hasDetal,hasLightmap,hasEnvmap,1,0);
+		//				temp_vp = headStr + vp;
+		//				temp_fp = headStr + fp;
+		//				createShader(shaderName,temp_vp,temp_fp,false,false);
+
+		//				shaderName.clear();
+		//				headStr = getNoLightHead(shaderName,isEmissive,hasDetal,hasLightmap,hasEnvmap,1,1);
+		//				temp_vp = headStr + vp;
+		//				temp_fp = headStr + fp;
+		//				createShader(shaderName,temp_vp,temp_fp,false,false);
+		//			}
+		//		}
+		//	}
+		//}
+	}
+
+	//CRCore::notify(CRCore::NOTICE)<<"CREncapsulation::loadShaderManagerCfg(): Shader Size = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;
+
+	vp.clear();
+	fp.clear();
+
+	if(loadShaderSourceFromFile("media/materials/programs/shadow.shader",vp,fp))
+	{
+		crShaderManager::getInstance()->pushString(vp);
+		crShaderManager::getInstance()->pushString(fp);
+	}
+	//CRCore::notify(CRCore::NOTICE)<<"CREncapsulation::loadShaderManagerCfg(): Shader Size = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;
+	vp.clear();
+	fp.clear();
+	
+	/*if(loadShaderSourceFromFile("media/materials/programs/water.shader",vp,fp))
+	{
+		//CRCore::ref_ptr<CRCore::crProgram> program;
+		//CRCore::ref_ptr<CRCore::crShader> shader;
+		int hasColor = 0;
+		int hasLightmap = 0;
+		int effectByShadow = 0;
+		int hasEnvmap = 0;
+		int hasEmissive = 0;
+		int hasDiffuse = 0;
+		int specular = 0;
+		for(hasLightmap = 0; hasLightmap<2; ++hasLightmap)
+		{
+			for(effectByShadow = 0; effectByShadow<2; ++effectByShadow)
+			{
+				for(hasEnvmap = 0; hasEnvmap<2; ++hasEnvmap)
+				{
+					for(hasEmissive = 0; hasEmissive<2; ++hasEmissive)
+					{
+						for(hasDiffuse = 0; hasDiffuse<2; ++hasDiffuse)
+						{
+							for(specular = 0; specular<3; ++specular)
+							{
+								//bool fadeIn;
+								//bool fadeOut;
+								shaderName.clear();
+								headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,0,0);
+								temp_vp = headStr + vp;
+								temp_fp = headStr + fp;
+								createShader(shaderName,temp_vp,temp_fp,false,false);
+
+								//shaderName.clear();
+								//headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,0,1);
+								//temp_vp = headStr + vp;
+								//temp_fp = headStr + fp;
+								//createShader(shaderName,temp_vp,temp_fp,false,false);
+
+								//shaderName.clear();
+								//headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,1,0);
+								//temp_vp = headStr + vp;
+								//temp_fp = headStr + fp;
+								//createShader(shaderName,temp_vp,temp_fp,false,false);
+
+								//shaderName.clear();
+								//headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,1,1);
+								//temp_vp = headStr + vp;
+								//temp_fp = headStr + fp;
+								//createShader(shaderName,temp_vp,temp_fp,false,false);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		hasColor = 1;
+		for(hasLightmap = 0; hasLightmap<2; ++hasLightmap)
+		{
+			for(effectByShadow = 0; effectByShadow<2; ++effectByShadow)
+			{
+				for(hasEnvmap = 0; hasEnvmap<2; ++hasEnvmap)
+				{
+					for(hasEmissive = 0; hasEmissive<2; ++hasEmissive)
+					{
+						for(hasDiffuse = 0; hasDiffuse<2; ++hasDiffuse)
+						{
+							for(specular = 0; specular<3; ++specular)
+							{
+								//bool fadeIn;
+								//bool fadeOut;
+								shaderName.clear();
+								headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,0,0);
+								temp_vp = headStr + vp;
+								temp_fp = headStr + fp;
+								createShader(shaderName,temp_vp,temp_fp,false,false);
+
+								//shaderName.clear();
+								//headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,0,1);
+								//temp_vp = headStr + vp;
+								//temp_fp = headStr + fp;
+								//createShader(shaderName,temp_vp,temp_fp,false,false);
+
+								//shaderName.clear();
+								//headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,1,0);
+								//temp_vp = headStr + vp;
+								//temp_fp = headStr + fp;
+								//createShader(shaderName,temp_vp,temp_fp,false,false);
+
+								//shaderName.clear();
+								//headStr = getWaterHead(shaderName,hasColor,hasLightmap,effectByShadow,hasEnvmap,hasEmissive,hasDiffuse,specular,1,1);
+								//temp_vp = headStr + vp;
+								//temp_fp = headStr + fp;
+								//createShader(shaderName,temp_vp,temp_fp,false,false);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	vp.clear();
+	fp.clear();*/
+	//CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): Shader Size = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;
+
+	while(cfg_script.Push("GLSL",nglsl++))
+	{
+		vp.clear();
+		fp.clear();
+
+		addT = 0;
+		addB = 0;
+		shader_ss = 0;
+
+		cfg_script.Get("needTangent", addT);
+		cfg_script.Get("needBinormal", addB);
+
+		cfg_script.Get("glsl", str);
+		shaderName.clear();
+		shaderName = crArgumentParser::getFileNameEliminateExt(crArgumentParser::getSimpleFileName(str));
+		CRCore::ref_ptr<CRCore::crProgram> program;
+		CRCore::ref_ptr<CRCore::crShader> shader;
+		if(!loadShaderSourceFromFile(str,vp,fp))
+			continue;
+
+		program = new CRCore::crProgram;
+		program->setName(shaderName);
+		shader = new CRCore::crShader(CRCore::crShader::VERTEX,vp);
+		shader->setName(shaderName+"_vp");
+		program->addShader(shader.get());
+		shader = new CRCore::crShader(CRCore::crShader::FRAGMENT,fp);
+		shader->setName(shaderName+"_fp");
+		program->addShader(shader.get());
+
+		if(addT) program->addBindAttribLocation("tangent",ATTRIBUTE_TANGENT);
+		if(addB) program->addBindAttribLocation("binormal",ATTRIBUTE_BINORMAL);
+
+		shader_ss = new crStateSet;
+		shader_ss->setAttributeAndModes(program.get(),CRCore::crStateAttribute::ON);
+		shader_ss->setMode(GL_LIGHTING, crStateAttribute::OVERRIDE|crStateAttribute::OFF);
+		shader_ss->setName(shaderName);
+
+		//shader_ss = crBrain::getInstance()->getProgramStateSet(str,addT,addB,shader_ss.get());
+
+		//if(cfg_script.Get("IsShadowStateSet", int1))
+		//	shader_ss->setIsShadowStateSet(int1);
+
+		crShaderManager::getInstance()->insertShaderStateSet(shader_ss.get());
+
+		if (!cfg_script.Pop())
+			CRCore::notify(CRCore::FATAL)<<"CREncapsulation::loadShaderManagerCfg(): "<<cfg_script.GetLastError()<<std::endl;
+	}
+
+	crAlphaFunc* alphafunc = new crAlphaFunc;
+	alphafunc->setFunction(crAlphaFunc::GREATER,0.02f);
+	crShaderManager::getInstance()->registAlphaFunc(alphafunc);
+	crBlendFunc* blendfunc = new CRCore::crBlendFunc(crBlendFunc::SRC_ALPHA,crBlendFunc::ONE_MINUS_SRC_ALPHA);
+	crShaderManager::getInstance()->registBlendFunc(blendfunc);
+	std::vector<float> v_i;
+	float flt1;
+	if(cfg_script.Get("LightValidDistance", flt1))
+		crLightSourceManager::getInstance()->setLightValidDistance(flt1);
+	if(cfg_script.Get("SunShadowDistanceOffset", v_i))
+		crShaderManager::getInstance()->setSunShadowDistanceOffset(crVector2(v_i[0],v_i[1]));
+	if(cfg_script.Get("SunShadowDistance", v_i))
+		crShaderManager::getInstance()->setSunShadowDistance(crVector2(v_i[0],v_i[1]));
+		
+	//CRCore::notify(CRCore::NOTICE)<<"CREncapsulation::loadShaderManagerCfg(): Shader Size = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;	
+	//end_tick = CRCore::Timer::instance()->tick();
+	//CRCore::notify(CRCore::NOTICE)<<"Time to load = "<<CRCore::Timer::instance()->delta_s(start_tick,end_tick)<<std::endl;	
+}
+
+void converShaderSource( const std::string& fileName )
+{
+	std::ifstream fin;
+	fin.open(fileName.c_str());
+	if(!fin)
+	{
+		CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<fileName<<"\""<<std::endl;
+		return;
+	}
+
+	fin.seekg(0, std::ios::end);
+	int length = fin.tellg();
+	char *text = new char[length+1];
+	fin.seekg(0, std::ios::beg);
+	fin.read(text, length);
+	fin.close();
+	text[length] = '\0';
+
+	text = crArgumentParser::trim(text);
+	char *end = strstr(text,"{****end****}") + strlen("{****end****}");
+
+	//std::string savefilename = crArgumentParser::getFileNameEliminateExt(fileName) + "_save." + crArgumentParser::getFileExtension(fileName);
+	std::string savefilename = crArgumentParser::getFileNameEliminateExt(fileName) + ".shader";
+	std::ofstream fout;
+	fout.open(savefilename.c_str(), std::ios::binary);
+	length = end - text;
+	for(char *p = text; p < end; p++)
+	{
+		ENDIAN(*p);
+	}
+	fout.write(text,length);
+	fout.close();
+	free(text);
+	//test
+	//std::string out_vp, out_fp;
+	//loadShaderSourceFromFile(savefilename,out_vp,out_fp);
+}
+
+void convertShader(const std::string &fileName)
+{
+	converShaderSource(fileName);
+	std::string savefilename = crArgumentParser::getFileNameEliminateExt(fileName) + ".shader";
+
+	std::ifstream sourceFile;
+	sourceFile.open(savefilename.c_str(), std::ios_base::in|std::ios::binary);
+	if(!sourceFile)
+	{
+		CRCore::notify(CRCore::WARN)<<"Error: can't open file \""<<savefilename<<"\""<<std::endl;
+		return;
+	}
+
+	sourceFile.seekg(0, std::ios::end);
+	int length = sourceFile.tellg();
+	int residue = length%8;
+	int bufsize = residue>0?length+8-residue:length;
+	char *text = new char[bufsize];
+	memset(text,0,bufsize);
+	sourceFile.seekg(0, std::ios::beg);
+	sourceFile.read(text, length);
+	sourceFile.close();
+
+	crBlowfish BF;
+	char code[MAX_PASSWD+1];
+	memcpy(code,WuCaihua,MAX_PASSWD);
+	code[MAX_PASSWD] = '\0';
+	for (int i=0;i<MAX_PASSWD;i++)
+		CRCore::ENDIAN(code[i]);
+	BF.setPasswd(code);
+	
+	BF.encrypt((void *)text,bufsize);
+
+	for (int i=0;i<bufsize;i++)
+		CRCore::ENDIAN(text[i]);
+
+    char sizechar[4];
+	memcpy(sizechar,(char*)&bufsize,4);
+	for (int i=0;i<4;i++)
+		CRCore::ENDIAN(sizechar[i]);
+
+	char realsizechar[4];
+	memcpy(realsizechar,(char*)&length,4);
+	for (int i=0;i<4;i++)
+		CRCore::ENDIAN(realsizechar[i]);
+		
+	std::ofstream fout;
+	fout.open(savefilename.c_str(), std::ios::binary);
+	fout.write(text,bufsize);
+	fout.write(sizechar,4);
+	fout.write(realsizechar,4);
+	fout.close();
+	free(text);
+}
