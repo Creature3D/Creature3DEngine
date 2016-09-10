@@ -1,0 +1,171 @@
+Determining size of off64_t failed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_2e8d3.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:24:01¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_2e8d3.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_2e8d3.dir\Debug\cmTC_2e8d3.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _LARGEFILE64_SOURCE=1 /D HAVE_SYS_TYPES_H /D HAVE_STDINT_H /D HAVE_STDDEF_H /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_2e8d3.dir\Debug\\" /Fd"cmTC_2e8d3.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue ..\CheckTypeSize\OFF64_T.c
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _LARGEFILE64_SOURCE=1 /D HAVE_SYS_TYPES_H /D HAVE_STDINT_H /D HAVE_STDDEF_H /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_2e8d3.dir\Debug\\" /Fd"cmTC_2e8d3.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue ..\CheckTypeSize\OFF64_T.c
+  
+  OFF64_T.c
+..\CheckTypeSize\OFF64_T.c(19): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+..\CheckTypeSize\OFF64_T.c(20): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+..\CheckTypeSize\OFF64_T.c(21): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+..\CheckTypeSize\OFF64_T.c(22): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+..\CheckTypeSize\OFF64_T.c(23): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷ - Ê§°Ü¡£
+
+Éú³ÉÊ§°Ü¡£
+
+¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj¡±(Ä¬ÈÏÄ¿±ê) (1) ->
+(ClCompile Ä¿±ê) -> 
+  ..\CheckTypeSize\OFF64_T.c(19): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+  ..\CheckTypeSize\OFF64_T.c(20): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+  ..\CheckTypeSize\OFF64_T.c(21): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+  ..\CheckTypeSize\OFF64_T.c(22): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+  ..\CheckTypeSize\OFF64_T.c(23): error C2065: ¡°off64_t¡±: Î´ÉùÃ÷µÄ±êÊ¶·û [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_2e8d3.vcxproj]
+
+    0 ¸ö¾¯¸æ
+    5 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:00.99
+
+F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CheckTypeSize/OFF64_T.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(off64_t))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the function fseeko exists failed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_9e92a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:24:04¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_9e92a.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_9e92a.dir\Debug\cmTC_9e92a.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=fseeko /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_9e92a.dir\Debug\\" /Fd"cmTC_9e92a.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue "D:\Program Files (x86)\CMake\share\cmake-3.5\Modules\CheckFunctionExists.c"
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=fseeko /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_9e92a.dir\Debug\\" /Fd"cmTC_9e92a.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue "D:\Program Files (x86)\CMake\share\cmake-3.5\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+ManifestResourceCompile:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_9e92a.dir\Debug\cmTC_9e92a.exe.embed.manifest.res" cmTC_9e92a.dir\Debug\cmTC_9e92a_manifest.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_9e92a.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_9e92a.dir\Debug\cmTC_9e92a.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_9e92a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_9e92a.lib" /MACHINE:X86 cmTC_9e92a.dir\Debug\cmTC_9e92a.exe.embed.manifest.res
+  cmTC_9e92a.dir\Debug\CheckFunctionExists.obj  /machine:X86 
+CheckFunctionExists.obj : error LNK2019: ÎŞ·¨½âÎöµÄÍâ²¿·ûºÅ _fseeko£¬¸Ã·ûºÅÔÚº¯Êı _main ÖĞ±»ÒıÓÃ [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj]
+F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_9e92a.exe : fatal error LNK1120: 1 ¸öÎŞ·¨½âÎöµÄÍâ²¿ÃüÁî [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj]
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷ - Ê§°Ü¡£
+
+Éú³ÉÊ§°Ü¡£
+
+¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj¡±(Ä¬ÈÏÄ¿±ê) (1) ->
+(Link Ä¿±ê) -> 
+  CheckFunctionExists.obj : error LNK2019: ÎŞ·¨½âÎöµÄÍâ²¿·ûºÅ _fseeko£¬¸Ã·ûºÅÔÚº¯Êı _main ÖĞ±»ÒıÓÃ [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj]
+  F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_9e92a.exe : fatal error LNK1120: 1 ¸öÎŞ·¨½âÎöµÄÍâ²¿ÃüÁî [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_9e92a.vcxproj]
+
+    0 ¸ö¾¯¸æ
+    2 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:02.81
+
+
+Determining if the include file unistd.h exists failed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_d007f.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:24:09¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_d007f.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_d007f.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_d007f.dir\Debug\cmTC_d007f.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_d007f.dir\Debug\\" /Fd"cmTC_d007f.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_d007f.dir\Debug\\" /Fd"cmTC_d007f.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  
+  CheckIncludeFile.c
+CheckIncludeFile.c(1): fatal error C1083: ÎŞ·¨´ò¿ª°üÀ¨ÎÄ¼ş:¡°unistd.h¡±: No such file or directory [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_d007f.vcxproj]
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_d007f.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷ - Ê§°Ü¡£
+
+Éú³ÉÊ§°Ü¡£
+
+¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_d007f.vcxproj¡±(Ä¬ÈÏÄ¿±ê) (1) ->
+(ClCompile Ä¿±ê) -> 
+  CheckIncludeFile.c(1): fatal error C1083: ÎŞ·¨´ò¿ª°üÀ¨ÎÄ¼ş:¡°unistd.h¡±: No such file or directory [F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_d007f.vcxproj]
+
+    0 ¸ö¾¯¸æ
+    1 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:00.96
+
+

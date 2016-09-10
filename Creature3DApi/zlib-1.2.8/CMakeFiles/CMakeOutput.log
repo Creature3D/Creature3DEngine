@@ -1,0 +1,283 @@
+The system is: Windows - 6.1.7601 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags: 
+
+The output was:
+0
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:23:13¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\3.5.0\CompilerIdC\CompilerIdC.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°Debug\CompilerIdC.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\CompilerIdC.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\3.5.0\CompilerIdC\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\3.5.0\CompilerIdC\.\CompilerIdC.exe
+Manifest:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:".\CompilerIdC.exe;#1" /manifest Debug\CompilerIdC.exe.intermediate.manifest
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ÕıÔÚÉ¾³ıÎÄ¼ş¡°Debug\CompilerIdC.unsuccessfulbuild¡±¡£
+  ÕıÔÚ¶Ô¡°Debug\CompilerIdC.lastbuildstate¡±Ö´ĞĞ Touch ÈÎÎñ¡£
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\3.5.0\CompilerIdC\CompilerIdC.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷¡£
+
+ÒÑ³É¹¦Éú³É¡£
+    0 ¸ö¾¯¸æ
+    0 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:02.49
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/3.5.0/CompilerIdC/CompilerIdC.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_0cbba.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:23:17¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_0cbba.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_0cbba.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_0cbba.dir\Debug\cmTC_0cbba.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_0cbba.dir\Debug\\" /Fd"cmTC_0cbba.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue testCCompiler.c
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_0cbba.dir\Debug\\" /Fd"cmTC_0cbba.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue testCCompiler.c
+  
+  testCCompiler.c
+ManifestResourceCompile:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.embed.manifest.res" cmTC_0cbba.dir\Debug\cmTC_0cbba_manifest.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_0cbba.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_0cbba.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_0cbba.lib" /MACHINE:X86 cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.embed.manifest.res
+  cmTC_0cbba.dir\Debug\testCCompiler.obj  /machine:X86 
+Manifest:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.embed.manifest" /manifest cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.intermediate.manifest
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.embed.manifest.res" cmTC_0cbba.dir\Debug\cmTC_0cbba_manifest.rc 
+LinkEmbedManifest:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_0cbba.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_0cbba.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_0cbba.lib" /MACHINE:X86 cmTC_0cbba.dir\Debug\cmTC_0cbba.exe.embed.manifest.res
+  cmTC_0cbba.dir\Debug\testCCompiler.obj  /machine:X86 
+  cmTC_0cbba.vcxproj -> F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_0cbba.exe
+FinalizeBuildStatus:
+  ÕıÔÚÉ¾³ıÎÄ¼ş¡°cmTC_0cbba.dir\Debug\cmTC_0cbba.unsuccessfulbuild¡±¡£
+  ÕıÔÚ¶Ô¡°cmTC_0cbba.dir\Debug\cmTC_0cbba.lastbuildstate¡±Ö´ĞĞ Touch ÈÎÎñ¡£
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_0cbba.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷¡£
+
+ÒÑ³É¹¦Éú³É¡£
+    0 ¸ö¾¯¸æ
+    0 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:06.63
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_7bba9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:23:26¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_7bba9.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_7bba9.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_7bba9.dir\Debug\cmTC_7bba9.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_7bba9.dir\Debug\\" /Fd"cmTC_7bba9.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue "D:\Program Files (x86)\CMake\share\cmake-3.5\Modules\CMakeCCompilerABI.c"
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_7bba9.dir\Debug\\" /Fd"cmTC_7bba9.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue "D:\Program Files (x86)\CMake\share\cmake-3.5\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+ManifestResourceCompile:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.embed.manifest.res" cmTC_7bba9.dir\Debug\cmTC_7bba9_manifest.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_7bba9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_7bba9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_7bba9.lib" /MACHINE:X86 cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.embed.manifest.res
+  cmTC_7bba9.dir\Debug\CMakeCCompilerABI.obj  /machine:X86 
+Manifest:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.embed.manifest" /manifest cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.intermediate.manifest
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.embed.manifest.res" cmTC_7bba9.dir\Debug\cmTC_7bba9_manifest.rc 
+LinkEmbedManifest:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_7bba9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_7bba9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_7bba9.lib" /MACHINE:X86 cmTC_7bba9.dir\Debug\cmTC_7bba9.exe.embed.manifest.res
+  cmTC_7bba9.dir\Debug\CMakeCCompilerABI.obj  /machine:X86 
+  cmTC_7bba9.vcxproj -> F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_7bba9.exe
+FinalizeBuildStatus:
+  ÕıÔÚÉ¾³ıÎÄ¼ş¡°cmTC_7bba9.dir\Debug\cmTC_7bba9.unsuccessfulbuild¡±¡£
+  ÕıÔÚ¶Ô¡°cmTC_7bba9.dir\Debug\cmTC_7bba9.lastbuildstate¡±Ö´ĞĞ Touch ÈÎÎñ¡£
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_7bba9.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷¡£
+
+ÒÑ³É¹¦Éú³É¡£
+    0 ¸ö¾¯¸æ
+    0 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:06.53
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_4d36f.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:23:34¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_4d36f.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_4d36f.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_4d36f.dir\Debug\cmTC_4d36f.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_4d36f.dir\Debug\\" /Fd"cmTC_4d36f.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_4d36f.dir\Debug\\" /Fd"cmTC_4d36f.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  
+  CheckIncludeFile.c
+ManifestResourceCompile:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.embed.manifest.res" cmTC_4d36f.dir\Debug\cmTC_4d36f_manifest.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_4d36f.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_4d36f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_4d36f.lib" /MACHINE:X86 cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.embed.manifest.res
+  cmTC_4d36f.dir\Debug\CheckIncludeFile.obj  /machine:X86 
+Manifest:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.embed.manifest" /manifest cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.intermediate.manifest
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.embed.manifest.res" cmTC_4d36f.dir\Debug\cmTC_4d36f_manifest.rc 
+LinkEmbedManifest:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_4d36f.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_4d36f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_4d36f.lib" /MACHINE:X86 cmTC_4d36f.dir\Debug\cmTC_4d36f.exe.embed.manifest.res
+  cmTC_4d36f.dir\Debug\CheckIncludeFile.obj  /machine:X86 
+  cmTC_4d36f.vcxproj -> F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_4d36f.exe
+FinalizeBuildStatus:
+  ÕıÔÚÉ¾³ıÎÄ¼ş¡°cmTC_4d36f.dir\Debug\cmTC_4d36f.unsuccessfulbuild¡±¡£
+  ÕıÔÚ¶Ô¡°cmTC_4d36f.dir\Debug\cmTC_4d36f.lastbuildstate¡±Ö´ĞĞ Touch ÈÎÎñ¡£
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_4d36f.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷¡£
+
+ÒÑ³É¹¦Éú³É¡£
+    0 ¸ö¾¯¸æ
+    0 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:08.03
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_e1254.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:23:45¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_e1254.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_e1254.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_e1254.dir\Debug\cmTC_e1254.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_e1254.dir\Debug\\" /Fd"cmTC_e1254.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_e1254.dir\Debug\\" /Fd"cmTC_e1254.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  
+  CheckIncludeFile.c
+ManifestResourceCompile:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_e1254.dir\Debug\cmTC_e1254.exe.embed.manifest.res" cmTC_e1254.dir\Debug\cmTC_e1254_manifest.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_e1254.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_e1254.dir\Debug\cmTC_e1254.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_e1254.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_e1254.lib" /MACHINE:X86 cmTC_e1254.dir\Debug\cmTC_e1254.exe.embed.manifest.res
+  cmTC_e1254.dir\Debug\CheckIncludeFile.obj  /machine:X86 
+Manifest:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"cmTC_e1254.dir\Debug\cmTC_e1254.exe.embed.manifest" /manifest cmTC_e1254.dir\Debug\cmTC_e1254.exe.intermediate.manifest
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_e1254.dir\Debug\cmTC_e1254.exe.embed.manifest.res" cmTC_e1254.dir\Debug\cmTC_e1254_manifest.rc 
+LinkEmbedManifest:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_e1254.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_e1254.dir\Debug\cmTC_e1254.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_e1254.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_e1254.lib" /MACHINE:X86 cmTC_e1254.dir\Debug\cmTC_e1254.exe.embed.manifest.res
+  cmTC_e1254.dir\Debug\CheckIncludeFile.obj  /machine:X86 
+  cmTC_e1254.vcxproj -> F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_e1254.exe
+FinalizeBuildStatus:
+  ÕıÔÚÉ¾³ıÎÄ¼ş¡°cmTC_e1254.dir\Debug\cmTC_e1254.unsuccessfulbuild¡±¡£
+  ÕıÔÚ¶Ô¡°cmTC_e1254.dir\Debug\cmTC_e1254.lastbuildstate¡±Ö´ĞĞ Touch ÈÎÎñ¡£
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_e1254.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷¡£
+
+ÒÑ³É¹¦Éú³É¡£
+    0 ¸ö¾¯¸æ
+    0 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:06.13
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: F:/CAIå·¥ä½œå®¤/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_5456e.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=10.0"
+Microsoft(R) Éú³ÉÒıÇæ°æ±¾ 4.0.30319.17929
+[Microsoft .NET Framework °æ±¾ 4.0.30319.18063]
+°æÈ¨ËùÓĞ (C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+
+Éú³ÉÆô¶¯Ê±¼äÎª 2016/6/3 21:23:53¡£
+½Úµã 1 ÉÏµÄÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_5456e.vcxproj¡±(Ä¬ÈÏÄ¿±ê)¡£
+PrepareForBuild:
+  ÕıÔÚ´´½¨Ä¿Â¼¡°cmTC_5456e.dir\Debug\¡±¡£
+  ÕıÔÚ´´½¨Ä¿Â¼¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\¡±¡£
+InitializeBuildStatus:
+  ÕıÔÚ´´½¨¡°cmTC_5456e.dir\Debug\cmTC_5456e.unsuccessfulbuild¡±£¬ÒòÎªÒÑÖ¸¶¨¡°AlwaysCreate¡±¡£
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_5456e.dir\Debug\\" /Fd"cmTC_5456e.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  ÓÃÓÚ 80x86 µÄ Microsoft (R) 32 Î» C/C++ ÓÅ»¯±àÒëÆ÷ 16.00.40219.01 °æ
+  °æÈ¨ËùÓĞ(C) Microsoft Corporation¡£±£ÁôËùÓĞÈ¨Àû¡£
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_5456e.dir\Debug\\" /Fd"cmTC_5456e.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue CheckIncludeFile.c
+  
+  CheckIncludeFile.c
+ManifestResourceCompile:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_5456e.dir\Debug\cmTC_5456e.exe.embed.manifest.res" cmTC_5456e.dir\Debug\cmTC_5456e_manifest.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_5456e.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_5456e.dir\Debug\cmTC_5456e.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_5456e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_5456e.lib" /MACHINE:X86 cmTC_5456e.dir\Debug\cmTC_5456e.exe.embed.manifest.res
+  cmTC_5456e.dir\Debug\CheckIncludeFile.obj  /machine:X86 
+Manifest:
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"cmTC_5456e.dir\Debug\cmTC_5456e.exe.embed.manifest" /manifest cmTC_5456e.dir\Debug\cmTC_5456e.exe.intermediate.manifest
+  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"cmTC_5456e.dir\Debug\cmTC_5456e.exe.embed.manifest.res" cmTC_5456e.dir\Debug\cmTC_5456e_manifest.rc 
+LinkEmbedManifest:
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_5456e.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /ManifestFile:"cmTC_5456e.dir\Debug\cmTC_5456e.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_5456e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:/CAI¹¤×÷ÊÒ/Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/CMakeTmp/Debug/cmTC_5456e.lib" /MACHINE:X86 cmTC_5456e.dir\Debug\cmTC_5456e.exe.embed.manifest.res
+  cmTC_5456e.dir\Debug\CheckIncludeFile.obj  /machine:X86 
+  cmTC_5456e.vcxproj -> F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\Debug\cmTC_5456e.exe
+FinalizeBuildStatus:
+  ÕıÔÚÉ¾³ıÎÄ¼ş¡°cmTC_5456e.dir\Debug\cmTC_5456e.unsuccessfulbuild¡±¡£
+  ÕıÔÚ¶Ô¡°cmTC_5456e.dir\Debug\cmTC_5456e.lastbuildstate¡±Ö´ĞĞ Touch ÈÎÎñ¡£
+ÒÑÍê³ÉÉú³ÉÏîÄ¿¡°F:\CAI¹¤×÷ÊÒ\Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\CMakeTmp\cmTC_5456e.vcxproj¡±(Ä¬ÈÏÄ¿±ê)µÄ²Ù×÷¡£
+
+ÒÑ³É¹¦Éú³É¡£
+    0 ¸ö¾¯¸æ
+    0 ¸ö´íÎó
+
+ÒÑÓÃÊ±¼ä 00:00:06.90
+
+
