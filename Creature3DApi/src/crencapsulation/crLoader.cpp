@@ -1,4 +1,4 @@
-/* Creature3D - Online Game Engine, Copyright (C) 2005 吴财华(26756325@qq.com)
+/* Creature3D - Online Game Engine, Copyright (C) 2005 Wucaihua(26756325@qq.com)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -172,7 +172,6 @@
 #include <CRText/crText.h>
 #include <CRText/crFont.h>
 
-#include <Producer/RenderSurface>
 #include <CRCore/thread/crThread.h>
 
 #include <CRCore/crVector2.h>
@@ -2232,7 +2231,7 @@ void CREncapsulation::createLogoText()
 	text->setCharacterSize(characterSize);
 	text->setPosition(pos);
 	text->setAlignment(CRText::crText::BASE_LINE);
-	text->setText("Creature3D Game Engine");//L"Copyright(C) 2005 吴财华"
+	text->setText("Creature3D Game Engine");//L"Copyright(C) 2005 Wucaihua"
 	crFilterRenderManager::getInstance()->addDrawable(text);
 
 	pos.y()-=characterSize;

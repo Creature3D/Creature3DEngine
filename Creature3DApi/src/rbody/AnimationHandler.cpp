@@ -1,5 +1,5 @@
 //Creature3D
-//modify by Îâ²Æ»ª
+//modify by Wucaihua
 #include "rbody/AnimationHandler.h"
 
 using namespace rbody;

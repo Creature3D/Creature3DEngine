@@ -1,5 +1,5 @@
 //Creature3D
-//modify by Îâ²Æ»ª
+//modify by Wucaihua
 #include "rbody/CoreBody.h"
 #include <rvrutils/CodeLineException.h>
 #include <rvrutils/Notify.h>

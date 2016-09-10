@@ -328,6 +328,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CREncapsulation.lib;CRNet.lib;%(AdditionalDependencies)</AdditionalDependencies>

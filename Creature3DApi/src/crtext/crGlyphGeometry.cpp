@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
-//Modified by Îâ²Æ»ª
+//Modified by Wucaihua
 #include <CRText/crGlyphGeometry.h>
 //#include <CRCore/io_utils.h>
 #include <CRCore/crTriangleIndexFunctor.h>

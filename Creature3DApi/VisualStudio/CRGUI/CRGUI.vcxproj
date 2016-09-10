@@ -322,6 +322,7 @@
       <Optimization>MaxSpeed</Optimization>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>CRCore.lib;CRUtil.lib;CRProducer.lib;ConfigScript.lib;CRParticle.lib;CRPhysics.lib;CRIOManager.lib;%(AdditionalDependencies)</AdditionalDependencies>

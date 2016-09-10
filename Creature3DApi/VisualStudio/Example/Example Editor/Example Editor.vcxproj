@@ -278,6 +278,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRParticle.lib;CRPhysics.lib;CRProducer.lib;CRUtil.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;CREncapsulation.lib;CRGUI.lib;ConfigScript.lib;CRText.lib;CRNet.lib;CRSound.lib;%(AdditionalDependencies)</AdditionalDependencies>

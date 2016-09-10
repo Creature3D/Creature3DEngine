@@ -96,7 +96,7 @@ void RemoveCntrlChar(std::string& line)
   for(string_it=line.begin(); string_it < line.end(); string_it++) {
     // OOOPPPPSSSS the check a > 0 not directly language independent.
     // The two last is to remove garbage from a OpenFlight reader..... Not GOOD
-    if (/*iswprint(*string_it) &&*/ *string_it != TAB_LETTER)// && a != '? && a != 171)//吴财华 注：该函数对中文支持不好
+    if (/*iswprint(*string_it) &&*/ *string_it != TAB_LETTER)// && a != '? && a != 171)//Wucaihua 注：该函数对中文支持不好
       new_string.insert(new_string.end(),*string_it);
   }
 

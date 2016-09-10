@@ -1,6 +1,6 @@
 // $Id: Body.cpp,v 1.3 2005/02/09 17:26:56 deepone Exp $
 //Creature3D
-//modify by Îâ²Æ»ª
+//modify by Wucaihua
 #define DO_TIMING 0
 
 #include <rbody/Body.h>
