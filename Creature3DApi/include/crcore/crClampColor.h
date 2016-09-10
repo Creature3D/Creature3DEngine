@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
-//Modified by 吴财华
+//Modified by Wucaihua
 #ifndef CRCORE_CLAMPCOLOR_H
 #define CRCORE_CLAMPCOLOR_H 1
 

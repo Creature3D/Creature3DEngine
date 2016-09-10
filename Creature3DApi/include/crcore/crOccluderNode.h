@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
-//Modified by 吴财华
+//Modified by Wucaihua
 #ifndef CRCORE_CROccluderNode_H
 #define CRCORE_CROccluderNode_H 1
 

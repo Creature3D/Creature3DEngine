@@ -1,5 +1,5 @@
 //Creature3D
-//Modified by Îâ²Æ»ª
+//Modified by Wucaihua
 #ifndef _CCOREBODY_H
 #define _CCOREBODY_H
 

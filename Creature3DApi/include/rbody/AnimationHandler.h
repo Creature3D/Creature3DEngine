@@ -1,5 +1,5 @@
 //Creature3D
-//Modified by Îâ²Æ»ª
+//Modified by Wucaihua
 #ifndef _CANIMATIONHANDLER_H
 #define _CANIMATIONHANDLER_H
 

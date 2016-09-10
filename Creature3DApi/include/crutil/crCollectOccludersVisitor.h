@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
-//Modified by Îâ²Æ»ª
+//Modified by Wucaihua
 #ifndef CRUTIL_CRCOLLECTOCCLUDERSVISITOR_H
 #define CRUTIL_CRCOLLECTOCCLUDERSVISITOR_H 1
 

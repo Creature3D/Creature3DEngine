@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
  * OpenSceneGraph Public License for more details.
 */
-//Modified by 吴财华
+//Modified by Wucaihua
 #ifndef CRCORE_CRUNIFORM
 #define CRCORE_CRUNIFORM 1
 
@@ -523,5 +523,3 @@ inline void crUniform::swapBuffers(int frameNumber)
 }
 
 #endif
-
-/*EOF*/

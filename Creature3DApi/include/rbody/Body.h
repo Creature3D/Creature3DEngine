@@ -1,6 +1,6 @@
 //  $Id: Body.h,v 1.2 2005/02/09 17:26:54 deepone Exp $
 //Creature3D
-//Modified by Îâ²Æ»ª
+//Modified by Wucaihua
 #ifndef _RBODY_BODY_H
 #define _RBODY_BODY_H
 #include <cal3d/cal3d.h>

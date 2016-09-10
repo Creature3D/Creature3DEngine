@@ -1448,7 +1448,7 @@ static NLint sock_ReadPacket(NLsocket socket, NLvoid /*@out@*/ *buffer, NLint nb
             return NL_INVALID;
         }
         /* check to see if we need to make the inbuf storage larger */
-        if((NLint)len+NL_HEADER_LEN > sock->inbuflen)//modify by 吴财华，解决了一个无法收包的BUG！！
+        if((NLint)len+NL_HEADER_LEN > sock->inbuflen)//modify by Wucaihua，解决了一个无法收包的BUG！！
         {
             NLint   newbuflen;
             NLbyte  *temp;

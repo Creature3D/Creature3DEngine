@@ -23,7 +23,7 @@
 
 #include "rcfg/export.h"
 
-//Modified by Îâ²Æ»ª For Creature3D Use
+//Modified by Wucaihua For Creature3D Use
 const std::string CreScriptParserHeader = "# Creature3D Script Parser v1.0";
 //const std::string CreScriptParserHeader = "";
 namespace rcfg {
