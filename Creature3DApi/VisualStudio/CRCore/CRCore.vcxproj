@@ -576,6 +576,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
     <ClCompile Include="..\..\src\crcore\crAnimationPath.cpp" />
     <ClCompile Include="..\..\src\crcore\crArgumentParser.cpp" />
     <ClCompile Include="..\..\src\crcore\crArray.cpp" />
+    <ClCompile Include="..\..\src\crcore\crAudioStream.cpp" />
     <ClCompile Include="..\..\src\crcore\crAutoTransform.cpp" />
     <ClCompile Include="..\..\src\crcore\crBase.cpp" />
     <ClCompile Include="..\..\src\crcore\crBillboard.cpp" />
@@ -723,6 +724,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
     <ClCompile Include="..\..\src\crcore\thread\crWin32ThreadBarrier.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\crcore\crAudioStream.h" />
     <ClInclude Include="..\..\include\crcore\crBlockDetectThread.h" />
     <ClInclude Include="..\..\include\crcore\crCalcNodeParentsMatrixVisitor.h" />
     <ClInclude Include="..\..\include\crcore\crStatistics.h" />
