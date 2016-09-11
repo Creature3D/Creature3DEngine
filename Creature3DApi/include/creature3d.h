@@ -148,8 +148,6 @@
 #include <CRText/crFont.h>
 #include <CRText/crDefaultFont.h>
 
-#include <Producer/RenderSurface>
-
 #include <CRCore/crVector2.h>
 
 #include <CREncapsulation/crLoader.h>
