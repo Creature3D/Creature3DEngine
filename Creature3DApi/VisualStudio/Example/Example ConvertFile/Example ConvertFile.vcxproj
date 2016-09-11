@@ -281,7 +281,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -387,7 +387,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -420,7 +420,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -487,7 +487,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -519,7 +519,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>

@@ -275,7 +275,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -290,7 +290,7 @@
       <AdditionalDependencies>CRCore.lib;CRUtil.lib;CRProducer.lib;CRAL.lib;CRPhysics.lib;ConfigScript.lib;CRParticle.lib;CRGUI.lib;CRText.lib;CRIOManager.lib;vrutils.lib;ReplicantBody.lib;ode_single.lib;CRTerrain.lib;CRDataBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -385,7 +385,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;..\..\gnelib-0.70\include;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\gnelib-0.70\include;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -401,7 +401,7 @@
       <AdditionalDependencies>CRCored.lib;CRUtild.lib;CRProducerd.lib;CRALd.lib;CRPhysicsd.lib;ConfigScriptd.lib;CRParticled.lib;CRGUId.lib;CRTextd.lib;CRIOManagerd.lib;vrutilsd.lib;ReplicantBodyd.lib;ode_singled.lib;CRTerraind.lib;CRDataBased.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
@@ -423,7 +423,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;..\..\gnelib-0.70\include;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\gnelib-0.70\include;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -441,7 +441,7 @@
       <AdditionalDependencies>CRCored.lib;CRUtild.lib;CRProducerd.lib;CRPhysicsd.lib;ConfigScriptd.lib;CRParticled.lib;CRGUId.lib;CRTextd.lib;CRIOManagerd.lib;vrutilsd.lib;ReplicantBodyd.lib;ode_singled.lib;CRTerraind.lib;CRDataBased.lib;CRSoundd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
@@ -503,7 +503,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;..\..\gnelib-0.70\include;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\gnelib-0.70\include;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -536,7 +536,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\ode\src;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\include\AL;..\..\cal3d-0.11.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>

@@ -10,7 +10,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * OpenSceneGraph Public License for more details.
 */
-//Modified by 吴财华
+//Modified by Wucaihua
 #include <CRCore/crQuat.h>
 #include <CRCore/crNotify.h>
 #include <CRCore/crMath.h>

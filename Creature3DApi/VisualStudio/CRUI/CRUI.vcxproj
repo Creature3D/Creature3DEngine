@@ -76,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CRUI_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\include;..\..\ode-0.12\include;..\..\FMOD4.29\api\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\ode-0.13\include;..\..\FMOD4.29\api\inc</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <BufferSecurityCheck>false</BufferSecurityCheck>

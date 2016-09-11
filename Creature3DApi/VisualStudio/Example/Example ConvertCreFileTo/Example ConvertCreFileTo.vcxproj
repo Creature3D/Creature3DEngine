@@ -58,7 +58,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.12\include;..\..\..\ode-0.12\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\ode-0.13\include;..\..\..\ode-0.13\ode\src;../../../include/AL;..\..\..\cal3d-0.11.0\src;..\..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <BufferSecurityCheck>false</BufferSecurityCheck>

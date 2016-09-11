@@ -430,7 +430,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.7\;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.8\;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNET_DLL;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -451,7 +451,7 @@
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\zlib-1.2.7\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\zlib-1.2.8\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>
@@ -477,7 +477,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.5\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.8\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNET_DLL;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -513,7 +513,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.5\;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.8\;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNET_DLL;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -548,7 +548,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.5\;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.8\;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNET_DLL;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>

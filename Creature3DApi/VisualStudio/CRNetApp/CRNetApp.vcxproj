@@ -228,7 +228,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -244,7 +244,7 @@
       <AdditionalDependencies>CRCore.lib;CRNet.lib;CRDataBase.lib;gne.lib;CRGUI.lib;ConfigScript.lib;CREncapsulation.lib;CRIOManager.lib;CRPhysics.lib;CRAL.lib;CRProducer.lib;CRParticle.lib;ReplicantBody.lib;ode_single.lib;CRText.lib;openalpp.lib;vrutils.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\releasesingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -340,7 +340,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\zlib-1.2.5\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\zlib-1.2.8\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -356,7 +356,7 @@
     <Link>
       <AdditionalDependencies>CRCored.lib;CRNetd.lib;CRDataBased.lib;gned.lib;CRGUId.lib;ConfigScriptd.lib;CREncapsulationd.lib;CRIOManagerd.lib;CRPhysicsd.lib;CRALd.lib;CRProducerd.lib;CRParticled.lib;ReplicantBodyd.lib;ode_singled.lib;CRTextd.lib;openalppd.lib;vrutilsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\debugsingledll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences />
@@ -374,7 +374,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\zlib-1.2.5\;..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\zlib-1.2.8\;..\..\FMOD4.29\api\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -392,7 +392,7 @@
     <Link>
       <AdditionalDependencies>CRCored.lib;CRNetd.lib;CRDataBased.lib;gned.lib;CRGUId.lib;ConfigScriptd.lib;CREncapsulationd.lib;CRIOManagerd.lib;CRPhysicsd.lib;CRProducerd.lib;CRParticled.lib;ReplicantBodyd.lib;ode_singled.lib;CRTextd.lib;vrutilsd.lib;CRDownloadd.lib;CRUId.lib;CRSoundd.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.12\lib\debugsingledll;..\..\FMOD4.29\api\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\debugsingledll;..\..\FMOD4.29\api\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>
@@ -448,7 +448,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\zlib-1.2.5\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\zlib-1.2.8\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -480,7 +480,7 @@ copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Game\bin\</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.12\include;..\..\ode-0.12\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;..\..\include\AL;..\..\cal3d-0.11.0\src;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
