@@ -690,7 +690,7 @@ void crLoadingDrawThread::run()
 		frameStamp->setReferenceTime(0.0f);
 		sv->setSceneData(crFilterRenderManager::getInstance());
 		sv->setAbortRenderingPtr(NULL);
-		CRCore::crDisplaySettings::instance()->setFpsControl(50.0f);
+		//CRCore::crDisplaySettings::instance()->setFpsControl(50.0f);
 		rs->makeCurrent();
 		while (!m_done)
 		{
@@ -712,7 +712,7 @@ void crLoadingDrawThread::run()
 		//sv->unlockSwapBuffer();
 		frameStamp->setFrameNumber(0);
 		frameStamp->setReferenceTime(0.0f);
-		CRCore::crDisplaySettings::instance()->restoreFpsControl();
+		//CRCore::crDisplaySettings::instance()->restoreFpsControl();
 		rs->releaseCurrent();
 		crFilterRenderManager::getInstance()->init();
 	}
