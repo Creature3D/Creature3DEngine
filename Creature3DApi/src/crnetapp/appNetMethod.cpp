@@ -46166,7 +46166,7 @@ void crShellExecuteMethod::operator()(crHandle &handle)
 	{
 		m_url = "µÇÂ¼Æ÷.exe";
 	}
-	ShellExecute(::GetActiveWindow(),"open",m_url.c_str(),NULL,NULL,m_show);
+	ShellExecute(NULL,"open",m_url.c_str(),NULL,NULL,m_show);
 }
 /////////////////////////////////////////
 //

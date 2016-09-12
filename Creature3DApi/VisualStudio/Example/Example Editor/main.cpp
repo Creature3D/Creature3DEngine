@@ -287,9 +287,10 @@ int main( int argc, char **argv )
 	crArgumentParser::readKeyValue(argvstr,"-ypos",ypos);
 	crArgumentParser::readKeyValue(argvstr,"-width",width);
 	crArgumentParser::readKeyValue(argvstr,"-height",height);
-
+#ifdef _ACTIVEX
 	ds->setFullScreen(false);
 	ds->setUseBoard(false);
+#endif
 	ds->setScreenWidth(width);
 	ds->setScreenHeight(height);
 	ds->setViewSize(width,height);
