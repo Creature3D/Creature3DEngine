@@ -24,9 +24,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\programs\bakelightmap.glsl">
-      <Filter>programs</Filter>
-    </None>
     <None Include="..\..\..\programs\collidemap.glsl">
       <Filter>programs</Filter>
     </None>

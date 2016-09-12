@@ -318,7 +318,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
     case WM_SIZE:
 		if(wParam == SIZE_MINIMIZED)
 		{
-			CRCore::crDisplaySettings::instance()->setFpsControl(15.0f);
+			CRCore::crDisplaySettings::instance()->setFpsControl(10.0f);
 			//CRCore::crBlockDetectThread::getInstance()->pause();
 			//CRCore::crBrain::getInstance()->pauseGame();
 			ev = new WindowRestoredEvent( hWnd,0 );

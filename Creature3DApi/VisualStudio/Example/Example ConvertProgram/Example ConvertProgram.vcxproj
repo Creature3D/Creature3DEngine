@@ -557,7 +557,6 @@
     <ResourceCompile Include="..\..\icons\cre_icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\programs\bakelightmap.glsl" />
     <None Include="..\..\..\programs\collidemap.glsl" />
     <None Include="..\..\..\programs\final.glsl" />
     <None Include="..\..\..\programs\fxaa.glsl" />

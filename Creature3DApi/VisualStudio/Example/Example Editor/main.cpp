@@ -280,7 +280,7 @@ int main( int argc, char **argv )
 	int ypos = 0;
 	int width = 1366;
 	int height = 768;
-#ifdef _ACTIVEX
+//#ifdef _ACTIVEX
 	crArgumentParser::readKeyValue(argvstr,"-hWndParent",hWndParent);
 	crArgumentParser::readKeyValue(argvstr,"-Wnd",hWnd);
 	crArgumentParser::readKeyValue(argvstr,"-xpos",xpos);
@@ -296,7 +296,7 @@ int main( int argc, char **argv )
 	//char programDir[256];
 	//GetCurrentDirectory(256,programDir);
 	//MessageBox((HWND)hWnd,programDir,"Creature3DX",MB_OKCANCEL);
-#endif
+//#endif
 //#ifdef _WIN32
 //	if(ds->getFullScreen())
 //	    CREncapsulation::crStartHandler::changeDisplaySettings(ds->getScreenWidth(),ds->getScreenHeight(),ds->getColorBits());
