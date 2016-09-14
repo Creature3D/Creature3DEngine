@@ -144,7 +144,7 @@
     <OutDir>..\..\..\bin\</OutDir>
     <IntDir>C:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>Jiangxingjue</TargetName>
+    <TargetName>Creature3D</TargetName>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules />
     <CodeAnalysisRuleAssemblies />
