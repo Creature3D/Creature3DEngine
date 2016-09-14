@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{5845a20e-1cfb-470f-9809-60190cb0f210}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Win32">
+      <UniqueIdentifier>{49b036c2-4733-4002-8db1-1b5e9f2ebad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExporterFramework">
+      <UniqueIdentifier>{493dc96c-4f5b-4462-bbb8-8c400d0ef05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MayaExporter">
+      <UniqueIdentifier>{77dd4733-13d5-4b93-943f-41d30a88ade1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\src\res\cal3d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\src\res\cal3d_bar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\src\res\type_bone.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\src\res\type_dummy.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\src\res\type_other.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\win32\AnimationExportSheet.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\AnimationTimePage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\BoneAssignmentPage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\LevelOfDetailPage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\MaterialExportSheet.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\MaterialMapDialog.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\MaterialMapsPage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\MaterialSelectionPage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\MeshExportSheet.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\SkeletonExportSheet.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\SkeletonFilePage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\SkeletonHierarchyPage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\SpringSystemPage.cpp">
+      <Filter>Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BaseInterface.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BaseMaterial.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BaseMesh.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BaseNode.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BoneCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Exporter.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Lodder.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MaterialCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MaterialLibraryCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeshCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Quadric.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SkeletonCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SubmeshCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexCandidate.cpp">
+      <Filter>ExporterFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="cal3d_maya_exporter.cpp">
+      <Filter>MayaExporter</Filter>
+    </ClCompile>
+    <ClCompile Include="MayaInterface.cpp">
+      <Filter>MayaExporter</Filter>
+    </ClCompile>
+    <ClCompile Include="MayaMaterial.cpp">
+      <Filter>MayaExporter</Filter>
+    </ClCompile>
+    <ClCompile Include="MayaMesh.cpp">
+      <Filter>MayaExporter</Filter>
+    </ClCompile>
+    <ClCompile Include="MayaNode.cpp">
+      <Filter>MayaExporter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\win32\MaterialMapDialog.h">
+      <Filter>Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BaseInterface.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BaseMaterial.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BaseMesh.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BaseNode.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BoneCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Exporter.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Lodder.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MaterialCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MaterialLibraryCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeshCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Quadric.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SkeletonCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SubmeshCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\VertexCandidate.h">
+      <Filter>ExporterFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="cal3d_maya_exporter.h">
+      <Filter>MayaExporter</Filter>
+    </ClInclude>
+    <ClInclude Include="MayaInterface.h">
+      <Filter>MayaExporter</Filter>
+    </ClInclude>
+    <ClInclude Include="MayaMaterial.h">
+      <Filter>MayaExporter</Filter>
+    </ClInclude>
+    <ClInclude Include="MayaMesh.h">
+      <Filter>MayaExporter</Filter>
+    </ClInclude>
+    <ClInclude Include="MayaNode.h">
+      <Filter>MayaExporter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="cal3d_maya_exporter.rc">
+      <Filter>ExporterFramework</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
