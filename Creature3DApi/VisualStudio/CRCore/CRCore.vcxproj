@@ -350,6 +350,12 @@
       <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) D:\JXJ\trunk\JXJClientCook\bin\
+copy $(OutDir)$(TargetName)$(TargetExt) D:\JXJ\trunk\JXJServerCook\bin\
+copy C:\Intermediate\$(TargetName).pdb D:\JXJ\trunk\JXJClientCook\bin\
+copy C:\Intermediate\$(TargetName).pdb D:\JXJ\trunk\JXJServerCook\bin\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">
     <ClCompile>
