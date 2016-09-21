@@ -322,7 +322,7 @@ void RenderSurface::setWindowRectangle( int x, int y, unsigned int width, unsign
 //#else
     //_isFullScreen    = false;
 //#endif
-    if( _inited/* || _realized && resize */)
+    if( _inited && /*_realized &&*/ resize )
         _resizeWindow();
     else
         if( _bindInputRectangleToWindowSize == true )

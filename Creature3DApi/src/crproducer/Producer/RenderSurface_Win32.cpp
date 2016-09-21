@@ -30,6 +30,7 @@
 #include <CRCore/crBlockDetectThread.h>
 #include <CRCore/crStreamBuf.h>
 //#include <CRCore/crDisplaySettings.h>
+#include <CRCore/crFilterRenderManager.h>
 //#include <imm.h>
 #pragma comment( lib, "imm32.lib" )
 using namespace Producer;
@@ -97,41 +98,27 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
     //RECT rect;
     ref_ptr<Event> ev;
 
-	switch(uMsg)
+	if (CRCore::crDisplaySettings::instance()->getRunMode() == 0)
 	{
-	case WM_LBUTTONDBLCLK:
-	case WM_RBUTTONDBLCLK:
-	case WM_MBUTTONDBLCLK:
-	//case WM_XBUTTONDBLCLK:
-	case WM_LBUTTONDOWN:
-	case WM_RBUTTONDOWN:
-	case WM_MBUTTONDOWN:
-	//case WM_XBUTTONDOWN:
-	case WM_LBUTTONUP:
-	case WM_RBUTTONUP:
-	case WM_MBUTTONUP:
-	//case WM_XBUTTONUP:
-	case WM_MOUSEMOVE:
-		::SendMessage(hWnd,WM_ACTIVATE,WA_ACTIVE,NULL);
-		break;
-	//case WM_INPUTLANGCHANGEREQUEST://切换输入法时导致窗口拾取输入焦点
-	//	std::cerr << "WM_INPUTLANGCHANGEREQUEST wParam = "<<wParam<<" lParam = "<<lParam<< std::endl;
- //       lRet = DefWindowProc (hWnd, uMsg, wParam, lParam);
-	//	std::cerr << "WM_INPUTLANGCHANGEREQUEST "<<lRet<< std::endl;
-	//	return lRet;
-	case WM_ERASEBKGND:
-		return true;
+		switch(uMsg)
+		{
+		case WM_LBUTTONDBLCLK:
+		case WM_RBUTTONDBLCLK:
+		case WM_MBUTTONDBLCLK:
+		//case WM_XBUTTONDBLCLK:
+		case WM_LBUTTONDOWN:
+		case WM_RBUTTONDOWN:
+		case WM_MBUTTONDOWN:
+		//case WM_XBUTTONDOWN:
+		case WM_LBUTTONUP:
+		case WM_RBUTTONUP:
+		case WM_MBUTTONUP:
+		//case WM_XBUTTONUP:
+		//case WM_MOUSEMOVE:
+			::SendMessage(hWnd,WM_ACTIVATE,WA_ACTIVE,NULL);
+			break;
+		}
 	}
-	//switch(uMsg)
-	//{
-	//case WM_LBUTTONDOWN:
-	//	SetCapture(hWnd);
-	//	break;
-	//case WM_LBUTTONUP:
-	//	ReleaseCapture();
-	//	break;
-	//}
-    //std::cerr <<uMsg<< std::endl;
     switch (uMsg)
     {
 	//case WM_IME_NOTIFY:
@@ -140,6 +127,8 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	//	//else
 	//	//	lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
 	//	break;
+	case WM_ERASEBKGND:
+		return true;
 	case WM_USER+1:
 		if(wParam==0)
 		{
@@ -316,25 +305,38 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
 		break;
     case WM_SIZE:
-		if(wParam == SIZE_MINIMIZED)
 		{
-			CRCore::crDisplaySettings::instance()->setFpsControl(10.0f);
-			//CRCore::crBlockDetectThread::getInstance()->pause();
-			//CRCore::crBrain::getInstance()->pauseGame();
-			ev = new WindowRestoredEvent( hWnd,0 );
-			dispatch(ev);
+			int newWidth = (int)(short)(LOWORD(lParam));
+			int newHeight = (int)(short)(HIWORD(lParam));
+			if (newWidth != _windowWidth || newHeight != _windowHeight)
+			{
+				CRCore::crDisplaySettings::instance()->setViewSize(newWidth, newHeight);
+				CRCore::crFilterRenderManager::getInstance()->resize();
+				setWindowRectangle(_windowX, _windowY, newWidth, newHeight, false);
+			}
+			if (wParam == SIZE_MINIMIZED)
+			{
+				CRCore::crDisplaySettings::instance()->setFpsControl(10.0f);
+				//CRCore::crBlockDetectThread::getInstance()->pause();
+				//CRCore::crBrain::getInstance()->pauseGame();
+				ev = new WindowRestoredEvent(hWnd, 0);
+				dispatch(ev);
+			}
+			else if (wParam == SIZE_RESTORED)
+			{
+				CRCore::crDisplaySettings::instance()->restoreFpsControl();
+				//CRCore::crBlockDetectThread::getInstance()->resume();
+				//CRCore::crBrain::getInstance()->resumeGame();
+				ev = new WindowRestoredEvent(hWnd, 1);
+				dispatch(ev);
+			}
+			if (!_ownWindow)
+				lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
 		}
-		else if(wParam == SIZE_RESTORED)
-		{
-			CRCore::crDisplaySettings::instance()->restoreFpsControl();
-			//CRCore::crBlockDetectThread::getInstance()->resume();
-			//CRCore::crBrain::getInstance()->resumeGame();
-			ev = new WindowRestoredEvent( hWnd,1 );
-			dispatch(ev);
-		}
-		if (!_ownWindow)
-			lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
 		break;
+	//case WM_EXITSIZEMOVE:
+	//	setWindowRectangle(_windowX, _windowY, CRCore::crDisplaySettings::instance()->getViewWidth(), CRCore::crDisplaySettings::instance()->getViewHeight(), false);
+	//	break;
 	case WM_CREATE:
     case WM_MOVE:
         // only change window dimensions for non-child, 
@@ -783,8 +785,8 @@ bool RenderSurface::_init()
 
                 // style is a child window
                 //dwExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
-				dwExStyle = WS_EX_NOPARENTNOTIFY;
-                dwStyle   = WS_VISIBLE|WS_CHILD;
+				dwExStyle = NULL/*WS_EX_NOPARENTNOTIFY*/;
+                dwStyle   = WS_CHILD;
 
                 //AdjustWindowRectEx(&rect, dwStyle, FALSE, dwExStyle);
 
@@ -848,7 +850,7 @@ bool RenderSurface::_init()
                 if(_decorations) {
                   // map from client area dimensions to outer window dimensions
                   //AdjustWindowRectEx(&rect, dwStyle, FALSE, dwExStyle);
-					dwStyle   = WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;//WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX;//
+					dwStyle = WS_OVERLAPPEDWINDOW;//WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;//WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX;//
 					//int shellH = 0;
 					//RECT   Rect; 
 					//HWND   hWnd = FindWindow("Shell_TrayWnd", NULL);
@@ -1865,7 +1867,7 @@ void RenderSurface::_setBorder( bool flag )
         //Add border style to window
         //style &= ~WS_POPUP;
         //style |= WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;
-		style = WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;
+		style = WS_OVERLAPPEDWINDOW;//WS_DLGFRAME | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX;
 
         //Calculate new size of window with border
         rect.left = 0;

@@ -100,6 +100,10 @@
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
       <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Projects\Editor\Creature3DEditor\bin\
+copy C:\Intermediate\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Plugin\Plugin OpenFlight\AttrData.h" />

@@ -582,7 +582,7 @@ bool crCameraGroup::realize(Producer::Window parentWnd,Producer::Window renderWn
 		//char gbuf[256];
 		//sprintf(gbuf,"setWindowRectangle x=%d y=%d w=%d h=%d\n\0",x,y,(int)m_ds->getViewWidth(),(int)m_ds->getViewHeight());
 		//gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
-		rs->setWindowRectangle(x,y,m_ds->getViewWidth(),m_ds->getViewHeight(),false);
+		rs->setWindowRectangle(x,y,m_ds->getViewWidth(),m_ds->getViewHeight(),true);
 		rs->fullScreen(m_ds->getFullScreen());
 //#endif
 		cam->setClearColor(m_clear_color[0],m_clear_color[1],m_clear_color[2],m_clear_color[3]);

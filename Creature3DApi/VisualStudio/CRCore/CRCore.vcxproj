@@ -351,10 +351,8 @@
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) D:\JXJ\trunk\JXJClientCook\bin\
-copy $(OutDir)$(TargetName)$(TargetExt) D:\JXJ\trunk\JXJServerCook\bin\
-copy C:\Intermediate\$(TargetName).pdb D:\JXJ\trunk\JXJClientCook\bin\
-copy C:\Intermediate\$(TargetName).pdb D:\JXJ\trunk\JXJServerCook\bin\</Command>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
+copy C:\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='JXJRelease|Win32'">

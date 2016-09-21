@@ -95,6 +95,7 @@ public:
 	void setNeedScissor(bool need);
 	bool getNeedScissor();
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateParentWidget(crWidgetNode *widget,_crInt32 msg = 0);
 	virtual void validFocusPos(){}
 	inline void dirtyText() { m_textDirty = true; validFocusPos(); }
@@ -186,6 +187,7 @@ public:
 	META_Node(CRUI,crStaticTextWidgetNode)
 	virtual void kernelMouseEvent(float mx, float my,void *ea);
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateData();
 	inline virtual void dirtyTextAttr() { m_textAttrDirty = true; }
 	void setPassword(bool password);
@@ -226,6 +228,7 @@ public:
 	META_Node(CRUI,crHypertextWidgetNode)
 	virtual void kernelMouseEvent(float mx, float my,void *ea);
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateData();
 
 	void setHypertext(std::string filename,bool app = false);
@@ -273,6 +276,7 @@ public:
 	crEditWidgetNode(const crEditWidgetNode&,const CRCore::crCopyOp& copyop=CRCore::crCopyOp::SHALLOW_COPY);
 	META_Node(CRUI,crEditWidgetNode)
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateData();
 	virtual void kernelMouseEvent(float mx, float my,void *ea);
 	virtual void kernelInputChar(wchar_t c);
@@ -446,6 +450,7 @@ public:
 	crProgressWidgetNode(const crProgressWidgetNode&,const CRCore::crCopyOp& copyop=CRCore::crCopyOp::SHALLOW_COPY);
 	META_Node(CRUI,crProgressWidgetNode)
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateData();
 	enum ProgressBarType
 	{
@@ -519,6 +524,7 @@ public:
 	crTableWidgetNode(const crTableWidgetNode&,const CRCore::crCopyOp& copyop=CRCore::crCopyOp::SHALLOW_COPY);
 	META_Node(CRUI,crTableWidgetNode)
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateParentWidget(crWidgetNode *widget,_crInt32 msg = 0);
 	virtual void updateData();
 	void addData(unsigned int col, unsigned int row, const std::string &data);
@@ -643,6 +649,7 @@ public:
 	int MouseOnNodeIndex(float mx, float my);
 	virtual void kernelMouseEvent(float mx, float my,void *ea);
 	virtual void initWindow();
+	virtual void resize();
 	virtual void updateData();
 	virtual void updateParentWidget(crWidgetNode *widget,_crInt32 msg = 0);
 	void setStartYPos(int pagenum);
@@ -711,6 +718,7 @@ public:
 	META_Node(CRUI,crScissorWidgetNode)
 	virtual void updateData();
 	virtual void initWindow();
+	virtual void resize();
 protected:
 	virtual ~crScissorWidgetNode();
 	virtual bool computeBound() const;

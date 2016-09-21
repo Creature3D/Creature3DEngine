@@ -84,6 +84,7 @@ public :
 	unsigned short getMsgTraverse();
 	void setScaled(bool bln);
 	bool getScaled();
+	virtual void resize(){};
 protected :
 	virtual ~crWidgetNode();
 	virtual bool computeBound() const;
@@ -149,6 +150,14 @@ public:
 	void setMatrix(const crMatrix &mat){ m_mat = mat; }
 protected:
 	crMatrix m_mat;
+};
+class CR_EXPORT crResizeUIVisitor : public CRCore::crNodeVisitor
+{
+public:
+	crResizeUIVisitor():crNodeVisitor(NODE_VISITOR, TRAVERSE_ALL_CHILDREN){}
+	virtual ~crResizeUIVisitor(){}
+
+	virtual void apply(crWidgetNode& node){ node.resize(); traverse(node); }
 };
 }
 

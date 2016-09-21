@@ -757,6 +757,21 @@ void crTextAttrWidgetNode::initWindow()
 		computeScissor();
 	}
 }
+void crTextAttrWidgetNode::resize()
+{
+	computeRect();
+	m_mvpwNode->setMatrix(crFilterRenderManager::getInstance()->getInverseMVPW());
+	if (m_vScrollBar.valid())
+	{
+		m_vScrollBar->setLineValue(getLineHeight());
+		m_vScrollBar->setPageValue(m_rect[3]);
+		m_scrollDirty = true;
+	}
+	if (m_needScissor)
+	{
+		computeScissor();
+	}
+}
 void crTextAttrWidgetNode::computeRect()
 {
 	crVector3 minpos = getBoundBox().m_min;
@@ -1214,6 +1229,32 @@ void crStaticTextWidgetNode::initWindow()
 	//selectText(0,10);
 	/////////////////
 }
+void crStaticTextWidgetNode::resize()
+{
+	crTextAttrWidgetNode::resize();
+	if (m_text.valid())
+	{
+		m_text->setFontResolution(m_fontSize[0], m_fontSize[1]);
+		m_text->setCharacterSize(getCharacterSize());
+		m_text->setLineSpacing(getLineSpacing());
+		m_text->setAlignment((crText::AlignmentType)m_alignment);
+		m_text->setMaximumWidth(m_rect[2]);
+		//m_text->setMaximumHeight(m_rect[3]);
+		m_text->setBackdropType((crText::BackdropType)m_backdropType);
+		m_text->setBackdropOffset(m_backdropOffset[0], m_backdropOffset[1]);
+		m_text->setBackdropColor(m_backdropColor);
+		m_text->setPosition(crVector3(m_rect[0], m_rect[1] - getUpLineHeight(), 0.0f));
+	}
+	if (m_seltext.valid())
+	{
+		m_seltext->setFontResolution(m_fontSize[0], m_fontSize[1]);
+		m_seltext->setCharacterSize(getCharacterSize());
+		m_seltext->setAlignment((crText::AlignmentType)m_alignment);
+		m_seltext->setMaximumWidth(m_rect[2]);
+		//m_seltext->setMaximumHeight(m_rect[3]);
+		m_seltext->setPosition(crVector3(m_rect[0], m_rect[1] - getUpLineHeight(), 0.0f));
+	}
+}
 void crStaticTextWidgetNode::updateData()
 {
 	if(m_scrollChanged)
@@ -1507,6 +1548,30 @@ void crHypertextWidgetNode::initWindow()
 	//addChild(m_imageRoot.get());
 	m_textDirty = false;
 	m_bSingleLine = false;
+}
+void crHypertextWidgetNode::resize()
+{
+	crTextAttrWidgetNode::resize();
+	crVector2 cursor;
+	// show text
+	CRCore::ScopedLock<crCriticalMutex> lock(m_textArrayMutex);
+	for (TextVec::iterator itr = m_textArray.begin();
+		itr != m_textArray.end();
+		++itr)
+	{
+		if (m_bSingleLine)
+		{
+			itr->first->setMaximumWidth(0.0f);
+		}
+		else
+		{
+			itr->first->setMaximumWidth(m_rect[2]);
+		}
+		itr->first->setPosition(crVector3(m_rect[0], m_rect[1] - getUpLineHeight(), 0.0f));
+		itr->first->setStartCoord(cursor);
+		itr->first->swapBuffers();
+		cursor = itr->first->getEndCoord();
+	}
 }
 void crHypertextWidgetNode::updateData()
 {
@@ -2308,6 +2373,16 @@ void crEditWidgetNode::initWindow()
 	m_focusCursor->setText("|");
 	dynamic_cast<crObject *>(m_text->getParent(0))->addDrawable(m_focusCursor.get());
 	setCanCaptureInput(true);
+}
+void crEditWidgetNode::resize()
+{
+	crStaticTextWidgetNode::resize();
+	if (m_focusCursor.valid())
+	{
+		m_focusCursor->setCharacterSize(getCharacterSize() + 2);
+		m_focusCursor->setFontResolution(m_fontSize[0], m_fontSize[1]);
+	}
+	validFocusPos();
 }
 void crEditWidgetNode::updateData()
 {
@@ -3663,6 +3738,19 @@ void crProgressWidgetNode::initWindow()
 		computeScissor();
 	}
 }
+void crProgressWidgetNode::resize()
+{
+	crVector3 minpos = getBoundBox().m_min;
+	crVector3 maxpos = getBoundBox().m_max;
+	minpos[0] += m_rectOffset[0];
+	minpos[1] += m_rectOffset[1];
+	maxpos[0] -= m_rectOffset[2];
+	maxpos[1] -= m_rectOffset[3];
+	minpos = crFilterRenderManager::getInstance()->getWindowPosition(minpos);
+	maxpos = crFilterRenderManager::getInstance()->getWindowPosition(maxpos);
+	m_rect.set(minpos[0], minpos[1], maxpos[0] - minpos[0], maxpos[1] - minpos[1]);
+	computeScissor();
+}
 void crProgressWidgetNode::computeScissor()
 {
 	if(m_scissor.valid())
@@ -4175,6 +4263,22 @@ void crTableWidgetNode::initWindow()
 			++itr )
 		{
 			itr->second->select(m_currentSelectRow);
+		}
+	}
+}
+void crTableWidgetNode::resize()
+{
+	crListBoxWidgetNode *listBox;
+	for (ListGroup::iterator itr = m_listGroup.begin();
+		itr != m_listGroup.end();
+		++itr)
+	{
+		listBox = itr->second;
+		if (listBox)
+		{
+			listBox->resize();
+			if (m_maskHeight < listBox->getLineHeight())
+				m_maskHeight = listBox->getLineHeight();
 		}
 	}
 }
@@ -4977,6 +5081,32 @@ void crListControlWidgetNode::initWindow()
 	m_textGroup->setStateSet(ss);
 	computeScissor();
 }
+void crListControlWidgetNode::resize()
+{
+	crVector3 minpos = getBoundBox().m_min;
+	crVector3 maxpos = getBoundBox().m_max;
+	minpos[0] += m_rectOffset[0];
+	minpos[1] += m_rectOffset[1];
+	maxpos[0] -= m_rectOffset[2];
+	maxpos[1] -= m_rectOffset[3];
+	minpos = crFilterRenderManager::getInstance()->getWindowPosition(minpos);
+	maxpos = crFilterRenderManager::getInstance()->getWindowPosition(maxpos);
+	m_rect.set(minpos[0], maxpos[1], maxpos[0] - minpos[0], maxpos[1] - minpos[1]);
+	m_mvpwNode->setMatrix(crFilterRenderManager::getInstance()->getInverseMVPW());
+	crVector2 uiviewscale = crDisplaySettings::instance()->getUIViewScale();
+	m_nodeSize[0] *= uiviewscale[0];
+	m_nodeSize[1] *= uiviewscale[1];
+	m_spaceBetween[0] *= uiviewscale[0];
+	m_spaceBetween[1] *= uiviewscale[1];
+	if (m_vScrollBar.valid())
+	{
+		//m_vScrollBar->setRange(0,100); 
+		m_vScrollBar->setLineValue(m_nodeSize[1] + m_spaceBetween[1]);//控件高度
+		m_vScrollBar->setPageValue(m_rect[3]);//窗口高度
+		m_scrollDirty = true;
+	}
+	computeScissor();
+}
 bool crListControlWidgetNode::computeBound() const
 {
 	m_boundSphere.init();
@@ -5406,6 +5536,15 @@ void crScissorWidgetNode::initWindow()
 	m_scissor = new crScissor;
 	crStateSet *ss = getOrCreateStateSet();
 	ss->setAttributeAndModes(m_scissor.get(),crStateAttribute::ON|crStateAttribute::OVERRIDE);
+	computeScissor();
+}
+void crScissorWidgetNode::resize()
+{
+	crVector3 minpos = getBoundBox().m_min;
+	crVector3 maxpos = getBoundBox().m_max;
+	minpos = crFilterRenderManager::getInstance()->getWindowPosition(minpos);
+	maxpos = crFilterRenderManager::getInstance()->getWindowPosition(maxpos);
+	m_rect.set(minpos[0], maxpos[1], maxpos[0] - minpos[0], maxpos[1] - minpos[1]);
 	computeScissor();
 }
 bool crScissorWidgetNode::computeBound() const

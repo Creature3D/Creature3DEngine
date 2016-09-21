@@ -393,7 +393,7 @@ bool crWindow :: setup(int x,int y,int wid,int hit, const char *name, int exstyl
 		return false;
 
 	if(m_hParentWnd)
-	    m_hwnd=CreateWindowEx(exstyle|WS_EX_NOPARENTNOTIFY,name,name,WS_CHILD,x,y,wid,hit,m_hParentWnd,NULL,m_hins,NULL);
+	    m_hwnd=CreateWindowEx(exstyle/*|WS_EX_NOPARENTNOTIFY*/,name,name,WS_CHILD,x,y,wid,hit,m_hParentWnd,NULL,m_hins,NULL);
 	else
 		m_hwnd=CreateWindowEx(exstyle,name,name,/*WS_OVERLAPPEDWINDOW&~WS_MAXIMIZEBOX*/WS_POPUP,x,y,wid,hit,HWND_DESKTOP,NULL,m_hins,NULL);
 	// did that work?

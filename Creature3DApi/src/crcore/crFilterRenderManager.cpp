@@ -1102,3 +1102,12 @@ void crFilterRenderManager::removeLoadingUI()
 		m_loadingCanvas = NULL;
 	}
 }
+void crFilterRenderManager::resize()
+{
+	if (m_inited)
+	{
+		computeMVPW();
+		crResizeUIVisitor resizeVisitor;
+		m_identicCamera->accept(resizeVisitor);
+	}
+}

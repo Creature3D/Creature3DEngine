@@ -14,9 +14,8 @@
     </LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
-    <LocalDebuggerWorkingDirectory>D:\将星诀送审</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>../../../../Projects/Editor/Creature3DEditor</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>
-    </LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>Editor</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

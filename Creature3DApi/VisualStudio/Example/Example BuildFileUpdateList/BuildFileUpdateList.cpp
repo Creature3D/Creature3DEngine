@@ -227,15 +227,15 @@ int main( int argc, char **argv )
 	//if(argvstr.find("-patch")!=std::string::npos)
 	//	patch = true;
 	std::vector<std::string>::iterator itr1,itr2;
-	bool found,same;
+	//bool found,same;
 	CREncapsulation::crTableIO::StrVec title;
 	title.push_back("file");
 	title.push_back("version");
 	CREncapsulation::crTableIO::StrVec record;
 	record.resize(2);
 	CREncapsulation::crTableIO::StrVec qrecord;
-	char *buf1,*buf2;
-	int ver,count1,count2;
+	//char *buf1,*buf2;
+	//int ver,count1,count2;
 	ref_ptr<crStreamBuf> stream;
 	std::string strVersion = crArgumentParser::appItoa(readVersion("jxjversion.ini"));
 	{

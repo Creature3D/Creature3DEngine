@@ -217,6 +217,7 @@ public :
 	void setLoadingCanvas(crCanvasNode *loadingCanvas);
 	inline crCanvasNode *getLoadingCanvas(){ return m_loadingCanvas.get(); }
 	void removeLoadingUI();
+	void resize();
 protected :
     virtual ~crFilterRenderManager() {}
 	virtual bool computeBound() const;
