@@ -4268,6 +4268,7 @@ void crTableWidgetNode::initWindow()
 }
 void crTableWidgetNode::resize()
 {
+	m_maskHeight = 0;
 	crListBoxWidgetNode *listBox;
 	for (ListGroup::iterator itr = m_listGroup.begin();
 		itr != m_listGroup.end();
@@ -5093,11 +5094,7 @@ void crListControlWidgetNode::resize()
 	maxpos = crFilterRenderManager::getInstance()->getWindowPosition(maxpos);
 	m_rect.set(minpos[0], maxpos[1], maxpos[0] - minpos[0], maxpos[1] - minpos[1]);
 	m_mvpwNode->setMatrix(crFilterRenderManager::getInstance()->getInverseMVPW());
-	crVector2 uiviewscale = crDisplaySettings::instance()->getUIViewScale();
-	m_nodeSize[0] *= uiviewscale[0];
-	m_nodeSize[1] *= uiviewscale[1];
-	m_spaceBetween[0] *= uiviewscale[0];
-	m_spaceBetween[1] *= uiviewscale[1];
+
 	if (m_vScrollBar.valid())
 	{
 		//m_vScrollBar->setRange(0,100); 
@@ -5106,6 +5103,24 @@ void crListControlWidgetNode::resize()
 		m_scrollDirty = true;
 	}
 	computeScissor();
+	crVector4f rect;
+	float deta = 1;//容忍值
+	crListControlNode *listControl;
+	rect.set(m_rect[0], m_rect[1], m_nodeSize[0], m_nodeSize[1]);
+	for (ListNodeVec::iterator itr = m_listNodeVec.begin();
+		itr != m_listNodeVec.end();
+		++itr)
+	{
+		listControl = itr->get();
+		listControl->setRect(rect);
+
+		rect[0] += m_nodeSize[0] + m_spaceBetween[0];
+		if (rect[0] + m_nodeSize[0]>m_rect[0] + m_rect[2] + deta)
+		{//下一行
+			rect[0] = m_rect[0]/*+m_spaceBetween[0]*/;
+			rect[1] -= m_nodeSize[1] + m_spaceBetween[1];
+		}
+	}
 }
 bool crListControlWidgetNode::computeBound() const
 {

@@ -850,7 +850,7 @@ bool RenderSurface::_init()
                 if(_decorations) {
                   // map from client area dimensions to outer window dimensions
                   //AdjustWindowRectEx(&rect, dwStyle, FALSE, dwExStyle);
-					dwStyle = WS_OVERLAPPEDWINDOW;//WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;//WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX;//
+					dwStyle = WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;//WS_OVERLAPPEDWINDOW;//WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX;//
 					//int shellH = 0;
 					//RECT   Rect; 
 					//HWND   hWnd = FindWindow("Shell_TrayWnd", NULL);
@@ -1867,7 +1867,7 @@ void RenderSurface::_setBorder( bool flag )
         //Add border style to window
         //style &= ~WS_POPUP;
         //style |= WS_DLGFRAME|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX;
-		style = WS_OVERLAPPEDWINDOW;//WS_DLGFRAME | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX;
+		style = WS_DLGFRAME | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX;//WS_OVERLAPPEDWINDOW;
 
         //Calculate new size of window with border
         rect.left = 0;

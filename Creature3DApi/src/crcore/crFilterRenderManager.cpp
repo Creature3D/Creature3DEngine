@@ -203,10 +203,10 @@ void crFilterRenderManager::createIdenticCamera()
 	m_identicCamera->setStateSet(m_cameraStateSet.get());
 
 	m_orthoObject = new crObject;
-	crMatrixTransform *mvpwNode = new crMatrixTransform;
-	mvpwNode->setMatrix(m_inverseMVPW);
-	mvpwNode->addChild(m_orthoObject.get());
-	m_mainCanvas->addChild(mvpwNode);
+	m_mvpwNode = new crMatrixTransform;
+	m_mvpwNode->setMatrix(m_inverseMVPW);
+	m_mvpwNode->addChild(m_orthoObject.get());
+	m_mainCanvas->addChild(m_mvpwNode.get());
 	m_identicCamera->addChild(m_mainCanvas.get());
 }
 crGroup *crFilterRenderManager::getCanvasRoot()
@@ -1107,6 +1107,10 @@ void crFilterRenderManager::resize()
 	if (m_inited)
 	{
 		computeMVPW();
+		float width = crDisplaySettings::instance()->getViewWidth();
+		float height = crDisplaySettings::instance()->getViewHeight();
+		m_identicCamera->setViewport(0, 0, width, height);
+		m_mvpwNode->setMatrix(m_inverseMVPW);
 		crResizeUIVisitor resizeVisitor;
 		m_identicCamera->accept(resizeVisitor);
 	}

@@ -236,6 +236,7 @@ protected :
 	ActiveCanvasDeque m_activeCanvasDeque;
 	ActiveCanvasDeque m_activeCanvasTemp;
 	ref_ptr<crCameraNode> m_identicCamera;
+	ref_ptr<crMatrixTransform> m_mvpwNode;
 	//ref_ptr<crCameraNode> m_orthoCamera;
 	ref_ptr<crObject>     m_orthoObject;
 	//ref_ptr<crObject>     m_identicObject;
