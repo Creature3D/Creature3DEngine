@@ -709,7 +709,7 @@ void crInsertServerList::buildUpdateSql(int gameid, int webserverid,const std::s
 	//crDataBase::escapeString(escname,servername.c_str(),size);
 	if(site.empty())
 	{
-		sprintf(sql,"insert into serverlist(gameid,webserverid,serverid,servername,isp,remaincount,createdate) values(%d,%d,,'%s','%s',%d,%d,now())\0",gameid,webserverid,serverid.c_str(),servername.c_str(),(char)isp,remaincount);
+		sprintf(sql,"insert into serverlist(gameid,webserverid,serverid,servername,isp,remaincount,createdate) values(%d,%d,'%s','%s',%d,%d,now())\0",gameid,webserverid,serverid.c_str(),servername.c_str(),(char)isp,remaincount);
 	}
 	else
 	{
