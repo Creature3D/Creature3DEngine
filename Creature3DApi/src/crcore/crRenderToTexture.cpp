@@ -308,6 +308,11 @@ void crRenderToTexture::createCamera()
 		float h = crDisplaySettings::instance()->getViewHeight();
 		m_camera->setViewport(0,0,w,h);
 	}
+	else if (m_mode & RenderGIMap)
+	{
+		m_camera->setRenderMode(crCameraNode::GIMapRender);
+		m_camera->setClearColor(crVector4(0.0f, 0.0f, 0.0f, 1.0f));
+	}
 	else
 	{
 		m_camera->setRenderMode(crCameraNode::RTTRender);
@@ -554,6 +559,15 @@ void crRenderToTexture::init(/*float bias,*/ float blursize)
 			else if(m_mode & RenderCollideMap)
 			{
 				m_texture->setInternalFormat(GL_RGB16);//GL_LUMINANCE16_ALPHA16
+				m_texture->setFilter(crTexture2D::MIN_FILTER, crTexture2D::LINEAR);
+				m_texture->setFilter(crTexture2D::MAG_FILTER, crTexture2D::LINEAR);
+				//m_texture->setMaxAnisotropy(16.0);
+				m_texture->setWrap(crTexture2D::WRAP_S, crTexture2D::CLAMP_TO_EDGE);
+				m_texture->setWrap(crTexture2D::WRAP_T, crTexture2D::CLAMP_TO_EDGE);
+			}
+			else if (m_mode & RenderGIMap)
+			{
+				m_texture->setInternalFormat(GL_RGBA16F_ARB);//GL_LUMINANCE16_ALPHA16
 				m_texture->setFilter(crTexture2D::MIN_FILTER, crTexture2D::LINEAR);
 				m_texture->setFilter(crTexture2D::MAG_FILTER, crTexture2D::LINEAR);
 				//m_texture->setMaxAnisotropy(16.0);

@@ -884,6 +884,8 @@ void crCullVisitor::apply(crObject& node)
 
     // push the node's state.
     crStateSet* node_state = node.getStateSet();
+	if (node_state && m_renderMode == GIMapRender && (node_state->getAttribute(crStateAttribute::BLENDFUNC) || node_state->getAttribute(crStateAttribute::ALPHAFUNC)))
+		return;
 	//int popAlphaShadowFlg;
 	bool stateset_pushed = false;
     if (node_state) stateset_pushed = pushStateSet(node_state/*,popAlphaShadowFlg*/);
@@ -1102,7 +1104,7 @@ void crCullVisitor::apply(crObject& node)
 void crCullVisitor::apply(crBillboard& node)
 {
 	node.setNodeMask(node.getNodeMask() | CulledMask);
-	if(!node.getVisiable()) return;
+	if(!node.getVisiable() || m_renderMode == GIMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
     
 	int frameNumber = crFrameStamp::getInstance()->getFrameNumber();

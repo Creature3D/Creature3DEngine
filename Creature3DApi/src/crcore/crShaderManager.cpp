@@ -499,6 +499,10 @@ std::string crShaderManager::getLightHead(const std::string &name, int mode)
 			str += "#define _Param4AddENV\n";
 		}
 	}
+	if (name.find("_gimap_") != std::string::npos)
+	{
+		str += "#define _gimap\n";
+	}
 	/////////////////////NT
 	if(mode!=2)
 	{
@@ -2342,7 +2346,53 @@ bool SunCallback::operator()(const crObject *obj,crDrawable* drawable, const crB
 		//CRCore::notify(CRCore::WARN) << "SunCallback::operator() error shader_ss = "<<shader_ss<<" uniform_ss = "<<uniform_ss.valid()<<" shaderStr = "<<str<<std::endl;
 	return false;
 }
+bool SunCallback::giMapRender(const crObject *obj, crDrawable* drawable, crShaderManager::StateSetVec &statesetVec)
+{
+	crLightSourceManager *lightSourceManager = crLightSourceManager::getInstance();
+	crLightSource *sun = lightSourceManager->getSunLightSource();
+	if (sun == NULL)
+	{
+		CRCore::notify(CRCore::FATAL) << "SunCallback::operator() 场景里没有设定太阳光源" << std::endl;
+		return true;
+	}
 
+	crStateSet *drawable_ss = drawable->getStateSet();
+	if (drawable_ss == NULL)
+		drawable_ss = const_cast<crStateSet *>(obj->getStateSet());
+	if (drawable_ss == NULL)
+	{
+		//CRCore::notify(CRCore::FATAL)<<"SunCallback::operator() not set stateset nodeid = "<<obj->getName()<<std::endl;
+		return true;
+	}
+	const crStateSet *obj_ss = obj->getStateSet();
+	std::string statesetShaderStr;
+	statesetShaderStr = drawable_ss->getRtglmShaderStr(obj_ss);
+
+	crStateSet *shader_ss;
+	ref_ptr<crStateSet> uniform_ss;
+	crShaderManager *shaderManager = crShaderManager::getInstance();
+	uniform_ss = shaderManager->getOrCreateIdleStateSet();
+	std::string str;
+	if (sun->getEnable())
+	{
+		str = "sun_gimap";
+		getUniforms_sun(uniform_ss.get(), sun);
+	}
+	else
+	{
+		str = "sunx_gimap";
+	}
+	getProgramString(str, false, false, 0, false, false);
+	str += statesetShaderStr;
+	shader_ss = shaderManager->getShaderStateSet(str);
+	if (crShaderManager::getInstance()->getLightMapTexture())
+	{
+		getUniforms_sgi(uniform_ss.get());
+	}
+	if (uniform_ss.valid()) shaderManager->pushActiveStateSet(uniform_ss.get());
+	statesetVec.push_back(std::make_pair(shader_ss, uniform_ss));
+	return false;
+}
 //////////////////////////////
 //
 //NeedLightCallback
@@ -3130,6 +3180,46 @@ bool NoLightCallback::operator()(const crObject *obj,crDrawable* drawable, const
 	if(uniform_ss.valid()) crShaderManager::getInstance()->pushActiveStateSet(uniform_ss.get());
 	statesetVec.push_back(std::make_pair(shader_ss,uniform_ss));
 	//statesetVec.push_back(crShaderManager::Shader_UniformPair(shader_ss,uniform_ss.get()));
+	return false;
+}
+bool NoLightCallback::giMapRender(const crObject *obj, crDrawable* drawable, crShaderManager::StateSetVec &statesetVec)
+{
+	crStateSet *drawable_ss = drawable->getStateSet();
+	if (drawable_ss == NULL)
+		drawable_ss = const_cast<crStateSet *>(obj->getStateSet());
+	if (drawable_ss == NULL)
+	{
+		//CRCore::notify(CRCore::FATAL)<<"LightCallback::operator() not set stateset nodeid = "<<obj->getName()<<std::endl;
+		return true;
+	}
+	const crStateSet *obj_ss = obj->getStateSet();
+	std::string statesetShaderStr;
+	statesetShaderStr = drawable_ss->getRtglmShaderStr(obj_ss);
+	ref_ptr<crStateSet> uniform_ss;
+	uniform_ss = crShaderManager::getInstance()->getOrCreateIdleStateSet();
+	crLightSource *sun = crLightSourceManager::getInstance()->getSunLightSource();
+	crUniform *uniform;
+	uniform = uniform_ss->getOrCreateUniform("lightPos", crUniform::FLOAT_VEC3);
+	uniform->setDataVariance(crBase::STATIC);
+	uniform->set(sun->getLSPosition());
+
+	crStateSet *shader_ss;
+	std::string str = "nolight_gimap";
+	//getProgramString(str,isEmissive,hasDetal,hasLightmap,hasEnvmap,fadeIn,fadeOut);
+	char acceptGI = obj->getAcceptGI();// && noskylight==0;
+	getProgramString(str, false, false, 0, false, false);
+	if (acceptGI == -1)
+	{
+		str += "_NoSkyLight";
+	}
+	str += statesetShaderStr;
+	shader_ss = crShaderManager::getInstance()->getShaderStateSet(str);
+	if (crShaderManager::getInstance()->getLightMapTexture())
+	{
+		getUniforms_sgi(uniform_ss.get());
+	}
+	if (uniform_ss.valid()) crShaderManager::getInstance()->pushActiveStateSet(uniform_ss.get());
+	statesetVec.push_back(std::make_pair(shader_ss, uniform_ss));
 	return false;
 }
 void NoLightCallback::getUniforms_gi(crStateSet *uniform_ss)

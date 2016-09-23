@@ -146,6 +146,7 @@ class CR_EXPORT crCullSettings
 			CollideMapRender,
 			RTTRender,
 			NRPRender,
+			GIMapRender,
 		};
 		inline void setRenderMode( RenderMode mode ){ m_renderMode = mode; }
 		inline RenderMode getRenderMode(){ return m_renderMode; }

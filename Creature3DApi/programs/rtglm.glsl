@@ -1943,6 +1943,9 @@ void main(void)
 	//}
 #endif
 
+#ifdef _gimap
+	gl_FragColor = vec4(color.xyz,depth);
+#else
 #ifdef HDR
     gl_FragData[0] = min(color, 1.0);
     gl_FragData[1] = max(color - 1.0, 0.0);
@@ -1952,6 +1955,7 @@ void main(void)
 #endif
 #else
 	gl_FragColor = color;
+#endif
 #endif
 }
 {****end****}

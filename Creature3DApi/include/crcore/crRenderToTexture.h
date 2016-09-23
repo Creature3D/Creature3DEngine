@@ -116,6 +116,7 @@ public:
 		CameraMVP = 0x10000,
 		ExternMVP = 0x20000,
 		NRPRender = 0x40000,
+		RenderGIMap = 0x80000,
 		Default = RenderToTexture |
 		          RenderDepthMap |
                   RealTimeUpd |

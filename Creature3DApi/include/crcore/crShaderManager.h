@@ -86,6 +86,7 @@ public :
 	public:
 		Callback() {}
 		virtual bool operator()(const crObject *obj,crDrawable* drawable, const crBoundingBox &bbox, float depth, bool effectByShadow, crShaderManager::StateSetVec &statesetVec) = 0;
+		virtual bool giMapRender(const crObject *obj, crDrawable* drawable, crShaderManager::StateSetVec &statesetVec){ return false; }
 	protected:
 		virtual ~Callback(){}
 	    virtual inline void getProgramString(std::string &str,bool effectByShadow, bool effectByShadow2 = false, char acceptGI = 0, bool fadeIn = false, bool fadeOut = false)
@@ -258,6 +259,7 @@ class SunCallback : public crShaderManager::Callback
 public:
 	SunCallback();
 	virtual bool operator()(const crObject *obj,crDrawable* drawable, const crBoundingBox &bbox, float depth, bool effectByShadow, crShaderManager::StateSetVec &statesetVec);
+	virtual bool giMapRender(const crObject *obj, crDrawable* drawable, crShaderManager::StateSetVec &statesetVec);
 protected:
 	void getUniforms_sun(crStateSet *uniform_ss,crLightSource *sun);
 	void getUniforms_sun(crStateSet *uniform_ss,crLightSource *sun, const crVector3 &center);
@@ -310,6 +312,7 @@ class NoLightCallback : public crShaderManager::Callback
 {
 public:
 	virtual bool operator()(const crObject *obj,crDrawable* drawable, const crBoundingBox &bbox, float depth, bool effectByShadow, crShaderManager::StateSetVec &statesetVec);
+	virtual bool giMapRender(const crObject *obj, crDrawable* drawable, crShaderManager::StateSetVec &statesetVec);
 protected:
 	void getUniforms_gi(crStateSet *uniform_ss);
 	void getUniforms_sgi(crStateSet *uniform_ss);

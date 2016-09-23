@@ -548,7 +548,7 @@ inline void crCullVisitor::addDrawable(const CRCore::crObject *obj,CRCore::crDra
 	//int popAlphaShadowFlg;
 	CRCore::crStateSet *drawabless = drawable->getStateSet();
     bool stateset_pushed = false;
-	if(m_renderMode == NormalRender || m_renderMode == RTTRender)
+	if (m_renderMode == NormalRender || m_renderMode == RTTRender || m_renderMode == GIMapRender)
 	{
 		bool olstate1_pushed = false;
 		bool drawoutline = m_renderMode == NormalRender && obj->getDrawOutLine()>=0 && (obj->getDrawOutLine()>0 || obj->getOutlineColorMode()>CRCore::crObject::OL_Black);
@@ -587,7 +587,7 @@ inline void crCullVisitor::addDrawable(const CRCore::crObject *obj,CRCore::crDra
 			box.correct();
 
 			CRCore::crShaderManager::StateSetVec statesetVec;
-			bool doNotNeedDrawableStateSet = (*callback)(obj,drawable,box,0.0f,effectByShadow,statesetVec);
+			bool doNotNeedDrawableStateSet = m_renderMode == GIMapRender ? callback->giMapRender(obj, drawable, statesetVec) : (*callback)(obj, drawable, box, 0.0f, effectByShadow, statesetVec);
 			int size = statesetVec.size();
 		    //bool needlight = ts.compare("needlight") == 0;
 			if(size==0/* && !needlight*/)
@@ -780,8 +780,9 @@ inline void crCullVisitor::addDrawableAndDepth(const CRCore::crObject *obj,CRCor
 	drawable->resumeRendering();
 	bool stateset_pushed = false;
 	CRCore::crStateSet *drawabless = drawable->getStateSet();
-
-	if(m_renderMode == NormalRender || m_renderMode == RTTRender)
+	if (drawabless && m_renderMode == GIMapRender && (drawabless->getAttribute(CRCore::crStateAttribute::BLENDFUNC) || drawabless->getAttribute(CRCore::crStateAttribute::ALPHAFUNC)))
+		return;
+	if (m_renderMode == NormalRender || m_renderMode == RTTRender || m_renderMode == GIMapRender)
 	{
 		bool olstate1_pushed = false;
 		bool drawoutline = m_renderMode == NormalRender && obj->getDrawOutLine()>=0 && ((obj->getDrawOutLine()>0 && depth<CRCore::crDisplaySettings::instance()->getOutLineDispDistance()) || obj->getOutlineColorMode()>CRCore::crObject::OL_Black);
@@ -827,7 +828,7 @@ inline void crCullVisitor::addDrawableAndDepth(const CRCore::crObject *obj,CRCor
 				box.correct();
 			}
 			CRCore::crShaderManager::StateSetVec statesetVec;
-			bool doNotNeedDrawableStateSet = (*callback)(obj,drawable,box,depth,effectByShadow,statesetVec);
+			bool doNotNeedDrawableStateSet = m_renderMode == GIMapRender ? callback->giMapRender(obj, drawable, statesetVec) : (*callback)(obj, drawable, box, depth, effectByShadow, statesetVec);
 			int size = statesetVec.size();
 			//bool needlight = ts.compare("needlight") == 0;
 			if(size==0/* && !needlight*/)

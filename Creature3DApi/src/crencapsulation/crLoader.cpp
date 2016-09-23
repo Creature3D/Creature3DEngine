@@ -2025,6 +2025,8 @@ void CREncapsulation::loadRenderToTextureCfg(const std::string &path)
 				mode |= crRenderToTexture::CalcMVPByShadowRadius;
 			else if(str.find("ExternMVP") != -1)
 				mode |= crRenderToTexture::ExternMVP;
+			else if (str.find("RenderGIMap") != -1)
+				mode |= crRenderToTexture::RenderGIMap;
 		}
 
 		rtt->setMode((crRenderToTexture::RenderToTextureMode)mode);
