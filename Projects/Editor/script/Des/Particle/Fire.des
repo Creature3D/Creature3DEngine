@@ -1,0 +1,2 @@
+LoadParticle script/Particle/fire.cfg
+ParticleLodDist 50

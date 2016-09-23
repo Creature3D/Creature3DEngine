@@ -1,0 +1,3 @@
+id	scenename	filename	uiscene	collidefile	brainfile
+1	logintank	scene/logintank.crs	logintank.cru		
+2	loginjxj	scene/loginjxj.crs	loginjxj.cru		

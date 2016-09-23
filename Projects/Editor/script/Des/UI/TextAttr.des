@@ -1,0 +1,26 @@
+DrawMode TEXT
+LineSpacing 1.0
+UnderLineSpacing 3.0
+Font simli.ttf
+CharacterSize 16
+FontSize 16,16
+Color 255,255,255,255
+Alignment CENTER_BASE_LINE
+BackdropType OUTLINE
+BackdropOffset 0.07,0.07
+BackdropColor 0,0,0,255
+
+
+#ExternNode
+#ListBoxWidget
+VScrollBarName UI_Battleground_Jr1_ListScroll
+DrawMode TEXT
+LineSpacing 16.0
+UnderLineSpacing 3.0
+Font simsun.ttc
+CharacterSize 16
+FontSize 20,20
+Color 255,255,255,255
+Alignment LEFT_BASE_LINE
+
+[NameID] SelectMask

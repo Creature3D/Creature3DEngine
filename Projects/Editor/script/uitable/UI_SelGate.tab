@@ -1,0 +1,17 @@
+widget	script
+UI_SelGate	UI_SelGateCanvas.cfg
+Telecom	UI_SelGateTelecom.cfg
+CNC	UI_SelGateCNC.cfg
+UI_SelGate_Return_Normal	UI_SelGateClose.cfg
+UI_SelGate_Left	UI_SelGate_Left.cfg
+UI_SelGate_Right	UI_SelGate_Right.cfg
+Telecom_1	UI_SelGateTelecom_1.cfg
+CNC_1	UI_SelGateCNC_1.cfg
+Telecom_2	UI_SelGateTelecom_2.cfg
+CNC_2	UI_SelGateCNC_2.cfg
+Telecom_3	UI_SelGateTelecom_3.cfg
+CNC_3	UI_SelGateCNC_3.cfg
+Telecom_4	UI_SelGateTelecom_4.cfg
+CNC_4	UI_SelGateCNC_4.cfg
+Telecom_5	UI_SelGateTelecom_5.cfg
+CNC_5	UI_SelGateCNC_5.cfg

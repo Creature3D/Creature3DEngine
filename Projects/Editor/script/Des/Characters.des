@@ -1,0 +1,3 @@
+default_act ACT_Stand
+scale 0.01
+trans_offset 0.0,0.0,-0.85

@@ -1,0 +1,5 @@
+widget	script
+ui_login	ui_login.cfg
+OK	ui_loginok.cfg
+dispsetting	ui_displaysetting.cfg
+Forget	ui_Forget.cfg

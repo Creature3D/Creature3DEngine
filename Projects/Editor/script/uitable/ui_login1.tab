@@ -1,0 +1,6 @@
+widget	script
+ui_login1	
+Register	ui_showreg.cfg
+Net	UI_Net.cfg
+Cancel	ui_exitgame.cfg
+Show	UI_Beta2_System_Xssz.cfg

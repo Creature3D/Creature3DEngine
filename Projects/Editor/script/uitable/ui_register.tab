@@ -1,0 +1,8 @@
+widget	script
+ui_register	ui_register.cfg
+RegBtn	ui_regok.cfg
+close	ui_regcancel.cfg
+Account	ui_check1.cfg
+Password1	ui_check2.cfg
+Password2	ui_check3.cfg
+Email	ui_check4.cfg

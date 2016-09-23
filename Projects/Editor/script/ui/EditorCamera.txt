@@ -1,0 +1,20 @@
+EditorCamera 200 45
+xPos: 18 4 98 19
+yPos: 18 25 98 40
+zPos: 115 4 195 19
+Move: 115 22 165 42
+
+EditorCharacter 199 0 240 22
+EditorDrawable 242 0 282 22
+EditorVolumeUp 284 0 324 22
+EditorMovies 326 0 366 22
+EditorUI 369 0 400 22
+EditorTerrain 199 22 240 44
+EditorPostProcess 242 22 282 44
+EditorSwitch 284 22 324 44
+EditorLod 326 22 360 44
+EditorPagedLod 360 22 400 44
+EditorSequence 169 21 199 44
+EditorDuplicate 399 0 429 21
+EditorExit 429 0 467 21
+EditorSetting 399 21 437 44

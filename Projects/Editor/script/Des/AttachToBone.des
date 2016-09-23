@@ -1,0 +1,5 @@
+AttachToNode 目标节点名
+AttachOffset 0,0,0
+AttachScale 1,1,1
+AttachRotAngle 0
+BoneName 骨骼名

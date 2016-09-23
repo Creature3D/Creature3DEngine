@@ -1,0 +1,2 @@
+Notify 400 100
+NoticeText: 20 30 380 90

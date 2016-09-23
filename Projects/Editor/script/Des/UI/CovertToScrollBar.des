@@ -1,0 +1,6 @@
+#ExternNode
+#ScrollBarWidget
+Range 0.0,1.0
+LineValue 0.1
+PageValue 0.2
+ScrollBarType VERTICALBAR

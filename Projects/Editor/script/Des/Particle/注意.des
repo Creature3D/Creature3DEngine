@@ -1,0 +1,3 @@
+需要为粒子节点命名，避免重复
+LoadParticle FirstGame/script/Particle/VolumeParticle1.cfg
+ParticleLodDist 50

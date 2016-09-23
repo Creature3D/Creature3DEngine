@@ -1,0 +1,6 @@
+PrecisionCollide只能用在object类型节点上
+不能对PrecisionCollide使用缩放矩阵
+MapArea 0表示不能通过
+MapArea 0.01到0.19系统保留
+MapArea 0.2到0.29表示出生区域
+MapArea 0.3到1.0表示不同可行走区域
