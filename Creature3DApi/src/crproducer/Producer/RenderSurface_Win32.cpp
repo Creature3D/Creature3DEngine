@@ -98,26 +98,23 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
     //RECT rect;
     ref_ptr<Event> ev;
 
-	if (CRCore::crDisplaySettings::instance()->getRunMode() == 0)
+	switch (uMsg)
 	{
-		switch(uMsg)
-		{
-		case WM_LBUTTONDBLCLK:
-		case WM_RBUTTONDBLCLK:
-		case WM_MBUTTONDBLCLK:
+	case WM_LBUTTONDBLCLK:
+	case WM_RBUTTONDBLCLK:
+	case WM_MBUTTONDBLCLK:
 		//case WM_XBUTTONDBLCLK:
-		case WM_LBUTTONDOWN:
-		case WM_RBUTTONDOWN:
-		case WM_MBUTTONDOWN:
+	case WM_LBUTTONDOWN:
+	case WM_RBUTTONDOWN:
+	case WM_MBUTTONDOWN:
 		//case WM_XBUTTONDOWN:
-		case WM_LBUTTONUP:
-		case WM_RBUTTONUP:
-		case WM_MBUTTONUP:
+	case WM_LBUTTONUP:
+	case WM_RBUTTONUP:
+	case WM_MBUTTONUP:
 		//case WM_XBUTTONUP:
 		//case WM_MOUSEMOVE:
-			::SendMessage(hWnd,WM_ACTIVATE,WA_ACTIVE,NULL);
-			break;
-		}
+		::SendMessage(hWnd, WM_ACTIVATE, WA_ACTIVE, NULL);
+		break;
 	}
     switch (uMsg)
     {
