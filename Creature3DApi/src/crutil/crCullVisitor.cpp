@@ -1930,6 +1930,15 @@ void crCullVisitor::apply(CRCore::crCameraNode& camera)
 		}
 		else
 		{
+			if(!rtts->getFrameBufferObject())
+			{
+				CRCore::ref_ptr<CRUtil::crRenderStage> rttsbuf = dynamic_cast<CRUtil::crRenderStage*>(camera.getBufRenderingCache(contextID));
+				if(rttsbuf.valid())
+				{
+					rtts->setFrameBufferObject(rttsbuf->getFrameBufferObject());
+					rtts->setMultisampleResolveFramebufferObject(rttsbuf->getMultisampleResolveFramebufferObject());
+				}
+			}
 			// reusing render to texture stage, so need to reset it to empty it from previous frames contents.
 			rtts->reset();
 		}
