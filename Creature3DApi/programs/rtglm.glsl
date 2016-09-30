@@ -1986,7 +1986,7 @@ void main(void)
 #endif
 
 #ifdef _gi
-	vec3 skyLight = texture2D(CRE_GiMap,_gicoord).xyz * 0.5;
+	vec3 skyLight = texture2D(CRE_GiMap,_gicoord).xyz;
 	color.xyz += skyLight * diffuseColor.xyz;
 #else
 	//HemisphereLightPhong(bump);
