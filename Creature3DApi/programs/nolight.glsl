@@ -15,10 +15,6 @@ uniform mat4 CRE_InverseViewMatrix;
 varying vec3 vtxPos;
 varying vec3 N;
 varying vec4 texCoord;
-#if defined(_gi) || defined(_sgi) || defined(_hgi)
-uniform vec4 giparam;
-varying vec2 gicoord;
-#endif
 void main(void)
 {
     gl_FrontColor = gl_Color;
@@ -30,17 +26,14 @@ void main(void)
     vtxPos = pos.xyz;
     mat3 normalMat = mat3(mat[0].xyz,mat[1].xyz,mat[2].xyz);
 	N = normalize(normalMat * gl_Normal);
-#if defined(_gi) || defined(_sgi) || defined(_hgi)
-    gicoord = (pos.xy + giparam.xy) * giparam.zw;
-#endif
 }
 
 {****Creature3D Fragment shader****}
 #if defined(_gi) || defined(_sgi) || defined(_hgi)
-varying vec2 gicoord;
-#ifdef _hgi
-uniform float maxheight;
+uniform vec4 giparam;
 #endif
+#if defined(_hgi) || defined(_gimap)
+uniform float maxheight;
 #endif
 #ifdef _gi
 uniform sampler2D CRE_GiMap;
@@ -318,8 +311,11 @@ uniform float Distortion;// = 0.0;
 void main(void)
 {
     vec4 _texCoord = texCoord;
+#if defined(_gi) || defined(_sgi) || defined(_hgi)
+    vec2 gicoord = (vtxPos.xy + giparam.xy) * giparam.zw;
 #if defined(_gi) || defined(_sgi)
 	vec2 _gicoord = gicoord;
+#endif
 #endif
 	vec2 _texCoord2;
 #ifdef _UVS
@@ -911,15 +907,16 @@ void main(void)
 
 #ifndef _NoSkyLight
 #ifdef _gi
-	vec3 skyLight = texture2D(CRE_GiMap,_gicoord).xyz;
+	vec3 skyLight = texture2D(CRE_GiMap,_gicoord).xyz * 0.5;
+	color.xyz += skyLight * diffuseColor.xyz;
 #else
 	//HemisphereLightPhong(bump);
 	vec3 sunlVec = normalize(lightPos - vtxPos);
     float NdotL = dot(N,sunlVec);
 	float influence = NdotL * 0.5 + 0.5;
 	vec3 skyLight = mix( LowerSkyColor, UpperSkyColor, influence );
+	color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
 #endif
-    color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
 #endif
 
 	vec3 tempVec;
@@ -955,7 +952,11 @@ void main(void)
 	//		color.a *= delta_fragz * 0.1;
 	//}
 #endif
-        
+
+#ifdef _gimap
+	float h = (vtxPos.z/maxheight)*0.5f + 0.5f;
+	gl_FragColor = vec4(color.xyz,h);
+#else        
 #ifdef HDR
     gl_FragData[0] = min(color, 1.0);
     gl_FragData[1] = max(color - 1.0, 0.0);
@@ -965,6 +966,7 @@ void main(void)
 #endif
 #else
 	gl_FragColor = color;
+#endif
 #endif
 }
 {****end****}

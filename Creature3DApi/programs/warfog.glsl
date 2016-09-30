@@ -27,7 +27,7 @@ void main(void)
 uniform sampler2D CRE_BaseMap;
 uniform vec4 clearColor;
 uniform vec4 coordParam;//
-uniform vec2 wordParam;//height,step
+uniform float maxheight;//height
 uniform vec3 centerPos;
 varying vec3 vtxPos;
 void main(void)
@@ -38,11 +38,11 @@ void main(void)
 	vec2 pos,coord;
 	bool blocked = false;
 	float height;
-	for( float i = 0.0; i<l ; i+=wordParam.y)
+	for( float i = 0.0; i<l ; i+=1.0)
 	{
 		pos = vtxPos.xy + dir * i;
 		coord = (pos.xy + coordParam.xy) * coordParam.zw;
-		height = (texture2D(CRE_BaseMap,coord).y * 2.0 - 1.0) * wordParam.x;
+		height = (texture2D(CRE_BaseMap,coord).y * 2.0 - 1.0) * maxheight;
 		if(vtxPos.z<height)
 		{
 		    blocked = true;

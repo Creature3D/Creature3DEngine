@@ -22,10 +22,7 @@ varying vec3 T;
 varying vec3 B;
 varying vec3 N;
 varying vec4 texCoord;
-#if defined(_sgi)
-uniform vec4 giparam;
-varying vec2 gicoord;
-#endif
+
 void main(void)
 {
     gl_FrontColor = gl_Color;
@@ -43,15 +40,13 @@ void main(void)
         
     vec3 temp = CRE_InverseViewMatrix[3].xyz - pos.xyz;
     vVec = vec3(dot(temp,  T), dot(temp,  B), dot(temp,  N));
-#if defined(_sgi)
-    gicoord = (pos.xy + giparam.xy) * giparam.zw;
-#endif
+
     gl_Position = ftransform();
 }
 
 {****Creature3D Fragment shader****}
 #if defined(_sgi)
-varying vec2 gicoord;
+uniform vec4 giparam;
 #endif
 
 uniform vec3 CRE_CameraPos;
@@ -581,7 +576,7 @@ void main(void)
 {
     vec4 _texCoord = texCoord;
 #if defined(_sgi)
-	vec2 _gicoord = gicoord;
+	vec2 _gicoord = (vtxPos.xy + giparam.xy) * giparam.zw;
 #endif
     vec2 _texCoord2;
 
