@@ -780,8 +780,6 @@ inline void crCullVisitor::addDrawableAndDepth(const CRCore::crObject *obj,CRCor
 	drawable->resumeRendering();
 	bool stateset_pushed = false;
 	CRCore::crStateSet *drawabless = drawable->getStateSet();
-	if (drawabless && m_renderMode == GIMapRender && (drawabless->getAttribute(CRCore::crStateAttribute::BLENDFUNC) || drawabless->getAttribute(CRCore::crStateAttribute::ALPHAFUNC)))
-		return;
 	if (m_renderMode == NormalRender || m_renderMode == RTTRender || m_renderMode == GIMapRender)
 	{
 		bool olstate1_pushed = false;

@@ -145,12 +145,20 @@ bool CRIOManager::makeDirectory( const std::string &path )
     while( !paths.empty() )
     {
         std::string dir = paths.top();
- 
-        if( mkdir( dir.c_str(), 0755 )< 0 )
-        {
-            //CRCore::notify(CRCore::DEBUG_INFO) << "CRIOManager::makeDirectory(): "  << strerror(errno) << std::endl;
-            return false;
-        } 
+#if defined(WIN32)
+		//catch drive name
+		if (dir.size() == 2 && dir.c_str()[1] == ':') {
+			paths.pop();
+			continue;
+		}
+#endif
+		if (mkdir(dir.c_str(), 0755) < 0)
+		{
+			// Only return an error if the directory actually doesn't exist.  It's possible that the directory was created
+			// by another thread or process
+			if (!fileExists(dir))
+				return false;
+		}
         paths.pop();
     }
     return true;

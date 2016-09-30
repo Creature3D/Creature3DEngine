@@ -49,6 +49,7 @@
 #include <CRNetApp/appNetCallbacks.h>
 #include <CREncapsulation/crGameDices.h>
 #include <CRCore/crTexMat.h>
+
 using namespace CRCore;
 using namespace CRNet;
 using namespace CRGUI;
@@ -4922,37 +4923,42 @@ void crTopViewRTTMethod::operator()(crHandle &handle)
 	crImageBoxWidgetNode *imageBox = dynamic_cast<crImageBoxWidgetNode *>(m_this->getParentCanvas()->getWidget(m_imageBox));
 	if(imageBox)
 	{
-		crDisplaySettings::instance()->setDisableLOD(true);
-		crRenderToTexture *rtt = crRenderToTextureManager::getInstance()->findRenderToTexture("TopViewRTT");
-		if(!rtt)
-		{
-			const crVector2i& mapSize = crBrain::getInstance()->getMapSize();
-			const crVector3i& worldSize = crBrain::getInstance()->getWorldSize();
-			crRenderToTexture *rtt = new crRenderToTexture;
-			rtt->setName("TopViewRTT");
-			rtt->setMode(crRenderToTexture::RenderToTextureMode(crRenderToTexture::RenderToTexture|crRenderToTexture::RenderColorMap|crRenderToTexture::RealTimeUpd|crRenderToTexture::ExternMVP));
-			rtt->setMapSize(mapSize[0],mapSize[1]);
-			rtt->setUpdateInterval(m_updInterval);
+		imageBox->setImageName("RTT");
+		crStateSet *stateset = imageBox->getImageStateSet();
+		crTexture *rtt = crShaderManager::getInstance()->getGiTexture();
+		stateset->setTextureAttributeAndModes(0, rtt, crStateAttribute::ON);
+		imageBox->dirtyImage();
+		//crDisplaySettings::instance()->setDisableLOD(true);
+		//crRenderToTexture *rtt = crRenderToTextureManager::getInstance()->findRenderToTexture("TopViewRTT");
+		//if(!rtt)
+		//{
+		//	const crVector2i& mapSize = crBrain::getInstance()->getMapSize();
+		//	const crVector3i& worldSize = crBrain::getInstance()->getWorldSize();
+		//	crRenderToTexture *rtt = new crRenderToTexture;
+		//	rtt->setName("TopViewRTT");
+		//	rtt->setMode(crRenderToTexture::RenderToTextureMode(crRenderToTexture::RenderToTexture|crRenderToTexture::RenderColorMap|crRenderToTexture::RealTimeUpd|crRenderToTexture::ExternMVP));
+		//	rtt->setMapSize(mapSize[0],mapSize[1]);
+		//	rtt->setUpdateInterval(m_updInterval);
 
-			ref_ptr<crGroup> scene;
-			CRCore::crSearchNodeBYNameVisitor searchByNameVisitor;
-			searchByNameVisitor.reset();
-			searchByNameVisitor.setNameId("Static");
-			searchByNameVisitor.setSearchNodeType(GROUP);
-			CRCore::crBrain::getInstance()->accept(searchByNameVisitor);
-			scene = dynamic_cast<crGroup *>(searchByNameVisitor.getResult());
-			rtt->addRenderNode(scene.get());
-			rtt->addTexturedNode(imageBox->getImageObject());
-			rtt->setProjectionMatrix(CRCore::crMatrix::ortho(-worldSize[0]*0.5f,worldSize[0]*0.5f,-worldSize[1]*0.5f,worldSize[1]*0.5f,-worldSize[2],worldSize[2]));
-			rtt->setViewMatrix(crMatrix::identity());
-			rtt->init(1.0f);
-			//CRIOManager::crLoadManager::getInstance()->requestCompileStateSet(rtt->getCameraNode()->getOrCreateStateSet());
-			crRenderToTextureManager::getInstance()->addRenderToTexture(rtt);
-		}
-		else
-		{
-			rtt->setEnable(true);
-		}
+		//	ref_ptr<crGroup> scene;
+		//	CRCore::crSearchNodeBYNameVisitor searchByNameVisitor;
+		//	searchByNameVisitor.reset();
+		//	searchByNameVisitor.setNameId("Static");
+		//	searchByNameVisitor.setSearchNodeType(GROUP);
+		//	CRCore::crBrain::getInstance()->accept(searchByNameVisitor);
+		//	scene = dynamic_cast<crGroup *>(searchByNameVisitor.getResult());
+		//	rtt->addRenderNode(scene.get());
+		//	rtt->addTexturedNode(imageBox->getImageObject());
+		//	rtt->setProjectionMatrix(CRCore::crMatrix::ortho(-worldSize[0]*0.5f,worldSize[0]*0.5f,-worldSize[1]*0.5f,worldSize[1]*0.5f,-worldSize[2],worldSize[2]));
+		//	rtt->setViewMatrix(crMatrix::identity());
+		//	rtt->init(1.0f);
+		//	//CRIOManager::crLoadManager::getInstance()->requestCompileStateSet(rtt->getCameraNode()->getOrCreateStateSet());
+		//	crRenderToTextureManager::getInstance()->addRenderToTexture(rtt);
+		//}
+		//else
+		//{
+		//	rtt->setEnable(true);
+		//}
 	}
 }
 ////////////////////////////////

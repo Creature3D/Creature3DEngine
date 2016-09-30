@@ -42822,9 +42822,9 @@ void crSightFogInitMethod::operator()(crHandle &handle)
 		uniform = camerass->getOrCreateUniform("coordParam",CRCore::crUniform::FLOAT_VEC4);
 		uniform->setDataVariance(crBase::STATIC);
 		uniform->set(crVector4f(worldSize[0]*0.5f,worldSize[1]*0.5f,1.0f/float(worldSize[0]),1.0f/float(worldSize[1])));
-		uniform = camerass->getOrCreateUniform("wordParam",CRCore::crUniform::FLOAT_VEC2);
+		uniform = camerass->getOrCreateUniform("maxheight",CRCore::crUniform::FLOAT);
 		uniform->setDataVariance(crBase::STATIC);
-		uniform->set(crVector2f(worldSize[2],m_precision));
+		uniform->set(worldSize[2]);
 		ref_ptr<crTexture2D>tex2d = new crTexture2D;
 		tex2d->setFilter(crTexture2D::MIN_FILTER, crTexture::LINEAR);
 		tex2d->setFilter(crTexture2D::MAG_FILTER, crTexture::LINEAR);

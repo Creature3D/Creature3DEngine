@@ -2106,6 +2106,11 @@ void SunCallback::getUniforms_gi(crStateSet *uniform_ss)
 	uniform = uniform_ss->getOrCreateUniform("giparam",crUniform::FLOAT_VEC4);
 	uniform->setDataVariance(crBase::STATIC);
 	uniform->set(crShaderManager::getInstance()->getGIParam());
+
+	const crVector3i &worldSize = crBrain::getInstance()->getWorldSize();
+	uniform = uniform_ss->getOrCreateUniform("maxheight", CRCore::crUniform::FLOAT);
+	uniform->setDataVariance(crBase::STATIC);
+	uniform->set((float)worldSize[2]);
 }
 void SunCallback::getUniforms_sgi(crStateSet *uniform_ss)
 {
@@ -2312,6 +2317,7 @@ bool SunCallback::operator()(const crObject *obj,crDrawable* drawable, const crB
 	}
     bool effectByShadow2 = effectByShadow && rttShadowMode==2 && crBrain::getInstance()->getCalcStaticMeshShadow() && sun->getCalcShadow2();
 	char acceptGI = obj->getAcceptGI();
+	if (acceptGI == 0) acceptGI = 1;
 	getProgramString(str,effectByShadow,effectByShadow2,acceptGI,fadeIn,fadeOut);
 	str += statesetShaderStr;
 	//CRCore::notify(CRCore::ALWAYS)<<"SunCallback::operator():"<<str<<std::endl;
@@ -2339,7 +2345,7 @@ bool SunCallback::operator()(const crObject *obj,crDrawable* drawable, const crB
 	{
 		getUniforms_sgi(uniform_ss.get());
 	}
-	if(uniform_ss.valid()) shaderManager->pushActiveStateSet(uniform_ss.get());
+	shaderManager->pushActiveStateSet(uniform_ss.get());
 
 	statesetVec.push_back(std::make_pair(shader_ss,uniform_ss));
   //  if(!shader_ss || !uniform_ss.valid())
@@ -2389,7 +2395,16 @@ bool SunCallback::giMapRender(const crObject *obj, crDrawable* drawable, crShade
 	{
 		getUniforms_sgi(uniform_ss.get());
 	}
-	if (uniform_ss.valid()) shaderManager->pushActiveStateSet(uniform_ss.get());
+
+	uniform_ss->setMode(GL_BLEND, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
+	uniform_ss->setMode(GL_ALPHA_TEST, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
+	const crVector3i &worldSize = crBrain::getInstance()->getWorldSize();
+	crUniform *uniform;
+	uniform = uniform_ss->getOrCreateUniform("maxheight", CRCore::crUniform::FLOAT);
+	uniform->setDataVariance(crBase::STATIC);
+	uniform->set((float)worldSize[2]);
+
+	shaderManager->pushActiveStateSet(uniform_ss.get());
 	statesetVec.push_back(std::make_pair(shader_ss, uniform_ss));
 	return false;
 }
@@ -3142,6 +3157,7 @@ bool NoLightCallback::operator()(const crObject *obj,crDrawable* drawable, const
 	std::string str = "nolight";
 	//getProgramString(str,isEmissive,hasDetal,hasLightmap,hasEnvmap,fadeIn,fadeOut);
 	char acceptGI = obj->getAcceptGI();// && noskylight==0;
+	if (acceptGI == 0) acceptGI = 1;
 	getProgramString(str,false,false,acceptGI,fadeIn,fadeOut);
 	if(acceptGI==-1)
 	{
@@ -3177,7 +3193,7 @@ bool NoLightCallback::operator()(const crObject *obj,crDrawable* drawable, const
 	//	else
 	//		currentActiveStateSets.insert(uniform_ss.get());
 	//}
-	if(uniform_ss.valid()) crShaderManager::getInstance()->pushActiveStateSet(uniform_ss.get());
+	crShaderManager::getInstance()->pushActiveStateSet(uniform_ss.get());
 	statesetVec.push_back(std::make_pair(shader_ss,uniform_ss));
 	//statesetVec.push_back(crShaderManager::Shader_UniformPair(shader_ss,uniform_ss.get()));
 	return false;
@@ -3218,7 +3234,15 @@ bool NoLightCallback::giMapRender(const crObject *obj, crDrawable* drawable, crS
 	{
 		getUniforms_sgi(uniform_ss.get());
 	}
-	if (uniform_ss.valid()) crShaderManager::getInstance()->pushActiveStateSet(uniform_ss.get());
+	
+	uniform_ss->setMode(GL_BLEND, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
+	uniform_ss->setMode(GL_ALPHA_TEST, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
+	const crVector3i &worldSize = crBrain::getInstance()->getWorldSize();
+	uniform = uniform_ss->getOrCreateUniform("maxheight", CRCore::crUniform::FLOAT);
+	uniform->setDataVariance(crBase::STATIC);
+	uniform->set((float)worldSize[2]);
+
+	crShaderManager::getInstance()->pushActiveStateSet(uniform_ss.get());
 	statesetVec.push_back(std::make_pair(shader_ss, uniform_ss));
 	return false;
 }

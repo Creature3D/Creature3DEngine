@@ -884,8 +884,6 @@ void crCullVisitor::apply(crObject& node)
 
     // push the node's state.
     crStateSet* node_state = node.getStateSet();
-	if (node_state && m_renderMode == GIMapRender && (node_state->getAttribute(crStateAttribute::BLENDFUNC) || node_state->getAttribute(crStateAttribute::ALPHAFUNC)))
-		return;
 	//int popAlphaShadowFlg;
 	bool stateset_pushed = false;
     if (node_state) stateset_pushed = pushStateSet(node_state/*,popAlphaShadowFlg*/);
