@@ -2075,10 +2075,13 @@ void SunCallback::getUniforms_rts(crStateSet *uniform_ss,crLightSource *ls)
 	uniform->set(ls->getLightMapMVP());
 	uniform_ss->setTextureAttributeAndModes(TEXTURE_SHADOWMAP,ls->getLightMap(),crStateAttribute::ON);
 
-	uniform = uniform_ss->getOrCreateUniform("lightMVP2",crUniform::FLOAT_MAT4);
-	uniform->setDataVariance(crBase::STATIC);
-	uniform->set(ls->getLightMapMVP2());
-	uniform_ss->setTextureAttributeAndModes(TEXTURE_SHADOWMAP2,ls->getLightMap2(),crStateAttribute::ON);
+	if (ls->getLightMap2())
+	{
+		uniform = uniform_ss->getOrCreateUniform("lightMVP2", crUniform::FLOAT_MAT4);
+		uniform->setDataVariance(crBase::STATIC);
+		uniform->set(ls->getLightMapMVP2());
+		uniform_ss->setTextureAttributeAndModes(TEXTURE_SHADOWMAP2, ls->getLightMap2(), crStateAttribute::ON);
+	}
 
 	uniform = uniform_ss->getOrCreateUniform("scale",crUniform::FLOAT);
 	uniform->setDataVariance(crBase::STATIC);

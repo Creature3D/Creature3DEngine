@@ -83,7 +83,7 @@
 
 #define TEXTURE_UVSCRAMBLER 4//ExternTextureID
 #define TEXTURE_COLORWEIGHT 4//ExternTextureID
-#define TEXTURE_GIMAP 1
+#define TEXTURE_GIMAP 13
 #define TEXTURE_SPOTLIGHTMAP 13//¾Û¹âµÆÌùÍ¼
 //#define TEXTURE_DETAILMAP 8
 //#define TEXTURE_REFLECTMAP 9
