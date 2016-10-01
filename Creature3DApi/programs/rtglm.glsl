@@ -2331,13 +2331,17 @@ void main(void)
 
 #ifdef _gi
 	vec3 skyLight = texture2D(CRE_GiMap,_gicoord).xyz;
-	color.xyz += skyLight * diffuseColor.xyz;
+	color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
 #else
 	//HemisphereLightPhong(bump);
     float NdotL = dot(N,sunlVec);
 	float influence = NdotL * 0.5 + 0.5;
 	vec3 skyLight = mix( LowerSkyColor, UpperSkyColor, influence );
+#ifdef _gimap
+	color.xyz += skyLight * diffuseColor.xyz;
+#else
 	color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
+#endif
 #endif
    
 #ifdef NeedPixelDepth

@@ -82,6 +82,7 @@ void crObject::read(crDataInputStream* in){
 		if (in->getVersion() >= VERSION_0032)
 		{
 			m_acceptGI = in->readChar();
+			if (m_acceptGI == 0) m_acceptGI = 1;//Ä¬ÈÏ¿ªÆôGI
 		}
 		if (in->getVersion() >= VERSION_0033)
 		{

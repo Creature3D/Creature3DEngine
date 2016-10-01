@@ -867,6 +867,7 @@ void crCullVisitor::apply(crObject& node)
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
 	if(m_renderMode == CollideMapRender && !node.isMapCollide()) return;
+	if(m_renderMode == GIMapRender &&  node.getName().compare("sky") == 0) return;
 	//if (m_renderMode == ShadowMapRender2 && node.getBound().radius()<1.0f) return;
 
 	bool culled = isCulled(node);
@@ -2072,6 +2073,11 @@ void crCullVisitor::apply(CRCore::crOccluderNode& node)
     popOccludersCurrentMask(m_nodePath);
 
 	//if(node.isShowBoundingBox()) m_showBoundingBox = false;
+}
+void crCullVisitor::apply(CRParticle::crParticleEffect& node)
+{
+	if(m_renderMode == GIMapRender) return;
+	apply((crGroup&)node);
 }
 //
 void crCullVisitor::clearExternFrustum()

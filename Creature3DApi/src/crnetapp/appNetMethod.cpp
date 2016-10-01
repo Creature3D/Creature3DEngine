@@ -14645,6 +14645,7 @@ void crCreateDecalMethod::operator()(crHandle &handle)
 		object->setEnableIntersect(false);
 		object->setEffectByShadow(false);
 		object->setCalcShadow(false);
+		object->setAcceptGI(-1);
 		crDecalUpdateCallback *callback = new crDecalUpdateCallback;
 		object->setUpdateCallback(callback);
 		if(m_Ithis) m_Ithis->addSceneFxNode(object.get());

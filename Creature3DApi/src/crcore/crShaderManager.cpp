@@ -2319,8 +2319,8 @@ bool SunCallback::operator()(const crObject *obj,crDrawable* drawable, const crB
 		lightSourceManager->unlock();
 	}
 	char acceptGI = obj->getAcceptGI();
-	if (acceptGI == 0) acceptGI = 1;
-	bool effectByShadow2 = effectByShadow && acceptGI <=0 && rttShadowMode==2 && crBrain::getInstance()->getCalcStaticMeshShadow() && sun->getCalcShadow2() && sun->getLightMap2();
+	//if (acceptGI == 0) acceptGI = 1;
+	bool effectByShadow2 = effectByShadow && acceptGI<=0 && rttShadowMode==2 && crBrain::getInstance()->getCalcStaticMeshShadow() && sun->getCalcShadow2() && sun->getLightMap2();
 	getProgramString(str,effectByShadow,effectByShadow2,acceptGI,fadeIn,fadeOut);
 	str += statesetShaderStr;
 	//CRCore::notify(CRCore::ALWAYS)<<"SunCallback::operator():"<<str<<std::endl;
@@ -3162,7 +3162,7 @@ bool NoLightCallback::operator()(const crObject *obj,crDrawable* drawable, const
 	std::string str = "nolight";
 	//getProgramString(str,isEmissive,hasDetal,hasLightmap,hasEnvmap,fadeIn,fadeOut);
 	char acceptGI = obj->getAcceptGI();// && noskylight==0;
-	if (acceptGI == 0) acceptGI = 1;
+	//if (acceptGI == 0) acceptGI = 1;
 	getProgramString(str,false,false,acceptGI,fadeIn,fadeOut);
 	if(acceptGI==-1)
 	{
@@ -3227,12 +3227,8 @@ bool NoLightCallback::giMapRender(const crObject *obj, crDrawable* drawable, crS
 	crStateSet *shader_ss;
 	std::string str = "nolight_gimap";
 	//getProgramString(str,isEmissive,hasDetal,hasLightmap,hasEnvmap,fadeIn,fadeOut);
-	char acceptGI = obj->getAcceptGI();// && noskylight==0;
+	//char acceptGI = obj->getAcceptGI();// && noskylight==0;
 	getProgramString(str, false, false, -2, false, false);
-	if (acceptGI == -1)
-	{
-		str += "_NoSkyLight";
-	}
 	str += statesetShaderStr;
 	shader_ss = crShaderManager::getInstance()->getShaderStateSet(str);
 	//if (crShaderManager::getInstance()->getLightMapTexture())

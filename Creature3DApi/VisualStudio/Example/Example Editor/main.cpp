@@ -31,15 +31,15 @@
 #include<crtdbg.h>
 #endif
 
-#  include <windows.h>
-#  include <wininet.h>
-#include <WS2tcpip.h>
-//#  include <errno.h>
-#ifdef _MSC_VER 
-#  pragma comment(lib, "Wininet")
-#  pragma comment(lib, "Wsock32")
-#pragma comment(lib,"Ws2_32.lib")
-#endif
+//#  include <windows.h>
+//#  include <wininet.h>
+//#include <WS2tcpip.h>
+////#  include <errno.h>
+//#ifdef _MSC_VER 
+//#  pragma comment(lib, "Wininet")
+//#  pragma comment(lib, "Wsock32")
+//#pragma comment(lib,"Ws2_32.lib")
+//#endif
 
 using namespace CRCore;
 using namespace CRPhysics;
@@ -48,9 +48,9 @@ using namespace CRGUI;
 using namespace CRNet;
 using namespace CREncapsulation;
 
-#if !defined(_DEBUG) && !defined(_ACTIVEX)
-#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) 
-#endif
+//#if !defined(_DEBUG) && !defined(_ACTIVEX)
+//#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) 
+//#endif
 
 //#ifndef _DEBUG
 #define CookFile 1

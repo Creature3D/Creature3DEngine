@@ -46,6 +46,7 @@
 #include <CRPhysics\crMatterObject.h>
 #include <CRPhysics/crViewMatterObject.h>
 #include <CRPhysics/crWeaponNode.h>
+#include <CRParticle/crParticleEffect.h>
 //#include <CRPhysics\crMatterGroup.h>
 
 #include <map>
@@ -110,7 +111,7 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
 		//virtual void apply(CRPhysics::crViewMatterObject& node);
 		//virtual void apply(CRPhysics::crBulletMatterObject& node);
 		virtual void apply(CRPhysics::crWeaponMatterObject& node);
-
+		virtual void apply(CRParticle::crParticleEffect& node);
 
 	 //   virtual void apply(CRPhysics::crCaissonMatterObject& node);
 		//virtual void apply(CRPhysics::crHpMatterObject& node);
