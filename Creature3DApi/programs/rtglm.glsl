@@ -2,7 +2,7 @@
  *
  *    FILE:           rtglm.glsl
  *
- *    DESCRIPTION:    用于室外渲染,如果启用了半透明则gl_FragData[1]=vec4(0.0);最多同时处理1+3个光源
+ *    DESCRIPTION:    用于室外渲染,如果启用了半透明则gl_FragData[1]=vec4(0.0);最多同时处理1+4个光源
  *
  *    CREATED BY:     吴财华
  *
@@ -124,6 +124,24 @@ uniform mat4 lightParamd3;
 uniform float loweastLumd3;
 #endif
 
+#if defined(direct4)
+uniform vec3 lightPosd1;
+uniform mat4 lightParamd1;
+uniform float loweastLumd1;
+
+uniform vec3 lightPosd2;
+uniform mat4 lightParamd2;
+uniform float loweastLumd2;
+
+uniform vec3 lightPosd3;
+uniform mat4 lightParamd3;
+uniform float loweastLumd3;
+
+uniform vec3 lightPosd4;
+uniform mat4 lightParamd4;
+uniform float loweastLumd4;
+#endif
+
 #if defined(spot1)
 uniform vec3 lightPoss1;
 uniform mat4 lightParams1;
@@ -164,6 +182,32 @@ uniform mat4 lightParams3;
 uniform vec3 lightDir3;
 uniform float cosLightFov3;
 uniform float loweastLums3;
+#endif
+
+#if defined(spot4)
+uniform vec3 lightPoss1;
+uniform mat4 lightParams1;
+uniform vec3 lightDir1;
+uniform float cosLightFov1;
+uniform float loweastLums1;
+
+uniform vec3 lightPoss2;
+uniform mat4 lightParams2;
+uniform vec3 lightDir2;
+uniform float cosLightFov2;
+uniform float loweastLums2;
+
+uniform vec3 lightPoss3;
+uniform mat4 lightParams3;
+uniform vec3 lightDir3;
+uniform float cosLightFov3;
+uniform float loweastLums3;
+
+uniform vec3 lightPoss4;
+uniform mat4 lightParams4;
+uniform vec3 lightDir4;
+uniform float cosLightFov4;
+uniform float loweastLums4;
 #endif
 
 #ifdef _rts
@@ -667,10 +711,10 @@ float calcShadow(sampler2D ShadowMap, vec2 coord, float blur, float dist_to_ligh
 	return shadow * 0.1;
 }
 #endif
+#ifdef _gi
 float raytracingShadow(vec3 lightpos)
 {
 	float shadow = 1.0;
-#if defined(_hgi) || defined(_gi)
 	vec3 dir = lightpos - vtxPos;
 	float l = length(dir);
 	dir = normalize(dir);
@@ -684,11 +728,8 @@ float raytracingShadow(vec3 lightpos)
 		coord = (pos.xy + giparam.xy) * giparam.zw;
 		if(coord.x<0.0 || coord.x>1.0 || coord.y<0.0 || coord.y>1.0)
 			break;
-	#ifdef _gi
+
 		height = (texture2D(CRE_GiMap,coord).a * 2.0 - 1.0) * maxheight;
-	#else
-		height = (texture2D(CRE_LightMap,coord).y * 2.0 - 1.0) * maxheight;
-	#endif
 		delta = height - pos.z;
 		if(delta>=20.0)
 		{
@@ -700,9 +741,9 @@ float raytracingShadow(vec3 lightpos)
 			shadow *= 1.0-delta/20.0;
 		}
 	}
-#endif
 	return shadow;
 }
+#endif
 
 void main(void)
 {
@@ -1665,7 +1706,12 @@ void main(void)
 		{
 			shadow = calcShadow(CRE_ShadowMap, _lightCoord.xy, inv_shadowmap_size, (dist_to_light-bias) * scale);
 		}
-	#ifdef _rts2
+	#ifdef _gi
+		else
+		{
+			shadow = raytracingShadow(lightPos);
+		}
+	#elif defined(_rts2) 
 		else 
 		{
 			if(_lightCoord.z>0.0 && _lightCoord.z<1.0 && _lightCoord.w>0.0 && _lightCoord.w<1.0)
@@ -1701,6 +1747,7 @@ void main(void)
     if(attenuation>loweastLumd1)
     {
     	attenuation = attenuation - loweastLumd1;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPosd1);
 		if(rayshadow>0.0)
 		{
@@ -1710,6 +1757,12 @@ void main(void)
 			color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParamd1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
+	#endif
 	}
 #endif
 
@@ -1720,6 +1773,7 @@ void main(void)
     if(attenuation>loweastLumd1)
     {
 		attenuation = attenuation - loweastLumd1;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPosd1);
 		if(rayshadow>0.0)
 		{
@@ -1729,6 +1783,12 @@ void main(void)
 			color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParamd1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
+	#endif
 	}
 	
 	tempVec = lightPosd2 - vtxPos;
@@ -1737,6 +1797,7 @@ void main(void)
     if(attenuation>loweastLumd2)
     {
     	attenuation = attenuation - loweastLumd2;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPosd2);
 		if(rayshadow>0.0)
 		{
@@ -1746,6 +1807,12 @@ void main(void)
 			color += ((ambientColor*lightParamd2[0] + lightParamd2[1] * diffuse) * diffuseColor + specularColor * (lightParamd2[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParamd2[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd2[0] + lightParamd2[1] * diffuse) * diffuseColor + specularColor * (lightParamd2[2] * specular)) * attenuation;
+	#endif
 	}
 #endif
 
@@ -1756,6 +1823,7 @@ void main(void)
     if(attenuation>loweastLumd1)
     {
 		attenuation = attenuation - loweastLumd1;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPosd1);
 		if(rayshadow>0.0)
 		{
@@ -1765,6 +1833,12 @@ void main(void)
 			color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParamd1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
+	#endif
 	}
 	
 	tempVec = lightPosd2 - vtxPos;
@@ -1773,6 +1847,7 @@ void main(void)
     if(attenuation>loweastLumd2)
     {
 		attenuation = attenuation - loweastLumd2;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPosd2);
 		if(rayshadow>0.0)
 		{
@@ -1782,6 +1857,12 @@ void main(void)
 			color += ((ambientColor*lightParamd2[0] + lightParamd2[1] * diffuse) * diffuseColor + specularColor * (lightParamd2[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParamd2[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd2[0] + lightParamd2[1] * diffuse) * diffuseColor + specularColor * (lightParamd2[2] * specular)) * attenuation;
+	#endif
 	}
 	
     tempVec = lightPosd3 - vtxPos;
@@ -1790,6 +1871,7 @@ void main(void)
     if(attenuation>loweastLumd3)
     {
 		attenuation = attenuation - loweastLumd3;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPosd3);
 		if(rayshadow>0.0)
 		{
@@ -1799,6 +1881,110 @@ void main(void)
 			color += ((ambientColor*lightParamd3[0] + lightParamd3[1] * diffuse) * diffuseColor + specularColor * (lightParamd3[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParamd3[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd3[0] + lightParamd3[1] * diffuse) * diffuseColor + specularColor * (lightParamd3[2] * specular)) * attenuation;
+	#endif
+	}
+#endif
+
+#if defined(direct4)
+    tempVec = lightPosd1 - vtxPos;
+    lightLength2 = dot(tempVec,tempVec);
+    attenuation = 1.0/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParamd1[3].xyz);
+    if(attenuation>loweastLumd1)
+    {
+		attenuation = attenuation - loweastLumd1;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPosd1);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParamd1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd1[0] + lightParamd1[1] * diffuse) * diffuseColor + specularColor * (lightParamd1[2] * specular)) * attenuation;
+	#endif
+	}
+	
+	tempVec = lightPosd2 - vtxPos;
+    lightLength2 = dot(tempVec,tempVec);
+    attenuation = 1.0/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParamd2[3].xyz);
+    if(attenuation>loweastLumd2)
+    {
+		attenuation = attenuation - loweastLumd2;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPosd2);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParamd2[0] + lightParamd2[1] * diffuse) * diffuseColor + specularColor * (lightParamd2[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParamd2[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd2[0] + lightParamd2[1] * diffuse) * diffuseColor + specularColor * (lightParamd2[2] * specular)) * attenuation;
+	#endif
+	}
+	
+    tempVec = lightPosd3 - vtxPos;
+    lightLength2 = dot(tempVec,tempVec);
+    attenuation = 1.0/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParamd3[3].xyz);
+    if(attenuation>loweastLumd3)
+    {
+		attenuation = attenuation - loweastLumd3;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPosd3);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParamd3[0] + lightParamd3[1] * diffuse) * diffuseColor + specularColor * (lightParamd3[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParamd3[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd3[0] + lightParamd3[1] * diffuse) * diffuseColor + specularColor * (lightParamd3[2] * specular)) * attenuation;
+	#endif
+	}
+
+	tempVec = lightPosd4 - vtxPos;
+    lightLength2 = dot(tempVec,tempVec);
+    attenuation = 1.0/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParamd4[3].xyz);
+    if(attenuation>loweastLumd4)
+    {
+		attenuation = attenuation - loweastLumd4;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPosd4);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParamd4[0] + lightParamd4[1] * diffuse) * diffuseColor + specularColor * (lightParamd4[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParamd4[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParamd4[0] + lightParamd4[1] * diffuse) * diffuseColor + specularColor * (lightParamd4[2] * specular)) * attenuation;	
+	#endif
 	}
 #endif
 
@@ -1814,6 +2000,7 @@ void main(void)
 	if(attenuation>loweastLums1)
     {
 		attenuation = attenuation - loweastLums1;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPoss1);
 		if(rayshadow>0.0)
 		{
@@ -1823,6 +2010,12 @@ void main(void)
 			color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParams1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
+	#endif
 	}
 #endif
 
@@ -1838,6 +2031,7 @@ void main(void)
 	if(attenuation>loweastLums1)
     {
 		attenuation = attenuation - loweastLums1;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPoss1);
 		if(rayshadow>0.0)
 		{
@@ -1847,6 +2041,12 @@ void main(void)
 			color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParams1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
+	#endif
 	}
 
 	tempVec = lightPoss2 - vtxPos;
@@ -1860,6 +2060,7 @@ void main(void)
 	if(attenuation>loweastLums2)
     {
 		attenuation = attenuation - loweastLums2;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPoss2);
 		if(rayshadow>0.0)
 		{
@@ -1869,6 +2070,12 @@ void main(void)
 			color += ((ambientColor*lightParams2[0] + lightParams2[1] * diffuse) * diffuseColor + specularColor * (lightParams2[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParams2[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams2[0] + lightParams2[1] * diffuse) * diffuseColor + specularColor * (lightParams2[2] * specular)) * attenuation;
+	#endif
 	}
 #endif
 
@@ -1884,6 +2091,7 @@ void main(void)
 	if(attenuation>loweastLums1)
     {
 		attenuation = attenuation - loweastLums1;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPoss1);
 		if(rayshadow>0.0)
 		{
@@ -1893,6 +2101,12 @@ void main(void)
 			color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParams1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
+	#endif
 	}
 
 	tempVec = lightPoss2 - vtxPos;
@@ -1906,6 +2120,7 @@ void main(void)
 	if(attenuation>loweastLums2)
     {
 		attenuation = attenuation - loweastLums2;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPoss2);
 		if(rayshadow>0.0)
 		{
@@ -1915,6 +2130,12 @@ void main(void)
 			color += ((ambientColor*lightParams2[0] + lightParams2[1] * diffuse) * diffuseColor + specularColor * (lightParams2[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParams2[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams2[0] + lightParams2[1] * diffuse) * diffuseColor + specularColor * (lightParams2[2] * specular)) * attenuation;
+	#endif
 	}
 
 	tempVec = lightPoss3 - vtxPos;
@@ -1928,6 +2149,7 @@ void main(void)
 	if(attenuation>loweastLums3)
     {
 		attenuation = attenuation - loweastLums3;
+	#ifdef _gi
 		float rayshadow = raytracingShadow(lightPoss3);
 		if(rayshadow>0.0)
 		{
@@ -1937,6 +2159,130 @@ void main(void)
 			color += ((ambientColor*lightParams3[0] + lightParams3[1] * diffuse) * diffuseColor + specularColor * (lightParams3[2] * specular)) * attenuation;
 		}
 		else color += (ambientColor*lightParams3[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams3[0] + lightParams3[1] * diffuse) * diffuseColor + specularColor * (lightParams3[2] * specular)) * attenuation;
+	#endif
+	}
+#endif
+
+#if defined(spot4)
+	tempVec = lightPoss1 - vtxPos;
+	float cosa = dot(normalize(-tempVec),lightDir1);
+	attenuation = 0.0;
+	if(cosa > cosLightFov1)
+	{
+	    lightLength2 = dot(tempVec,tempVec);
+		attenuation = _pow(cosa,lightParams1[3].w)/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParams1[3].xyz);
+	}
+	if(attenuation>loweastLums1)
+    {
+		attenuation = attenuation - loweastLums1;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPoss1);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParams1[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams1[0] + lightParams1[1] * diffuse) * diffuseColor + specularColor * (lightParams1[2] * specular)) * attenuation;
+	#endif
+	}
+
+	tempVec = lightPoss2 - vtxPos;
+	cosa = dot(normalize(-tempVec),lightDir2);
+	attenuation = 0.0;
+	if(cosa > cosLightFov2)
+	{
+	    lightLength2 = dot(tempVec,tempVec);
+		attenuation = _pow(cosa,lightParams2[3].w)/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParams2[3].xyz);
+	}
+	if(attenuation>loweastLums2)
+    {
+		attenuation = attenuation - loweastLums2;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPoss2);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParams2[0] + lightParams2[1] * diffuse) * diffuseColor + specularColor * (lightParams2[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParams2[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams2[0] + lightParams2[1] * diffuse) * diffuseColor + specularColor * (lightParams2[2] * specular)) * attenuation;
+	#endif
+	}
+
+	tempVec = lightPoss3 - vtxPos;
+	cosa = dot(normalize(-tempVec),lightDir3);
+	attenuation = 0.0;
+	if(cosa > cosLightFov3)
+	{
+	    lightLength2 = dot(tempVec,tempVec);
+		attenuation = _pow(cosa,lightParams3[3].w)/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParams3[3].xyz);
+	}
+	if(attenuation>loweastLums3)
+    {
+		attenuation = attenuation - loweastLums3;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPoss3);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParams3[0] + lightParams3[1] * diffuse) * diffuseColor + specularColor * (lightParams3[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParams3[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams3[0] + lightParams3[1] * diffuse) * diffuseColor + specularColor * (lightParams3[2] * specular)) * attenuation;
+	#endif
+	}
+
+	tempVec = lightPoss4 - vtxPos;
+	cosa = dot(normalize(-tempVec),lightDir4);
+	attenuation = 0.0;
+	if(cosa > cosLightFov4)
+	{
+	    lightLength2 = dot(tempVec,tempVec);
+		attenuation = _pow(cosa,lightParams4[3].w)/dot(vec3(1.0, sqrt(lightLength2), lightLength2),lightParams4[3].xyz);
+	}
+	if(attenuation>loweastLums4)
+    {
+		attenuation = attenuation - loweastLums4;
+	#ifdef _gi
+		float rayshadow = raytracingShadow(lightPoss4);
+		if(rayshadow>0.0)
+		{
+		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+			diffuse = rayshadow * saturate(dot(n_lVec, bump));
+			specular = rayshadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
+			color += ((ambientColor*lightParams4[0] + lightParams4[1] * diffuse) * diffuseColor + specularColor * (lightParams4[2] * specular)) * attenuation;
+		}
+		else color += (ambientColor*lightParams4[0] * diffuseColor) * attenuation;
+	#else
+		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
+		diffuse = saturate(dot(n_lVec, bump));
+		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
+		color += ((ambientColor*lightParams4[0] + lightParams4[1] * diffuse) * diffuseColor + specularColor * (lightParams4[2] * specular)) * attenuation;
+	#endif
 	}
 #endif
 

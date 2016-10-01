@@ -103,17 +103,21 @@ public :
 			{
 				if(crShaderManager::getInstance()->getGiTexture())
 					str += "_gi";
-				else if(crShaderManager::getInstance()->getLightMapTexture())
+				if(crShaderManager::getInstance()->getLightMapTexture())
 					str += "_sgi";
 			}
 			else if(acceptGI==2)
 			{
-				if(crShaderManager::getInstance()->getHeightMapTexture())
+				if(crShaderManager::getInstance()->getGiTexture())
+					str += "_gi";
+				if(crShaderManager::getInstance()->getLightMapTexture())
 					str += "_hgi";
-				else if(crShaderManager::getInstance()->getLightMapTexture())
-					str += "_sgi";
+				//if(crShaderManager::getInstance()->getHeightMapTexture())
+				//	str += "_hgi";
+				//else if(crShaderManager::getInstance()->getLightMapTexture())
+				//	str += "_sgi";
 			}
-			else if(crShaderManager::getInstance()->getLightMapTexture())
+			else if(acceptGI!=-2 && crShaderManager::getInstance()->getLightMapTexture())
 			{
 				str += "_sgi";
 			}
@@ -265,7 +269,7 @@ protected:
 	void getUniforms_sun(crStateSet *uniform_ss,crLightSource *sun, const crVector3 &center);
 	void getUniforms_spot(crStateSet *uniform_ss,crLightSource *ls,int lightNum);
 	void getUniforms_direct(crStateSet *uniform_ss,crLightSource *ls,int lightNum);
-	void getUniforms_rts(crStateSet *uniform_ss,crLightSource *ls);
+	void getUniforms_rts(crStateSet *uniform_ss,crLightSource *ls,bool acceptShadow2);
 	void getUniforms_gi(crStateSet *uniform_ss);
 	void getUniforms_sgi(crStateSet *uniform_ss);
 	void getUniforms_height(crStateSet *uniform_ss);

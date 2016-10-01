@@ -17,7 +17,7 @@
 #include <CRCore/thread/crScopedLock.h>
 
 //+1sunlight
-#define MaxOnePassLightNum 3
+#define MaxOnePassLightNum 4
 
 using namespace CRCore;
 ref_ptr<crLightSourceManager> crLightSourceManager::m_instance = NULL;

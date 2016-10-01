@@ -2066,7 +2066,7 @@ void SunCallback::getUniforms_direct(crStateSet *uniform_ss,crLightSource *ls,in
 	uniform->set(ls->getLoweastLum());
 }
 
-void SunCallback::getUniforms_rts(crStateSet *uniform_ss,crLightSource *ls)
+void SunCallback::getUniforms_rts(crStateSet *uniform_ss,crLightSource *ls, bool acceptShadow2)
 {
 	crUniform *uniform;
 	//sunlight shadow
@@ -2075,7 +2075,7 @@ void SunCallback::getUniforms_rts(crStateSet *uniform_ss,crLightSource *ls)
 	uniform->set(ls->getLightMapMVP());
 	uniform_ss->setTextureAttributeAndModes(TEXTURE_SHADOWMAP,ls->getLightMap(),crStateAttribute::ON);
 
-	if (ls->getLightMap2())
+	if (acceptShadow2)
 	{
 		uniform = uniform_ss->getOrCreateUniform("lightMVP2", crUniform::FLOAT_MAT4);
 		uniform->setDataVariance(crBase::STATIC);
@@ -2318,31 +2318,33 @@ bool SunCallback::operator()(const crObject *obj,crDrawable* drawable, const crB
 		}
 		lightSourceManager->unlock();
 	}
-    bool effectByShadow2 = effectByShadow && rttShadowMode==2 && crBrain::getInstance()->getCalcStaticMeshShadow() && sun->getCalcShadow2();
 	char acceptGI = obj->getAcceptGI();
 	if (acceptGI == 0) acceptGI = 1;
+	bool effectByShadow2 = effectByShadow && acceptGI <=0 && rttShadowMode==2 && crBrain::getInstance()->getCalcStaticMeshShadow() && sun->getCalcShadow2() && sun->getLightMap2();
 	getProgramString(str,effectByShadow,effectByShadow2,acceptGI,fadeIn,fadeOut);
 	str += statesetShaderStr;
 	//CRCore::notify(CRCore::ALWAYS)<<"SunCallback::operator():"<<str<<std::endl;
 	shader_ss = shaderManager->getShaderStateSet(str);
 	if(effectByShadow/*str.find("rts")!=std::string::npos*/)
 	{
-		getUniforms_rts(uniform_ss.get(),sun);
+		getUniforms_rts(uniform_ss.get(),sun,effectByShadow2);
 	}
 
 	if(acceptGI==1)
 	{
 		if(crShaderManager::getInstance()->getGiTexture())
 			getUniforms_gi(uniform_ss.get());
-		else if(crShaderManager::getInstance()->getLightMapTexture())
+		if(crShaderManager::getInstance()->getLightMapTexture())
 			getUniforms_sgi(uniform_ss.get());
 	}
 	else if(acceptGI==2)
 	{
+		if(crShaderManager::getInstance()->getGiTexture())
+			getUniforms_gi(uniform_ss.get());
 		if(crShaderManager::getInstance()->getHeightMapTexture())
 			getUniforms_height(uniform_ss.get());
-		else if(crShaderManager::getInstance()->getLightMapTexture())
-			getUniforms_sgi(uniform_ss.get());
+		//else if(crShaderManager::getInstance()->getLightMapTexture())
+		//	getUniforms_sgi(uniform_ss.get());
 	}
 	else if(crShaderManager::getInstance()->getLightMapTexture())
 	{
@@ -2391,13 +2393,13 @@ bool SunCallback::giMapRender(const crObject *obj, crDrawable* drawable, crShade
 	{
 		str = "sunx_gimap";
 	}
-	getProgramString(str, false, false, 0, false, false);
+	getProgramString(str, false, false, -2, false, false);
 	str += statesetShaderStr;
 	shader_ss = shaderManager->getShaderStateSet(str);
-	if (crShaderManager::getInstance()->getLightMapTexture())
-	{
-		getUniforms_sgi(uniform_ss.get());
-	}
+	//if (crShaderManager::getInstance()->getLightMapTexture())
+	//{
+	//	getUniforms_sgi(uniform_ss.get());
+	//}
 
 	uniform_ss->setMode(GL_BLEND, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
 	uniform_ss->setMode(GL_ALPHA_TEST, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
@@ -3226,17 +3228,17 @@ bool NoLightCallback::giMapRender(const crObject *obj, crDrawable* drawable, crS
 	std::string str = "nolight_gimap";
 	//getProgramString(str,isEmissive,hasDetal,hasLightmap,hasEnvmap,fadeIn,fadeOut);
 	char acceptGI = obj->getAcceptGI();// && noskylight==0;
-	getProgramString(str, false, false, 0, false, false);
+	getProgramString(str, false, false, -2, false, false);
 	if (acceptGI == -1)
 	{
 		str += "_NoSkyLight";
 	}
 	str += statesetShaderStr;
 	shader_ss = crShaderManager::getInstance()->getShaderStateSet(str);
-	if (crShaderManager::getInstance()->getLightMapTexture())
-	{
-		getUniforms_sgi(uniform_ss.get());
-	}
+	//if (crShaderManager::getInstance()->getLightMapTexture())
+	//{
+	//	getUniforms_sgi(uniform_ss.get());
+	//}
 	
 	uniform_ss->setMode(GL_BLEND, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
 	uniform_ss->setMode(GL_ALPHA_TEST, crStateAttribute::OFF | crStateAttribute::OVERRIDE);
