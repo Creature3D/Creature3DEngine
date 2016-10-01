@@ -1706,18 +1706,16 @@ void main(void)
 		{
 			shadow = calcShadow(CRE_ShadowMap, _lightCoord.xy, inv_shadowmap_size, (dist_to_light-bias) * scale);
 		}
-	#ifdef _gi
-		else
+	//#ifdef _gi
+	//	else
+	//	{
+	//		shadow = raytracingShadow(lightPos);
+	//	}
+	//#elif defined(_rts2)
+	#ifdef _rts2 
+		else if(_lightCoord.z>0.0 && _lightCoord.z<1.0 && _lightCoord.w>0.0 && _lightCoord.w<1.0)
 		{
-			shadow = raytracingShadow(lightPos);
-		}
-	#elif defined(_rts2) 
-		else 
-		{
-			if(_lightCoord.z>0.0 && _lightCoord.z<1.0 && _lightCoord.w>0.0 && _lightCoord.w<1.0)
-			{
-				shadow = calcShadow(CRE_ShadowMap2, _lightCoord.zw, inv_shadowmap_size, (dist_to_light-bias) * scale);
-			}
+			shadow = calcShadow(CRE_ShadowMap2, _lightCoord.zw, inv_shadowmap_size, (dist_to_light-bias) * scale);
 		}
 	#endif
 	#endif
