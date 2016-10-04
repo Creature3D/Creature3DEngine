@@ -1,1 +1,2 @@
-AcceptGI 1
+AcceptGI 0
+//1默认，0表示关闭，2用于水面
