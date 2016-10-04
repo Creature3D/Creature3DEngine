@@ -7399,8 +7399,8 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				crVector3 halfPhysicsBox = *(crVector3 *)param;
 				bot->setPhysicsBox(halfPhysicsBox*2.0f);
 
-				crAcceptGIVisitor acceptGI(1);
-				bot->accept(acceptGI);
+				//crAcceptGIVisitor acceptGI(1);
+				//bot->accept(acceptGI);
 				//m_item->setPosz(m_item->getPosz()/*+50*/);
 				//bot->setPosition(crVector3(m_item->getPosx() * crGlobalHandle::gData()->gUnitScale(),m_item->getPosy() * crGlobalHandle::gData()->gUnitScale(), m_item->getPosz() * crGlobalHandle::gData()->gUnitScale()));
 				m_item->setNode(npc->getNPCBody());
@@ -7479,8 +7479,8 @@ void crLoadItemMethod::operator()(crHandle &handle)
 					crNode *loadedNode = proxyNode->getChild(0);
 					loadedNode = dynamic_cast<crNode *>(loadedNode->clone(crCopyOp::DEEP_COPY_NODES));
 					group->addChild(loadedNode);
-					crAcceptGIVisitor acceptGI(1);
-					group->accept(acceptGI);
+					//crAcceptGIVisitor acceptGI(1);
+					//group->accept(acceptGI);
 				}
 				//CRIOManager::crLoadManager::getInstance()->requestNode(filename,group.get(),false);
 			}
@@ -10062,11 +10062,11 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 		{//只在loaditem的时候才会触发接收一次
 			if(relNode)
 			{
-				if(!m_staticRoot)
-				{
-					crAcceptGIVisitor acceptGI(1);
-					relNode->accept(acceptGI);
-				}
+				//if(!m_staticRoot)
+				//{
+				//	crAcceptGIVisitor acceptGI(1);
+				//	relNode->accept(acceptGI);
+				//}
 
 			    m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_FullMatrix));
 				void *param;

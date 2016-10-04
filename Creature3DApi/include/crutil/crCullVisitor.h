@@ -117,7 +117,7 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
 		//virtual void apply(CRPhysics::crHpMatterObject& node);
 		//virtual void apply(CRPhysics::crArmorMatterObject& node);
 
-		//virtual void apply(CRCore::crFilterRenderManager& node);
+		virtual void apply(CRCore::crFilterRenderManager& node);
 
   //      virtual void apply(CRCore::crImpostor& node);
 	//	virtual void apply(CRCore::crEventGroup& node);

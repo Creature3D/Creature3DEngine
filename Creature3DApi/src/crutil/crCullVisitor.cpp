@@ -816,7 +816,6 @@ void crCullVisitor::apply(crNode& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
-	if(m_renderMode == CollideMapRender && !node.isMapCollide()) return;
 	if(m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
@@ -848,6 +847,7 @@ void crCullVisitor::apply(crDB& node)
 {
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 	//if(!m_showBoundingBox)
 	//	m_showBoundingBox = node.isShowBoundingBox();
 
@@ -1105,9 +1105,9 @@ void crCullVisitor::apply(crObject& node)
 void crCullVisitor::apply(crBillboard& node)
 {
 	node.setNodeMask(node.getNodeMask() | CulledMask);
-	if(!node.getVisiable() || m_renderMode == GIMapRender) return;
+	if (!node.getVisiable() || m_renderMode == GIMapRender || m_renderMode == CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
-    
+
 	int frameNumber = crFrameStamp::getInstance()->getFrameNumber();
 	if(frameNumber <= 3 && m_renderMode != StaitcShadowMapRender) return;
 	else if(frameNumber > 3 && m_renderMode != NormalRender) return;
@@ -1279,6 +1279,7 @@ void crCullVisitor::apply(CRCore::crTraverseStringNode& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 	//const std::string& name = node.getName();
     //if(m_renderMode > NormalRender && (name.compare("0x2")==0 || name.compare("0x3")==0)) return;
 	if(isCulled(node)) return;
@@ -1418,6 +1419,7 @@ void crCullVisitor::apply(crTexGenNode& node)
 {
 	if(!node.getVisiable()) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 	//if(!m_dependCullingBufStack.empty())
 	//{
 	//	topDependCullingBuf()->addChild(&node);
@@ -1455,6 +1457,7 @@ void crCullVisitor::apply(crClipNode& node)
 {
 	if(!node.getVisiable()) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 	//if(!m_dependCullingBufStack.empty())
 	//{
 	//	topDependCullingBuf()->addChild(&node);
@@ -1492,7 +1495,6 @@ void crCullVisitor::apply(crGroup& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
-	if(m_renderMode == CollideMapRender && !node.isMapCollide()) return;
 	if(m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
@@ -1572,6 +1574,7 @@ void crCullVisitor::apply(CRPhysics::crWeaponMatterObject& node)
 	/*apply((crMatrixTransform&) node);*/
 	if(!node.getVisiable()) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	//CRPhysics::crWeaponMatterObject::WeaponMatrixVec matrixVec = node.getWeaponMatrixVec();
 	//if(matrixVec.empty())
@@ -1600,6 +1603,7 @@ void crCullVisitor::apply(CRCore::crMatrixSequence& node)
 	//CRCore::notify(CRCore::FATAL)<<"crCullVisitor::apply(CRCore::crMatrixSequence& node) "<<node.getName()<<std::endl;
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(/*node.isEffectIdle() || */(m_renderMode == ShadowMapRender&&!node.isCalcShadow())) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
 	node.setNodeMask(node.getNodeMask() & ~CulledMask);
@@ -1630,6 +1634,7 @@ void crCullVisitor::apply(crTransform& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
 	node.setNodeMask(node.getNodeMask() & ~CulledMask);
@@ -1678,6 +1683,7 @@ void crCullVisitor::apply(crProjection& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
 	node.setNodeMask(node.getNodeMask() & ~CulledMask);
@@ -1750,6 +1756,7 @@ void crCullVisitor::apply(crLod& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if (m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
 	node.setNodeMask(node.getNodeMask() & ~CulledMask);
@@ -2042,7 +2049,7 @@ void crCullVisitor::apply(CRCore::crCameraNode& camera)
 
 void crCullVisitor::apply(CRCore::crOccluderNode& node)
 {
-	if(m_renderMode == ShadowMapRender/*&&!node.isCalcShadow()*/) return;
+	if (m_renderMode != NormalRender) return;
 
 	//if(!m_showBoundingBox)
 	//	m_showBoundingBox = node.isShowBoundingBox();
@@ -2081,8 +2088,13 @@ void crCullVisitor::apply(CRCore::crOccluderNode& node)
 }
 void crCullVisitor::apply(CRParticle::crParticleEffect& node)
 {
-	if(m_renderMode == GIMapRender) return;
+	if (m_renderMode == GIMapRender || m_renderMode == CollideMapRender) return;
 	apply((crGroup&)node);
+}
+void crCullVisitor::apply(CRCore::crFilterRenderManager& node)
+{
+	if (m_renderMode != NormalRender) return;
+	apply((crNode&)node);
 }
 //
 void crCullVisitor::clearExternFrustum()

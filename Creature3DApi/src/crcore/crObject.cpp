@@ -38,7 +38,7 @@ crObject::crObject()
 	//setName("O");
 	m_effectByShadow = true;
 	m_needSelectLight = true;
-	m_acceptGI = 0;
+	m_acceptGI = 1;
 	m_drawOutLine = 0;
 	m_outlineColorMode = OL_Black;
 }

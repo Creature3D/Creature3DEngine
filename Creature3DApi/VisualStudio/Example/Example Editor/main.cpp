@@ -48,9 +48,9 @@ using namespace CRGUI;
 using namespace CRNet;
 using namespace CREncapsulation;
 
-//#if !defined(_DEBUG) && !defined(_ACTIVEX)
-//#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) 
-//#endif
+#if !defined(_DEBUG) && !defined(_ACTIVEX) && !defined(_Console)
+#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) 
+#endif
 
 //#ifndef _DEBUG
 #define CookFile 1

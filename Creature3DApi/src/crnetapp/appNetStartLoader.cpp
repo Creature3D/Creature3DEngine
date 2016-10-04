@@ -180,7 +180,7 @@ void crNetStartLoader::loading(CRProducer::crViewer *viewer,Producer::Window par
 	crMyPlayerData::MyRoleNpcMap &myRoleNpcMap = crMyPlayerData::getInstance()->getMyRoleNpcMap();
 	crViewMatterObject *bot;
 	crData *data;
-	crAcceptGIVisitor acceptGI(1);
+	//crAcceptGIVisitor acceptGI(1);
 	CreBodyNode *bodyNode;
 	crCreBodyCullCallback *bodyCull;
 	crCollectNodeBYClassNameVisitor crebodyVisitor;
@@ -221,7 +221,7 @@ void crNetStartLoader::loading(CRProducer::crViewer *viewer,Producer::Window par
 					}
 				}
 			}
-			bot->accept(acceptGI);
+			//bot->accept(acceptGI);
 			//int playerid = role->getPlayerID();
 			bot->getDataClass()->inputParam(WCHDATA_Item,role);
 			//crSceneManager::getInstance()->setPlayer(npc.get());
@@ -517,7 +517,7 @@ void crNetStartLoader2::loading(CRProducer::crViewer *viewer,Producer::Window pa
 	crMyPlayerData::getInstance()->lockMyRoleNpcMap();
 	crMyPlayerData::MyRoleNpcMap &myRoleNpcMap = crMyPlayerData::getInstance()->getMyRoleNpcMap();
 	crViewMatterObject *bot;
-	crAcceptGIVisitor acceptGI(1);
+	//crAcceptGIVisitor acceptGI(1);
 	CreBodyNode *bodyNode;
 	crCreBodyCullCallback *bodyCull;
 	crCollectNodeBYClassNameVisitor crebodyVisitor;
@@ -557,7 +557,7 @@ void crNetStartLoader2::loading(CRProducer::crViewer *viewer,Producer::Window pa
 					}
 				}
 			}
-			bot->accept(acceptGI);
+			//bot->accept(acceptGI);
 			//int playerid = role->getPlayerID();
 			bot->getDataClass()->inputParam(WCHDATA_Item,role);
 			//crSceneManager::getInstance()->setPlayer(npc.get());
