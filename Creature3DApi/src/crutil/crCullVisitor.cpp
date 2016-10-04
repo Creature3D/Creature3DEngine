@@ -816,6 +816,8 @@ void crCullVisitor::apply(crNode& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if(m_renderMode == CollideMapRender && !node.isMapCollide()) return;
+	if(m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 
 	if (isCulled(node)) return;
 	node.setNodeMask(node.getNodeMask() & ~CulledMask);
@@ -867,7 +869,7 @@ void crCullVisitor::apply(crObject& node)
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
 	if(m_renderMode == CollideMapRender && !node.isMapCollide()) return;
-	if(m_renderMode == GIMapRender &&  node.getName().compare("sky") == 0) return;
+	if(m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
 	//if (m_renderMode == ShadowMapRender2 && node.getBound().radius()<1.0f) return;
 
 	bool culled = isCulled(node);
@@ -1490,6 +1492,9 @@ void crCullVisitor::apply(crGroup& node)
 	node.setNodeMask(node.getNodeMask() | CulledMask);
 	if(!node.getVisiable() && m_renderMode != CollideMapRender) return;
 	if(m_renderMode == ShadowMapRender&&!node.isCalcShadow()) return;
+	if(m_renderMode == CollideMapRender && !node.isMapCollide()) return;
+	if(m_renderMode == GIMapRender &&  !node.isGIMapRenderable()) return;
+
 	if (isCulled(node)) return;
 	node.setNodeMask(node.getNodeMask() & ~CulledMask);
 	//if(!m_dependCullingBufStack.empty())

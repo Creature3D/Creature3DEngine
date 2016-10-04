@@ -68,7 +68,8 @@
 #define VERSION_0040 40 //image filename
 #define VERSION_0041 41 //image filename
 #define VERSION_0042 42 //SpotLightMap
-#define VERSION      VERSION_0042
+#define VERSION_0043 43 //GIMapRenderable
+#define VERSION      VERSION_0043
 
 
 /* The BYTE_SEX tag is used to check the endian

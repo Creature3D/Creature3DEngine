@@ -189,6 +189,10 @@ void crNode::write(crDataOutputStream* out){
 	{
 		out->writeBool(m_avoidIntersect);
 	}
+	if (out->getVersion() >= VERSION_0043)
+	{
+		out->writeBool(m_giMapRenderable);
+	}
 	//out->writeBool(isShowBoundingBox());
 }
 
@@ -262,6 +266,10 @@ void crNode::read(crDataInputStream* in){
 		if (in->getVersion() >= VERSION_0029)
 		{
 			setAvoidIntersect(in->readBool());
+		}
+		if (in->getVersion() >= VERSION_0043)
+		{
+			setGIMapRenderable(in->readBool());
 		}
 		//showBoundingBox(in->readBool());
 

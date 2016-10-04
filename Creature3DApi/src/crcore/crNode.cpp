@@ -79,6 +79,7 @@ crNode::crNode()
 	m_currentMsg = 0;
 	m_editorHidden = false;
 	m_editorIntersectable = true;
+	m_giMapRenderable = true;
 
 	m_renderInited = false;
 	m_avoidIntersect = false;

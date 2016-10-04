@@ -333,6 +333,8 @@ namespace CRCore {
 		inline bool getPhysicsInited()const { return m_physicsInited; }
 		inline void setMapCollide(bool enable) { m_mapCollide = enable; }
 		inline bool isMapCollide()const { return m_mapCollide; }
+		inline void setGIMapRenderable(bool enable) { m_giMapRenderable = enable; }
+		inline bool isGIMapRenderable()const { return m_giMapRenderable; }
 
 		void setEditorHidden(bool hide) { m_editorHidden = hide; }
 		void setEditorIntersectable(bool able) { m_editorIntersectable = able; }
@@ -491,6 +493,7 @@ namespace CRCore {
         bool m_editorHidden;//编辑器隐藏
 		bool m_editorIntersectable;//编辑器拾取标志
 		bool m_avoidIntersect;//true 不启用拾取
+		bool m_giMapRenderable;//默认true，false表示giMapRender不渲染该对象
 
 		CollideMode    m_collideMode;
 		mutable void*          m_physicsObjID;

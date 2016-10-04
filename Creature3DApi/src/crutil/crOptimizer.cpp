@@ -3143,6 +3143,10 @@ void crOptimizer::crInitialCheckVisitor::apply(CRCore::crObject& node)
 	{
 		node.setAvoidIntersect(int1);
 	}
+	if(CRCore::crArgumentParser::readKeyValue(node.getDescriptions(),"GIMapRenderable",int1))
+	{
+		node.setGIMapRenderable(int1);
+	}
 	//node.setEnableIntersect(m_enableIntersect);
 }
 
@@ -3174,6 +3178,10 @@ void crOptimizer::crInitialCheckVisitor::apply(CRCore::crGroup& node)
    if(CRCore::crArgumentParser::readKeyValue(node.getDescriptions(),"AvoidIntersect",int1))
    {
 	   node.setAvoidIntersect(int1);
+   }
+   if(CRCore::crArgumentParser::readKeyValue(node.getDescriptions(),"GIMapRenderable",int1))
+   {
+	   node.setGIMapRenderable(int1);
    }
 	//m_enableIntersect = node.getEnableIntersect();
 	//if(!m_enableIntersect)
