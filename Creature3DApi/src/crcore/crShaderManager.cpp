@@ -3255,6 +3255,12 @@ void NoLightCallback::getUniforms_gi(crStateSet *uniform_ss)
 	uniform = uniform_ss->getOrCreateUniform("giparam",crUniform::FLOAT_VEC4);
 	uniform->setDataVariance(crBase::STATIC);
 	uniform->set(crShaderManager::getInstance()->getGIParam());
+
+	crLightSource *sun = crLightSourceManager::getInstance()->getSunLightSource();
+	uniform = uniform_ss->getOrCreateUniform("sunambient", crUniform::FLOAT_VEC3);
+	uniform->setDataVariance(crBase::STATIC);
+	const crMatrixf &lsparam = sun->getLSParam();
+	uniform->set(crVector3(lsparam(0, 0), lsparam(0, 1), lsparam(0, 2)));
 }
 void NoLightCallback::getUniforms_sgi(crStateSet *uniform_ss)
 {

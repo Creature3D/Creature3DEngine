@@ -37,7 +37,7 @@ uniform float maxheight;
 #endif
 #ifdef _gi
 uniform sampler2D CRE_GiMap;
-uniform float giIntensity;
+uniform vec3 sunambient;
 #endif
 #ifndef _gimap
 uniform vec3 UpperSkyColor;
@@ -915,7 +915,7 @@ void main(void)
 	float influence = NdotL * 0.5 + 0.5;
 	vec3 skyLight = mix( LowerSkyColor, UpperSkyColor, influence );
 #ifdef _gi
-	skyLight += texture2D(CRE_GiMap,_gicoord).xyz*giIntensity;
+	skyLight += texture2D(CRE_GiMap,_gicoord).xyz*sunambient;
 #endif
 	color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
 #endif
