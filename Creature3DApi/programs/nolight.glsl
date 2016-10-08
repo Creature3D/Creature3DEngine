@@ -921,9 +921,12 @@ void main(void)
 #endif
 #endif
 
-	vec3 tempVec;
-    tempVec = CRE_CameraPos - vtxPos;
+
+#if defined(NeedPixelDepth) || defined(_fi) || defined(_fo)
+	vec3 tempVec = CRE_CameraPos - vtxPos;
 	float sqrDepth = dot(tempVec,tempVec);
+#endif
+
 #ifdef NeedPixelDepth
     float depth = min(sqrt(sqrDepth) / maxDepth, 1.0);
     sqrDepth = depth * depth;

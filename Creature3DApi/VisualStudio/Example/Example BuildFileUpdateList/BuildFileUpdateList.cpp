@@ -58,18 +58,18 @@ void findFileInDir(const char* rootDir, int rootlength, const std::string &ext, 
 	std::string rdir = rootDir;
 	if(rdir.find("textures\\Engine") !=  std::string::npos)
 		return;
-	char fname[256];
-	ZeroMemory(fname, 256);
+	char fname[1024];
+	ZeroMemory(fname, 1024);
 
 	WIN32_FIND_DATA fd;
 	ZeroMemory(&fd, sizeof(WIN32_FIND_DATA));
 
 	HANDLE hSearch;
 	char extcheck;
-	char filePathName[256];
-	char tmpPath[256];
-	ZeroMemory(filePathName, 256);
-	ZeroMemory(tmpPath, 256);
+	char filePathName[1024];
+	char tmpPath[1024];
+	ZeroMemory(filePathName, 1024);
+	ZeroMemory(tmpPath, 1024);
 
 	strcpy(filePathName, rootDir);
 

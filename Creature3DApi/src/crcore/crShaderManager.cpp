@@ -3180,10 +3180,10 @@ bool NoLightCallback::operator()(const crObject *obj,crDrawable* drawable, const
 	}
 	else if(acceptGI == 2)
 	{
+		if (crShaderManager::getInstance()->getGiTexture())
+			getUniforms_gi(uniform_ss.get());
 		if(crShaderManager::getInstance()->getHeightMapTexture())
 			getUniforms_height(uniform_ss.get());
-		else if(crShaderManager::getInstance()->getLightMapTexture())
-			getUniforms_sgi(uniform_ss.get());
 	}
 	else if(crShaderManager::getInstance()->getLightMapTexture())
 	{

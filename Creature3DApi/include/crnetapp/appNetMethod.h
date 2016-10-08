@@ -7709,6 +7709,7 @@ protected:
 	void init();
 	bool m_init;
 	CRCore::ref_ptr<CRText::crText> m_fps;
+	CRCore::ref_ptr<CRText::crText> m_fpsTime;
 	CRCore::ref_ptr<CRText::crText> m_drawTime;
 	CRCore::ref_ptr<CRText::crText> m_updTime;
 	CRCore::ref_ptr<CRText::crText> m_cullTime;

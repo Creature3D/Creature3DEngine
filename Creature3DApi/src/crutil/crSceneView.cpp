@@ -101,11 +101,7 @@ crSceneView::crSceneView(crDisplaySettings* ds)
 
 crSceneView::~crSceneView()
 {
-	if(m_swapBufMutexLocked)
-	{
-		m_swapBufMutex.unlock();
-		m_swapBufMutexLocked = false;
-	}
+	unlockSwapBuffer();
 }
 
 void crSceneView::setCamera(CRCore::crCameraNode* camera)
@@ -540,11 +536,8 @@ void crSceneView::flushAllDeletedObjects()
 	m_interlacedStereoStencilWidth = 0;
 	m_interlacedStereoStencilHeight = 0;
 	
-	if(m_swapBufMutexLocked)
-	{
-		m_swapBufMutex.unlock();
-		m_swapBufMutexLocked = false;
-	}
+	unlockSwapBuffer();
+
 	m_physicsInitVisitor = NULL;
 	m_physicsUpdateVisitor = NULL;
 	
@@ -576,8 +569,8 @@ void crSceneView::unlockSwapBuffer()
 {
 	if(m_swapBufMutexLocked)
 	{
-		m_swapBufMutex.unlock();
 		m_swapBufMutexLocked = false;
+		m_swapBufMutex.unlock();
 	}
 }
 void crSceneView::flushAllDeletedObjectsImp(unsigned int contextID)
@@ -637,12 +630,12 @@ void crSceneView::update()
 {
 	//if (!m_initCalled) init();
 
-	CRCore::Timer_t start_tick = 0;
-	CRCore::Timer_t end_tick = 0;
-	if(crStatistics::getInstance()->getStat())
-	{
-		start_tick = CRCore::Timer::instance()->tick();
-	}
+	//CRCore::Timer_t start_tick = 0;
+	//CRCore::Timer_t end_tick = 0;
+	//if(crStatistics::getInstance()->getStat())
+	//{
+	//	start_tick = CRCore::Timer::instance()->tick();
+	//}
 
 	if (m_camera.valid() && m_updateVisitor.valid())
 	{
@@ -768,14 +761,14 @@ void crSceneView::update()
 		// multi-threaded.
 		m_camera->getBound();
 	}
-	if(crStatistics::getInstance()->getStat())
-	{
-		end_tick = CRCore::Timer::instance()->tick();
-		float updtime = CRCore::Timer::instance()->delta_m(start_tick,end_tick);
-		crStatistics::getInstance()->setUpdTime(updtime);
-		//CRText::crText *updtimeText = dynamic_cast<CRText::crText *>(crFilterRenderManager::getInstance()->getDrawable("updTimeText"));
-		//updtimeText->setText(crArgumentParser::appFtoa(updtime));
-	}
+	//if(crStatistics::getInstance()->getStat())
+	//{
+	//	end_tick = CRCore::Timer::instance()->tick();
+	//	float updtime = CRCore::Timer::instance()->delta_m(start_tick,end_tick);
+	//	crStatistics::getInstance()->setUpdTime(updtime);
+	//	//CRText::crText *updtimeText = dynamic_cast<CRText::crText *>(crFilterRenderManager::getInstance()->getDrawable("updTimeText"));
+	//	//updtimeText->setText(crArgumentParser::appFtoa(updtime));
+	//}
 }
 
 CRCore::crMatrixd crSceneView::computeLeftEyeProjectionImplementation(const CRCore::crMatrixd& projection) const

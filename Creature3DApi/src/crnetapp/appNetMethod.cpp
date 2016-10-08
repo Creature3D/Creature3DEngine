@@ -47212,6 +47212,24 @@ void crShowEnginStatsMethod::init()
 	crFilterRenderManager::getInstance()->addDrawable(m_fps.get(),true);
 
 	//////////////////////////
+	//m_fpsTime
+	/////////////////////////
+	pos.x() = leftPos;
+	pos.y() -= characterSize;
+	m_fpsTime = new CRText::crText;
+	m_fpsTime->setName("FrameTime");
+	m_fpsTime->setFont("arial.ttf");
+	m_fpsTime->setColor(rcolor);
+	m_fpsTime->setFontResolution((unsigned int)characterSize, (unsigned int)characterSize);
+	m_fpsTime->setCharacterSize(characterSize);
+	m_fpsTime->setPosition(pos);
+	m_fpsTime->setAlignment(CRText::crText::BASE_LINE);
+	m_fpsTime->setText("FrameTime: ");
+	m_fpsTime->setVisiable(false);
+	//m_fpsTime->swapBuffers();//为获得正确的BoundBox
+	crFilterRenderManager::getInstance()->addDrawable(m_fpsTime.get(), true);
+
+	//////////////////////////
 	//m_drawTime
 	/////////////////////////
 	pos.x() = leftPos;
@@ -47509,6 +47527,7 @@ void crShowEnginStatsMethod::operator()(crHandle &handle)
 			init();
 		}
 		m_fps->setText("FPS: "+crArgumentParser::appItoa(crFrameStamp::getInstance()->getFPS()));
+		m_fpsTime->setText("FPSTime: " + crArgumentParser::appItoa(crFrameStamp::getInstance()->getLength()*1e3));
 		m_drawTime->setText("DrawTime: "+crArgumentParser::appItoa(crStatistics::getInstance()->getDrawTime()));
 		m_updTime->setText("UpdTime: "+crArgumentParser::appItoa(crStatistics::getInstance()->getUpdTime()));
 		m_cullTime->setText("CullTime: "+crArgumentParser::appItoa(crStatistics::getInstance()->getCullTime()));
@@ -47529,6 +47548,7 @@ void crShowEnginStatsMethod::operator()(crHandle &handle)
 	if(m_init)
 	{
 		m_fps->setVisiable(show);
+		m_fpsTime->setVisiable(show);
 		m_drawTime->setVisiable(show);
 		m_updTime->setVisiable(show);
 		m_cullTime->setVisiable(show);

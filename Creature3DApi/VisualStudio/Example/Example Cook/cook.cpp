@@ -37,18 +37,18 @@ void findFileInDir(const char* rootDir, const std::string &ext, std::vector<std:
 	std::string rdir = rootDir;
 	if(rdir.find(".svn") !=  std::string::npos || rdir.find("Des\\") !=  std::string::npos || rdir.find("scriptsrc\\") !=  std::string::npos)
 		return;
-	char fname[256];
-	ZeroMemory(fname, 256);
+	char fname[1024];
+	ZeroMemory(fname, 1024);
 
 	WIN32_FIND_DATA fd;
 	ZeroMemory(&fd, sizeof(WIN32_FIND_DATA));
 
 	HANDLE hSearch;
 
-	char filePathName[256];
-	char tmpPath[256];
-	ZeroMemory(filePathName, 256);
-	ZeroMemory(tmpPath, 256);
+	char filePathName[1024];
+	char tmpPath[1024];
+	ZeroMemory(filePathName, 1024);
+	ZeroMemory(tmpPath, 1024);
 
 	strcpy(filePathName, rootDir);
 
@@ -114,7 +114,7 @@ void findFileInDir(const char* rootDir, const std::string &ext, std::vector<std:
 std::string getOpenFileName()
 {
 	OPENFILENAME ofn;       // common dialog box structure
-	char szFile[256];       // buffer for file name
+	char szFile[1024];       // buffer for file name
 
 	// Initialize OPENFILENAME
 	ZeroMemory(&ofn, sizeof(OPENFILENAME));
@@ -142,7 +142,7 @@ std::string getOpenFileName()
 std::string getSaveFileName()
 {
 	OPENFILENAME ofn;       // common dialog box structure
-	char szFile[256];       // buffer for file name
+	char szFile[1024];       // buffer for file name
 
 	// Initialize OPENFILENAME
 	ZeroMemory(&ofn, sizeof(OPENFILENAME));
@@ -170,8 +170,8 @@ int main( int argc, char **argv )
 {
 	if(strcmp(argv[1],"UnCook") == 0)
 	{
-		char programDir[256];
-		GetCurrentDirectory(256,programDir);
+		char programDir[1024];
+		GetCurrentDirectory(1024, programDir);
 
 		std::string filePath = programDir;
 		CRCore::notify(CRCore::WARN)<<"Start UnCook "<<filePath<<std::endl;
@@ -212,8 +212,8 @@ int main( int argc, char **argv )
 		{
 			CRIOManager::SetCooked(true);
 			CRIOManager::SetRetainSourceFile(false);
-			char programDir[256];
-			GetCurrentDirectory(256,programDir);
+			char programDir[1024];
+			GetCurrentDirectory(1024, programDir);
 
 			std::string filePath = programDir;
 			CRCore::notify(CRCore::WARN)<<"Start Cook "<<filePath<<std::endl;
@@ -241,8 +241,8 @@ int main( int argc, char **argv )
 	{
 		if(MessageBox(::GetDesktopWindow(),"警告：运行ConvertTabFile，请确认文件已经备份!","Creature3D Cook" ,MB_OKCANCEL)==IDOK)
 		{
-			char programDir[256];
-			GetCurrentDirectory(256,programDir);
+			char programDir[1024];
+			GetCurrentDirectory(1024, programDir);
 
 			std::string filePath = programDir;
 			CRCore::notify(CRCore::WARN)<<"Start ConvertTabFile "<<filePath<<std::endl;
@@ -280,8 +280,8 @@ int main( int argc, char **argv )
 	{
 		if(MessageBox(::GetDesktopWindow(),"警告：运行ConvertCrbFile，请确认文件已经备份!","Creature3D Cook" ,MB_OKCANCEL)==IDOK)
 		{
-			char programDir[256];
-			GetCurrentDirectory(256,programDir);
+			char programDir[1024];
+			GetCurrentDirectory(1024, programDir);
 
 			std::string filePath = programDir;
 			CRCore::notify(CRCore::WARN)<<"Start ConvertCrbFile "<<filePath<<std::endl;

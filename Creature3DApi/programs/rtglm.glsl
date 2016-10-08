@@ -1688,10 +1688,7 @@ void main(void)
 	float diffuse,specular;
     float attenuation = 0.0;
     float lightLength2;
-    
-    tempVec = CRE_CameraPos - vtxPos;
-	float sqrDepth = dot(tempVec,tempVec);
-  	
+
 #ifdef sun
     tempVec = lightPos - vtxPos;
 	sunlVec = normalize(tempVec);
@@ -2342,7 +2339,12 @@ void main(void)
 #endif
 	color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
 #endif
-   
+
+#if defined(NeedPixelDepth) || defined(_fi) || defined(_fo)
+    tempVec = CRE_CameraPos - vtxPos;
+	float sqrDepth = dot(tempVec,tempVec);
+#endif
+
 #ifdef NeedPixelDepth
     float depth = min(sqrt(sqrDepth) / maxDepth, 1.0);
     sqrDepth = depth * depth;

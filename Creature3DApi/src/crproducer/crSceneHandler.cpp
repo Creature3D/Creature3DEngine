@@ -19,6 +19,7 @@
 #include <CRPhysics/crOdeWorld.h>
 #include <rbody/Creature3D/crCharacterSystemUpdater.h>
 #include <CRParticle/crParticleSystemUpdater.h>
+#include <CRCore/crStatistics.h>
 using namespace CRCore;
 using namespace CRUtil;
 using namespace CRProducer;
@@ -158,6 +159,13 @@ void crSceneHandler::release()
 }
 void crSceneHandler::updateImplementation(Producer::Camera& camera)
 {
+	CRCore::Timer_t start_tick = 0;
+	CRCore::Timer_t end_tick = 0;
+	if (crStatistics::getInstance()->getStat())
+	{
+		start_tick = CRCore::Timer::instance()->tick();
+	}
+
 	s_mutex.lock();
 	m_sceneView->getProjectionMatrix()->set(camera.getProjectionMatrix());
 	m_sceneView->getViewMatrix()->set(camera.getPositionAndAttitudeMatrix());
@@ -217,6 +225,14 @@ void crSceneHandler::updateImplementation(Producer::Camera& camera)
 		}
 	}
 	s_mutex.unlock();
+	if (crStatistics::getInstance()->getStat())
+	{
+		end_tick = CRCore::Timer::instance()->tick();
+		float updtime = CRCore::Timer::instance()->delta_m(start_tick, end_tick);
+		crStatistics::getInstance()->setUpdTime(updtime);
+		//CRText::crText *updtimeText = dynamic_cast<CRText::crText *>(crFilterRenderManager::getInstance()->getDrawable("updTimeText"));
+		//updtimeText->setText(crArgumentParser::appFtoa(updtime));
+	}
 	//CRCore::notify(CRCore::FATAL)<<"crSceneHandler::updateImplementation 1"<<std::endl;
 }
 //void crSceneHandler::initRender()

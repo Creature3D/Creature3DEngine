@@ -980,8 +980,7 @@ void crSceneView::draw()
 #endif
 	if(m_useRenderDoubleBuf)
 	{	
-		m_swapBufMutex.unlock();
-		m_swapBufMutexLocked = false;
+		unlockSwapBuffer();
 		//CRCore::crThread::sleep(1);//»√œ‘ø®–›œ¢
 	}
 #if _DEBUG

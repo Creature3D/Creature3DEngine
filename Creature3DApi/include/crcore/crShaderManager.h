@@ -110,7 +110,7 @@ public :
 			{
 				if(crShaderManager::getInstance()->getGiTexture())
 					str += "_gi";
-				if(crShaderManager::getInstance()->getLightMapTexture())
+				if (crShaderManager::getInstance()->getHeightMapTexture())
 					str += "_hgi";
 				//if(crShaderManager::getInstance()->getHeightMapTexture())
 				//	str += "_hgi";
