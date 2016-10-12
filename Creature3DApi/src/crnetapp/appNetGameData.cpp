@@ -3557,6 +3557,7 @@ void crScene::sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacke
 	int roomid = item->getRoomID();
 	crRole *role = dynamic_cast<crRole *>(item);
 	int id = item->getID();
+	int ownerplayerid = LOINT64(item->getOwnerID());
 	for( SightInfoSet::iterator sitr = m_sightInfoSet.begin();
 		sitr != m_sightInfoSet.end();
 		++sitr )
@@ -3566,11 +3567,14 @@ void crScene::sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacke
 		{
 			if(role)
 			{
-				if(sightInfo->isEyeRole(id)||sightInfo->isEyeItem(id))
+				if (sightInfo->isEyeRole(id) || sightInfo->isEyeItem(id))
 				{
-					sightInfo->sendPacketToEyePlayer(packet,id);
+					if (id < 0)
+						sightInfo->sendPacketToEyePlayer(packet, ownerplayerid);
+					else
+						sightInfo->sendPacketToEyePlayer(packet, id);
 				}
-				else if(sightInfo->isRoleInSight(role))
+				else if (sightInfo->isRoleInSight(role) || sightInfo->isItemInSight(role))
 				{
 					sightInfo->sendPacketToEyePlayer(packet);
 				}

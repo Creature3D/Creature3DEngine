@@ -55,9 +55,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\..\..\GameClient\</OutDir>
+    <OutDir>..\..\..\bin\</OutDir>
     <IntDir>D:\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
-    <TargetName>Bin\ConvertCreFileTod</TargetName>
+    <TargetName>ConvertCreFileTod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,6 +90,9 @@
       <AdditionalDependencies>CRCored.lib;CRIOManagerd.lib;CRParticled.lib;CRPhysicsd.lib;CRProducerd.lib;CRUtild.lib;vrutilsd.lib;ReplicantBodyd.lib;cal3d_d.lib;CREncapsulationd.lib;CRGUId.lib;ConfigScriptd.lib;CRTextd.lib;CRNetd.lib;CRNetAppd.lib;CRSoundd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

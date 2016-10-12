@@ -303,14 +303,14 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		break;
     case WM_SIZE:
 		{
-			int newWidth = (int)(short)(LOWORD(lParam));
-			int newHeight = (int)(short)(HIWORD(lParam));
-			if (newWidth != _windowWidth || newHeight != _windowHeight)
-			{
-				CRCore::crDisplaySettings::instance()->setViewSize(newWidth, newHeight);
-				CRCore::crFilterRenderManager::getInstance()->resize();
-				setWindowRectangle(_windowX, _windowY, newWidth, newHeight, false);
-			}
+			//int newWidth = (int)(short)(LOWORD(lParam));
+			//int newHeight = (int)(short)(HIWORD(lParam));
+			//if (newWidth != _windowWidth || newHeight != _windowHeight)
+			//{
+			//	CRCore::crDisplaySettings::instance()->setViewSize(newWidth, newHeight);
+			//	CRCore::crFilterRenderManager::getInstance()->resize();
+			//	setWindowRectangle(_windowX, _windowY, newWidth, newHeight, false);
+			//}
 			if (wParam == SIZE_MINIMIZED)
 			{
 				CRCore::crDisplaySettings::instance()->setFpsControl(10.0f);
