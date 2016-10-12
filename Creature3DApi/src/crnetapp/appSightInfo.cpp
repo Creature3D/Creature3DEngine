@@ -583,8 +583,15 @@ void crSightInfo::unlockPlayerEyeMap()
 }
 bool crSightInfo::isRoleInSight(crRole *role)
 {
-	GNE::LockMutex lock(m_inSightRolePlayerMutex);
-	return m_inSightRolePlayer.find(MAKEINT64(role->getPlayerID(),role->getRoleID())) != m_inSightRolePlayer.end();
+	if (role->getID() < 0)
+	{
+		return isItemInSight(role);
+	}
+	else
+	{
+		GNE::LockMutex lock(m_inSightRolePlayerMutex);
+		return m_inSightRolePlayer.find(MAKEINT64(role->getPlayerID(), role->getRoleID())) != m_inSightRolePlayer.end();
+	}
 }
 void crSightInfo::lockInSightRolePlayerMap()
 {

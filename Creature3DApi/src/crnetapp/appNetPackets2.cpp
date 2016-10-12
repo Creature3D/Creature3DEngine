@@ -6601,10 +6601,19 @@ void crPlayerServerEventPacket::parsePacket(const std::string &sender)
 				}
 				else
 				{
-					ref_ptr<crSceneServerPlayerData> netPlayerData = dynamic_cast<crSceneServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(id));
-					if(netPlayerData.valid())
+					if (id < 0)
 					{
-						item = netPlayerData->getRole(roleid);
+						crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(m_netConductor->getNetDataManager()->getNetCallback());
+						crScene *scene = netCallback->findScene(playerData->getSceneID());
+						item = dynamic_cast<crRole *>(scene->findSceneItem(id, playerData->getRoomID()));
+					}
+					else
+					{
+						ref_ptr<crSceneServerPlayerData> netPlayerData = dynamic_cast<crSceneServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(id));
+						if (netPlayerData.valid())
+						{
+							item = netPlayerData->getRole(roleid);
+						}
 					}
 				}
 			}
