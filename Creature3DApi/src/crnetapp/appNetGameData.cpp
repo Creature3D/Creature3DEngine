@@ -3745,11 +3745,11 @@ void crScene::removeSceneItem(crInstanceItem *item)
 }
 void crScene::wantToRemoveItem(crInstanceItem *item)
 {
-	//item->setLayerID(0xffff);//USHORT_MAX,使它们不再被任何视野看到
+	item->setLayerID(0xffff);//USHORT_MAX,使它们不再被任何视野看到
 	itemDead(item);
 	m_removedItemMapMutex.acquire();
 	item->clearExtra();
-	m_removedItemMap[item] = 10.0f;
+	m_removedItemMap[item] = 6.0f;
 	m_removedItemMapMutex.release();
 
 	int roomid = item->getRoomID();
@@ -3765,52 +3765,45 @@ void crScene::wantToRemoveItem(crInstanceItem *item)
 			sightInfo->removeInSightItem(item);
 	}
 	m_sightInfoSetMutex.release();
-	
-	if (item->getRoomID() != 0)
-	{
-		removeRoomItem(item);
-	}
-	else
-	{
-		removeSceneItem(item);
-	}
 }
 void crScene::updateRemovedItemMap(float dt)
 {
-	//std::vector< ref_ptr<crInstanceItem> >ItemVec;
-	//ref_ptr<crInstanceItem> item;
-	//{
+	std::vector< ref_ptr<crInstanceItem> >ItemVec;
+	ref_ptr<crInstanceItem> item;
+	{
 		GNE::LockMutex lock( m_removedItemMapMutex );
 		for( RemovedItemMap::iterator itr = m_removedItemMap.begin();
 			itr != m_removedItemMap.end();)
 		{
 			itr->second -= dt;
-			if(itr->second<0.0f)
+			if(itr->second>0.0f && itr->second<1.0f)
 			{
-				//item = itr->first;
-				//ItemVec.push_back(item);
+				item = itr->first;
+				ItemVec.push_back(item);
+				itr->second = 0.0f;
+			}
+			else if(itr->second<-5.0f)
+			{
 				itr = m_removedItemMap.erase(itr);
+				continue;
 			}
-			else
-			{
-				++itr;
-			}
+			++itr;
 		}
-	//}
-	//for( std::vector< ref_ptr<crInstanceItem> >::iterator itr = ItemVec.begin();
-	//	 itr != ItemVec.end();
-	//	 ++itr )
-	//{
-	//	item = *itr;
-	//	if(item->getRoomID() != 0)
-	//	{
-	//		removeRoomItem(item.get());
-	//	}
-	//	else
-	//	{
-	//		removeSceneItem(item.get());
-	//	}
-	//}
+	}
+	for( std::vector< ref_ptr<crInstanceItem> >::iterator itr = ItemVec.begin();
+		 itr != ItemVec.end();
+		 ++itr )
+	{
+		item = *itr;
+		if(item->getRoomID() != 0)
+		{
+			removeRoomItem(item.get());
+		}
+		else
+		{
+			removeSceneItem(item.get());
+		}
+	}
 }
 void crScene::lockSceneItemMap()
 {
