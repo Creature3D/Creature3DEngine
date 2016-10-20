@@ -89,7 +89,6 @@ public:
 	crInstanceItem *dynamicCollideTest(crInstanceItem *item,const CRCore::crVector2 &coordPos);//·µ»ØÅö×²µÄitem
 
 	void clearAllInsights();
-
 protected:
 	virtual ~crSightInfo();
 	void removeInSightPlayer2(crSceneServerPlayerData *player);

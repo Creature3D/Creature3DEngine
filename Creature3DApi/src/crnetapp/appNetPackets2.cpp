@@ -7164,7 +7164,7 @@ void crQueryAbstractItemPacket::parsePacket(const std::string &sender)
 			//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
 			//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
 			//CRNetApp::crScene *scene = netCallback->findScene(sceneid);
-			crGlobalHandle::recycleItemID(itemid,0.0f);
+			crGlobalHandle::recycleItemID(itemid);
 		}
 	}
 }

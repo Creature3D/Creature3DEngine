@@ -42514,7 +42514,7 @@ void crRecvCreateSightMethod::operator()(crHandle &handle)
 											if(birthPointIndex < birthPointArray.size())
 											{
 												crVector3i birth = birthPointArray[birthPointIndex];
-												crVector2i birthEye(birth[0],birth[1]);
+												crVector2i birthEye(birth[0], birth[1]);
 												sightInfo->insertEyePoint(birthEye);
 											}
 										}

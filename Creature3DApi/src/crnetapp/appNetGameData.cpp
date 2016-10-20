@@ -3635,7 +3635,7 @@ void crScene::itemDead(crInstanceItem *item)
 			}
 		}
 	}
-	if((id<0 || !role) && !found && item->getSightInfo())
+	if (!found && item->getSightInfo() && (!role || id<0))
 	{
 		sightInfo = item->getSightInfo();
 		sightInfo->removeEyeItem(id);
@@ -3748,11 +3748,15 @@ void crScene::wantToRemoveItem(crInstanceItem *item)
 	item->setLayerID(0xffff);//USHORT_MAX,使它们不再被任何视野看到
 	itemDead(item);
 	m_removedItemMapMutex.acquire();
-	item->clearExtra();
 	m_removedItemMap[item] = 6.0f;
 	m_removedItemMapMutex.release();
-
+	item->setSightInfo(NULL);
 	int roomid = item->getRoomID();
+	//crSightInfo *sightinfo = item->getSightInfo();
+	//if (sightinfo)
+	//{
+	//	sightinfo->removeEyeItem(item->getID());
+	//}
 	m_sightInfoSetMutex.acquire();
 	CRCore::ref_ptr<crSightInfo> sightInfo;
 	SightInfoSet::iterator sitr;
@@ -3782,7 +3786,7 @@ void crScene::updateRemovedItemMap(float dt)
 				ItemVec.push_back(item);
 				itr->second = 0.0f;
 			}
-			else if(itr->second<-5.0f)
+			else if(itr->second<-10.0f)
 			{
 				itr = m_removedItemMap.erase(itr);
 				continue;

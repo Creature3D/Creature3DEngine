@@ -1975,6 +1975,49 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			eye[3] = sightRange;
 			eyeVec.push_back(eye);
 		}
+		{
+			CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangePlayerMapMutex);
+			for (InRangePlayerMap::iterator itr = m_inRangePlayerMap.begin();
+				itr != m_inRangePlayerMap.end();
+				++itr)
+			{
+				item = itr->second.first.get();
+				if (ifItemIsMe(item))
+				{//»ÃÏó
+					data = item->getDataClass();
+					guisestate = GS_Normal;
+					item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+					if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Blind)
+					{
+						continue;
+					}
+					if (guisestate & GS_Static)
+					{
+						data->getParam(WCHDATA_ItemState, param);
+						itemstate = *(unsigned char *)param;
+						if (itemstate == IS_Dead)
+							continue;
+					}
+					relNode = item->getRelNode();
+					if (relNode)
+					{
+						relNode->setVisiable(true);
+						relNode->setEnableIntersect(true);
+					}
+					//data->getParam(WCHDATA_SightRange,param);
+					//sightRange = *(short *)param;
+					sightRange = 0;
+					item->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
+					data->getParam(WCHDATA_EyeHeight, param);
+					eyeHeight = *(short *)param;
+					eye[0] = item->getPosx();
+					eye[1] = item->getPosy();
+					eye[2] = item->getPosz() + eyeHeight;
+					eye[3] = sightRange;
+					eyeVec.push_back(eye);
+				}
+			}
+		}
 	}
 	crRoom *room = getSelectedRoom();
 	if(room && room->getShareSight())
@@ -1986,6 +2029,8 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 				++itr )
 			{
 				item = itr->second.first.get();
+				if (ifItemIsMe(item))
+					continue;
 				isEnemy = 0;
 				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
 				if(isEnemy==1)
@@ -2176,6 +2221,8 @@ void crMyPlayerData::sightVisiableUpdate(float dt)
 			data->getParam(WCHDATA_ItemState,param);
 			itemstate = *(unsigned char *)param;
 			if(itemstate == IS_ItemLoad)
+				continue;
+			if (ifItemIsMe(item))
 				continue;
 			if(findItemVisiable(item))
 				continue;

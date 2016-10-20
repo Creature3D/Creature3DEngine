@@ -397,7 +397,7 @@ int crGlobalHandle::gainTemporaryItemID()
 	s_temporaryItemID--;
 	return id;
 }
-void crGlobalHandle::recycleItemID(int id,float delay)
+void crGlobalHandle::recycleItemID(int id)
 {
 	if(id<0)
 	{
@@ -408,11 +408,11 @@ void crGlobalHandle::recycleItemID(int id,float delay)
 		{
 			if(itr->first == id)
 			{
-				itr->second = crGlobalHandle::gData()->gRecycleIDTime() - delay;
+				itr->second = 0.0f;
 				return;
 			}
 		}
-		s_recycleItemIDDeque.push_back(std::make_pair(id,crGlobalHandle::gData()->gRecycleIDTime() - delay));
+		s_recycleItemIDDeque.push_back(std::make_pair(id,0.0f));
 	}
 }
 int crGlobalHandle::gainTemporaryItemChildID()
@@ -433,7 +433,7 @@ int crGlobalHandle::gainTemporaryItemChildID()
 	s_temporaryItemChildID--;
 	return id;
 }
-void crGlobalHandle::recycleItemChildID(int id,float delay)
+void crGlobalHandle::recycleItemChildID(int id)
 {
 	if(id<0)
 	{
@@ -444,11 +444,11 @@ void crGlobalHandle::recycleItemChildID(int id,float delay)
 		{
 			if(itr->first == id)
 			{
-				itr->second = crGlobalHandle::gData()->gRecycleIDTime() - delay;
+				itr->second = 0.0f;
 				return;
 			}
 		}
-		s_recycleItemChildIDDeque.push_back(std::make_pair(id,crGlobalHandle::gData()->gRecycleIDTime() - delay));
+		s_recycleItemChildIDDeque.push_back(std::make_pair(id,0.0f));
 	}
 }
 void crGlobalHandle::updateTimeRecycleID(float dt)

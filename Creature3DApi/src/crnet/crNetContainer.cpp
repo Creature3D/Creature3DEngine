@@ -422,11 +422,15 @@ void crNetContainer::update()
 	float dt = CRCore::Timer::instance()->delta_m( m_time, t1 );
 	if(dt<m_fpsControl)
 	{
-		CRCore::crThread::sleep(m_fpsControl - dt);
+		CRCore::crThread::sleep(dt<0.0f?m_fpsControl:m_fpsControl - dt);
 	}
 	t1 = CRCore::Timer::instance()->tick();
 	dt = CRCore::Timer::instance()->delta_s( m_time, t1 );
 	m_time = t1;
+	if (dt < 0.0f)
+	{
+		return;
+	}
 	for( NetConductorMap::iterator itr = m_netConductorMap.begin(); 
 		itr != m_netConductorMap.end(); 
 		++itr)

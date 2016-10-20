@@ -81,9 +81,9 @@ public:
 	typedef std::pair<int,float>TimeRecycleIDPair;
 	typedef std::deque<TimeRecycleIDPair> TimeRecycleIDDeque;
 	static int gainTemporaryItemID();
-	static void recycleItemID(int id,float delay = crGlobalHandle::gData()->gRecycleIDTime());
+	static void recycleItemID(int id);
 	static int gainTemporaryItemChildID();
-	static void recycleItemChildID(int id,float delay = crGlobalHandle::gData()->gRecycleIDTime());
+	static void recycleItemChildID(int id);
 	static void updateTimeRecycleID(float dt);
 	typedef std::deque<int> RecycleIDDeque;
 	static int gainTemporaryRoomID();

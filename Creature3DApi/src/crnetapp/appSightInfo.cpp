@@ -92,6 +92,10 @@ void crSightInfo::update(crScene *scene,int roomid)
 							continue;
 						}
 						layerid = eye->getLayerID();
+						if (layerid == 0xffff)
+						{
+							continue;
+						}
 						for( crScene::SceneRoleMap::iterator sritr = sceneRoleMap.begin();
 							sritr != sceneRoleMap.end();
 							++sritr )
@@ -135,6 +139,10 @@ void crSightInfo::update(crScene *scene,int roomid)
 						continue;
 					}
 					layerid = eye->getLayerID();
+					if (layerid == 0xffff)
+					{
+						continue;
+					}
 					for( crScene::SceneRoleMap::iterator sritr = sceneRoleMap.begin();
 						sritr != sceneRoleMap.end();
 						++sritr )
@@ -170,7 +178,7 @@ void crSightInfo::update(crScene *scene,int roomid)
 					++sritr )
 				{
 					role2 = sritr->second.get();
-					if(/*role2->getLayerID() == (*itr)[3] && */!isEyeRole(role2->getPlayerID()))
+					if (role2->getLayerID() != 0xffff && !isEyeRole(role2->getPlayerID()))
 					{
 						roleInEyePointTest(*itr,role2);
 					}
@@ -180,7 +188,7 @@ void crSightInfo::update(crScene *scene,int roomid)
 					++siitr )
 				{
 					item = siitr->second.get();
-					if(/*item->getLayerID() == (*itr)[3] && */!isEyeItem(item->getInstanceItemID()))
+					if (item->getLayerID() != 0xffff && !isEyeItem(item->getInstanceItemID()))
 					{
 						itemInEyePointTest(*itr,item);
 					}
@@ -498,22 +506,22 @@ void crSightInfo::removeEyePlayer(int playerid)
 	GNE::LockMutex lock(m_playerEyeMapMutex);
 	PlayerEyeMap::iterator itr = m_playerEyeMap.find(playerid);
 	ref_ptr<crSceneServerPlayerData> player;
-	if(itr != m_playerEyeMap.end())
+	if (itr != m_playerEyeMap.end())
 	{
 		player = itr->second.get();
 		m_playerEyeMap.erase(itr);
-		if(!m_playerEyeMap.empty())
+		if (!m_playerEyeMap.empty())
 		{
 			//player->lockRoleMap();
 			crSceneServerPlayerData::RoleMap &roleMap = player->getRoleMap();
 			crItemOutRangePacket packet;
 			crRole *role;
-			for( crSceneServerPlayerData::RoleMap::iterator ritr = roleMap.begin();
+			for (crSceneServerPlayerData::RoleMap::iterator ritr = roleMap.begin();
 				ritr != roleMap.end();
-				++ritr )
+				++ritr)
 			{
 				role = ritr->second.get();
-				crItemOutRangePacket::buildRequestPacket(packet,0,role);
+				crItemOutRangePacket::buildRequestPacket(packet, 0, role);
 				sendPacketToEyePlayer(packet);
 				role->setSightInfo(NULL);
 			}

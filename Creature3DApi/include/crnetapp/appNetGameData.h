@@ -353,7 +353,7 @@ public:
 	inline void setDelayTime(float delay){ m_delayTime = delay; }
 	inline float getDelayTime(){ return m_delayTime; }//s
 	void setSightInfo(crSightInfo *sight);
-	inline crSightInfo *getSightInfo(){return m_sightInfo;}
+	inline crSightInfo *getSightInfo(){return m_sightInfo.get();}
 	bool isMainAI();
 	CRNetApp::crScene *getScene();
 	CRNetApp::crSceneLayer *getSceneLayer();
@@ -421,7 +421,7 @@ protected:
 	GNE::Mutex m_sceneFxNodeArrayMutex;
 	SceneFxNodeArray m_sceneFxNodeArray;
 	float m_delayTime;
-	crSightInfo *m_sightInfo;
+	CRCore::ref_ptr<crSightInfo> m_sightInfo;
 	float m_dropItemTimer;//掉落物品计时器
 	_crInt64 m_ownerid;//宿主ID，(id,roleid)
 	//float m_reliveTimer;

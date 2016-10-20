@@ -113,7 +113,8 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	case WM_MBUTTONUP:
 		//case WM_XBUTTONUP:
 		//case WM_MOUSEMOVE:
-		::SendMessage(hWnd, WM_ACTIVATE, WA_ACTIVE, NULL);
+		if (::GetFocus() != hWnd)
+			::SendMessage(hWnd, WM_ACTIVATE, WA_ACTIVE, NULL);
 		break;
 	}
     switch (uMsg)
