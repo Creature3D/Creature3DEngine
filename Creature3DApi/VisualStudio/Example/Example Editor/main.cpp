@@ -186,21 +186,25 @@ int main( int argc, char **argv )
 #ifdef _ACTIVEX
 	argvstr = argv;
 #else
-	for( int i = 0; i<argc; i++)
+	for( int i = 1; i<argc; i++)
 	{
 		argvstr += argv[i];
 		argvstr += " ";
 	}
+	std::string firststr = argv[0];
+	argvstr = firststr + " " + argvstr;
 #endif
+
 	CRNetApp::crGlobalHandle::argvstr() = argvstr;
+
 	char gbuf[256];
 	sprintf(gbuf,"%s\n\0",argvstr.c_str());
 	gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
 	gDebugInfo->writeToFile();
 	//MessageBox(NULL,argvstr.c_str(),"Creature3D",MB_OKCANCEL);
-	if(argvstr.find("Editor")!=std::string::npos)
+	if (argvstr.find("Editor") != std::string::npos)
 		runMode = 0;
-	else if(argvstr.find("RobotNoTexture")!= std::string::npos)
+	else if (argvstr.find("RobotNoTexture") != std::string::npos)
 	{
 		runMode = RobotNoTexture;
 	}

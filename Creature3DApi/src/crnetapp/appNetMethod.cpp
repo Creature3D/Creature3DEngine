@@ -46197,11 +46197,11 @@ void crClipCursorMethod::addParam(int i, const std::string& str)
 }
 void crClipCursorMethod::operator()(crHandle &handle)
 {
-	if(m_lock)
+	HWND rndwnd = crStartHandler::getInstance()->getWindowHandle();
+	if(m_lock && ::GetForegroundWindow()==rndwnd)
 	{
 		RECT rect;
-		HWND rndwnd = crStartHandler::getInstance()->getWindowHandle();
-		GetWindowRect(rndwnd,&rect);
+		GetWindowRect(rndwnd, &rect);
 		if(!crDisplaySettings::instance()->getFullScreen() && crDisplaySettings::instance()->getRunMode() != crDisplaySettings::WebGame)
 		{
 			int h = GetSystemMetrics(SM_CYCAPTION);//SM_CYSIZE
