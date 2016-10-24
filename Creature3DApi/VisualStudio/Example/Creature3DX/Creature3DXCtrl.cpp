@@ -358,7 +358,7 @@ bool copyFile(const std::string &srcFile, const std::string &destFile)
 			{
 				char buf[128];
 				sprintf(buf,"错误:无法更新文件[%s],请确认文件是否被锁定(比如被杀毒软件错误隔离)。\0",destFile.c_str());
-				MessageBox(::GetDesktopWindow(),buf,"启动更新",MB_OK);
+				MessageBox(::GetActiveWindow(), buf, "启动更新", MB_OK);
 				return false;
 			}
 			else

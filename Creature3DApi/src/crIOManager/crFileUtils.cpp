@@ -80,7 +80,7 @@ bool CRIOManager::copyFile(const std::string &srcFile, const std::string &destFi
 			{
 				char buf[128];
 				sprintf(buf,"错误:文件拷贝失败[%s],请确认文件是否被锁定(比如被杀毒软件错误隔离或者Creature3D进程尚未退出)。\0",destFile.c_str());
-				MessageBox(::GetDesktopWindow(),buf,"Creature3D",MB_OK);
+				MessageBox(::GetActiveWindow(), buf, "Creature3D", MB_OK);
 				//CRCore::notify(CRCore::WARN) <<buf<< std::endl;
 				return false;
 			}

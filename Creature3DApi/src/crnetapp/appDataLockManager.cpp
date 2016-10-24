@@ -72,7 +72,7 @@ void crDataLockManager::lockData(CRCore::crData *data)
 	}
 	else
 	{
-		MessageBox(NULL,"WARRN：为完全考虑APP层请勿使用多重锁！","Creature3D",MB_OK);
+		MessageBox(::GetActiveWindow(), "WARRN：为完全考虑APP层请勿使用多重锁！", "Creature3D", MB_OK);
 	}
 	m_mutex.release();
 	data->lock();

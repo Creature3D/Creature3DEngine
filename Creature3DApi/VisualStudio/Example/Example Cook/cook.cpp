@@ -208,7 +208,7 @@ int main( int argc, char **argv )
 	}
 	else if(strcmp(argv[1],"Cook") == 0)
 	{
-		if(MessageBox(::GetDesktopWindow(),"警告：运行COOK，请确认文件已经备份!","Creature3D Cook" ,MB_OKCANCEL)==IDOK)
+		if(MessageBox(::GetActiveWindow(), "警告：运行COOK，请确认文件已经备份!", "Creature3D Cook", MB_OKCANCEL) == IDOK)
 		{
 			CRIOManager::SetCooked(true);
 			CRIOManager::SetRetainSourceFile(false);
@@ -239,7 +239,7 @@ int main( int argc, char **argv )
 	}
 	else if(strcmp(argv[1],"ConvertTab") == 0)
 	{
-		if(MessageBox(::GetDesktopWindow(),"警告：运行ConvertTabFile，请确认文件已经备份!","Creature3D Cook" ,MB_OKCANCEL)==IDOK)
+		if(MessageBox(::GetActiveWindow(),"警告：运行ConvertTabFile，请确认文件已经备份!","Creature3D Cook" ,MB_OKCANCEL)==IDOK)
 		{
 			char programDir[1024];
 			GetCurrentDirectory(1024, programDir);
@@ -278,7 +278,7 @@ int main( int argc, char **argv )
 	}
 	else if(strcmp(argv[1],"ConvertCrb") == 0)
 	{
-		if(MessageBox(::GetDesktopWindow(),"警告：运行ConvertCrbFile，请确认文件已经备份!","Creature3D Cook" ,MB_OKCANCEL)==IDOK)
+		if (MessageBox(::GetActiveWindow(), "警告：运行ConvertCrbFile，请确认文件已经备份!", "Creature3D Cook", MB_OKCANCEL) == IDOK)
 		{
 			char programDir[1024];
 			GetCurrentDirectory(1024, programDir);

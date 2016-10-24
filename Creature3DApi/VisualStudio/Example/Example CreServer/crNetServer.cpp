@@ -1926,7 +1926,7 @@ int main( int argc, char **argv )
 	CRIOManager::SetRetainSourceFile(true);
 #endif
 #if defined(CookWarn) && defined(CookFile)
-	if(MessageBox(::GetDesktopWindow(),"警告：程序将以COOK方式运行，请确认!","Creature3D Cook" ,MB_OKCANCEL)==IDCANCEL) return 0;
+	if(MessageBox(::GetActiveWindow(),"警告：程序将以COOK方式运行，请确认!","Creature3D Cook" ,MB_OKCANCEL)==IDCANCEL) return 0;
 #endif
 //#endif
 #ifdef NetCookFile
