@@ -905,7 +905,7 @@ m_scene(NULL)
 	m_pathFinding = new crPathFinding;
 	m_areaPathFinding = new crAreaPathFinding;
 	m_waypointPathFinding = new crWaypointPathFinding;
-	m_pathFinding->setMaxSearchCount(crGlobalHandle::isClient()?5000:3000);
+	m_pathFinding->setMaxSearchCount(crGlobalHandle::isClient()?3000:1000);
 }
 crPathFindingManager::~crPathFindingManager()
 {
