@@ -1465,7 +1465,7 @@ void crPathFindingUpdater::run()
 	try
 	{
 #endif
-		float delta = crGlobalHandle::isClient()?0.02f:0.04f;
+		float delta = 0.05f;//crGlobalHandle::isClient()?0.02f:0.04f;
 		m_done = false;
 		CRCore::Timer_t t1 = 0L;
 		CRCore::Timer_t time = t1;
@@ -1476,7 +1476,7 @@ void crPathFindingUpdater::run()
 			if(time == 0)
 			{
 				time = t1;
-				CRCore::crThread::sleep(40);
+				CRCore::crThread::sleep(50);
 				continue;
 			}
 			dt = CRCore::Timer::instance()->delta_s( time, t1 );

@@ -166,7 +166,7 @@ namespace CRParticle
 
 		inline virtual void swapBuffers(int frameNumber)
 		{
-			if(m_swapFrameNumber != frameNumber)
+			if(m_needswap && m_swapFrameNumber != frameNumber)
 			{
 				if (!isFrozen() &&!getFreezeOnCull())
 				{
@@ -197,6 +197,7 @@ namespace CRParticle
 				m_parentMatrix = m_parentMatrix_buf;
 				m_parentMatrix_buf = matrix;
 				m_swapFrameNumber = frameNumber;
+				m_needswap = false;
 			}
 		}
 
@@ -266,6 +267,7 @@ namespace CRParticle
 		float m_lodvalue;
 		CRCore::crMatrix m_parentMatrix;
 		CRCore::crMatrix m_parentMatrix_buf;
+		bool m_needswap;//
     };
     
     // INLINE FUNCTIONS

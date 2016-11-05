@@ -51,7 +51,8 @@ CRParticle::crParticleSystem::crParticleSystem()
     m_detail(1),
     m_draw_count(0),
 	m_lodvalue(0),
-	m_traverseString("NoLight")
+	m_traverseString("NoLight"),
+	m_needswap(false)
 {
     // we don't support display lists because particle systems
     // are dynamic, and they always changes between frames
@@ -77,7 +78,8 @@ CRParticle::crParticleSystem::crParticleSystem(const crParticleSystem& copy, con
     m_draw_count(0),
 	m_traverseString(copy.m_traverseString),
 	m_particleModelObject(copy.m_particleModelObject),
-	m_lodvalue(copy.m_lodvalue)
+	m_lodvalue(copy.m_lodvalue),
+	m_needswap(false)
 {
 }
 
@@ -109,7 +111,7 @@ void CRParticle::crParticleSystem::update(double dt)
 	m_particlesMutex.release();
     // force recomputing of bounding box on next frame
     dirtyBound();
-
+	m_needswap = true;
 }
 
 void CRParticle::crParticleSystem::drawImplementation(CRCore::crState& state) const
@@ -363,7 +365,7 @@ bool CRParticle::crParticleSystem::computeBound() const
 
 bool CRParticle::crParticleSystem::getNeedUpdateTraverse()
 {
-	return m_alignment == FIXED && m_def_ptemp.getAlignedMode() != crParticle::AXIAL_None;
+	return m_alignment == FIXED && m_def_ptemp.getAlignedMode() != crParticle::AXIAL_None && m_needswap;
 }
 void CRParticle::crParticleSystem::setStateSet(CRCore::crStateSet *state)
 {

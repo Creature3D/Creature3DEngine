@@ -189,7 +189,7 @@ public:
 		  return;
 	  }
 	  m_timerecord += dt;
-	  if(m_needUpdate && m_timerecord>0.04f)
+	  if(m_needUpdate && m_timerecord>0.05f)
 	  {
 #if _DEBUG
 		  try

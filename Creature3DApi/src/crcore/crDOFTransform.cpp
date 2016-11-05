@@ -805,7 +805,7 @@ void crDOFTransform::updateCurrentScale(const CRCore::crVector3& scale)
 void crDOFTransform::animate(float deltaTime)
 {
 	m_dt += deltaTime;
-	if(m_dt<0.04f)
+	if(m_dt<0.05f)
 	{
 		return;
 	}

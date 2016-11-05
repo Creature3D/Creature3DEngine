@@ -237,7 +237,7 @@ void crParticleEffect::traverse(CRCore::crNodeVisitor& nv)
 				crParticleSystemUpdater::getInstance()->insertParticleEffect(this);
 				m_removed = false;
 			}
-			if(m_particleSystem.valid() && m_particleSystem->getNeedUpdateTraverse())
+			if (m_particleSystem.valid() && m_particleSystem->getNeedUpdateTraverse())
 			{
 				CRCore::crCalcNodeParentsMatrixVisitor parentMatrix;
 				accept(parentMatrix);

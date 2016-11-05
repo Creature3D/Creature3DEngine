@@ -100,7 +100,7 @@ void crParticleSystemUpdater:: run()
 				continue;
 			}
 			dt = CRCore::Timer::instance()->delta_s( m_time, t1 );
-			if(dt>0.04f)
+			if(dt>0.05f)
 			{
 				if(crStatistics::getInstance()->getStat())
 				{
