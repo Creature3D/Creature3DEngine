@@ -313,8 +313,8 @@ m_transportsceneid(0),
 m_delayTime(0.0f),
 m_dropItemTimer(300.0f),
 m_sightInfo(NULL),
-m_ownerid(0L)//,
-//m_reliveTimer(0.0f)
+m_ownerid(0L),
+m_reliveTimer(0.0f)
 {
 	m_dir.set(0,-1,0);
 	m_targetDir.set(0,-1,0);
@@ -356,8 +356,8 @@ m_transportsceneid(0),
 m_delayTime(0.0f),
 m_dropItemTimer(300.0f),
 m_sightInfo(NULL),
-m_ownerid(0L)//,
-//m_reliveTimer(0.0f)
+m_ownerid(0L),
+m_reliveTimer(0.0f)
 {
 	if(item.m_dataClass.valid())
 		m_dataClass = item.m_dataClass->clone(CRCore::crCopyOp::DEEP_COPY_ALL);
@@ -855,13 +855,18 @@ void crInstanceItem::serverUpdate(float dt)
 		}
 		else if(itemstate == IS_Relive)
 		{
-			//m_reliveTimer+=dt;
-			//if(m_reliveTimer>2.0f)
-			//	m_reliveTimer = 0.0f;
-			itemstate = IS_Stop;
-			m_dataClass->inputParam(WCHDATA_ItemState,&itemstate);
+			if (m_reliveTimer == 0.0f)
+			{
+				doEvent(WCH_ItemRelive);
+			}
+			m_reliveTimer+=dt;
+			if (m_reliveTimer > 2.0f)
+			{
+				m_reliveTimer = 0.0f;
+				itemstate = IS_Stop;
+				m_dataClass->inputParam(WCHDATA_ItemState, &itemstate);
+			}
 			//clearExtra();
-			doEvent(WCH_ItemRelive);
 			//m_dataClass->excHandle(MAKEINT64(WCH_InitData,this));
 		}
 		else

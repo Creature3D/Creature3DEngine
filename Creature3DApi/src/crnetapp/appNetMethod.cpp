@@ -12452,6 +12452,10 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 		thisData->getParam(WCHDATA_RTHP,param);
 		float* rthp = (float *)param;
 		if(!rthp || *rthp <= 0) return;
+		thisData->getParam(WCHDATA_ItemState, param);
+		unsigned char itemstate = *(unsigned char *)param;
+		if (itemstate == IS_Dead || itemstate == IS_Relive)
+			return;
 
 		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
