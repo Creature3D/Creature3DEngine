@@ -424,7 +424,7 @@ protected:
 	CRCore::ref_ptr<crSightInfo> m_sightInfo;
 	float m_dropItemTimer;//掉落物品计时器
 	_crInt64 m_ownerid;//宿主ID，(id,roleid)
-	//float m_reliveTimer;
+	float m_reliveTimer;
 	//ItemCoordSet m_itemCoordSet;
 	//GNE::Mutex m_itemCoordSetMutex;
 };
