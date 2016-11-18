@@ -2774,7 +2774,7 @@ void crSceneServerCallback::serverRemoveConnectionImplementation(const std::stri
 		//_asm   int   3   //只是为了让程序崩溃
 	}
 }
-void crSceneServerCallback::playerDroped(crPlayerData *_playerData)
+void crSceneServerCallback::playerDroped(crPlayerData *_playerData, bool kickoff)
 {
 	crSceneServerPlayerData *playerData = dynamic_cast<crSceneServerPlayerData *>(_playerData);
 	crRole *role;// = playerData->getRole();
@@ -2862,7 +2862,7 @@ void crSceneServerCallback::playerDroped(crPlayerData *_playerData)
 	}
 	savePlayerData(playerData,SaveAll);
 	crPlayerGameData *playerGameData = playerData->getPlayerGameData();
-	if(playerGameData)
+	if (kickoff && playerGameData)
 	{
 		playerGameData->doEvent(MAKEINT64(WCH_ServerDroped,SceneServer),MAKEINT64(_playerData,NULL));
 		//crPlayerDataEventPacket packet;
