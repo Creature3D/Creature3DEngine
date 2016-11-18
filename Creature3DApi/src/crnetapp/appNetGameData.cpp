@@ -3755,15 +3755,22 @@ void crScene::wantToRemoveItem(crInstanceItem *item)
 	m_removedItemMapMutex.acquire();
 	m_removedItemMap[item] = 6.0f;
 	m_removedItemMapMutex.release();
-	item->setSightInfo(NULL);
+
 	int roomid = item->getRoomID();
-	//crSightInfo *sightinfo = item->getSightInfo();
-	//if (sightinfo)
-	//{
-	//	sightinfo->removeEyeItem(item->getID());
-	//}
+	CRCore::ref_ptr<crSightInfo> sightInfo = item->getSightInfo();
+	if (sightInfo.valid())
+	{
+		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		crRoom *room = netCallback->findRoom(roomid);
+		if (room)
+		{
+			room->removeSightInfo(item->getSightInfo());
+			item->setSightInfo(NULL);
+		}
+	}
 	m_sightInfoSetMutex.acquire();
-	CRCore::ref_ptr<crSightInfo> sightInfo;
 	SightInfoSet::iterator sitr;
 	for( sitr = m_sightInfoSet.begin();
 		sitr != m_sightInfoSet.end();
@@ -5996,7 +6003,7 @@ crSightInfo* crRoom::getOrCreateSightInfo(unsigned char groupid)
 	//unsigned char groupid = member->getGroupID();
 	if(groupid==0)
 		return NULL;//中立没有视野
-	if(m_shareSight || groupid==2 )
+	if(m_shareSight/* || groupid==2 */)
 	{//NPC队伍的采用共享视野
 		GNE::LockMutex lock( m_sightInfoMapMutex );
 		crSightInfo *sightInfo;
