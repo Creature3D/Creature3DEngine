@@ -92,6 +92,7 @@ void crCharacterSystemUpdater::run()
 	CRCore::Timer_t start_tick,end_tick;
 	CRCore::Timer_t t1;
 	float dt;
+	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	while(!m_done)
 	{
 		updateBlock();

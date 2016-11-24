@@ -323,7 +323,7 @@ public:
 	virtual bool clientReconnectToServer();
 	virtual void serverRemoveConnectionImplementation(const std::string& address);
 
-	virtual void playerDroped(CRNet::crPlayerData *_playerData,bool kickoff = false);
+	virtual void playerDroped(CRNet::crPlayerData *_playerData/*,bool kickoff = false*/);
 	enum SaveFlg
 	{
 		SaveItem = 0x1,

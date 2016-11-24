@@ -474,6 +474,7 @@ void crPhysicsSystemUpdater::run()
 	PhysicsToCreVisitor physicsToCreVisitor;
 	ref_ptr<crDB> db;
 	ref_ptr<crOdeWorld> odeWorld;
+	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	while(!m_done)
 	{
 		physicsUpdateBlock();

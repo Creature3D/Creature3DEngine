@@ -3983,10 +3983,10 @@ void crLoginScene2Packet::parsePacket(const std::string &sender)
 				ref_ptr<crSceneServerPlayerData> connectedPlayerData = dynamic_cast<crSceneServerPlayerData *>(sceneServer->getNetDataManager()->getPlayerData(playerid));
 				if (connectedPlayerData.valid())
 				{
-					//connectedPlayerData->setGameServerLineConductor(NULL);
-					//connectedPlayerData->setPlayerConnectServerAddress("");
-					//sceneServer->getNetDataManager()->removePlayerData(playerid);
-					callback->playerDroped(connectedPlayerData.get(),true);
+					connectedPlayerData->setGameServerLineConductor(NULL);
+					connectedPlayerData->setPlayerConnectServerAddress("");
+					sceneServer->getNetDataManager()->removePlayerData(playerid);
+					//callback->playerDroped(connectedPlayerData.get(),true);
 				}
 
                 playerData = new crSceneServerPlayerData;

@@ -400,7 +400,7 @@ void crAppLogoutPacket::parsePacket(const std::string &sender)
 	{//
 		int playerid = m_streamBuf->_readInt();
 		ref_ptr<crChatServerPlayerData> playerData = dynamic_cast<crChatServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(playerid));
-		if(playerData.valid() && playerData->getPlayerConnectServerAddress() == sender)
+		if(playerData.valid()/* && playerData->getPlayerConnectServerAddress() == sender*/)
 		{
 			if(playerData->getParentServerLineConductor())
 			{
@@ -437,7 +437,7 @@ void crAppLogoutPacket::parsePacket(const std::string &sender)
 	{//
 		int playerid = m_streamBuf->_readInt();
 		ref_ptr<crGameServerPlayerData> playerData = dynamic_cast<crGameServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(playerid));
-		if(playerData.valid() && playerData->getPlayerConnectServerAddress() == sender)
+		if(playerData.valid()/* && playerData->getPlayerConnectServerAddress() == sender*/)
 		{
 			const std::string &sceneServerAddress = playerData->getSceneServerAddress();
 			if(sceneServerAddress.compare(sender) == 0)
@@ -474,7 +474,7 @@ void crAppLogoutPacket::parsePacket(const std::string &sender)
 	{//
 		int playerid = m_streamBuf->_readInt();
 		ref_ptr<crSceneServerPlayerData> playerData = dynamic_cast<crSceneServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(playerid));
-		if(playerData.valid() && playerData->getPlayerConnectServerAddress() == sender)
+		if(playerData.valid()/* && playerData->getPlayerConnectServerAddress() == sender*/)
 		{
 			//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(m_netConductor->getNetDataManager()->getNetCallback());
 			//if(callback)
@@ -494,7 +494,7 @@ void crAppLogoutPacket::parsePacket(const std::string &sender)
 	{//
 		int playerid = m_streamBuf->_readInt();
 		ref_ptr<crServerPlayerData> playerData = dynamic_cast<crServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(playerid));
-		if(playerData.valid() && playerData->getPlayerConnectServerAddress() == sender)
+		if(playerData.valid()/* && playerData->getPlayerConnectServerAddress() == sender*/)
 		{
 			m_netConductor->getNetDataManager()->removePlayerData(playerid);
 			//CRCore::notify(CRCore::ALWAYS)<<"crAppLogoutPacket RemovePlayerData:"<<playerid<<std::endl;

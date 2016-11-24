@@ -86,6 +86,7 @@ void crParticleSystemUpdater:: run()
 	CRCore::Timer_t t1;
 	float dt;
 	CRCore::ref_ptr<crParticleEffect> setItr;
+	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	while(!m_done)
 	{
 		updateBlock();
