@@ -539,6 +539,19 @@ bool crSightInfo::isEmpty()
 	GNE::LockMutex lock(m_playerEyeMapMutex);
 	return m_playerEyeMap.empty();
 }
+bool crSightInfo::isEmptySight()
+{
+	bool empty = true;
+	{
+		GNE::LockMutex lock(m_playerEyeMapMutex);
+		empty &= m_playerEyeMap.empty();
+	}
+	{
+		GNE::LockMutex lock(m_itemEyeMapMutex);
+		empty &= m_itemEyeMap.empty();
+	}
+	return empty;
+}
 void crSightInfo::sendPacketToEyePlayer(CRNet::crStreamPacket &packet,int exceptPlayerid)
 {
 	GNE::LockMutex lock(m_playerEyeMapMutex);

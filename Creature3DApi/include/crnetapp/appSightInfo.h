@@ -44,6 +44,7 @@ public:
 	void removeEyePlayer(int playerid);
 	bool isEyeRole(int playerid);
 	bool isEmpty();
+	bool isEmptySight();
 	void sendPacketToEyePlayer(CRNet::crStreamPacket &packet,int exceptPlayerid = 0);
 	void lockPlayerEyeMap();
 	PlayerEyeMap &getPlayerEyeMap();

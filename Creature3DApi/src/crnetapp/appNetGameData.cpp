@@ -3766,7 +3766,7 @@ void crScene::wantToRemoveItem(crInstanceItem *item)
 		crRoom *room = netCallback->findRoom(roomid);
 		if (room)
 		{
-			room->removeSightInfo(item->getSightInfo());
+			room->removeSightInfo(sightInfo.get());
 			item->setSightInfo(NULL);
 		}
 	}
@@ -6035,7 +6035,7 @@ crSightInfo* crRoom::getOrCreateSightInfo(unsigned char groupid)
 }
 void crRoom::removeSightInfo(crSightInfo *sightinfo)
 {
-	if(!m_shareSight)
+	if(!m_shareSight && sightinfo->isEmptySight())
 	{
 		GNE::LockMutex lock( m_sightInfoSetMutex );
 		m_sightInfoSet.erase(sightinfo);
