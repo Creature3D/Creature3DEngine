@@ -3753,7 +3753,7 @@ void crScene::wantToRemoveItem(crInstanceItem *item)
 	item->setLayerID(0xffff);//USHORT_MAX,使它们不再被任何视野看到
 	itemDead(item);
 	m_removedItemMapMutex.acquire();
-	m_removedItemMap[item] = 6.0f;
+	m_removedItemMap[item] = 30.0f;
 	m_removedItemMapMutex.release();
 
 	int roomid = item->getRoomID();
@@ -3792,13 +3792,13 @@ void crScene::updateRemovedItemMap(float dt)
 			itr != m_removedItemMap.end();)
 		{
 			itr->second -= dt;
-			if(itr->second>0.0f && itr->second<1.0f)
+			if(itr->second>-1000.0f && itr->second<0.0f)
 			{
 				item = itr->first;
 				ItemVec.push_back(item);
-				itr->second = 0.0f;
+				itr->second = -1000.0f;
 			}
-			else if(itr->second<-10.0f)
+			else if(itr->second<-1020.0f)
 			{
 				itr = m_removedItemMap.erase(itr);
 				continue;

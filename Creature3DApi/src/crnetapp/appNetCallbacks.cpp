@@ -2881,7 +2881,7 @@ void crSceneServerCallback::playerDroped(crPlayerData *_playerData/*, bool kicko
 void crSceneServerCallback::insertDropedPlayer(crSceneServerPlayerData* player)
 {
 	GNE::LockMutex lock( m_dropedPlayerMapMutex );
-	m_dropedPlayerMap[player] = 5.0f;
+	m_dropedPlayerMap[player] = 30.0f;
 }
 void crSceneServerCallback::updateDropedPlayerMap(float dt)
 {
