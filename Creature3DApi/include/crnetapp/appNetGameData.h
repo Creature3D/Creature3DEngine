@@ -922,7 +922,7 @@ public:
 	typedef std::map< unsigned char,CRCore::ref_ptr<crSightInfo> > SightInfoMap;
 	typedef std::set< CRCore::ref_ptr<crSightInfo> > SightInfoSet;
 	//void lockSightInfoMap();
-	crSightInfo* getOrCreateSightInfo(unsigned char groupid);
+	crSightInfo* getOrCreateSightInfo(unsigned char groupid,bool npcshare = false);
 	void removeSightInfo(crSightInfo *sightinfo);
 	void removeRoom();
 	//void unlockSightInfoMap();
