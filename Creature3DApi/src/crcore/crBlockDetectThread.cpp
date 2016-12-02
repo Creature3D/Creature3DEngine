@@ -72,6 +72,7 @@ void crBlockDetectThread::run()
 	//int error = 1;
 	//CRCore::crCondition m_condition;
 	//CRCore::crMutex m_mutex;
+	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	while(!m_done)
 	{
 		if(!m_pause) m_timer++;

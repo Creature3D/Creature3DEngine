@@ -133,6 +133,9 @@ void crTextBase::setFont(const std::string& fontfile)
 	if (m_fontName==fontfile) return;
 	m_fontName = fontfile;
     //setFont(readFontFile(fontfile));
+	CRCore::ref_ptr<crFont> font;
+	readFontFile(font, m_fontName);
+	setFont(font.get());
 	m_needReCompute = 1;
 }
 
