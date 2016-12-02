@@ -7226,10 +7226,10 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 		}
 		sightRange -= stealth;
 
-		crVector3 thisPos = m_this->getPosition();//m_this->getPosx(),m_this->getPosy(),m_this->getPosz());
-		crVector3 rolePos2 = m_role2->getPosition();//m_role2->getPosx(),m_role2->getPosy(),m_role2->getPosz());
-		int dist = (thisPos - rolePos2).length()/crGlobalHandle::gData()->gUnitScale();
-		if(sightRange>0.0f && dist>sightRange)
+		crVector2i thisPos(m_this->getPosx(), m_this->getPosy());//,m_this->getPosz());
+		crVector2i rolePos2(m_role2->getPosx(), m_role2->getPosy());// , m_role2->getPosz());
+		int dist2 = (thisPos - rolePos2).length2();// / crGlobalHandle::gData()->gUnitScale();
+		if (sightRange>0.0f && dist2>sightRange*sightRange)
 		{
 			inRange = false;
 		}
@@ -7274,7 +7274,7 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 					if(isEnemy == -1)
 					{
 						//_crInt64 distEnmity = MAKEINT64(-(int)dist,enmity);
-						m_this->doEvent(WCH_InPatrolTest,MAKEINT64(m_role2,dist));
+						m_this->doEvent(WCH_InPatrolTest, MAKEINT64(m_role2, dist2));
 					}
 				}
 			}
@@ -7710,10 +7710,10 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 		}
 		sightRange -= stealth;
 
-		crVector3 thisPos = m_this->getPosition();//m_this->getPosx(),m_this->getPosy(),m_this->getPosz());
-		crVector3 itmePos = m_item->getPosition();//(m_item->getPosx(),m_item->getPosy(),m_item->getPosz());
-		int dist = (thisPos - itmePos).length() / crGlobalHandle::gData()->gUnitScale();
-		if(sightRange>0.0f && dist>sightRange)
+		crVector2i thisPos(m_this->getPosx(), m_this->getPosy());// , m_this->getPosz());
+		crVector2i itmePos(m_item->getPosx(), m_item->getPosy());// , m_item->getPosz());
+		int dist2 = (thisPos - itmePos).length2();// / crGlobalHandle::gData()->gUnitScale();
+		if (sightRange>0.0f && dist2>sightRange*sightRange)
 		{
 			inRange = false;
 		}
@@ -7758,7 +7758,7 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 					if(isEnemy == -1)
 					{
 						//_crInt64 distEnmity = MAKEINT64(-(int)dist,enmity);
-						m_this->doEvent(WCH_InPatrolTest,MAKEINT64(m_item,dist));
+						m_this->doEvent(WCH_InPatrolTest,MAKEINT64(m_item,dist2));
 					}
 				}
 			}
@@ -12448,7 +12448,9 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 	if(m_stream.valid())
 	{
 		void *param;
-		crData *thisData = m_this->getDataClass();
+		ref_ptr<crData> thisData = m_this->getDataClass();
+		if (!thisData.valid())
+			return;
 		thisData->getParam(WCHDATA_RTHP,param);
 		float* rthp = (float *)param;
 		if(!rthp || *rthp <= 0) return;
@@ -14908,16 +14910,17 @@ void crInPatrolTestMethod::operator()(crHandle &handle)
 		{
 			data->getParam(WCHDATA_GuardRange,param);
 			short guardRange = *((short*)param);
-			float _guardRange = (float)guardRange * crGlobalHandle::gData()->gUnitScale();
-			crVector2 itmePos(m_item->getPosx(),m_item->getPosy());
-			crVector2 point;
-			itmePos *= crGlobalHandle::gData()->gUnitScale();
+			guardRange *= guardRange;
+			//float _guardRange = (float)guardRange * crGlobalHandle::gData()->gUnitScale();
+			crVector2i itmePos(m_item->getPosx(),m_item->getPosy());
+			crVector2i point;
+			//itmePos *= crGlobalHandle::gData()->gUnitScale();
 			for( PatrolPointVec::iterator itr = patrolPointVec->begin();
 				itr != patrolPointVec->end();
 				++itr )
 			{
 				point = *itr;
-				if((point - itmePos).length() < _guardRange)
+				if((point - itmePos).length2() < guardRange)
 				{
 					inPatrol = true;
 					break;
@@ -15132,7 +15135,8 @@ void crPatrolMethod::addParam(int i, const std::string& str)
 	switch(i) 
 	{
 	case 0:
-		m_taskPointRange = atof(str.c_str());
+		m_taskPointRange = atof(str.c_str())/crGlobalHandle::gData()->gUnitScale();
+		m_taskPointRange *= m_taskPointRange;
 		break;
 	}
 }
@@ -15149,9 +15153,9 @@ void crPatrolMethod::operator()(crHandle &handle)
 		
 		bool patrol = false;
 		unsigned char count = 0;
-		crVector3 targetPos;
-		float scale = crGlobalHandle::gData()->gUnitScale();
-		crVector3 myPos(m_this->getPosx()*scale,m_this->getPosy()*scale,0.0f);
+		crVector2i targetPos;
+		//float scale = crGlobalHandle::gData()->gUnitScale();
+		crVector2i myPos(m_this->getPosx(), m_this->getPosy());// , 0.0f);
 		data->excHandle(MAKEINT64(WCH_LockData,1));
 		data->getParam(WCHDATA_PatrolPointVec,param);
 		PatrolPointVec* patrolPointVec = (PatrolPointVec*)param;
@@ -15170,9 +15174,8 @@ void crPatrolMethod::operator()(crHandle &handle)
 			{
 				targetPos[0] = (*patrolPointVec)[*idx][0];
 				targetPos[1] = (*patrolPointVec)[*idx][1];
-				crVector3 vec = targetPos - myPos;
-				vec[2] = 0.0f;
-				if(vec.length2()<m_taskPointRange * m_taskPointRange)
+				crVector2i vec = targetPos - myPos;
+				if(vec.length2()<m_taskPointRange)
 				{
 					(*idx)++;
 					if(*idx>=count)
@@ -15194,15 +15197,17 @@ void crPatrolMethod::operator()(crHandle &handle)
 		//targetPos[2] = scene->getPosZ(m_this->getLayerID(),targetPos[0],targetPos[1],m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale());
 		if(patrol)
 		{
+			float scale = crGlobalHandle::gData()->gUnitScale();
+			crVector3 _targetPos((float)targetPos[0] * scale, (float)targetPos[1] * scale, 0.0f);
 			data->getParam(WCHDATA_TargetPos,param);
 			crVector3 oldtargetpos = *(crVector3 *)param;
-			if(oldtargetpos != targetPos)
+			if (oldtargetpos != _targetPos)
 			{
 				unsigned char itemstate = IS_Move;
 				unsigned char targettype = Target_Coord;
 				data->inputParam(WCHDATA_ItemState,&itemstate);
 				data->inputParam(WCHDATA_TargetType,&targettype);
-				data->inputParam(WCHDATA_TargetPos,&targetPos);
+				data->inputParam(WCHDATA_TargetPos, &_targetPos);
 				scene->getPathFindingManager()->addPathFindRequest(m_this);
 			}
 		}
@@ -18340,10 +18345,11 @@ void crDeadEventMethod::operator()(crHandle &handle)
 						idx = rangei(0,count).get_random();
 						thisData->inputParam(WCHDATA_PatrolIndex,&idx);
 					}
-					crVector2 coord = (*patrolPointVec)[idx];
-					float coordz = scene->getPosZ(m_this->getLayerID(),coord[0],coord[1], m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale());
-					m_this->setPosxy(coord[0] / crGlobalHandle::gData()->gUnitScale(),coord[1] / crGlobalHandle::gData()->gUnitScale());
-					m_this->setPosz(coordz / crGlobalHandle::gData()->gUnitScale());
+					crVector2i coord = (*patrolPointVec)[idx];
+					float scale = crGlobalHandle::gData()->gUnitScale();
+					float coordz = scene->getPosZ(m_this->getLayerID(), (float)coord[0] * scale, (float)coord[1] * scale, (float)(m_this->getZoffset())*scale);
+					m_this->setPosxy(coord[0],coord[1]);
+					m_this->setPosz(coordz / scale);
 				}
 				thisData->excHandle(MAKEINT64(WCH_LockData,0));
 				crRoom *room = netCallback->findRoom(m_this->getRoomID());
@@ -43868,7 +43874,7 @@ void crReliveItemsMethod::operator()(crHandle &handle)
 			PatrolPointVec* patrolPointVec;
 			int count;
 			char idx;
-			crVector2 coord;
+			crVector2i coord;
 			float coordz;
 			float scale = crGlobalHandle::gData()->gUnitScale();
 			for( IDVec::iterator itr = m_itemidVec.begin();
@@ -43901,8 +43907,8 @@ void crReliveItemsMethod::operator()(crHandle &handle)
 							thisData->inputParam(WCHDATA_PatrolIndex,&idx);
 						}
 						coord = (*patrolPointVec)[idx];
-						coordz = scene->getPosZ(item->getLayerID(),coord[0],coord[1], item->getZoffset() * scale);
-						item->setPosxy(coord[0] / scale,coord[1] / scale);
+						coordz = scene->getPosZ(item->getLayerID(), (float)coord[0]*scale, (float)coord[1]*scale, (float)(item->getZoffset()) * scale);
+						item->setPosxy(coord[0],coord[1]);
 						item->setPosz(coordz / scale);
 					}
 					thisData->excHandle(MAKEINT64(WCH_LockData,0));

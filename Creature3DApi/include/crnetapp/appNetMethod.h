@@ -2377,7 +2377,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	crInstanceItem* m_this;
-	float m_taskPointRange;
+	int m_taskPointRange;
 };
 class crRecvPatrolMethod : public CRCore::crMethod
 {//SceneServer & Client

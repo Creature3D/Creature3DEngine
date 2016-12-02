@@ -1275,7 +1275,7 @@ void crRoleData::addParam(int i, const std::string& str)
 	//	break;
 	case WCHDATA_PatrolPointVec:
 		{
-			crVector2 vec2;
+			crVector2i vec2;
 			CRCore::crArgumentParser::appAtoVec(relStr,vec2);
 			m_patrolPointVec.push_back(vec2);
 		}
@@ -1924,7 +1924,7 @@ void crRoleData::inputParam(int i, void *param)
 		if(param)
 		{
 			GNE::LockMutex lock( m_dataMutex );
-			crVector2 vec2 = *((crVector2*)param);
+			crVector2i vec2 = *((crVector2i*)param);
 			m_patrolPointVec.push_back(vec2);
 		}
 		break;

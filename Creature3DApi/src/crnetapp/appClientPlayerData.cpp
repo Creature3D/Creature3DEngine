@@ -1507,6 +1507,7 @@ void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 	//float fguardRange = (float)guardRange * crGlobalHandle::gData()->gUnitScale();
 	float sightRange = 0;
 	iitem->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+	sightRange *= sightRange;
 	crVector3 ipos(iitem->getPosx(),iitem->getPosy(),iitem->getPosz());
 	crVector3 epos;
 	crInstanceItem *enemyItem;
@@ -1557,8 +1558,8 @@ void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 			if(isEnemy == -1)
 			{
 				epos.set(enemyItem->getPosx(),enemyItem->getPosy(),enemyItem->getPosz());
-				dist = (epos-ipos).length();
-				if(dist<sightRange)
+				dist = (epos-ipos).length2();
+				if (dist<sightRange)
 				{
 					inPatrolEnemyMap->insert(std::make_pair(dist,enemyItem));
 				}
@@ -1595,7 +1596,7 @@ void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 			if(isEnemy == -1)
 			{
 				epos.set(enemyItem->getPosx(),enemyItem->getPosy(),enemyItem->getPosz());
-				dist = (epos-ipos).length();
+				dist = (epos-ipos).length2();
 				if(dist<sightRange)
 				{
 					inPatrolEnemyMap->insert(std::make_pair(dist,enemyItem));
