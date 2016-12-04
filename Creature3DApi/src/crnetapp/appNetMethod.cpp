@@ -18352,13 +18352,16 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					m_this->setPosz(coordz / scale);
 				}
 				thisData->excHandle(MAKEINT64(WCH_LockData,0));
-				crRoom *room = netCallback->findRoom(m_this->getRoomID());
-				if(room && room->getGameRunning())
+				if(m_this->getItemtype() == crInstanceItem::Npc)
 				{
-					thisData->getParam(WCHDATA_Camp,param);
-					unsigned char camp = *(unsigned char *)param;
-					crSightInfo *attackSightInfo = room->getOrCreateSightInfo(camp);
-					m_this->setSightInfo(attackSightInfo);
+					crRoom *room = netCallback->findRoom(m_this->getRoomID());
+					if(room && room->getShareSight() && room->getGameRunning())
+					{
+						thisData->getParam(WCHDATA_Camp,param);
+						unsigned char camp = *(unsigned char *)param;
+						crSightInfo *attackSightInfo = room->getOrCreateSightInfo(camp,true);
+						m_this->setSightInfo(attackSightInfo);
+					}
 				}
 				scene->itemRelive(m_this);
 			}
