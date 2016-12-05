@@ -47,7 +47,7 @@ PacketStream::PacketStream(int reqOutRate, int maxOutRate, Connection& ourOwner)
 : Thread("PktStrm", Thread::DEF_PRI), owner(ourOwner), maxOutRate(maxOutRate),
 reqOutRate(reqOutRate), feederAllowed(true), feederTimeout(0),
 lowPacketsThreshold(0),
-inSize(0),outUnrelSize(0),outRelSize(0),m_bufSizeScale(1){
+inSize(0),outUnrelSize(0),outRelSize(0),m_bufSizeScale(0){
   assert(reqOutRate >= 0);
   assert(maxOutRate >= 0);
 
@@ -63,7 +63,7 @@ inSize(0),outUnrelSize(0),outRelSize(0),m_bufSizeScale(1){
   lastTime = Timer::getCurrentTime();
 
   //m_maxPacketBufSize = 491520 * m_bufSizeScale + 30*4;
-  m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 491520 * m_bufSizeScale + 30*4;//480k
+  m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30*4;//480k
   gnedbgo2(2, "PacketStream negotiated: max: %d requested: %d",
     maxOutRate, reqOutRate);
   gnedbgo(5, "created");
@@ -113,7 +113,7 @@ PacketStream::~PacketStream() {
 void PacketStream::setBufSizeScale(int scale)
 {
 	m_bufSizeScale = scale;//m_bufSizeScale = 0表示无限
-	m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 491520 * m_bufSizeScale + 30*4;//480k
+	m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30 * 4;//480k
 }
 
 int PacketStream::getInLength() const {
@@ -214,7 +214,8 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 	{
 		outRel.push(packet.makeClone());
 		outRelSize += packet.getSize();
-		flux = (outRelSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
+		//flux = (outRelSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
+		flux = 1;
 	}
 	else
 	{
@@ -233,7 +234,8 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 	{
 		outRel.push(packet.makeClone());
 		outRelSize += packet.getSize();
-        flux = (outUnrelSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
+        //flux = (outUnrelSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
+		flux = 1;
 	}
 	else
 	{

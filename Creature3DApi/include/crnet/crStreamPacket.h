@@ -58,7 +58,7 @@ extern CRNET_EXPORT void GSetCharID(char id);
 extern CRNET_EXPORT char GGainCharID(char maxid = 127);
 extern CRNET_EXPORT void creCook(CRCore::ref_ptr<CRCore::crStreamBuf>& streamBuf);
 extern CRNET_EXPORT void creUnCook(CRCore::ref_ptr<CRCore::crStreamBuf>& streamBuf);
-class CRNET_EXPORT crStreamPacket : public GNE::Packet
+class CRNET_EXPORT crStreamPacket : public GNE::Packet, public CRCore::Referenced
 {
 public:
 	// pointer used by GNE

@@ -14909,7 +14909,7 @@ void crInPatrolTestMethod::operator()(crHandle &handle)
 		if(!patrolPointVec->empty())
 		{
 			data->getParam(WCHDATA_GuardRange,param);
-			short guardRange = *((short*)param);
+			int guardRange = *((short*)param);
 			guardRange *= guardRange;
 			//float _guardRange = (float)guardRange * crGlobalHandle::gData()->gUnitScale();
 			crVector2i itmePos(m_item->getPosx(),m_item->getPosy());
@@ -18352,16 +18352,13 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					m_this->setPosz(coordz / scale);
 				}
 				thisData->excHandle(MAKEINT64(WCH_LockData,0));
-				if(m_this->getItemtype() == crInstanceItem::Npc)
+				crRoom *room = netCallback->findRoom(m_this->getRoomID());
+				if(room && room->getGameRunning())
 				{
-					crRoom *room = netCallback->findRoom(m_this->getRoomID());
-					if(room && room->getShareSight() && room->getGameRunning())
-					{
-						thisData->getParam(WCHDATA_Camp,param);
-						unsigned char camp = *(unsigned char *)param;
-						crSightInfo *attackSightInfo = room->getOrCreateSightInfo(camp,true);
-						m_this->setSightInfo(attackSightInfo);
-					}
+					thisData->getParam(WCHDATA_Camp,param);
+					unsigned char camp = *(unsigned char *)param;
+					crSightInfo *attackSightInfo = room->getOrCreateSightInfo(camp);
+					m_this->setSightInfo(attackSightInfo);
 				}
 				scene->itemRelive(m_this);
 			}

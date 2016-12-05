@@ -940,9 +940,24 @@ public:
 	bool getCanRemove();
 	void pauseRoom(float time);//暂停多少s,0.0f表示取消暂停
 	bool isPaused();
+	struct RoomMessage : public CRCore::Referenced
+	{
+		RoomMessage(CRNet::crStreamPacket *packet, unsigned char groupid, int exceptPlayerid)
+		{
+			m_packet = packet;
+			m_groupid = groupid;
+			m_exceptPlayerid = exceptPlayerid;
+		}
+		CRCore::ref_ptr<CRNet::crStreamPacket> m_packet;
+		unsigned char m_groupid;//0表示All
+		int m_exceptPlayerid;
+	};
+	typedef std::deque< CRCore::ref_ptr<RoomMessage> >RoomMessageDeque;
+	void sendRoomMessage(CRNet::crStreamPacket *packet, unsigned char groupid = 0, int exceptPlayerid = 0);
 protected:
 	virtual ~crRoom();
 	void sendStartGame(CRNet::crNetManager *netManager,CRNet::crNetDataManager *netDataManager,crRoomPlayer *roomPlayer);
+	void roomMessageDispose();
 	int m_sceneid;
 	CRCore::ref_ptr<crScene> m_scene;
 	char m_gameMode;
@@ -973,6 +988,8 @@ protected:
 	float m_removeTime;//当room结束后触发计时
 	bool m_canRemove;
 	float m_pauseTimer;
+	GNE::Mutex m_roomMessageDequeMutex;
+	RoomMessageDeque m_roomMessageDeque;
 };
 typedef std::map< int, CRCore::ref_ptr<crRoom>, std::greater<int> > RoomMap;//roomid, crRoom
 //////////////////////////////////////////////////////////////////////////

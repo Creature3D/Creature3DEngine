@@ -26,12 +26,12 @@ namespace GNE {
 
 ConnectionParams::ConnectionParams()
 : feederTimeout(0), feederThresh(0),
-timeout(0), outRate(0), inRate(0), localPort(0), unrel(false),m_bufSizeScale(1) {
+timeout(0), outRate(0), inRate(0), localPort(0), unrel(false),m_bufSizeScale(0) {
 }
 
 ConnectionParams::ConnectionParams(const ConnectionListener::sptr& Listener)
 : listener(Listener), feederTimeout(0), feederThresh(0),
-timeout(0), outRate(0), inRate(0), localPort(0), unrel(false),m_bufSizeScale(1) {
+timeout(0), outRate(0), inRate(0), localPort(0), unrel(false),m_bufSizeScale(0) {
 }
 
 bool ConnectionParams::checkParams() const {

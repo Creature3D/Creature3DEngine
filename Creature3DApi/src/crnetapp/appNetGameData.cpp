@@ -860,7 +860,7 @@ void crInstanceItem::serverUpdate(float dt)
 				doEvent(WCH_ItemRelive);
 			}
 			m_reliveTimer+=dt;
-			if (m_reliveTimer > 2.0f)
+			if (m_reliveTimer > 0.5f)
 			{
 				m_reliveTimer = 0.0f;
 				itemstate = IS_Stop;
@@ -5745,6 +5745,7 @@ bool crRoom::isPaused()
 }
 void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 {
+	roomMessageDispose();
 	if(m_pauseTimer>0.0f)
 	{
 		m_pauseTimer-=dt;
@@ -5952,6 +5953,59 @@ void crRoom::sendPacketToGroup(unsigned char groupid, CRNet::crStreamPacket &pac
 					packetStream->_writeInt(playerid);
 					packetStream->setBufSize(bufsize);
 					netManager->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
+				}
+			}
+		}
+	}
+}
+void crRoom::sendRoomMessage(CRNet::crStreamPacket *packet, unsigned char groupid, int exceptPlayerid)
+{
+	ref_ptr<RoomMessage> roomMessage = new RoomMessage(packet, groupid, exceptPlayerid);
+	m_roomMessageDequeMutex.acquire();
+	m_roomMessageDeque.push_back(roomMessage);
+	m_roomMessageDequeMutex.release();
+}
+void crRoom::roomMessageDispose()
+{
+	ref_ptr<RoomMessage> groupMessage;
+	m_roomMessageDequeMutex.acquire();
+	if (!m_roomMessageDeque.empty())
+	{
+		groupMessage = m_roomMessageDeque.front().get();
+		m_roomMessageDeque.pop_front();
+	}
+	m_roomMessageDequeMutex.release();
+	if (groupMessage.valid())
+	{
+		GNE::LockMutex lock(m_playerListMutex);
+		if (!m_playerList.empty())
+		{
+			crNetConductor *sceneServer = crNetContainer::getInstance()->getNetConductor(SceneServer);
+			crNetManager *netManager = sceneServer->getNetManager();
+			crNetDataManager *netDataManager = sceneServer->getNetDataManager();
+			ref_ptr<crStreamBuf> packetStream = groupMessage->m_packet->getStreamBuf();
+			int bufsize = packetStream->getBufSize();
+			int playerid;
+			ref_ptr<crSceneServerPlayerData> playerData;
+			crRoomPlayer *roomPlayer;
+			for (PlayerList::iterator itr = m_playerList.begin();
+				itr != m_playerList.end();
+				++itr)
+			{
+				roomPlayer = itr->get();
+				playerid = roomPlayer->getPlayerID();
+				if (playerid == groupMessage->m_exceptPlayerid)
+					continue;
+				if (groupMessage->m_groupid==0 || roomPlayer->getGroupID() == groupMessage->m_groupid)
+				{
+					playerData = dynamic_cast<crSceneServerPlayerData *>(netDataManager->getPlayerData(playerid));
+					if (playerData.valid()/* && playerData->isClientRunning() && roomPlayer->getReady() && playerData->getRoomID() == m_roomid*/)
+					{
+						packetStream->seekBegin();
+						packetStream->_writeInt(playerid);
+						packetStream->setBufSize(bufsize);
+						netManager->sendPacket(playerData->getPlayerConnectServerAddress(), *(groupMessage->m_packet));
+					}
 				}
 			}
 		}
