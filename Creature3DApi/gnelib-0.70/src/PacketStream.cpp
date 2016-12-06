@@ -63,7 +63,8 @@ inSize(0),outUnrelSize(0),outRelSize(0),m_bufSizeScale(0){
   lastTime = Timer::getCurrentTime();
 
   //m_maxPacketBufSize = 491520 * m_bufSizeScale + 30*4;
-  m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30*4;//480k
+  //m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30*4;//480k
+  m_maxPacketBufSize = 0;// 1048576 * m_bufSizeScale;
   gnedbgo2(2, "PacketStream negotiated: max: %d requested: %d",
     maxOutRate, reqOutRate);
   gnedbgo(5, "created");
@@ -113,7 +114,8 @@ PacketStream::~PacketStream() {
 void PacketStream::setBufSizeScale(int scale)
 {
 	m_bufSizeScale = scale;//m_bufSizeScale = 0表示无限
-	m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30 * 4;//480k
+	//m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30 * 4;//480k
+	m_maxPacketBufSize = 1048576 * m_bufSizeScale;
 }
 
 int PacketStream::getInLength() const {
@@ -197,6 +199,8 @@ Packet::sptr PacketStream::getNextPacketSp()
 
 void PacketStream::writePacket(const Packet& packet, bool reliable) 
 {
+	//if (m_maxPacketBufSize > 0)
+	//	std::cerr << "m_maxPacketBufSize=" << m_maxPacketBufSize << "m_bufSizeScale = " << m_bufSizeScale << std::endl;
   //Perform operations on the outgoing queue
   outQCtrl.acquire();
   //m_outQCtrl.lock();
