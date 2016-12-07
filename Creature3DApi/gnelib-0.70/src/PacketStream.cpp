@@ -115,7 +115,7 @@ void PacketStream::setBufSizeScale(int scale)
 {
 	m_bufSizeScale = scale;//m_bufSizeScale = 0表示无限
 	//m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30 * 4;//480k
-	m_maxPacketBufSize = 1048576 * m_bufSizeScale;
+	m_maxPacketBufSize = 1048576 * m_bufSizeScale * 2;
 }
 
 int PacketStream::getInLength() const {
@@ -205,22 +205,21 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
   outQCtrl.acquire();
   //m_outQCtrl.lock();
   bool notify = false;
-  int flux = 0;
+  //int flux = 0;
   if (reliable) 
   {
 	notify = outRel.empty();
-	if(m_maxPacketBufSize == 0 || outRelSize<=m_maxPacketBufSize)
+	if (m_maxPacketBufSize == 0 || outRelSize <= m_maxPacketBufSize)
 	{
 		outRel.push(packet.makeClone());
 		outRelSize += packet.getSize();
 	}
-	else if(outRelSize<=m_maxPacketBufSize * 2)
-	{
-		outRel.push(packet.makeClone());
-		outRelSize += packet.getSize();
-		//flux = (outRelSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
-		flux = 1;
-	}
+	//else if(outRelSize<=m_maxPacketBufSize * 2)
+	//{
+	//	outRel.push(packet.makeClone());
+	//	outRelSize += packet.getSize();
+	//	//flux = 1;
+	//}
 	else
 	{
 		gnedbg(2, "outRel PacketBuf Overflow, droped");
@@ -229,18 +228,17 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
   else 
   {
     notify = outUnrel.empty();
-	if(m_maxPacketBufSize == 0 || outUnrelSize<=m_maxPacketBufSize)
+	if (m_maxPacketBufSize == 0 || outUnrelSize <= m_maxPacketBufSize)
 	{
 		outUnrel.push(packet.makeClone());
 		outUnrelSize += packet.getSize();
 	}
-	else if(outRelSize<=m_maxPacketBufSize * 2)
-	{
-		outRel.push(packet.makeClone());
-		outRelSize += packet.getSize();
-        //flux = (outUnrelSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
-		flux = 1;
-	}
+	//else if(outRelSize<=m_maxPacketBufSize * 2)
+	//{
+	//	outRel.push(packet.makeClone());
+	//	outRelSize += packet.getSize();
+	//	//flux = 1;
+	//}
 	else
 	{
 		gnedbg(2, "outUnrel PacketBuf Overflow, droped");
@@ -253,8 +251,8 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
   //If we need to, wake up the writer thread.
   //if (notify)
   //  m_feedCondition.signal();
-  if(flux>0)
-    Thread::sleep(flux);
+  //if(flux>0)
+  //  Thread::sleep(flux);
 }
 
 void PacketStream::writePacket(const Packet::sptr& packet, bool reliable) 
@@ -559,19 +557,16 @@ void PacketStream::addIncomingPacket(Packet* packet)
   if (packet->getType() != RateAdjustPacket::ID) 
   {
     inQCtrl.acquire();
-    //m_inQCtrl.lock();
-	//int flux = 0;
 	if(m_maxPacketBufSize == 0 || inSize<=m_maxPacketBufSize)
 	{
 		in.push(packet);
 	    inSize += packet->getSize();
 	}
-	else if(inSize<=m_maxPacketBufSize * 2)
-	{
-		in.push(packet);
-		inSize += packet->getSize();
-        //flux = (inSize - m_maxPacketBufSize) / (1000 * m_bufSizeScale);
-	}
+	//else if(inSize<=m_maxPacketBufSize * 2)
+	//{
+	//	in.push(packet);
+	//	inSize += packet->getSize();
+	//}
 	else
 	{
 		PacketParser::destroyPacket( packet );
@@ -579,9 +574,6 @@ void PacketStream::addIncomingPacket(Packet* packet)
 		printf("IncomingPacket buf超限\n");
 	}
     inQCtrl.release();
-	//m_inQCtrl.unlock();
-	//if(flux>0)
-	//  Thread::sleep(0);
   } 
   else 
   {
