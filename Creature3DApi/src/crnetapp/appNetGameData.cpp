@@ -860,7 +860,7 @@ void crInstanceItem::serverUpdate(float dt)
 				doEvent(WCH_ItemRelive);
 			}
 			m_reliveTimer+=dt;
-			if (m_reliveTimer > 0.5f)
+			if (m_reliveTimer > 1.0f)
 			{
 				m_reliveTimer = 0.0f;
 				itemstate = IS_Stop;
