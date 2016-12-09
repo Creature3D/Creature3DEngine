@@ -275,19 +275,19 @@ public:
 		{
 		case 1:
 			{
-				//bool needreadfont = true;
-				//if(m_font.valid())
-				//{
-				//	std::string fontname = m_font->getName();
-				//	if(m_fontName.compare(fontname)==0)
-				//		needreadfont = false;
-				//}
-				//if(needreadfont)
-				//{
-				//	CRCore::ref_ptr<crFont> font;
-				//	readFontFile(font,m_fontName);
-				//	setFont(font.get());
-				//}
+				bool needreadfont = true;
+				if (m_font.valid())
+				{
+					std::string fontname = m_font->getName();
+					if (m_fontName.compare(fontname) == 0)
+						needreadfont = false;
+				}
+				if (needreadfont)
+				{
+					CRCore::ref_ptr<crFont> font;
+					readFontFile(font, m_fontName);
+					setFont(font.get());
+				}
 				computeGlyphRepresentation();
 				m_needReCompute = 0;
 				//if(frameNumber > 0)
