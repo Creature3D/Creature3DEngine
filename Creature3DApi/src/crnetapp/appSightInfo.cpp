@@ -113,7 +113,10 @@ void crSightInfo::update(crScene *scene,int roomid)
 							item = siitr->second.get();
 							if(item->getLayerID() == layerid && !isEyeItem(item->getInstanceItemID()))
 							{
-								eye->doEvent(WCH_ItemInRangeTest,MAKEINT64(this,item));
+								//if (item->getItemtype() == crInstanceItem::Role)
+								//	eye->doEvent(WCH_PlayerInRangeTest, MAKEINT64(this, item));
+								//else
+									eye->doEvent(WCH_ItemInRangeTest,MAKEINT64(this,item));
 							}
 						}
 						haseye = true;
@@ -160,7 +163,10 @@ void crSightInfo::update(crScene *scene,int roomid)
 						item = siitr->second.get();
 						if(item->getLayerID() == layerid && !isEyeItem(item->getInstanceItemID()))
 						{
-							eye->doEvent(WCH_ItemInRangeTest,MAKEINT64(this,item));
+							//if (item->getItemtype() == crInstanceItem::Role)
+							//	eye->doEvent(WCH_PlayerInRangeTest, MAKEINT64(this, item));
+							//else
+								eye->doEvent(WCH_ItemInRangeTest, MAKEINT64(this, item));
 						}
 					}
 					haseye = true;
@@ -190,7 +196,10 @@ void crSightInfo::update(crScene *scene,int roomid)
 					item = siitr->second.get();
 					if (item->getLayerID() != 0xffff && !isEyeItem(item->getInstanceItemID()))
 					{
-						itemInEyePointTest(*itr,item);
+						//if (item->getItemtype() == crInstanceItem::Role)
+						//	roleInEyePointTest(*itr, dynamic_cast<crRole*>(item));
+						//else
+							itemInEyePointTest(*itr, item);
 					}
 				}
 				haseye = true;

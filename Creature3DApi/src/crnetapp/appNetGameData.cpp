@@ -3572,14 +3572,14 @@ void crScene::sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacke
 		{
 			if(role)
 			{
-				if (sightInfo->isEyeRole(id) || sightInfo->isEyeItem(id))
+				if ((id>0 && sightInfo->isEyeRole(id)) || (id<0 && sightInfo->isEyeItem(id)))
 				{
 					//if (id < 0)
 					//	sightInfo->sendPacketToEyePlayer(packet, ownerplayerid);
 					//else
 					sightInfo->sendPacketToEyePlayer(packet, id);
 				}
-				else if (sightInfo->isRoleInSight(role) || sightInfo->isItemInSight(role))
+				else if (sightInfo->isRoleInSight(role)/* || sightInfo->isItemInSight(role)*/)
 				{
 					sightInfo->sendPacketToEyePlayer(packet);
 				}
@@ -3614,7 +3614,7 @@ void crScene::itemDead(crInstanceItem *item)
 		{
 			if(role)
 			{
-				if(sightInfo->isEyeRole(id)||sightInfo->isEyeItem(id))
+				if ((id>0 && sightInfo->isEyeRole(id)) || (id<0 && sightInfo->isEyeItem(id)))
 				{
 					sightInfo->sendPacketToEyePlayer(packet,id);
 				}
@@ -3677,7 +3677,7 @@ void crScene::itemRelive(crInstanceItem *item)
 		{
 			if(role)
 			{
-				if(sightInfo->isEyeRole(id)||sightInfo->isEyeItem(id))
+				if ((id>0 && sightInfo->isEyeRole(id)) || (id<0 && sightInfo->isEyeItem(id)))
 				{
 					sightInfo->sendPacketToEyePlayer(packet,id);
 				}
