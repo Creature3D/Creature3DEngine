@@ -7229,7 +7229,7 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 		crVector2i thisPos(m_this->getPosx(), m_this->getPosy());//,m_this->getPosz());
 		crVector2i rolePos2(m_role2->getPosx(), m_role2->getPosy());// , m_role2->getPosz());
 		int dist2 = (thisPos - rolePos2).length2();// / crGlobalHandle::gData()->gUnitScale();
-		if (sightRange>0.0f && dist2>sightRange*sightRange)
+		if (/*sightRange>0.0f && */dist2>sightRange*sightRange)
 		{
 			inRange = false;
 		}
@@ -7713,7 +7713,7 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 		crVector2i thisPos(m_this->getPosx(), m_this->getPosy());// , m_this->getPosz());
 		crVector2i itmePos(m_item->getPosx(), m_item->getPosy());// , m_item->getPosz());
 		int dist2 = (thisPos - itmePos).length2();// / crGlobalHandle::gData()->gUnitScale();
-		if (sightRange>0.0f && dist2>sightRange*sightRange)
+		if (/*sightRange>0.0f && */dist2>sightRange*sightRange)
 		{
 			inRange = false;
 		}
@@ -15201,7 +15201,7 @@ void crPatrolMethod::operator()(crHandle &handle)
 			crVector3 _targetPos((float)targetPos[0] * scale, (float)targetPos[1] * scale, 0.0f);
 			data->getParam(WCHDATA_TargetPos,param);
 			crVector3 oldtargetpos = *(crVector3 *)param;
-			if (oldtargetpos != _targetPos)
+			if ((oldtargetpos - _targetPos).length2()>1.0f)
 			{
 				unsigned char itemstate = IS_Move;
 				unsigned char targettype = Target_Coord;
@@ -42513,22 +42513,22 @@ void crRecvCreateSightMethod::operator()(crHandle &handle)
 								sightInfo = room->getOrCreateSightInfo(member->getGroupID());
 								if(sightInfo.valid())
 								{
-									if(room->getShareSight())
-									{
-										int birthPointIndex = member->getBirthPointIndex();
-										if(birthPointIndex >= 0)
-										{//出生点视野
-											int layerid = playerData->getLayerid();
-											crSceneLayer *layer = scene->getSceneLayer(layerid);
-											const crSceneLayer::BirthPointArray &birthPointArray = layer->getBirthPointArray();
-											if(birthPointIndex < birthPointArray.size())
-											{
-												crVector3i birth = birthPointArray[birthPointIndex];
-												crVector2i birthEye(birth[0], birth[1]);
-												sightInfo->insertEyePoint(birthEye);
-											}
-										}
-									}
+									//if(room->getShareSight())
+									//{
+									//	int birthPointIndex = member->getBirthPointIndex();
+									//	if(birthPointIndex >= 0)
+									//	{//出生点视野
+									//		int layerid = playerData->getLayerid();
+									//		crSceneLayer *layer = scene->getSceneLayer(layerid);
+									//		const crSceneLayer::BirthPointArray &birthPointArray = layer->getBirthPointArray();
+									//		if(birthPointIndex < birthPointArray.size())
+									//		{
+									//			crVector3i birth = birthPointArray[birthPointIndex];
+									//			crVector2i birthEye(birth[0], birth[1]);
+									//			sightInfo->insertEyePoint(birthEye);
+									//		}
+									//	}
+									//}
 									playerData->setSightInfo(sightInfo.get());
 									//需要保证创建SightInfo后才能将role添加到场景里。
 									crSceneServerPlayerData::RoleMap &roleMap = playerData->getRoleMap();
@@ -44231,9 +44231,9 @@ void crScenarioEventMethod::inputParam(int i, void *param)
 }
 void crScenarioEventMethod::operator()(crHandle &handle)
 {
-	crRoomEventPacket packet;
-	crRoomEventPacket::buildRequestPacket(packet,0,MAKEINT64(WCH_RecvScenarioEvent,m_msgid));
-	m_this->sendPacketToAll(packet);
+	ref_ptr<crRoomEventPacket> packet = new crRoomEventPacket;
+	crRoomEventPacket::buildRequestPacket(*packet,0,MAKEINT64(WCH_RecvScenarioEvent,m_msgid));
+	m_this->sendRoomMessage(packet.get());
 }
 /////////////////////////////////////////
 //

@@ -1919,7 +1919,7 @@ void crMyPlayerData::update(float dt)
 		}
 	}
 }
-void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
+void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec,bool sqrtlen)
 {
 	if(!getSelectedRoom()->getGameRunning())
 	{
@@ -1973,7 +1973,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			eye[0] = item->getPosx();
 			eye[1] = item->getPosy();
 			eye[2] = item->getPosz() + eyeHeight;
-			eye[3] = sightRange;
+			eye[3] = sqrtlen ? sightRange*sightRange : sightRange;
 			eyeVec.push_back(eye);
 		}
 		{
@@ -2014,7 +2014,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					eye[0] = item->getPosx();
 					eye[1] = item->getPosy();
 					eye[2] = item->getPosz() + eyeHeight;
-					eye[3] = sightRange;
+					eye[3] = sqrtlen ? sightRange*sightRange : sightRange;
 					eyeVec.push_back(eye);
 				}
 			}
@@ -2065,7 +2065,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					eye[0] = item->getPosx();
 					eye[1] = item->getPosy();
 					eye[2] = item->getPosz() + eyeHeight;
-					eye[3] = sightRange;
+					eye[3] = sqrtlen ? sightRange*sightRange : sightRange;
 					eyeVec.push_back(eye);
 				}
 			}
@@ -2110,7 +2110,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					eye[0] = item->getPosx();
 					eye[1] = item->getPosy();
 					eye[2] = item->getPosz()+eyeHeight;
-					eye[3] = sightRange;
+					eye[3] = sqrtlen ? sightRange*sightRange : sightRange;
 					eyeVec.push_back(eye);
 				}
 			}
@@ -2148,7 +2148,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					eye[0] = item->getPosx();
 					eye[1] = item->getPosy();
 					eye[2] = item->getPosz()+eyeHeight;
-					eye[3] = sightRange;
+					eye[3] = sqrtlen ? sightRange*sightRange : sightRange;
 					eyeVec.push_back(eye);
 				}
 			}
@@ -2163,7 +2163,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 				eye[0] = itr->first[0];
 				eye[1] = itr->first[1];
 				eye[2] = itr->second;
-				eye[3] = sight;
+				eye[3] = sqrtlen ? sight*sight : sight;
 				eyeVec.push_back(eye);
 			}
 		}
@@ -2190,7 +2190,7 @@ void crMyPlayerData::sightVisiableUpdate(float dt)
 	if(!me)
 		return;
 	std::vector<CRCore::crVector4i> eyeVec;
-	getEyes(eyeVec);
+	getEyes(eyeVec,true);
 	crRoom *room = getSelectedRoom();
 	bool isShareSight = room && room->getShareSight();
 	char isEnemy = 0;
@@ -2321,12 +2321,12 @@ void crMyPlayerData::checkItemVisiable(std::vector<CRCore::crVector4i> &eyeVec,c
 			itr != eyeVec.end();
 			++itr )
 		{
-			eyepos.set((*itr)[0],(*itr)[1]);
-			itempos.set(item->getPosx(),item->getPosy());
-			if((itempos-eyepos).length()<=(*itr)[3])
+			eyeheight = (*itr)[2];
+			if (item->getPosz() <= eyeheight)
 			{
-				eyeheight = (*itr)[2];
-				if(item->getPosz()<=eyeheight)
+				eyepos.set((*itr)[0], (*itr)[1]);
+				itempos.set(item->getPosx(), item->getPosy());
+				if ((itempos - eyepos).length2() <= (*itr)[3])
 				{
 					inSight = true;
 					break;
