@@ -254,7 +254,7 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
   //if (notify)
   //  m_feedCondition.signal();
   if(flux>0)
-    Thread::sleep(flux);
+    Thread::sleep(1);
 }
 
 void PacketStream::writePacket(const Packet::sptr& packet, bool reliable) 
