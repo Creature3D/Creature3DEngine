@@ -206,7 +206,7 @@ void crSceneHandler::updateImplementation(Producer::Camera& camera)
 	if(crFrameStamp::getInstance()->getFrameNumber()>INITFRAMENUMBER)
 	{
 		const CRCore::crVector3 &curCampos = CRCore::crBrain::getInstance()->getCameraPosition();
-		if((curCampos-m_nearCameraPos).length2()>1.0f)
+		if((curCampos-m_nearCameraPos).length()>1.0f)
 		{
 			CRCore::crIntersectVisitor::HitList hits;
 			dynamic_cast<crViewer *>(m_cameraGroup)->computeIntersections(0,-1,hits);

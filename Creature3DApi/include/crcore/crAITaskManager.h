@@ -75,7 +75,7 @@ public :
 		{
 			currentPos[2] = m_position[2];
 		}
-		return (currentPos - m_position).length2() < range*range; 
+		return (currentPos - m_position).length() < range; 
 	}
 	void setVelocity(const CRCore::crVector3 &velocity);
 	inline const CRCore::crVector3 &getVelocity() const { return m_velocity; }

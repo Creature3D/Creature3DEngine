@@ -273,9 +273,13 @@ void crSightInfo::roleInEyePointTest(const CRCore::crVector2i &eye,crRole *role)
 	}
 
 	bool inRange = true;
-	float sightRange = crGlobalHandle::gData()->gSightRange();
-	crVector2 rolePos(role->getPosx(),role->getPosy());
-	float dist = (eye - rolePos).length();
+	float scale = crGlobalHandle::gData()->gUnitScale();
+	float sightRange = crGlobalHandle::gData()->gSightRange()*scale;
+	crVector2 itemPos(role->getPosx(), role->getPosy());
+	crVector2 eyePos(eye[0], eye[1]);
+	itemPos *= scale;
+	eyePos *= scale;
+	float dist = (eye - itemPos).length();
 	if(dist>sightRange)
 	{
 		inRange = false;

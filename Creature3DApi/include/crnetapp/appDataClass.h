@@ -226,11 +226,11 @@ typedef std::set<int> MetierSkillASet;//职业技能抽象ID
 
 typedef std::map<int,int> AttackMap;//普通攻击抽象ID，实例ID，技能等级存放在技能Data里
 typedef std::map<int,int> SkillMap;//技能抽象ID，实例ID，技能等级存放在技能Data里
-typedef std::vector<CRCore::crVector2i> PatrolPointVec;//厘米为单位
+typedef std::vector<CRCore::crVector2f> PatrolPointVec;//米为单位
 //typedef std::map<_crInt64,float> PlayerEnmityMap;//playerid,roleid,仇恨度
 //typedef std::map<int,float> NpcEnmityMap;//itemid,仇恨度
 typedef std::multimap< CRCore::ref_ptr<crInstanceItem>,int > EnmityMap;//item,enmity
-typedef std::multimap< int,CRCore::ref_ptr<crInstanceItem>,std::less<int> > InPatrolEnemyMap;//dist2,item
+typedef std::multimap< float, CRCore::ref_ptr<crInstanceItem>, std::less<float> > InPatrolEnemyMap;//dist(米为单位),item
 typedef std::map<int,float> ItemDropMap;//item abstractid,可能性 装备掉落被玩家拾取后发crCreateItemChildPacket
 typedef std::map<int, CRCore::ref_ptr<crGameTask> >GameTaskMap;//taskid
 typedef std::multimap<int,int> BackPackMap;//抽象ID,实例ID

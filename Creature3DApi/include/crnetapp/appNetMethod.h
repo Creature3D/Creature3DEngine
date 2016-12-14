@@ -2326,7 +2326,7 @@ protected:
 	crInstanceItem* m_this;
 	CRCore::ref_ptr<crInstanceItem> m_item;
 	//_crInt64 m_distEnmity;
-	int m_dist;
+	float m_dist;
 };
 class crCalcEnmityByDistRateMethod : public CRCore::crMethod
 {//SceneServer Method

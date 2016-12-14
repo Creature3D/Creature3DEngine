@@ -1026,10 +1026,10 @@ void crPathFindingManager::update()
 #if 1
 	CRCore::Timer_t start_tick,end_tick;
 	int count = m_requestDeque_buf.size();
-	if(count>1000)
-	{
+	//if(count>500)
+	//{
 		start_tick = CRCore::Timer::instance()->tick();
-	}
+	//}
 #endif
 	while(!m_requestDeque_buf.empty())
 	{
@@ -1257,11 +1257,15 @@ void crPathFindingManager::update()
 		//crThread::sleep(5);
 	}
 #if 1
-	if(count>1000)
+	//if(count>500)
+	//{
+	end_tick = CRCore::Timer::instance()->tick();
+	float delta = CRCore::Timer::instance()->delta_m(start_tick, end_tick);
+	if (delta >= 500)
 	{
-		end_tick = CRCore::Timer::instance()->tick();
-		CRCore::notify(CRCore::ALWAYS)<<"寻路数量:"<<count<<" 耗时:"<<CRCore::Timer::instance()->delta_m(start_tick,end_tick)<<std::endl;
+		CRCore::notify(CRCore::ALWAYS) << "寻路数量:" << count << " 耗时:" << delta << std::endl;
 	}
+	//}
 #endif
 }
 void crPathFindingManager::SmoothPath(const crSceneLayer *sceneLayer, CoordDeque& inpath, CoordDeque& outpath)

@@ -362,7 +362,7 @@ public:
 	crPlayerGameData *getPlayerGameData();
 	void rectSelectItem(const CRCore::crVector4i &rect,std::vector<crInstanceItem *> &itemvec);
 	float getPosZ(float x,float y,float zoffset);
-	void getEyes(std::vector<CRCore::crVector4i>&eyeVec,bool sqrtlen = false);
+	void getEyes(std::vector<CRCore::crVector4i>&eyeVec);
 	typedef std::map< CRCore::crVector2i, int >EyePointMap;//x,y,eyeheight
 	void insertEyePoint(const CRCore::crVector2i &eye);
 	void removeEyePoint(const CRCore::crVector2i &eye);
