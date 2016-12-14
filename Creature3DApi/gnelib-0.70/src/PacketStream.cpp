@@ -30,7 +30,7 @@
 #include "../include/gnelib/Timer.h"
 #include "../include/gnelib/Errors.h"
 #include "../include/gnelib/Lock.h"
-//#include <iostream>
+#include <iostream>
 //#include <fstream>
 const int BUF_LEN = 1024;
 
@@ -65,7 +65,7 @@ inSize(0),outUnrelSize(0),outRelSize(0),m_bufSizeScale(0){
   //m_maxPacketBufSize = 491520 * m_bufSizeScale + 30*4;
   //m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30*4;//480k
   m_maxPacketBufSize = 0;// 1048576 * m_bufSizeScale;
-  m_maxPacketBufSize2 = 0;
+  //m_maxPacketBufSize2 = 0;
   gnedbgo2(2, "PacketStream negotiated: max: %d requested: %d",
     maxOutRate, reqOutRate);
   gnedbgo(5, "created");
@@ -116,8 +116,8 @@ void PacketStream::setBufSizeScale(int scale)
 {
 	m_bufSizeScale = scale;//m_bufSizeScale = 0表示无限
 	//m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30 * 4;//480k
-	m_maxPacketBufSize = 1048576 * m_bufSizeScale;
-	m_maxPacketBufSize2 = m_maxPacketBufSize + 1048576;
+	m_maxPacketBufSize = 1048576 * m_bufSizeScale + 1048576;
+	//m_maxPacketBufSize2 = m_maxPacketBufSize + 1048576;
 }
 
 int PacketStream::getInLength() const {
@@ -207,7 +207,7 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
   outQCtrl.acquire();
   //m_outQCtrl.lock();
   bool notify = false;
-  int flux = 0;
+  //int flux = 0;
   if (reliable) 
   {
 	notify = outRel.empty();
@@ -216,15 +216,16 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 		outRel.push(packet.makeClone());
 		outRelSize += packet.getSize();
 	}
-	else if(outRelSize<=m_maxPacketBufSize2)
-	{
-		outRel.push(packet.makeClone());
-		outRelSize += packet.getSize();
-		flux = 1;
-	}
+	//else if(outRelSize<=m_maxPacketBufSize2)
+	//{
+	//	outRel.push(packet.makeClone());
+	//	outRelSize += packet.getSize();
+	//	flux = 1;
+	//}
 	else
 	{
 		gnedbg(2, "outRel PacketBuf Overflow, droped");
+		std::cerr <<"PacketStream::writePacket PacketBuf Overflow"<< std::endl;
 	}
   } 
   else 
@@ -235,15 +236,16 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 		outUnrel.push(packet.makeClone());
 		outUnrelSize += packet.getSize();
 	}
-	else if(outRelSize<=m_maxPacketBufSize2)
-	{
-		outRel.push(packet.makeClone());
-		outRelSize += packet.getSize();
-		flux = 1;
-	}
+	//else if(outRelSize<=m_maxPacketBufSize2)
+	//{
+	//	outRel.push(packet.makeClone());
+	//	outRelSize += packet.getSize();
+	//	flux = 1;
+	//}
 	else
 	{
 		gnedbg(2, "outUnrel PacketBuf Overflow, droped");
+		std::cerr << "PacketStream::writePacket PacketBuf Overflow" << std::endl;
 	}
   }
   outQCtrl.release();
@@ -253,8 +255,8 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
   //If we need to, wake up the writer thread.
   //if (notify)
   //  m_feedCondition.signal();
-  if(flux>0)
-    Thread::sleep(1);
+  //if(flux>0)
+  //  Thread::sleep(1);
 }
 
 void PacketStream::writePacket(const Packet::sptr& packet, bool reliable) 
@@ -559,7 +561,7 @@ void PacketStream::addIncomingPacket(Packet* packet)
   if (packet->getType() != RateAdjustPacket::ID) 
   {
     inQCtrl.acquire();
-	if (m_maxPacketBufSize == 0 || inSize <= m_maxPacketBufSize2)
+	if (m_maxPacketBufSize == 0 || inSize <= m_maxPacketBufSize)
 	{
 		in.push(packet);
 	    inSize += packet->getSize();
@@ -573,7 +575,8 @@ void PacketStream::addIncomingPacket(Packet* packet)
 	{
 		PacketParser::destroyPacket( packet );
 		//gnedbg(2, "Received a packet, but droped");
-		printf("IncomingPacket buf超限\n");
+		//printf("IncomingPacket buf超限\n");
+		std::cerr << "PacketStream::addIncomingPacket Received a packet, but droped" << std::endl;
 	}
     inQCtrl.release();
   } 

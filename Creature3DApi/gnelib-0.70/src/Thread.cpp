@@ -303,7 +303,7 @@ void Thread::start() {
   assert( id->hThread != 0 );
 
   //Set the thread priority
-  //priority = HIGH_PRI;
+  priority = HIGH_PRI;
   switch (priority) {
     case LOWER_PRI:
       SetThreadPriority(id->hThread, THREAD_PRIORITY_LOWEST);

@@ -365,7 +365,7 @@ private:
   //static int MaxPacketBufSize;//当超出MaxPacketBufSize则丢掉后来的包
   int m_bufSizeScale;
   int m_maxPacketBufSize;
-  int m_maxPacketBufSize2;
+  //int m_maxPacketBufSize2;
 };
 
 }
