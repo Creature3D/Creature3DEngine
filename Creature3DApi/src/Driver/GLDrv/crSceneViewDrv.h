@@ -752,6 +752,7 @@ void crSceneView::draw()
 					rs->setReadBuffer(m_drawBufferMode);
 				}
 
+				m_localStateSet->setAttribute(getViewport());
 				// ensure that all color planes are active.
 				CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
                 if (cmask)
@@ -764,9 +765,8 @@ void crSceneView::draw()
                     m_localStateSet->setAttribute(cmask);
                 }
                 rs->setColorMask(cmask);
-                rs->setColorMask(cmask);
+				rs->setClearMask(m_camera->getClearMask());
 
-                m_localStateSet->setAttribute(getViewport());
                 //rs->drawPreRenderStages(*state,previous);
                 rs->draw(*state,previous);
 

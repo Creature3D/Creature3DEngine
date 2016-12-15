@@ -20,7 +20,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #endif
-
+#define CP_GB2312 936
+#define CP_BIG5 950
 namespace CRIOManager
 {
 
@@ -38,7 +39,7 @@ std::string convertUTF16toUTF8(const wchar_t* source, unsigned sourceLength)
         return std::string();
     }
 
-    int destLen = WideCharToMultiByte(/*CP_UTF8*/CP_ACP, 0, source, sourceLength, 0, 0, 0, 0);
+	int destLen = WideCharToMultiByte(/*CP_ACP*/CP_GB2312, 0, source, sourceLength, 0, 0, 0, 0);
     if (destLen <= 0)
     {
         CRCore::notify(CRCore::WARN) << "Cannot convert UTF-16 string to UTF-8." << std::endl;
@@ -47,7 +48,7 @@ std::string convertUTF16toUTF8(const wchar_t* source, unsigned sourceLength)
 
     std::string sDest(destLen, '\0');
 	//sDest.resize(destLen+1,0);
-    destLen = WideCharToMultiByte(/*CP_UTF8*/CP_ACP, 0, source, sourceLength, &sDest[0], destLen, 0, 0);
+	destLen = WideCharToMultiByte(/*CP_ACP*/CP_GB2312, 0, source, sourceLength, &sDest[0], destLen, 0, 0);
 
     if (destLen <= 0)
     {
@@ -71,7 +72,7 @@ std::wstring convertUTF8toUTF16(const char* source, unsigned sourceLength)
         return std::wstring();
     }
 
-    int destLen = MultiByteToWideChar(/*CP_UTF8*/CP_ACP, 0, source, sourceLength, 0, 0);
+	int destLen = MultiByteToWideChar(/*CP_ACP*/CP_GB2312, 0, source, sourceLength, 0, 0);
     if (destLen <= 0)
     {
         CRCore::notify(CRCore::WARN) << "Cannot convert UTF-8 string to UTF-16." << std::endl;
@@ -80,7 +81,7 @@ std::wstring convertUTF8toUTF16(const char* source, unsigned sourceLength)
 
     std::wstring sDest(destLen, L'\0');
 	//sDest.resize(destLen+1,0);
-    destLen = MultiByteToWideChar(/*CP_UTF8*/CP_ACP, 0, source, sourceLength, &sDest[0], destLen);
+	destLen = MultiByteToWideChar(/*CP_ACP*/CP_GB2312, 0, source, sourceLength, &sDest[0], destLen);
 
     if (destLen <= 0)
     {

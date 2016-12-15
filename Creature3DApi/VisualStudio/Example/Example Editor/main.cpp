@@ -65,7 +65,37 @@ using namespace CREncapsulation;
 #define Robot 4
 #define RobotNoTexture 5 
 //#define PublishRun 1
-
+HHOOK GKeyBoarHook = NULL;
+void BossKeyPressed()
+{
+ 	static bool s_hide = false;
+	Producer::Window hwnd = CREncapsulation::crStartHandler::getInstance()->getWindowHandle();
+	if (hwnd)
+	{
+		//Producer::Window hParent = GetParent(hwnd);
+		//if (hParent)
+		//{
+		//	::ShowWindow(hParent, s_hide ? SW_SHOW : SW_HIDE);
+		//}
+		::ShowWindow(hwnd, s_hide?SW_SHOW:SW_HIDE);
+		s_hide = !s_hide;
+	}
+}
+LRESULT CALLBACK MyKeyboard(int nCode, WPARAM wParam, LPARAM lParam)
+{
+	if( nCode == HC_ACTION )
+	{
+		PKBDLLHOOKSTRUCT pKeyboardHookStruct = (PKBDLLHOOKSTRUCT)lParam;
+		if(wParam == WM_KEYDOWN)
+		{
+			if (pKeyboardHookStruct->vkCode == VK_OEM_3 && ((GetKeyState(VK_CONTROL) & 0x8000) != 0))
+			{
+				BossKeyPressed();
+			}
+		}
+	}
+	return CallNextHookEx(GKeyBoarHook, nCode, wParam, lParam);
+}
 #ifdef _ACTIVEX
 extern  "C" __declspec(dllexport) void ExitCreature3D()
 {
@@ -91,6 +121,7 @@ int main( int argc, char **argv )
 		}
 		FreeLibrary( hUser32 );
 	}
+	GKeyBoarHook = SetWindowsHookEx(WH_KEYBOARD_LL, MyKeyboard, NULL, 0);
 	//{//tcp
 	//	int    sockfd, n;
 	//	char    recvline[4096], sendline[4096];
@@ -496,5 +527,6 @@ int main( int argc, char **argv )
 		//UpLoadBugFile(CRNetApp::crGlobalHandle::argvstr());
 		WinExec(CRNetApp::crGlobalHandle::argvstr().c_str(),SW_NORMAL);
 	}
+	UnhookWindowsHookEx(GKeyBoarHook);
 	return 0;
 }
