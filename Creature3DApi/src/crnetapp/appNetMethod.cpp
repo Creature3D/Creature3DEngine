@@ -18353,7 +18353,7 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					crVector2 coord = (*patrolPointVec)[idx];
 					float scale = crGlobalHandle::gData()->gUnitScale();
 					float coordz = scene->getPosZ(m_this->getLayerID(), (float)coord[0], (float)coord[1], (float)(m_this->getZoffset())*scale);
-					m_this->setPosxy(coord[0],coord[1]);
+					m_this->setPosxy(coord[0] / scale, coord[1] / scale);
 					m_this->setPosz(coordz / scale);
 				}
 				thisData->excHandle(MAKEINT64(WCH_LockData,0));
@@ -43913,7 +43913,7 @@ void crReliveItemsMethod::operator()(crHandle &handle)
 						}
 						coord = (*patrolPointVec)[idx];
 						coordz = scene->getPosZ(item->getLayerID(), (float)coord[0], (float)coord[1], (float)(item->getZoffset()) * scale);
-						item->setPosxy(coord[0],coord[1]);
+						item->setPosxy(coord[0] / scale, coord[1] / scale);
 						item->setPosz(coordz / scale);
 					}
 					thisData->excHandle(MAKEINT64(WCH_LockData,0));
