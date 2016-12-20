@@ -116,7 +116,10 @@ void PacketStream::setBufSizeScale(int scale)
 {
 	m_bufSizeScale = scale;//m_bufSizeScale = 0表示无限
 	//m_maxPacketBufSize = m_bufSizeScale == 0 ? 0 : 1048576/*491520*/ * m_bufSizeScale + 30 * 4;//480k
-	m_maxPacketBufSize = 1048576 * m_bufSizeScale + 1048576;
+	if (m_bufSizeScale > 0)
+	{
+		m_maxPacketBufSize = 1048576 * m_bufSizeScale + 1048576;
+	}
 	//m_maxPacketBufSize2 = m_maxPacketBufSize + 1048576;
 }
 
@@ -225,7 +228,7 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 	else
 	{
 		gnedbg(2, "outRel PacketBuf Overflow, droped");
-		std::cerr <<"PacketStream::writePacket PacketBuf Overflow"<< std::endl;
+		std::cerr << "PacketStream::writePacket outRel PacketBuf Overflow,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
 	}
   } 
   else 
@@ -245,7 +248,7 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 	else
 	{
 		gnedbg(2, "outUnrel PacketBuf Overflow, droped");
-		std::cerr << "PacketStream::writePacket PacketBuf Overflow" << std::endl;
+		std::cerr << "PacketStream::writePacket outUnrel PacketBuf Overflow,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
 	}
   }
   outQCtrl.release();
@@ -576,7 +579,7 @@ void PacketStream::addIncomingPacket(Packet* packet)
 		PacketParser::destroyPacket( packet );
 		//gnedbg(2, "Received a packet, but droped");
 		//printf("IncomingPacket buf超限\n");
-		std::cerr << "PacketStream::addIncomingPacket Received a packet, but droped" << std::endl;
+		std::cerr << "PacketStream::addIncomingPacket Received a packet, but droped,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
 	}
     inQCtrl.release();
   } 
