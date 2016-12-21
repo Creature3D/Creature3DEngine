@@ -419,10 +419,10 @@ class CRUTIL_EXPORT crSceneView : public CRCore::Referenced, public CRCore::crCu
 
         //做数据剪裁，可以做部分数据更新工作，但是场景图变动在这里是不安全的（如：节点的增加、删除、替换、crSwitch节点访问流的变动等操作）
 		//当有无法避免在cull流里对场景图造成变动的，可以通过NodeMutex进行同步。
-        void cull();
+        void cull(int vreye = 0);
 
         //绘制
-		void draw();
+		void draw(int vreye = 0);
         
 		void releaseAllObjects();
 		void flushAllDeletedObjects();

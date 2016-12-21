@@ -450,7 +450,7 @@ void crSceneView::setDefaults(unsigned int options)
 	//	glEnable(GL_FRAMEBUFFER_SRGB);
 	//}
 }
-void crSceneView::draw()
+void crSceneView::draw(int vreye)
 {//»æÖÆ¶Ôbuf²Ù×÷
 	CRCore::Timer_t start_tick,end_tick;
 	start_tick = CRCore::Timer::instance()->tick();
@@ -922,8 +922,44 @@ void crSceneView::draw()
 			rs->setDrawBuffer(m_drawBufferMode);
 			rs->setReadBuffer(m_drawBufferMode);
 		}
+		
+		//switch (vreye)
+		//{
+		//case 1:
+		//	{
+		//		int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
 
-        m_localStateSet->setAttribute(viewPort);
+		//		int left_half_width = (viewPort->width() - separation) / 2;
+		//		int right_half_begin = (viewPort->width() + separation) / 2;
+		//		int right_half_width = viewPort->width() - right_half_begin;
+
+		//		CRCore::ref_ptr<CRCore::crViewPort> viewportLeft = new CRCore::crViewPort;
+		//		viewportLeft->setViewport(viewPort->x(), viewPort->y(), left_half_width, viewPort->height());
+
+		//		m_localStateSet->setAttribute(viewportLeft.get());
+		//		rs->setViewport(viewportLeft.get());
+		//	}
+		//	break;
+		//case 2:
+		//	{
+		//		int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
+
+		//		int left_half_width = (viewPort->width() - separation) / 2;
+		//		int right_half_begin = (viewPort->width() + separation) / 2;
+		//		int right_half_width = viewPort->width() - right_half_begin;
+
+		//		CRCore::ref_ptr<CRCore::crViewPort> viewportRight = new CRCore::crViewPort;
+		//		viewportRight->setViewport(viewPort->x() + right_half_begin, viewPort->y(), right_half_width, viewPort->height());
+
+		//		m_localStateSet->setAttribute(viewportRight.get());
+		//		rs->setViewport(viewportRight.get());
+		//	}
+		//	break;
+		//default:
+		//	m_localStateSet->setAttribute(viewPort);
+		//	break;
+		//}
+		m_localStateSet->setAttribute(viewPort);
        //  ensure that all color planes are active.
         CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
         if (cmask)
@@ -961,9 +997,9 @@ void crSceneView::draw()
 	}
 	
     // re apply the defalt OGL state.	
-    state->popAllStateSets();
+	state->popAllStateSets();
 	state->apply();
-    //state->reset();
+	//state->reset();
 
 	if (m_camera->getPostDrawCallback())
 	{
@@ -993,9 +1029,12 @@ void crSceneView::draw()
 	end_tick = CRCore::Timer::instance()->tick();
 	float drawtime = CRCore::Timer::instance()->delta_m(start_tick,end_tick);
 	crStatistics::getInstance()->setDrawTime(drawtime);
-	float fpsControl = crDisplaySettings::instance()->getFpsControl();
-	if(drawtime<fpsControl)
-		CRCore::crThread::sleep(fpsControl - drawtime);//ÈÃÏÔ¿¨ÐÝÏ¢
+	if (vreye == 0)
+	{
+		float fpsControl = crDisplaySettings::instance()->getFpsControl();
+		if (drawtime < fpsControl)
+			CRCore::crThread::sleep(fpsControl - drawtime);//ÈÃÏÔ¿¨ÐÝÏ¢
+	}
 	//if(m_lastDrawTick != 0L)
 	//{
 	//	float drawtime = CRCore::Timer::instance()->delta_m(m_lastDrawTick,end_tick);

@@ -339,9 +339,7 @@ inline void crViewer::update()
 	//try
 	//{
 	//CRUtil::crAISystemUpdater::getInstance()->aiUpdateBlock();
-	int frameNum = CRCore::crFrameStamp::getInstance()->getFrameNumber();
-	frameNum++;
-	CRCore::crFrameStamp::getInstance()->setFrameNumber(frameNum);
+	int frameNum = CRCore::crFrameStamp::getInstance()->increaseFrameNumber();
 	CRCore::crFrameStamp::getInstance()->setReferenceTime(m_timer.delta_s(m_start_tick,m_timer.tick()));
 	CRCore::crFrameStamp::getInstance()->update();
 

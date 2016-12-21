@@ -173,7 +173,8 @@ class crCullAndUpdThread : public CRCore::crThread, public CRCore::Referenced
 public:
 	crCullAndUpdThread(CRProducer::crViewer *viewer):m_viewer(viewer),m_done(false){};
 	virtual void run();
-	void done(){ m_done = true; }
+	void setDone(bool done){ m_done = done; }
+	bool done(){ return m_done; }
 protected:
 	CRProducer::crViewer* m_viewer;
 	bool m_done;

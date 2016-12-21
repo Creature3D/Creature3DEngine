@@ -640,7 +640,6 @@ void crSceneView::update()
 	if (m_camera.valid() && m_updateVisitor.valid())
 	{
     	m_updateVisitor->reset();
-		m_camera->computerViewInverseMatrix();
 		crMatrixd* viewInverseMatrix = m_camera->getViewInverseMatrix();
 		CRUtil::crUpdateVisitor *updateVisitor = dynamic_cast<CRUtil::crUpdateVisitor *>(m_updateVisitor.get());
 		crVector3 cameraPosition((*viewInverseMatrix)(3,0),(*viewInverseMatrix)(3,1),(*viewInverseMatrix)(3,2));
@@ -899,7 +898,7 @@ CRCore::crMatrixd crSceneView::computeRightEyeViewImplementation(const CRCore::c
 		-es,0.0,0.0,1.0);
 }
 
-void crSceneView::cull()
+void crSceneView::cull(int vreye)
 {//注：在立体渲染模式时逆矩阵信息会出现不正确，需要调整
 	CRCore::Timer_t start_tick = 0;
 	CRCore::Timer_t end_tick = 0;

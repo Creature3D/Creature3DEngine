@@ -110,7 +110,7 @@ namespace CRCore {
 
 		int        m_nValue;
 
-		float      m_fLast;
+		double      m_fLast;
 		std::vector<float> m_vecFrameTime;
 
 		int m_nStep;

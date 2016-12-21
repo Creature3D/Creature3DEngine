@@ -5755,7 +5755,7 @@ void crCameraData::inputParam(int i, void *param)
 		m_selectItem = param==NULL?NULL:(crInstanceItem*)param;
 		break;
 	case WCHDATA_CameraBorrowTime:
-		m_cameraBorrowTime = param==NULL?NULL:*(float *)param;
+		m_cameraBorrowTime = param==NULL?NULL:*(double *)param;
 		break;
 	case WCHDATA_CameraBorrowInterval:
 		m_cameraBorrowInterval = param==NULL?NULL:*(float *)param;

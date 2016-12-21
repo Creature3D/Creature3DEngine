@@ -74,7 +74,8 @@ Camera::Camera( void )
     _enabled = true;
     _initialized = false;
 
-    _done = false;
+    _done = 0;
+	_vrHMD = true;
 }
 
 void Camera::initChildThread()
@@ -94,100 +95,118 @@ Camera::~Camera( void )
 	//std::cerr << "~Camera()" << std::endl;
 }
 
-void Camera::cull_update() //add by wch
+//void Camera::cull_update() //add by wch
+//{
+//	if( !_enabled ) 
+//		return;
+//
+//	if( _updateCallback.valid() )
+//		(*((_updateCallback).get()))(*this);
+//
+//	if( _instrumented )
+//		_cull_updateInstrumented();
+//	else
+//		_cull_update();
+//}
+
+void Camera::update() //add by wch
 {
-	if( !_enabled ) 
-		return;
-
-	if( _updateCallback.valid() )
-		(*((_updateCallback).get()))(*this);
-
-	if( _instrumented )
-		_cull_updateInstrumented();
-	else
-		_cull_update();
-}
-
-void Camera::_cull_update() //add by wch
-{
+	//if( !_enabled ) 
+	//	return;
 	if( !_initialized ) _initialize();
 
-	if ( _sh == NULL )
-	{
-		std::cerr << "Producer::Camera::frame() : No Producer::Camera::SceneHandler\n";
-		std::cerr << "   please call setSceneHandler() first\n";
-		return;
-	}
+	//if ( _sh == NULL )
+	//{
+	//	std::cerr << "Producer::Camera::frame() : No Producer::Camera::SceneHandler\n";
+	//	std::cerr << "   please call setSceneHandler() first\n";
+	//	return;
+	//}
 	//以下进行update
 	_sh->update( *this );
-	//以下进行cull
-	if( preCullCallbacks.size() )
-	{
-		std::vector <ref_ptr<Callback> >::iterator p;
-		for( p = preCullCallbacks.begin(); p != preCullCallbacks.end(); p++ )
-			(*((*p).get()))(*this);
-	}
-	_sh->cull( *this );
+	////以下进行cull
+	//if( preCullCallbacks.size() )
+	//{
+	//	std::vector <ref_ptr<Callback> >::iterator p;
+	//	for( p = preCullCallbacks.begin(); p != preCullCallbacks.end(); p++ )
+	//		(*((*p).get()))(*this);
+	//}
+	//_sh->cull( *this );
 
-	if( postCullCallbacks.size() )
-	{
-		std::vector <ref_ptr<Callback> >::iterator p;
-		for( p = postCullCallbacks.begin(); p != postCullCallbacks.end(); p++ )
-			(*((*p).get()))(*this);
-	}
-
+	//if( postCullCallbacks.size() )
+	//{
+	//	std::vector <ref_ptr<Callback> >::iterator p;
+	//	for( p = postCullCallbacks.begin(); p != postCullCallbacks.end(); p++ )
+	//		(*((*p).get()))(*this);
+	//}
 }
-
-void Camera::_cull_updateInstrumented( ) //add by wch
+void Camera::cull(int vreye) //add by wch
 {
-	if( !_initialized ) _initialize();
-
-	if ( _sh == NULL )
-	{
-		std::cerr << "Producer::Camera::frame() : No Producer::Camera::SceneHandler\n";
-		std::cerr << "   please call setSceneHandler() first\n";
-		return;
-	}
-
-	//Timer_t stamps[LastStatsID];
-	//memset( stamps, 0, sizeof(stamps));
-
-	//以下进行update
-	_sh->update( *this );
 	//以下进行cull
-	//	stamps[BeginCull] = _timer.tick();
-	if( preCullCallbacks.size() )
+	if (preCullCallbacks.size())
 	{
-		//	stamps[BeginPreCullCallbacks] = _timer.tick();
 		std::vector <ref_ptr<Callback> >::iterator p;
-		for( p = preCullCallbacks.begin(); p != preCullCallbacks.end(); p++ )
-		{
+		for (p = preCullCallbacks.begin(); p != preCullCallbacks.end(); p++)
 			(*((*p).get()))(*this);
-		}
-		//	stamps[EndPreCullCallbacks] = _timer.tick();
 	}
+	_sh->cull(*this,vreye);
 
-
-	//	stamps[BeginInnerCull] = _timer.tick();
-	_sh->cull( *this );
-	//	stamps[EndInnerCull] = _timer.tick();
-
-	if( postCullCallbacks.size() )
+	if (postCullCallbacks.size())
 	{
-		//	stamps[BeginPostCullCallbacks] = _timer.tick();
 		std::vector <ref_ptr<Callback> >::iterator p;
-		for( p = postCullCallbacks.begin(); p != postCullCallbacks.end(); p++ )
+		for (p = postCullCallbacks.begin(); p != postCullCallbacks.end(); p++)
 			(*((*p).get()))(*this);
-		//	stamps[EndPostCullCallbacks] = _timer.tick();
 	}
-	//	stamps[EndCull] = _timer.tick();
-
-	//for( int i = BeginCull; i < EndCull; i++ )
-	//	_frameStamps[StatsID(i)] = _timer.delta_s(_initTime, stamps[i]);
-
 }
+//void Camera::_cull_updateInstrumented( ) //add by wch
+//{
+//	if( !_initialized ) _initialize();
+//
+//	if ( _sh == NULL )
+//	{
+//		std::cerr << "Producer::Camera::frame() : No Producer::Camera::SceneHandler\n";
+//		std::cerr << "   please call setSceneHandler() first\n";
+//		return;
+//	}
+//
+//	//Timer_t stamps[LastStatsID];
+//	//memset( stamps, 0, sizeof(stamps));
+//
+//	//以下进行update
+//	_sh->update( *this );
+//	//以下进行cull
+//	//	stamps[BeginCull] = _timer.tick();
+//	if( preCullCallbacks.size() )
+//	{
+//		//	stamps[BeginPreCullCallbacks] = _timer.tick();
+//		std::vector <ref_ptr<Callback> >::iterator p;
+//		for( p = preCullCallbacks.begin(); p != preCullCallbacks.end(); p++ )
+//		{
+//			(*((*p).get()))(*this);
+//		}
+//		//	stamps[EndPreCullCallbacks] = _timer.tick();
+//	}
+//
+//
+//	//	stamps[BeginInnerCull] = _timer.tick();
+//	_sh->cull( *this );
+//	//	stamps[EndInnerCull] = _timer.tick();
+//
+//	if( postCullCallbacks.size() )
+//	{
+//		//	stamps[BeginPostCullCallbacks] = _timer.tick();
+//		std::vector <ref_ptr<Callback> >::iterator p;
+//		for( p = postCullCallbacks.begin(); p != postCullCallbacks.end(); p++ )
+//			(*((*p).get()))(*this);
+//		//	stamps[EndPostCullCallbacks] = _timer.tick();
+//	}
+//	//	stamps[EndCull] = _timer.tick();
+//
+//	//for( int i = BeginCull; i < EndCull; i++ )
+//	//	_frameStamps[StatsID(i)] = _timer.delta_s(_initTime, stamps[i]);
+//
+//}
 
-void Camera::draw( bool doSwap ) //add by wch
+void Camera::draw( bool doSwap,int vreye ) //add by wch
 {
 	if( !_enabled ) 
 		return;
@@ -200,9 +219,9 @@ void Camera::draw( bool doSwap ) //add by wch
 	}
 
 	if( _instrumented )
-		_drawInstrumented( doSwap );
+		_drawInstrumented(doSwap, vreye);
 	else
-		_draw(doSwap);
+		_draw(doSwap, vreye);
 
 	if( postFrameCallbacks.size() )
 	{
@@ -212,7 +231,7 @@ void Camera::draw( bool doSwap ) //add by wch
 	}
 }
 
-void Camera::_draw( bool doSwap ) //add by wch
+void Camera::_draw( bool doSwap,int vreye ) //add by wch
 {
 	if( !_initialized ) _initialize();
 
@@ -265,7 +284,7 @@ void Camera::_draw( bool doSwap ) //add by wch
 			(*((*p).get()))(*this);
 	}
 
-	_sh->draw( *this );
+	_sh->draw( *this,vreye );
 
 	if( postDrawCallbacks.size() )
 	{
@@ -287,7 +306,7 @@ void Camera::_draw( bool doSwap ) //add by wch
 	}
 }
 
-void Camera::_drawInstrumented( bool doSwap ) //add by wch
+void Camera::_drawInstrumented( bool doSwap,int vreye ) //add by wch
 {
 	if( !_initialized ) _initialize();
 
@@ -357,7 +376,7 @@ void Camera::_drawInstrumented( bool doSwap ) //add by wch
 	}
 
 	stamps[BeginInnerDraw] = _timer.tick();
-	_sh->draw( *this );
+	_sh->draw(*this, vreye);
 	stamps[EndInnerDraw] = _timer.tick();
 
 	if( postDrawCallbacks.size() )
@@ -476,7 +495,7 @@ void Camera::_frameInstrumented( bool doSwap )
 
 
     stamps[BeginInnerCull] = _timer.tick();
-    _sh->cull( *this );
+    _sh->cull( *this,0 );
     stamps[EndInnerCull] = _timer.tick();
 
     if( postCullCallbacks.size() )
@@ -521,7 +540,7 @@ void Camera::_frameInstrumented( bool doSwap )
     }
 
     stamps[BeginInnerDraw] = _timer.tick();
-    _sh->draw( *this );
+    _sh->draw( *this,0 );
     stamps[EndInnerDraw] = _timer.tick();
 
     if( postDrawCallbacks.size() )
@@ -593,7 +612,7 @@ void Camera::_frame( bool doSwap )
         for( p = preCullCallbacks.begin(); p != preCullCallbacks.end(); p++ )
             (*((*p).get()))(*this);
     }
-    _sh->cull( *this );
+    _sh->cull( *this,0 );
 
     if( postCullCallbacks.size() )
     {
@@ -624,7 +643,7 @@ void Camera::_frame( bool doSwap )
             (*((*p).get()))(*this);
     }
 
-    _sh->draw( *this );
+    _sh->draw( *this,0 );
 
     if( postDrawCallbacks.size() )
     {
@@ -1226,9 +1245,10 @@ void Camera::setSyncBarrier( RefBarrier *b )
     _syncBarrier = b;
 }
 
-void Camera::setFrameBarrier( RefBarrier *b )
+void Camera::setFrameBarrier(RefBarrier *b, RefBarrier *b2)
 {
     _frameBarrier = b;
+	_frameBarrier2 = b2;
 }
 
 void Camera::setCullBarrier( Producer::RefBarrier *b )
@@ -1249,7 +1269,7 @@ void Camera::setDrawBarrier( Producer::RefBarrier *b )
 int Camera::cancel()
 {
 #if 1
-    _done = true;
+    _done = 1;
 #endif
 
 	//if(_cull_updatethread.valid()) _cull_updatethread->cancel(); //add by wch
@@ -1276,7 +1296,7 @@ void Camera::run( void )
         return;
     }
 
-    _done = false;
+    _done = 0;
 
     _initialize();
     _syncBarrier->block();
@@ -1376,7 +1396,7 @@ void Cull_UpdateThread::run( void ) //add by wch
 	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	_camera->_syncBarrier->block();
 	//_camera->_done = false;
-	while( !_camera->_done )
+	while (!_camera->_done)
 	{
 		// printf("   Camera::run before frame block\n");
 
@@ -1385,7 +1405,23 @@ void Cull_UpdateThread::run( void ) //add by wch
 
 		_camera->_cullBarrier->block();
 
-		_camera->cull_update();
+		if (_camera->isEnabled())
+		{
+			_camera->update();
+			if (_camera->_vrHMD)
+			{
+				_camera->cull(1);
+				_camera->_frameBarrier2->block();
+				_camera->cull(2);
+				_camera->_frameBarrier->block();
+			}
+			else
+			{
+				_camera->cull();
+				_camera->_frameBarrier->block();
+			}
+		}
+		//_camera->cull_update();
 
 		//if (_camera->_done) break;
 
@@ -1393,7 +1429,6 @@ void Cull_UpdateThread::run( void ) //add by wch
 
 		//if (_camera->_done) break;
 
-		_camera->_frameBarrier->block();
 
 		// printf("   Camera::run before sycn block\n");
 
@@ -1402,6 +1437,8 @@ void Cull_UpdateThread::run( void ) //add by wch
 		// printf("   Camera::run after sycn block\n");
 
 	}
+	_camera->_done = 2;
+	//_camera->_vrHMD = false;
 	//printf("   Cull_UpdateThread::run end before sync\n");
 	_camera->_syncBarrier->block();
 	//printf("   Cull_UpdateThread::run end\n");
@@ -1423,19 +1460,33 @@ void DrawThread::run( void ) //add by wch
 	{
 		// printf("   Camera::run before frame block\n");
 
-		_camera->_frameBarrier->block();
-
 		//if (_camera->_done) break;
 
 		// printf("   Camera::run after frame block\n");
 
 		//this->setSchedulePriority(crThread::THREAD_PRIORITY_HIGH);
-		_camera->draw(false);
-
+		if (_camera->isEnabled())
+		{
+			if (_camera->_vrHMD)
+			{
+				_camera->_frameBarrier2->block();
+				_camera->draw(false,1);
+				//_camera->advance();
+				_camera->_frameBarrier->block();
+				_camera->draw(false,2);
+				_camera->advance();
+			}
+			else
+			{
+				_camera->_frameBarrier->block();
+				_camera->draw(false);
+				_camera->advance();
+			}
+		}
 		//if (_camera->_done) break;
 
 		// printf("   Camera::run before sycn block\n");
-		_camera->advance();
+		//_camera->advance();
 		_camera->_drawBarrier->block();
 
 		//if (_camera->_done) break;
@@ -1445,7 +1496,7 @@ void DrawThread::run( void ) //add by wch
 		//this->setSchedulePriority(crThread::THREAD_PRIORITY_LOW);
 		//_camera->advance();////20150915移动到_camera->_drawBarrier->block();前
 	}
-	while( !_camera->_done );
+	while (_camera->_done!=2);
 	//_camera->_frameBarrier->release();
 	//printf("   DrawThread::run end \n");
 	_camera->_sh->release();

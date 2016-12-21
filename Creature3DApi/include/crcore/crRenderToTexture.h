@@ -208,7 +208,7 @@ protected:
 	float m_shadowRadius;
 	float m_shadowOffset;
 
-	float m_lastUpdateTime;
+	double m_lastUpdateTime;
 	float m_updateInterval;
 	bool m_enable;
 };

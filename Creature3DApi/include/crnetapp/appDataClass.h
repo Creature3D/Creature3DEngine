@@ -831,7 +831,7 @@ protected:
 	unsigned char m_cameraMove;
 	unsigned char m_cameraRot;
 	unsigned char m_targetType;
-	float m_cameraBorrowTime;//相机借出时间
+	double m_cameraBorrowTime;//相机借出时间
 	float m_cameraBorrowInterval;//相机借用时间间隔
 	CRCore::ref_ptr<CRCore::crNode> m_targetNode;
 	CRCore::ref_ptr<CRNetApp::crInstanceItem> m_targetItem;

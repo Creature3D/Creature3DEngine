@@ -8699,7 +8699,7 @@ void crServerItemMoveMethod::operator()(crHandle &handle)
 				pos *= crGlobalHandle::gData()->gUnitScale();
 				targetPosition[2] = 0.0f;
 				crVector3 vec = targetPosition - pos;
-				if(vec.length()<m_taskPointRange)
+				if(vec.length()<=m_taskPointRange)
 				{
 					itemstate = IS_Stop;
 					data->inputParam(WCHDATA_ItemState, &itemstate);
@@ -15180,7 +15180,7 @@ void crPatrolMethod::operator()(crHandle &handle)
 				targetPos[0] = (*patrolPointVec)[*idx][0];
 				targetPos[1] = (*patrolPointVec)[*idx][1];
 				crVector2 vec = targetPos - myPos;
-				if(vec.length()<m_taskPointRange)
+				if(vec.length()<=m_taskPointRange)
 				{
 					(*idx)++;
 					if(*idx>=count)
@@ -34541,7 +34541,7 @@ void crBorrowCameraMethod::operator()(crHandle &handle)
 	crViewer *viewer = crKeyboardMouseHandle::getInstance()->getBindViewer();
 	if(m_this && viewer && viewer->isInited() && m_borrower.valid() && m_borrower->getAttachedNode() && m_updateVisitor.valid())
 	{
-		float borrowTime = crFrameStamp::getInstance()->getReferenceTime();
+		double borrowTime = crFrameStamp::getInstance()->getReferenceTime();
 		crNode *borrowerNode = m_borrower->getAttachedNode();
 		float borrowInterval = -1;
 		if(dynamic_cast<crMatrixTransform *>(borrowerNode))
@@ -34662,11 +34662,11 @@ void crCameraBorrowUpdateMethod::operator()(crHandle &handle)
 			void *param;
 			crData *data = m_this->getDataClass();
 			data->getParam(WCHDATA_CameraBorrowTime,param);
-			float cameraBorrowTime = *(float*)param;
+			double cameraBorrowTime = *(double*)param;
 			data->getParam(WCHDATA_CameraBorrowInterval,param);
 			float cameraBorrowInterval = *(float*)param;
 
-			float time = crFrameStamp::getInstance()->getReferenceTime();
+			double time = crFrameStamp::getInstance()->getReferenceTime();
 			if(cameraBorrowTime>0.0f && cameraBorrowInterval>=0.0f && time - cameraBorrowTime > cameraBorrowInterval)
 			{//cameraBorrowInterval = -1表示无限
 				m_this->doEvent(WCH_ReturnCamera);
@@ -34743,7 +34743,7 @@ void crReturnCameraMethod::operator()(crHandle &handle)
 			lenCanvas->doEvent(WCH_LenFadeInit,MAKEINT64(&color,NULL));
 		}
 
-		float cameraBorrowTime = 0.0f;
+		double cameraBorrowTime = 0.0f;
 		float cameraBorrowInterval = 0.0f;
 		crNode *cameraNode = mainCamera->getAttachedNode();
 		crData *data = cameraNode->getDataClass();

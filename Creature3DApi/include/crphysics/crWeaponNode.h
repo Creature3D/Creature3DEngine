@@ -487,7 +487,7 @@ protected:
 	int m_bulletCount;//µ¯Ò©ÊýÁ¿
 
 	float m_comeForthInterval;
-	float m_lastComeFortTime;
+	double m_lastComeFortTime;
 private:
 	int m_state;
 };
@@ -606,7 +606,7 @@ protected:
 	virtual void _create(dWorldID worldID, dSpaceID spaceID);
 
 	float m_comeForthInterval;
-	float m_lastComeFortTime;
+	double m_lastComeFortTime;
 private:
 	int m_state;
 };

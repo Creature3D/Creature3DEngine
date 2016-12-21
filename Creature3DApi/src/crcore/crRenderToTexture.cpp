@@ -33,7 +33,7 @@ crRenderToTexture::crRenderToTexture():
 	m_shadowRadius(0.0f),
 	m_shadowOffset(0.0f),
 	m_lastUpdateTime(0.0f),
-	m_updateInterval(0.0f),
+	m_updateInterval(0.04f),
 	m_enable(false)
 {
     m_cameraDir.set(0.0,0.0,-1.0);
@@ -865,8 +865,8 @@ bool crRenderToTexture::getNeedUpd(/* const crFrameStamp *fs */)
 }
 
 void crRenderToTexture::setUpdateInterval(float interval)
-{
-	m_updateInterval = interval;
+{//给一个最小的0.001s间隔，可以防止在VR模式下，右眼重复渲染，优化性能
+	m_updateInterval = CRCore::maximum(0.001f,interval);
 }
 float crRenderToTexture::getUpdateInterval() const
 {

@@ -1159,8 +1159,8 @@ void crUniformParam1SinCallback::operator()(crNode* node, crNodeVisitor* nv)
 			crUniform *uniform = stateset->getUniform(m_uniformID);
 			if(uniform && uniform->getDataVariance() == crBase::DYNAMIC)
 			{
-				float time = crFrameStamp::getInstance()->getReferenceTime();
-				float v = m_scale * sinf(time);
+				double time = crFrameStamp::getInstance()->getReferenceTime();
+				float v = m_scale * sin(time);
 				uniform->set(v);
 			}
 		}
@@ -1209,8 +1209,8 @@ void crUniformParam1CosCallback::operator()(crNode* node, crNodeVisitor* nv)
 			crUniform *uniform = stateset->getUniform(m_uniformID);
 			if(uniform && uniform->getDataVariance() == crBase::DYNAMIC)
 			{
-				float time = crFrameStamp::getInstance()->getReferenceTime();
-				float v = m_scale * cosf(time);
+				double time = crFrameStamp::getInstance()->getReferenceTime();
+				float v = m_scale * cos(time);
 				uniform->set(v);
 			}
 		}

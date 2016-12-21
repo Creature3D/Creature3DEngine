@@ -72,7 +72,7 @@ friend class DrawThread; //add by wch
 
                 /** Prepare the scene by sorting, and 
                     ordering for optimal rendering */
-                virtual void cull( Camera &) {}
+                virtual void cull( Camera &,int vreye) {}
 
                 virtual void update( Camera &) {} //add by wch
 
@@ -81,7 +81,7 @@ friend class DrawThread; //add by wch
 
                 /** The draw() method must be implemented by 
                     the derived class for rendering the scene */
-                virtual void draw( Camera &) = 0;
+                virtual void draw( Camera &,int vreye) = 0;
 
                 /** If implemented, will override all of
                     the functionality of the Camera::frame().  Must return
@@ -308,8 +308,10 @@ friend class DrawThread; //add by wch
         bool isEnabled() const { return _enabled; }
 
         void frame( bool doSwap=true ) ;
-        void cull_update(); //add by wch
-        void draw( bool doSwap=true ); //add by wch
+        //void cull_update(); //add by wch
+		void update(); //add by wch
+		void cull(int vreye = 0); //add by wch,vreye:0ÎÞ£¬1:LeftEye,2:RightEye
+        void draw( bool doSwap=true,int vreye = 0 ); //add by wch,vreye:0ÎÞ£¬1:LeftEye,2:RightEye
         void setSceneHandler( SceneHandler *sh ) { _sh = sh; }
         SceneHandler *getSceneHandler() { return _sh.get(); }
         const SceneHandler *getSceneHandler() const { return _sh.get(); }
@@ -549,7 +551,7 @@ friend class DrawThread; //add by wch
 
         void run( void );
         void setSyncBarrier( Producer::RefBarrier *b );
-        void setFrameBarrier( Producer::RefBarrier *b );
+        void setFrameBarrier( Producer::RefBarrier *b, Producer::RefBarrier *b2);
 
         void setCullBarrier( Producer::RefBarrier *b );  //add by wch
         void setUpdateBarrier( Producer::RefBarrier *b );  //add by wch
@@ -579,7 +581,8 @@ friend class DrawThread; //add by wch
         Cull_UpdateThread *getCull_UpdateThread(){ return _cull_updatethread.get(); } //add by wch
         DrawThread *getDrawThread(){ return _drawthread.get(); } //add by wch
         
-        void setDone(bool done) { _done = done; }  //add by wch
+        void setDone(int done) { _done = done; }  //add by wch
+		void setVRHMD(bool vrhmd) { _vrHMD = vrhmd; }//add by wch
     protected :
 
         virtual ~Camera( void );
@@ -618,6 +621,7 @@ friend class DrawThread; //add by wch
         friend class Producer::CameraGroup;
         ref_ptr <RefBarrier>     _syncBarrier;
         ref_ptr <RefBarrier>     _frameBarrier;
+		ref_ptr <RefBarrier>     _frameBarrier2;
 
         ref_ptr<RefBarrier>    _cullBarrier;   //add by wch
         ref_ptr<RefBarrier>    _updateBarrier; //add by wch
@@ -626,10 +630,10 @@ friend class DrawThread; //add by wch
         Timer_t _initTime;
         Timer_t _syncTick;
         
-        void _cull_update(); //add by wch
-        void _cull_updateInstrumented(); //add by wch
-        void _draw(bool); //add by wch
-        void _drawInstrumented(bool); //add by wch
+        //void _cull_update(); //add by wch
+        //void _cull_updateInstrumented(); //add by wch
+        void _draw(bool,int); //add by wch
+        void _drawInstrumented(bool,int); //add by wch
 
         void _frame(bool);
         void _frameInstrumented(bool);
@@ -642,12 +646,13 @@ friend class DrawThread; //add by wch
         bool _shareLens;
         bool _shareView;
         
-        bool _done;
+        int _done;
 		
         bool _removeCallback( std::vector < ref_ptr<Callback> > &callbackList, Callback *callback );
         
         ref_ptr<Cull_UpdateThread> _cull_updatethread;
         ref_ptr<DrawThread>        _drawthread;
+		bool _vrHMD;//
 };
 
 class PR_EXPORT Cull_UpdateThread: public CRCore::crThread, public Referenced //add by wch

@@ -529,8 +529,7 @@ void crStartHandler::run(/*CRGUI::crImageStage *main*/)
 		//if(main) main->getWindow()->_doMessaging();
 		doMessaging();
 	}
-	while (!m_viewer->done());
-	crBlockDetectThread::getInstance()->clear();
+	while (!m_cullAndUpdThread->done());
 	m_running = false;
    //m_viewer->draw();
 	//CRCore::notify(CRCore::ALWAYS)<<"crStartHandler::run() m_viewer->done()"<<std::endl;
@@ -591,14 +590,14 @@ void crStartHandler::run(/*CRGUI::crImageStage *main*/)
 
 	//m_cullAndUpdThread->done();
 	//m_viewer->releaseUpdateThreads();
-	while( m_cullAndUpdThread->isRunning() )
-	{
-		CRCore::crThread::yieldCurrentThread();
-	}
+	//while( m_cullAndUpdThread->isRunning() )
+	//{
+	//	CRCore::crThread::yieldCurrentThread();
+	//}
 	m_cullAndUpdThread = NULL;
 
 	m_viewer->sync();
-
+	crBlockDetectThread::getInstance()->clear();
 	CRCore::notify(CRCore::ALWAYS)<<"crStartHandler::run() end"<<std::endl;
 
 ///////////////////////////////////////////////
@@ -619,6 +618,7 @@ void crStartHandler::run(/*CRGUI::crImageStage *main*/)
 void crStartHandler::startCullAndUpdThread()
 {
 	CRCore::crThread::init();
+	m_cullAndUpdThread->setDone(false);
 	/*int status = */m_cullAndUpdThread->start();
 	//assert(status == 0);
 }
@@ -639,11 +639,11 @@ void crStartHandler::end()
 
 void crCullAndUpdThread::run()
 {
-	m_done = false;
 	do
 	{
 	    m_viewer->cull_update();
 	}while (!m_viewer->done());
+	m_done = true;
 /////////////////////////
 /*
 	CRUtil::crAISystemUpdater::getInstance()->aiUpdateBlock();

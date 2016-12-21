@@ -245,6 +245,7 @@ class PR_EXPORT CameraGroup : public Referenced
         ThreadingModel         _thread_model;
         ref_ptr<RefBarrier>    _syncBarrier;
         ref_ptr<RefBarrier>    _frameBarrier;
+		ref_ptr<RefBarrier>    _frameBarrier2;
         
         ref_ptr<RefBarrier>    _cullBarrier;  //add by wch
         ref_ptr<RefBarrier>    _updateBarrier; //add by wch

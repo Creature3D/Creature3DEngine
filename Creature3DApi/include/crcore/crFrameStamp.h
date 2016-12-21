@@ -44,7 +44,7 @@ class CR_EXPORT crFrameStamp : public Referenced
         
         inline void setFrameNumber(int fnum) { m_frameNumber = fnum; }
         inline int getFrameNumber() const { return m_frameNumber; }
-        
+		inline int increaseFrameNumber() { m_frameNumber++; return m_frameNumber; }
         inline void setReferenceTime(double refTime) 
 		{
 			m_frameInterval = (m_referenceTime != 0.0) ? (refTime-m_referenceTime) : 0.0;
@@ -74,7 +74,7 @@ class CR_EXPORT crFrameStamp : public Referenced
     
         int     m_frameNumber;
         double  m_referenceTime;
-		float   m_frameInterval;   
+		double   m_frameInterval;   
 	    const Timer	*m_time;		// a timer object
         Timer_t m_lasttick;
 		int		m_fps;

@@ -50,7 +50,7 @@ class CRPRODUCER_EXPORT crSceneHandler : public Producer::Camera::SceneHandler
         {
         public:
                virtual ~Callback() {}
-               virtual void operator()(crSceneHandler&, Producer::Camera &) = 0;             
+               virtual void operator()(crSceneHandler&, Producer::Camera &,int vreye = 0) = 0;             
         };
         
         virtual void clear(Producer::Camera& camera)
@@ -65,13 +65,15 @@ class CRPRODUCER_EXPORT crSceneHandler : public Producer::Camera::SceneHandler
         Callback* getClearCallback();
         const Callback* getClearCallback() const;
 
-        inline virtual void cull(Producer::Camera& camera)
+        inline virtual void cull(Producer::Camera& camera,int vreye)
         {
-            if (m_cullCallback.valid()) (*m_cullCallback)(*this,camera);
-            else cullImplementation(camera);
+			if (vreye==2)
+				CRCore::crFrameStamp::getInstance()->increaseFrameNumber();
+            if (m_cullCallback.valid()) (*m_cullCallback)(*this,camera,vreye);
+            else cullImplementation(camera,vreye);
         }
 
-        inline virtual void cullImplementation(Producer::Camera& camera);
+        inline virtual void cullImplementation(Producer::Camera& camera,int vreye);
 
         void setCullCallback(Callback* callback);
         Callback* getCullCallback();
@@ -90,7 +92,7 @@ class CRPRODUCER_EXPORT crSceneHandler : public Producer::Camera::SceneHandler
 		Callback* getUpdateCallback();
 		const Callback* getUpdateCallback() const;
 
-        inline virtual void draw(Producer::Camera& camera)
+        inline virtual void draw(Producer::Camera& camera, int vreye)
         {
 			//if (m_cleanUpOnNextFrame && m_sceneView.valid())
 			//{
@@ -104,15 +106,15 @@ class CRPRODUCER_EXPORT crSceneHandler : public Producer::Camera::SceneHandler
 				//{
 				//	m_sceneView->flushAllDeletedObjects();
 				//}
-				if (m_drawCallback.valid()) (*m_drawCallback)(*this,camera);
-				else drawImplementation(camera);
+				if (m_drawCallback.valid()) (*m_drawCallback)(*this,camera,vreye);
+				else drawImplementation(camera,vreye);
 
 				//m_flushOfAllDeletedObjectsOnNextFrame = false;
 			//}
 			CRCore::crBrain::getInstance()->gameLoop(1);//ÔÝÍ£DrawThread
         }
         
-        inline virtual void drawImplementation(Producer::Camera& camera);
+        inline virtual void drawImplementation(Producer::Camera& camera,int vreye);
 
         void setDrawCallback(Callback* callback) { m_drawCallback = callback; }
         Callback* getDrawCallback() { return m_drawCallback.get(); }
@@ -158,7 +160,7 @@ class CRPRODUCER_EXPORT crSceneHandler : public Producer::Camera::SceneHandler
 
 };
 
-inline void crSceneHandler::cullImplementation(Producer::Camera &cam) 
+inline void crSceneHandler::cullImplementation(Producer::Camera &cam,int vreye) 
 {
 	s_mutex.lock();
 	//m_sceneView->getProjectionMatrix()->set(cam.getProjectionMatrix());
@@ -174,26 +176,33 @@ inline void crSceneHandler::cullImplementation(Producer::Camera &cam)
 	//CRCore::crVector4f clear_color;
 	//cam.getClearColor(clear_color[0],clear_color[1],clear_color[2],clear_color[3]);
 	//m_sceneView->setClearColor(clear_color);
-
-	m_sceneView->cull();
-
-	if(CRCore::crDisplaySettings::instance()->getRunMode() < CRCore::crDisplaySettings::Robot)
+	if (vreye == 2)
 	{
-		crKeyboardMouseHandle::getInstance()->frameBlock();
+		m_sceneView->getProjectionMatrix()->set(cam.getProjectionMatrix());
+		m_sceneView->getViewMatrix()->set(cam.getPositionAndAttitudeMatrix());
+		m_sceneView->getCamera()->computerViewInverseMatrix();
 	}
+
+	m_sceneView->cull(vreye);
+
+	//if(CRCore::crDisplaySettings::instance()->getRunMode() < CRCore::crDisplaySettings::Robot)
+	//{
+	//	crKeyboardMouseHandle::getInstance()->frameBlock();
+	//}
 
 	s_mutex.unlock();
 
 	//CRCore::notify(CRCore::FATAL)<<"crSceneHandler::cullImplementation 1"<<std::endl;
 }
 
-inline void crSceneHandler::drawImplementation(Producer::Camera &cam) 
+inline void crSceneHandler::drawImplementation(Producer::Camera &cam,int vreye) 
 {
 	//CRCore::notify(CRCore::FATAL)<<"crSceneHandler::drawImplementation 0"<<std::endl;
 
 	// dipatch the draw traversal of the scene graph
-	m_sceneView->draw();
-
+	m_sceneView->draw(vreye);
+	if (vreye == 2)
+		return;
 	// for the database pager now manage any GL object operations that are required.
 	CRIOManager::crDatabasePager* dp = CRIOManager::crRegistry::instance()->getDatabasePager();
 	if (dp)

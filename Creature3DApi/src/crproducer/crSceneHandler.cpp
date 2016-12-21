@@ -39,7 +39,7 @@ public:
 	{
 	}
 
-	virtual void operator()(crSceneHandler &handler, Producer::Camera &camera)
+	virtual void operator()(crSceneHandler &handler, Producer::Camera &camera,int vreye)
 	{
 		double t = crFrameStamp::getInstance()->getReferenceTime();
 
@@ -56,7 +56,7 @@ public:
 		m_t0 = t;
 
 		// call the scene handler's draw function
-		handler.drawImplementation(camera);        
+		handler.drawImplementation(camera, vreye);
 
 		// compute the blur factor
 		double s = powf(0.2, dt / m_persistence);
@@ -167,8 +167,11 @@ void crSceneHandler::updateImplementation(Producer::Camera& camera)
 	}
 
 	s_mutex.lock();
+	
 	m_sceneView->getProjectionMatrix()->set(camera.getProjectionMatrix());
 	m_sceneView->getViewMatrix()->set(camera.getPositionAndAttitudeMatrix());
+	m_sceneView->getCamera()->computerViewInverseMatrix();
+
 	int x, y;
 	unsigned int w, h;
 	camera.getProjectionRectangle( x, y, w, h );
@@ -200,7 +203,7 @@ void crSceneHandler::updateImplementation(Producer::Camera& camera)
 	{
 		CRParticle::crParticleSystemUpdater::getInstance()->frameBlock();
 		rbody::crCharacterSystemUpdater::getInstance()->frameBlock();
-		//crKeyboardMouseHandle::getInstance()->frameBlock();
+		crKeyboardMouseHandle::getInstance()->frameBlock();
 	}
 
 	if(crFrameStamp::getInstance()->getFrameNumber()>INITFRAMENUMBER)

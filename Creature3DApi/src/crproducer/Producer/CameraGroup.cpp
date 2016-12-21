@@ -197,38 +197,52 @@ void CameraGroup::cancelCameraThreads()// add by wch
 	if(_thread_model == ThreadPerCameraEx)
 	{
 		int nthreads = _cfg->getNumberOfCameras();
-		int circles = 0;
+		for (int i = 0; i < nthreads; i++)
+		{
+			_cfg->getCamera(i)->setDone(1);
+		}
 		while(1)
 		{
-			circles++;
-			CRCore::crThread::sleep(1);
+			CRCore::crThread::sleep(10);
 			if( _updateBarrier->numThreadsCurrentlyBlocked() )
-				_updateBarrier->block();
+				_updateBarrier->release();
 			if( _cullBarrier->numThreadsCurrentlyBlocked() )
-				_cullBarrier->block();
-			if(circles>100)
-			{
-				_updateBarrier->invalidate();
-				_cullBarrier->invalidate();
-			}
+				_cullBarrier->release();
+			if (_drawBarrier->numThreadsCurrentlyBlocked())
+				_drawBarrier->release();
 
-			if( _drawBarrier->numThreadsCurrentlyBlocked() == nthreads &&
-				_frameBarrier->numThreadsCurrentlyBlocked() == nthreads )
+			//if( _drawBarrier->numThreadsCurrentlyBlocked() == nthreads &&
+			//	_frameBarrier->numThreadsCurrentlyBlocked() == nthreads )
+			//{
+			//	break;
+			//}
+			if ( _syncBarrier->numThreadsCurrentlyBlocked() == nthreads )
 			{
-				//std::cerr << "blocktype = 3" << std::endl;
-				_updateBarrier = NULL;
-				_cullBarrier = NULL;
 				break;
 			}
 		}
-		for( int i = 0; i < nthreads; i++ )
+		while (1)
 		{
-			_cfg->getCamera(i)->setDone(true);
+			CRCore::crThread::sleep(10);
+			if (_frameBarrier2->numThreadsCurrentlyBlocked())
+				_frameBarrier2->release();
+			if (_frameBarrier->numThreadsCurrentlyBlocked())
+				_frameBarrier->release();
+			if (_drawBarrier->numThreadsCurrentlyBlocked())
+				_drawBarrier->release();
+			if (_syncBarrier->numThreadsCurrentlyBlocked() == nthreads * 2)
+			{
+				break;
+			}
 		}
+		//for( int i = 0; i < nthreads; i++ )
+		//{
+		//	_cfg->getCamera(i)->setDone(true);
+		//}
 		//CRCore::crThread::sleep(1);
-		_drawBarrier->release();
+		//_drawBarrier->release();
 		//std::cerr << "_drawBarrier->release()" << std::endl;
-		_frameBarrier->release();
+		//_frameBarrier->release();
 		//std::cerr << "_frameBarrier->release()" << std::endl;
 	}
 		//_initVariables();
@@ -300,7 +314,7 @@ bool CameraGroup::realize(Producer::Window parentWnd,Producer::Window renderWnd)
             Camera *cam = _cfg->getCamera(i);
 			//cam->setRenderSurface(RenderSurface::getRenderSurface(i));
             cam->setSyncBarrier( _syncBarrier.get() );
-            cam->setFrameBarrier( _frameBarrier.get() );
+            cam->setFrameBarrier( _frameBarrier.get(),NULL );
             if( _stack_size != 0 )
                 cam->setStackSize( _stack_size );
             cam->setInitTime( _initTime );
@@ -319,6 +333,7 @@ bool CameraGroup::realize(Producer::Window parentWnd,Producer::Window renderWnd)
 
 		if(!_syncBarrier) _syncBarrier  = new RefBarrier( 2*nthreads+1 );
 		if(!_frameBarrier) _frameBarrier = new RefBarrier( 2*nthreads );
+		if (!_frameBarrier2) _frameBarrier2 = new RefBarrier(2 * nthreads);
 
 		if(!_cullBarrier) _cullBarrier = new RefBarrier( nthreads + 1 );
 		if(!_updateBarrier) _updateBarrier = new RefBarrier( nthreads + 1 );
@@ -331,7 +346,7 @@ bool CameraGroup::realize(Producer::Window parentWnd,Producer::Window renderWnd)
 			cam->initChildThread();
 
 			cam->setSyncBarrier( _syncBarrier.get() );
-			cam->setFrameBarrier( _frameBarrier.get() );
+			cam->setFrameBarrier(_frameBarrier.get(), _frameBarrier2.get());
 
 			cam->setCullBarrier( _cullBarrier.get() );
 			cam->setUpdateBarrier( _updateBarrier.get() );
@@ -415,7 +430,8 @@ void CameraGroup::_cull_update() //add by wch
 	{
 		for( unsigned int i = 0; i < _cfg->getNumberOfCameras(); i++ )
 		{
-			_cfg->getCamera(i)->cull_update();
+			_cfg->getCamera(i)->update();
+			_cfg->getCamera(i)->cull();
 		}
 	}
 	else if( _thread_model == ThreadPerCameraEx )
@@ -448,7 +464,8 @@ void CameraGroup::_cull_updateInstrumented() //add by wch
 		std::map <RenderSurface *, Camera *> u;
 		for( unsigned int i = 0; i < _cfg->getNumberOfCameras(); i++ ) 
 		{
-			_cfg->getCamera(i)->cull_update();
+			_cfg->getCamera(i)->update();
+			_cfg->getCamera(i)->cull();
 		}
 
 		/*if( markStartOfUpdate )
