@@ -185,10 +185,10 @@ inline void crSceneHandler::cullImplementation(Producer::Camera &cam,int vreye)
 
 	m_sceneView->cull(vreye);
 
-	//if(CRCore::crDisplaySettings::instance()->getRunMode() < CRCore::crDisplaySettings::Robot)
-	//{
-	//	crKeyboardMouseHandle::getInstance()->frameBlock();
-	//}
+	if(vreye !=1 && CRCore::crDisplaySettings::instance()->getRunMode() < CRCore::crDisplaySettings::Robot)
+	{
+		crKeyboardMouseHandle::getInstance()->frameBlock();
+	}
 
 	s_mutex.unlock();
 

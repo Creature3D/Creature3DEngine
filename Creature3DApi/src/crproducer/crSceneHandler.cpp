@@ -203,7 +203,6 @@ void crSceneHandler::updateImplementation(Producer::Camera& camera)
 	{
 		CRParticle::crParticleSystemUpdater::getInstance()->frameBlock();
 		rbody::crCharacterSystemUpdater::getInstance()->frameBlock();
-		crKeyboardMouseHandle::getInstance()->frameBlock();
 	}
 
 	if(crFrameStamp::getInstance()->getFrameNumber()>INITFRAMENUMBER)

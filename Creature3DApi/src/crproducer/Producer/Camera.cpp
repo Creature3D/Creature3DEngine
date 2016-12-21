@@ -75,7 +75,7 @@ Camera::Camera( void )
     _initialized = false;
 
     _done = 0;
-	_vrHMD = true;
+	_vrHMD = false;
 }
 
 void Camera::initChildThread()
@@ -1471,7 +1471,6 @@ void DrawThread::run( void ) //add by wch
 			{
 				_camera->_frameBarrier2->block();
 				_camera->draw(false,1);
-				//_camera->advance();
 				_camera->_frameBarrier->block();
 				_camera->draw(false,2);
 				_camera->advance();
