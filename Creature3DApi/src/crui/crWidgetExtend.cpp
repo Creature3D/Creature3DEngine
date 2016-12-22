@@ -3106,6 +3106,10 @@ m_canDragImage(true),
 m_imageDirty(false)
 {
 	//m_rectOffset.set(0.0f,0.0f,0.0f,0.0f);
+	for (int i = 0; i < 8; i++)
+	{
+		m_mode[i] = crTexEnv::MODULATE;
+	}
 }
 crImageBoxWidgetNode::crImageBoxWidgetNode(const crImageBoxWidgetNode& node,const crCopyOp& copyop):
 crWidgetNode(node,copyop),//SHALLOW_COPY会存在问题
@@ -3117,6 +3121,7 @@ m_imageStateSet(NULL)
 	for (int i = 0; i < 8; i++)
 	{
 		m_imageFile[i] = node.m_imageFile[i];
+		m_mode[i] = node.m_mode[i];
 	}
 }
 crImageBoxWidgetNode::~crImageBoxWidgetNode()
@@ -3186,13 +3191,14 @@ void crImageBoxWidgetNode::initWindow()
 	//imageObject->addDrawable(quad);
 	//addChild(imageObject);
 }
-void crImageBoxWidgetNode::setImageName(const std::string &image,unsigned int i)
+void crImageBoxWidgetNode::setImageName(const std::string &image, unsigned int i, CRCore::crTexEnv::Mode mode)
 {
 	if(i<8)
 	{
 		if(m_imageFile[i].compare(image)!=0)
 		{
 			m_imageFile[i] = image;
+			if(i>0)m_mode[i] = mode;
 			if(m_imageStateSet.valid())
 			{
 				dirtyImage();
@@ -3200,9 +3206,9 @@ void crImageBoxWidgetNode::setImageName(const std::string &image,unsigned int i)
 		}
 	}
 }
-void crImageBoxWidgetNode::setImage(CRCore::crImage *image,unsigned int i)
+void crImageBoxWidgetNode::setImage(CRCore::crImage *image, unsigned int i, CRCore::crTexEnv::Mode mode)
 {
-	setImageName("RTT",i);
+	setImageName("RTT", i, mode);
 	ref_ptr<crTexture2D> tex2d = new crTexture2D;
 	tex2d->setFilter(crTexture2D::MIN_FILTER, crTexture::LINEAR);
 	tex2d->setFilter(crTexture2D::MAG_FILTER, crTexture::LINEAR);
@@ -3259,10 +3265,7 @@ void crImageBoxWidgetNode::updateData()
 					texenv = dynamic_cast<crTexEnv *>(m_imageStateSet->getTextureAttribute(i,crStateAttribute::TEXENV));
 					if(!texenv)
 					{
-						//if(i == 0)
-						//	texenv = new crTexEnv(crTexEnv::DECAL);
-						//else
-						texenv = new crTexEnv(crTexEnv::MODULATE);
+						texenv = new crTexEnv(m_mode[i]);
 						m_imageStateSet->setTextureAttribute(i,texenv,crStateAttribute::ON);
 					}
 					if(!m_imageQuad->getTexCoordArray(i))
@@ -3273,11 +3276,8 @@ void crImageBoxWidgetNode::updateData()
 			}
 			else
 			{
-				if(tex2d)
-				{
-					m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXTURE);
-					m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXENV);
-				}
+				m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXTURE);
+				m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXENV);
 			}
 		}
 		m_imageObject->setVisiable(visable);
@@ -4678,6 +4678,10 @@ m_imageDirty(false),
 m_selected(false),
 m_data(0)
 {
+	for (int i = 0; i < 8; i++)
+	{
+		m_mode[i] = crTexEnv::MODULATE;
+	}
 }
 crListControlNode::crListControlNode(const crListControlNode& node,const crCopyOp& copyop):
 crTextAttrWidgetNode(node,copyop),//SHALLOW_COPY会存在问题
@@ -4691,6 +4695,7 @@ m_data(node.m_data)
 	for (int i = 0; i < 8; i++)
 	{
 		m_imageFile[i] = node.m_imageFile[i];
+		m_mode[i] = node.m_mode[i];
 	}
 }
 crListControlNode::~crListControlNode()
@@ -4853,10 +4858,11 @@ void crListControlNode::updateData()
 					texenv = dynamic_cast<crTexEnv *>(m_imageStateSet->getTextureAttribute(i,crStateAttribute::TEXENV));
 					if(!texenv)
 					{
-						if(i == 0)
-							texenv = new crTexEnv(crTexEnv::MODULATE);
-						else
-							texenv = new crTexEnv(crTexEnv::ADD);
+						//if(i == 0)
+						//	texenv = new crTexEnv(crTexEnv::MODULATE);
+						//else
+						//	texenv = new crTexEnv(crTexEnv::ADD);
+						texenv = new crTexEnv(m_mode[i]);
 						m_imageStateSet->setTextureAttribute(i,texenv,crStateAttribute::ON);
 					}
 					if(!m_imageQuad->getTexCoordArray(i))
@@ -4867,11 +4873,8 @@ void crListControlNode::updateData()
 			}
 			else
 			{
-				if(tex2d)
-				{
-					m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXTURE);
-					m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXENV);
-				}
+				m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXTURE);
+				m_imageStateSet->removeTextureAttribute(i,crStateAttribute::TEXENV);
 			}
 		}
 		m_imageObject->setVisiable(visable);
@@ -4890,13 +4893,14 @@ void crListControlNode::setTextPosOffset(CRCore::crVector2 &offset)
 	}
 }
 ////Image
-void crListControlNode::setImageName(const std::string &image,unsigned int i)
+void crListControlNode::setImageName(const std::string &image, unsigned int i, CRCore::crTexEnv::Mode mode)
 {
 	if(i<8)
 	{
 		if(m_imageFile[i].compare(image)!=0)
 		{
 			m_imageFile[i] = image;
+			if(i>0)m_mode[i] = mode;
 			if(m_imageStateSet.valid())
 			{
 				dirtyImage();

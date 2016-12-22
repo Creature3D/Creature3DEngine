@@ -20,6 +20,7 @@
 #include <CRText/crText.h>
 #include <CRCore/crMultiSwitch.h>
 #include <CRCore/crScissor.h>
+#include <CRCore/crTexEnv.h>
 #include "rcfg/ConfigScriptOO.h"
 #include <string.h>
 namespace CRUI {
@@ -352,8 +353,8 @@ public:
 	virtual void kernelKeyDown(int key,unsigned int modKeyMask);
 	virtual void initWindow();
 	virtual void updateData();
-	void setImageName(const std::string &image,unsigned int i = 0);
-	void setImage(CRCore::crImage *image,unsigned int i = 0);
+	void setImageName(const std::string &image, unsigned int i = 0, CRCore::crTexEnv::Mode mode = CRCore::crTexEnv::MODULATE);
+	void setImage(CRCore::crImage *image, unsigned int i = 0, CRCore::crTexEnv::Mode mode = CRCore::crTexEnv::MODULATE);
 	const std::string &getImageName(unsigned int i = 0)const;
 	void clearImage();
 	//void setRectOffset(const CRCore::crVector4f &offset);
@@ -367,6 +368,7 @@ public:
 protected:
 	virtual ~crImageBoxWidgetNode();
 	std::string m_imageFile[8];
+	CRCore::crTexEnv::Mode m_mode[8];
 	CRCore::ref_ptr<CRCore::crObject> m_imageObject;
 	CRCore::ref_ptr<CRCore::crGeometry> m_imageQuad;
 	CRCore::ref_ptr<CRCore::crStateSet> m_imageStateSet;
@@ -597,7 +599,7 @@ public:
 	void setRect(CRCore::crVector4f &rect);
 	virtual void updateData();
 	///////Image
-	void setImageName(const std::string &image,unsigned int i = 0);
+	void setImageName(const std::string &image, unsigned int i = 0, CRCore::crTexEnv::Mode mode = CRCore::crTexEnv::ADD);
 	const std::string &getImageName(unsigned int i = 0)const;
 	void setRectOffset(const CRCore::crVector4f &offset);
 	const CRCore::crVector4f &getRectOffset() const;
@@ -623,6 +625,7 @@ public:
 protected:
 	virtual ~crListControlNode();
 	std::string m_imageFile[8];
+	CRCore::crTexEnv::Mode m_mode[8];
 	CRCore::ref_ptr<CRCore::crObject> m_imageObject;
 	CRCore::ref_ptr<CRCore::crGeometry> m_imageQuad;
 	CRCore::ref_ptr<CRCore::crStateSet> m_imageStateSet;
