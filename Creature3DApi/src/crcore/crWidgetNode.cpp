@@ -219,7 +219,7 @@ crCanvasNode::~crCanvasNode()
 }
 void crCanvasNode::releaseObjects(crState* state)
 {
-	crFilterRenderManager::getInstance()->closeCanvas(this);
+	//crFilterRenderManager::getInstance()->closeCanvas(this);
 	crWidgetNode::releaseObjects(state);
 }
 void crCanvasNode::initWindow()

@@ -229,15 +229,18 @@ void crLoadManager::requestAddNode(CRCore::crGroup* parent,CRCore::crNode* loade
 		{
 			loadedNode = dummyGroup->getChild(0);
 		}
-		crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
-		if(dp->getInited())
+		if (loadedNode)
 		{
-			//CRCore::notify(CRCore::FATAL)<<"crLoadManager::requestAddNode() "<<loadedNode->getName()<<std::endl;
-			dp->requestAddNode(parent,loadedNode,needCompile);
-		}
-		else
-		{
-			parent->addChild(loadedNode);
+			crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
+			if (dp->getInited())
+			{
+				//CRCore::notify(CRCore::FATAL)<<"crLoadManager::requestAddNode() "<<loadedNode->getName()<<std::endl;
+				dp->requestAddNode(parent, loadedNode, needCompile);
+			}
+			else
+			{
+				parent->addChild(loadedNode);
+			}
 		}
 	}
 }

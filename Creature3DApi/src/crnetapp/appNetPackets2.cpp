@@ -5664,25 +5664,28 @@ void crPlayerEventPacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Game)
 	{
-		int playerid = m_streamBuf->_readInt();
-		int roleid = m_streamBuf->_readInt();
-		_crInt64 msg = m_streamBuf->_readInt64();
-		if(playerid == crMyPlayerData::getInstance()->getPlayerID())
+		if (crRunGameHandle::getInstance()->isInBattle() || crRunGameHandle::getInstance()->isInManor())
 		{
-			ref_ptr<crRole> role = crMyPlayerData::getInstance()->getRole(roleid);
-			if(role.valid()) role->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
-		}
-		else
-		{
-			crMyPlayerData::RoleNpcPair roleNpcPair;
-			if(crMyPlayerData::getInstance()->findInRangePlayer(playerid,roleid,roleNpcPair))
+			int playerid = m_streamBuf->_readInt();
+			int roleid = m_streamBuf->_readInt();
+			_crInt64 msg = m_streamBuf->_readInt64();
+			if (playerid == crMyPlayerData::getInstance()->getPlayerID())
 			{
-				roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				ref_ptr<crRole> role = crMyPlayerData::getInstance()->getRole(roleid);
+				if (role.valid()) role->doEvent(msg, MAKEINT64(m_streamBuf.get(), netType));
 			}
-			//else if(crMyPlayerData::getInstance()->findOutRangePlayer(playerid,roleNpcPair))
-			//{
-			//	roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
-			//}
+			else
+			{
+				crMyPlayerData::RoleNpcPair roleNpcPair;
+				if (crMyPlayerData::getInstance()->findInRangePlayer(playerid, roleid, roleNpcPair))
+				{
+					roleNpcPair.first->doEvent(msg, MAKEINT64(m_streamBuf.get(), netType));
+				}
+				//else if(crMyPlayerData::getInstance()->findOutRangePlayer(playerid,roleNpcPair))
+				//{
+				//	roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				//}
+			}
 		}
 	}
 }
