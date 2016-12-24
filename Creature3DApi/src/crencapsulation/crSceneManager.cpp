@@ -651,7 +651,6 @@ crSceneManager::crSceneManager():
 m_currentSaveIndex(0)
 //m_done(true)
 {
-	//setSchedulePriority(THREAD_PRIORITY_LOW);
 }
 crSceneManager::~crSceneManager() 
 {

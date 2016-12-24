@@ -27,7 +27,6 @@ crWindowContainer::WindowThreadList crWindowContainer::m_windowThreads;
 CRCore::crCriticalMutex crWindowContainer::m_threadsMutex;
 crWindowContainer::crWindowContainer( crImageStage* stage ):m_stage(stage),m_close(false)
 {
-	//setSchedulePriority(THREAD_PRIORITY_LOW);
 }
 crWindowContainer::~crWindowContainer()
 {
