@@ -498,7 +498,7 @@ void crDownloadThread::run()
 	{
 #endif
 		m_done = false;
-		//setSchedulePriority(THREAD_PRIORITY_HIGH);
+		setSchedulePriority(THREAD_PRIORITY_HIGH);
 		while(!m_done)
 		{
 			if(!m_download.valid())

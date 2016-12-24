@@ -1393,7 +1393,7 @@ void Cull_UpdateThread::run( void ) //add by wch
 		std::cerr << "Camera::run() : Threaded Camera requires a Barrier\n";
 		return;
 	}
-	//setSchedulePriority(THREAD_PRIORITY_HIGH);
+	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	_camera->_syncBarrier->block();
 	//_camera->_done = false;
 	while (!_camera->_done)
@@ -1452,7 +1452,7 @@ void DrawThread::run( void ) //add by wch
 		std::cerr << "Camera::run() : Threaded Camera requires a Barrier\n";
 		return;
 	}
-	//setSchedulePriority(THREAD_PRIORITY_HIGH);
+	setSchedulePriority(THREAD_PRIORITY_HIGH);
 	_camera->_initialize();
 	_camera->_syncBarrier->block();
 	//_camera->_done = false;

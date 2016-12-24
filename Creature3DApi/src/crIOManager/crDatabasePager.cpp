@@ -351,7 +351,7 @@ void crDatabasePager::requestNodeFile(const std::string& fileName,CRCore::crGrou
             m_startThreadCalled = true;
             m_done = false;
             //CRCore::notify(CRCore::DEBUG_INFO)<<"crDatabasePager::startThread()"<<std::endl;
-            //setSchedulePriority(m_threadPriorityDuringFrame);
+            setSchedulePriority(m_threadPriorityDuringFrame);
             startThread();
         }
                 
@@ -370,8 +370,8 @@ void crDatabasePager::signalBeginFrame(/*const CRCore::crFrameStamp* framestamp*
 
     updateFrameBlock(1);
 
-    //if (m_numFramesActive>0 && m_threadPriorityDuringFrame!=getSchedulePriority())
-    //    setSchedulePriority(m_threadPriorityDuringFrame);
+    if (m_numFramesActive>0 && m_threadPriorityDuringFrame!=getSchedulePriority())
+        setSchedulePriority(m_threadPriorityDuringFrame);
 }
 
 void crDatabasePager::signalEndFrame()
@@ -379,8 +379,8 @@ void crDatabasePager::signalEndFrame()
     //CRCore::notify(CRCore::INFO) << "signalEndFrame <<<<<<<<<<<<<<<<<<<< "<<std::endl;
     updateFrameBlock(-1);
 
-    //if (m_numFramesActive<=0 && m_threadPriorityOutwithFrame!=getSchedulePriority())
-    //    setSchedulePriority(m_threadPriorityOutwithFrame);
+    if (m_numFramesActive<=0 && m_threadPriorityOutwithFrame!=getSchedulePriority())
+        setSchedulePriority(m_threadPriorityOutwithFrame);
 
 }
 

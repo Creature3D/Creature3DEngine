@@ -235,7 +235,7 @@ crThread::crThread() {
 
     pd->uniqueId = 0;
 
-    pd->threadPriority = crThread::THREAD_PRIORITY_HIGH;//crThread::THREAD_PRIORITY_DEFAULT;
+    pd->threadPriority = crThread::THREAD_PRIORITY_DEFAULT;
 
     pd->threadPolicy = crThread::THREAD_SCHEDULE_DEFAULT;
 
