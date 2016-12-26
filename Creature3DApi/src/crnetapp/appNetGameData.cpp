@@ -3931,9 +3931,12 @@ void crScene::serverUpdate(float dt,crSceneServerCallback *sc)
 	//roomitem update
 	{
 		crInstanceItem *item;
-		GNE::LockMutex lock( m_roomItemMutex );//m_roomItemMutex->roomdatalock
-		for( RoomItemMap::iterator itr = m_roomItemMap.begin();
-			 itr != m_roomItemMap.end();
+		//GNE::LockMutex lock( m_roomItemMutex );//m_roomItemMutex->roomdatalock
+		m_roomItemMutex.acquire();
+		RoomItemMap _roomItemMap = m_roomItemMap;
+		m_roomItemMutex.release();
+		for (RoomItemMap::iterator itr = _roomItemMap.begin();
+			itr != _roomItemMap.end();
 			 ++itr )
 		{
 			room = sc->findRoom(itr->first);
