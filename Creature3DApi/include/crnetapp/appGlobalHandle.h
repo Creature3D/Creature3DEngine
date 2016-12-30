@@ -55,7 +55,8 @@ public:
 	static crGlobalData *gData();
 	static void setClient();
 	static bool isClient();
-	static bool &gOpenGameLogin();
+	static bool gOpenGameLogin();
+	static void gSetOpenGameLogin(int open);
 	static void setVersion(int ver);
 	static int getVersion();
 	static void setNewVersion(int ver);

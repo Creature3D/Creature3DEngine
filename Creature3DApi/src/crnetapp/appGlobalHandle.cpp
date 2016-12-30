@@ -45,9 +45,19 @@ bool crGlobalHandle::isClient()
 {
 	return s_isClient;
 }
-bool &crGlobalHandle::gOpenGameLogin()
+bool crGlobalHandle::gOpenGameLogin()
 {
 	return s_openGameLogin;
+}
+void crGlobalHandle::gSetOpenGameLogin(int open)
+{
+	s_openGameLogin = open;
+	char buf[16];
+	sprintf(buf, "opengamelogin %d\0", s_openGameLogin ? 1 : 0);
+	ref_ptr<crStreamBuf> stream = new crStreamBuf;
+	stream->write(buf, 16);
+	stream->seekBegin();
+	stream->saveToFile2("opengamelogin.ini");
 }
 int crGlobalHandle::getVersion()
 {
