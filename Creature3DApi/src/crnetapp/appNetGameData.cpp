@@ -3618,11 +3618,11 @@ void crScene::itemDead(crInstanceItem *item)
 				{
 					sightInfo->sendPacketToEyePlayer(packet,id);
 				}
-				else if(sightInfo->isRoleInSight(role))
-				{
-					//sightInfo->removeInSightItem(role); 
-					sightInfo->insertOutSightItem(role);
-				}
+				//else if(sightInfo->isRoleInSight(role))
+				//{
+				//	//sightInfo->removeInSightItem(role); 
+				//	sightInfo->insertOutSightItem(role);
+				//}
 			}
 			else
 			{
@@ -3632,11 +3632,11 @@ void crScene::itemDead(crInstanceItem *item)
 					sightInfo->removeEyeItem(id);
 					found = true;
 				}
-				else if(sightInfo->isItemInSight(item))
-				{
-					//sightInfo->removeInSightItem(item);
-					sightInfo->insertOutSightItem(item);
-				}
+				//else if(sightInfo->isItemInSight(item))
+				//{
+				//	//sightInfo->removeInSightItem(item);
+				//	sightInfo->insertOutSightItem(item);
+				//}
 			}
 		}
 	}
@@ -3683,7 +3683,7 @@ void crScene::itemRelive(crInstanceItem *item)
 				}
 				else if(sightInfo->isRoleInSight(role))
 				{
-					sightInfo->removeInSightItem(role);
+					sightInfo->insertDropedItem(role);
 				}
 			}
 			else
@@ -3696,7 +3696,7 @@ void crScene::itemRelive(crInstanceItem *item)
 				}
 				else if(sightInfo->isItemInSight(item))
 				{
-					sightInfo->removeInSightItem(item);
+					sightInfo->insertDropedItem(item);
 				}
 			}
 		}

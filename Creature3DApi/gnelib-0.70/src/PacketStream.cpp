@@ -228,7 +228,7 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 	else
 	{
 		gnedbg(2, "outRel PacketBuf Overflow, droped");
-		std::cerr << "PacketStream::writePacket outRel PacketBuf Overflow,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
+		//std::cerr << "PacketStream::writePacket outRel PacketBuf Overflow,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
 	}
   } 
   else 
@@ -248,7 +248,7 @@ void PacketStream::writePacket(const Packet& packet, bool reliable)
 	else
 	{
 		gnedbg(2, "outUnrel PacketBuf Overflow, droped");
-		std::cerr << "PacketStream::writePacket outUnrel PacketBuf Overflow,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
+		//std::cerr << "PacketStream::writePacket outUnrel PacketBuf Overflow,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
 	}
   }
   outQCtrl.release();
@@ -579,7 +579,7 @@ void PacketStream::addIncomingPacket(Packet* packet)
 		PacketParser::destroyPacket( packet );
 		//gnedbg(2, "Received a packet, but droped");
 		//printf("IncomingPacket buf³¬ÏÞ\n");
-		std::cerr << "PacketStream::addIncomingPacket Received a packet, but droped,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
+		//std::cerr << "PacketStream::addIncomingPacket Received a packet, but droped,MaxPacketBufSize=" << m_maxPacketBufSize << std::endl;
 	}
     inQCtrl.release();
   } 
