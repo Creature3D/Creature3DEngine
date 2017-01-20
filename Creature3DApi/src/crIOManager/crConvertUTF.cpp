@@ -31,6 +31,46 @@ std::string convertUTF16toUTF8(const wchar_t* s){return convertUTF16toUTF8(s, wc
 std::wstring convertUTF8toUTF16(const std::string& s){return convertUTF8toUTF16(s.c_str(), s.length());}
 std::wstring convertUTF8toUTF16(const char* s){return convertUTF8toUTF16(s, strlen(s));}
 
+bool isGBCode(const std::string& strIn)
+{
+	unsigned char ch1;
+	unsigned char ch2;
+
+	if (strIn.size() >= 2)
+	{
+		ch1 = (unsigned char)strIn.at(0);
+		ch2 = (unsigned char)strIn.at(1);
+		if (ch1 >= 176 && ch1 <= 247 && ch2 >= 160 && ch2 <= 254)
+			return true;
+		else return false;
+	}
+	else return false;
+}
+bool isGB2312(char head, char tail)
+{
+	int iHead = head & 0xff;
+	int iTail = tail & 0xff;
+	return ((iHead >= 0xa1 && iHead <= 0xf7 &&
+		iTail >= 0xa1 && iTail <= 0xfe) ? true : false);
+}
+
+bool isGBK(char head, char tail)
+{
+	int iHead = head & 0xff;
+	int iTail = tail & 0xff;
+	return ((iHead >= 0x81 && iHead <= 0xfe &&
+		(iTail >= 0x40 && iTail <= 0x7e ||
+		iTail >= 0x80 && iTail <= 0xfe)) ? true : false);
+}
+
+bool isBIG5(char head, char tail)
+{
+	int iHead = head & 0xff;
+	int iTail = tail & 0xff;
+	return ((iHead >= 0xa1 && iHead <= 0xf9 &&
+		(iTail >= 0x40 && iTail <= 0x7e ||
+		iTail >= 0xa1 && iTail <= 0xfe)) ? true : false);
+}
 std::string convertUTF16toUTF8(const wchar_t* source, unsigned sourceLength)
 {
 #if defined(WIN32) && !defined(__CYGWIN__)
@@ -71,8 +111,8 @@ std::wstring convertUTF8toUTF16(const char* source, unsigned sourceLength)
     {
         return std::wstring();
     }
-
-	int destLen = MultiByteToWideChar(/*CP_ACP*/CP_GB2312, 0, source, sourceLength, 0, 0);
+	int cp = /*(sourceLength>1 && isBIG5(source[0], source[1])) ? CP_BIG5:*/CP_GB2312;
+	int destLen = MultiByteToWideChar(/*CP_ACP*/cp, 0, source, sourceLength, 0, 0);
     if (destLen <= 0)
     {
         CRCore::notify(CRCore::WARN) << "Cannot convert UTF-8 string to UTF-16." << std::endl;
@@ -81,7 +121,7 @@ std::wstring convertUTF8toUTF16(const char* source, unsigned sourceLength)
 
     std::wstring sDest(destLen, L'\0');
 	//sDest.resize(destLen+1,0);
-	destLen = MultiByteToWideChar(/*CP_ACP*/CP_GB2312, 0, source, sourceLength, &sDest[0], destLen);
+	destLen = MultiByteToWideChar(/*CP_ACP*/cp, 0, source, sourceLength, &sDest[0], destLen);
 
     if (destLen <= 0)
     {
