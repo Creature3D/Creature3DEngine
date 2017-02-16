@@ -129,12 +129,12 @@ int crNetManager::clientReconnectToServerCircle(const std::string &hostip, const
 	unsigned int connectTimes = 0;
 	while(code ==0 && connectTimes<trytimes)
 	{
+		code = createClient(6000);
 		if(code==0)
 		{
-			CRCore::crThread::sleep(10);
+			CRCore::crThread::sleep(1000);
 			connectTimes += 1;
 		}
-        code = createClient(5000);
 	}
 	return code;
 }

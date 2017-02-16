@@ -12501,13 +12501,13 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 				//bool hitValid = false;
 				//bool fireSight = false;
 				//bool hitSight = false;
-				//攻击有效性判定
-				//如果受击者不在攻击者视野范围内并且攻击者也不在收击者视野范围内则无效
-				////crVector3 mypos = role->getPosition();
+				////攻击有效性判定
+				////如果受击者不在攻击者视野范围内并且攻击者也不在收击者视野范围内则无效
+				////crVector3 mypos = fireRole->getPosition();
 				////crVector3 hitpos = m_this->getPosition();
 				////float dist = (hitpos - mypos).length();
 				////float attackdist = role->getAttackDistance(m_this);
-				////if(dist<attackdist+5.0f)
+				////if (dist < attackdist + 5.0f)
 				////{
 				////	hitValid = true;
 				////}

@@ -787,7 +787,7 @@ void crNetBridge::onConnectFailure( GNE::Connection &conn, const GNE::Error &err
 
 void crNetBridge::onTimeout( GNE::Connection& conn )
 {
-	//CRCore::notify(CRCore::DEBUG_INFO)<<"onTimeout"<<std::endl;
+	//CRCore::notify(CRCore::ALWAYS)<< "onTimeout" << std::endl;
 	if(m_isServer)
 	{
         removeConnection(&conn);
