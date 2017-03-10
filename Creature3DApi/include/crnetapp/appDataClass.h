@@ -86,6 +86,10 @@ public:
 	//inline CRCore::ref_ptr<CREncapsulation::crTableIO> gGMTable() { return g_gmTable.get(); }
 	inline CRCore::ref_ptr<CREncapsulation::crTableIO> gGlobalTable(int id)
 	{ TableIOMap::iterator itr = g_globalTables.find(id); return itr != g_globalTables.end()?itr->second.get():NULL; }
+	inline std::string gGlobalTableFile(int id)
+	{
+		TableFileMap::iterator itr = g_globalTableFileMap.find(id); return itr != g_globalTableFileMap.end() ? itr->second : "";
+	}
 	inline std::string gGameGlobalValue(int id,int viplv = 0)
 	{
 		CREncapsulation::crTableIO::StrVec record;

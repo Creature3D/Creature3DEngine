@@ -1298,6 +1298,9 @@ bool ConfigScript::Write( const std::string& fileName, const std::string& header
   }
   catch ( std::exception& e ) {
     _last_error = e.what();
+	std::string err = fileName + "ÎÄ¼şÊä³ö´íÎó:" + _last_error;
+	MessageBox(NULL, err.c_str(), "ConfigScript::Write", MB_OK);
+	throw std::runtime_error(err.c_str());
     return false;
   }
 
