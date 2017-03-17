@@ -2024,7 +2024,7 @@ void crJXJGameServerUpdateMethod::zeroRefresh(time_t t1, bool bZero, bool initZe
 		std::vector<int>CardVec;
 		int cardid;
 		crVector2i saleShili;
-		for (int i = 0; i<rowcount; ++i)
+		for (int i = 0; i < rowcount; ++i)
 		{
 			crArgumentParser::appAtoVec((*foreignCardTab)(i, 1), saleShili, '|');
 			if (saleShili[0] == shiliid || saleShili[1] == shiliid)
@@ -3801,7 +3801,7 @@ void crJXJCameraRotUpdateMethod::operator()(crHandle &handle)
 			m_this->setMatrix(rotation);
 		}
 	}
-	else
+	else if (rot == crCameraData::RotRight || rot == crCameraData::RotLeft)
 	{
 		float dt = crFrameStamp::getInstance()->getFrameInterval();
 		float offset = m_speed * dt;

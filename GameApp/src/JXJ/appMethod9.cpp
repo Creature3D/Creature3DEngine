@@ -19694,7 +19694,7 @@ void crJXJHuodongCanvasInitMethod::operator()( crHandle &handle )
 			crTableIO::StrVec record;
 			ref_ptr<crTableIO>huodongTab = crGlobalHandle::gData()->gGlobalTable(WCHDATA_JXJHuodongTab);
 			int displayid = huodongTab->getTitleIndex("活动显示");
-			unsigned char serialNumber = 0; //节日类型活动在huodongVec中对应第几个索引,0表示没有该类型活动
+			unsigned short serialNumber = 0; //节日类型活动在huodongVec中对应第几个索引,0表示没有该类型活动
 
 			crData *roleData = mainRole->getDataClass();
 			roleData->excHandle(MAKEINT64(WCH_LockData,1));
@@ -19962,7 +19962,7 @@ void crJXJHuodongCanvasUpdateMethod::operator()( crHandle &handle )
 			
 			int huodongID = 0;
 			canvasData->getParam(WCHDATA_JXJHuodongSelectId	,param);
-			unsigned char selectID = *(unsigned char *)param;
+			unsigned short selectID = *(unsigned short *)param;
 
 			int scrollPerpageNum = 7;
 			int curPage = 0;
@@ -20426,7 +20426,7 @@ void JXJ::crJXJSetCurrentHuodongIdMethod::operator()( crHandle &handle )
 		}
 	}
 
-	unsigned char idx = curPage + m_idx;
+	unsigned short idx = curPage + m_idx;
 	canvasData->inputParam(WCHDATA_JXJHuodongSelectId	,&idx);
 	canvasData->inputParam(WCHDATA_JXJHuodongSelectIdx	,&m_idx);
 
@@ -21147,9 +21147,12 @@ void crJXJRecvQueryTabVersionMethod::operator()(crHandle &handle)
 			{
 				int id = m_stream->_readInt();
 				std::string filename = crGlobalHandle::gData()->gGlobalTableFile(id);
-				std::string tabName = crArgumentParser::getFileNameEliminateExt(filename) + ".cook";
-				data->insertDownloadFile(id, tabName);
-				data->startDownloadFile(id, GameClient_Game);
+				if (!filename.empty())
+				{
+					std::string tabName = crArgumentParser::getFileNameEliminateExt(filename) + ".cook";
+					data->insertDownloadFile(id, tabName);
+					data->startDownloadFile(id, GameClient_Game);
+				}
 			}
 		}
 	}
@@ -21396,7 +21399,7 @@ void crJXJClientHuodongGetAwardsMethod::operator()( crHandle &handle )
 
 			canvasData->excHandle(MAKEINT64(WCH_LockData,1));
 			canvasData->getParam(WCHDATA_JXJHuodongSelectId	,param);
-			unsigned char selectID = *(unsigned char *)param;
+			unsigned short selectID = *(unsigned short *)param;
 			canvasData->getParam(WCHDATA_JXJHuodongVec,param);
 			HuodongVec & huodongVec = *(HuodongVec *)param;
 			unsigned short huodongID = 0;
@@ -23449,7 +23452,7 @@ void crJXJHuodongJumpMethod::operator()( crHandle &handle )
 		canvasData->excHandle(MAKEINT64(WCH_LockData,1));
 
 		canvasData->getParam(WCHDATA_JXJHuodongSelectId	,param);
-		unsigned char selectID = *(unsigned char *)param;
+		unsigned short selectID = *(unsigned short *)param;
 
 		canvasData->getParam(WCHDATA_JXJHuodongVec,param);
 		HuodongVec & huodongVec = *(HuodongVec *)param;
@@ -23566,9 +23569,9 @@ void JXJ::crJXJSetCurrentHuodongIdxMethod::operator()( crHandle &handle )
 	}
 
 	canvasData->getParam(WCHDATA_JXJHuodongSelectIdx	,param);
-	unsigned char m_idx = *(unsigned char* )param;
+	unsigned short m_idx = *(unsigned short* )param;
 
-	unsigned char idx = curPage + m_idx;
+	unsigned short idx = curPage + m_idx;
 	canvasData->inputParam(WCHDATA_JXJHuodongSelectId	,&idx);
 
 	canvasData->excHandle(MAKEINT64(WCH_LockData,0));

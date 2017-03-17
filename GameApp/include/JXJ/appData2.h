@@ -1190,12 +1190,12 @@ public:
 protected:
 	GNE::Mutex m_dataMutex;
 	HuodongVec m_huodongVec;
-	unsigned char m_selectId;
+	unsigned short m_selectId;
 	unsigned int m_version;
 	unsigned int m_newVersion;
-	unsigned char m_idx;
+	unsigned short m_idx;
 	int m_selectleijihuodongid;
-	unsigned char m_isFestivalHuodongExist;//是否存在节日活动
+	unsigned short m_isFestivalHuodongExist;//是否存在节日活动
 };
 class crScenarioTalkCanvasData :  public CRCore::crUIData
 {
@@ -1273,8 +1273,8 @@ public:
 protected:
 	GNE::Mutex m_dataMutex;
 	HuiKuiHuoDongMap m_huikuihuodongmap;
-	unsigned char m_serveropenday;
-	unsigned char m_idx;
+	unsigned short m_serveropenday;
+	unsigned short m_idx;
 };
 
 class crJXJJuntuanHuoDongUIData : public CRCore::crUIData

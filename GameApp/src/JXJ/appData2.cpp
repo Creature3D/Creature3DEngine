@@ -3711,7 +3711,7 @@ void JXJ::crHuodongCanvasData::inputParam( int i, void *param )
 	switch (i)
 	{
 	case WCHDATA_JXJHuodongSelectId		:
-		m_selectId = param ? *(unsigned char *)param : 0;
+		m_selectId = param ? *(unsigned short *)param : 0;
 		break;
 	case WCHDATA_JXJHuodongVersion:
 		m_version = param ? *(unsigned int *)param : 0;
@@ -3720,13 +3720,13 @@ void JXJ::crHuodongCanvasData::inputParam( int i, void *param )
 		m_newVersion = param ? *(unsigned int *)param : 0;
 		break;
 	case WCHDATA_JXJHuodongSelectIdx				:
-		m_idx = param ? *(unsigned char *)param : 0;
+		m_idx = param ? *(unsigned short *)param : 0;
 		break;
 	case WCHDATA_JXJSelectLeiJiHuoDongID:
 		m_selectleijihuodongid =  param ? *(int *)param : 0;
 		break;
 	case WCHDATA_JXJisFestivalHuodongExist:
-		m_isFestivalHuodongExist = param ? *(unsigned char *)param : 0;
+		m_isFestivalHuodongExist = param ? *(unsigned short *)param : 0;
 		break;
 	default:
 		break;
@@ -4064,10 +4064,10 @@ void JXJ::crChongZhiHuiKuiCanvasData::inputParam( int i, void *param )
 	switch (i)
 	{
 	case WCHDATA_JXJHuodongSelectId		:
-		m_serveropenday = param ? *(unsigned char *)param : 0;
+		m_serveropenday = param ? *(unsigned short *)param : 0;
 		break;
 	case WCHDATA_JXJHuodongSelectIdx				:
-		m_idx = param ? *(unsigned char *)param : 0;
+		m_idx = param ? *(unsigned short *)param : 0;
 		break;
 	default:
 		break;

@@ -11035,7 +11035,17 @@ void crJXJUIBattleTransportationTipMethod::operator()(crHandle &handle)
 // 			playerData->getParam(WCHDATA_JXJVipLv,param);
 // 			unsigned char vipLevel = *(unsigned char *)param;
 			int cdTimer = (int)(atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJBackCityCoolTimeInGlobalTab,0).c_str()));
-
+			ref_ptr<crTableIO> textTab = crGlobalHandle::gData()->gGlobalTable(WCHDATA_JXJCodeTextTab);
+			crTableIO::StrVec record;
+			std::string str1,str2;
+			if (textTab->queryOneRecord(0, crArgumentParser::appItoa(1130), record) >= 0)
+			{
+				str1 = record[1];
+			}
+			if (textTab->queryOneRecord(0, crArgumentParser::appItoa(1131), record) >= 0)
+			{
+				str2 = record[1];
+			}
 			cfg_script.Add("Hypertext");
 			cfg_script.Push("Hypertext");
 
@@ -11047,7 +11057,7 @@ void crJXJUIBattleTransportationTipMethod::operator()(crHandle &handle)
 			v_i.push_back(0.0f);
 			v_i.push_back(255.0f);
 			cfg_script.Add("Color", v_i);
-			cfg_script.Add("Text", "自动传送至附近最近据点,冷却");
+			cfg_script.Add("Text", str1.c_str()/*"自动传送至附近最近据点,冷却"*/);
 			cfg_script.Pop();
 
 			cfg_script.Add("Content");
@@ -11069,7 +11079,7 @@ void crJXJUIBattleTransportationTipMethod::operator()(crHandle &handle)
 			v_i.push_back(0.0f);
 			v_i.push_back(255.0f);
 			cfg_script.Add("Color", v_i);
-			cfg_script.Add("Text", "秒");
+			cfg_script.Add("Text", str2.c_str()/*"秒"*/);
 			cfg_script.Pop();
 
 
@@ -11793,7 +11803,7 @@ void crJXJAutoShowFestivalHuodongCanvasMethod::operator ()(crHandle &handle)
 				if (canvasData.valid())
 				{
 					canvasData->getParam(WCHDATA_JXJisFestivalHuodongExist, param);
-					unsigned char festivalHuodongExist = *(unsigned char *)param;
+					unsigned short festivalHuodongExist = *(unsigned short *)param;
 					if (festivalHuodongExist > 0)
 					{
 						festivalHuodongExist--;

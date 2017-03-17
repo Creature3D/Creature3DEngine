@@ -1848,7 +1848,7 @@ public:
 protected:
 	CRCore::crWidgetNode *m_this;
 	std::string m_canvas;
-	unsigned char m_idx ;
+	unsigned short m_idx ;
 };
 
 class crJXJClientNewHuiKuiGetAwardsMethod :public CRCore::crMethod

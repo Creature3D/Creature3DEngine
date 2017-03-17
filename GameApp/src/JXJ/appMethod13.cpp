@@ -12738,7 +12738,7 @@ void crJXJ7DayHuodongCanvasUpdateMethod::operator()( crHandle &handle )
 			
 			int huodongID = 0;
 			canvasData->getParam(WCHDATA_JXJHuodongSelectId	,param);
-			unsigned char selectID = *(unsigned char *)param;
+			unsigned short selectID = *(unsigned short *)param;
 
 			int scrollPerpageNum = 7;
 			int curPage = 0;
@@ -16171,11 +16171,11 @@ void crJXJNewHuiKuiCanvasUpdateMethod::operator()( crHandle &handle )
 				canvasData->getParam(WCHDATA_JXJHuiKuiHuoDongMap,param);
 				HuiKuiHuoDongMap & HKhuodongmap = *(HuiKuiHuoDongMap *)param;
 				canvasData->getParam(WCHDATA_JXJHuodongSelectIdx,param);
-				unsigned char hdIdx = *(unsigned char *)param;
-				unsigned char _index = 0;
-				unsigned char num = 0;
-				unsigned char numIdx = 0;
-				unsigned char iconIdx = 0;
+				unsigned short hdIdx = *(unsigned short *)param;
+				unsigned short _index = 0;
+				unsigned short num = 0;
+				unsigned short numIdx = 0;
+				unsigned short iconIdx = 0;
 				std::set<unsigned short>::iterator sitr;
 				std::vector<CRCore::crVector4i> awardData;
 				crTableIO::StrVec huodongrecord;
@@ -16556,7 +16556,7 @@ void JXJ::crJXJSetCurrentHuiKuiHdIdMethod::addParam( int i, const std::string& s
 		m_canvas = str;
 		break;
 	case 1:
-		m_idx = (unsigned char)(atoi(str.c_str()));
+		m_idx = (unsigned short)(atoi(str.c_str()));
 		break;
 	default:
 		break;

@@ -9226,59 +9226,60 @@ void crJXJRecvGMOrderMethod::operator()(crHandle &handle)
 			}
 			else if (type == 74)
 			{
-				unsigned char loadtype = m_stream->_readUChar();
-				crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
-				if(netConductor)
-				{
-					crPlayerDataEventPacket packet;
-					ref_ptr<crStreamBuf> stream = new crStreamBuf;
-					stream->createBuf(5);
-					int id = 0;
-					switch (loadtype)
-					{
-					case JXJFileD_HuodongTab:
-						id = WCHDATA_JXJHuodongTab;
-						break;
-					case JXJFileD_OnlinerewardTab:
-						id = WCHDATA_JXJOnlineRewardTab;
-						break;
-					case JXJFileD_HuoyueduRewardTab:
-						id = WCHDATA_JXJHuoyueduRewardTab;
-						break;
-					case JXJFileD_itemTab:
-						id = WCHDATA_JXJItemTab;
-						break;
-					case JXJFileD_jxjtasktitleTab:
-						id = WCHDATA_JXJTaskTitleTab;
-						break;
-					case JXJFileD_SiteTab:
-						id = WCHDATA_JXJSiteTab;
-						break;
-					case JXJFileD_ForeignCardTab:
-						id = WCHDATA_JXJForeignCardTab;
-						break;
-					case JXJFileD_7DayNewTab:
-						id = WCHDATA_JXJ7DayTab;
-						break;
-					default:
-						break;
-					}
-					ref_ptr<crTableIO> updateTab = crGlobalHandle::gData()->gGlobalTable(id);
-					if (updateTab.valid())
-					{
-						int tabVersionIdx = updateTab->getTitleIndex("TAB_VERSION");
-						int tabVersion = atoi((*updateTab)(0,tabVersionIdx).c_str()); 
-						if (tabVersion > 0)
-						{
-							stream->_writeInt(tabVersion);
-							stream->_writeUChar(loadtype);
-							crPlayerDataEventPacket::buildRequestPacket(packet,WCH_JXJRecvQueryTabVersion,stream.get());
-							netConductor->getNetManager()->sendPacket("all",packet);
-							std::string str = "指令已执行！";
-							if(input.valid())input->setString(str);
-						}
-					}
-				}
+				//unsigned char loadtype = m_stream->_readUChar();
+				//crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
+				//if(netConductor)
+				//{
+				//	crPlayerDataEventPacket packet;
+				//	ref_ptr<crStreamBuf> stream = new crStreamBuf;
+				//	stream->createBuf(4);
+				//	int id = 0;
+				//	switch (loadtype)
+				//	{
+				//	case JXJFileD_HuodongTab:
+				//		id = WCHDATA_JXJHuodongTab;
+				//		break;
+				//	case JXJFileD_OnlinerewardTab:
+				//		id = WCHDATA_JXJOnlineRewardTab;
+				//		break;
+				//	case JXJFileD_HuoyueduRewardTab:
+				//		id = WCHDATA_JXJHuoyueduRewardTab;
+				//		break;
+				//	case JXJFileD_itemTab:
+				//		id = WCHDATA_JXJItemTab;
+				//		break;
+				//	case JXJFileD_jxjtasktitleTab:
+				//		id = WCHDATA_JXJTaskTitleTab;
+				//		break;
+				//	case JXJFileD_SiteTab:
+				//		id = WCHDATA_JXJSiteTab;
+				//		break;
+				//	case JXJFileD_ForeignCardTab:
+				//		id = WCHDATA_JXJForeignCardTab;
+				//		break;
+				//	case JXJFileD_7DayNewTab:
+				//		id = WCHDATA_JXJ7DayTab;
+				//		break;
+				//	default:
+				//		break;
+				//	}
+				//	ref_ptr<crTableIO> updateTab = crGlobalHandle::gData()->gGlobalTable(id);
+				//	if (updateTab.valid())
+				//	{
+				//		int tabVersionIdx = updateTab->getTitleIndex("TAB_VERSION");
+				//		int tabVersion = atoi((*updateTab)(0,tabVersionIdx).c_str()); 
+				//		if (tabVersion > 0)
+				//		{
+				//			stream->_writeInt(id);
+				//			crPlayerDataEventPacket::buildRequestPacket(packet,WCH_JXJRecvQueryTabVersion,stream.get());
+				//			netConductor->getNetManager()->sendPacket("all",packet);
+				//			std::string str = "指令已执行！";
+				//			if(input.valid())input->setString(str);
+				//		}
+				//	}
+				//}
+				std::string str = "指令已执行！";
+				if (input.valid())input->setString(str);
 			}
 			else if (type == 81)
 			{
