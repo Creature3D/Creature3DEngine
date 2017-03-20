@@ -100,14 +100,14 @@ int crNetManager::clientReconnectToServerCircle(unsigned int trytimes)
 	{
 		int code = 0;
 		unsigned int connectTimes = 0;
-		while(code == 0 && connectTimes<trytimes)
+		while (code == 0 && connectTimes < trytimes)
 		{
-			if(code==0)
+			code = createClient(6000);
+			if (code == 0)
 			{
-				CRCore::crThread::sleep(10);
+				CRCore::crThread::sleep(1000);
 				connectTimes += 1;
 			}
-			code = createClient(5000);
 		}
 		return code;
 	}
