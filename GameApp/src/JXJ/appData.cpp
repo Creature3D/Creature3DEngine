@@ -2739,11 +2739,19 @@ void crJXJPlayerData::excHandle(_crInt64 msg)
 		}
 		//////////////////////////////////////////////////////////////////////////
 		{
-			GNE::LockMutex lock( m_saveMutex );
-			sprintf(buf,"%s%d%d.tmp\0",_name(),GetCurrentThreadId(),time(0));
-			cfg_script.Write(buf,"");
-			cfg_script.Close();
-
+			GNE::LockMutex lock(m_saveMutex);
+			bool noerr = false;
+			while (!noerr)
+			{
+				sprintf(buf, "%s%d%d.tmp\0", _name(), GetCurrentThreadId(), time(0));
+				noerr = cfg_script.Write(buf, "");
+				cfg_script.Close();
+				if (!noerr)
+				{
+					DeleteFileA(buf);
+					crThread::sleep(10);
+				}
+			}
 			//m_dataStream = new crStreamBuf;
 			stream->loadFromFile2(buf);
 			stream->seekBegin();
@@ -8261,11 +8269,19 @@ void crJXJMainRoleData::excHandle(_crInt64 msg)
 			cfg_script.Pop();
 		}
 		{
-			GNE::LockMutex lock( m_saveMutex );
-			sprintf(buf,"%s%d%d.tmp\0",_name(),GetCurrentThreadId(),time(0));
-			cfg_script.Write(buf,"");
-			cfg_script.Close();
-
+			GNE::LockMutex lock(m_saveMutex);
+			bool noerr = false;
+			while (!noerr)
+			{
+				sprintf(buf, "%s%d%d.tmp\0", _name(), GetCurrentThreadId(), time(0));
+				noerr = cfg_script.Write(buf, "");
+				cfg_script.Close();
+				if (!noerr)
+				{
+					DeleteFileA(buf);
+					crThread::sleep(10);
+				}
+			}
 			//m_dataStream = new crStreamBuf;
 			stream->loadFromFile2(buf);
 			stream->seekBegin();
@@ -9632,10 +9648,19 @@ void crJXJMetierData::excHandle(_crInt64 msg)
 		}
 
 		{
-			GNE::LockMutex lock( m_saveMutex );
-			sprintf(buf,"%s%d%d.tmp\0",_name(),GetCurrentThreadId(),time(0));
-			cfg_script.Write(buf,"");
-			cfg_script.Close();
+			GNE::LockMutex lock(m_saveMutex);
+			bool noerr = false;
+			while (!noerr)
+			{
+				sprintf(buf, "%s%d%d.tmp\0", _name(), GetCurrentThreadId(), time(0));
+				noerr = cfg_script.Write(buf, "");
+				cfg_script.Close();
+				if (!noerr)
+				{
+					DeleteFileA(buf);
+					crThread::sleep(10);
+				}
+			}
 
 			//m_dataStream = new crStreamBuf;
 			stream->loadFromFile2(buf);
@@ -13736,10 +13761,19 @@ void crJXJConsortiaData::excHandle(_crInt64 msg)
 
 		}
 		{
-			GNE::LockMutex lock( m_saveMutex );
-			sprintf(buf,"%s%d%d.tmp\0",_name(),GetCurrentThreadId(),time(0));
-			cfg_script.Write(buf,"");
-			cfg_script.Close();
+			GNE::LockMutex lock(m_saveMutex);
+			bool noerr = false;
+			while (!noerr)
+			{
+				sprintf(buf, "%s%d%d.tmp\0", _name(), GetCurrentThreadId(), time(0));
+				noerr = cfg_script.Write(buf, "");
+				cfg_script.Close();
+				if (!noerr)
+				{
+					DeleteFileA(buf);
+					crThread::sleep(10);
+				}
+			}
 
 			//m_dataStream = new crStreamBuf;
 			stream->loadFromFile2(buf);
@@ -14729,10 +14763,19 @@ void crJXJShiliData::excHandle(_crInt64 msg)
 		// Ð¡ºÅÁÐ±í end
 		///////////////////
 		{
-			GNE::LockMutex lock( m_saveMutex );
-			sprintf(buf,"%s%d%d.tmp\0",_name(),GetCurrentThreadId(),time(0));
-			cfg_script.Write(buf,"");
-			cfg_script.Close();
+			GNE::LockMutex lock(m_saveMutex);
+			bool noerr = false;
+			while (!noerr)
+			{
+				sprintf(buf, "%s%d%d.tmp\0", _name(), GetCurrentThreadId(), time(0));
+				noerr = cfg_script.Write(buf, "");
+				cfg_script.Close();
+				if (!noerr)
+				{
+					DeleteFileA(buf);
+					crThread::sleep(10);
+				}
+			}
 
 			stream->loadFromFile2(buf);
 			stream->seekBegin();
@@ -15495,10 +15538,19 @@ void crJXJPlayerStoreData::excHandle(_crInt64 msg)
 		}
 		///////////////////
 		{
-			GNE::LockMutex lock( m_saveMutex );
-			sprintf(buf,"%s%d%d.tmp\0",_name(),GetCurrentThreadId(),time(0));
-			cfg_script.Write(buf,"");
-			cfg_script.Close();
+			GNE::LockMutex lock(m_saveMutex);
+			bool noerr = false;
+			while (!noerr)
+			{
+				sprintf(buf, "%s%d%d.tmp\0", _name(), GetCurrentThreadId(), time(0));
+				noerr = cfg_script.Write(buf, "");
+				cfg_script.Close();
+				if (!noerr)
+				{
+					DeleteFileA(buf);
+					crThread::sleep(10);
+				}
+			}
 
 			//m_dataStream = new crStreamBuf;
 			stream->loadFromFile2(buf);

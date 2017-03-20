@@ -41758,8 +41758,9 @@ void crJXJTimerEqualMethod::operator()(crHandle &handle)
 	pnow=localtime(&t1);
 	crVector3i nowtime(pnow->tm_hour,pnow->tm_min,pnow->tm_sec);
 	if (nowtime[0] == m_time[0] && nowtime[1] == m_time[1] && nowtime[2] >= m_time[2] && nowtime[2] < m_time[2] + m_delta)
-	//if (nowtime == m_time)
+	{
 		condition = true;
+	}
 	handle.outputParam(0,&condition);
 }
 /////////////////////////////////////////

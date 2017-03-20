@@ -1276,7 +1276,7 @@ void crJXJRecvPlayerGameDataCreateStreamMethod::operator()(crHandle &handle)
 						gameServer->getNetManager()->sendPacket(player->getPlayerConnectServerAddress(),suijiCreateRole);
 					}
 					///游戏日志
-					std::string logdata = "(JXJRecvPlayerGameDataCreateStream)随机势力选择,获得礼金：" + crArgumentParser::appItoa(nOffset);
+					std::string logdata = "随机势力选择,获得礼金：" + crArgumentParser::appItoa(nOffset) + "势力：" + crArgumentParser::appItoa(shiliid);
 					GameLogData gamelog(Log_RandShili,logdata);
 					crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(playerid,&gamelog));
 				}
