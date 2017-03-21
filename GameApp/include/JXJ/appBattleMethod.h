@@ -5448,7 +5448,7 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	CRCore::crVector3i m_time;//h:m:s
+	int m_time;
 	int m_delta;//允许服务器最大延时触发时间差
 };
 class crJXJKillNpcShiliGainItemMethod : public CRCore::crMethod

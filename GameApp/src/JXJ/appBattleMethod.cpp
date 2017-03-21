@@ -38317,23 +38317,26 @@ void crJXJRoomTriggerCountMethod::inputParam(int i, void *param)
 void crJXJRoomTriggerCountMethod::operator()(crHandle &handle)
 {
 	bool condition = false;
-	if(m_resetInterval>0)
+	if (m_maxcount < 0)
+	{
+		condition = true;
+	}
+	else
 	{
 		time_t t = time(0);
-		if(t - m_lasttimer>m_resetInterval)
+		if (m_resetInterval > 0)
 		{
-			m_count = 0;
+			if (t - m_lasttimer > m_resetInterval)
+			{
+				m_count = 0;
+			}
+		}
+		if (m_count < m_maxcount)
+		{
+			m_count++;
+			condition = true;
 			m_lasttimer = t;
 		}
-	}
-	if(m_maxcount<0)
-	{
-		condition = true;
-	}
-	else if(m_count<m_maxcount)
-	{
-		m_count++;
-		condition = true;
 	}
 	handle.outputParam(0,&condition);
 }
@@ -41728,7 +41731,7 @@ void crJXJSceneCreateMainRoomMethod::operator()(crHandle &handle)
 //
 /////////////////////////////////////////
 crJXJTimerEqualMethod::crJXJTimerEqualMethod():
-m_delta(10){}
+m_delta(5){}
 crJXJTimerEqualMethod::crJXJTimerEqualMethod(const crJXJTimerEqualMethod& handle):
 	crMethod(handle),
 	m_time(handle.m_time),
@@ -41740,7 +41743,11 @@ void crJXJTimerEqualMethod::addParam(int i, const std::string& str)
 	switch(i) 
 	{
 	case 0:
-		crArgumentParser::appTimetoVec(str,m_time,':');
+		{
+			crVector3i t;
+			crArgumentParser::appTimetoVec(str, t, ':');
+			m_time = t[0] * 3600 + t[1] * 60 + t[2];
+		}
 		break;
 	case 1:
 		m_delta = atoi(str.c_str());
@@ -41756,10 +41763,15 @@ void crJXJTimerEqualMethod::operator()(crHandle &handle)
 	time_t t1 = time(0);
 	struct tm *pnow;  
 	pnow=localtime(&t1);
-	crVector3i nowtime(pnow->tm_hour,pnow->tm_min,pnow->tm_sec);
-	if (nowtime[0] == m_time[0] && nowtime[1] == m_time[1] && nowtime[2] >= m_time[2] && nowtime[2] < m_time[2] + m_delta)
+	//crVector3i nowtime(pnow->tm_hour,pnow->tm_min,pnow->tm_sec);
+	int nowtime = pnow->tm_hour * 3600 + pnow->tm_min * 60 + pnow->tm_sec;
+	if (m_time >= nowtime && m_time < nowtime+m_delta)
 	{
 		condition = true;
+		time_t t = time(0);
+		char tmp[20];
+		strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&t));
+		CRCore::notify(CRCore::ALWAYS) << tmp << "JXJTimerEqualÔÊÐíÑÓ³Ù:" << m_delta << std::endl;
 	}
 	handle.outputParam(0,&condition);
 }
@@ -43717,7 +43729,10 @@ void crJXJDebugInfoMethod::addParam(int i, const std::string& str)
 
 void crJXJDebugInfoMethod::operator()(crHandle &handle)
 {
-	CRCore::notify(CRCore::ALWAYS)<<"JXJDebugInfo:"<<m_str<<std::endl;
+	time_t t = time(0);
+	char tmp[20];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&t));
+	CRCore::notify(CRCore::ALWAYS) << tmp<<" "<< m_str << std::endl;
 }
 /////////////////////////////////////////
 //
