@@ -368,13 +368,13 @@ void crJXJSmelterUpdateMethod::operator()(crHandle &handle)
 				switch (typeitem)
 				{
 				case 0:
-					smeltSW->setActiveSwitchSet(1);
+					smeltSW->setActiveSwitchSet(0);
 					break;
 				case 1:
-					smeltSW->setActiveSwitchSet(2);
+					smeltSW->setActiveSwitchSet(1);
 					break;
 				case 2:
-					smeltSW->setActiveSwitchSet(3);
+					smeltSW->setActiveSwitchSet(2);
 					break;
 				}
 			}
@@ -394,20 +394,20 @@ void crJXJSmelterUpdateMethod::operator()(crHandle &handle)
 					int itemtype = atoi(smeltrecord[attrid].c_str());
 					if (itemtype == IT_Equip)
 					{
-						if (bagitemdata->getInlayID() > 0)
-						{
-							if (smeltSW.valid())
-							{
-								smeltSW->setActiveSwitchSet(1);
-							}
-						}
-						else
-						{
+						//if (bagitemdata->getInlayID() > 0)
+						//{
+						//	if (smeltSW.valid())
+						//	{
+						//		smeltSW->setActiveSwitchSet(0);
+						//	}
+						//}
+						//else
+						//{
 							if (smeltSW.valid())
 							{
 								smeltSW->setActiveSwitchSet(0);
 							}
-						}
+						//}
 					}
 					else
 					{
@@ -425,7 +425,7 @@ void crJXJSmelterUpdateMethod::operator()(crHandle &handle)
 							mincount = (int)(atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJSmelterMateStoreMinCount, viplv).c_str()));
 							if (smeltSW.valid())
 							{
-								smeltSW->setActiveSwitchSet(3);
+								smeltSW->setActiveSwitchSet(2);
 							}
 						}
 						else if (itemtype == IT_SmeltMaterial)
@@ -433,7 +433,7 @@ void crJXJSmelterUpdateMethod::operator()(crHandle &handle)
 							mincount = (int)(atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJSmelterMateMinCount, viplv).c_str()));
 							if (smeltSW.valid())
 							{
-								smeltSW->setActiveSwitchSet(2);
+								smeltSW->setActiveSwitchSet(1);
 							}
 						}
 					}
@@ -1054,6 +1054,7 @@ void crJXJUISmeltingMethod::operator()(crHandle &handle)
 			crData *data = playerGameData->getDataClass();
 			crVector2i price;
 			bool getstone = false;
+			bool hasinlay = false;
 			int getstonegold = 0;
 			int mymoney = 0;
 			int mincount = 0;
@@ -1093,11 +1094,19 @@ void crJXJUISmeltingMethod::operator()(crHandle &handle)
 								}
 								if(atoi(smeltrecord[attrid].c_str()) == IT_Equip)
 								{
+									hasinlay = bagitemdata->getInlayID() > 0;
 									mincount = 1;
-									if (bagitemdata->getInlayID() > 0)
+									if (index == 1)
 									{
-										getstone = true;
-										getstonegold = atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJSmeltInlayStone, viplv).c_str());
+										if (hasinlay)
+										{
+											getstone = true;
+											getstonegold = atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJSmeltInlayStone, viplv).c_str());
+										}
+										else
+										{
+											tipindex = 1132;//该装备没有镶嵌八卦石
+										}
 									}
 									else if (atoi(smeltrecord[colorid].c_str()) < CardColor_Purple)
 									{
@@ -1231,10 +1240,22 @@ void crJXJUISmeltingMethod::operator()(crHandle &handle)
 							cfg_script.Add("Color",v_i);
 							std::string tmpText2;
 							if (getstone)
+							{
 								tmpText2 = "从装备上取出";
+								cfg_script.Add("Text", tmpText2 + "八卦石吗？");
+							}
 							else
-								tmpText2 =  m_index == SmeltType_Gold ? "高级熔炼" : "熔炼";
-							cfg_script.Add("Text",tmpText2 + "八卦石吗？");
+							{
+								tmpText2 = m_index == SmeltType_Gold ? "高级熔炼" : "熔炼";
+								if (hasinlay)
+								{
+									cfg_script.Add("Text", tmpText2 + "八卦石吗？/n该装备上镶嵌八卦石将损毁");
+								}
+								else
+								{
+									cfg_script.Add("Text", tmpText2 + "八卦石吗？");
+								}
+							}
 							cfg_script.Pop();
 
 							cfg_script.Pop();
@@ -1456,39 +1477,46 @@ void crJXJRecvSmeltingMethod::operator()(crHandle &handle)
 							itemtype = atoi(record[attrid].c_str());
 							if (itemtype == IT_Equip)
 							{
-								unsigned char inlayid = bagItemData->getInlayID();
-								if (inlayid > 0)
-								{//八卦石剥离
-									ref_ptr<crTableIO>inlaytab = crGlobalHandle::gData()->gGlobalTable(WCHDATA_JXJInlayTab);
-									crTableIO::StrVec inlayRec;
-									if (inlaytab->queryOneRecord(1, crArgumentParser::appItoa(inlayid), inlayRec) >= 0)
-									{
-										int stoneid = atoi(inlayRec[0].c_str());
-										crTableIO::StrVec stoneItemRec;
-										if (stoneid > 0 && itemtab->queryOneRecord(0, crArgumentParser::appItoa(stoneid), stoneItemRec) >= 0)
+								if(costtype == 1)
+								{
+									unsigned char inlayid = bagItemData->getInlayID();
+									if (inlayid > 0)
+									{//八卦石剥离
+										ref_ptr<crTableIO>inlaytab = crGlobalHandle::gData()->gGlobalTable(WCHDATA_JXJInlayTab);
+										crTableIO::StrVec inlayRec;
+										if (inlaytab->queryOneRecord(1, crArgumentParser::appItoa(inlayid), inlayRec) >= 0)
 										{
-											int smeltInlayStoneCost = atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJSmeltInlayStone, viplv).c_str());
-											MoneyChangeData moneydata(smeltInlayStoneCost, "八卦石剥离");
-											m_this->doEvent(WCH_JXJDeductLijinGold, MAKEINT64(&moneydata, &needdeductgold));
-											if (moneydata.first == 0)
+											int stoneid = atoi(inlayRec[0].c_str());
+											crTableIO::StrVec stoneItemRec;
+											if (stoneid > 0 && itemtab->queryOneRecord(0, crArgumentParser::appItoa(stoneid), stoneItemRec) >= 0)
 											{
-												ref_ptr<crBagItemData> bagitemdata = new crBagItemData;
-												bagitemdata->setItemID(stoneid);
-												bagitemdata->setItemCount(1);
-												rewardItems.push_back(bagitemdata);
-												bagItemData->setInlayID(0);
-												success = 2;
+												int smeltInlayStoneCost = atoi(crGlobalHandle::gData()->gGameGlobalValue(WCHDATA_JXJSmeltInlayStone, viplv).c_str());
+												MoneyChangeData moneydata(smeltInlayStoneCost, "八卦石剥离");
+												m_this->doEvent(WCH_JXJDeductLijinGold, MAKEINT64(&moneydata, &needdeductgold));
+												if (moneydata.first == 0)
+												{
+													ref_ptr<crBagItemData> bagitemdata = new crBagItemData;
+													bagitemdata->setItemID(stoneid);
+													bagitemdata->setItemCount(1);
+													rewardItems.push_back(bagitemdata);
+													bagItemData->setInlayID(0);
+													success = 2;
+												}
+												else
+												{
+													success = -6;//元宝不足
+												}
 											}
 											else
 											{
-												success = -6;//元宝不足
+												success = 3;
+												bagItemData->setInlayID(0);
 											}
 										}
-										else
-										{
-											success = 3;
-											bagItemData->setInlayID(0);
-										}
+									}
+									else
+									{
+										success = -8;//该装备没有镶嵌八卦石
 									}
 								}
 								else
@@ -1585,7 +1613,7 @@ void crJXJRecvSmeltingMethod::operator()(crHandle &handle)
 						}
 						else
 						{
-							MoneyChangeData moneydata(price[costtype],"高级熔炼");
+							MoneyChangeData moneydata(price[costtype], "高级熔炼");
 							m_this->doEvent(WCH_JXJDeductLijinGold,MAKEINT64(&moneydata,&needdeductgold));
 							if (moneydata.first == 0)
 							{
@@ -1826,6 +1854,9 @@ void crJXJRecvSmeltingMethod::operator()(crHandle &handle)
 					break;
 				case -7:
 					index = 2095;//科技未研发
+					break;
+				case -8:
+					index = 1132;//该装备没有镶嵌八卦石
 					break;
 				default:
 					break;

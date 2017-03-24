@@ -41731,7 +41731,7 @@ void crJXJSceneCreateMainRoomMethod::operator()(crHandle &handle)
 //
 /////////////////////////////////////////
 crJXJTimerEqualMethod::crJXJTimerEqualMethod():
-m_delta(5){}
+m_delta(3){}
 crJXJTimerEqualMethod::crJXJTimerEqualMethod(const crJXJTimerEqualMethod& handle):
 	crMethod(handle),
 	m_time(handle.m_time),
@@ -41760,18 +41760,17 @@ void crJXJTimerEqualMethod::inputParam(int i, void *param)
 void crJXJTimerEqualMethod::operator()(crHandle &handle)
 {
 	bool condition = false;
-	time_t t1 = time(0);
+	time_t t = time(0);
 	struct tm *pnow;  
-	pnow=localtime(&t1);
+	pnow=localtime(&t);
 	//crVector3i nowtime(pnow->tm_hour,pnow->tm_min,pnow->tm_sec);
 	int nowtime = pnow->tm_hour * 3600 + pnow->tm_min * 60 + pnow->tm_sec;
-	if (m_time >= nowtime && m_time < nowtime+m_delta)
+	if (nowtime >= m_time && nowtime < m_time+m_delta)
 	{
 		condition = true;
-		time_t t = time(0);
-		char tmp[20];
-		strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&t));
-		CRCore::notify(CRCore::ALWAYS) << tmp << "JXJTimerEqualÔÊÐíÑÓ³Ù:" << m_delta << std::endl;
+		//char tmp[20];
+		//strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&t));
+		//CRCore::notify(CRCore::ALWAYS) << tmp << "JXJTimerEqualÔÊÐíÑÓ³Ù:" << m_delta << std::endl;
 	}
 	handle.outputParam(0,&condition);
 }

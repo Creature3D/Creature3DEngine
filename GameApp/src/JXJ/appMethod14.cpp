@@ -4036,7 +4036,7 @@ void crJXJRecvZhengZhanShopBuyMethod::operator ()(crHandle &handle)
 			void *param;
 			int price = 0;
 			unsigned char topcount = 10;
-			int itemId = m_stream->_readInt();
+			int itemid = m_stream->_readInt();
 			int playerid = m_this->getPlayerID();
 			crNetConductor *gameServer = crNetContainer::getInstance()->getNetConductor(GameServer);
 			crNetDataManager *netDataManager = gameServer->getNetDataManager();
@@ -4046,10 +4046,7 @@ void crJXJRecvZhengZhanShopBuyMethod::operator ()(crHandle &handle)
 				ref_ptr<crTableIO> ZhengZhanShop = crGlobalHandle::gData()->gGlobalTable(WCHDATA_JXJZhengZhanShopTab);
 				int shangxianindex = ZhengZhanShop->getTitleIndex("每日购买上限");
 				crTableIO::StrVec record;
-				char str[32];
-				sprintf(str, "%d\0", itemId);
-				int itemid = 0;
-				if (ZhengZhanShop->queryOneRecord(0,str,record) >= 0)
+				if (ZhengZhanShop->queryOneRecord(0,crArgumentParser::appItoa(itemid),record) >= 0)
 				{
 					price = atoi(record[7].c_str())*atoi(record[10].c_str());
 					topcount = atoi(record[shangxianindex].c_str());
@@ -4063,7 +4060,7 @@ void crJXJRecvZhengZhanShopBuyMethod::operator ()(crHandle &handle)
 				unsigned char buyedcount =  0;
 				data->getParam(WCHDATA_JXJBuyShangXianMap,param);
 				std::map<int,unsigned char> *buyshangxianmap = (std::map<int,unsigned char>*)param;
-				std::map<int,unsigned char>::iterator itr = buyshangxianmap->find(itemId);
+				std::map<int, unsigned char>::iterator itr = buyshangxianmap->find(itemid);
 				if (itr != buyshangxianmap->end())
 				{
 					buyedcount = itr->second;
@@ -4074,20 +4071,20 @@ void crJXJRecvZhengZhanShopBuyMethod::operator ()(crHandle &handle)
 					//RewardItemVec rewardItems;
 					//rewardItems.reserve(1);
 					CRCore::ref_ptr<crBagItemData> itemPtr = new crBagItemData;
-					itemPtr->setItemID(itemId);
+					itemPtr->setItemID(itemid);
 					itemPtr->setEquipMagic(0);
 					itemPtr->setItemCount(atoi(record[7].c_str()));
 					//rewardItems.push_back(itemPtr);
 					reward_info->getRewardItemsVec().push_back(itemPtr);
 					//m_this->doEvent(WCH_JXJRecvRewardItems,MAKEINT64(&rewardItems,0));
-					reward_info->setType(GP_OnlineReward);
+					reward_info->setType(GP_RewardItem);
 					m_this->doEvent(WCH_JXJRecvPlayerRewardInfo,MAKEINT64(reward_info.get(),NULL));
 
 					unsigned char count = 0;
 					*cZhanQuan-=price;
 					if (itr == buyshangxianmap->end())
 					{
-						(*buyshangxianmap)[itemId] = 1;
+						(*buyshangxianmap)[itemid] = 1;
 						count = 1;
 					}
 					else
@@ -4098,12 +4095,19 @@ void crJXJRecvZhengZhanShopBuyMethod::operator ()(crHandle &handle)
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
 					stream->createBuf(10);
 					stream->_writeUChar(1);
-					stream->_writeInt(itemId);
+					stream->_writeInt(itemid);
 					stream->_writeInt(*cZhanQuan);
 					stream->_writeUChar(count);
 					crPlayerDataEventPacket packet;
 					crPlayerDataEventPacket::buildReplyPacket(packet,playerid,WCH_JXJRecvZhengZhanShopBuy,stream.get());
 					gameServer->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
+
+					std::string str = "征战商店兑换,花费征战券";
+					str += crArgumentParser::appItoa(price);
+					str += "获得兵符";
+					str += crArgumentParser::appItoa(itemid);
+					GameLogData gamelog(Log_RecvZhengZhanShopBuy, str);
+					crServerBrainHandle::getInstance()->doEvent(WCH_GameLog, MAKEINT64(playerid, &gamelog));
 				} 
 				else
 				{

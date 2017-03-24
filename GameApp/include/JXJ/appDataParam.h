@@ -2410,6 +2410,7 @@ enum LogType
 	Log_GetBattleRankingReward,//领取国战排行榜奖励
 	Log_RefreshForeignCard,//异国将卡商店刷新
 	Log_ExchangeForeignCard,//兑换异国将卡
+	Log_RecvZhengZhanShopBuy,//征战商店兑换
 };
 enum JXJExtraID
 {
