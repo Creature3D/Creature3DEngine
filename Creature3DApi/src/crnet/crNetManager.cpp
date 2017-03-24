@@ -187,10 +187,10 @@ int crNetManager::createClient(unsigned int waitms)
 		//}
 		//return crConnectServerPacket::s_success;
 	}
-	//else
-	//{
- //       m_netBridge->disconnectAll();
-	//}
+	else
+	{
+		m_netBridge->disconnectAll();
+	}
 	return 0;
 }
 
