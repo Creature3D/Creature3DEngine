@@ -34,47 +34,50 @@ crConnectionListener::~crConnectionListener(void)
 
 void crConnectionListener::onDisconnect( GNE::Connection& conn )
 {
-   m_netBridge->onDisconnect(conn);
+	if (m_netBridge.valid()) m_netBridge->onDisconnect(conn);
 }
 
 void crConnectionListener::onExit( GNE::Connection& conn )
 {
-   m_netBridge->onExit( conn );
+	if (m_netBridge.valid()) m_netBridge->onExit(conn);
 }
 
 void crConnectionListener::onNewConn( GNE::SyncConnection& conn)
 {
-   m_netBridge->onNewConn(conn);
+	if (m_netBridge.valid()) m_netBridge->onNewConn(conn);
 }
 
 void crConnectionListener::onConnect( GNE::SyncConnection &conn )
 {
-   m_netBridge->onConnect(conn);
+	if (m_netBridge.valid()) m_netBridge->onConnect(conn);
 }
 
 void crConnectionListener::onReceive( GNE::Connection& conn )
 {
-   m_netBridge->onReceive( conn );
+	if (m_netBridge.valid()) m_netBridge->onReceive(conn);
 }
 
 void crConnectionListener::onFailure( GNE::Connection& conn, const GNE::Error& error )
 {
-   m_netBridge->onFailure(conn, error);
+	if (m_netBridge.valid()) m_netBridge->onFailure(conn, error);
 }
 
 void crConnectionListener::onError( GNE::Connection& conn, const GNE::Error& error )
 {
-   m_netBridge->onError(conn, error);
+	if (m_netBridge.valid()) m_netBridge->onError(conn, error);
 }
 
 void crConnectionListener::onConnectFailure( GNE::Connection &conn, const GNE::Error &error)
 {
-   m_netBridge->onConnectFailure(conn, error);
+	if (m_netBridge.valid()) m_netBridge->onConnectFailure(conn, error);
 }
 
 void crConnectionListener::onTimeout( GNE::Connection& conn )
 {
-   m_netBridge->onTimeout(conn);
+	if (m_netBridge.valid()) m_netBridge->onTimeout(conn);
 }
 
-
+void crConnectionListener::clear()
+{
+	m_netBridge = NULL;
+}

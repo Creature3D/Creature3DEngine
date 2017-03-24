@@ -139,15 +139,14 @@ void Connection::disconnect()
       //ps->join(); //we have to join to wait for the ExitPacket to go out.
       //sync.acquire();
     }
+	
+	//Shutdown the EventThread.
+	if (eventThread && eventThread->hasStarted())
+	{
+		eventThread->onDisconnect();
+		//eventThread.reset(); //Kill the cycle we participate in
+	}
   }
-
-  //Shutdown the EventThread.
-  if ( eventThread ) 
-  {
-    eventThread->onDisconnect();
-    //eventThread.reset(); //Kill the cycle we participate in
-  }
-
   //Even if the PS or ET aren't running, the low-level stuff in the connection
   //threads should get an error when we disconnect the actual sockets.
   //sockets.disconnect();

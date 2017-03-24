@@ -58,6 +58,7 @@ namespace CRNet
       virtual void onError( GNE::Connection& conn, const GNE::Error& error );
       
 	  virtual void onTimeout( GNE::Connection& conn );
+	  virtual void clear();
    protected:
       crConnectionListener(crNetBridge *netBridge);
    private:

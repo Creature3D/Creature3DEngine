@@ -264,7 +264,7 @@ public:
    * events will be called until this function completes for this connection.
    */
   virtual void onReceive( Connection& conn );
-
+  virtual void clear(){}
 };
 
 } // namespace GNE

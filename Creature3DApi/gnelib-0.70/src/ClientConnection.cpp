@@ -207,6 +207,7 @@ void ClientConnection::run() {
     LowLevelError err = LowLevelError(Error::ConnectionTimeOut);
     gnedbgo1(1, "Connection failure: %s", err.toString().c_str());
     doFailure( origListener, err );
+	disconnect();
   }
 
   //Save some memory by doing an early explicit reset.

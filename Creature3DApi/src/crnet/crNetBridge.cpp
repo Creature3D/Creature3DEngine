@@ -124,6 +124,7 @@ bool crNetBridge::setupClient( const std::string &host, int portNum, int bufScal
 		sprintf(gbuf,"Can not open socket\n\0");
 		gDebugInfo->debugInfo(CRCore::FATAL,gbuf);
 		ret = false;
+		params.getListener()->clear();
 		return false;
 	}
 
@@ -143,8 +144,9 @@ bool crNetBridge::setupClient( const std::string &host, int portNum, int bufScal
 		sprintf(gbuf,"Client connection failed\n\0");
 		gDebugInfo->debugInfo(CRCore::FATAL,gbuf);
 		ret = false;
+		client->disconnect();
+		params.getListener()->clear();
 	}
-
 	return ret;
 }
 
