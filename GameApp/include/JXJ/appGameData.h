@@ -73,7 +73,7 @@ public:
 	unsigned short getID();
 	void setComplete(bool complete);
 	bool getComplete();
-	void setStep(unsigned char step);
+	void setStep(int step);
 	unsigned char getStep();
 	void loadData();
 	unsigned char getStepCount();

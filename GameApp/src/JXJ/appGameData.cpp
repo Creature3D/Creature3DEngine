@@ -170,9 +170,9 @@ bool crJXJAccomplish::getComplete()
 {
 	return m_complete;
 }
-void crJXJAccomplish::setStep(unsigned char step)
+void crJXJAccomplish::setStep(int step)
 {
-	m_step = step;
+	m_step = step>UCHAR_MAX?UCHAR_MAX:step;
 	if(crGlobalHandle::isClient() && !m_complete && isComplete())
 	{
 		crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
