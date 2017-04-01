@@ -472,7 +472,7 @@ int main( int argc, char **argv )
 			stage = CRGUI::cr2DStageManager::getInstance()->findStage("Emain");
 		else if(runMode == 2)
 			stage = CRGUI::cr2DStageManager::getInstance()->findStage("SingleGame");
-
+		CRGUI::cr2DStageManager::getInstance()->setParentWnd((Producer::Window)hWndParent);
 		CRGUI::cr2DStageManager::getInstance()->doModal(stage);
 	}
 	CRIOManager::crLoadManager::getInstance()->clear();

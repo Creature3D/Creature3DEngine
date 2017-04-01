@@ -25283,8 +25283,11 @@ void crRunSingleGameMethod::operator()(crHandle &handle)
 		//CREncapsulation::crStartHandler::getInstance()->start( CRProducer::crViewer::VIEW_MATRIX_BIND|CRProducer::crViewer::ESCAPE_SETS_DONE,
 		//	CRUtil::crSceneView::STANDARD_SETTINGS|CRUtil::crSceneView::USEPHYSICS|CRUtil::crSceneView::USEAI );
 		//crImageStage *stage = m_element->getParentStage();
-		CREncapsulation::crStartHandler::getInstance()->start( CRProducer::crViewer::CURSOR_NULL,
-			CRUtil::crSceneView::STANDARD_SETTINGS|CRUtil::crSceneView::USEPHYSICS|CRUtil::crSceneView::USEAI );
+		//CREncapsulation::crStartHandler::getInstance()->start( CRProducer::crViewer::CURSOR_NULL,
+		//	CRUtil::crSceneView::STANDARD_SETTINGS|CRUtil::crSceneView::USEPHYSICS|CRUtil::crSceneView::USEAI );
+		CREncapsulation::crStartHandler::getInstance()->start(CRProducer::crViewer::CURSOR_NULL,
+			CRUtil::crSceneView::STANDARD_SETTINGS | CRUtil::crSceneView::USEPHYSICS | CRUtil::crSceneView::USEAI,
+			CRGUI::cr2DStageManager::getInstance()->getParentWnd());
 		//CRGUI::crImageStage *imageStage = CRGUI::cr2DStageManager::getInstance()->findStage(m_loadingDlgID);
 		//if(imageStage)
 		//{//可以做一个延迟几秒关闭的函数
