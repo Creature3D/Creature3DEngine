@@ -9696,7 +9696,10 @@ void crJXJUIGongFangRefineEquipUpdateMethod::operator()(crHandle &handle)
 			std::vector<JXJLordEquipVec> openedEquipVec = *(std::vector<JXJLordEquipVec> *)param;
 			JXJLordEquipVec equipInfo;
 			int loadequipselect = lordequipradio->getSelect();
-			equipInfo = openedEquipVec[loadequipselect];
+			if(loadequipselect<openedEquipVec.size())
+			{
+				equipInfo = openedEquipVec[loadequipselect];
+			}
 			//crRadioWidgetNode* switchRadio[5];
 			//for (int i = 0; i < 5; i++)
 			//{
