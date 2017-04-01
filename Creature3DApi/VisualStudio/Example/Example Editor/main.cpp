@@ -263,7 +263,7 @@ int main( int argc, char **argv )
 	}
 	////_putenv(program.c_str());
 	HANDLE hMutex = NULL;
-	if(runMode > 0 && runMode < WebGame)
+	if(runMode > 0/* && runMode < WebGame*/)
 	{//Ë«¿ª
 		hMutex = CreateMutex(NULL, false, "Creature3D");
 		if (GetLastError() == ERROR_ALREADY_EXISTS)
@@ -315,6 +315,8 @@ int main( int argc, char **argv )
 	int ypos = 0;
 	int width = 1366;
 	int height = 768;
+	int fullscreen = 0;
+	int board = 1;
 //#ifdef _ACTIVEX
 	crArgumentParser::readKeyValue(argvstr,"-hWndParent",hWndParent);
 	crArgumentParser::readKeyValue(argvstr,"-Wnd",hWnd);
@@ -322,10 +324,16 @@ int main( int argc, char **argv )
 	crArgumentParser::readKeyValue(argvstr,"-ypos",ypos);
 	crArgumentParser::readKeyValue(argvstr,"-width",width);
 	crArgumentParser::readKeyValue(argvstr,"-height",height);
-#ifdef _ACTIVEX
-	ds->setFullScreen(false);
-	ds->setUseBoard(false);
-#endif
+	if (hWndParent != NULL)
+		ds->setOwnWindow(false);
+	if (crArgumentParser::readKeyValue(argvstr, "-fullscreen", fullscreen))
+	{
+		ds->setFullScreen(fullscreen);
+	}
+	if (crArgumentParser::readKeyValue(argvstr, "-board", board))
+	{
+		ds->setUseBoard(board);
+	}
 	ds->setScreenWidth(width);
 	ds->setScreenHeight(height);
 	ds->setViewSize(width,height);

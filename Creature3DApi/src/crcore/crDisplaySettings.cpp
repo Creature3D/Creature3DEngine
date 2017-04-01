@@ -52,6 +52,7 @@ void crDisplaySettings::clear()
 crDisplaySettings::crDisplaySettings(const crDisplaySettings& vs):Referenced()
 {
     copy(vs);
+	m_windowClosed = false;
 }
 
 crDisplaySettings::~crDisplaySettings()
@@ -174,6 +175,8 @@ void crDisplaySettings::copy(const crDisplaySettings& vs)
 	m_fxSoundVolume = vs.m_fxSoundVolume;
 	m_uiscalemode = vs.m_uiscalemode;
 	m_uiscaleFactor = vs.m_uiscaleFactor;
+	m_ownWindow = vs.m_ownWindow;
+	m_windowClosed = false;
 }
 
 void crDisplaySettings::merge(const crDisplaySettings& vs)
@@ -335,6 +338,8 @@ void crDisplaySettings::setDefaults()
 	m_fxSoundVolume = 1.0f;
 	m_uiscalemode = 0;
 	m_uiscaleFactor = 1.0f;
+	m_ownWindow = true;
+	m_windowClosed = false;
 }
 
 void crDisplaySettings::setMinimumNumAccumBits(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha)

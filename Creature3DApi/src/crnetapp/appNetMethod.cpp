@@ -38460,7 +38460,7 @@ void crIsRuningMethod::addParam(int i, const std::string& str)
 }
 void crIsRuningMethod::operator()(crHandle &handle)
 {
-	bool m_true = crRunGameHandle::getInstance()->isRunning();
+	bool m_true = crRunGameHandle::getInstance()->isRunning() && !crDisplaySettings::instance()->isWindowClosed();
 	handle.outputParam(0,&m_true);
 }
 /////////////////////////////////////////
@@ -46217,7 +46217,7 @@ void crClipCursorMethod::operator()(crHandle &handle)
 	{
 		RECT rect;
 		GetWindowRect(rndwnd, &rect);
-		if(!crDisplaySettings::instance()->getFullScreen() && crDisplaySettings::instance()->getRunMode() != crDisplaySettings::WebGame)
+		if (!crDisplaySettings::instance()->getFullScreen() && crDisplaySettings::instance()->isOwnWindow())
 		{
 			int h = GetSystemMetrics(SM_CYCAPTION);//SM_CYSIZE
 			int xFrame = GetSystemMetrics(SM_CXFRAME);

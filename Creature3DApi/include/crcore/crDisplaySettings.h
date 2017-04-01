@@ -272,7 +272,10 @@ class CR_EXPORT crDisplaySettings : public CRCore::Referenced
 		};
 		void setRunMode(int runMode);//0:Editor, 1:NetGame,2:SingleGame,3WebGame,4Robot,5RobotNoTexture
 		inline int getRunMode()const { return m_runMode; }
-
+		inline void setOwnWindow(bool own){ m_ownWindow = own; }
+		inline bool isOwnWindow()const { return m_ownWindow; }
+		inline void close(){ m_windowClosed = true; }
+		inline bool isWindowClosed()const { return m_windowClosed; }
 		void setNeedNormalDepthSample( bool bln );
 		bool getNeedNormalDepthSample() const;
 		void setFullScreen( bool bln );
@@ -469,6 +472,8 @@ class CR_EXPORT crDisplaySettings : public CRCore::Referenced
 		float                           m_fxSoundVolume;
 		unsigned char                   m_uiscalemode;//0：不随分辨缩放，1：UI随分辨率缩放
 		float                           m_uiscaleFactor;//UI缩放因子
+		bool                            m_ownWindow;
+		bool                            m_windowClosed;
 };
 
 }

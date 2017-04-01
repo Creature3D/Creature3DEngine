@@ -2829,7 +2829,7 @@ void crDSUpdateInitCfgMethod::operator()(crHandle &handle)
 		int width = ds->getScreenWidth();
 		int height = ds->getScreenHeight();
 		int height2;
-		if(ds->getRunMode() != crDisplaySettings::WebGame)
+		if (ds->isOwnWindow())
 		{//WebGame
 			if(!ds->getFullScreen())
 			{

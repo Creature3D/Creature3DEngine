@@ -1159,7 +1159,7 @@ void CREncapsulation::loadInitCfg(bool wantScreanSize,const std::string &path)
 	{
 		if(cfg_script.Get("UIWindowPixel",int1))
 			ds->setUIWindowPixel(int1);
-		if(ds->getRunMode()!=crDisplaySettings::WebGame)
+		if (ds->isOwnWindow())
 		{
 			if(cfg_script.Get("FullScreen", int1))
 			{

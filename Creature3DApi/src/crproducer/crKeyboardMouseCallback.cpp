@@ -15,8 +15,10 @@
 #include <CRCore/crNotify.h>
 #include <CRCore/crWchMsg.h>
 #include <CRCore/crBrain.h>
+#include <CRProducer/crViewer.h>
+#include <CRProducer/crSceneHandler.h>
+#include <CRProducer/crKeyboardMouseHandle.h>
 #include <CRProducer/crKeyboardMouseCallback.h>
-
 #include <float.h>
 
 using namespace CRProducer;
@@ -322,7 +324,9 @@ crEventAdapter* crKeyboardMouseCallback::createEventAdapter()
 
 void crKeyboardMouseCallback::shutdown(int flg)
 {
+	CRCore::crDisplaySettings::instance()->close();
 	CRCore::crBrain::getInstance()->doEvent(MAKEINT64(WCH_EXITGAME,flg));
+	crKeyboardMouseHandle::getInstance()->getBindViewer()->setDone(true);
     //m_done = true;
     //m_keyboardMouse->cancel();
 }
