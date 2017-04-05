@@ -88,6 +88,7 @@ namespace JXJ{
 		virtual void addParam(int i, const std::string& str);
 		virtual void inputParam(int i, void *param);
 		virtual void getParam(int i, void*& param);
+		virtual void excHandle(_crInt64 msg);
 	private:
 		GNE::Mutex m_dataMutex;
 		char m_selecting;

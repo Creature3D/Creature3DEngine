@@ -91,7 +91,20 @@ void crJXJUIFormationData::getParam(int i, void*& param)
 		break;
 	}
 }
-
+void crJXJUIFormationData::excHandle(_crInt64 msg)
+{
+	if(LOINT64(msg) == WCH_LockData)
+	{
+		if(HIINT64(msg))
+			m_dataMutex.acquire();
+		else
+			m_dataMutex.release();
+	}
+	else
+	{
+		crUIData::excHandle(msg); 
+	}
+}	
 
 /////////////////////////////////////////
 //

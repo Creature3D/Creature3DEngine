@@ -860,11 +860,10 @@ void JXJ::crJXJUIOnFormationShowMethod::operator()(crHandle &handle)
 	crData *player_role_data = player->getMainRole()->getDataClass();						// player role data
 
 	// get formations information
-	player_data->getParam(WCHDATA_JXJFormationInfoVec, param);
-	FormationInfoVec *formations = (FormationInfoVec *)param;
-	// tables
-	player_data->getParam(WCHDATA_JXJTroopsMap, param);
-	TroopsMap *troops =	(TroopsMap *)param;													// player troop
+	//player_data->lock();
+	//player_data->getParam(WCHDATA_JXJFormationInfoVec, param);
+	//FormationInfoVec *formations = (FormationInfoVec *)param;
+	// tables											// player troop
 	canvas_data->getParam(WCHDATA_JXJTempFormationVec, param);
 	FormationInfoVec *tempformationvec = (FormationInfoVec *)param;														// player troop
 	canvas_data->getParam(WCHDATA_JXJArmsCells, param);
@@ -926,7 +925,11 @@ void JXJ::crJXJUIOnFormationShowMethod::operator()(crHandle &handle)
 		}
 		
 	}
+	player_data->lock();
+	player_data->getParam(WCHDATA_JXJTroopsMap, param);
+	TroopsMap *troops =	(TroopsMap *)param;		
 	int size = troops->size();
+	player_data->unlock();
 	crData *brainData = crBrain::getInstance()->getDataClass();
 	brainData->excHandle(MAKEINT64(WCH_LockData,1));
 	brainData->getParam(WCHDATA_JXJFormationCurPage,param);
@@ -970,6 +973,7 @@ void JXJ::crJXJUIOnFormationShowMethod::operator()(crHandle &handle)
 		formationlist->setListNodeCount(troop_table->getRowCount());
 		//formationlist->setStartYPos(*curpagenum - 1);
 		crListControlWidgetNode::ListNodeVec& listNodeVec = formationlist->getListNodeVec();
+		player_data->lock();
 		for(TroopsMap::iterator itr = troops->begin(); count<perpagenum && itr != troops->end(); ++itr)
 		{
 			if(troop_table->queryOneRecord(0, crArgumentParser::appItoa(itr->first), record) < 0)
@@ -1029,7 +1033,7 @@ void JXJ::crJXJUIOnFormationShowMethod::operator()(crHandle &handle)
 			arms[index_to_col] = itr->first;
 			index_to_col++;
 		}
-
+		player_data->unlock();
 		for(; index_to_col < 9; index_to_col++)
 		{
 			listNodeVec[index_to_col]->setData(0);
@@ -1097,7 +1101,7 @@ void JXJ::crJXJUIOnFormationShowMethod::operator()(crHandle &handle)
 			findused_itr->second += (*itr).get()->getCount();
 		}
 	}
-
+	player_data->lock();
 	for(TroopsMap::iterator itr = troops->begin(); itr != troops->end(); itr++)
 	{
 		std::map<int, int>::iterator find_itr = temp_check.find((*itr).first);
@@ -1110,6 +1114,7 @@ void JXJ::crJXJUIOnFormationShowMethod::operator()(crHandle &handle)
 			find_itr->second += (*itr).second;
 		}
 	}
+	player_data->unlock();
 	int j = 0;
 	//tempformationvec->clear();
 	//tempformationvec->resize(3);

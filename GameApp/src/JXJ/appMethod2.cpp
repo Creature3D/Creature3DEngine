@@ -28012,15 +28012,18 @@ void crJXJFormationEditMethod::operator()(crHandle &handle)
 			if (canvasdata)
 			{
 				canvasdata->getParam(WCHDATA_JXJTempFormationVec,param);
+				canvasdata->lock();
 				FormationInfoVec *formationinfovec = (FormationInfoVec *)param;
 				if (m_index < formationinfovec->size())
 				{
 					if ((*formationinfovec)[m_index] == NULL)
 					{
+						canvasdata->unlock();
 						m_this->clearString();
 						return;
 					}
 				}
+				canvasdata->unlock();
 			}
 			int totalleadcount = 0;
 			int totaltroopscount = 0;
@@ -28226,10 +28229,11 @@ void crJXJFormationjiangkaTipInfoMethod::operator()(crHandle &handle)
 			//playerdata
 			ref_ptr<crCanvasNode>canvas = m_this->getParentCanvas();
 			crData *canvasdata = canvas ->getDataClass();
+			canvasdata->lock();
 			canvasdata->getParam(WCHDATA_JXJTempFormationVec, param);
 			FormationInfoVec *tempfomationvec = (FormationInfoVec *)param;
 			itemid = (*tempfomationvec)[m_row]->getEquips()[m_col];
-
+			canvasdata->unlock();
 			if(itemid>0)
 			{
 				ref_ptr<crTableIO>troopsEquipTab = crGlobalHandle::gData()->gGlobalTable(WCHDATA_JXJItemTab);

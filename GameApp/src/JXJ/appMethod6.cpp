@@ -15653,6 +15653,7 @@ void crJXJSetArmyPowerMethod::operator()(crHandle &handle)
 		crPlayerGameData *player = crMyPlayerData::getInstance()->getPlayerGameData(); // player entity
 	
 		crData *canvasdata = canvas->getDataClass();
+		canvasdata->lock();
 		canvasdata->getParam(WCHDATA_JXJTempFormationVec, param);
 		FormationInfoVec *tempformation = (FormationInfoVec *)param;
 		int curtroopsselect = 0;//int(m_this->getValue());
@@ -15694,6 +15695,7 @@ void crJXJSetArmyPowerMethod::operator()(crHandle &handle)
 			}
 			totalpower += power[0];
 		}
+		canvasdata->unlock();
 		if (totalpowerinput.valid())
 		{
 			totalpowerinput->setString(crArgumentParser::appItoa(totalpower));
