@@ -1563,8 +1563,8 @@ void crGetModelFileNameLogic::operator()(crHandle &handle)
 		ofn.hwndOwner = crStartHandler::getInstance()->getWindowHandle();
 		ofn.lpstrFile = szFile;
 		ofn.nMaxFile = sizeof(szFile);
-		if(m_ext.compare("rbody") == 0)
-			ofn.lpstrFilter = "rbody(.rbody)\0*.rbody\0All(*.*)\0*.*\0";
+		if(m_ext.compare("cook") == 0)
+			ofn.lpstrFilter = "cook(.cook)\0*.cook\0All(*.*)\0*.*\0";
 		else if(m_ext.compare("cru") == 0)
 			ofn.lpstrFilter = "cru(.cru)\0*.cru\0All(*.*)\0*.*\0";
 		else
