@@ -697,6 +697,17 @@ void crUpdateServerList::buildUpdateSql(int serverid, short remaincount,short on
 }
 /////////////////////////////////////////
 //
+//crUpdateServerStats
+//
+/////////////////////////////////////////
+void crUpdateServerStats::buildUpdateSql(int serverid, unsigned char stats)
+{
+	char sql[256];
+	sprintf(sql, "update serverlist set stats=%d,updatedate=now() where id=%d\0", stats, serverid);
+	setUpdateSql(sql);
+}
+/////////////////////////////////////////
+//
 //crInsertServerList
 //
 /////////////////////////////////////////

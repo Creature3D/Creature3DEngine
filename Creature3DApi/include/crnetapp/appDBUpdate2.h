@@ -251,6 +251,12 @@ public:
 	crUpdateServerList(){}
 	void buildUpdateSql(int serverid, short remaincount,short onlinecount);
 };
+class CRNETAPP_EXPORT crUpdateServerStats : public CRDataBase::crUpdateSql
+{//stats 0:正常，1进入轮回
+public:
+	crUpdateServerStats(){}
+	void buildUpdateSql(int serverid, unsigned char stats);
+};
 class CRNETAPP_EXPORT crInsertServerList : public CRDataBase::crUpdateSql
 {
 public:
