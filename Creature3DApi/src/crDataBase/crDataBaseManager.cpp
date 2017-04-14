@@ -335,8 +335,8 @@ int crDataBase::executeQuery(crQueryData *query)
 				try
 				{
 				    buf = record[nColumn];
-					if(buf && lengths[nColumn]>0)
-				        queryResult->addParam(nColumn,buf,lengths[nColumn]);
+					//if(buf && lengths[nColumn]>0)
+				    queryResult->addParam(nColumn,buf,lengths[nColumn]);
 				}
 				catch(...)
 				{
