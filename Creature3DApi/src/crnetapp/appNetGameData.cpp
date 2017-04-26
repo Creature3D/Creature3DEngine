@@ -6055,12 +6055,12 @@ void crRoom::setReady(crRoomPlayer *roomplayer)
 //{
 //	m_sightInfoMapMutex.acquire();
 //}
-crSightInfo* crRoom::getOrCreateSightInfo(unsigned char groupid, bool npcshare)
+crSightInfo* crRoom::getOrCreateSightInfo(unsigned char groupid/*, bool npcshare*/)
 {
 	//unsigned char groupid = member->getGroupID();
 	if(groupid==0)
 		return NULL;//中立没有视野
-	if(m_shareSight || npcshare/* || groupid==2 */)
+	if(m_shareSight /*|| npcshare*/ || groupid==2 )
 	{//NPC队伍的采用共享视野
 		GNE::LockMutex lock( m_sightInfoMapMutex );
 		crSightInfo *sightInfo;
