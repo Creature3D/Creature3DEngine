@@ -10624,8 +10624,8 @@ void crPlayerDataEventPacket::parsePacket(const std::string &sender)
 		ref_ptr<crGameServerPlayerData> playerData = dynamic_cast<crGameServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(playerid));
 		if(playerData.valid())
 		{
-			crPlayerGameData *playerGameData = playerData->getPlayerGameData();
-			if(playerGameData)
+			ref_ptr<crPlayerGameData> playerGameData = playerData->getPlayerGameData();
+			if(playerGameData.valid())
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
 				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));

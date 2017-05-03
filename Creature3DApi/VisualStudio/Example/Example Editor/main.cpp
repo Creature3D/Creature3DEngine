@@ -153,7 +153,7 @@ int main( int argc, char **argv )
 
 	//	//close(sockfd);
 	//}
-	//_crInt64 msg = 77311508691;
+	//_crInt64 msg = 86751656;
 	//_crInt32 lmsg = LOINT64(msg);
 	//_crInt32 hmsg = HIINT64(msg);
 	//_crInt64 param = 353988215239081984;
