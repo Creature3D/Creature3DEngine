@@ -172,7 +172,7 @@ bool crDownload::moveFileToDirectory()
 bool crDownload::isinifile()
 {
 	std::string ext = getFileExtension(m_filename);
-	return equalCaseInsensitive(ext,"ini");
+	return equalCaseInsensitive(ext, "ini") || equalCaseInsensitive(ext, "in") || equalCaseInsensitive(ext, "i");
 }
 bool crDownload::is7zfile()
 {
