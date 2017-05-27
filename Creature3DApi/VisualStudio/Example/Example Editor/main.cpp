@@ -265,14 +265,27 @@ int main( int argc, char **argv )
 	HANDLE hMutex = NULL;
 	if(runMode > 0/* && runMode < WebGame*/)
 	{//双开
-		hMutex = CreateMutex(NULL, false, "Creature3D");
-		if (GetLastError() == ERROR_ALREADY_EXISTS)
+		char buf[64];
+		for (int i = 0; i < 3; i++)
 		{
-			CloseHandle(hMutex);
+			sprintf(buf, "Creature3D%d\0", i);
+			hMutex = CreateMutex(NULL, false, buf);
+			if (GetLastError() == ERROR_ALREADY_EXISTS)
+			{
+				CloseHandle(hMutex);
+				hMutex = NULL;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if (!hMutex)
+		{
 			MessageBox(::GetActiveWindow(), "程序已经在运行中，不能重复启动！", "Creature3D", MB_OK);
 			return 0;
 		}
-		CRNetApp::crGlobalHandle::setRunProtectHandle(hMutex);
+		//CRNetApp::crGlobalHandle::setRunProtectHandle(hMutex);
 	}
 #ifdef CookFile
 	CRIOManager::SetCooked(true);
@@ -494,9 +507,9 @@ int main( int argc, char **argv )
 	ChangeDisplaySettings(NULL,0);
 	ShowCursor(TRUE);
 #endif
-	if(CRNetApp::crGlobalHandle::getRunProtectHandle())
+	if (hMutex/*CRNetApp::crGlobalHandle::getRunProtectHandle()*/)
 	{//LoginJXJ.cfg
-		CloseHandle(CRNetApp::crGlobalHandle::getRunProtectHandle());
+		CloseHandle(hMutex/*CRNetApp::crGlobalHandle::getRunProtectHandle()*/);
 		CRNetApp::crGlobalHandle::setRunProtectHandle(NULL);
 	}
 	char *restart = getenv("CRE_RESTART");
