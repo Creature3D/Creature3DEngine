@@ -12361,11 +12361,14 @@ void crBotCollideMethod::operator()(crHandle &handle)
 						}
 						else if(crMyPlayerData::getInstance()->ifItemIsMe(fireItem))
 							sendevent = true;
-						//else if(hititem->getItemtype() != crInstanceItem::Role)
-						//{
-						//	if(crMyPlayerData::getInstance()->ifItemIsMe(fireItem))
-						//		sendevent = true;
-						//}
+						else if (hititem->getItemtype() != crInstanceItem::Role && fireItem->getItemtype() != crInstanceItem::Role)
+						{//NPC对NPC放技能
+							crData *bulletitemData = bulletItem->getDataClass();
+							bulletitemData->getParam(WCHDATA_DataType, param);
+							unsigned char datatype = *(unsigned char*)param;
+							if (datatype != DT_Attack)
+								sendevent = true;
+						}
 						if(sendevent)
 						{//通知服务器，被击中
 							//char gbuf[256];
@@ -16345,18 +16348,28 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 			}
 			if(*m_isvalid)
 			{
+				int fireid = fireItem->getID();
+				crData *bulletData = bullet->getDataClass();
+				bulletData->getParam(WCHDATA_Item, param);
+				crInstanceItem *bulletItem = ((crInstanceItem*)param);
+				if (!bulletItem) return;
+
 				//unsigned char hitItemType = hititem->getItemtype();
 				unsigned char fireType = fireItem->getItemtype();
 				bool sendevent = false;
 				if(crMyPlayerData::getInstance()->ifItemIsMe(hititem.get()) || crMyPlayerData::getInstance()->ifItemIsMe(fireItem.get()))
 					sendevent = true;
+				else if (hititem->getItemtype() != crInstanceItem::Role && fireItem->getItemtype() != crInstanceItem::Role)
+				{//NPC对NPC放技能
+					sendevent = true;
+					crData *bulletitemData = bulletItem->getDataClass();
+					bulletitemData->getParam(WCHDATA_DataType, param);
+					unsigned char datatype = *(unsigned char*)param;
+					if (datatype != DT_Attack)
+						sendevent = true;
+				}
 				if(sendevent)
 				{//通知服务器，被击中
-					int fireid = fireItem->getID();
-					crData *bulletData = bullet->getDataClass();
-					bulletData->getParam(WCHDATA_Item,param);
-					crInstanceItem *bulletItem = ((crInstanceItem*)param);
-					if(!bulletItem) return;
 					int bulletItemID = bulletItem->getInstanceItemID();
 
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
