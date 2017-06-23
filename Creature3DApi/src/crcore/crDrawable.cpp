@@ -123,7 +123,7 @@ crDrawable::crDrawable(const crDrawable& drawable,const crCopyOp& copyop):
 
 crDrawable::~crDrawable()
 {
-	setStateSet(0);
+	//setStateSet(0);
 	//dirtyDisplayList();
 }
 
