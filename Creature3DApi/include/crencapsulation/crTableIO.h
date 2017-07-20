@@ -38,10 +38,10 @@ public:
 	static crTableIO* openFile(std::string fileName);
 	bool openFileNoCook(std::string fileName);
 	bool openFileStream(std::string fileName);
-	void saveToFile(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件
-	void saveToFileNoCook(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件
-	void saveToFileStream(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件
-	void saveToFileStreamNoCook(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件
+	void saveToFile(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 tab->cook
+	void saveToFileNoCook(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 tab
+	void saveToFileStream(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 crb->cook
+	void saveToFileStreamNoCook(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 crb
 	int getRowCount() const;
 	int getColumnCount() const;
 	const std::string &getTitle(int col) const;

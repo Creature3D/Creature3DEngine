@@ -48,6 +48,7 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
 
+	inline std::string& gClientCfg() { return g_clientfile; }//服务器启动日期
 	inline std::string& gStartDate() { return g_startDate; }//服务器启动日期
 	inline float gUnitScale() { return g_unitScale; }
 	inline unsigned char gMaxLapover() { return g_maxLapover; }
@@ -124,6 +125,7 @@ public:
 	void unlockGMMap();
 protected:
 	////制作场景的时候注意坐标0,0,0点为不可站立点。
+	std::string g_clientfile;//client.cfg文件名
 	std::string g_startDate;//服务器启动时间
 	float g_unitScale;
 	unsigned char g_maxLapover;

@@ -254,7 +254,7 @@ int main( int argc, char **argv )
 	if(crArgumentParser::readKeyValue(argvstr,"-WebLogin",webstr) && !webstr.empty())
 	{
 		char buf[64];
-		sprintf(buf,"WebLogin=%s\0",webstr.c_str());//key|playerid|serverid|isp
+		sprintf(buf,"WebLogin=%s\0",webstr.c_str());//key|playerid|serverid|isp|Client.cfg
 		_putenv(buf);
 	}
 	else
@@ -403,6 +403,11 @@ int main( int argc, char **argv )
 	CRNetApp::crGlobalHandle::getInstance()->setDataClass(data);
 	if(runMode != Editor)
 	{
+		std::string::size_type comma = webstr.find_last_of('|');
+		std::string client = std::string(webstr.begin() + comma + 1, webstr.end());
+		if (client.find(".cfg")==std::string::npos)
+			client = "Client.cfg";
+		CRNetApp::crGlobalHandle::gData()->gClientCfg() = client;//
 		int sceneid = CRNetApp::crGlobalHandle::getInstance()->gData()->gFirstGameSceneID();
 		data = CREncapsulation::loadData("script/RunGame.cfg");
 		data->inputParam(WCHDATA_SceneID,&sceneid);

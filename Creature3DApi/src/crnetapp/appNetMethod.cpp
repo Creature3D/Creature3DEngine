@@ -459,7 +459,7 @@ void crConnectToLoginServerNewMethod::operator()(crHandle &handle)
 	{
 		int serverid = 1;
 		CRCore::ref_ptr<CRNet::crNetConductor> netConductor = new CRNet::crNetConductor;
-		std::string file = "Client.cfg";
+		std::string file = crGlobalHandle::gData()->gClientCfg();// "Client.cfg";
 		rcfg::ConfigScript cfg_script;
 		if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 		{
@@ -925,7 +925,7 @@ void crConnectToLoginServerNew2Method::operator()(crHandle &handle)
 		int port = DEFAULTPORT;
 		int bufSizeScale = 1;
 
-		std::string file = "Client.cfg";
+		std::string file = crGlobalHandle::gData()->gClientCfg();// "Client.cfg";
 		rcfg::ConfigScript cfg_script;
 		if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 		{
@@ -1292,7 +1292,7 @@ void crLoginChatMethod::operator()(crHandle &handle)
 
 	//const std::string& userName = crMyPlayerData::getInstance()->getPlayerName();
 	int playerid = crMyPlayerData::getInstance()->getPlayerID();
-	std::string file = "Client.cfg";
+	std::string file = crGlobalHandle::gData()->gClientCfg();//"Client.cfg";
 	rcfg::ConfigScript cfg_script;
 	if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 	{
@@ -2259,7 +2259,7 @@ void crConnectToLoginServer2Method::operator()(crHandle &handle)
 	int port = DEFAULTPORT;
 	int bufSizeScale = 1;
 
-	std::string file = "Client.cfg";
+	std::string file = crGlobalHandle::gData()->gClientCfg();//"Client.cfg";
 	rcfg::ConfigScript cfg_script;
 	if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 	{
@@ -45068,7 +45068,7 @@ void crInitDownloadMethod::addParam(int i, const std::string& str)
 void crInitDownloadMethod::operator()(crHandle &handle)
 {
 	char gbuf[256];
-	std::string file = "Client.cfg";
+	std::string file = crGlobalHandle::gData()->gClientCfg();//"Client.cfg";
 	rcfg::ConfigScript cfg_script;
 	if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 	{

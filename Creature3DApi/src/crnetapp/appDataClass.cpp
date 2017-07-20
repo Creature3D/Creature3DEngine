@@ -40,6 +40,7 @@ using namespace CRIOManager;
 //
 /////////////////////////////////////////
 crGlobalData::crGlobalData():
+g_clientfile("Client.cfg"),
 g_unitScale(0.01f),
 g_maxLapover(99),
 g_salerate(0.25f),

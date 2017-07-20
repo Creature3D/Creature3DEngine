@@ -15,6 +15,7 @@
 #include <CREncapsulation/crLoader.h>
 #include <CREncapsulation/crNodeCallbacks.h>
 #include <CREncapsulation/crNodeVisitors.h>
+#include <CREncapsulation/crTableIO.h>
 #include <CRProducer/crKeyboardMouseHandle.h>
 #include <CRProducer/crCameraGroup.h>
 #include <CRProducer/crViewer.h>
@@ -26334,5 +26335,81 @@ void crUnSelectAllMethod::operator()(crHandle &handle)
 		crGameBodyInfo *gamebodyInfo = cameraBot->getGameBodyInfo();
 		assert(gamebodyInfo);
 		gamebodyInfo->unSelectAll();
+	}
+}
+/////////////////////////////////////////
+//
+//crExportCharacterPosMethod
+//
+/////////////////////////////////////////
+crExportCharacterPosMethod::crExportCharacterPosMethod(){}
+crExportCharacterPosMethod::crExportCharacterPosMethod(const crExportCharacterPosMethod& handle) :
+crMethod(handle)
+{
+}
+void crExportCharacterPosMethod::inputParam(int i, void *param)
+{
+}
+
+void crExportCharacterPosMethod::addParam(int i, const std::string& str)
+{
+}
+
+void crExportCharacterPosMethod::operator()(crHandle &handle)
+{
+	crCollectNodeBYClassNameVisitor collectNodeByClassName;
+	collectNodeByClassName.insertClassNameId("CreBodyNode");
+	crBrain::getInstance()->accept(collectNodeByClassName);
+	CRCore::NodeArray &nodeArray = collectNodeByClassName.getResult();
+	if (!nodeArray.empty())
+	{
+		CREncapsulation::crTableIO::StrVec title;
+		title.push_back("name");
+		title.push_back("x");
+		title.push_back("y");
+		title.push_back("z");
+		title.push_back("dirx");
+		title.push_back("diry");
+		title.push_back("dirz");
+		CREncapsulation::crTableIO::StrVec record;
+		record.resize(7);
+		ref_ptr<CREncapsulation::crTableIO> tab = new CREncapsulation::crTableIO;
+		tab->setTitleVec(title);
+		CRCore::crSearchNodeBYNameVisitor searchByNameVisitor;
+		searchByNameVisitor.setTraversalMode(crNodeVisitor::TRAVERSE_PARENTS);
+		searchByNameVisitor.setNameId("ProxyNode");
+		searchByNameVisitor.setSearchNodeType(ALLNODE);
+		std::string datafile;
+		for (CRCore::NodeArray::iterator itr = nodeArray.begin();
+			itr != nodeArray.end();
+			++itr)
+		{
+			searchByNameVisitor.clearResult();
+			(*itr)->accept(searchByNameVisitor);
+			crGroup *proxyNode = dynamic_cast<crGroup *>(searchByNameVisitor.getResult());
+			if (proxyNode)
+			{
+				crMatrixTransform *matrix = dynamic_cast<crMatrixTransform *>(proxyNode->getChild(0));
+				if (matrix)
+				{
+					crArgumentParser::readKeyValue(proxyNode->getDescriptions(), "DataFile", datafile);
+					record[0] = crArgumentParser::getSimpleFileName(datafile);
+					crVector3 pos = matrix->getTrans();
+					pos *= 100.0f;
+					crVector3i ipos(pos[0], pos[1], pos[2]);
+					crMatrixf rotation = matrix->getMatrix();
+					rotation.setTrans(0.0f, 0.0f, 0.0f);
+					crVector3 dir = (-Y_AXIS * rotation).normalize();
+					record[1] = crArgumentParser::appItoa(ipos[0]);
+					record[2] = crArgumentParser::appItoa(ipos[1]);
+					record[3] = crArgumentParser::appItoa(ipos[2]);
+					record[4] = crArgumentParser::appItoa(dir[0]);
+					record[5] = crArgumentParser::appItoa(dir[1]);
+					record[6] = crArgumentParser::appItoa(dir[2]);
+					tab->addData(record);
+				}
+			}
+		}
+		tab->saveToFileNoCook("CharacterPos.tab");
 	}
 }

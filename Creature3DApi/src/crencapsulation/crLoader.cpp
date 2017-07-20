@@ -9101,6 +9101,7 @@ void CREncapsulation::registerHandleClass()
 	CRCore::crHandleManager::RegisterHandleProxy(new CREncapsulation::crNodeUpdateMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CREncapsulation::crAutoSaveSceneMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CREncapsulation::crUnSelectAllMethod);
+	CRCore::crHandleManager::RegisterHandleProxy(new CREncapsulation::crExportCharacterPosMethod);
 	//////////MethodClass2
     CRCore::crHandleManager::RegisterHandleProxy(new CREncapsulation::crPitchDofMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CREncapsulation::crRollDofMethod);

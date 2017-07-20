@@ -3503,5 +3503,15 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 };
+class crExportCharacterPosMethod : public CRCore::crMethod
+{//
+public:
+	crExportCharacterPosMethod();
+	crExportCharacterPosMethod(const crExportCharacterPosMethod& handle);
+	MethodClass(CREncapsulation, ExportCharacterPos)
+	virtual void operator()(crHandle &handle);
+	virtual void inputParam(int i, void *param);
+	virtual void addParam(int i, const std::string& str);
+};
 }
 #endif
