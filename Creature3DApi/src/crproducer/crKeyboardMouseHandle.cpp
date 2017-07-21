@@ -242,7 +242,7 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 						if(capturer == pickUI)
 							crFilterRenderManager::getInstance()->setMouseCapturer(NULL);
 					}
-					if(pickUI->getEnable())
+					if (pickUI->getEnable() || ea->getButton() != crGUIEventAdapter::LEFT_MOUSE_BUTTON)
 					{
 						pickUI->kernelMouseEvent(mouse[0],mouse[1],ea);
 						if(ea->getEventType() == crGUIEventAdapter::MOVE)
@@ -259,8 +259,6 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 							pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
 						}
 					}
-					else if(ea->getEventType() == crGUIEventAdapter::MOVE)
-						pickUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKEINT64(ea,NULL));
 					//else if(ea->getEventType() == crGUIEventAdapter::DRAG || ea->getEventType() == crGUIEventAdapter::RELEASE)
 					//	pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
 				} while (0);
