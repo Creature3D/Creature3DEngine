@@ -2570,6 +2570,7 @@ void crSceneServerCallback::clientInitImplementation()
 
 void crSceneServerCallback::serverUpdateImplementation(float dt)
 {//当客户机连接超时，将其踢出
+	crGlobalHandle::getInstance()->timer()+=dt;
 	if(m_netConductor->getNetManager()->isRunning())
 	{
 		//if(m_dropedTimer>0.0f)
