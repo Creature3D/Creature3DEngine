@@ -15748,7 +15748,7 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 			data->excHandle(MAKEINT64(WCH_ResetExtra,NULL));
 			ref_ptr<crData> extraData = (crData *)param;
 			short id = 0;
-			short pri = 0;
+			//short pri = 0;
 			int itemid = m_this->getInstanceItemID();
 			int playerid = m_this->getPlayerID();
 			bool removeExtra = false;
@@ -15763,7 +15763,7 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 				++itr )
 			{
 				id = itr->first;
-				pri = itr->second;
+				//pri = itr->second;
 				handle = extraData->getHandle(MAKEINT64(WCH_DoExtra,id));
 				if(handle.valid())
 				{
@@ -15774,6 +15774,7 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 						handle->inputParam(1,m_this);
 						handle->inputParam(2,&m_param);
 						handle->inputParam(3,&removeExtra);
+						handle->inputParam(4,&(itr->second));
 						extraData->excHandle(handle.get());
 					}
 					catch (...)
