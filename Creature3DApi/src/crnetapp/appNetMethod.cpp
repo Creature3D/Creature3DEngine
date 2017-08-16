@@ -15774,7 +15774,7 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 						handle->inputParam(1,m_this);
 						handle->inputParam(2,&m_param);
 						handle->inputParam(3,&removeExtra);
-						handle->inputParam(4,&(itr->second));
+						handle->inputParam(4, &id);
 						extraData->excHandle(handle.get());
 					}
 					catch (...)
