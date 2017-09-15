@@ -2219,15 +2219,13 @@ void crSceneServerInitPacket::parsePacket(const std::string &sender)
 			ref_ptr<crSceneIDQueryData> sceneIDQuery = new crSceneIDQueryData;
 			sceneIDQuery->buildQuerySql(gameid,sceneName);
 			sceneSession->executeQuery(sceneIDQuery.get());
-			crDataBase::QueryResultVec sceneIDQueryResultVec = sceneSession->getQueryResult();
-			sceneSession->releaseQuery();
-			scenedb->endSession(sceneSession.get());
+			crDataBase::QueryResultVec& sceneIDQueryResultVec = sceneSession->getQueryResult();
 			if(!sceneIDQueryResultVec.empty())
 			{
+				sceneIDQuery = dynamic_cast<crSceneIDQueryData *>(sceneIDQueryResultVec[0].get());
 				int sceneid = sceneIDQuery->getID();
 				ref_ptr<crStreamBuf> stream = new crStreamBuf;
 				stream->createBuf(68);
-				sceneIDQuery = dynamic_cast<crSceneIDQueryData *>(sceneIDQueryResultVec[0].get());
 				stream->_writeInt(gameid);//4
 				stream->_writeString(gameName);//16+4
 				stream->_writeString(gameServerName);//16+4
@@ -2245,6 +2243,8 @@ void crSceneServerInitPacket::parsePacket(const std::string &sender)
 			{
 				CRCore::notify(CRCore::FATAL)<<"crSceneServerInitPacket "<<sceneName<<" 没有在场景数据库里找到，将导致该场景服务器无法完成启动!"<<std::endl;
 			}
+			sceneSession->releaseQuery();
+			scenedb->endSession(sceneSession.get());
 		}
 	}
 	else if(netType == SceneServerClient_Game)

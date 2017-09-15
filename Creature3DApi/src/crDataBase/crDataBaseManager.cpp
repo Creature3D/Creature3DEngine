@@ -313,22 +313,22 @@ int crDataBase::executeQuery(crQueryData *query)
 	if (!queryresut)
 	{
 		results = mysql_store_result((MYSQL *)/*m_queryDB*/m_db);
-		int nRecord = 0;
+		//int nRecord = 0;
 		int nColumn = 0;
 		//std::string str;
 		char *buf;
-		crQueryData *queryResult;
+		ref_ptr<crQueryData>queryResult;
 		unsigned int num_fields;
 		unsigned long *lengths;
 		while((record = mysql_fetch_row(results))) 
 		{
 			num_fields = mysql_num_fields(results);
 			lengths = mysql_fetch_lengths(results);
-			if(nRecord == 0)
-                queryResult = query;
-			else
+			//if(nRecord == 0)
+   //             queryResult = query;
+			//else
 			    queryResult = dynamic_cast<crQueryData *>(query->cloneType());
-			nRecord++;
+			//nRecord++;
 			nColumn = 0;
 			for(; nColumn</*query->getNumColumn()*/num_fields; nColumn++)
 			{
