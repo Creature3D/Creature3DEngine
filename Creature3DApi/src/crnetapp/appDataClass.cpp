@@ -243,6 +243,8 @@ void crGlobalData::addParam(int i, const std::string& str)
 		break;
 	case WCHDATA_gGameGlobalTable:
 		g_gameGlobalTable = crTableIO::openFile(relStr);
+		g_globalTables[WCHDATA_gGameGlobalTable] = g_gameGlobalTable;
+		g_globalTableFileMap[WCHDATA_gGameGlobalTable] = relStr;
 		//g_gameGlobalTable->openFile(relStr);
 		break;
 	//case WCHDATA_gGMTable:
@@ -458,7 +460,13 @@ void crGlobalData::reloadGlobalTable(int id)
 void crGlobalData::reloadGlobalTable(int id,const std::string &filename)
 {
 	crScriptLoadManager::getInstance()->eraseLoadedRefeanced(filename);
-	g_globalTables[id] = crTableIO::openFile(filename);
+	if (id == WCHDATA_gGameGlobalTable)
+	{
+		g_gameGlobalTable = crTableIO::openFile(filename);
+		g_globalTables[id] = g_gameGlobalTable;
+	}
+	else
+		g_globalTables[id] = crTableIO::openFile(filename);
 }
 void crGlobalData::lockGMMap()
 {
