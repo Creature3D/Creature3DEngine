@@ -183,6 +183,9 @@ int main( int argc, char **argv )
 		CRIOManager::SetCooked(true);
 		CRIOManager::SetRetainSourceFile(true);
 		std::string file;
+		char buf[256];
+		std::string id = crArgumentParser::appItoa(GetCurrentProcessId());
+		std::string cookfilename;
 		for( std::vector<std::string>::iterator itr = fileNameVec.begin();
 			itr != fileNameVec.end();
 			++itr )
@@ -191,17 +194,19 @@ int main( int argc, char **argv )
 			CRCore::notify(CRCore::WARN)<<"UnCookFile "<<file<<std::endl;
 			file = CRCore::crArgumentParser::getFileNameEliminateExt(file)+"."+argv[2];
 			CRIOManager::crLoadCookFile scopedLoad(file.c_str());
+			cookfilename = CRCore::crArgumentParser::getFileNameEliminateExt(file) + "." + argv[2] + id;
+			sprintf(buf, "ren %s %s\0", cookfilename.c_str(), file.c_str());
+			system(buf);
 		}
 		CRCore::notify(CRCore::WARN)<<"UnCooked "<<filePath<<std::endl;
 
 		system("pause");
-		std::string id = crArgumentParser::appItoa(GetCurrentProcessId());
 		for( std::vector<std::string>::iterator itr = fileNameVec.begin();
 			itr != fileNameVec.end();
 			++itr )
 		{
 			file = *itr;
-			file = CRCore::crArgumentParser::getFileNameEliminateExt(file)+"."+argv[2]+id;
+			file = CRCore::crArgumentParser::getFileNameEliminateExt(file)+"."+argv[2];
 			CRCore::notify(CRCore::WARN)<<"DeleteFile "<<file<<std::endl;
 		    DeleteFileA(file.c_str());
 		}

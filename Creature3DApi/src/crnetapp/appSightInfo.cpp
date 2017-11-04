@@ -52,7 +52,7 @@ void crSightInfo::removeEyePoint(const CRCore::crVector2i &eyepoint)
 	GNE::LockMutex lock( m_eyePointSetMutex );
 	m_eyePointSet.erase(eyepoint);
 }
-void crSightInfo::update(crScene *scene,int roomid)
+void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &itemeyecount)
 {
 	bool haseye = false;
 	if(roomid!=0)
@@ -120,6 +120,7 @@ void crSightInfo::update(crScene *scene,int roomid)
 							}
 						}
 						haseye = true;
+						roleeyecount++;
 					}
 				}
 			}
@@ -170,6 +171,7 @@ void crSightInfo::update(crScene *scene,int roomid)
 						}
 					}
 					haseye = true;
+					itemeyecount++;
 				}
 			}
 		}

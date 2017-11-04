@@ -1375,42 +1375,63 @@ void crMyPlayerData::removeInRangeNpc(int itemid)
 //	}
 //	return ItemNpcPair((crInstanceItem*)NULL,(CREncapsulation::crNPC*)NULL);
 //}
-crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem)
+crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float attackrange)
 {
 	void *param;
-	crData *data = iitem->getDataClass();
-	//data->getParam(WCHDATA_GuardRange,param);
-	//short guardRange = *((short*)param);
-	//float fguardRange = (float)guardRange * crGlobalHandle::gData()->gUnitScale();
-	//crVector3 ipos = iitem->getPosition();
-	data->getParam(WCHDATA_CurrentAttackID,param);
-	int itemid = *(int *)param;
-	ref_ptr<crItemChild>aitemChild = iitem->findChildItem(itemid);
-	float attackrange = 0.0f;
-	if(aitemChild.valid() && aitemChild->isLoaded())
+	float sightRange = attackrange;
+	crVector3 ipos;
+	if (!iitem)
 	{
-		crInstanceItem *aitem = aitemChild->getInstanceItem();
-		crData *aitemData = aitem->getDataClass();
-		aitemData->getParam(WCHDATA_ItemUseRange,param);
-		unsigned short itemUseRange = *((unsigned short*)param);
-		attackrange = itemUseRange * crGlobalHandle::gData()->gUnitScale();
-		attackrange += iitem->getAttackDistance(NULL);
+		if (attackrange == 0.0f)
+			return NULL;
+		crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
+		CRProducer::crKeyboardMouseCallback* callback = bindview->getKeyboardMouseCallback();
+		CRCore::crIntersectVisitor::HitList hits;
+		bindview->computeIntersections(callback->mx(), callback->my(), hits);
+		if (!hits.empty())
+		{
+			ipos = hits[0].getWorldIntersectPoint();
+			//CRCore::notify(CRCore::ALWAYS) << "mx=" << callback->mx() << "my=" << callback->my() << "ipos = " << ipos << std::endl;
+		}
+		else
+		{
+			return NULL;
+		}
 	}
-	float sightRange = 0;
-	iitem->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
-	sightRange *= crGlobalHandle::gData()->gUnitScale();
-	if(sightRange<attackrange)
-		sightRange = attackrange;
-	crVector3 ipos = iitem->getPosition();
+	else
+	{
+		crData *data = iitem->getDataClass();
+		if (attackrange == 0.0f)
+		{
+			data->getParam(WCHDATA_CurrentAttackID, param);
+			int itemid = *(int *)param;
+			ref_ptr<crItemChild>aitemChild = iitem->findChildItem(itemid);
+			if (aitemChild.valid() && aitemChild->isLoaded())
+			{
+				crInstanceItem *aitem = aitemChild->getInstanceItem();
+				crData *aitemData = aitem->getDataClass();
+				aitemData->getParam(WCHDATA_ItemUseRange, param);
+				unsigned short itemUseRange = *((unsigned short*)param);
+				attackrange = itemUseRange * crGlobalHandle::gData()->gUnitScale();
+				attackrange += iitem->getAttackDistance(NULL);
+			}
+		}
+		iitem->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
+		sightRange *= crGlobalHandle::gData()->gUnitScale();
+		if (sightRange < attackrange)
+			sightRange = attackrange;
+		ipos = iitem->getPosition();
+	}
 	crVector3 epos;
 	crInstanceItem *enemyItem;
 	char isEnemy = 0;
 	unsigned int guisestate;
 	unsigned char itemstate;
-	float dist;
+	float dist,rthp;
 	crNode *relNode;
 	crData *itemData;
 	std::multimap< float,crInstanceItem *,std::less<float> > EnemyMap;
+	crRole *me = getCurrentRole();
 	{
 		CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangePlayerMapMutex);
 		for( InRangePlayerMap::iterator itr = m_inRangePlayerMap.begin();
@@ -1444,14 +1465,16 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem)
 				continue;
 			}
 			isEnemy = 0;
-			iitem->doEvent(WCH_EnemyCheck,MAKEINT64(enemyItem,&isEnemy));
+			me->doEvent(WCH_EnemyCheck, MAKEINT64(enemyItem, &isEnemy));
 			if(isEnemy == -1)
 			{
 				epos = enemyItem->getPosition();
 				dist = (epos-ipos).length();
 				if(dist<=sightRange)
 				{
-					EnemyMap.insert(std::make_pair(dist,enemyItem));
+					//itemData->getParam(WCHDATA_RTHP, param);
+					//rthp = *(float*)param;
+					EnemyMap.insert(std::make_pair(dist, enemyItem));
 				}
 			}
 		}
@@ -1482,14 +1505,16 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem)
 				continue;
 			}
 			isEnemy = 0;
-			iitem->doEvent(WCH_EnemyCheck,MAKEINT64(enemyItem,&isEnemy));
+			me->doEvent(WCH_EnemyCheck, MAKEINT64(enemyItem, &isEnemy));
 			if(isEnemy == -1)
 			{
 				epos = enemyItem->getPosition();
 				dist = (epos-ipos).length();
 				if(dist<=sightRange)
 				{
-					EnemyMap.insert(std::make_pair(dist,enemyItem));
+					//itemData->getParam(WCHDATA_RTHP, param);
+					//rthp = *(float*)param;
+					EnemyMap.insert(std::make_pair(dist, enemyItem));
 				}
 			}
 		}
@@ -1497,6 +1522,217 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem)
 			return EnemyMap.begin()->second;
 	}
 	return NULL;
+}
+crInstanceItem *crMyPlayerData::getOneInRangeEnemyByMouse()
+{
+	return getOneInRangeEnemy(NULL, 3.5f);
+}
+crInstanceItem *crMyPlayerData::selectTargetInPointRange(const CRCore::crVector3 &point, float range, unsigned char targetType, unsigned char &outTargetType)
+{
+	crInstanceItem *targetItem = NULL;
+	do
+	{
+		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
+		void *param;
+		crData *itemData;
+		crInstanceItem *item;
+		char isEnemy = 0;
+		unsigned int guisestate;
+		unsigned char itemstate;
+		crNode *relNode;
+		crVector3 itempos;
+		float dist;
+		std::multimap< float, crInstanceItem *, std::less<float> > TargetMap;
+		if (targetType & Target_Self)
+		{
+			GNE::LockMutex lock(m_myRoleNpcMapMutex);
+			for (MyRoleNpcMap::iterator itr = m_myRoleNpcMap.begin();
+				itr != m_myRoleNpcMap.end();
+				++itr)
+			{
+				item = itr->second.first.get();
+				relNode = item->getRelNode();
+				if (!relNode || !relNode->getVisiable())
+					continue;
+				itemData = item->getDataClass();
+				itemData->getParam(WCHDATA_ItemState, param);
+				if (!param)
+					continue;
+				itemstate = *(unsigned char *)param;
+				if (itemstate == IS_Dead)
+					continue;
+				guisestate = GS_Normal;
+				item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
+				{
+					continue;
+				}
+				itempos = item->getPosition();
+				dist = (itempos - point).length();
+				if (dist <= range)
+				{
+					//itemData->getParam(WCHDATA_RTHP, param);
+					//rthp = *(float*)param;
+					TargetMap.insert(std::make_pair(dist, item));
+				}
+			}
+			if (!TargetMap.empty())
+			{
+				targetItem = TargetMap.begin()->second;
+				break;
+			}
+		}
+		if (targetType & Target_Role)
+		{
+			CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangePlayerMapMutex);
+			for (InRangePlayerMap::iterator itr = m_inRangePlayerMap.begin();
+				itr != m_inRangePlayerMap.end();
+				++itr)
+			{
+				item = itr->second.first.get();
+				relNode = item->getRelNode();
+				if (!relNode || !relNode->getVisiable())
+					continue;
+				itemData = item->getDataClass();
+				itemData->getParam(WCHDATA_ItemState, param);
+				if (!param)
+					continue;
+				itemstate = *(unsigned char *)param;
+				if (itemstate == IS_Dead)
+					continue;
+				guisestate = GS_Normal;
+				item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
+				{
+					continue;
+				}
+				isEnemy = 0;
+				me->doEvent(WCH_EnemyCheck, MAKEINT64(item, &isEnemy));
+				if (isEnemy == -1 && (targetType & Target_Friend || targetType & Target_Self))
+				{
+					continue;
+				}
+				else if ((isEnemy == 1 && targetType & Target_Enemy))
+				{
+					continue;
+				}
+				itempos = item->getPosition();
+				dist = (itempos - point).length();
+				if (dist <= range)
+				{
+					//itemData->getParam(WCHDATA_RTHP, param);
+					//rthp = *(float*)param;
+					TargetMap.insert(std::make_pair(dist, item));
+				}
+			}
+			if (!TargetMap.empty())
+			{
+				targetItem = TargetMap.begin()->second;
+				break;
+			}
+		}
+		if (targetType & Target_Npc || targetType & Target_StaticNpc)
+		{
+			CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangeNpcMapMutex);
+			for (InRangeNpcMap::iterator itr = m_inRangeNpcMap.begin();
+				itr != m_inRangeNpcMap.end();
+				++itr)
+			{
+				item = itr->second.first.get();
+				relNode = item->getRelNode();
+				if (!relNode || !relNode->getVisiable())
+					continue;
+				itemData = item->getDataClass();
+				itemData->getParam(WCHDATA_ItemState, param);
+				if (!param)
+					continue;
+				itemstate = *(unsigned char *)param;
+				if (itemstate == IS_Dead)
+					continue;
+				guisestate = GS_Normal;
+				item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
+				{
+					continue;
+				}
+				if (guisestate & GS_Static)
+				{//建筑
+					if (!(targetType & Target_StaticNpc))
+						continue;
+				}
+				else
+				{
+					if (!(targetType & Target_Npc))
+						continue;
+				}
+				isEnemy = 0;
+				me->doEvent(WCH_EnemyCheck, MAKEINT64(item, &isEnemy));
+				if (isEnemy == -1 && (targetType & Target_Friend || targetType & Target_Self))
+				{
+					continue;
+				}
+				else if ((isEnemy == 1 && targetType & Target_Enemy))
+				{
+					continue;
+				}
+				itempos = item->getPosition();
+				dist = (itempos - point).length();
+				if (dist <= range)
+				{
+					//itemData->getParam(WCHDATA_RTHP, param);
+					//rthp = *(float*)param;
+					TargetMap.insert(std::make_pair(dist, item));
+				}
+			}
+			if (!TargetMap.empty())
+			{
+				targetItem = TargetMap.begin()->second;
+				break;
+			}
+		}
+		//if (targetType & Target_Item)
+		//{//不能对道具施法
+		//}
+	}
+	while (0);
+	outTargetType = getTargetItemType(targetItem);
+	return targetItem;
+}
+unsigned char crMyPlayerData::getTargetItemType(crInstanceItem *targetItem)
+{
+	unsigned char targetType = Target_Coord;
+	if (targetItem)
+	{
+		switch (targetItem->getItemtype())
+		{
+		case crInstanceItem::Role:
+			if (targetItem->getID() == crMyPlayerData::getInstance()->getPlayerID())
+				targetType = Target_Role | Target_Self;
+			else
+				targetType = Target_Role;
+			break;
+		case crInstanceItem::Npc:
+			{
+				unsigned int guisestate = GS_Normal;
+				guisestate = GS_Normal;
+				targetItem->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				if (guisestate & GS_Static)
+				{
+					targetType = Target_StaticNpc;
+				}
+				else
+				{
+					targetType = Target_Npc;
+				}
+			}
+			break;
+		case crInstanceItem::instanceitem:
+		case crInstanceItem::LocalItem:
+			targetType = Target_Item;
+			break;
+		}
+	}
+	return targetType;
 }
 void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 {

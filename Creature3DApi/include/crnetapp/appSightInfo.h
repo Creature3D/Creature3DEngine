@@ -52,7 +52,7 @@ public:
 
 	void insertEyePoint(const CRCore::crVector2i &eyepoint);
 	void removeEyePoint(const CRCore::crVector2i &eyepoint);
-	void update(crScene *scene,int roomid);
+	void update(crScene *scene, int roomid,int &roleeyecount, int &itemeyecount);
 
 	typedef std::map<_crInt64,CRCore::ref_ptr<crRole> > RolePlayerMap;//playerid,roleid
 	typedef std::set< CRCore::ref_ptr<crRole> >InSightRolePlayerSet;

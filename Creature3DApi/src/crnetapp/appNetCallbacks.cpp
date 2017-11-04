@@ -3202,10 +3202,16 @@ crRoom* crSceneServerCallback::createRoom(int sceneid,crStreamBuf* streamBuf)
 {
 	GNE::LockMutex lock( m_roomMapMutex );
 	if(m_roomMap.size()>=m_maxRoomCount)
+	{
+		CRCore::notify(CRCore::ALWAYS) << "crSceneServerCallback::createRoom失败，房间数量超出最大房间数：" << m_maxRoomCount << std::endl;
 		return NULL;
+	}
 	crScene *scene = findScene(sceneid);
 	if(!scene)
+	{
+		CRCore::notify(CRCore::ALWAYS) << "crSceneServerCallback::createRoom失败，该sceneid不存在：" << sceneid << std::endl;
 		return NULL;
+	}
 	ref_ptr<crRoom> room = new crRoom(scene);
 	std::string roomdata = crGlobalHandle::getInstance()->getScenarioDir()+scene->getSceneName()+".cfg";
 	ref_ptr<crData> data = CREncapsulation::loadData(roomdata);

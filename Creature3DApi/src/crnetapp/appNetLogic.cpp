@@ -2904,7 +2904,7 @@ void crExtraEffectLogic::operator()(crHandle &handle)
 {
 	if(!m_init && m_bot.valid())
 	{
-		m_playSceneFx->inputParam(WCHDATA_AttachToNode,m_bot.get());
+ 		m_playSceneFx->inputParam(WCHDATA_AttachToNode,m_bot.get());
 		(*m_playSceneFx)(*this);
 		m_init = true;
 	}

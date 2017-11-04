@@ -489,34 +489,36 @@ GNE::Mutex crGlobalHandle::s_recycleRoomIDDequeMutex;
 int crGlobalHandle::gainTemporaryRoomID()
 {
 	int id;
-	GNE::LockMutex lock( s_recycleRoomIDDequeMutex );
-	if(!s_recycleRoomIDDeque.empty())
-	{
-		RecycleIDDeque::iterator itr = s_recycleRoomIDDeque.begin();
-		id = *itr;
-		s_recycleRoomIDDeque.pop_front();
-		return id;
-	}
+	//GNE::LockMutex lock( s_recycleRoomIDDequeMutex );
+	//if(!s_recycleRoomIDDeque.empty())
+	//{
+	//	RecycleIDDeque::iterator itr = s_recycleRoomIDDeque.begin();
+	//	id = *itr;
+	//	s_recycleRoomIDDeque.pop_front();
+	//	return id;
+	//}
 	id = s_temporaryRoomID;
 	s_temporaryRoomID--;
+	if (s_temporaryRoomID == 0)
+		s_temporaryRoomID = -1;
 	return id;
 }
 void crGlobalHandle::recycleRoomID(int id)
 {
-	if(id<0)
-	{
-		GNE::LockMutex lock( s_recycleRoomIDDequeMutex );
-		for( RecycleIDDeque::iterator itr = s_recycleRoomIDDeque.begin();
-			itr != s_recycleRoomIDDeque.end();
-			++itr )
-		{
-			if(*itr == id)
-			{
-				return;
-			}
-		}
-		s_recycleRoomIDDeque.push_back(id);
-	}
+	//if(id<0)
+	//{
+	//	GNE::LockMutex lock( s_recycleRoomIDDequeMutex );
+	//	for( RecycleIDDeque::iterator itr = s_recycleRoomIDDeque.begin();
+	//		itr != s_recycleRoomIDDeque.end();
+	//		++itr )
+	//	{
+	//		if(*itr == id)
+	//		{
+	//			return;
+	//		}
+	//	}
+	//	s_recycleRoomIDDeque.push_back(id);
+	//}
 }
 unsigned short crGlobalHandle::s_httpDownloadID = 1;
 crGlobalHandle::RecycleUSIDDeque crGlobalHandle::s_recycleHttpDownloadIDDeque;

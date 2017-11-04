@@ -5806,13 +5806,17 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 			//sightupdate
 			if(m_scene.valid())
 			{
+				CRCore::Timer_t start_tick = CRCore::Timer::instance()->tick();
+				CRCore::Timer_t end_tick;
+				int roleeyecount = 0;
+				int itemeyecount = 0;
 				{
 					GNE::LockMutex lock( m_sightInfoMapMutex );
 					for( SightInfoMap::iterator itr = m_sightInfoMap.begin();
 						itr != m_sightInfoMap.end();
 						++itr )
 					{
-						itr->second->update(m_scene.get(),m_roomid);
+						itr->second->update(m_scene.get(),m_roomid,roleeyecount,itemeyecount);
 					}
 				}
 				{
@@ -5823,11 +5827,24 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 						++itr )
 					{
 						sightinfo = *itr;
-						sightinfo->update(m_scene.get(),m_roomid);
+						sightinfo->update(m_scene.get(), m_roomid,roleeyecount, itemeyecount);
 					}
+				}
+				end_tick = CRCore::Timer::instance()->tick();
+				float t = CRCore::Timer::instance()->delta_s(start_tick, end_tick);
+				if (t > 0.05f)
+				{
+					CRCore::notify(CRCore::WARN) << "Time to SightUpdate=" << t << " sightInfoMap=" << m_sightInfoMap.size() << " sightInfoSet=" << m_sightInfoSet.size() << " roleeyecount=" << roleeyecount << " itemeyecount=" << itemeyecount << std::endl;
 				}
 				float _dt = dt;
 				doEvent(WCH_RoomUpdate,MAKEINT64(&_dt,sc));
+				start_tick = end_tick;
+				end_tick = CRCore::Timer::instance()->tick();
+				t = CRCore::Timer::instance()->delta_s(start_tick, end_tick);
+				if (t > 0.02f)
+				{
+					CRCore::notify(CRCore::WARN) << "Time to RoomUpdate = " << t << std::endl;
+				}
 			}
 			else
 			{

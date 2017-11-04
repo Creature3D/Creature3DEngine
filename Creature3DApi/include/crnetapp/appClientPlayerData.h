@@ -280,7 +280,10 @@ public:
 	void insertInRangeNpc(ItemNpcPair &itemNpcPair);
 	void removeInRangeNpc(int itemid);
 	//ItemNpcPair getOneInRangeNpc(crInstanceItem *item,float selectTargetRange);
-	crInstanceItem *getOneInRangeEnemy(crInstanceItem *iitem);
+	crInstanceItem *getOneInRangeEnemy(crInstanceItem *iitem, float attackrange = 0.0f);
+	crInstanceItem *getOneInRangeEnemyByMouse();
+	crInstanceItem *selectTargetInPointRange(const CRCore::crVector3 &point, float range, unsigned char targetType, unsigned char &outTargetType);
+	unsigned char getTargetItemType(crInstanceItem *targetItem);
 	void updateInPatrolEnemyMap(crInstanceItem *iitem);
 	void lockInRangeNpcMap();
 	InRangeNpcMap &getInRangeNpcMap();
