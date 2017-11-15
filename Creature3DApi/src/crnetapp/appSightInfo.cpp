@@ -65,6 +65,9 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 		crScene::SceneItemMap &_sceneItemMap = roomItemMap[roomid];
 		crRole *role2;
 		crInstanceItem *item;
+		crData *eyeData;
+		void *param;
+		unsigned char itemState;
 		unsigned int guiseState;
 		{
 			GNE::LockMutex lock1( m_itemEyeMapMutex );
@@ -85,6 +88,11 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 						++ritr )
 					{
 						eye = ritr->second.get();
+						eyeData = eye->getDataClass();
+						eyeData->getParam(WCHDATA_ItemState, param);
+						itemState = *(unsigned char *)param;
+						if (itemState == IS_Dead)
+							continue;
 						guiseState = GS_Normal;
 						eye->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guiseState,NULL));
 						if(guiseState & GS_StaticUnVisiable || guiseState & GS_UnVisiable || guiseState & GS_Blind)
@@ -136,6 +144,11 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 					++itr )
 				{
 					eye = itr->second.get();
+					eyeData = eye->getDataClass();
+					eyeData->getParam(WCHDATA_ItemState, param);
+					itemState = *(unsigned char *)param;
+					if (itemState == IS_Dead)
+						continue;
 					guiseState = GS_Normal;
 					eye->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guiseState,NULL));
 					if(guiseState & GS_StaticUnVisiable || guiseState & GS_UnVisiable || guiseState & GS_Blind)

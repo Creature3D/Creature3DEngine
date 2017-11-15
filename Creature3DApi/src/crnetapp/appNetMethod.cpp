@@ -7179,22 +7179,22 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 			}
 			return;
 		}
-		crData *data = m_this->getDataClass();
+		//crData *data = m_this->getDataClass();
 		void *param;
-		if(guisestate & GS_Static)
-		{
-			unsigned char itemstate;
-			data->getParam(WCHDATA_ItemState,param);
-			itemstate = *(unsigned char *)param;
-			if(itemstate == IS_Dead)
-			{
-				if(m_sight->isRoleInSight(m_role2))
-				{
-					m_sight->insertOutSightItem(m_role2);
-				}
-				return;
-			}
-		}
+		//if(guisestate & GS_Static)
+		//{
+		//	unsigned char itemstate;
+		//	data->getParam(WCHDATA_ItemState,param);
+		//	itemstate = *(unsigned char *)param;
+		//	if(itemstate == IS_Dead)
+		//	{
+		//		if(m_sight->isRoleInSight(m_role2))
+		//		{
+		//			m_sight->insertOutSightItem(m_role2);
+		//		}
+		//		return;
+		//	}
+		//}
 		//data->getParam(WCHDATA_GuiseState,param);
 		//if(param)
 		//{
@@ -7447,6 +7447,8 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				m_item->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
 				itemdata->inputParam(WCHDATA_RTMP,&rt);
 			}
+			float dt = 0.1f;
+			m_item->doEvent(WCH_ChangeActState, MAKEINT64(ACT_Idle, &dt));
 		}
 		else if(itemtype == crInstanceItem::instanceitem)
 		{
@@ -7515,6 +7517,9 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			}
 
 			crMyPlayerData::getInstance()->insertInRangeItem(m_item.get(),group.get());
+
+			float dt = 0.1f;
+			m_item->doEvent(WCH_ChangeActState, MAKEINT64(ACT_Idle, &dt));
 
 			crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 			if(netConductor && itemtype == crInstanceItem::instanceitem)
@@ -7591,6 +7596,8 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				CRCore::notify(CRCore::FATAL)<<"crLoadItemMethod(): resScriptÊÇ¿ÕµÄ "<<std::endl;
 			}
 			crMyPlayerData::getInstance()->getScene()->insertSceneItem(m_item.get());
+			float dt = 0.1f;
+			m_item->doEvent(WCH_ChangeActState, MAKEINT64(ACT_Idle, &dt));
 			m_item->doEvent(WCH_RecvItemRTData);
 			//char gbuf[256];
 			//sprintf(gbuf,"LoadLocalItem %s,visiable:%d\n\0",m_item->getIName().c_str(),group->getVisiable());
@@ -7665,22 +7672,22 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 			}
 			return;
 		}
-		crData *data = m_this->getDataClass();
+		//crData *data = m_this->getDataClass();
 		void *param;
-		if(guisestate & GS_Static)
-		{
-			unsigned char itemstate;
-			data->getParam(WCHDATA_ItemState,param);
-			itemstate = *(unsigned char *)param;
-			if(itemstate == IS_Dead)
-			{
-				if(m_sight->isItemInSight(m_item))
-				{
-					m_sight->insertOutSightItem(m_item);
-				}
-				return;
-			}
-		}
+		//if(guisestate & GS_Static)
+		//{
+		//	unsigned char itemstate;
+		//	data->getParam(WCHDATA_ItemState,param);
+		//	itemstate = *(unsigned char *)param;
+		//	if(itemstate == IS_Dead)
+		//	{
+		//		if(m_sight->isItemInSight(m_item))
+		//		{
+		//			m_sight->insertOutSightItem(m_item);
+		//		}
+		//		return;
+		//	}
+		//}
 		//void *param;
 		//crData *data = m_item->getDataClass();
 		//data->getParam(WCHDATA_GuiseState,param);

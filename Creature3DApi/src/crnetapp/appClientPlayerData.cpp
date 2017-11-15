@@ -1427,7 +1427,7 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 	char isEnemy = 0;
 	unsigned int guisestate;
 	unsigned char itemstate;
-	float dist,rthp;
+	float dist/*,rthp*/;
 	crNode *relNode;
 	crData *itemData;
 	std::multimap< float,crInstanceItem *,std::less<float> > EnemyMap;
