@@ -320,6 +320,7 @@ protected:
 	CRCore::crVector3 m_targetPosition;
 	CRCore::crVector3 m_moveToPosition;//IS_MoveToPos IS_MoveToUseSkill IS_AttackToPos
 	unsigned char m_itemState;
+	unsigned char m_itemState_rec;
 	unsigned int m_guiseState;//外形状态
 	unsigned char m_camp;//阵营//0中立（不可攻击,观察者） 1混战（所有人都可以对其攻击） 2组队ID（从2开始后面都是组队ID，不同组队间可以攻击）
 	unsigned char m_fightmode;//战斗模式

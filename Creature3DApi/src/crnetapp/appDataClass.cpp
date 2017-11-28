@@ -845,6 +845,7 @@ crRoleData::crRoleData():
 	m_targetID(0),
 	m_targetRoleID(0),
 	m_itemState(0),
+	m_itemState_rec(0),
 	m_guiseState(GS_Normal),
 	m_currentAttackID(0),
 	m_aboutToUseItemID(0),
@@ -1014,6 +1015,7 @@ crRoleData::crRoleData(const crRoleData& data):
 	m_targetID(0),
 	m_targetRoleID(0),
 	m_itemState(0),
+	m_itemState_rec(0),
 	m_guiseState(data.m_guiseState),
 	m_patrolIndex(0),
 	m_patrolLoopMode(data.m_patrolLoopMode),
@@ -1883,8 +1885,15 @@ void crRoleData::inputParam(int i, void *param)
 			{
 				m_itemState = newstate;
 			}
+			if (m_itemState == IS_Dead || m_itemState == IS_Relive)
+			{
+				m_itemState_rec = IS_None;
+			}
 		}
 		//m_itemState = param==NULL?NULL:*((unsigned char*)param);
+		break;
+	case WCHDATA_ItemState_rec:
+		m_itemState_rec = param == NULL ? NULL : *((unsigned char*)param);
 		break;
 	case WCHDATA_GuiseState:
 		{
@@ -2332,6 +2341,9 @@ void crRoleData::getParam(int i, void*& param)
 		break;
 	case WCHDATA_ItemState:
 		param = &m_itemState;
+		break;
+	case WCHDATA_ItemState_rec:
+		param = &m_itemState_rec;
 		break;
 	case WCHDATA_GuiseState:
 		param = &m_guiseState;
@@ -3532,6 +3544,7 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 		m_targetPosition.set(0,0,0);
 		m_moveToPosition.set(0,0,0);
 		m_itemState = IS_Relive;
+		m_itemState_rec = IS_None;
 		m_followDistance = crGlobalHandle::gData()->gMinFollowDistance();
 		m_rthp = m_hp;
 		m_rtmp = m_mp;

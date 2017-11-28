@@ -8152,6 +8152,7 @@ void crNetPickTargetMethod::operator()(crHandle &handle)
 		crNode *targetNode = NULL;
 		crData *targetData = NULL;
 		void *param;
+		crData *itemData;
 		crInstanceItem *targetItem = NULL;
 		CRCore::NodePath &nodePath = hits[0].getNodePath();
 		for( CRCore::NodePath::reverse_iterator pitr = nodePath.rbegin();
@@ -8166,7 +8167,17 @@ void crNetPickTargetMethod::operator()(crHandle &handle)
 				targetItem = (crInstanceItem*)param;
 				if(targetItem)
 				{
-					break;
+					itemData = targetItem->getDataClass();
+					if (itemData)
+					{
+						itemData->getParam(WCHDATA_ItemState, param);
+						if (param)
+						{
+							unsigned char itemstate = *(unsigned char *)param;
+							if (itemstate != IS_Dead)//死亡单位不能拾取
+								break;
+						}
+					}
 				}
 			}
 		}

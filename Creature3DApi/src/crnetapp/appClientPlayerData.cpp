@@ -1430,7 +1430,8 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 	float dist/*,rthp*/;
 	crNode *relNode;
 	crData *itemData;
-	std::multimap< float,crInstanceItem *,std::less<float> > EnemyMap;
+	std::multimap< float,crInstanceItem *,std::less<float> > EnemyMap1;
+	std::multimap< float, crInstanceItem *, std::less<float> > EnemyMap2;
 	crRole *me = getCurrentRole();
 	{
 		CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangePlayerMapMutex);
@@ -1474,12 +1475,12 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 				{
 					//itemData->getParam(WCHDATA_RTHP, param);
 					//rthp = *(float*)param;
-					EnemyMap.insert(std::make_pair(dist, enemyItem));
+					EnemyMap1.insert(std::make_pair(dist, enemyItem));
 				}
 			}
 		}
-		if(!EnemyMap.empty())
-			return EnemyMap.begin()->second;
+		//if(!EnemyMap.empty())
+		//	return EnemyMap.begin()->second;
 	}
 	{
 		CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangeNpcMapMutex);
@@ -1514,13 +1515,18 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 				{
 					//itemData->getParam(WCHDATA_RTHP, param);
 					//rthp = *(float*)param;
-					EnemyMap.insert(std::make_pair(dist, enemyItem));
+					if (guisestate & GS_Static)
+						EnemyMap1.insert(std::make_pair(dist, enemyItem));
+					else
+						EnemyMap2.insert(std::make_pair(dist, enemyItem));
 				}
 			}
 		}
-		if(!EnemyMap.empty())
-			return EnemyMap.begin()->second;
 	}
+	if (!EnemyMap1.empty())
+		return EnemyMap1.begin()->second;
+	if (!EnemyMap2.empty())
+		return EnemyMap2.begin()->second;
 	return NULL;
 }
 crInstanceItem *crMyPlayerData::getOneInRangeEnemyByMouse()

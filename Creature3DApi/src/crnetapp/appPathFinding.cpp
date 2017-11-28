@@ -1056,7 +1056,7 @@ void crPathFindingManager::update()
 					if(start == target)
 					{
 						//item->setPosxy(targetPos[0]/crGlobalHandle::gData()->gUnitScale(),targetPos[1]/crGlobalHandle::gData()->gUnitScale());
-						pathFinder->setPathStatus(crInstanceItem::crPathFinder::NonExistent);
+						pathFinder->setPathStatus(crInstanceItem::crPathFinder::NotStarted);
 						continue;
 					}
 					if(!sceneLayer->walkability(target[0],target[1]))
