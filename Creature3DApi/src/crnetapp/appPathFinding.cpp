@@ -1056,7 +1056,7 @@ void crPathFindingManager::update()
 					if(start == target)
 					{
 						//item->setPosxy(targetPos[0]/crGlobalHandle::gData()->gUnitScale(),targetPos[1]/crGlobalHandle::gData()->gUnitScale());
-						pathFinder->setPathStatus(crInstanceItem::crPathFinder::NotStarted);
+						pathFinder->setPathStatus(crInstanceItem::crPathFinder::Lapover);
 						continue;
 					}
 					if(!sceneLayer->walkability(target[0],target[1]))
@@ -1204,13 +1204,13 @@ void crPathFindingManager::update()
 									else
 									{
 										pathFinder->setPathStatus(found);
-										CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestPath 没有找到路径 From:"<<sceneLayer->getPosXY(targetWP->getPoint())<<"To:"<<sceneLayer->getPosXY(target)<<" 消耗值:"<<m_pathFinding->getClosePathCount()<<std::endl;
+										CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestPath1 没有找到路径 From:"<<sceneLayer->getPosXY(targetWP->getPoint())<<"To:"<<sceneLayer->getPosXY(target)<<" 消耗值:"<<m_pathFinding->getClosePathCount()<<std::endl;
 									}
 								}
 								else
 								{
 									pathFinder->setPathStatus(found);
-									CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestPath 没有找到路径 From:"<<sceneLayer->getPosXY(start)<<"To:"<<sceneLayer->getPosXY(startWP->getPoint())<<" 消耗值:"<<m_pathFinding->getClosePathCount()<<std::endl;
+									CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestPath2 没有找到路径 From:"<<sceneLayer->getPosXY(start)<<"To:"<<sceneLayer->getPosXY(startWP->getPoint())<<" 消耗值:"<<m_pathFinding->getClosePathCount()<<std::endl;
 								}
 								m_pathFinding->reset();
 								m_waypointPathFinding->reset();
@@ -1218,16 +1218,17 @@ void crPathFindingManager::update()
 							}
 							else
 							{
-								CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestWaypoint 没有找到通路 From:"<<sceneLayer->getPosXY(start)<<"To:"<<sceneLayer->getPosXY(target)<<" 消耗值:"<<m_waypointPathFinding->getClosePathCount()<<std::endl;
+								CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestWaypoint3 没有找到通路 From:"<<sceneLayer->getPosXY(start)<<"To:"<<sceneLayer->getPosXY(target)<<" 消耗值:"<<m_waypointPathFinding->getClosePathCount()<<std::endl;
 								m_waypointPathFinding->reset();
 								pathFinder->setPathStatus(crInstanceItem::crPathFinder::NonExistent);
+								continue;
 							}
 						}
-						else
-						{
-							//CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestWaypoint 没有找到路点 From:"<<start<<"To:"<<target<<std::endl;
-							pathFinder->setPathStatus(crInstanceItem::crPathFinder::NonExistent);
-						}
+						//else
+						//{
+						//	//CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestWaypoint 没有找到路点 From:"<<start<<"To:"<<target<<std::endl;
+						//	pathFinder->setPathStatus(crInstanceItem::crPathFinder::NonExistent);
+						//}
 					}
 					found = m_pathFinding->findBestPath(item.get(),start,target,sceneLayer);
 					if(found == crInstanceItem::crPathFinder::Found)
@@ -1248,7 +1249,7 @@ void crPathFindingManager::update()
 					else
 					{
 						pathFinder->setPathStatus(found);
-						CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestPath 没有找到路径 From:"<<from<<"To:"<<targetPos<<" 消耗值:"<<m_pathFinding->getClosePathCount()<<std::endl;
+						CRCore::notify(CRCore::ALWAYS)<<m_scene->getSceneName()<<" FindBestPath4 没有找到路径 From:"<<from<<"To:"<<targetPos<<" 消耗值:"<<m_pathFinding->getClosePathCount()<<std::endl;
 					}
 					m_pathFinding->reset();
 				}

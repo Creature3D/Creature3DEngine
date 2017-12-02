@@ -8161,6 +8161,7 @@ void crNetPickTargetMethod::operator()(crHandle &handle)
 		{
 			targetNode = *pitr;
 			targetData = targetNode->getDataClass();
+			targetItem = NULL;
 			if(targetData)
 			{
 				targetData->getParam(WCHDATA_Item,param);
