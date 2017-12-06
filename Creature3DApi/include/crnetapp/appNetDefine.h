@@ -199,6 +199,7 @@ enum AppNetType
 	MonitorClient_Monitor,
 	DBServer,
 	GameServerClient_DB,
+	GameClient_CrossGame,//与跨服游戏服务器连接
 	Net_User,
 };
 #define DBPingInterval 30
