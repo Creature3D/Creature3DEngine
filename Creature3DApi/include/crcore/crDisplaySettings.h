@@ -353,6 +353,7 @@ class CR_EXPORT crDisplaySettings : public CRCore::Referenced
 		inline unsigned char getUIScaleMode(){ return m_uiscalemode; }
 		inline void setUIScaleFactor(float factor){ m_uiscaleFactor = factor; }
 		inline float getUIScaleFactor(){ return m_uiscaleFactor; }
+		inline float getUIMeterScale() { return getUIPixelMeter() * getUIHeightScale() / getUIScaleFactor(); }
     protected:
     
         virtual ~crDisplaySettings();

@@ -1418,16 +1418,18 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 		}
 		iitem->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
 		sightRange *= crGlobalHandle::gData()->gUnitScale();
-		if (sightRange < attackrange)
+		if (sightRange >/*<*/ attackrange)
 			sightRange = attackrange;
 		ipos = iitem->getPosition();
 	}
+	if (sightRange <= 0.0f)
+		return NULL;
 	crVector3 epos;
 	crInstanceItem *enemyItem;
 	char isEnemy = 0;
 	unsigned int guisestate;
 	unsigned char itemstate;
-	float dist/*,rthp*/;
+	float dist,rthp;
 	crNode *relNode;
 	crData *itemData;
 	std::multimap< float,crInstanceItem *,std::less<float> > EnemyMap1;
@@ -1473,14 +1475,18 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 				dist = (epos-ipos).length();
 				if(dist<=sightRange)
 				{
-					//itemData->getParam(WCHDATA_RTHP, param);
-					//rthp = *(float*)param;
-					EnemyMap1.insert(std::make_pair(dist, enemyItem));
+					if (dist < 3.0f)
+					{
+						return enemyItem;
+					}
+					itemData->getParam(WCHDATA_RTHP, param);
+					rthp = *(float*)param;
+					EnemyMap1.insert(std::make_pair(rthp, enemyItem));
 				}
 			}
 		}
-		//if(!EnemyMap.empty())
-		//	return EnemyMap.begin()->second;
+		//if(!EnemyMap1.empty() && EnemyMap1.begin()->first<3.0f)
+		//	return EnemyMap1.begin()->second;
 	}
 	{
 		CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangeNpcMapMutex);
@@ -1513,15 +1519,18 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 				dist = (epos-ipos).length();
 				if(dist<=sightRange)
 				{
-					//itemData->getParam(WCHDATA_RTHP, param);
-					//rthp = *(float*)param;
-					if (guisestate & GS_Static)
-						EnemyMap1.insert(std::make_pair(dist, enemyItem));
-					else
-						EnemyMap2.insert(std::make_pair(dist, enemyItem));
+					if (dist < 3.0f)
+					{
+						return enemyItem;
+					}
+					itemData->getParam(WCHDATA_RTHP, param);
+					rthp = *(float*)param;
+					EnemyMap2.insert(std::make_pair(rthp, enemyItem));
 				}
 			}
 		}
+		//if (!EnemyMap2.empty() && EnemyMap2.begin()->first < 3.0f)
+		//	return EnemyMap2.begin()->second;
 	}
 	if (!EnemyMap1.empty())
 		return EnemyMap1.begin()->second;
