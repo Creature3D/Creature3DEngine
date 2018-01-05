@@ -26,7 +26,7 @@ namespace CREncapsulation {
 enum SecurityMode
 {
 	SM_None,
-	SM_Copy,
+	SM_Copy,//安全
 	SM_Record
 };
 class CRENCAPSULATION_EXPORT crTableIO : public CRCore::Referenced
@@ -38,10 +38,10 @@ public:
 	static crTableIO* openFile(std::string fileName);
 	bool openFileNoCook(std::string fileName);
 	bool openFileStream(std::string fileName);
-	void saveToFile(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 tab->cook
-	void saveToFileNoCook(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 tab
-	void saveToFileStream(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 crb->cook
-	void saveToFileStreamNoCook(std::string fileName,SecurityMode security=SM_None);//0默认，1拷贝模式，2拷贝模式保留临时文件 crb
+	void saveToFile(std::string fileName,SecurityMode security= SM_None, bool app = false);//0默认，1拷贝模式，2拷贝模式保留临时文件 tab->cook
+	void saveToFileNoCook(std::string fileName,SecurityMode security= SM_None, bool app = false);//0默认，1拷贝模式，2拷贝模式保留临时文件 tab
+	void saveToFileStream(std::string fileName,SecurityMode security= SM_None, bool app = false);//0默认，1拷贝模式，2拷贝模式保留临时文件 crb->cook
+	void saveToFileStreamNoCook(std::string fileName,SecurityMode security= SM_None, bool app = false);//0默认，1拷贝模式，2拷贝模式保留临时文件 crb
 	int getRowCount() const;
 	int getColumnCount() const;
 	const std::string &getTitle(int col) const;
@@ -53,7 +53,8 @@ public:
 	//std::string getData(const std::string &id, const std::string &title);
 	inline std::string & operator()(int row, int col) 
 	{ CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_mutex); return m_dataVec[row][col]; }
-	bool setTitleVec(StrVec &titlevec);
+	bool setTitleVec(const StrVec &titlevec);
+	const StrVec &getTitleVec();
 	bool addData(StrVec &data);
 	void clearData();
 	void clearTitle();

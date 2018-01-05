@@ -158,7 +158,7 @@ bool crTableIO::openFileNoCook(std::string fileName)
 		return false;
 	}
 }
-void crTableIO::saveToFile(std::string fileName,SecurityMode security)
+void crTableIO::saveToFile(std::string fileName,SecurityMode security, bool app)
 {//改成安全存储，先存到临时文件，然后执行拷贝覆盖
 	if(fileName.empty())
 	{
@@ -176,7 +176,7 @@ void crTableIO::saveToFile(std::string fileName,SecurityMode security)
 		else
 			xfilename = path+"/"+"~"+name;
 	}
-	std::ofstream fout(xfilename.c_str(), std::ios::out);
+	std::ofstream fout(xfilename.c_str(), app ? std::ios::app : std::ios::out);
 	if(!fout) return;
 	int columncount = getColumnCount();
 	if(columncount<1) return;
@@ -184,13 +184,16 @@ void crTableIO::saveToFile(std::string fileName,SecurityMode security)
 	int i,j;
 	char tab = 9;
 	char n = '\n';
-	for(i = 0; i<columncount-1; ++i)
+	if (!app)
 	{
-		fout.write(m_titleVec[i].c_str(),m_titleVec[i].length());
-		fout.write(&tab,1);
+		for (i = 0; i < columncount - 1; ++i)
+		{
+			fout.write(m_titleVec[i].c_str(), m_titleVec[i].length());
+			fout.write(&tab, 1);
+		}
+		fout.write(m_titleVec[i].c_str(), m_titleVec[i].length());
+		fout.write(&n, 1);
 	}
-	fout.write(m_titleVec[i].c_str(),m_titleVec[i].length());
-	fout.write(&n,1);
 	for(i = 0; i<rowcount;++i)
 	{
 		for(j=0; j<columncount-1; ++j)
@@ -215,7 +218,7 @@ void crTableIO::saveToFile(std::string fileName,SecurityMode security)
 		}
 	}
 }
-void crTableIO::saveToFileNoCook(std::string fileName,SecurityMode security)
+void crTableIO::saveToFileNoCook(std::string fileName,SecurityMode security, bool app)
 {//改成安全存储，先存到临时文件，然后执行拷贝覆盖
 	if(fileName.empty())
 	{
@@ -233,7 +236,7 @@ void crTableIO::saveToFileNoCook(std::string fileName,SecurityMode security)
 		else
 			xfilename = path+"/"+"~"+name;
 	}
-	std::ofstream fout(xfilename.c_str(), std::ios::out);
+	std::ofstream fout(xfilename.c_str(), app ? std::ios::app : std::ios::out);
 	if(!fout) return;
 	int columncount = getColumnCount();
 	if(columncount<1) return;
@@ -241,13 +244,16 @@ void crTableIO::saveToFileNoCook(std::string fileName,SecurityMode security)
 	int i,j;
 	char tab = 9;//'\t'
 	char n = '\n';
-	for(i = 0; i<columncount-1; ++i)
+	if (!app)
 	{
-		fout.write(m_titleVec[i].c_str(),m_titleVec[i].length());
-		fout.write(&tab,1);
+		for (i = 0; i < columncount - 1; ++i)
+		{
+			fout.write(m_titleVec[i].c_str(), m_titleVec[i].length());
+			fout.write(&tab, 1);
+		}
+		fout.write(m_titleVec[i].c_str(), m_titleVec[i].length());
+		fout.write(&n, 1);
 	}
-	fout.write(m_titleVec[i].c_str(),m_titleVec[i].length());
-	fout.write(&n,1);
 	for(i = 0; i<rowcount;++i)
 	{
 		for(j=0; j<columncount-1; ++j)
@@ -269,7 +275,7 @@ void crTableIO::saveToFileNoCook(std::string fileName,SecurityMode security)
 		}
 	}
 }
-void crTableIO::saveToFileStream(std::string fileName,SecurityMode security)
+void crTableIO::saveToFileStream(std::string fileName,SecurityMode security, bool app)
 {//改成安全存储，先存到临时文件，然后执行拷贝覆盖
 	if(fileName.empty())
 	{
@@ -289,14 +295,17 @@ void crTableIO::saveToFileStream(std::string fileName,SecurityMode security)
 	}
 	ref_ptr<crStreamBuf> stream = new crStreamBuf;
 	stream->createBuf(4096);
-	stream->_writeUShort(m_titleVec.size());
 	StrVec::iterator sitr;
 	DataVec::iterator ditr;
-	for( sitr = m_titleVec.begin();
-		 sitr != m_titleVec.end();
-		 ++sitr )
+	if (!app)
 	{
-		stream->_writeString(*sitr);
+		stream->_writeUShort(m_titleVec.size());
+		for (sitr = m_titleVec.begin();
+			sitr != m_titleVec.end();
+			++sitr)
+		{
+			stream->_writeString(*sitr);
+		}
 	}
 	stream->_writeUInt(m_dataVec.size());
 	int size = 0;
@@ -314,7 +323,7 @@ void crTableIO::saveToFileStream(std::string fileName,SecurityMode security)
 		}
 	}
 	stream->seekBegin();
-	stream->saveToFile2(xfilename.c_str());
+	stream->saveToFile2(xfilename.c_str(),app);
 	CRIOManager::crWriteCookFile scopedWrite(xfilename);
 	if(security>SM_None)
 	{
@@ -327,7 +336,7 @@ void crTableIO::saveToFileStream(std::string fileName,SecurityMode security)
 		}
 	}
 }
-void crTableIO::saveToFileStreamNoCook(std::string fileName,SecurityMode security)
+void crTableIO::saveToFileStreamNoCook(std::string fileName,SecurityMode security, bool app)
 {//改成安全存储，先存到临时文件，然后执行拷贝覆盖
 	if(fileName.empty())
 	{
@@ -347,14 +356,17 @@ void crTableIO::saveToFileStreamNoCook(std::string fileName,SecurityMode securit
 	}
 	ref_ptr<crStreamBuf> stream = new crStreamBuf;
 	stream->createBuf(4096);
-	stream->_writeUShort(m_titleVec.size());
 	StrVec::iterator sitr;
 	DataVec::iterator ditr;
-	for( sitr = m_titleVec.begin();
-		sitr != m_titleVec.end();
-		++sitr )
+	if (!app)
 	{
-		stream->_writeString(*sitr);
+		stream->_writeUShort(m_titleVec.size());
+		for (sitr = m_titleVec.begin();
+			sitr != m_titleVec.end();
+			++sitr)
+		{
+			stream->_writeString(*sitr);
+		}
 	}
 	stream->_writeUInt(m_dataVec.size());
 	int size = 0;
@@ -397,22 +409,25 @@ bool crTableIO::openFileStream(std::string fileName)
 			{
 				m_titleVec[i] = stream->_readString();
 			}
-			size = stream->_readUInt();
-			//m_dataVec.resize(size);
-			StrVec record;
-			for( i = 0; i<size; i++ )
+			while (!stream->eof())
 			{
-				size2 = stream->_readUShort();
-				if(size2>0)
+				size = stream->_readUInt();
+				//m_dataVec.resize(size);
+				StrVec record;
+				for (i = 0; i < size; i++)
 				{
-					record.resize(size2);
-					for(j = 0; j<size2; j++)
+					size2 = stream->_readUShort();
+					if (size2 > 0)
 					{
-						record[j] = stream->_readString();
+						record.resize(size2);
+						for (j = 0; j < size2; j++)
+						{
+							record[j] = stream->_readString();
+						}
+						m_dataVec.push_back(record);
 					}
-					m_dataVec.push_back(record);
+					//m_dataVec[i].resize(size2);
 				}
-				//m_dataVec[i].resize(size2);
 			}
 			return true;
 		}
@@ -482,7 +497,7 @@ crTableIO::DataVec &crTableIO::getDataVec()
 //{
 //	return getData(id,getTitleIndex(title));
 //}
-bool crTableIO::setTitleVec(StrVec &titlevec)
+bool crTableIO::setTitleVec(const StrVec &titlevec)
 {
 	CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_mutex);
 	bool can = true;
@@ -499,6 +514,10 @@ bool crTableIO::setTitleVec(StrVec &titlevec)
 		return true;
 	}
 	return false;
+}
+const crTableIO::StrVec &crTableIO::getTitleVec()
+{
+	return m_titleVec;
 }
 bool crTableIO::addData(StrVec &data)
 {

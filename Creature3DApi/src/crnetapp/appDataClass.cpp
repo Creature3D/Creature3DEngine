@@ -133,7 +133,9 @@ g_dynamicDownloadTabName(data.g_dynamicDownloadTabName),
 g_newDynamicDownloadTable(data.g_newDynamicDownloadTable),
 //g_gmTable(data.g_gmTable),
 //g_dynamicTryCount(data.g_dynamicTryCount),
-g_dynamicTryWait(data.g_dynamicTryWait)
+g_dynamicTryWait(data.g_dynamicTryWait),
+g_wordValueTable(data.g_wordValueTable),
+g_wordValueMap(data.g_wordValueMap)
 {
 }
 void crGlobalData::addParam(int i, const std::string& str)
@@ -245,7 +247,18 @@ void crGlobalData::addParam(int i, const std::string& str)
 		g_gameGlobalTable = crTableIO::openFile(relStr);
 		g_globalTables[WCHDATA_gGameGlobalTable] = g_gameGlobalTable;
 		g_globalTableFileMap[WCHDATA_gGameGlobalTable] = relStr;
-		//g_gameGlobalTable->openFile(relStr);
+		break;
+	case WCHDATA_gWordValueTab:
+		g_wordValueTable = crTableIO::openFile(relStr);
+		g_globalTables[WCHDATA_gWordValueTab] = g_wordValueTable;
+		g_globalTableFileMap[WCHDATA_gWordValueTab] = relStr;
+		{
+			int rowcount = g_wordValueTable->getRowCount();
+			for (int i = 0; i < rowcount; ++i)
+			{
+				g_wordValueMap.insert(std::make_pair(atoi((*g_wordValueTable)(i, 0).c_str()), atof((*g_wordValueTable)(i, 1).c_str())));
+			}
+		}
 		break;
 	//case WCHDATA_gGMTable:
 	//	g_gmTable = crTableIO::openFile(relStr);
@@ -467,6 +480,33 @@ void crGlobalData::reloadGlobalTable(int id,const std::string &filename)
 	}
 	else
 		g_globalTables[id] = crTableIO::openFile(filename);
+}
+void crGlobalData::UpdateWorldValue(int id, float value)
+{
+	if (gWorldValue(id) != value)
+	{
+		g_wordValueMap[id] = value;
+		int rowcount = g_wordValueTable->getRowCount();
+		std::string strid = crArgumentParser::appItoa(id);
+		bool found = false;
+		for (int i = 0; i < rowcount; ++i)
+		{
+			if ((*g_wordValueTable)(i, 0) == strid)
+			{
+				(*g_wordValueTable)(i, 1) = crArgumentParser::appFtoa(value);
+				found = true;
+				break;
+			}
+		}
+		if (found)
+		{
+			std::string filename = gGlobalTableFile(WCHDATA_gWordValueTab);
+			if (!filename.empty())
+			{
+				g_wordValueTable->saveToFileStream(filename);
+			}
+		}
+	}
 }
 void crGlobalData::lockGMMap()
 {

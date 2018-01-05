@@ -15,7 +15,7 @@
 #define CRCORE_CRTIMER_H 
 
 #include <CRCore/crExport.h>
-
+#include <time.h>
 namespace CRCore {
 
 #if defined(_MSC_VER)
@@ -43,6 +43,19 @@ namespace CRCore {
 
 		inline double getSecondsPerTick() const { return m_secsPerTick; }
 
+		static void SystemTime(int& Year, int& Month, int& DayOfWeek, int& Day, int& Hour, int& Min, int& Sec, int& MSec)
+		{
+			time_t nowTime_t = time(0);
+			struct  tm  nowTm = *localtime(&nowTime_t);
+			// pull out data/time
+			Year = nowTm.tm_year + 1900;
+			Month = nowTm.tm_mon + 1;
+			DayOfWeek = nowTm.tm_wday;
+			Day = nowTm.tm_mday;
+			Hour = nowTm.tm_hour;
+			Min = nowTm.tm_min;
+			Sec = nowTm.tm_sec;
+		}
 	protected :
 
 		double m_secsPerTick;

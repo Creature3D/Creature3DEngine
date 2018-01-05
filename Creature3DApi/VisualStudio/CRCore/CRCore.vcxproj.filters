@@ -480,6 +480,9 @@
     <ClCompile Include="..\..\src\crcore\crAudioStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\crcore\crGuid.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\crcore\crBlowFish.h">
@@ -1116,6 +1119,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\crcore\crAudioStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crcore\crGuid.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

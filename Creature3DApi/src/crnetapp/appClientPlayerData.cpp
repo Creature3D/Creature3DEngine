@@ -1377,11 +1377,16 @@ void crMyPlayerData::removeInRangeNpc(int itemid)
 //}
 crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float attackrange)
 {
+	int autoselectmode = crGlobalHandle::gData()->gWorldValue(WCHDATA_Word_AutoSelectTargetMode);
 	void *param;
 	float sightRange = attackrange;
 	crVector3 ipos;
 	if (!iitem)
 	{
+		//if (autoselectmode == 1)
+		//{
+		//	return NULL;
+		//}
 		if (attackrange == 0.0f)
 			return NULL;
 		crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
@@ -1400,9 +1405,16 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 	}
 	else
 	{
-		crData *data = iitem->getDataClass();
 		if (attackrange == 0.0f)
 		{
+			crData *data = iitem->getDataClass();
+			if (autoselectmode == 1)
+			{
+				data->getParam(WCHDATA_ItemState, param);
+				unsigned char itemstate = *(unsigned char *)param;
+				if (itemstate != IS_AttackToPos)
+					return NULL;
+			}
 			data->getParam(WCHDATA_CurrentAttackID, param);
 			int itemid = *(int *)param;
 			ref_ptr<crItemChild>aitemChild = iitem->findChildItem(itemid);
@@ -1415,11 +1427,11 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 				attackrange = itemUseRange * crGlobalHandle::gData()->gUnitScale();
 				attackrange += iitem->getAttackDistance(NULL);
 			}
+			iitem->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
+			sightRange *= crGlobalHandle::gData()->gUnitScale();
+			if (sightRange < attackrange)
+				sightRange = attackrange;
 		}
-		iitem->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
-		sightRange *= crGlobalHandle::gData()->gUnitScale();
-		if (sightRange >/*<*/ attackrange)
-			sightRange = attackrange;
 		ipos = iitem->getPosition();
 	}
 	if (sightRange <= 0.0f)
@@ -1435,6 +1447,7 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 	std::multimap< float,crInstanceItem *,std::less<float> > EnemyMap1;
 	std::multimap< float, crInstanceItem *, std::less<float> > EnemyMap2;
 	crRole *me = getCurrentRole();
+	int selectmode = crGlobalHandle::gData()->gWorldValue(WCHDATA_Word_SelectTargetMode);
 	{
 		CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangePlayerMapMutex);
 		for( InRangePlayerMap::iterator itr = m_inRangePlayerMap.begin();
@@ -1479,9 +1492,16 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 					{
 						return enemyItem;
 					}
-					itemData->getParam(WCHDATA_RTHP, param);
-					rthp = *(float*)param;
-					EnemyMap1.insert(std::make_pair(rthp, enemyItem));
+					if (selectmode == 0)
+					{
+						EnemyMap1.insert(std::make_pair(dist, enemyItem));
+					}
+					else
+					{
+						itemData->getParam(WCHDATA_RTHP, param);
+						rthp = *(float*)param;
+						EnemyMap1.insert(std::make_pair(rthp, enemyItem));
+					}
 				}
 			}
 		}
@@ -1523,9 +1543,16 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 					{
 						return enemyItem;
 					}
-					itemData->getParam(WCHDATA_RTHP, param);
-					rthp = *(float*)param;
-					EnemyMap2.insert(std::make_pair(rthp, enemyItem));
+					if (selectmode == 0)
+					{
+						EnemyMap2.insert(std::make_pair(dist, enemyItem));
+					}
+					else
+					{
+						itemData->getParam(WCHDATA_RTHP, param);
+						rthp = *(float*)param;
+						EnemyMap2.insert(std::make_pair(rthp, enemyItem));
+					}
 				}
 			}
 		}

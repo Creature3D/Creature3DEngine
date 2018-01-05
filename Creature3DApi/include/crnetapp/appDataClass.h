@@ -38,6 +38,7 @@ struct ItemUseParam;
 typedef std::map< int,CRCore::ref_ptr<CREncapsulation::crTableIO> >TableIOMap;
 typedef std::map< int,std::string >TableFileMap;
 typedef std::map< int, unsigned char > GMMap;//playerid,权限
+typedef std::map< int, float > WordValueMap;//字典表
 class CRNETAPP_EXPORT crGlobalData : public CRCore::crData
 {
 public:
@@ -106,6 +107,12 @@ public:
 		}
 		return "NULL";
 	}
+	inline float gWorldValue(int id)
+	{
+		WordValueMap::iterator itr = g_wordValueMap.find(id);
+		return itr != g_wordValueMap.end() ? itr->second : 0.0f;
+	}
+	void UpdateWorldValue(int id, float value);
 	inline bool gShowDebugInfo() { return g_showDebugInfo; }
 	inline bool gEnableRobotTest() { return g_enableRobotTest; }
 	inline short gSightRange() { return g_sightRange; }
@@ -174,6 +181,8 @@ protected:
 	float g_portScopeSqr;
 	float g_itemVisiableInterval;
 	float g_dynamicTryWait;//item动态碰撞寻路尝试等待时间
+	CRCore::ref_ptr<CREncapsulation::crTableIO> g_wordValueTable;
+	WordValueMap g_wordValueMap;//高速缓存
 	GNE::Mutex m_gmMapMutex;
 	GMMap m_gmMap;
 };

@@ -459,6 +459,10 @@
 #define WCHDATA_FXItem						415
 #define WCHDATA_ChantTime					416
 #define WCHDATA_ItemState_rec				417
+#define WCHDATA_gWordValueTab				418
+#define WCHDATA_Word_AutoSelectTargetMode	419
+#define WCHDATA_Word_SelectTargetMode		420
+#define WCHDATA_Word_DisplayDamageMode		421
 
 #define WCHDATA_OverlapParam				21377
 //#define WCHDATA_BaseEnmity					411

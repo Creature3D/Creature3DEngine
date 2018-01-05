@@ -698,6 +698,7 @@ copy C:\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
     <ClCompile Include="..\..\src\crcore\crGraphicsContext.cpp" />
     <ClCompile Include="..\..\src\crcore\crGraphicsThread.cpp" />
     <ClCompile Include="..\..\src\crcore\crGroup.cpp" />
+    <ClCompile Include="..\..\src\crcore\crGuid.cpp" />
     <ClCompile Include="..\..\src\crcore\crHandleManager.cpp" />
     <ClCompile Include="..\..\src\crcore\crHint.cpp" />
     <ClCompile Include="..\..\src\crcore\crImage.cpp" />
@@ -796,6 +797,7 @@ copy C:\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
     <ClInclude Include="..\..\include\crcore\crAudioStream.h" />
     <ClInclude Include="..\..\include\crcore\crBlockDetectThread.h" />
     <ClInclude Include="..\..\include\crcore\crCalcNodeParentsMatrixVisitor.h" />
+    <ClInclude Include="..\..\include\crcore\crGuid.h" />
     <ClInclude Include="..\..\include\crcore\crStatistics.h" />
     <ClInclude Include="..\..\include\crcore\thread\crCriticalMutex.h" />
     <ClInclude Include="..\..\src\crcore\crBlowFish.h" />
