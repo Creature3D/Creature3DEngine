@@ -23,12 +23,11 @@ namespace CRCore {
 #else
 	typedef unsigned long long Timer_t;
 #endif
-
 	/** Time stamper. */
 	class CR_EXPORT Timer {
 
 	public:
-
+		static Timer_t STARTTICK;
 		Timer();
 		~Timer() {}
 
@@ -43,19 +42,8 @@ namespace CRCore {
 
 		inline double getSecondsPerTick() const { return m_secsPerTick; }
 
-		static void SystemTime(int& Year, int& Month, int& DayOfWeek, int& Day, int& Hour, int& Min, int& Sec, int& MSec)
-		{
-			time_t nowTime_t = time(0);
-			struct  tm  nowTm = *localtime(&nowTime_t);
-			// pull out data/time
-			Year = nowTm.tm_year + 1900;
-			Month = nowTm.tm_mon + 1;
-			DayOfWeek = nowTm.tm_wday;
-			Day = nowTm.tm_mday;
-			Hour = nowTm.tm_hour;
-			Min = nowTm.tm_min;
-			Sec = nowTm.tm_sec;
-		}
+		static void SystemTime(int& Year, int& Month, int& DayOfWeek, int& Day, int& Hour, int& Min, int& Sec, int& MSec);
+		Timer_t runtime()const { return tick() - STARTTICK; }
 	protected :
 
 		double m_secsPerTick;

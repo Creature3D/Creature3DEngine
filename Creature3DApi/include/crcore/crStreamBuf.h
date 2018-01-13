@@ -22,6 +22,7 @@
 #include <CRCore\crPlane.h>
 #include <CRCore\crQuat.h>
 #include <CRCore\crArray.h>
+#include <CRCore\crGuid.h>
 #include <CRCore\crExport.h>
 #include <CRCore\thread\crCriticalMutex.h>
 
@@ -101,6 +102,7 @@ public :
 	void _writeVec3ub(const CRCore::crVector3ub& v);
 	void _writeVec4ub(const CRCore::crVector4ub& v);
 
+	void _writeGuid(const CRCore::crGuid& guid);
 	void _writePlane(const CRCore::crPlane& v);
 	void _writeUByte4(const CRCore::crVector4ub& v);
 	void _writeQuat(const CRCore::crQuat& q);
@@ -155,6 +157,7 @@ public :
 	CRCore::crVector3ub _readVec3ub();
 	CRCore::crVector4ub _readVec4ub();
 
+	CRCore::crGuid _readGuid();
 	CRCore::crPlane _readPlane();
 	CRCore::crVector4ub _readUByte4();
 	CRCore::crQuat _readQuat();
@@ -170,7 +173,6 @@ public :
 	CRCore::Vec2Array* _readVec2Array();
 	CRCore::Vec3Array* _readVec3Array();
 	CRCore::Vec4Array* _readVec4Array();
-
 	//bool saveToFile(const std::string &filename,bool app = false);//ª·–¥»Îendianº∞bufsize
 	//typedef std::vector< CRCore::ref_ptr<crStreamBuf> >LoadStreamVec;
 	//static bool loadFromFile(const std::string &filename,LoadStreamVec& loadStreamVec);
@@ -182,6 +184,7 @@ public :
 	void cook();
 	bool uncook(int &code);
 	std::string getMD5();
+	unsigned short getMBCRC16(char *pucFrame, unsigned short usLen);
 protected :
 	virtual ~crStreamBuf();
 
