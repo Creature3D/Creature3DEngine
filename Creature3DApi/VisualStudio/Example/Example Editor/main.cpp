@@ -109,6 +109,33 @@ extern  "C" __declspec(dllexport) int main(char *argv)
 int main( int argc, char **argv )
 #endif
 {
+	//ref_ptr<crTableIO> guidtab = new crTableIO;
+	//CREncapsulation::crTableIO::StrVec title,record;
+	//title.push_back("crc");
+	//title.push_back("guid");
+	//guidtab->setTitleVec(title);
+	//record.resize(2);
+	//std::set<std::string>guidset;
+	//Timer_t start_tick = Timer::instance()->tick();
+	//for (int i = 0;i<1000000;i++)
+	//{
+	//	CRCore::crGuid guid;
+	//	guid = CRCore::crGuid::newGuid();
+	//	std::string strguid1 = guid.toString(crGuid::Digits);
+	//	unsigned short crc1 = guid.GetTypeHash();
+	//	record[0] = crArgumentParser::appItoa(crc1);
+	//	record[1] = strguid1;
+	//	guidtab->addData(record);
+	//	if (guidset.find(strguid1) != guidset.end())
+	//	{
+	//		CRCore::notify(CRCore::ALWAYS) << "error: " << strguid1 << std::endl;
+	//	}
+	//	guidset.insert(strguid1);
+	//}
+	//Timer_t end_tick = Timer::instance()->tick();
+	//CRCore::notify(CRCore::ALWAYS) << "Time = " << CRCore::Timer::instance()->delta_m(start_tick, end_tick) << std::endl;
+	//guidtab->saveToFile("guid.tab");
+
 	HINSTANCE hUser32 = LoadLibrary( "user32.dll" );
 	if( hUser32 )
 	{//防止UI自动放大（系统屏幕放大功能）

@@ -8,9 +8,9 @@
     </LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDDebug|Win32'">
-    <LocalDebuggerWorkingDirectory>D:\Jiangxingjue</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>..\..\..\bin\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>-WebLogin aeghlqvACFHJLNPT|6566|20|1</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>Editor</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|Win32'">
     <LocalDebuggerWorkingDirectory>../../../../Projects/Editor/Creature3DEditor</LocalDebuggerWorkingDirectory>

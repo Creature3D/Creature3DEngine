@@ -1687,6 +1687,7 @@ void main(void)
 	vec3 n_lVec,tempVec,sunlVec;
 	float diffuse,specular;
     float attenuation = 0.0;
+	float sunattenuation = 0.0f;
     float lightLength2;
 
 #ifdef sun
@@ -1694,10 +1695,10 @@ void main(void)
 	sunlVec = normalize(tempVec);
     lightLength2 = dot(tempVec,tempVec);
     float dist_to_light = sqrt(lightLength2);
-    attenuation = 1.0/dot(vec3(1.0, dist_to_light, lightLength2),lightParam[3].xyz);
-    if(attenuation>loweastLum)
+    sunattenuation = 1.0/dot(vec3(1.0, dist_to_light, lightLength2),lightParam[3].xyz);
+    if(sunattenuation>loweastLum)
     {
-		attenuation = attenuation - loweastLum;
+		sunattenuation = sunattenuation - loweastLum;
 	#ifdef _rts
 		float shadow = 1.0;    
 		if(_lightCoord.x>0.0 && _lightCoord.x<1.0 && _lightCoord.y>0.0 && _lightCoord.y<1.0)
@@ -1724,14 +1725,14 @@ void main(void)
 		    n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
 			diffuse = shadow * saturate(dot(n_lVec, bump));
 			specular = shadow * _pow(saturate(dot(reflVec, n_lVec)), shininess);
-			color += ((ambientColor * lightParam[0] + lightParam[1] * diffuse) * diffuseColor + specularColor * (lightParam[2] * specular)) * attenuation;
+			color += ((ambientColor * lightParam[0] + lightParam[1] * diffuse) * diffuseColor + specularColor * (lightParam[2] * specular)) * sunattenuation;
 		}
-		else color += (ambientColor * lightParam[0] * diffuseColor) * attenuation;
+		else color += (ambientColor * lightParam[0] * diffuseColor) * sunattenuation;
 	#else
 		n_lVec = normalize(vec3(dot(tempVec, T), dot(tempVec, B), dot(tempVec, N)));
 		diffuse = saturate(dot(n_lVec, bump));
 		specular = _pow(saturate(dot(reflVec, n_lVec)), shininess);
-		color += ((ambientColor * lightParam[0] + lightParam[1] * diffuse) * diffuseColor + specularColor * (lightParam[2] * specular)) * attenuation;
+		color += ((ambientColor * lightParam[0] + lightParam[1] * diffuse) * diffuseColor + specularColor * (lightParam[2] * specular)) * sunattenuation;
 	#endif
 	}
 #endif
@@ -2334,7 +2335,7 @@ void main(void)
 	vec3 skyLight = mix( LowerSkyColor, UpperSkyColor, influence );
 #ifdef _gi 
 #ifdef sun
-	skyLight += texture2D(CRE_GiMap,_gicoord).xyz*lightParam[0].xyz;
+	skyLight += texture2D(CRE_GiMap,_gicoord).xyz*lightParam[0].xyz * sunattenuation;
 #endif
 #endif
 	color.xyz += (gl_LightModel.ambient.xyz + skyLight) * diffuseColor.xyz;
