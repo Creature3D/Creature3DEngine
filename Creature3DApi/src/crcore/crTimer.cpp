@@ -19,6 +19,7 @@
 
 using namespace CRCore;
 
+Timer_t Timer::STARTTICK = Timer::instance()->tick();
 const Timer* Timer::instance()
 {
 	static Timer s_timer;
@@ -64,6 +65,24 @@ Timer_t Timer::tick() const
 	}
 }
 
+void Timer::SystemTime(int& Year, int& Month, int& DayOfWeek, int& Day, int& Hour, int& Min, int& Sec, int& MSec)
+{
+	time_t nowTime_t = time(0);
+	struct  tm  nowTm = *localtime(&nowTime_t);
+	// pull out data/time
+	Year = nowTm.tm_year + 1900;
+	Month = nowTm.tm_mon + 1;
+	DayOfWeek = nowTm.tm_wday;
+	Day = nowTm.tm_mday;
+	Hour = nowTm.tm_hour;
+	Min = nowTm.tm_min;
+	Sec = nowTm.tm_sec;
+	LARGE_INTEGER t, freq;
+	QueryPerformanceFrequency(&freq);
+	QueryPerformanceCounter(&t);
+	int tv_usec = int((t.QuadPart % freq.QuadPart) * 1000000 / freq.QuadPart);
+	MSec = tv_usec / 1000;
+}
 #else
 
 #include <sys/time.h>

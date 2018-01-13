@@ -415,6 +415,14 @@ void crStreamBuf::_writeVec4ub(const CRCore::crVector4ub& v)
 	_writeUChar(v.w());
 }
 
+void crStreamBuf::_writeGuid(const CRCore::crGuid& v)
+{
+	_writeUInt(v[0]);
+	_writeUInt(v[1]);
+	_writeUInt(v[2]);
+	_writeUInt(v[3]);
+}
+
 void crStreamBuf::_writePlane(const CRCore::crPlane& v)
 {
 	_writeFloat(v[0]);
@@ -880,7 +888,15 @@ CRCore::crVector4ub crStreamBuf::_readVec4ub()
 	v.w()=_readUChar();
 	return v;
 }
-
+CRCore::crGuid crStreamBuf::_readGuid()
+{
+	CRCore::crGuid v;
+	v[0] = _readUInt();
+	v[1] = _readUInt();
+	v[2] = _readUInt();
+	v[3] = _readUInt();
+	return v;
+}
 CRCore::crPlane crStreamBuf::_readPlane()
 {
 	CRCore::crPlane v;
@@ -1250,7 +1266,7 @@ static const unsigned char aucCRCLo[] = {
 	0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42, 0x43, 0x83,
 	0x41, 0x81, 0x80, 0x40
 };
-unsigned short usMBCRC16( char *pucFrame, unsigned short usLen )
+unsigned short crStreamBuf::getMBCRC16( char *pucFrame, unsigned short usLen )
 {
 	if ((NULL == pucFrame)||(usLen==0))
 	{
@@ -1270,7 +1286,7 @@ unsigned short usMBCRC16( char *pucFrame, unsigned short usLen )
 void crStreamBuf::cook()
 {
 	static unsigned short mask = 0;
-	unsigned short code = usMBCRC16(m_buf,m_bufSize);
+	unsigned short code = getMBCRC16(m_buf,m_bufSize);
 	if(getRemainCapacity()<CookSize)
 		appendBuf(CookSize);
 	seekEnd();
@@ -1294,7 +1310,7 @@ bool crStreamBuf::uncook(int &cookcode)
 		}
 		seek(-CookSize);
 		unsigned short code = _readUShort();
-		unsigned short _code = usMBCRC16(m_buf,m_bufSize-CookSize);
+		unsigned short _code = getMBCRC16(m_buf,m_bufSize-CookSize);
 		if(code == _code)
 		{
 			unsigned short rndcode = _readUShort();
