@@ -503,7 +503,7 @@ bool crTableIO::setTitleVec(const StrVec &titlevec)
 	bool can = true;
 	if(!m_dataVec.empty())
 	{
-		if(m_dataVec[0].size() != m_titleVec.size())
+		if(m_dataVec[0].size() != titlevec.size())
 		{
 			can = false;
 		}
