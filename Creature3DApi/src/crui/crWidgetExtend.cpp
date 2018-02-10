@@ -220,7 +220,7 @@ void crScrollBarWidgetNode::kernelMouseEvent(float mx,float my,void *ea)
 				setCanCaptureMouse(false);
 				m_step = 0;
 			}
-			else if(_ea->getButton()==crGUIEventAdapter::LEFT_MOUSE_BUTTON && (_ea->getEventType() == crGUIEventAdapter::PUSH || _ea->getEventType() == crGUIEventAdapter::DRAG))
+			else if(_ea->getButton()==crGUIEventAdapter::LEFT_MOUSE_BUTTON && (_ea->getEventType() == crGUIEventAdapter::PUSH/* || _ea->getEventType() == crGUIEventAdapter::DRAG*/))
 			{
 				m_button0->setActiveSwitchSet(2);
 				newvalue -= m_lineValue;
@@ -242,7 +242,7 @@ void crScrollBarWidgetNode::kernelMouseEvent(float mx,float my,void *ea)
 				setCanCaptureMouse(false);
 				m_step = 0;
 			}
-			else if(_ea->getButton()==crGUIEventAdapter::LEFT_MOUSE_BUTTON && (_ea->getEventType() == crGUIEventAdapter::PUSH || _ea->getEventType() == crGUIEventAdapter::DRAG))
+			else if(_ea->getButton()==crGUIEventAdapter::LEFT_MOUSE_BUTTON && (_ea->getEventType() == crGUIEventAdapter::PUSH/* || _ea->getEventType() == crGUIEventAdapter::DRAG*/))
 			{
 				m_button1->setActiveSwitchSet(2);
 				newvalue += m_lineValue;
