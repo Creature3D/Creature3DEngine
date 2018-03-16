@@ -98,7 +98,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 		if(m_interval>m_reTriggerDelay)
 		{
 			m_interval = 0.0f;
-			m_triggerCount = 0;
+			//m_triggerCount = 0;
 			//m_enable = true;
 			ref_ptr<crMatterObject> node;
 			for( InVolumeNodeSet::iterator itr = m_inVolumeNodeSet.begin();

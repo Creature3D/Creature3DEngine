@@ -11435,7 +11435,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 			{
 				bulletitemData->getParam(WCHDATA_DataType,param);
 				unsigned char datatype = *(unsigned char*) param;
-				if(datatype == DT_Attack && m_useItemParam->m_user->getItemtype() != crInstanceItem::Role)/* && !dynamic_cast<crRole *>(m_useItemParam->m_target.get()))*/
+				if(datatype == DT_Attack && m_useItemParam->m_target.valid() && m_useItemParam->m_user->getItemtype() != crInstanceItem::Role)/* && !dynamic_cast<crRole *>(m_useItemParam->m_target.get()))*/
 				{//NPC攻击NPC，或者攻击角色,立即命中
 					CRCore::ref_ptr<HitParam> hitParam = new HitParam;
 					hitParam->m_hitItem = m_useItemParam->m_target;
@@ -11447,8 +11447,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 					//if(datatype == DT_Attack)
 					//{//普通攻击，做暴击判断
 						m_useItemParam->m_user->doEvent(WCH_MissCritTest);
-						if(m_useItemParam->m_target.valid())
-							m_useItemParam->m_target->doEvent(WCH_DodgeParryTest);
+						m_useItemParam->m_target->doEvent(WCH_DodgeParryTest);
 					//}
 				}
 				else
@@ -12365,20 +12364,20 @@ void crBotCollideMethod::operator()(crHandle &handle)
 						hititem->doEvent(WCH_BULLET_COLLIDE,MAKEINT64(bulletItem,NULL));
 
 						bool sendevent = false;
-						if(crMyPlayerData::getInstance()->ifItemIsMe(hititem))
+						if (crMyPlayerData::getInstance()->ifItemIsMe(hititem))
 						{
-							if(fireItem->getItemtype()==crInstanceItem::Role)
+							if (fireItem->getItemtype() == crInstanceItem::Role)
 								sendevent = true;
 							else
 							{
 								crData *bulletitemData = bulletItem->getDataClass();
-								bulletitemData->getParam(WCHDATA_DataType,param);
-								unsigned char datatype = *(unsigned char*) param;
-								if(datatype != DT_Attack)
+								bulletitemData->getParam(WCHDATA_DataType, param);
+								unsigned char datatype = *(unsigned char*)param;
+								if (datatype != DT_Attack)
 									sendevent = true;
 							}
 						}
-						else if(crMyPlayerData::getInstance()->ifItemIsMe(fireItem))
+						else if (crMyPlayerData::getInstance()->ifItemIsMe(fireItem) && hititem->getItemtype() != crInstanceItem::Role)
 							sendevent = true;
 						else if (hititem->getItemtype() != crInstanceItem::Role && fireItem->getItemtype() != crInstanceItem::Role)
 						{//NPC对NPC放技能
@@ -12588,14 +12587,20 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 					{
 						if(itr->second->getItem()->getInstanceItemID() == bulletItemID)
 						{
+							//if (itr->second->getItem()->getAbstractItemID() == 27295)
+							//{
+							//	int hit = itr->second->getHitValid(m_this,false) ? 1 : 0;
+							//	CRCore::notify(CRCore::ALWAYS) << "crNodeCollideWithItemMethod id=" << m_this->getID() << " HitValid=" << hit << std::endl;
+							//}
 							//target = itr->second->getTarget();
 							//if(!target || target == m_this)
-							if(itr->second->getHitValid(m_this))
+							if(itr->second->getHitValid(m_this, false))
 							{
 								//HitMap &hitMap = itr->second->getHitMap();//击中者记录，防止重复击中
 								//if(hitMap.find(m_this)==hitMap.end())
 								hitTestMap.insert(std::make_pair(itr->second->duration(),itr->second.get()));
 							}
+
 						}
 					}
 					serverData->excHandle(MAKEINT64(WCH_LockData,0));
@@ -12671,7 +12676,12 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 						{
 							//target = itr->second->getTarget();
 							//if(!target || target == m_this)
-							if(itr->second->getHitValid(m_this))
+							//if (itr->second->getItem()->getAbstractItemID() == 27295)
+							//{
+							//	int hit = itr->second->getHitValid(m_this) ? 1 : 0;
+							//	CRCore::notify(CRCore::ALWAYS) << "crNodeCollideWithItemMethod id=" << m_this->getID() << " HitValid=" << hit << std::endl;
+							//}
+							if(itr->second->getHitValid(m_this,true))//npc一次攻击对相同对象只能造成1次伤害
 							{
 								//HitMap &hitMap = itr->second->getHitMap();//击中者记录，防止重复击中
 								//if(hitMap.find(m_this)==hitMap.end())
@@ -16377,16 +16387,18 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 				//unsigned char hitItemType = hititem->getItemtype();
 				unsigned char fireType = fireItem->getItemtype();
 				bool sendevent = false;
-				if(crMyPlayerData::getInstance()->ifItemIsMe(hititem.get()) || crMyPlayerData::getInstance()->ifItemIsMe(fireItem.get()))
+				if(crMyPlayerData::getInstance()->ifItemIsMe(hititem.get()))
+					sendevent = true;
+				else if (crMyPlayerData::getInstance()->ifItemIsMe(fireItem.get()) && hititem->getItemtype() != crInstanceItem::Role)
 					sendevent = true;
 				else if (hititem->getItemtype() != crInstanceItem::Role && fireItem->getItemtype() != crInstanceItem::Role)
 				{//NPC对NPC放技能
 					sendevent = true;
-					crData *bulletitemData = bulletItem->getDataClass();
-					bulletitemData->getParam(WCHDATA_DataType, param);
-					unsigned char datatype = *(unsigned char*)param;
-					if (datatype != DT_Attack)
-						sendevent = true;
+					//crData *bulletitemData = bulletItem->getDataClass();
+					//bulletitemData->getParam(WCHDATA_DataType, param);
+					//unsigned char datatype = *(unsigned char*)param;
+					//if (datatype != DT_Attack)
+					//	sendevent = true;
 				}
 				if(sendevent)
 				{//通知服务器，被击中
@@ -16406,8 +16418,8 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 					if(netConductor)
 					{
-						//if(bulletItem->getAbstractItemID() == 28255)
-						//	CRCore::notify(CRCore::ALWAYS)<<"crNodeInBulletVolumeMethod roleid="<<hititem->getRoleID()<<std::endl;
+						//if (bulletItem->getAbstractItemID() == 27295)
+						//	CRCore::notify(CRCore::ALWAYS) << "crNodeInBulletVolumeMethod id=" << hititem->getID() << std::endl;
 						crPlayerServerEventPacket packet;
 						crPlayerServerEventPacket::buildRequestPacket(packet,WCH_NodeCollideWithItem,hititem.get(),stream.get());
 						netConductor->getNetManager()->sendPacket("all",packet);

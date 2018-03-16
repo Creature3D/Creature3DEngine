@@ -891,12 +891,14 @@ public:
 	HitMap &getHitMap(){ return m_hitMap; }
 	void setDamageCount(unsigned char count){ m_damageCount = count; }
 	unsigned char getDamageCount(){ return m_damageCount; }
-	bool getHitValid(CRNetApp::crInstanceItem *hititem)
+	bool getHitValid(CRNetApp::crInstanceItem *hititem,bool npcfire)
 	{
-		if(m_hitMap.find(hititem)!=m_hitMap.end())
+		if(npcfire && m_hitMap.find(hititem)!=m_hitMap.end())
 			return false;
 		if(m_damageCount==0) return true;
 		if(m_damageCount == 1) return m_target == hititem;
+		if(m_hitMap.find(hititem) != m_hitMap.end())
+			return true;//可以对同一个目标造成多次伤害
 		return m_hitMap.size()<m_damageCount;
 	}
 protected:
