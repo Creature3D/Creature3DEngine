@@ -1813,6 +1813,11 @@ bool crInstanceItem::dynamicCollideTest(crInstanceItem *item,const CRCore::crVec
 		//if(isEnemy == 1 )
 		return false;
 	}
+	////ÓÑ¾ü²»×èµ²
+	//char isEnemy = 0;
+	//doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+	//if (isEnemy == 1)
+	//	return false;
 	void *param;
 	ref_ptr<crData> data;
 	if(!(guisestate1 & GS_Static))
