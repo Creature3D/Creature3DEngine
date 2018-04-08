@@ -254,9 +254,9 @@ bool crUniform::isCompatibleType( Type t ) const
     if( t == getType() ) return true;
     if( getGlApiType(t) == getGlApiType(getType()) ) return true;
 
-    CRCore::notify(CRCore::WARN)
-        << "Cannot assign between crUniform types " << getTypename(t)
-        << " and " << getTypename(getType()) << std::endl;
+    CRCore::notify(CRCore::WARN)<< getName()
+        << " Cannot assign between crUniform types " << getTypename(t)
+        << " and " << getTypename(getType())<< std::endl;
     return false;
 }
 

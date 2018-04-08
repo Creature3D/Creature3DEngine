@@ -5134,7 +5134,7 @@ void crCollideMapRTTMethod::operator()(crHandle &handle)
 			rtt->addRenderNode(scene.get());
 			rtt->addTexturedNode(imageBox->getImageObject());
 			//float terHeight = heightField->getMaxHeight();
-			rtt->setProjectionMatrix(CRCore::crMatrix::ortho(-worldSize[0]*0.5f,worldSize[0]*0.5f,-worldSize[1]*0.5f,worldSize[1]*0.5f,-worldSize[2],worldSize[2]));
+			rtt->setProjectionMatrix(CRCore::crMatrix::ortho(-(float)worldSize[0]*0.5f, (float)worldSize[0]*0.5f,-(float)worldSize[1]*0.5f, (float)worldSize[1]*0.5f,-(float)worldSize[2], (float)worldSize[2]));
 			rtt->setViewMatrix(crMatrix::identity());
 			rtt->init(1.0f);
 			crStateSet *camerass = rtt->getCameraNode()->getOrCreateStateSet();

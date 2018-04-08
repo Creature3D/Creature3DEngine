@@ -16881,7 +16881,8 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 			}
 			crVector3 targetDir = targetPos - myPos;
 			//targetDir[2] = 0;//攻击加入高度差影响
-			float dist = targetDir.length()/* - mindist*/;
+			//float mindist = m_this->getMinDistance(/*NULL*/targetItem.get());
+			float dist = targetDir.length();// -mindist;
 			itemData->getParam(WCHDATA_ItemUseRange,param);
 			unsigned short itemUseRange = *((unsigned short*)param);
 			float relRange = itemUseRange * crGlobalHandle::gData()->gUnitScale();
@@ -16892,9 +16893,9 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 			{
 				attackdist = m_this->getAttackDistance(/*NULL*/targetItem.get());
 			}
-			else
+			else if (targetItem.get())
 			{//技能默认
-				attackdist = 1.0f;
+				targetItem->doEvent(MAKEINT64(WCH_GetRadius, 0), MAKEINT64(&attackdist, NULL));
 			}
 			if(dist<=relRange+attackdist)
 			{//在使用范围内
@@ -42869,11 +42870,11 @@ void crSightFogInitMethod::operator()(crHandle &handle)
 		rtt->setMapSize(mapSize);
 		rtt->init(1.0f);
 		const crVector3i &worldSize = crBrain::getInstance()->getWorldSize();
-		rtt->setProjectionMatrix(CRCore::crMatrix::ortho(-worldSize[0]*0.5f,worldSize[0]*0.5f,-worldSize[1]*0.5f,worldSize[1]*0.5f,-worldSize[2],worldSize[2]));
+		rtt->setProjectionMatrix(CRCore::crMatrix::ortho(-(float)worldSize[0]*0.5f, (float)worldSize[0]*0.5f,-(float)worldSize[1]*0.5f, (float)worldSize[1]*0.5f,-(float)worldSize[2], (float)worldSize[2]));
 		rtt->setViewMatrix(crMatrix::identity());
 		//crShaderManager::getInstance()->setUpperSkyTexture(rtt->getTexture());
 		crShaderManager::getInstance()->setLightMapTexture(rtt->getBlurTexture());
-		crShaderManager::getInstance()->setGIParam(crVector4(worldSize[0]*0.5f,worldSize[1]*0.5f,1.0f/float(worldSize[0]),1.0f/float(worldSize[1])));
+		crShaderManager::getInstance()->setGIParam(crVector4f((float)worldSize[0]*0.5f, (float)worldSize[1]*0.5f,1.0f/float(worldSize[0]),1.0f/float(worldSize[1])));
 		//crShaderManager::getInstance()->setGIMVP(rtt->getView() * rtt->getProjection());
 		crStateSet *camerass = rtt->getCameraNode()->getOrCreateStateSet();
 		crStateSet *shader = crShaderManager::getInstance()->getShaderStateSet("warfog");
@@ -42882,10 +42883,10 @@ void crSightFogInitMethod::operator()(crHandle &handle)
 		uniform->set(m_clearColor);
 		uniform = camerass->getOrCreateUniform("coordParam",CRCore::crUniform::FLOAT_VEC4);
 		uniform->setDataVariance(crBase::STATIC);
-		uniform->set(crVector4f(worldSize[0]*0.5f,worldSize[1]*0.5f,1.0f/float(worldSize[0]),1.0f/float(worldSize[1])));
+		uniform->set(crVector4f((float)worldSize[0]*0.5f, (float)worldSize[1]*0.5f,1.0f/float(worldSize[0]),1.0f/float(worldSize[1])));
 		uniform = camerass->getOrCreateUniform("maxheight",CRCore::crUniform::FLOAT);
 		uniform->setDataVariance(crBase::STATIC);
-		uniform->set(worldSize[2]);
+		uniform->set((float)worldSize[2]);
 		ref_ptr<crTexture2D>tex2d = new crTexture2D;
 		tex2d->setFilter(crTexture2D::MIN_FILTER, crTexture::LINEAR);
 		tex2d->setFilter(crTexture2D::MAG_FILTER, crTexture::LINEAR);

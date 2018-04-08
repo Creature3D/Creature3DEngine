@@ -1908,38 +1908,12 @@ float crInstanceItem::getMinDistance(crInstanceItem *item)
 		item->doEvent(MAKEINT64(WCH_GetRadius,0),MAKEINT64(&itemRadius,NULL));
 		radius += itemRadius;
 	}
-	//void *param;
-	//crData* data = getDataClass();
-	//data->getParam(WCHDATA_HalfLengths,param);
-	//crVector2 thisHalfLengths = *((crVector2*)(param));
-	//crVector2 itemHalfLengths;
-	//if(item)
-	//{
-	//	data = item->getDataClass();
-	//	data->getParam(WCHDATA_HalfLengths,param);
-	//	itemHalfLengths = *((crVector2*)(param));
-	//}
 	return radius;
 }
 float crInstanceItem::getAttackDistance(crInstanceItem *item)
 {
-	//crData *data = getDataClass();
-	void *param;
-	//data->getParam(WCHDATA_HalfPhysicsBox,param);
-	//crVector3 halfLengths = *((crVector3*)(param));
-	//float dist = halfLengths.length();
-	crVector3 halfLengths;
-	float dist = 0.0f;
-	if(item)
-	{
-		ref_ptr<crData> data = item->getDataClass();
-		if(data.valid())
-		{
-			data->getParam(WCHDATA_HalfPhysicsBox,param);
-			halfLengths = *((crVector3*)(param));
-			dist += halfLengths[1];
-		}
-	}
+	//void *param;
+	float dist = getMinDistance(item);
 	float extraDist = 0;
 	doEvent(MAKEINT64(WCH_GetAttackDist,0),MAKEINT64(&extraDist,NULL));
 	return maximum(dist + extraDist,1.0f);
