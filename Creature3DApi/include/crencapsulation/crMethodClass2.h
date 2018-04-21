@@ -1591,7 +1591,7 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
+	CRCore::crNode* m_this;
 };
 
 class crDoEventMethod : public CRCore::crMethod
@@ -1604,11 +1604,10 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
+	CRCore::crNode* m_this;
 	_crInt32 m_msgParam1;
 	_crInt32 m_msgParam2;
 };
-
 class crTargetDoEventMethod : public CRCore::crMethod
 {// 
 public:
@@ -1619,7 +1618,7 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
+	CRCore::crNode* m_this;
 	_crInt32 m_msgParam1;
 	_crInt32 m_msgParam2;
 };

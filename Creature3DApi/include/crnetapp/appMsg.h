@@ -403,6 +403,7 @@
 #define WCH_ServerInitSuccess			WCH_USER+349
 #define WCH_PlayUseItemFx				WCH_USER+350
 #define WCH_SkillExtraTest				WCH_USER+351
+#define WCH_RecvTaskProgress			WCH_USER+352
 //WCH_USER16
 #define WCH_CutTalk         		WCH_USER16+1
 #define WCH_CutScene                WCH_USER16+2
