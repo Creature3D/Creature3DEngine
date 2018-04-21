@@ -5813,10 +5813,10 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 				float t = CRCore::Timer::instance()->delta_s(start_tick, end_tick);
 				if (t > 0.08f)
 				{
-					time_t t = time(0);
+					time_t localt = time(0);
 					char tmp[20];
-					strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&t));
-					CRCore::notify(CRCore::WARN) << tmp << " Time to SightUpdate=" << t << " sightInfoMap=" << m_sightInfoMap.size() << " sightInfoSet=" << m_sightInfoSet.size() << " roleeyecount=" << roleeyecount << " itemeyecount=" << itemeyecount << std::endl;
+					strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&localt));
+					CRCore::notify(CRCore::WARN) << tmp << " SceneName=" << m_scene->getSceneName() << " Time to SightUpdate=" << t << " sightInfoMap=" << m_sightInfoMap.size() << " sightInfoSet=" << m_sightInfoSet.size() << " roleeyecount=" << roleeyecount << " itemeyecount=" << itemeyecount << std::endl;
 				}
 				float _dt = dt;
 				doEvent(WCH_RoomUpdate,MAKEINT64(&_dt,sc));
@@ -5825,10 +5825,10 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 				t = CRCore::Timer::instance()->delta_s(start_tick, end_tick);
 				if (t > 0.02f)
 				{
-					time_t t = time(0);
+					time_t localt = time(0);
 					char tmp[20];
-					strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&t));
-					CRCore::notify(CRCore::WARN) << tmp << " Time to RoomUpdate = " << t << std::endl;
+					strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S\0", localtime(&localt));
+					CRCore::notify(CRCore::WARN) << tmp << " SceneName=" << m_scene->getSceneName() << " Time to RoomUpdate=" << t << std::endl;
 				}
 			}
 			else

@@ -8665,14 +8665,8 @@ void crTalkEndMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{// Õ∑≈
-			m_node = NULL;
-		}
-		break;
 	case 1:
-		m_node = param?(crNode *)(param):NULL;
+		m_this = (crNode *)param;
 		break;
 	}
 }
@@ -8683,7 +8677,7 @@ void crTalkEndMethod::addParam(int i, const std::string& str)
 
 void crTalkEndMethod::operator()(crHandle &handle)
 {
-	crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_node.get());
+	crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_this);
 	if(bot)
 	{
 		crData *data = bot->getDataClass();
@@ -8723,14 +8717,8 @@ void crDoEventMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{// Õ∑≈
-			m_node = NULL;
-		}
-		break;
 	case 1:
-		m_node = param?(crNode *)(param):NULL;
+		m_this =(crNode *)param;
 		break;
 	}
 }
@@ -8750,8 +8738,7 @@ void crDoEventMethod::addParam(int i, const std::string& str)
 
 void crDoEventMethod::operator()(crHandle &handle)
 {
-    if(m_node.valid())
-		m_node->doEvent(MAKEINT64(m_msgParam1,m_msgParam2));
+	m_this->doEvent(MAKEINT64(m_msgParam1,m_msgParam2));
 }
 /////////////////////////////////////////
 //
@@ -8775,14 +8762,8 @@ void crTargetDoEventMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{// Õ∑≈
-			m_node = NULL;
-		}
-		break;
 	case 1:
-		m_node = param?(crNode *)(param):NULL;
+		m_this = (crNode *)param;
 		break;
 	}
 }
@@ -8802,16 +8783,13 @@ void crTargetDoEventMethod::addParam(int i, const std::string& str)
 
 void crTargetDoEventMethod::operator()(crHandle &handle)
 {
-	if(m_node.valid())
+	crData *data = m_this->getDataClass();
+	void *_targetNode;
+	data->getParam(5, _targetNode);
+	if (_targetNode != NULL)
 	{
-		crData *data = m_node->getDataClass();
-		void *_targetNode;
-		data->getParam(5,_targetNode);
-		if(_targetNode!=NULL)
-		{
-			crNode *targetNode = (crNode *)_targetNode;
-		    targetNode->doEvent(MAKEINT64(m_msgParam1,m_msgParam2));
-		}
+		crNode *targetNode = (crNode *)_targetNode;
+		targetNode->doEvent(MAKEINT64(m_msgParam1, m_msgParam2));
 	}
 }
 /////////////////////////////////////////
