@@ -11458,7 +11458,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 					userItemRecord->setItem(m_this);
 					userItemRecord->setUser(m_useItemParam->m_user.get());
 					thisData->getParam(WCHDATA_DamageCount,param);
-					unsigned char damagecount = *(unsigned char *)param;
+					char damagecount = *(char *)param;
 					if(damagecount==1)
 						userItemRecord->setTarget(m_useItemParam->m_target.get());//需要判断该技能是群攻还是单体攻击，如果是群攻则m_target＝NULL
 					userItemRecord->setDamageCount(damagecount);
@@ -11863,7 +11863,7 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		userItemRecord->setItem(m_this);
 		userItemRecord->setUser(m_useItemParam->m_user.get());
 		thisData->getParam(WCHDATA_DamageCount,param);
-		unsigned char damagecount = *(unsigned char *)param;
+		char damagecount = *(char *)param;
 		if(damagecount==1)
 			userItemRecord->setTarget(m_useItemParam->m_target.get());//需要判断该技能是群攻还是单体攻击，如果是群攻则m_target＝NULL
 		userItemRecord->setDamageCount(damagecount);

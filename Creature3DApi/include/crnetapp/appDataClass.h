@@ -889,17 +889,21 @@ public:
 	void setDuration(float duration) { m_duration = duration; }
 	float& duration(){ return m_duration; }
 	HitMap &getHitMap(){ return m_hitMap; }
-	void setDamageCount(unsigned char count){ m_damageCount = count; }
-	unsigned char getDamageCount(){ return m_damageCount; }
+	void setDamageCount(char count){ m_damageCount = count; }
+	char getDamageCount(){ return m_damageCount; }
 	bool getHitValid(CRNetApp::crInstanceItem *hititem,bool npcfire)
 	{
 		if(npcfire && m_hitMap.find(hititem)!=m_hitMap.end())
 			return false;
-		if(m_damageCount==0) return true;
-		if(m_damageCount == 1) return m_target == hititem;
+		if (m_damageCount >= 0)
+		{//对同一目标不能造成多次伤害
+			if(m_hitMap.find(hititem) != m_hitMap.end())
+				return false;
+		}
+		if(m_damageCount == 1 || m_damageCount == -1) return m_target == hititem;
 		if(m_hitMap.find(hititem) != m_hitMap.end())
 			return true;//可以对同一个目标造成多次伤害
-		return m_hitMap.size()<m_damageCount;
+		return m_hitMap.size()<abs(m_damageCount);
 	}
 protected:
 	CRCore::ref_ptr<crInstanceItem> m_item;//bulletitem
@@ -907,7 +911,7 @@ protected:
 	CRCore::ref_ptr<crInstanceItem> m_target;
 	HitMap m_hitMap;//击中者记录，防止重复击中
 	float m_duration;
-	unsigned char m_damageCount;
+	char m_damageCount;
 };
 typedef std::multimap< CRCore::ref_ptr<crInstanceItem>,CRCore::ref_ptr<crUseItemRecord> > UseItemRecordMap;//user,record
 typedef std::multimap< float,CRCore::ref_ptr<crUseItemRecord>,std::less<float> > HitTestMap;//duration,record
