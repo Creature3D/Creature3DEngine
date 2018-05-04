@@ -901,9 +901,9 @@ public:
 				return false;
 		}
 		if(m_damageCount == 1 || m_damageCount == -1) return m_target == hititem;
-		if(m_hitMap.find(hititem) != m_hitMap.end())
+		if(m_damageCount < 0 && m_hitMap.find(hititem) != m_hitMap.end())
 			return true;//可以对同一个目标造成多次伤害
-		return m_hitMap.size()<abs(m_damageCount);
+		return m_damageCount==0 || m_hitMap.size()<abs(m_damageCount);
 	}
 protected:
 	CRCore::ref_ptr<crInstanceItem> m_item;//bulletitem
