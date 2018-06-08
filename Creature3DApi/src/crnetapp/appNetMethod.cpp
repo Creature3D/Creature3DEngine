@@ -18325,6 +18325,11 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					stream->_writeUInt(guiseState);
 					crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
 					crScene *scene = netCallback->findScene(m_this->getSceneID());
+
+					thisData->inputParam(WCHDATA_GuiseState, &guiseState);
+					thisData->inputParam(WCHDATA_ControllerFlg, NULL);
+					scene->itemDead(m_this);
+
 					if(m_this->getItemtype() == crInstanceItem::Role)
 					{
 						int playerid = m_this->getID();
@@ -18344,9 +18349,6 @@ void crDeadEventMethod::operator()(crHandle &handle)
 						crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvGuiseState,stream.get());
 						scene->sendPacketToItemNeighbor(m_this,packet);
 					}
-					thisData->inputParam(WCHDATA_GuiseState, &guiseState);
-					thisData->inputParam(WCHDATA_ControllerFlg,NULL);
-					scene->itemDead(m_this);
 				}
 			}
 		}
