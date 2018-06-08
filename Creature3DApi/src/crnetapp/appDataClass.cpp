@@ -1959,8 +1959,10 @@ void crRoleData::inputParam(int i, void *param)
 			{
 				m_guiseState = newstate;
 			}
-			if(m_guiseState & GS_UnVisiable)
-				CRCore::notify(CRCore::ALWAYS) << "GS_UnVisiable,ItemState = " <<m_itemState<< std::endl;
+			if (m_guiseState & GS_UnVisiable && m_itemState != IS_Dead)
+			{
+				CRCore::notify(CRCore::ALWAYS) << "GS_UnVisiable,ItemState = " << (int)m_itemState << std::endl;
+			}
 		}
 		break;
 	case WCHDATA_TargetType:
