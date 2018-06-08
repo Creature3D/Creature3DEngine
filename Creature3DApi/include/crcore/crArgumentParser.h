@@ -184,6 +184,7 @@ public:
 
 	static char *trim( char *str );
 	static char *trimQuot( char *str, char chflg );
+	static std::string trim(const std::string& str);
 
 	static bool readKeyValue(std::string str, const char *key, int &value );
 	static bool readKeyValue(std::string str, const char *key, float &value );

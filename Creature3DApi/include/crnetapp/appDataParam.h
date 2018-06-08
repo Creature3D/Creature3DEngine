@@ -464,6 +464,13 @@
 #define WCHDATA_Word_SelectTargetMode		420
 #define WCHDATA_Word_DisplayDamageMode		421
 
+#define WCHDATA_InbornSkillDamageIncrease	   423
+#define WCHDATA_ExtraSkillDamageIncrease	   424
+#define WCHDATA_ExtraSkillDamageIncrease_RD	   425
+#define WCHDATA_InbornAttackDamageIncrease	   426
+#define WCHDATA_ExtraAttackDamageIncrease	   427
+#define WCHDATA_ExtraAttackDamageIncrease_RD   428
+
 #define WCHDATA_OverlapParam				21377
 //#define WCHDATA_BaseEnmity					411
 //#define WCHDATA_CommandDlgItem				405

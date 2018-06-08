@@ -1528,7 +1528,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crNode* m_this;
-	CRCore::ref_ptr<CRUtil::crUpdateVisitor> m_updateVisitor;
+	//CRCore::ref_ptr<CRUtil::crUpdateVisitor> m_updateVisitor;
 };
 //crBotCoordToRoleMethod
 class crNodeCoordToItemMethod : public CRCore::crMethod
@@ -1754,9 +1754,9 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
+	CRCore::crNode* m_this;
 	short m_frameDelay;
-	CRCore::ref_ptr<CRUtil::crUpdateVisitor> m_updateVisitor;
+	//CRCore::ref_ptr<CRUtil::crUpdateVisitor> m_updateVisitor;
 };
 
 class crNodeOutRangeMethod : public CRCore::crMethod
@@ -1769,9 +1769,9 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
+	CRCore::crNode* m_this;
 	short m_frameDelay;
-	CRCore::ref_ptr<CRUtil::crUpdateVisitor> m_updateVisitor;
+	//CRCore::ref_ptr<CRUtil::crUpdateVisitor> m_updateVisitor;
 };
 
 class crRecvCreateItemChildMethod : public CRCore::crMethod

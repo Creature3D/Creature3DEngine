@@ -404,6 +404,8 @@
 #define WCH_PlayUseItemFx				WCH_USER+350
 #define WCH_SkillExtraTest				WCH_USER+351
 #define WCH_RecvTaskProgress			WCH_USER+352
+#define WCH_GetAttackDamageIncrease		WCH_USER+353
+#define WCH_GetSkillDamageIncrease		WCH_USER+354
 //WCH_USER16
 #define WCH_CutTalk         		WCH_USER16+1
 #define WCH_CutScene                WCH_USER16+2

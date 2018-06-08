@@ -458,6 +458,13 @@ protected:
 	short m_extraSkillDamage;
 	short m_extraSkillDamage_rd;
 
+	short m_inbornSkillDamageIncrease;//法伤加成
+	short m_extraSkillDamageIncrease;//法伤加成
+	short m_extraSkillDamageIncrease_rd;//法伤加成
+	short m_inbornAttackDamageIncrease;//物伤加成
+	short m_extraAttackDamageIncrease;//物伤加成
+	short m_extraAttackDamageIncrease_rd;//物伤加成
+
 	unsigned char m_extraIgnoreDodge;
 	unsigned char m_extraIgnoreDodge_rd;
 	short m_extraCritPower;
