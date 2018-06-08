@@ -2619,7 +2619,7 @@ void crMyPlayerData::checkItemVisiable(std::vector<CRCore::crVector4i> &eyeVec,c
 			}
 		}
 		relNode->setVisiable(inSight);
-		if(inSight) relNode->setEnableIntersect(true);
+		/*if(inSight) */relNode->setEnableIntersect(true);
 	}
 }
 void crMyPlayerData::insertItemVisiable(crInstanceItem *item)

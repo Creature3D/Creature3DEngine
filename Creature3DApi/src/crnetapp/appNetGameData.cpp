@@ -826,6 +826,28 @@ void crInstanceItem::closeToTargetDir(float dt)
 }
 void crInstanceItem::clientUpdate(float dt)
 {
+	//void *param;
+	//if (m_dataClass.valid())
+	//{
+	//	m_dataClass->getParam(WCHDATA_ItemState, param);
+	//	unsigned char itemstate = *(unsigned char*)param;
+	//	if (itemstate == IS_Relive)
+	//	{
+	//		if (m_reliveTimer == 0.0f)
+	//		{
+	//			doEvent(WCH_ItemRelive);
+	//		}
+	//		m_reliveTimer += dt;
+	//		if (m_reliveTimer > 1.0f)
+	//		{
+	//			m_reliveTimer = 0.0f;
+	//			itemstate = IS_Stop;
+	//			m_dataClass->inputParam(WCHDATA_ItemState, &itemstate);
+	//		}
+	//		//clearExtra();
+	//		//m_dataClass->excHandle(MAKEINT64(WCH_InitData,this));
+	//	}
+	//}
 	closeToTargetDir(dt);
 	removedItemChildUpdate(dt);
 }

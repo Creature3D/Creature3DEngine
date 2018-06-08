@@ -1005,7 +1005,13 @@ crRoleData::crRoleData():
 	m_extraCritPower(0),
 	m_extraCritPower_rd(0),
 	m_extraSputtering(0),
-	m_extraSputtering_rd(0)
+	m_extraSputtering_rd(0),
+	m_inbornAttackDamageIncrease(0),
+	m_extraAttackDamageIncrease(0),
+	m_extraAttackDamageIncrease_rd(0),
+	m_inbornSkillDamageIncrease(0),
+	m_extraSkillDamageIncrease(0),
+	m_extraSkillDamageIncrease_rd(0)
 {
 	m_rthp = m_hp;
 	m_rtmp = m_mp;
@@ -1173,7 +1179,13 @@ crRoleData::crRoleData(const crRoleData& data):
 	m_extraCritPower_rd(0),
 	m_extraSputtering(0),
 	m_extraSputtering_rd(0),
-	m_inbornHitratioPercent(data.m_inbornHitratioPercent)
+	m_inbornHitratioPercent(data.m_inbornHitratioPercent),
+	m_inbornAttackDamageIncrease(data.m_inbornAttackDamageIncrease),
+	m_extraAttackDamageIncrease(0),
+	m_extraAttackDamageIncrease_rd(0),
+	m_inbornSkillDamageIncrease(data.m_inbornSkillDamageIncrease),
+	m_extraSkillDamageIncrease(0),
+	m_extraSkillDamageIncrease_rd(0)
 {
 	m_rthp = m_hp;
 	m_rtmp = m_mp;
@@ -1947,6 +1959,8 @@ void crRoleData::inputParam(int i, void *param)
 			{
 				m_guiseState = newstate;
 			}
+			if(m_guiseState & GS_UnVisiable)
+				CRCore::notify(CRCore::ALWAYS) << "GS_UnVisiable,ItemState = " <<m_itemState<< std::endl;
 		}
 		break;
 	case WCHDATA_TargetType:
@@ -2223,6 +2237,18 @@ void crRoleData::inputParam(int i, void *param)
 		break;
 	case WCHDATA_ExtraSkillDamage:
 		m_extraSkillDamage = param?*((short*)param):NULL;
+		break;
+	case WCHDATA_InbornAttackDamageIncrease:
+		m_inbornAttackDamageIncrease = param ? *((short*)param) : NULL;
+		break;
+	case WCHDATA_ExtraAttackDamageIncrease:
+		m_extraAttackDamageIncrease = param ? *((short*)param) : NULL;
+		break;
+	case WCHDATA_InbornSkillDamageIncrease:
+		m_inbornSkillDamageIncrease = param ? *((short*)param) : NULL;
+		break;
+	case WCHDATA_ExtraSkillDamageIncrease:
+		m_extraSkillDamageIncrease = param ? *((short*)param) : NULL;
 		break;
 	case WCHDATA_ExtraIgnoreDodge:
 		m_extraIgnoreDodge = param?*((unsigned char*)param):NULL;
@@ -2754,6 +2780,24 @@ void crRoleData::getParam(int i, void*& param)
 		break;
 	case WCHDATA_ExtraSkillDamage_RD:
 		param = &m_extraSkillDamage_rd;
+		break;
+	case WCHDATA_InbornAttackDamageIncrease:
+		param = &m_inbornAttackDamageIncrease;
+		break;
+	case WCHDATA_ExtraAttackDamageIncrease:
+		param = &m_extraAttackDamageIncrease;
+		break;
+	case WCHDATA_ExtraAttackDamageIncrease_RD:
+		param = &m_extraAttackDamageIncrease_rd;
+		break;
+	case WCHDATA_InbornSkillDamageIncrease:
+		param = &m_inbornSkillDamageIncrease;
+		break;
+	case WCHDATA_ExtraSkillDamageIncrease:
+		param = &m_extraSkillDamageIncrease;
+		break;
+	case WCHDATA_ExtraSkillDamageIncrease_RD:
+		param = &m_extraSkillDamageIncrease_rd;
 		break;
 	case WCHDATA_ExtraIgnoreDodge:
 		param = &m_extraIgnoreDodge;

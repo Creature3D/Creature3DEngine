@@ -645,7 +645,7 @@ crCanvasNode *crFilterRenderManager::findCanvas(const std::string& id)
 		return NULL;
 	if(id.compare(m_mainCanvas->getName()) == 0)
 		return m_mainCanvas.get();
-	NodeArray &canvasArray = m_identicCamera->getChildArray();
+	NodeArray canvasArray = m_identicCamera->getChildArray();
 	for( NodeArray::iterator itr = canvasArray.begin();
 		 itr != canvasArray.end();
 		 ++itr )

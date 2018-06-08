@@ -8866,27 +8866,20 @@ void crItemUpdateMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-			m_updateVisitor = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crNode*)param;
 		break;
-	case 2:
-		if(param)
-		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOINT64(param64));
-		}
-		else
-		{
-			m_updateVisitor = NULL;
-		}
-		break;
+	//case 2:
+	//	if(param)
+	//	{
+	//		_crInt64 param64 = *(_crInt64*)param;
+	//		m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOINT64(param64));
+	//	}
+	//	else
+	//	{
+	//		m_updateVisitor = NULL;
+	//	}
+	//	break;
 	}
 }
 
@@ -8897,7 +8890,7 @@ void crItemUpdateMethod::addParam(int i, const std::string& str)
 void crItemUpdateMethod::operator()(crHandle &handle)
 {
 	crRoom *room = crMyPlayerData::getInstance()->getSelectedRoom();
-	if(m_this->getVisiable() && m_updateVisitor.valid() && crDisplaySettings::instance()->getRunMode()>0 && (!room || !room->isPaused()))
+	if(/*m_this->getVisiable() && m_updateVisitor.valid() && */crDisplaySettings::instance()->getRunMode()>0 && (!room || !room->isPaused()))
 	{
 		void *param;
 		crData *data = m_this->getDataClass();
@@ -10203,27 +10196,20 @@ void crNodeInRangeMethod::inputParam(int i, void *param)
 {
 	switch (i)
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_node = NULL;
-			m_updateVisitor = NULL;
-		}
-		break;
 	case 1:
-		m_node = (CRCore::crNode*)param;
+		m_this = (CRCore::crNode*)param;
 		break;
 	case 2:
 		if(param)
 		{
 			_crInt64 param64 = *(_crInt64*)param;
 			m_frameDelay = (short)(LOINT64(param64));
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
+			//m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
 		}
 		else
 		{
 			m_frameDelay = 0;
-			m_updateVisitor = NULL;
+			//m_updateVisitor = NULL;
 		}
 		break;
 	}
@@ -10235,8 +10221,8 @@ void crNodeInRangeMethod::addParam(int i, const std::string& str)
 
 void crNodeInRangeMethod::operator()(crHandle &handle)
 {
-	if(m_node.valid() && m_updateVisitor.get())
-	{//可以加入一个能程现半透明渐变的材质
+	//if(m_node.valid()/* && m_updateVisitor.get()*/)
+	//{//可以加入一个能程现半透明渐变的材质
 		//m_frameDelay--;
 		//if(m_frameDelay>0)
 		//          m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,m_frameDelay));
@@ -10246,14 +10232,14 @@ void crNodeInRangeMethod::operator()(crHandle &handle)
 			float delay = (float)m_frameDelay / 1000.0f;
 			delay -= dt;
 			m_frameDelay = floor(delay * 1000.0f);
-			m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,m_frameDelay));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,m_frameDelay));
 		}
 		else
 		{
-	        m_node->setVisiable(true);
-			m_node->setEnableIntersect(true);
+			m_this->setVisiable(true);
+			m_this->setEnableIntersect(true);
 		}
-	}
+	//}
 }
 /////////////////////////////////////////
 //
@@ -10275,27 +10261,27 @@ void crNodeOutRangeMethod::inputParam(int i, void *param)
 {
 	switch (i)
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_node = NULL;
-			m_updateVisitor = NULL;
-		}
-		break;
+	//case 0:
+	//	if(param == 0)
+	//	{//释放
+	//		m_node = NULL;
+	//		m_updateVisitor = NULL;
+	//	}
+	//	break;
 	case 1:
-		m_node = (CRCore::crNode*)param;
+		m_this = (CRCore::crNode*)param;
 		break;
 	case 2:
 		if(param)
 		{
 			_crInt64 param64 = *(_crInt64*)param;
 			m_frameDelay = (short)(LOINT64(param64));
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
+			//m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
 		}
 		else
 		{
 			m_frameDelay = 0;
-			m_updateVisitor = NULL;
+			//m_updateVisitor = NULL;
 		}
 		break;
 	}
@@ -10307,8 +10293,8 @@ void crNodeOutRangeMethod::addParam(int i, const std::string& str)
 
 void crNodeOutRangeMethod::operator()(crHandle &handle)
 {
-	if(m_node.valid() && m_updateVisitor.valid())
-	{//可以加入一个能程现半透明渐变的材质
+	//if(m_node.valid() && m_updateVisitor.valid())
+	//{//可以加入一个能程现半透明渐变的材质
 		//m_frameDelay--;
 		//if(m_frameDelay>0)
 		//	m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,m_frameDelay));
@@ -10318,14 +10304,14 @@ void crNodeOutRangeMethod::operator()(crHandle &handle)
 			float delay = (float)m_frameDelay / 1000.0f;
 			delay -= dt;
 			m_frameDelay = floor(delay * 1000.0f);
-			m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,m_frameDelay));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,m_frameDelay));
 		}
 		else
 		{
-			m_node->setVisiable(false);
+			m_this->setVisiable(false);
 			//m_node->setEnableIntersect(false);
 		}
-	}
+	//}
 }
 
 /////////////////////////////////////////
@@ -12588,9 +12574,10 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 					{
 						if(itr->second->getItem()->getInstanceItemID() == bulletItemID)
 						{
-							//if (itr->second->getItem()->getAbstractItemID() == 27295)
+							//int hit = 0;
+							//if (itr->second->getItem()->getAbstractItemID() == 26264)
 							//{
-							//	int hit = itr->second->getHitValid(m_this,false) ? 1 : 0;
+							//	hit = itr->second->getHitValid(m_this, false) ? 1 : 0;
 							//	CRCore::notify(CRCore::ALWAYS) << "crNodeCollideWithItemMethod id=" << m_this->getID() << " HitValid=" << hit << std::endl;
 							//}
 							//target = itr->second->getTarget();
@@ -12617,8 +12604,8 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 							hitParam->m_hitItem = m_this;
 							hitParam->m_rate = rate;
 							hitParam->m_fireItem = fireRole.get();
-							//if(bulletitem->getAbstractItemID() == 28255)
-							//	CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod roleid="<<m_this->getRoleID()<<std::endl;
+							//if(bulletitem->getAbstractItemID() == 26264)
+							//	CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod AddDamage:"<<m_this->getID()<<std::endl;
 							bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
 
 							crData *bulletitemData = bulletitem->getDataClass();
@@ -16329,8 +16316,17 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 		ref_ptr<crInstanceItem> hititem = ((crInstanceItem*)param);
 		//int hitid = hititem->getID();
 		ref_ptr<crBulletMatterObject> bullet = dynamic_cast<crBulletMatterObject *>(m_this->getMainBody());
-		if(bullet.valid() && bullet->getDataClass() && bullet->getFireWeapon() && bullet->getFireWeapon()->getFireBody())
+		if(hititem.valid() && bullet.valid() && bullet->getDataClass() && bullet->getFireWeapon() && bullet->getFireWeapon()->getFireBody())
 		{
+			ref_ptr<crData> hitItemData = hititem->getDataClass();
+			if (!hitItemData.valid())
+				return;
+			hitItemData->getParam(WCHDATA_ItemState, param);
+			if (!param) 
+				return;
+			unsigned char hititemstate = *(unsigned char *)param;
+			if (hititemstate == IS_Dead || hititemstate == IS_Relive)
+				return;
 			const crViewMatterObject *fireBot = bullet->getFireWeapon()->getFireBody();
 			crData *fireData = const_cast<crData *>(fireBot->getDataClass());
 			if(!fireData) return;
@@ -16420,7 +16416,7 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 					if(netConductor)
 					{
-						//if (bulletItem->getAbstractItemID() == 27295)
+						//if (bulletItem->getAbstractItemID() == 26264)
 						//	CRCore::notify(CRCore::ALWAYS) << "crNodeInBulletVolumeMethod id=" << hititem->getID() << std::endl;
 						crPlayerServerEventPacket packet;
 						crPlayerServerEventPacket::buildRequestPacket(packet,WCH_NodeCollideWithItem,hititem.get(),stream.get());

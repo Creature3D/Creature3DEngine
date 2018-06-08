@@ -587,6 +587,14 @@ char *crArgumentParser::trim( char *str )
 
 	return( str );
 }
+std::string crArgumentParser::trim(const std::string& str)
+{
+	if (!str.size()) return str;
+	std::string::size_type first = str.find_first_not_of(" \t");
+	std::string::size_type last = str.find_last_not_of("  \t\r\n");
+	return str.substr(first, last - first + 1);
+}
+
 //取出两chflg字符里的字符窜
 char *crArgumentParser::trimQuot( char *str, char chflg )
 {

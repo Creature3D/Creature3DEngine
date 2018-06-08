@@ -118,7 +118,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 
 bool crVolumeNode::doVolumeEvent(crMatterObject *materObject)
 {
-	bool isvalid = true;
+	bool isvalid = false;
 	crNode::doEvent(WCH_INVOLUME,MAKEINT64(materObject,&isvalid));
 	if(isvalid)
 	{

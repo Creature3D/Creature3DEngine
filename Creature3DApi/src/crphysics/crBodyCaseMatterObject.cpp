@@ -119,12 +119,12 @@ void crMissileSetOrFlackMatterObject::traverse(CRCore::crNodeVisitor& nv)
 
 			//CRPhysics::crMatterObject::traverse(nv);
 
-			if(getVisiable())
-			{
+			//if(getVisiable())
+			//{
 				computerRotMatrix();
 				//CRCore::notify(CRCore::ALWAYS)<<nv.getFrameStamp()->getFrameNumber()<<"crViewMatterObject::traverse(): m_position = "<<m_matrix.getTrans()<<std::endl;
 				//updateWeaponMatrix();
-			}
+			//}
 		}
 		return;
 	case CRCore::crNodeVisitor::INIT_VISITOR:
