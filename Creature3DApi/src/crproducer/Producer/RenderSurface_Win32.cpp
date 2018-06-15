@@ -291,7 +291,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	case WM_KILLFOCUS:
 		if(CRCore::crDisplaySettings::instance()->getRunMode()!=0)
 		{
-			CRCore::crDisplaySettings::instance()->setFpsControl(20.0f);
+			CRCore::crDisplaySettings::instance()->setFpsControl(30.0f);
 			if(CRCore::crDisplaySettings::instance()->getFullScreen())
 				::ShowWindow(hWnd,SW_MINIMIZE);
 		}
