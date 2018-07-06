@@ -597,6 +597,7 @@ enum GuiseState
 	GS_ExtraShifting	= 0x04000000,//不转身,不播动作,不可移动,不可攻击 26
 	GS_Backstab			= 0x08000000,//背刺			 27
 	GS_NoAttack			= 0x10000000,//不可被攻击 不可被别人选中	 28
+	GS_NoCure			= 0x20000000,//不可回血						 29
 };
 
 enum SkillType

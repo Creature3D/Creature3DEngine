@@ -16350,7 +16350,7 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hititem.get(),&isEnemy));
 					if(isEnemy == -1)
 					{//µÐ¶Ô
-						if(m_targetType & Target_Friend)
+						if(m_targetType & Target_Friend || m_targetType & Target_Self)
 							*m_isvalid = false;
 					}
 					else if(isEnemy == 1)
@@ -18872,7 +18872,7 @@ void crBulletCollideTestMethod::operator()(crHandle &handle)
 								fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hitItem,&isEnemy));
 								if(isEnemy == -1)
 								{
-									if(m_targetType & Target_Friend)
+									if(m_targetType & Target_Friend || m_targetType & Target_Self)
 										*m_collideTest = 0;
 								}
 								else if(isEnemy == 1)
