@@ -15781,10 +15781,10 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 			{
 				id = itr->first;
 				//pri = itr->second;
+				removeExtra = true;
 				handle = extraData->getHandle(MAKEINT64(WCH_DoExtra,id));
 				if(handle.valid())
 				{
-					removeExtra = true;
 					crHandleManager::getInstance()->waitToExecuteHandle(handle.get());
 					try
 					{
@@ -15799,10 +15799,10 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 						CRCore::notify(CRCore::ALWAYS)<<"crExtraUpdateMethod::doEvent error ExtraID = "<<id<<std::endl;
 					}
 					crHandleManager::getInstance()->endExecuteHandle(handle.get());
-					if(removeExtra)
-					{
-						EraseVec.push_back(id);
-					}
+				}
+				if (removeExtra)
+				{
+					EraseVec.push_back(id);
 				}
 			}
 			for( std::vector<short>::iterator itr = EraseVec.begin();
@@ -15840,14 +15840,14 @@ crExtraLifeTimeMethod::crExtraLifeTimeMethod():
 	m_output(NULL),
 	m_duration(0.0f),
 	m_start(false),
-	m_timer(0.0f),m_overlapCount(1){}
+	m_timer(0.0f)/*,m_overlapCount(1)*/{}
 crExtraLifeTimeMethod::crExtraLifeTimeMethod(const crExtraLifeTimeMethod& handle):
 	crMethod(handle),
 	m_dt(NULL),
 	m_output(NULL),
 	m_duration(handle.m_duration),
 	m_start(false),
-	m_timer(0.0f),m_overlapCount(1)
+	m_timer(0.0f)/*,m_overlapCount(1)*/
 {
 }
 void crExtraLifeTimeMethod::inputParam(int i, void *param)
@@ -15877,16 +15877,16 @@ void crExtraLifeTimeMethod::inputParam(int i, void *param)
 	case 3:
 		m_output = (bool*)param;
 		break;
-	case WCHDATA_OverlapParam:
-		{
-			short overlap = *(short*)param;
-			if(overlap>m_overlapCount && m_start)
-			{
-				m_timer = m_duration;
-			}
-			m_overlapCount = overlap;
-		}
-		break;
+	//case WCHDATA_OverlapParam:
+	//	{
+	//		short overlap = *(short*)param;
+	//		if(overlap>m_overlapCount && m_start)
+	//		{
+	//			m_timer = m_duration;
+	//		}
+	//		m_overlapCount = overlap;
+	//	}
+	//	break;
 	}
 }
 
@@ -15914,8 +15914,8 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 		if(m_timer<0.0f)
 		{
 			*m_output = true;
-			m_start = false;
-			m_timer = 0.0f;
+			//m_start = false;
+			//m_timer = 0.0f;
 		}
 	}
 }
@@ -16350,7 +16350,7 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hititem.get(),&isEnemy));
 					if(isEnemy == -1)
 					{//µÐ¶Ô
-						if(m_targetType & Target_Friend || m_targetType & Target_Self)
+						if(m_targetType & Target_Friend || (m_targetType == Target_Self))
 							*m_isvalid = false;
 					}
 					else if(isEnemy == 1)
@@ -16416,7 +16416,7 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 					if(netConductor)
 					{
-						//if (bulletItem->getAbstractItemID() == 26264)
+						//if (bulletItem->getAbstractItemID() == 27295)
 						//	CRCore::notify(CRCore::ALWAYS) << "crNodeInBulletVolumeMethod id=" << hititem->getID() << std::endl;
 						crPlayerServerEventPacket packet;
 						crPlayerServerEventPacket::buildRequestPacket(packet,WCH_NodeCollideWithItem,hititem.get(),stream.get());
@@ -18872,7 +18872,7 @@ void crBulletCollideTestMethod::operator()(crHandle &handle)
 								fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hitItem,&isEnemy));
 								if(isEnemy == -1)
 								{
-									if(m_targetType & Target_Friend || m_targetType & Target_Self)
+									if(m_targetType & Target_Friend || (m_targetType == Target_Self))
 										*m_collideTest = 0;
 								}
 								else if(isEnemy == 1)

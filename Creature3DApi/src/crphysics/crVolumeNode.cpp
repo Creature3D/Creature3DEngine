@@ -74,7 +74,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 			toErase.push_back(setItr.get());
 		}
 	}
-	if(!m_enable)
+	if(!m_enable && m_reTriggerDelay==0.0f)
 	{
 		m_inVolumeNodeSet.clear();
 	}
@@ -88,7 +88,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 		}
 	}
 
-	if(m_reTriggerDelay>0.0f && m_enable && !m_inVolumeNodeSet.empty())
+	if(m_reTriggerDelay>0.0f /*&& m_enable && !m_inVolumeNodeSet.empty()*/)
 	{
 		//float referenceTime = frameStamp->getReferenceTime();
 		//m_interval += (m_previousFrameTime != 0.0) ? (referenceTime-m_previousFrameTime) : 0.0;
@@ -98,8 +98,9 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 		if(m_interval>m_reTriggerDelay)
 		{
 			m_interval = 0.0f;
-			//m_triggerCount = 0;
-			//m_enable = true;
+			m_triggerCount = 0;
+			m_enable = true;
+			//CRCore::notify(CRCore::ALWAYS) << "reTriggerDelay"<< std::endl;
 			ref_ptr<crMatterObject> node;
 			for( InVolumeNodeSet::iterator itr = m_inVolumeNodeSet.begin();
 				itr != m_inVolumeNodeSet.end();

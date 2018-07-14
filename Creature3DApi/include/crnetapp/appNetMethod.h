@@ -2467,7 +2467,7 @@ protected:
 
 	bool m_start;
 	float m_timer;
-	short m_overlapCount;
+	//short m_overlapCount;
 };
 //class crExtraDefendMethod : public CRCore::crMethod
 //{//SceneServer & GameClient Method
