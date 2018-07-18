@@ -314,7 +314,7 @@ copy                                                          src\win32\*.dll   
       <AdditionalLibraryDirectories>src\win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\src\hawknl.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>C:\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\src\Release\$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>.\src\Release/HawkNL.map</MapFileName>
       <SubSystem>NotSet</SubSystem>

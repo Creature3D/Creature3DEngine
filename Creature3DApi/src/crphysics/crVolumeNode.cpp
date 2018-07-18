@@ -112,6 +112,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 					doVolumeEvent(node.get());
 				}
 			}
+			//CRCore::notify(CRCore::ALWAYS) << "reTriggerDelay End:"<< m_triggerCount <<" "<< (m_enable?1:0) << std::endl;
 		}
 	}
 	else m_interval = 0.0f;

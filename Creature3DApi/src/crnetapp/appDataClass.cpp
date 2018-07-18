@@ -5985,6 +5985,48 @@ void crCommandDlgData::excHandle(_crInt64 msg)
 }
 /////////////////////////////////////////
 //
+//crUseItemRecord
+//
+/////////////////////////////////////////
+bool crUseItemRecord::getHitValid(crInstanceItem *hititem, bool npcfire)
+{
+	if (npcfire && m_hitMap.find(hititem) != m_hitMap.end())
+		return false;
+	if (m_damageCount >= 0)
+	{//对同一目标不能造成多次伤害
+		if (m_hitMap.find(hititem) != m_hitMap.end())
+			return false;
+	}
+	if (m_damageCount == 0)
+		return true;
+	if (m_damageCount == 1 || m_damageCount == -1) return m_target == hititem;
+	if (m_damageCount < 0 && m_hitMap.find(hititem) != m_hitMap.end())
+		return true;//可以对同一个目标造成多次伤害
+	void *param;
+	CRCore::ref_ptr<CRCore::crData> thisData;
+	unsigned char itemstate;
+	CRCore::ref_ptr<crInstanceItem> item;
+	for (HitMap::iterator itr = m_hitMap.begin();
+		itr != m_hitMap.end();
+		)
+	{
+		item = itr->first;
+		thisData = item->getDataClass();
+		thisData->getParam(WCHDATA_ItemState, param);
+		itemstate = *(unsigned char *)param;
+		if (itemstate == IS_Dead || itemstate == IS_Relive)
+		{
+			itr = m_hitMap.erase(itr);
+		}
+		else
+		{
+			++itr;
+		}
+	}
+	return m_hitMap.size() < abs(m_damageCount);
+}
+/////////////////////////////////////////
+//
 //crSceneServerData
 //
 /////////////////////////////////////////

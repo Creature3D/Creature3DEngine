@@ -12465,9 +12465,9 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 		ref_ptr<crData> thisData = m_this->getDataClass();
 		if (!thisData.valid())
 			return;
-		thisData->getParam(WCHDATA_RTHP,param);
+		thisData->getParam(WCHDATA_RTHP, param);
 		float* rthp = (float *)param;
-		if(!rthp || *rthp <= 0) return;
+		if (!rthp || *rthp <= 0) return;
 		thisData->getParam(WCHDATA_ItemState, param);
 		unsigned char itemstate = *(unsigned char *)param;
 		if (itemstate == IS_Dead || itemstate == IS_Relive)

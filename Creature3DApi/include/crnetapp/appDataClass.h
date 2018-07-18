@@ -898,20 +898,7 @@ public:
 	HitMap &getHitMap(){ return m_hitMap; }
 	void setDamageCount(char count){ m_damageCount = count; }
 	char getDamageCount(){ return m_damageCount; }
-	bool getHitValid(CRNetApp::crInstanceItem *hititem,bool npcfire)
-	{
-		if(npcfire && m_hitMap.find(hititem)!=m_hitMap.end())
-			return false;
-		if (m_damageCount >= 0)
-		{//对同一目标不能造成多次伤害
-			if(m_hitMap.find(hititem) != m_hitMap.end())
-				return false;
-		}
-		if(m_damageCount == 1 || m_damageCount == -1) return m_target == hititem;
-		if(m_damageCount < 0 && m_hitMap.find(hititem) != m_hitMap.end())
-			return true;//可以对同一个目标造成多次伤害
-		return m_damageCount==0 || m_hitMap.size()<abs(m_damageCount);
-	}
+	bool getHitValid(crInstanceItem *hititem, bool npcfire);
 protected:
 	CRCore::ref_ptr<crInstanceItem> m_item;//bulletitem
 	CRCore::ref_ptr<crInstanceItem> m_user;
