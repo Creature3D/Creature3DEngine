@@ -47,7 +47,7 @@ void crEnvironmentManager::insertEnvironmentMap( const crVector3f &local, crText
 crTextureCubeMap *crEnvironmentManager::getSuitableEnvMap( const crVector3f &local )
 {//返回最近的环境贴图
     crTextureCubeMap *env = 0;
-	float mindistance = 10.0f;
+	float mindistance = FLT_MAX;
 	float distance;
 	for( EnvironmentMap::iterator itr = m_envMap.begin();
 		 itr != m_envMap.end();

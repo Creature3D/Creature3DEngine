@@ -709,7 +709,7 @@ void crBulletMatterObject::fire( crWeaponMatterObject *fireWeapon, int weaponMat
 						}
 						else
 							mat.makeRotate(-CRCore::Y_AXIS,dir);
-						mat.setTrans(m_gunpoint+m_fireDirect*(volumeLength[1]-2.0f));
+						mat.setTrans(m_gunpoint+m_fireDirect*(volumeLength[1]-1.0f));
 						dynamic_cast<crMatrixVolumeNode *>(m_volumeNode.get())->setEffectMatrix(mat);
 						crVector3 centerpos = crVector3(0.0f,0.0f/*2.0f-volumeLength[1]*/,0.0f);
 						m_volumeNode->setBoundBox(centerpos,volumeLength);
@@ -742,7 +742,7 @@ void crBulletMatterObject::fire( crWeaponMatterObject *fireWeapon, int weaponMat
 						}
 						else
 							mat.makeRotate(-CRCore::Y_AXIS,dir);
-						mat.setTrans(m_gunpoint+m_fireDirect*(volumeLength[1]-2.0f));
+						mat.setTrans(m_gunpoint+m_fireDirect*(volumeLength[1]-1.0f));
 						dynamic_cast<crMatrixVolumeNode *>(m_volumeNode.get())->setEffectMatrix(mat);
 						crVector3 centerpos = crVector3(0.0f,0.0f/*2.0f-volumeLength[1]*/,0.0f);
 						m_volumeNode->setBoundBox(centerpos,volumeLength);
@@ -1738,9 +1738,10 @@ void crWeaponMatterObject::_fire(crBulletMatterObject *bulletMatterObject, crMat
 	if(m_bulletsInWeapon>0) m_bulletsInWeapon--;
 	//crVector3 dir = target - gunpoint;
 	//dir.normalize();
-	CRCore::crVector3 firetarget = target;
-	doEvent(WCH_WEAPON_FIRE,MAKEINT64(&gunpoint,&firetarget));
-	bulletMatterObject->fire(this,id,firePerson,gunpoint,firetarget,m_lastFireTime);
+	//CRCore::crVector3 firetarget = target;
+	m_currentBullet = bulletMatterObject;
+	bulletMatterObject->fire(this,id,firePerson,gunpoint, target,m_lastFireTime);
+	doEvent(WCH_WEAPON_FIRE, MAKEINT64(&gunpoint, bulletMatterObject));
 }
 
 void crWeaponMatterObject::especialFire( crMatterGroup *firePerson, const CRCore::crVector3& target, double time )

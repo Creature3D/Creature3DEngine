@@ -3705,7 +3705,7 @@ m_minDistance(10.0f),
 m_maxDistance(50.0f),
 m_pitch(1.0f),
 m_inputPos(true),
-m_dir(0.0f,1.0f,0.0f),
+m_dir(0.0f,0.0f,0.0f),
 m_sound(NULL)
 {}
 crCreateSoundLogic::crCreateSoundLogic(const crCreateSoundLogic& handle):
@@ -3737,7 +3737,7 @@ void crCreateSoundLogic::inputParam(int i, void *param)
 			if(param64)
 			{
 				m_position = *((crVector3 *)(LOINT64(param64)));
-				m_dir = *((crVector3 *)(LOINT64(param64)));
+				//m_dir = *((crVector3 *)(LOINT64(param64)));
 			}
 		}
 		break;

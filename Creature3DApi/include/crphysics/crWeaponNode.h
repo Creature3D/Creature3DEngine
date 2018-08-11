@@ -288,7 +288,7 @@ public:
 	bool validExecution(void *hitbody,void *o);
 
 	const CRCore::crVector3& getFireDirect() const{ return m_fireDirect; }
-	const CRCore::crVector3& getFireTarget() const{ return m_fireTarget; }
+	CRCore::crVector3 getFireTarget() const{ return m_trackTarget.valid()? m_trackTarget->getBound().center(): m_fireTarget; }
 	const CRCore::crVector3& getGunpoint() const { return m_gunpoint; }
 protected:
 	virtual ~crBulletMatterObject();
@@ -361,7 +361,7 @@ public:
 
 	const crWeaponObject *getWeaponObject()const;
 	const crBulletObject *getBulletObject()const;
-
+	inline crBulletMatterObject *getCurrentBullet() { return m_currentBullet.get(); }
 	enum ReadyToFire
 	{
         NotReady,
@@ -424,6 +424,7 @@ protected:
 	CRCore::ref_ptr<crViewMatterObject> m_fireBody;
 
 	BulletMatterObjectVec m_bulletVec;
+	CRCore::ref_ptr<crBulletMatterObject> m_currentBullet;
 private:
 	int m_state;
 };

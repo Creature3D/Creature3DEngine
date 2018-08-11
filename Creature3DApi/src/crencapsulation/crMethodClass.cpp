@@ -26413,3 +26413,25 @@ void crExportCharacterPosMethod::operator()(crHandle &handle)
 		tab->saveToFileNoCook("CharacterPos.tab");
 	}
 }
+/////////////////////////////////////////
+//
+//crLoadMaxObjectMethod
+//
+/////////////////////////////////////////
+crLoadMaxObjectMethod::crLoadMaxObjectMethod() {}
+crLoadMaxObjectMethod::crLoadMaxObjectMethod(const crLoadMaxObjectMethod& handle) :
+	crMethod(handle)
+{
+}
+void crLoadMaxObjectMethod::inputParam(int i, void *param)
+{
+}
+
+void crLoadMaxObjectMethod::addParam(int i, const std::string& str)
+{
+}
+
+void crLoadMaxObjectMethod::operator()(crHandle &handle)
+{
+
+}

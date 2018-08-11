@@ -2459,6 +2459,7 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 	float getRemainTime(){ return m_timer; }//0.0f±íÊ¾ÎÞÇî
+	void resetTimer() { m_timer = m_duration; }
 protected:
 	crInstanceItem* m_this;
 	float *m_dt;

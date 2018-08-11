@@ -1959,10 +1959,12 @@ void crRoleData::inputParam(int i, void *param)
 			{
 				m_guiseState = newstate;
 			}
-			if (m_guiseState & GS_UnVisiable && m_itemState != IS_Dead)
-			{
-				CRCore::notify(CRCore::ALWAYS) << "GS_UnVisiable,ItemState = " << (int)m_itemState << std::endl;
-			}
+			if (newstate&GS_UnVisiable || newstate&GS_StaticUnVisiable)
+				m_itemState = IS_Dead;
+			//if (m_guiseState & GS_UnVisiable && m_itemState != IS_Dead)
+			//{
+			//	CRCore::notify(CRCore::ALWAYS) << "GS_UnVisiable,ItemState = " << (int)m_itemState << std::endl;
+			//}
 		}
 		break;
 	case WCHDATA_TargetType:
@@ -6012,16 +6014,17 @@ bool crUseItemRecord::getHitValid(crInstanceItem *hititem, bool npcfire)
 	{
 		item = itr->first;
 		thisData = item->getDataClass();
-		thisData->getParam(WCHDATA_ItemState, param);
-		itemstate = *(unsigned char *)param;
-		if (itemstate == IS_Dead || itemstate == IS_Relive)
+		if (thisData.valid())
 		{
-			itr = m_hitMap.erase(itr);
+			thisData->getParam(WCHDATA_ItemState, param);
+			itemstate = *(unsigned char *)param;
+			if (itemstate == IS_Dead || itemstate == IS_Relive)
+			{
+				itr = m_hitMap.erase(itr);
+				continue;
+			}
 		}
-		else
-		{
-			++itr;
-		}
+		++itr;
 	}
 	return m_hitMap.size() < abs(m_damageCount);
 }

@@ -11976,13 +11976,13 @@ void crItemUseMethod::operator()(crHandle &handle)
 		{
 			void *param;
 			crData *data = m_this->getDataClass();
-			data->getParam(WCHDATA_Item,param);
-			if(param)
+			data->getParam(WCHDATA_Item, param);
+			if (param)
 			{
 				ref_ptr<crInstanceItem> item = ((crInstanceItem*)param);
-				if(item.valid())
+				if (item.valid())
 				{
-					weapon->doEvent(WCH_AdjustBulletSpeed,MAKEINT64(item.get(),NULL));
+					weapon->doEvent(WCH_AdjustBulletSpeed, MAKEINT64(item.get(), NULL));
 				}
 			}
 			m_this->selectWeaponMatterObject(weapon);//doEvent WCH_WEAPON_SELECT
@@ -15854,12 +15854,6 @@ void crExtraLifeTimeMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{// Õ∑≈
-			m_this = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crInstanceItem*)param;
 		break;

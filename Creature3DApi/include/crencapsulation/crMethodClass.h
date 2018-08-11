@@ -3513,5 +3513,18 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 };
+class crLoadMaxObjectMethod : public CRCore::crMethod
+{//
+public:
+	crLoadMaxObjectMethod();
+	crLoadMaxObjectMethod(const crLoadMaxObjectMethod& handle);
+	MethodClass(CREncapsulation, LoadMaxObject)
+	virtual void operator()(crHandle &handle);
+	virtual void inputParam(int i, void *param);
+	virtual void addParam(int i, const std::string& str);
+protected:
+	std::string m_maxProjDir;
+	std::string m_maxSyncFile;
+};
 }
 #endif
