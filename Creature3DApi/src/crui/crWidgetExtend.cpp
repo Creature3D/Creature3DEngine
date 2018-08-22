@@ -1480,14 +1480,18 @@ void crHypertextWidgetNode::kernelMouseEvent(float mx, float my,void *ea)
 	for (int i = 0; i < m_validTextSize; ++i)
 	{
 		text = m_textArray[i].first.get();
-		text_pos = text->getPosition();
-		cursor_pos.set(mouse[0] - text_pos[0], mouse[1] - text_pos[1]);
-		if(text->hitTest(cursor_pos))
+		if (text)
 		{
-			hit_text = text;
-			wstr = &(m_textArray[i].second);
-			break;
+			text_pos = text->getPosition();
+			cursor_pos.set(mouse[0] - text_pos[0], mouse[1] - text_pos[1]);
+			if (text->hitTest(cursor_pos))
+			{
+				hit_text = text;
+				wstr = &(m_textArray[i].second);
+				break;
+			}
 		}
+
 	}
 
 	// check link
@@ -1525,20 +1529,23 @@ void crHypertextWidgetNode::initWindow()
 		 itr != m_textArray.end();
 		 ++itr )
 	{
-		if(m_bSingleLine)
+		if (itr->first.valid())
 		{
-			itr->first->setMaximumWidth(0.0f);
+			if (m_bSingleLine)
+			{
+				itr->first->setMaximumWidth(0.0f);
+			}
+			else
+			{
+				itr->first->setMaximumWidth(m_rect[2]);
+			}
+			itr->first->setPosition(crVector3(m_rect[0], m_rect[1] - getUpLineHeight(), 0.0f));
+			itr->first->setStartCoord(cursor);
+			itr->first->swapBuffers();
+			cursor = itr->first->getEndCoord();
+			itr->first->setVisiable(true);
+			m_textObject->addDrawable(itr->first.get());
 		}
-		else
-		{
-			itr->first->setMaximumWidth(m_rect[2]);
-		}
-		itr->first->setPosition(crVector3(m_rect[0],m_rect[1] - getUpLineHeight(),0.0f));
-		itr->first->setStartCoord(cursor);
-		itr->first->swapBuffers();
-		cursor = itr->first->getEndCoord();
-		itr->first->setVisiable(true);
-		m_textObject->addDrawable(itr->first.get());
 	}
 
 	m_imageRoot = new crGroup;
@@ -1559,18 +1566,21 @@ void crHypertextWidgetNode::resize()
 		itr != m_textArray.end();
 		++itr)
 	{
-		if (m_bSingleLine)
+		if (itr->first.valid())
 		{
-			itr->first->setMaximumWidth(0.0f);
+			if (m_bSingleLine)
+			{
+				itr->first->setMaximumWidth(0.0f);
+			}
+			else
+			{
+				itr->first->setMaximumWidth(m_rect[2]);
+			}
+			itr->first->setPosition(crVector3(m_rect[0], m_rect[1] - getUpLineHeight(), 0.0f));
+			itr->first->setStartCoord(cursor);
+			itr->first->swapBuffers();
+			cursor = itr->first->getEndCoord();
 		}
-		else
-		{
-			itr->first->setMaximumWidth(m_rect[2]);
-		}
-		itr->first->setPosition(crVector3(m_rect[0], m_rect[1] - getUpLineHeight(), 0.0f));
-		itr->first->setStartCoord(cursor);
-		itr->first->swapBuffers();
-		cursor = itr->first->getEndCoord();
 	}
 }
 void crHypertextWidgetNode::updateData()
@@ -2163,16 +2173,17 @@ void crHypertextWidgetNode::setHypertext(rcfg::ConfigScript& hypertext,bool app)
 		setDataClass(CREncapsulation::loadData(hypertext));
 	}
 }
-void crHypertextWidgetNode::releaseObjects(crState* state)
-{
-	CRCore::ScopedLock<crCriticalMutex> lock(m_textArrayMutex);
-	for( TextVec::iterator itr =  m_textArray.begin();
-		itr != m_textArray.end();
-		++itr )
-	{
-		itr->first->releaseObjects(state);
-	}
-}
+//void crHypertextWidgetNode::releaseObjects(crState* state)
+//{
+//	CRCore::ScopedLock<crCriticalMutex> lock(m_textArrayMutex);
+//	for (TextVec::iterator itr = m_textArray.begin();
+//		itr != m_textArray.end();
+//		++itr)
+//	{
+//		if (itr->first.valid())
+//			itr->first->releaseObjects(state);
+//	}
+//}
 void crHypertextWidgetNode::getString(unsigned int i,std::wstring &outstr)
 {
 	CRCore::ScopedLock<crCriticalMutex> lock(m_textArrayMutex);

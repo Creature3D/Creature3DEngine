@@ -407,7 +407,8 @@ void crMatterObject::traverse(CRCore::crNodeVisitor& nv)
 			}
 
 			//if(m_visiable && hasVolumeEvent())
-			crVolumeNodeManager::getInstance()->testVolume(this);
+			if(m_enableIntersect)
+				crVolumeNodeManager::getInstance()->testVolume(this);
 		}
 		break;
 	}

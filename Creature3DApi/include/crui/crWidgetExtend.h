@@ -234,7 +234,7 @@ public:
 
 	void setHypertext(std::string filename,bool app = false);
 	void setHypertext(rcfg::ConfigScript& hypertext,bool app = false);
-	virtual void releaseObjects(CRCore::crState* = 0);
+	//virtual void releaseObjects(CRCore::crState* = 0);
 	void getString(unsigned int i,std::wstring &outstr);
 	void modifyString(unsigned int i,const std::wstring &instr);
 	void modifyString(unsigned int i,const std::string &instr);

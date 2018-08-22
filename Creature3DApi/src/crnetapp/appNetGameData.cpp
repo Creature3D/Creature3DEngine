@@ -3936,6 +3936,7 @@ void crScene::serverUpdate(float dt,crSceneServerCallback *sc)
 		m_roomItemMutex.acquire();
 		RoomItemMap _roomItemMap = m_roomItemMap;
 		m_roomItemMutex.release();
+		int abstractid = 0;
 		for (RoomItemMap::iterator itr = _roomItemMap.begin();
 			itr != _roomItemMap.end();
 			 ++itr )
@@ -3948,6 +3949,7 @@ void crScene::serverUpdate(float dt,crSceneServerCallback *sc)
 					++sitr )
 				{
 					item = sitr->second.get();
+					abstractid = item->getAbstractItemID();
 					item->serverUpdate(dt);
 				}
 			}
