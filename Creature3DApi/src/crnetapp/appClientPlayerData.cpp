@@ -2459,10 +2459,13 @@ bool crMyPlayerData::isTeammateAndShareSight(crInstanceItem *item)
 	bool isShareSight = room && room->getShareSight();
 	if(isShareSight)
 	{
-		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
-		char isEnemy = 0;
-		me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
-		return isEnemy==1;
+		ref_ptr<crRole> me = crMyPlayerData::getInstance()->getCurrentRole();
+		if (me.valid())
+		{
+			char isEnemy = 0;
+			me->doEvent(WCH_EnemyCheck, MAKEINT64(item, &isEnemy));
+			return isEnemy == 1;
+		}
 	}
 	return false;
 }

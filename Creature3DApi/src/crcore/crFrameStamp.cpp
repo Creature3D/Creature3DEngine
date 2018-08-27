@@ -126,18 +126,18 @@ void crFrameStamp::getCalendarTime(tm& ct) const
 
 void crFrameStamp::update()
 {
-	//m_fpsFrameCount++;
-	//if(m_fpsFrameCount>=10)
-	//{
+	m_fpsFrameCount++;
+	if(m_fpsFrameCount>=10)
+	{
 		Timer_t now = m_time->tick();
 
 		m_length = m_time->delta_s(m_lasttick,now);
 		if(m_length<=0.0f)
 			m_length=1.0f;
 
-		m_fps=(int)(/*(float)m_fpsFrameCount*/1.0f/m_length);
+		m_fps=(int)((float)m_fpsFrameCount/*1.0f*//m_length);
 
 		m_lasttick = now;
-		//m_fpsFrameCount = 0;
-	//}
+		m_fpsFrameCount = 0;
+	}
 }

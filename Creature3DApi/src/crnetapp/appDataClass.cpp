@@ -1011,7 +1011,11 @@ crRoleData::crRoleData():
 	m_extraAttackDamageIncrease_rd(0),
 	m_inbornSkillDamageIncrease(0),
 	m_extraSkillDamageIncrease(0),
-	m_extraSkillDamageIncrease_rd(0)
+	m_extraSkillDamageIncrease_rd(0),
+	//m_cureEffectPercent(0),
+	m_inbornCureEffectPercent(0),
+	m_extraCureEffectPercent(0),
+	m_extraCureEffectPercent_rd(0)
 {
 	m_rthp = m_hp;
 	m_rtmp = m_mp;
@@ -1185,7 +1189,11 @@ crRoleData::crRoleData(const crRoleData& data):
 	m_extraAttackDamageIncrease_rd(0),
 	m_inbornSkillDamageIncrease(data.m_inbornSkillDamageIncrease),
 	m_extraSkillDamageIncrease(0),
-	m_extraSkillDamageIncrease_rd(0)
+	m_extraSkillDamageIncrease_rd(0),
+	//m_cureEffectPercent(data.m_cureEffectPercent),
+	m_inbornCureEffectPercent(data.m_inbornCureEffectPercent),
+	m_extraCureEffectPercent(0),
+	m_extraCureEffectPercent_rd(0)
 {
 	m_rthp = m_hp;
 	m_rtmp = m_mp;
@@ -2266,6 +2274,15 @@ void crRoleData::inputParam(int i, void *param)
 	case WCHDATA_ExtraSputtering:
 		m_extraSputtering = param?*((_crInt32*)param):NULL;
 		break;
+	//case WCHDATA_CureEffectPercent:
+	//	m_cureEffectPercent = param ? *((short*)param) : NULL;
+	//	break;
+	case WCHDATA_InbornCureEffectPercent:
+		m_inbornCureEffectPercent = param ? *((short*)param) : NULL;
+		break;
+	case WCHDATA_ExtraCureEffectPercent:
+		m_extraCureEffectPercent = param ? *((short*)param) : NULL;
+		break;
 	}
 }
 void crRoleData::getParam(int i, void*& param)
@@ -2823,6 +2840,18 @@ void crRoleData::getParam(int i, void*& param)
 		break;
 	case WCHDATA_ExtraSputtering_RD:
 		param = &m_extraSputtering_rd;
+		break;
+	//case WCHDATA_CureEffectPercent:
+	//	param = &m_cureEffectPercent;
+	//	break;
+	case WCHDATA_ExtraCureEffectPercent:
+		param = &m_extraCureEffectPercent;
+		break;
+	case WCHDATA_ExtraCureEffectPercent_RD:
+		param = &m_extraCureEffectPercent_rd;
+		break;
+	case WCHDATA_InbornCureEffectPercent:
+		param = &m_inbornCureEffectPercent;
 		break;
 	default:
 		param = NULL;

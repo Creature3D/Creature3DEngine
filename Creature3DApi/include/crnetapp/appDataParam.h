@@ -471,6 +471,11 @@
 #define WCHDATA_ExtraAttackDamageIncrease	   427
 #define WCHDATA_ExtraAttackDamageIncrease_RD   428
 
+//#define WCHDATA_CureEffectPercent				429
+#define WCHDATA_InbornCureEffectPercent			430
+#define WCHDATA_ExtraCureEffectPercent			431
+#define WCHDATA_ExtraCureEffectPercent_RD		432
+
 #define WCHDATA_OverlapParam				21377
 //#define WCHDATA_BaseEnmity					411
 //#define WCHDATA_CommandDlgItem				405
@@ -598,6 +603,7 @@ enum GuiseState
 	GS_Backstab			= 0x08000000,//背刺			 27
 	GS_NoAttack			= 0x10000000,//不可被攻击 不可被别人选中	 28
 	GS_NoCure			= 0x20000000,//不可回血						 29
+	GS_SuperArmor		= 0x40000000,//霸体,不受状态系技能影响		 30
 };
 
 enum SkillType

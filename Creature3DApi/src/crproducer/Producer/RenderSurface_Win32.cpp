@@ -278,7 +278,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
 		break;
 	case WM_SETFOCUS:
-		CRCore::crDisplaySettings::instance()->restoreFpsControl();
+		//CRCore::crDisplaySettings::instance()->restoreFpsControl();
 		if(CRCore::crDisplaySettings::instance()->getFullScreen())
 			::ShowWindow(hWnd,SW_RESTORE);
 		//CRCore::crBlockDetectThread::getInstance()->resume();
@@ -291,7 +291,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 	case WM_KILLFOCUS:
 		if(CRCore::crDisplaySettings::instance()->getRunMode()!=0)
 		{
-			CRCore::crDisplaySettings::instance()->setFpsControl(30.0f);
+			//CRCore::crDisplaySettings::instance()->setFpsControl(30.0f);
 			if(CRCore::crDisplaySettings::instance()->getFullScreen())
 				::ShowWindow(hWnd,SW_MINIMIZE);
 		}

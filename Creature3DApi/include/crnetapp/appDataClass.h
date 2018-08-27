@@ -473,6 +473,12 @@ protected:
 	_crInt32 m_extraSputtering_rd;//溅射伤害（溅射半径(unsigned short)，伤害百分比（unsigned short））
 
 	short m_inbornHitratioPercent;//命中率百分比
+
+	//short m_cureEffectPercent;//回复效果百分比
+	short m_extraCureEffectPercent;//回复效果百分比
+	short m_extraCureEffectPercent_rd;
+	short m_inbornCureEffectPercent;
+
 	CRNetApp::ActStateMap m_actStateMap;
 	unsigned short m_currentActState;//0表示未处于特殊状态 客户端根据事件会改变该指，不需要网络同步
 	float m_currentActDuration;//客户端根据事件会改变该值，不需要网络同步
