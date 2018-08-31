@@ -41,7 +41,7 @@ std::string getOpenFileName()
 		return ofn.lpstrFile;
 	}
 
-	return " ";
+	return "";
 }
 
 std::string getSaveFileName()
@@ -69,7 +69,7 @@ std::string getSaveFileName()
 		return ofn.lpstrFile;
 	}
 
-	return " ";
+	return "";
 }
 
 int main( int argc, char **argv )
@@ -78,7 +78,7 @@ int main( int argc, char **argv )
 	_putenv( "CRE_WRITEIMAGE_PATH=./textures/" );
 	std::string fileName = getOpenFileName();
 
-	if(fileName.compare(" ") == 0)
+	if(fileName.empty())
 		return 1;
 
 	std::string filePath = CRIOManager::getFilePath(fileName);
@@ -154,7 +154,7 @@ int main( int argc, char **argv )
 
 	start_tick = CRCore::Timer::instance()->tick();
 	CRCore::notify(CRCore::ALWAYS)<<"Write file..."<< std::endl;
-	if(fileName.compare(" ") == 0)
+	if(fileName.empty())
 		return 1;
 	CRIOManager::writeObjectFile((*crBrain::getInstance()),fileName);
 	end_tick = CRCore::Timer::instance()->tick();

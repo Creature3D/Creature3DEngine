@@ -2847,10 +2847,12 @@ void crPlayerAI1Logic::operator()(crHandle &handle)
 //
 /////////////////////////////////////////
 crExtraEffectLogic::crExtraEffectLogic():
-m_init(false){}
+m_init(false),
+m_gs(0){}
 crExtraEffectLogic::crExtraEffectLogic(const crExtraEffectLogic& handle):
 crNodeLogic(handle),
-m_init(false)
+m_init(false),
+m_gs(handle.m_gs)
 {
 	if(handle.m_playSceneFx.valid())
 		m_playSceneFx = dynamic_cast<crHandle *>(handle.m_playSceneFx->clone());
@@ -2887,6 +2889,12 @@ void crExtraEffectLogic::inputParam(int i, void *param)
 }
 void crExtraEffectLogic::addParam(int i, const std::string& str)
 {
+	switch (i)
+	{
+	case 0:
+		m_gs = 1 << (unsigned int)(atoi(str.c_str()));
+		break;
+	}
 }
 void crExtraEffectLogic::inputHandle(int i, void *param)
 {
@@ -2902,11 +2910,23 @@ void crExtraEffectLogic::outputParam(int i, void *param)
 }
 void crExtraEffectLogic::operator()(crHandle &handle)
 {
-	if(!m_init && m_bot.valid())
+	bool gscheck = true;
+	if (m_gs)
+	{
+		unsigned int guisestate = GS_Normal;
+		m_this->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+		gscheck = guisestate & m_gs;
+	}
+	if(!m_init && gscheck)
 	{
  		m_playSceneFx->inputParam(WCHDATA_AttachToNode,m_bot.get());
 		(*m_playSceneFx)(*this);
 		m_init = true;
+	}
+	if (m_init && !gscheck)
+	{
+		releaseObjects(NULL);
+		m_init = false;
 	}
 }
 void crExtraEffectLogic::releaseObjects(CRCore::crState* state)

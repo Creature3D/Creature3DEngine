@@ -136,7 +136,7 @@ std::string getOpenFileName()
 		return ofn.lpstrFile;
 	}
 
-	return " ";
+	return "";
 }
 
 std::string getSaveFileName()
@@ -164,7 +164,7 @@ std::string getSaveFileName()
 		return ofn.lpstrFile;
 	}
 
-	return " ";
+	return "";
 }
 int main( int argc, char **argv )
 {

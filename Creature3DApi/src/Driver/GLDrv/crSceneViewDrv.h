@@ -456,576 +456,579 @@ void crSceneView::draw(int vreye)
 	start_tick = CRCore::Timer::instance()->tick();
 	if(crStatistics::getInstance()->getStat())
 		crStatistics::getInstance()->reset();
+	if (!m_displaySettings->getFreezeRender())
+	{
 #if _DEBUG
-	try
-	{
+		try
+		{
 #endif
-	ref_ptr<crCullVisitor> cullVisitor,cullVisitorLeft,cullVisitorRight;
-	ref_ptr<crRenderGraph> rg,rgLeft,rgRight;
-	ref_ptr<crRenderStage> rs,rsLeft,rsRight;
-	ref_ptr<crState> state = getCurrentRenderState();
-	ref_ptr<crMatrixd> projectionMatrix;
-	ref_ptr<crMatrixd> viewMatrix;
-    crViewPort* viewPort = m_camera->getViewport();//getViewport();
-	cullVisitor = m_cullVisitor;
-	cullVisitorLeft = m_cullVisitorLeft;
-	cullVisitorRight = m_cullVisitorRight;
-	if(m_useRenderDoubleBuf)
-	{
-        //cullVisitor = m_cullVisitor_buf;
-		rg = m_rendergraph_buf;
-        rs = m_renderStage_buf;
-		//state = m_state_buf;
-		projectionMatrix = m_camera->getBufProjectionMatrix();
-		viewMatrix = m_camera->getBufViewMatrix();
-        
-		//cullVisitorLeft = m_cullVisitorLeft_buf;
-		//cullVisitorRight = m_cullVisitorRight_buf;
-		rgLeft = m_rendergraphLeft_buf;
-		rgRight = m_rendergraphRight_buf;
-		rsLeft = m_renderStageLeft_buf;
-		rsRight = m_renderStageRight_buf;
-	}
-	else
-	{
-		rg = m_rendergraph;
-		rs = m_renderStage;
-		//state = m_state;
-		projectionMatrix = getProjectionMatrix();
-		viewMatrix = getViewMatrix();
+			ref_ptr<crCullVisitor> cullVisitor, cullVisitorLeft, cullVisitorRight;
+			ref_ptr<crRenderGraph> rg, rgLeft, rgRight;
+			ref_ptr<crRenderStage> rs, rsLeft, rsRight;
+			ref_ptr<crState> state = getCurrentRenderState();
+			ref_ptr<crMatrixd> projectionMatrix;
+			ref_ptr<crMatrixd> viewMatrix;
+			crViewPort* viewPort = m_camera->getViewport();//getViewport();
+			cullVisitor = m_cullVisitor;
+			cullVisitorLeft = m_cullVisitorLeft;
+			cullVisitorRight = m_cullVisitorRight;
+			if (m_useRenderDoubleBuf)
+			{
+				//cullVisitor = m_cullVisitor_buf;
+				rg = m_rendergraph_buf;
+				rs = m_renderStage_buf;
+				//state = m_state_buf;
+				projectionMatrix = m_camera->getBufProjectionMatrix();
+				viewMatrix = m_camera->getBufViewMatrix();
 
-		//cullVisitorLeft = m_cullVisitorLeft;
-		//cullVisitorRight = m_cullVisitorRight;
-		rgLeft = m_rendergraphLeft;
-		rgRight = m_rendergraphRight;
-		rsLeft = m_renderStageLeft;
-		rsRight = m_renderStageRight;
-	}
+				//cullVisitorLeft = m_cullVisitorLeft_buf;
+				//cullVisitorRight = m_cullVisitorRight_buf;
+				rgLeft = m_rendergraphLeft_buf;
+				rgRight = m_rendergraphRight_buf;
+				rsLeft = m_renderStageLeft_buf;
+				rsRight = m_renderStageRight_buf;
+			}
+			else
+			{
+				rg = m_rendergraph;
+				rs = m_renderStage;
+				//state = m_state;
+				projectionMatrix = getProjectionMatrix();
+				viewMatrix = getViewMatrix();
 
-	//CRCore::notify(CRCore::ALWAYS)<<m_frameStamp->getFrameNumber()<<"crSceneView::draw(): m_position = "<<cullVisitor->getEyePoint()<<std::endl;
+				//cullVisitorLeft = m_cullVisitorLeft;
+				//cullVisitorRight = m_cullVisitorRight;
+				rgLeft = m_rendergraphLeft;
+				rgRight = m_rendergraphRight;
+				rsLeft = m_renderStageLeft;
+				rsRight = m_renderStageRight;
+			}
+
+			//CRCore::notify(CRCore::ALWAYS)<<m_frameStamp->getFrameNumber()<<"crSceneView::draw(): m_position = "<<cullVisitor->getEyePoint()<<std::endl;
 #if 0    
-    if (m_requiresFlush)
-    {
-        double availableTime = 0.005;
-        flushDeletedObjects(availableTime);
-    }
+			if (m_requiresFlush)
+			{
+				double availableTime = 0.005;
+				flushDeletedObjects(availableTime);
+			}
 
-    // assume the the draw which is about to happen could generate GL objects that need flushing in the next frame.
-    m_requiresFlush = true;
+			// assume the the draw which is about to happen could generate GL objects that need flushing in the next frame.
+			m_requiresFlush = true;
 #endif
 
-	state->setInitialViewMatrix(new CRCore::RefMatrix(*viewMatrix));
-	state->colorDirty();
-	//updateUniforms();
+			state->setInitialViewMatrix(new CRCore::RefMatrix(*viewMatrix));
+			state->colorDirty();
+			//updateUniforms();
 
-	crRenderLeaf* previous = NULL;
-    if (m_displaySettings.valid() && m_displaySettings->getStereo()) 
-    {
-        switch(m_displaySettings->getStereoMode())
-        {
-        case(CRCore::crDisplaySettings::QUAD_BUFFER):
-            {
-                m_localStateSet->setAttribute(getViewport());
-
-                // ensure that all color planes are active.
-                CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-                if (cmask)
-                {
-                    cmask->setMask(true,true,true,true);
-                }
-                else
-                {
-                    cmask = new CRCore::crColorMask(true,true,true,true);
-                    m_localStateSet->setAttribute(cmask);
-                }
-                rsLeft->setColorMask(cmask);
-                rsRight->setColorMask(cmask);
-
-				rsLeft->setDrawBuffer(GL_BACK_LEFT);
-				rsLeft->setReadBuffer(GL_BACK_LEFT);
-				rsRight->setDrawBuffer(GL_BACK_RIGHT);
-				rsRight->setReadBuffer(GL_BACK_RIGHT);
-
-				//rsLeft->drawPreRenderStages(*state,previous);
-				//rsRight->drawPreRenderStages(*state,previous);
-
-				rsLeft->draw(*state,previous);
-				rsRight->draw(*state,previous);
-            }
-            break;
-        case(CRCore::crDisplaySettings::ANAGLYPHIC):
-            {
-                //setDrawBufferMode();
-				if( m_drawBufferMode !=  GL_NONE)
+			crRenderLeaf* previous = NULL;
+			if (m_displaySettings->getStereo())
+			{
+				switch (m_displaySettings->getStereoMode())
 				{
-					m_renderStageLeft->setDrawBuffer(m_drawBufferMode);
-					m_renderStageLeft->setReadBuffer(m_drawBufferMode);
-
-					m_renderStageRight->setDrawBuffer(m_drawBufferMode);
-					m_renderStageRight->setReadBuffer(m_drawBufferMode);
-				}
-
-                m_localStateSet->setAttribute(getViewport());
-
-               // rsLeft->drawPreRenderStages(*state,previous);
-                //rsRight->drawPreRenderStages(*state,previous);
-
-                // ensure that left eye color planes are active.
-                CRCore::crColorMask* leftColorMask = rsLeft->getColorMask();
-                if (!leftColorMask)
-                {
-                    leftColorMask = new CRCore::crColorMask();
-                    rsLeft->setColorMask(leftColorMask);
-                }
-                
-                // red
-                leftColorMask->setMask(true,false,false,true);
-
-                // orange
-                // leftColorMask->setMask(true,true,false,true);
-
-                m_localStateSet->setAttribute(leftColorMask);
-
-                // draw left eye.
-                rsLeft->draw(*state,previous);
-                
-                // ensure that right eye color planes are active.
-                CRCore::crColorMask* rightColorMask = rsRight->getColorMask();
-                if (!rightColorMask)
-                {
-                    rightColorMask = new CRCore::crColorMask();
-                    rsRight->setColorMask(rightColorMask);
-                }
-
-                // cyan
-                rightColorMask->setMask(false,true,true,true);
-                
-                // blue
-                // rightColorMask->setMask(false,false,true,true);
-
-                m_localStateSet->setAttribute(rightColorMask);
-                rsRight->setColorMask(rightColorMask);
-
-                // draw right eye.
-                rsRight->draw(*state,previous);
-
-            }
-            break;
-        case(CRCore::crDisplaySettings::HORIZONTAL_SPLIT):
-            {
-                //setDrawBufferMode();
-				if( m_drawBufferMode !=  GL_NONE)
+				case(CRCore::crDisplaySettings::QUAD_BUFFER):
 				{
-					m_renderStageLeft->setDrawBuffer(m_drawBufferMode);
-					m_renderStageLeft->setReadBuffer(m_drawBufferMode);
+					m_localStateSet->setAttribute(getViewport());
 
-					m_renderStageRight->setDrawBuffer(m_drawBufferMode);
-					m_renderStageRight->setReadBuffer(m_drawBufferMode);
+					// ensure that all color planes are active.
+					CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
+					if (cmask)
+					{
+						cmask->setMask(true, true, true, true);
+					}
+					else
+					{
+						cmask = new CRCore::crColorMask(true, true, true, true);
+						m_localStateSet->setAttribute(cmask);
+					}
+					rsLeft->setColorMask(cmask);
+					rsRight->setColorMask(cmask);
+
+					rsLeft->setDrawBuffer(GL_BACK_LEFT);
+					rsLeft->setReadBuffer(GL_BACK_LEFT);
+					rsRight->setDrawBuffer(GL_BACK_RIGHT);
+					rsRight->setReadBuffer(GL_BACK_RIGHT);
+
+					//rsLeft->drawPreRenderStages(*state,previous);
+					//rsRight->drawPreRenderStages(*state,previous);
+
+					rsLeft->draw(*state, previous);
+					rsRight->draw(*state, previous);
 				}
-
-				// ensure that all color planes are active.
-				CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-				if (cmask)
+				break;
+				case(CRCore::crDisplaySettings::ANAGLYPHIC):
 				{
-					cmask->setMask(true,true,true,true);
+					//setDrawBufferMode();
+					if (m_drawBufferMode != GL_NONE)
+					{
+						m_renderStageLeft->setDrawBuffer(m_drawBufferMode);
+						m_renderStageLeft->setReadBuffer(m_drawBufferMode);
+
+						m_renderStageRight->setDrawBuffer(m_drawBufferMode);
+						m_renderStageRight->setReadBuffer(m_drawBufferMode);
+					}
+
+					m_localStateSet->setAttribute(getViewport());
+
+					// rsLeft->drawPreRenderStages(*state,previous);
+					 //rsRight->drawPreRenderStages(*state,previous);
+
+					 // ensure that left eye color planes are active.
+					CRCore::crColorMask* leftColorMask = rsLeft->getColorMask();
+					if (!leftColorMask)
+					{
+						leftColorMask = new CRCore::crColorMask();
+						rsLeft->setColorMask(leftColorMask);
+					}
+
+					// red
+					leftColorMask->setMask(true, false, false, true);
+
+					// orange
+					// leftColorMask->setMask(true,true,false,true);
+
+					m_localStateSet->setAttribute(leftColorMask);
+
+					// draw left eye.
+					rsLeft->draw(*state, previous);
+
+					// ensure that right eye color planes are active.
+					CRCore::crColorMask* rightColorMask = rsRight->getColorMask();
+					if (!rightColorMask)
+					{
+						rightColorMask = new CRCore::crColorMask();
+						rsRight->setColorMask(rightColorMask);
+					}
+
+					// cyan
+					rightColorMask->setMask(false, true, true, true);
+
+					// blue
+					// rightColorMask->setMask(false,false,true,true);
+
+					m_localStateSet->setAttribute(rightColorMask);
+					rsRight->setColorMask(rightColorMask);
+
+					// draw right eye.
+					rsRight->draw(*state, previous);
+
 				}
-				else
+				break;
+				case(CRCore::crDisplaySettings::HORIZONTAL_SPLIT):
 				{
-					cmask = new CRCore::crColorMask(true,true,true,true);
-					m_localStateSet->setAttribute(cmask);
+					//setDrawBufferMode();
+					if (m_drawBufferMode != GL_NONE)
+					{
+						m_renderStageLeft->setDrawBuffer(m_drawBufferMode);
+						m_renderStageLeft->setReadBuffer(m_drawBufferMode);
+
+						m_renderStageRight->setDrawBuffer(m_drawBufferMode);
+						m_renderStageRight->setReadBuffer(m_drawBufferMode);
+					}
+
+					// ensure that all color planes are active.
+					CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
+					if (cmask)
+					{
+						cmask->setMask(true, true, true, true);
+					}
+					else
+					{
+						cmask = new CRCore::crColorMask(true, true, true, true);
+						m_localStateSet->setAttribute(cmask);
+					}
+					rsLeft->setColorMask(cmask);
+					rsRight->setColorMask(cmask);
+
+					//rsLeft->drawPreRenderStages(*state,previous);
+					//rsRight->drawPreRenderStages(*state,previous);
+
+					int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
+
+					int left_half_width = (viewPort->width() - separation) / 2;
+					int right_half_begin = (viewPort->width() + separation) / 2;
+					int right_half_width = viewPort->width() - right_half_begin;
+
+					CRCore::ref_ptr<CRCore::crViewPort> viewportLeft = new CRCore::crViewPort;
+					viewportLeft->setViewport(viewPort->x(), viewPort->y(), left_half_width, viewPort->height());
+
+					CRCore::ref_ptr<CRCore::crViewPort> viewportRight = new CRCore::crViewPort;
+					viewportRight->setViewport(viewPort->x() + right_half_begin, viewPort->y(), right_half_width, viewPort->height());
+
+
+					clearArea(viewPort->x() + left_half_width, viewPort->y(), separation, viewPort->height(), rsLeft->getClearColor());
+
+					if (m_displaySettings->getSplitStereoHorizontalEyeMapping() == CRCore::crDisplaySettings::LEFT_EYE_LEFT_VIEWPORT)
+					{
+						m_localStateSet->setAttribute(viewportLeft.get());
+						rsLeft->setViewport(viewportLeft.get());
+						rsLeft->draw(*state, previous);
+
+						m_localStateSet->setAttribute(viewportRight.get());
+						rsRight->setViewport(viewportRight.get());
+						rsRight->draw(*state, previous);
+					}
+					else
+					{
+						m_localStateSet->setAttribute(viewportRight.get());
+						rsLeft->setViewport(viewportRight.get());
+						rsLeft->draw(*state, previous);
+
+						m_localStateSet->setAttribute(viewportLeft.get());
+						rsRight->setViewport(viewportLeft.get());
+						rsRight->draw(*state, previous);
+					}
 				}
-				rsLeft->setColorMask(cmask);
-				rsRight->setColorMask(cmask);
-
-				//rsLeft->drawPreRenderStages(*state,previous);
-				//rsRight->drawPreRenderStages(*state,previous);
-
-				int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
-
-				int left_half_width = (viewPort->width()-separation)/2;
-				int right_half_begin = (viewPort->width()+separation)/2;
-				int right_half_width = viewPort->width()-right_half_begin;
-
-				CRCore::ref_ptr<CRCore::crViewPort> viewportLeft = new CRCore::crViewPort;
-				viewportLeft->setViewport(viewPort->x(),viewPort->y(),left_half_width,viewPort->height());
-
-				CRCore::ref_ptr<CRCore::crViewPort> viewportRight = new CRCore::crViewPort;
-				viewportRight->setViewport(viewPort->x()+right_half_begin,viewPort->y(),right_half_width,viewPort->height());
-
-
-				clearArea(viewPort->x()+left_half_width,viewPort->y(),separation,viewPort->height(),rsLeft->getClearColor());
-
-                if (m_displaySettings->getSplitStereoHorizontalEyeMapping()==CRCore::crDisplaySettings::LEFT_EYE_LEFT_VIEWPORT)
-                {
-                    m_localStateSet->setAttribute(viewportLeft.get());
-                    rsLeft->setViewport(viewportLeft.get());
-                    rsLeft->draw(*state,previous);
-
-                    m_localStateSet->setAttribute(viewportRight.get());
-                    rsRight->setViewport(viewportRight.get());
-                    rsRight->draw(*state,previous);
-                }
-                else
-                {
-                    m_localStateSet->setAttribute(viewportRight.get());
-                    rsLeft->setViewport(viewportRight.get());
-                    rsLeft->draw(*state,previous);
-
-                    m_localStateSet->setAttribute(viewportLeft.get());
-                    rsRight->setViewport(viewportLeft.get());
-                    rsRight->draw(*state,previous);
-                }
-            }
-            break;
-        case(CRCore::crDisplaySettings::VERTICAL_SPLIT):
-            {
-                //setDrawBufferMode();
-				if( m_drawBufferMode !=  GL_NONE)
+				break;
+				case(CRCore::crDisplaySettings::VERTICAL_SPLIT):
 				{
-					m_renderStageLeft->setDrawBuffer(m_drawBufferMode);
-					m_renderStageLeft->setReadBuffer(m_drawBufferMode);
+					//setDrawBufferMode();
+					if (m_drawBufferMode != GL_NONE)
+					{
+						m_renderStageLeft->setDrawBuffer(m_drawBufferMode);
+						m_renderStageLeft->setReadBuffer(m_drawBufferMode);
 
-					m_renderStageRight->setDrawBuffer(m_drawBufferMode);
-					m_renderStageRight->setReadBuffer(m_drawBufferMode);
+						m_renderStageRight->setDrawBuffer(m_drawBufferMode);
+						m_renderStageRight->setReadBuffer(m_drawBufferMode);
+					}
+
+					// ensure that all color planes are active.
+					CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
+					if (cmask)
+					{
+						cmask->setMask(true, true, true, true);
+					}
+					else
+					{
+						cmask = new CRCore::crColorMask(true, true, true, true);
+						m_localStateSet->setAttribute(cmask);
+					}
+
+					rsLeft->setColorMask(cmask);
+					rsRight->setColorMask(cmask);
+					//rsLeft->drawPreRenderStages(*state,previous);
+					//rsRight->drawPreRenderStages(*state,previous);
+
+					int separation = m_displaySettings->getSplitStereoVerticalSeparation();
+
+					int bottom_half_height = (viewPort->height() - separation) / 2;
+					int top_half_begin = (viewPort->height() + separation) / 2;
+					int top_half_height = viewPort->height() - top_half_begin;
+
+					CRCore::ref_ptr<CRCore::crViewPort> viewportTop = new CRCore::crViewPort;
+					viewportTop->setViewport(viewPort->x(), viewPort->y() + top_half_begin, viewPort->width(), top_half_height);
+
+					CRCore::ref_ptr<CRCore::crViewPort> viewportBottom = new CRCore::crViewPort;
+					viewportBottom->setViewport(viewPort->x(), viewPort->y(), viewPort->width(), bottom_half_height);
+
+					clearArea(viewPort->x(), viewPort->y() + bottom_half_height, viewPort->width(), separation, rsLeft->getClearColor());
+
+					if (m_displaySettings->getSplitStereoVerticalEyeMapping() == CRCore::crDisplaySettings::LEFT_EYE_TOP_VIEWPORT)
+					{
+						m_localStateSet->setAttribute(viewportTop.get());
+						rsLeft->setViewport(viewportTop.get());
+						rsLeft->draw(*state, previous);
+
+						m_localStateSet->setAttribute(viewportBottom.get());
+						rsRight->setViewport(viewportBottom.get());
+						rsRight->draw(*state, previous);
+					}
+					else
+					{
+						m_localStateSet->setAttribute(viewportBottom.get());
+						rsLeft->setViewport(viewportBottom.get());
+						rsLeft->draw(*state, previous);
+
+						m_localStateSet->setAttribute(viewportTop.get());
+						rsRight->setViewport(viewportTop.get());
+						rsRight->draw(*state, previous);
+					}
 				}
+				break;
+				case(CRCore::crDisplaySettings::RIGHT_EYE):
+				case(CRCore::crDisplaySettings::LEFT_EYE):
+				{
+					//setDrawBufferMode();
+					if (m_drawBufferMode != GL_NONE)
+					{
+						rs->setDrawBuffer(m_drawBufferMode);
+						rs->setReadBuffer(m_drawBufferMode);
+					}
 
-				// ensure that all color planes are active.
-				CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-                if (cmask)
-                {
-                    cmask->setMask(true,true,true,true);
-                }
-                else
-                {
-                    cmask = new CRCore::crColorMask(true,true,true,true);
-                    m_localStateSet->setAttribute(cmask);
-                }
+					m_localStateSet->setAttribute(getViewport());
+					// ensure that all color planes are active.
+					CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
+					if (cmask)
+					{
+						cmask->setMask(true, true, true, true);
+					}
+					else
+					{
+						cmask = new CRCore::crColorMask(true, true, true, true);
+						m_localStateSet->setAttribute(cmask);
+					}
+					rs->setColorMask(cmask);
+					rs->setClearMask(m_camera->getClearMask());
 
-                rsLeft->setColorMask(cmask);
-                rsRight->setColorMask(cmask);
-                //rsLeft->drawPreRenderStages(*state,previous);
-                //rsRight->drawPreRenderStages(*state,previous);
+					//rs->drawPreRenderStages(*state,previous);
+					rs->draw(*state, previous);
 
-                int separation = m_displaySettings->getSplitStereoVerticalSeparation();
+				}
+				break;
+				case(CRCore::crDisplaySettings::VERTICAL_INTERLACE):
+				{
+					m_localStateSet->setAttribute(viewPort);
 
-                int bottom_half_height = (viewPort->height()-separation)/2;
-                int top_half_begin = (viewPort->height()+separation)/2;
-                int top_half_height = viewPort->height()-top_half_begin;
+					// ensure that all color planes are active.
+					CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
+					if (cmask)
+					{
+						cmask->setMask(true, true, true, true);
+					}
+					else
+					{
+						cmask = new CRCore::crColorMask(true, true, true, true);
+						m_localStateSet->setAttribute(cmask);
+					}
+					rsLeft->setColorMask(cmask);
+					rsRight->setColorMask(cmask);
 
-                CRCore::ref_ptr<CRCore::crViewPort> viewportTop = new CRCore::crViewPort;
-                viewportTop->setViewport(viewPort->x(),viewPort->y()+top_half_begin,viewPort->width(),top_half_height);
+					//rsLeft->drawPreRenderStages(*state,previous);
+					//rsRight->drawPreRenderStages(*state,previous);
 
-                CRCore::ref_ptr<CRCore::crViewPort> viewportBottom = new CRCore::crViewPort;
-                viewportBottom->setViewport(viewPort->x(),viewPort->y(),viewPort->width(),bottom_half_height);
+					glEnable(GL_STENCIL_TEST);
 
-                clearArea(viewPort->x(),viewPort->y()+bottom_half_height,viewPort->width(),separation,rsLeft->getClearColor());
+					if (m_redrawInterlacedStereoStencilMask ||
+						m_interlacedStereoStencilWidth != viewPort->width() ||
+						m_interlacedStereoStencilHeight != viewPort->height())
+					{
+						getViewport()->apply(*state);
+						glMatrixMode(GL_PROJECTION);
+						glLoadIdentity();
+						glOrtho(viewPort->x(), viewPort->width(), viewPort->y(), viewPort->height(), -1.0, 1.0);
+						glMatrixMode(GL_MODELVIEW);
+						glLoadIdentity();
+						glDisable(GL_LIGHTING);
+						glDisable(GL_DEPTH_TEST);
+						glStencilMask(~0u);
+						glClear(GL_STENCIL_BUFFER_BIT);
+						glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
+						glStencilFunc(GL_ALWAYS, 1, ~0u);
+						glPolygonStipple(patternVertEven);
+						glEnable(GL_POLYGON_STIPPLE);
+						glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+						//state->applyColorMask(crVector4ub(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE));
+						glRecti(viewPort->x(), viewPort->y(), viewPort->width(), viewPort->height());
+						glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+						//state->applyColorMask(crVector4ub(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE));
+						glDisable(GL_POLYGON_STIPPLE);
+						glEnable(GL_LIGHTING);
+						glEnable(GL_DEPTH_TEST);
 
-                if (m_displaySettings->getSplitStereoVerticalEyeMapping()==CRCore::crDisplaySettings::LEFT_EYE_TOP_VIEWPORT)
-                {
-                    m_localStateSet->setAttribute(viewportTop.get());
-                    rsLeft->setViewport(viewportTop.get());
-                    rsLeft->draw(*state,previous);
+						m_redrawInterlacedStereoStencilMask = false;
+						m_interlacedStereoStencilWidth = viewPort->width();
+						m_interlacedStereoStencilHeight = viewPort->height();
+					}
 
-                    m_localStateSet->setAttribute(viewportBottom.get());
-                    rsRight->setViewport(viewportBottom.get());
-                    rsRight->draw(*state,previous);
-                }
-                else
-                {
-                    m_localStateSet->setAttribute(viewportBottom.get());
-                    rsLeft->setViewport(viewportBottom.get());
-                    rsLeft->draw(*state,previous);
+					rsLeft->setClearMask(rsLeft->getClearMask() & ~(GL_STENCIL_BUFFER_BIT));
+					rsRight->setClearMask(rsRight->getClearMask() & ~(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT));
 
-                    m_localStateSet->setAttribute(viewportTop.get());
-                    rsRight->setViewport(viewportTop.get());
-                    rsRight->draw(*state,previous);
-                }
-            }
-            break;
-        case(CRCore::crDisplaySettings::RIGHT_EYE):
-        case(CRCore::crDisplaySettings::LEFT_EYE):
-            {
-                //setDrawBufferMode();
-				if( m_drawBufferMode !=  GL_NONE)
+					glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+					glStencilFunc(GL_EQUAL, 0, ~0u);
+					rsLeft->draw(*state, previous);
+
+					glStencilFunc(GL_NOTEQUAL, 0, ~0u);
+					rsRight->draw(*state, previous);
+					glDisable(GL_STENCIL_TEST);
+				}
+				break;
+				case(CRCore::crDisplaySettings::HORIZONTAL_INTERLACE):
+				{
+					m_localStateSet->setAttribute(viewPort);
+
+					// ensure that all color planes are active.
+					CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
+					if (cmask)
+					{
+						cmask->setMask(true, true, true, true);
+					}
+					else
+					{
+						cmask = new CRCore::crColorMask(true, true, true, true);
+						m_localStateSet->setAttribute(cmask);
+					}
+					rsLeft->setColorMask(cmask);
+					rsRight->setColorMask(cmask);
+
+					//rsLeft->drawPreRenderStages(*state,previous);
+					//rsRight->drawPreRenderStages(*state,previous);
+
+					glEnable(GL_STENCIL_TEST);
+
+					if (m_redrawInterlacedStereoStencilMask ||
+						m_interlacedStereoStencilWidth != viewPort->width() ||
+						m_interlacedStereoStencilHeight != viewPort->height())
+					{
+						getViewport()->apply(*state);
+						glMatrixMode(GL_PROJECTION);
+						glLoadIdentity();
+						glOrtho(viewPort->x(), viewPort->width(), viewPort->y(), viewPort->height(), -1.0, 1.0);
+						glMatrixMode(GL_MODELVIEW);
+						glLoadIdentity();
+						glDisable(GL_LIGHTING);
+						glDisable(GL_DEPTH_TEST);
+						glStencilMask(~0u);
+						glClear(GL_STENCIL_BUFFER_BIT);
+						glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
+						glStencilFunc(GL_ALWAYS, 1, ~0u);
+						glPolygonStipple(patternHorzEven);
+						glEnable(GL_POLYGON_STIPPLE);
+						glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+						//state->applyColorMask(crVector4ub(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE));
+						glRecti(viewPort->x(), viewPort->y(), viewPort->width(), viewPort->height());
+						glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+						//state->applyColorMask(crVector4ub(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE));
+						glDisable(GL_POLYGON_STIPPLE);
+						glEnable(GL_LIGHTING);
+						glEnable(GL_DEPTH_TEST);
+
+						m_redrawInterlacedStereoStencilMask = false;
+						m_interlacedStereoStencilWidth = viewPort->width();
+						m_interlacedStereoStencilHeight = viewPort->height();
+					}
+
+					rsLeft->setClearMask(rsLeft->getClearMask() & ~(GL_STENCIL_BUFFER_BIT));
+					rsRight->setClearMask(rsRight->getClearMask() & ~(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT));
+
+					glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+					glStencilFunc(GL_EQUAL, 0, ~0u);
+					rsLeft->draw(*state, previous);
+
+					glStencilFunc(GL_NOTEQUAL, 0, ~0u);
+					rsRight->draw(*state, previous);
+					glDisable(GL_STENCIL_TEST);
+				}
+				break;
+				default:
+				{
+					CRCore::notify(CRCore::NOTICE) << "Warning: stereo mode not implemented yet." << std::endl;
+				}
+				break;
+				}
+			}
+			else
+			{
+				// Need to restore draw buffer when toggling Stereo off.
+				//setDrawBufferMode();
+				if (m_drawBufferMode != GL_NONE)
 				{
 					rs->setDrawBuffer(m_drawBufferMode);
 					rs->setReadBuffer(m_drawBufferMode);
 				}
 
-				m_localStateSet->setAttribute(getViewport());
-				// ensure that all color planes are active.
+				//switch (vreye)
+				//{
+				//case 1:
+				//	{
+				//		int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
+
+				//		int left_half_width = (viewPort->width() - separation) / 2;
+				//		int right_half_begin = (viewPort->width() + separation) / 2;
+				//		int right_half_width = viewPort->width() - right_half_begin;
+
+				//		CRCore::ref_ptr<CRCore::crViewPort> viewportLeft = new CRCore::crViewPort;
+				//		viewportLeft->setViewport(viewPort->x(), viewPort->y(), left_half_width, viewPort->height());
+
+				//		m_localStateSet->setAttribute(viewportLeft.get());
+				//		rs->setViewport(viewportLeft.get());
+				//	}
+				//	break;
+				//case 2:
+				//	{
+				//		int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
+
+				//		int left_half_width = (viewPort->width() - separation) / 2;
+				//		int right_half_begin = (viewPort->width() + separation) / 2;
+				//		int right_half_width = viewPort->width() - right_half_begin;
+
+				//		CRCore::ref_ptr<CRCore::crViewPort> viewportRight = new CRCore::crViewPort;
+				//		viewportRight->setViewport(viewPort->x() + right_half_begin, viewPort->y(), right_half_width, viewPort->height());
+
+				//		m_localStateSet->setAttribute(viewportRight.get());
+				//		rs->setViewport(viewportRight.get());
+				//	}
+				//	break;
+				//default:
+				//	m_localStateSet->setAttribute(viewPort);
+				//	break;
+				//}
+				m_localStateSet->setAttribute(viewPort);
+				//  ensure that all color planes are active.
 				CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-                if (cmask)
-                {
-                    cmask->setMask(true,true,true,true);
-                }
-                else
-                {
-                    cmask = new CRCore::crColorMask(true,true,true,true);
-                    m_localStateSet->setAttribute(cmask);
-                }
-                rs->setColorMask(cmask);
+				if (cmask)
+				{
+					cmask->setMask(true, true, true, true);
+				}
+				else
+				{
+					cmask = new CRCore::crColorMask(true, true, true, true);
+					m_localStateSet->setAttribute(cmask);
+				}
+
+				rs->setColorMask(cmask);
 				rs->setClearMask(m_camera->getClearMask());
-
-                //rs->drawPreRenderStages(*state,previous);
-                rs->draw(*state,previous);
-
-            }
-            break;
-		case(CRCore::crDisplaySettings::VERTICAL_INTERLACE):
-			{
-				m_localStateSet->setAttribute(viewPort);
-
-				// ensure that all color planes are active.
-				CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-				if (cmask)
-				{
-					cmask->setMask(true,true,true,true);
-				}
-				else
-				{
-					cmask = new CRCore::crColorMask(true,true,true,true);
-					m_localStateSet->setAttribute(cmask);
-				}
-				rsLeft->setColorMask(cmask);
-				rsRight->setColorMask(cmask);
-
-				//rsLeft->drawPreRenderStages(*state,previous);
-				//rsRight->drawPreRenderStages(*state,previous);
-
-				glEnable(GL_STENCIL_TEST);
-
-				if(m_redrawInterlacedStereoStencilMask ||
-					m_interlacedStereoStencilWidth != viewPort->width() ||
-					m_interlacedStereoStencilHeight != viewPort->height() )
-				{
-					getViewport()->apply(*state);
-					glMatrixMode(GL_PROJECTION);
-					glLoadIdentity();
-					glOrtho(viewPort->x(), viewPort->width(), viewPort->y(), viewPort->height(), -1.0, 1.0);
-					glMatrixMode(GL_MODELVIEW);
-					glLoadIdentity();    
-					glDisable(GL_LIGHTING);
-					glDisable(GL_DEPTH_TEST);
-					glStencilMask(~0u);
-					glClear(GL_STENCIL_BUFFER_BIT);
-					glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
-					glStencilFunc(GL_ALWAYS, 1, ~0u);
-					glPolygonStipple(patternVertEven);
-					glEnable(GL_POLYGON_STIPPLE);
-					glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-					//state->applyColorMask(crVector4ub(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE));
-					glRecti(viewPort->x(), viewPort->y(), viewPort->width(), viewPort->height());
-					glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-					//state->applyColorMask(crVector4ub(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE));
-					glDisable(GL_POLYGON_STIPPLE);
-					glEnable(GL_LIGHTING);
-					glEnable(GL_DEPTH_TEST);
-
-					m_redrawInterlacedStereoStencilMask = false;
-					m_interlacedStereoStencilWidth = viewPort->width();
-					m_interlacedStereoStencilHeight = viewPort->height();
-				}
-
-				rsLeft->setClearMask(rsLeft->getClearMask() & ~(GL_STENCIL_BUFFER_BIT));
-				rsRight->setClearMask(rsRight->getClearMask() & ~(GL_STENCIL_BUFFER_BIT|GL_COLOR_BUFFER_BIT));
-
-				glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-				glStencilFunc(GL_EQUAL, 0, ~0u);    
-				rsLeft->draw(*state,previous);
-
-				glStencilFunc(GL_NOTEQUAL, 0, ~0u);
-				rsRight->draw(*state,previous);
-				glDisable(GL_STENCIL_TEST);
+				//rs->drawPreRenderStages(*state,previous);
+				//try
+				//{
+				//CRCore::notify(CRCore::FATAL)<<"rs->draw begin "<<rs->getBinNum()<<std::endl;
+				//if(getFrameStamp()->getFrameNumber()>5)
+				rs->draw(*state, previous);
+				//else
+				//{
+				//	state->applyAttribute(viewPort);
+				//	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
+				//	CRCore::crThread::sleep(50);
+				//}
+				//CRCore::notify(CRCore::FATAL)<<"rs->draw end "<<rs->getBinNum()<<std::endl;
+				//}
+				//catch (...)
+				//{
+				//	CRCore::notify(WARN)<<"draw error"<< std::endl;
+				//}
+				//获得状态参数
+				//m_renderStage->getStats(m_statistics.get());
 			}
-			break;
-		case(CRCore::crDisplaySettings::HORIZONTAL_INTERLACE):
+
+			// re apply the defalt OGL state.	
+			state->popAllStateSets();
+			state->apply();
+			//state->reset();
+
+			if (m_camera->getPostDrawCallback())
 			{
-				m_localStateSet->setAttribute(viewPort);
-
-				// ensure that all color planes are active.
-				CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-				if (cmask)
-				{
-					cmask->setMask(true,true,true,true);
-				}
-				else
-				{
-					cmask = new CRCore::crColorMask(true,true,true,true);
-					m_localStateSet->setAttribute(cmask);
-				}
-				rsLeft->setColorMask(cmask);
-				rsRight->setColorMask(cmask);
-
-				//rsLeft->drawPreRenderStages(*state,previous);
-				//rsRight->drawPreRenderStages(*state,previous);
-
-				glEnable(GL_STENCIL_TEST);
-
-				if(m_redrawInterlacedStereoStencilMask ||
-					m_interlacedStereoStencilWidth != viewPort->width() ||
-					m_interlacedStereoStencilHeight != viewPort->height() )
-				{
-					getViewport()->apply(*state);
-					glMatrixMode(GL_PROJECTION);
-					glLoadIdentity();
-					glOrtho(viewPort->x(), viewPort->width(), viewPort->y(), viewPort->height(), -1.0, 1.0);
-					glMatrixMode(GL_MODELVIEW);
-					glLoadIdentity();
-					glDisable(GL_LIGHTING);
-					glDisable(GL_DEPTH_TEST);
-					glStencilMask(~0u);
-					glClear(GL_STENCIL_BUFFER_BIT);
-					glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
-					glStencilFunc(GL_ALWAYS, 1, ~0u);
-					glPolygonStipple(patternHorzEven);
-					glEnable(GL_POLYGON_STIPPLE);
-					glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-					//state->applyColorMask(crVector4ub(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE));
-					glRecti(viewPort->x(), viewPort->y(), viewPort->width(), viewPort->height());
-					glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-					//state->applyColorMask(crVector4ub(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE));
-					glDisable(GL_POLYGON_STIPPLE);
-					glEnable(GL_LIGHTING);
-					glEnable(GL_DEPTH_TEST);
-
-					m_redrawInterlacedStereoStencilMask = false;
-					m_interlacedStereoStencilWidth = viewPort->width();
-					m_interlacedStereoStencilHeight = viewPort->height();
-				}
-
-				rsLeft->setClearMask(rsLeft->getClearMask() & ~(GL_STENCIL_BUFFER_BIT));
-				rsRight->setClearMask(rsRight->getClearMask() & ~(GL_STENCIL_BUFFER_BIT|GL_COLOR_BUFFER_BIT));
-
-				glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-				glStencilFunc(GL_EQUAL, 0, ~0u);    
-				rsLeft->draw(*state,previous);
-
-				glStencilFunc(GL_NOTEQUAL, 0, ~0u);
-				rsRight->draw(*state,previous);
-				glDisable(GL_STENCIL_TEST);
+				(*(m_camera->getPostDrawCallback()))(*m_camera);
 			}
-			break;
-        default:
-            {
-                CRCore::notify(CRCore::NOTICE)<<"Warning: stereo mode not implemented yet."<< std::endl;
-            }
-            break;
-        }
-    }
-    else
-    {
-		// Need to restore draw buffer when toggling Stereo off.
-		//setDrawBufferMode();
-		if( m_drawBufferMode !=  GL_NONE)
-		{
-			rs->setDrawBuffer(m_drawBufferMode);
-			rs->setReadBuffer(m_drawBufferMode);
-		}
-		
-		//switch (vreye)
-		//{
-		//case 1:
-		//	{
-		//		int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
-
-		//		int left_half_width = (viewPort->width() - separation) / 2;
-		//		int right_half_begin = (viewPort->width() + separation) / 2;
-		//		int right_half_width = viewPort->width() - right_half_begin;
-
-		//		CRCore::ref_ptr<CRCore::crViewPort> viewportLeft = new CRCore::crViewPort;
-		//		viewportLeft->setViewport(viewPort->x(), viewPort->y(), left_half_width, viewPort->height());
-
-		//		m_localStateSet->setAttribute(viewportLeft.get());
-		//		rs->setViewport(viewportLeft.get());
-		//	}
-		//	break;
-		//case 2:
-		//	{
-		//		int separation = m_displaySettings->getSplitStereoHorizontalSeparation();
-
-		//		int left_half_width = (viewPort->width() - separation) / 2;
-		//		int right_half_begin = (viewPort->width() + separation) / 2;
-		//		int right_half_width = viewPort->width() - right_half_begin;
-
-		//		CRCore::ref_ptr<CRCore::crViewPort> viewportRight = new CRCore::crViewPort;
-		//		viewportRight->setViewport(viewPort->x() + right_half_begin, viewPort->y(), right_half_width, viewPort->height());
-
-		//		m_localStateSet->setAttribute(viewportRight.get());
-		//		rs->setViewport(viewportRight.get());
-		//	}
-		//	break;
-		//default:
-		//	m_localStateSet->setAttribute(viewPort);
-		//	break;
-		//}
-		m_localStateSet->setAttribute(viewPort);
-       //  ensure that all color planes are active.
-        CRCore::crColorMask* cmask = static_cast<CRCore::crColorMask*>(m_localStateSet->getAttribute(CRCore::crStateAttribute::COLORMASK));
-        if (cmask)
-        {
-            cmask->setMask(true,true,true,true);
-        }
-        else
-        {
-            cmask = new CRCore::crColorMask(true,true,true,true);
-            m_localStateSet->setAttribute(cmask);
-        }
-
-		rs->setColorMask(cmask);
-		rs->setClearMask(m_camera->getClearMask());
-		//rs->drawPreRenderStages(*state,previous);
-		//try
-		//{
-		//CRCore::notify(CRCore::FATAL)<<"rs->draw begin "<<rs->getBinNum()<<std::endl;
-		//if(getFrameStamp()->getFrameNumber()>5)
-			rs->draw(*state,previous);
-		//else
-		//{
-		//	state->applyAttribute(viewPort);
-		//	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-		//	CRCore::crThread::sleep(50);
-		//}
-		//CRCore::notify(CRCore::FATAL)<<"rs->draw end "<<rs->getBinNum()<<std::endl;
-		//}
-		//catch (...)
-		//{
-		//	CRCore::notify(WARN)<<"draw error"<< std::endl;
-		//}
-        //获得状态参数
-        //m_renderStage->getStats(m_statistics.get());
-	}
-	
-    // re apply the defalt OGL state.	
-	state->popAllStateSets();
-	state->apply();
-	//state->reset();
-
-	if (m_camera->getPostDrawCallback())
-	{
-		(*(m_camera->getPostDrawCallback()))(*m_camera);
-	}
 #ifdef OUTPUTGLERROR
-	GLenum errorNo = glGetError();
-	if (errorNo!=GL_NO_ERROR)
+			GLenum errorNo = glGetError();
+			if (errorNo != GL_NO_ERROR)
+			{
+				char gbuf[256];
+				sprintf(gbuf, "crSceneView draw OpenGL error %s\n\0", gluErrorString(errorNo));
+				gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
+			}
+#endif
+#if _DEBUG
+	}
+	catch (...)
 	{
-		char gbuf[256];
-		sprintf(gbuf,"crSceneView draw OpenGL error %s\n\0",gluErrorString(errorNo));
-		gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
+		CRCore::notify(WARN) << "draw error" << std::endl;
 	}
 #endif
+	}
 	if(m_useRenderDoubleBuf)
 	{	
 		unlockSwapBuffer();
 		//CRCore::crThread::sleep(1);//让显卡休息
 	}
-#if _DEBUG
-	}
-	catch (...)
-	{
-        CRCore::notify(WARN)<<"draw error"<< std::endl;
-	}
-#endif
 	end_tick = CRCore::Timer::instance()->tick();
 	float drawtime = CRCore::Timer::instance()->delta_m(start_tick,end_tick);
 	crStatistics::getInstance()->setDrawTime(drawtime);

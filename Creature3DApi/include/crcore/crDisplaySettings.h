@@ -354,6 +354,10 @@ class CR_EXPORT crDisplaySettings : public CRCore::Referenced
 		inline void setUIScaleFactor(float factor){ m_uiscaleFactor = factor; }
 		inline float getUIScaleFactor(){ return m_uiscaleFactor; }
 		inline float getUIMeterScale() { return getUIPixelMeter() * getUIHeightScale() / getUIScaleFactor(); }
+		void setFreezeRender(bool freeze) { m_freezeRender = freeze; }
+		inline bool getFreezeRender() { return m_freezeRender; }
+		void setGameMoreOpened(bool more) { m_gameMoreOpened = more; }
+		inline bool getGameMoreOpened() { return m_gameMoreOpened; }
     protected:
     
         virtual ~crDisplaySettings();
@@ -475,6 +479,8 @@ class CR_EXPORT crDisplaySettings : public CRCore::Referenced
 		float                           m_uiscaleFactor;//UI缩放因子
 		bool                            m_ownWindow;
 		bool                            m_windowClosed;
+		bool                            m_freezeRender;//冻结渲染窗口
+		bool                            m_gameMoreOpened;//游戏多开
 };
 
 }

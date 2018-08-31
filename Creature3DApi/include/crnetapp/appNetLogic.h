@@ -326,6 +326,7 @@ protected:
 	CRCore::ref_ptr<CRPhysics::crViewMatterObject> m_bot;
 	CRCore::ref_ptr<CRCore::crHandle> m_playSceneFx;
 	bool m_init;
+	unsigned int m_gs;
 };
 class crVolumeEffectLogic : public CRCore::crNodeLogic
 {//

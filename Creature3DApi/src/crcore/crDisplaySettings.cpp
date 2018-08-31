@@ -177,6 +177,8 @@ void crDisplaySettings::copy(const crDisplaySettings& vs)
 	m_uiscaleFactor = vs.m_uiscaleFactor;
 	m_ownWindow = vs.m_ownWindow;
 	m_windowClosed = false;
+	m_freezeRender = vs.m_freezeRender;
+	m_gameMoreOpened = vs.m_gameMoreOpened;
 }
 
 void crDisplaySettings::merge(const crDisplaySettings& vs)
@@ -340,6 +342,8 @@ void crDisplaySettings::setDefaults()
 	m_uiscaleFactor = 1.0f;
 	m_ownWindow = true;
 	m_windowClosed = false;
+	m_freezeRender = false;
+	m_gameMoreOpened = false;
 }
 
 void crDisplaySettings::setMinimumNumAccumBits(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha)

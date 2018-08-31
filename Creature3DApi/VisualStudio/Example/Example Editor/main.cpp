@@ -293,7 +293,8 @@ int main( int argc, char **argv )
 	if(runMode > 0/* && runMode < WebGame*/)
 	{//双开
 		char buf[64];
-		for (int i = 0; i < 3; i++)
+		int i = 0;
+		for (; i < 3; i++)
 		{
 			sprintf(buf, "Creature3D%d\0", i);
 			hMutex = CreateMutex(NULL, false, buf);
@@ -312,6 +313,13 @@ int main( int argc, char **argv )
 			MessageBox(::GetActiveWindow(), "程序已经在运行中，不能重复启动！", "Creature3D", MB_OK);
 			return 0;
 		}
+#ifndef _ACTIVEX
+		if (i > 0)
+		{//多开
+			//_putenv("MoreOpen=1\0");
+			crDisplaySettings::instance()->setGameMoreOpened(true);
+		}
+#endif
 		//CRNetApp::crGlobalHandle::setRunProtectHandle(hMutex);
 	}
 #ifdef CookFile

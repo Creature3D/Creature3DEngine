@@ -278,9 +278,10 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
 		break;
 	case WM_SETFOCUS:
-		//CRCore::crDisplaySettings::instance()->restoreFpsControl();
 		if(CRCore::crDisplaySettings::instance()->getFullScreen())
 			::ShowWindow(hWnd,SW_RESTORE);
+		else if (CRCore::crDisplaySettings::instance()->getGameMoreOpened())
+			CRCore::crDisplaySettings::instance()->restoreFpsControl();
 		//CRCore::crBlockDetectThread::getInstance()->resume();
 		//CRCore::crBrain::getInstance()->resumeGame();
 		//ev = new WindowRestoredEvent( hWnd,1 );
@@ -294,6 +295,8 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			//CRCore::crDisplaySettings::instance()->setFpsControl(30.0f);
 			if(CRCore::crDisplaySettings::instance()->getFullScreen())
 				::ShowWindow(hWnd,SW_MINIMIZE);
+			else if(CRCore::crDisplaySettings::instance()->getGameMoreOpened())
+				CRCore::crDisplaySettings::instance()->setFpsControl(30.0f);
 		}
 		//CRCore::crBlockDetectThread::getInstance()->pause();
 		//CRCore::crBrain::getInstance()->pauseGame();
@@ -314,7 +317,8 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			//}
 			if (wParam == SIZE_MINIMIZED)
 			{
-				CRCore::crDisplaySettings::instance()->setFpsControl(20.0f);
+				CRCore::crDisplaySettings::instance()->setFpsControl(30.0f);
+				CRCore::crDisplaySettings::instance()->setFreezeRender(true);
 				//CRCore::crBlockDetectThread::getInstance()->pause();
 				//CRCore::crBrain::getInstance()->pauseGame();
 				ev = new WindowRestoredEvent(hWnd, 0);
@@ -323,6 +327,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 			else if (wParam == SIZE_RESTORED)
 			{
 				CRCore::crDisplaySettings::instance()->restoreFpsControl();
+				CRCore::crDisplaySettings::instance()->setFreezeRender(false);
 				//CRCore::crBlockDetectThread::getInstance()->resume();
 				//CRCore::crBrain::getInstance()->resumeGame();
 				ev = new WindowRestoredEvent(hWnd, 1);

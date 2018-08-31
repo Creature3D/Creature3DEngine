@@ -909,119 +909,121 @@ void crSceneView::cull(int vreye)
 
     //m_state->setFrameStamp(m_frameStamp.get());
     m_state->setDisplaySettings(m_displaySettings.get());
-
-	crRenderLeaf *previous = NULL;
-	crMatrixd* projectionMatrix = m_camera->getProjectionMatrix();
-	crMatrixd* viewMatrix = m_camera->getViewMatrix();
-	//CRCore::notify(ALWAYS)<<"crSceneView::cull:projectionMatrix = "<<*projectionMatrix<<std::endl;
-	//CRCore::notify(ALWAYS)<<"crSceneView::cull:viewMatrix = "<<*viewMatrix<<std::endl;
-	//m_camera->computerViewInverseMatrix();
-	crMatrixd* viewInverseMatrix = m_camera->getViewInverseMatrix();
-    //CRCore::notify(ALWAYS)<<"crSceneView::cull:viewInverseMatrix = "<<*viewInverseMatrix<<std::endl;
-#if _DEBUG
-	try
+	if (!m_displaySettings->getFreezeRender())
 	{
+		crRenderLeaf *previous = NULL;
+		crMatrixd* projectionMatrix = m_camera->getProjectionMatrix();
+		crMatrixd* viewMatrix = m_camera->getViewMatrix();
+		//CRCore::notify(ALWAYS)<<"crSceneView::cull:projectionMatrix = "<<*projectionMatrix<<std::endl;
+		//CRCore::notify(ALWAYS)<<"crSceneView::cull:viewMatrix = "<<*viewMatrix<<std::endl;
+		//m_camera->computerViewInverseMatrix();
+		crMatrixd* viewInverseMatrix = m_camera->getViewInverseMatrix();
+		//CRCore::notify(ALWAYS)<<"crSceneView::cull:viewInverseMatrix = "<<*viewInverseMatrix<<std::endl;
+#if _DEBUG
+		try
+		{
 #endif
-	if (m_displaySettings.valid() && m_displaySettings->getStereo()) 
-    {
-
-        if (m_displaySettings->getStereoMode()==CRCore::crDisplaySettings::LEFT_EYE)
-        {
-            // set up the left eye.
-            m_cullVisitor->setTraversalMask(m_cullMaskLeft);
-
-            cullStage(computeLeftEyeProjection(*projectionMatrix),computeLeftEyeView(*viewMatrix),*viewInverseMatrix,m_cullVisitor.get(),m_rendergraph.get(),m_renderStage.get());
-
-            if (m_cullVisitor->getComputeNearFarMode()!=CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
-            {
-                crCullVisitor::value_type zNear = m_cullVisitor->getCalculatedNearPlane();
-                crCullVisitor::value_type zFar = m_cullVisitor->getCalculatedFarPlane();
-                m_cullVisitor->clampProjectionMatrix(*projectionMatrix,zNear,zFar);
-            }
-			//m_renderStage.get()->createRenderDataList(*m_state, previous );
-        }
-        else if (m_displaySettings->getStereoMode()==CRCore::crDisplaySettings::RIGHT_EYE)
-        {
-            // set up the right eye.
-            m_cullVisitor->setTraversalMask(m_cullMaskRight);
-
-            cullStage(computeRightEyeProjection(*projectionMatrix),computeRightEyeView(*viewMatrix),*viewInverseMatrix,m_cullVisitor.get(),m_rendergraph.get(),m_renderStage.get());
-
-            if (m_cullVisitor->getComputeNearFarMode()!=CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
-            {
-                crCullVisitor::value_type zNear = m_cullVisitor->getCalculatedNearPlane();
-                crCullVisitor::value_type zFar = m_cullVisitor->getCalculatedFarPlane();
-                m_cullVisitor->clampProjectionMatrix(*projectionMatrix,zNear,zFar);
-            }
-			//m_renderStage.get()->createRenderDataList(*m_state, previous );
-        }
-        else
-        {
-			if (!m_cullVisitorLeft.valid()) m_cullVisitorLeft = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());
-			if (!m_rendergraphLeft.valid()) m_rendergraphLeft = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
-			if (!m_renderStageLeft.valid()) m_renderStageLeft = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
-			
-			if (!m_cullVisitorRight.valid()) m_cullVisitorRight = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());
-			if (!m_rendergraphRight.valid()) m_rendergraphRight = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
-			if (!m_renderStageRight.valid()) m_renderStageRight = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
-
-			if(m_useRenderDoubleBuf)
+			if (m_displaySettings->getStereo())
 			{
-				//if (!m_cullVisitorLeft_buf.valid()) m_cullVisitorLeft_buf = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());
-				if (!m_rendergraphLeft_buf.valid()) m_rendergraphLeft_buf = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
-				if (!m_renderStageLeft_buf.valid()) m_renderStageLeft_buf = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
 
-				//if (!m_cullVisitorRight_buf.valid()) m_cullVisitorRight_buf = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());		
-				if (!m_rendergraphRight_buf.valid()) m_rendergraphRight_buf = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
-				if (!m_renderStageRight_buf.valid()) m_renderStageRight_buf = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
+				if (m_displaySettings->getStereoMode() == CRCore::crDisplaySettings::LEFT_EYE)
+				{
+					// set up the left eye.
+					m_cullVisitor->setTraversalMask(m_cullMaskLeft);
+
+					cullStage(computeLeftEyeProjection(*projectionMatrix), computeLeftEyeView(*viewMatrix), *viewInverseMatrix, m_cullVisitor.get(), m_rendergraph.get(), m_renderStage.get());
+
+					if (m_cullVisitor->getComputeNearFarMode() != CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
+					{
+						crCullVisitor::value_type zNear = m_cullVisitor->getCalculatedNearPlane();
+						crCullVisitor::value_type zFar = m_cullVisitor->getCalculatedFarPlane();
+						m_cullVisitor->clampProjectionMatrix(*projectionMatrix, zNear, zFar);
+					}
+					//m_renderStage.get()->createRenderDataList(*m_state, previous );
+				}
+				else if (m_displaySettings->getStereoMode() == CRCore::crDisplaySettings::RIGHT_EYE)
+				{
+					// set up the right eye.
+					m_cullVisitor->setTraversalMask(m_cullMaskRight);
+
+					cullStage(computeRightEyeProjection(*projectionMatrix), computeRightEyeView(*viewMatrix), *viewInverseMatrix, m_cullVisitor.get(), m_rendergraph.get(), m_renderStage.get());
+
+					if (m_cullVisitor->getComputeNearFarMode() != CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
+					{
+						crCullVisitor::value_type zNear = m_cullVisitor->getCalculatedNearPlane();
+						crCullVisitor::value_type zFar = m_cullVisitor->getCalculatedFarPlane();
+						m_cullVisitor->clampProjectionMatrix(*projectionMatrix, zNear, zFar);
+					}
+					//m_renderStage.get()->createRenderDataList(*m_state, previous );
+				}
+				else
+				{
+					if (!m_cullVisitorLeft.valid()) m_cullVisitorLeft = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());
+					if (!m_rendergraphLeft.valid()) m_rendergraphLeft = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
+					if (!m_renderStageLeft.valid()) m_renderStageLeft = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
+
+					if (!m_cullVisitorRight.valid()) m_cullVisitorRight = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());
+					if (!m_rendergraphRight.valid()) m_rendergraphRight = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
+					if (!m_renderStageRight.valid()) m_renderStageRight = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
+
+					if (m_useRenderDoubleBuf)
+					{
+						//if (!m_cullVisitorLeft_buf.valid()) m_cullVisitorLeft_buf = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());
+						if (!m_rendergraphLeft_buf.valid()) m_rendergraphLeft_buf = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
+						if (!m_renderStageLeft_buf.valid()) m_renderStageLeft_buf = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
+
+						//if (!m_cullVisitorRight_buf.valid()) m_cullVisitorRight_buf = dynamic_cast<crCullVisitor*>(m_cullVisitor->cloneType());		
+						if (!m_rendergraphRight_buf.valid()) m_rendergraphRight_buf = dynamic_cast<crRenderGraph*>(m_rendergraph->cloneType());
+						if (!m_renderStageRight_buf.valid()) m_renderStageRight_buf = dynamic_cast<crRenderStage*>(m_renderStage->clone(CRCore::crCopyOp::DEEP_COPY_ALL));
+					}
+
+					// set up the left eye.
+					m_cullVisitorLeft->setDatabaseRequestHandler(m_cullVisitor->getDatabaseRequestHandler());
+					m_cullVisitorLeft->setClampProjectionMatrixCallback(m_cullVisitor->getClampProjectionMatrixCallback());
+					m_cullVisitorLeft->setTraversalMask(m_cullMaskLeft);
+					// set up the right eye.
+					m_cullVisitorRight->setDatabaseRequestHandler(m_cullVisitor->getDatabaseRequestHandler());
+					m_cullVisitorRight->setClampProjectionMatrixCallback(m_cullVisitor->getClampProjectionMatrixCallback());
+					m_cullVisitorRight->setTraversalMask(m_cullMaskRight);
+
+					cullStage(computeLeftEyeProjection(*projectionMatrix), computeLeftEyeView(*viewMatrix), *viewInverseMatrix, m_cullVisitorLeft.get(), m_rendergraphLeft.get(), m_renderStageLeft.get());
+					cullStage(computeRightEyeProjection(*projectionMatrix), computeRightEyeView(*viewMatrix), *viewInverseMatrix, m_cullVisitorRight.get(), m_rendergraphRight.get(), m_renderStageRight.get());
+
+					if (m_cullVisitorLeft->getComputeNearFarMode() != CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR &&
+						m_cullVisitorRight->getComputeNearFarMode() != CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
+					{
+						crCullVisitor::value_type zNear = CRCore::minimum(m_cullVisitorLeft->getCalculatedNearPlane(), m_cullVisitorRight->getCalculatedNearPlane());
+						crCullVisitor::value_type zFar = CRCore::maximum(m_cullVisitorLeft->getCalculatedFarPlane(), m_cullVisitorRight->getCalculatedFarPlane());
+						m_cullVisitor->clampProjectionMatrix(*projectionMatrix, zNear, zFar);
+					}
+
+					//m_renderStageLeft.get()->createRenderDataList(*m_state, previous );
+					//m_renderStageRight.get()->createRenderDataList(*m_state, previous );
+				}
 			}
+			else
+			{
+				m_cullVisitor->setTraversalMask(m_cullMask);
+				cullStage(*projectionMatrix, *viewMatrix, *viewInverseMatrix, m_cullVisitor.get(), m_rendergraph.get(), m_renderStage.get());
+				if (m_cullVisitor->getComputeNearFarMode() != CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
+				{
+					crCullVisitor::value_type zNear = m_cullVisitor->getCalculatedNearPlane();
+					crCullVisitor::value_type zFar = m_cullVisitor->getCalculatedFarPlane();
+					m_cullVisitor->clampProjectionMatrix(*projectionMatrix, zNear, zFar);
+				}
 
-			// set up the left eye.
-            m_cullVisitorLeft->setDatabaseRequestHandler(m_cullVisitor->getDatabaseRequestHandler());
-            m_cullVisitorLeft->setClampProjectionMatrixCallback(m_cullVisitor->getClampProjectionMatrixCallback());
-            m_cullVisitorLeft->setTraversalMask(m_cullMaskLeft);
-            // set up the right eye.
-            m_cullVisitorRight->setDatabaseRequestHandler(m_cullVisitor->getDatabaseRequestHandler());
-            m_cullVisitorRight->setClampProjectionMatrixCallback(m_cullVisitor->getClampProjectionMatrixCallback());
-            m_cullVisitorRight->setTraversalMask(m_cullMaskRight);
-
-			cullStage(computeLeftEyeProjection(*projectionMatrix),computeLeftEyeView(*viewMatrix),*viewInverseMatrix,m_cullVisitorLeft.get(),m_rendergraphLeft.get(),m_renderStageLeft.get());
-			cullStage(computeRightEyeProjection(*projectionMatrix),computeRightEyeView(*viewMatrix),*viewInverseMatrix,m_cullVisitorRight.get(),m_rendergraphRight.get(),m_renderStageRight.get());
-
-            if (m_cullVisitorLeft->getComputeNearFarMode()!=CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR &&
-                m_cullVisitorRight->getComputeNearFarMode()!=CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
-            {
-                crCullVisitor::value_type zNear = CRCore::minimum(m_cullVisitorLeft->getCalculatedNearPlane(),m_cullVisitorRight->getCalculatedNearPlane());
-                crCullVisitor::value_type zFar =  CRCore::maximum(m_cullVisitorLeft->getCalculatedFarPlane(),m_cullVisitorRight->getCalculatedFarPlane());
-                m_cullVisitor->clampProjectionMatrix(*projectionMatrix,zNear,zFar);
-            }
-
-			//m_renderStageLeft.get()->createRenderDataList(*m_state, previous );
-			//m_renderStageRight.get()->createRenderDataList(*m_state, previous );
-        }
-    }
-    else
-    {
-        m_cullVisitor->setTraversalMask(m_cullMask);
-        cullStage(*projectionMatrix,*viewMatrix,*viewInverseMatrix,m_cullVisitor.get(),m_rendergraph.get(),m_renderStage.get());
-        if (m_cullVisitor->getComputeNearFarMode()!=CRUtil::crCullVisitor::DO_NOT_COMPUTE_NEAR_FAR)
-        {
-            crCullVisitor::value_type zNear = m_cullVisitor->getCalculatedNearPlane();
-            crCullVisitor::value_type zFar = m_cullVisitor->getCalculatedFarPlane();
-			m_cullVisitor->clampProjectionMatrix(*projectionMatrix,zNear,zFar);
-        }
-
-        //创建RenderDataList
-		//m_renderStage.get()->createRenderDataList(*m_state, previous );
-    }
-	//updateUniforms();
+				//创建RenderDataList
+				//m_renderStage.get()->createRenderDataList(*m_state, previous );
+			}
+			//updateUniforms();
 #if _DEBUG
-	}
-	catch (...)
-	{
-		CRCore::notify(CRCore::ALWAYS)<<"crSceneView::cull error "<<std::endl;
-	}
+		}
+		catch (...)
+		{
+			CRCore::notify(CRCore::ALWAYS) << "crSceneView::cull error " << std::endl;
+		}
 #endif
+	}
 	if(crStatistics::getInstance()->getStat())
 	{
 		end_tick = CRCore::Timer::instance()->tick();
