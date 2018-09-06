@@ -35,6 +35,8 @@ extern CRIOMANAGER_EXPORT std::string convertUTF16toUTF8(const wchar_t* s);
 extern CRIOMANAGER_EXPORT std::wstring convertUTF8toUTF16(const std::string& s);
 extern CRIOMANAGER_EXPORT std::wstring convertUTF8toUTF16(const char* s);
 
+extern CRIOMANAGER_EXPORT std::string convertTCHARToWebUTF8(const std::wstring& s);
+
 }
 
 #endif

@@ -294,12 +294,12 @@ int crDataBase::executeQuery(const std::string &sql)
 }
 int crDataBase::executeQuery(crQueryData *query)
 {
+	m_queryResultVec.clear();
 	if(!query)
 		return 0;
 	//m_queryDBMutex.lock();
 	MYSQL_RES *results;
 	MYSQL_ROW record;
-    m_queryResultVec.clear();
 	int queryresut = 1;
 	crStreamBuf *sqlstream = query->getSqlStream();
 	if(sqlstream)
@@ -403,6 +403,7 @@ crDataBase *crDataBase::beginSession()
 
 void crDataBase::endSession(crDataBase *session)
 {
+	session->releaseQuery();
 	session->m_sessionMutex.unlock();
 }
 void crDataBase::dbping()

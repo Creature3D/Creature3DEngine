@@ -24,6 +24,7 @@
 #include <CRIOManager/crLoadManager.h>
 #include <CRSound/crSoundSystem.h>
 #include <shellapi.h>
+#include <CRIOManager/crConvertUTF.h>
 #ifdef _DEBUG
 #define _CRTDBG_MAP_ALLOC 
 #define new   new(_NORMAL_BLOCK, __FILE__, __LINE__)
@@ -109,6 +110,7 @@ extern  "C" __declspec(dllexport) int main(char *argv)
 int main( int argc, char **argv )
 #endif
 {
+	//std::string str = CRIOManager::convertTCHARToWebUTF8(L"nihaoÄãºÃ£¡");
 	//ref_ptr<crTableIO> guidtab = new crTableIO;
 	//CREncapsulation::crTableIO::StrVec title,record;
 	//title.push_back("crc");

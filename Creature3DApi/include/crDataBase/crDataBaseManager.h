@@ -86,7 +86,7 @@ public:
 	int getInsertID();
 	typedef std::vector< CRCore::ref_ptr<crQueryData> > QueryResultVec;
 	QueryResultVec &getQueryResult();
-	void releaseQuery();//无论有无查询结果，只要执行过executeQuery，则必须执行releaseQuery
+	void releaseQuery();
 
 	unsigned long realEscapeString(char *to, const char *from, int from_length);
 
