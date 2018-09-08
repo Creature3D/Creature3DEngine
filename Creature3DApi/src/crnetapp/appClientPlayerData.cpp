@@ -1005,7 +1005,8 @@ int crMyPlayerData::getCurrentRoleID()
 }
 bool crMyPlayerData::ifItemIsMe(crInstanceItem *item)
 {
-	return item && item->getItemtype()==crInstanceItem::Role && (item->getID() == m_playerID || (item->getID()<0&&item->getIName()==getCharacterName()));
+	return item && ((item->getItemtype() == crInstanceItem::Role && item->getID() == m_playerID) || (item->getOwnerRoleID()>0&&item->getOwnerItemID() == m_playerID));
+	//return item && item->getItemtype()==crInstanceItem::Role && (item->getID() == m_playerID || (item->getID()<0&&item->getIName()==getCharacterName()));
 }
 bool crMyPlayerData::ifNodeIsMe(CRCore::crNode *relNode)
 {

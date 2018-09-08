@@ -361,6 +361,8 @@ public:
 	void setDropItemTimer(float interval);
 	void setOwnerID(_crInt64 ownerid);
 	_crInt64 getOwnerID();
+	int getOwnerItemID() { return LOINT64(m_ownerid); }
+	int getOwnerRoleID() { return HIINT64(m_ownerid); }
 protected:
 	virtual ~crInstanceItem();
 	void closeToTargetDir(float dt);

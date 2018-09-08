@@ -8462,6 +8462,7 @@ void crNetControlMethod::operator()(crHandle &handle)
 		//{
 		//	return;
 		//}
+		//CRCore::ScopedLock<crData> lock(*thisData);
 		unsigned char targetType = m_stream->_readUChar();
 		thisData->inputParam(WCHDATA_TargetType,&targetType);
 		crVector3 targetPosition;
@@ -12004,30 +12005,17 @@ void crItemUseMethod::operator()(crHandle &handle)
 			}
 			else
 			{
-				crBulletObject::ExecutionPhysicsType pt = weapon->getBulletObject()->getExecutionPhysicsType();
-				//if( pt == crBulletObject::Type_Collide ||
-				//	pt == crBulletObject::Type_Explode ||
-				//	pt == crBulletObject::Type_TimeExplode )
-				//{//方向性攻击
-				//	weapon->fire_noTarget(dynamic_cast<crMatterGroup *>(m_this->getParent(0)),m_itemUseParam->m_dirOffset,time);
+				weapon->fire(dynamic_cast<crMatterGroup *>(m_this->getParent(0)), m_itemUseParam->m_targetPos, time);
+				//crBulletObject::ExecutionPhysicsType pt = weapon->getBulletObject()->getExecutionPhysicsType();
+				//if(pt == crBulletObject::Type_Volume)
+				//{
+				//	m_itemUseParam->m_targetPos[2] = weapon->getGunPoint()[2];
+				//	weapon->fire(dynamic_cast<crMatterGroup *>(m_this->getParent(0)),m_itemUseParam->m_targetPos,time);
 				//}
-				//crNode* targetNode = m_itemUseParam->m_targetNode.get();
-				//if(targetNode)
-				//	m_itemUseParam->m_targetPos = targetNode->getBound().center();
-				if(pt == crBulletObject::Type_Volume)
-				{
-					m_itemUseParam->m_targetPos[2] = weapon->getGunPoint()[2];
-					weapon->fire(dynamic_cast<crMatterGroup *>(m_this->getParent(0)),m_itemUseParam->m_targetPos,time);
-				}
-				else
-				{//目标性攻击
-					//crVector3 trackTarget;
-					//if(dynamic_cast<crMatterObject *>(targetNode))
-					//	trackTarget = dynamic_cast<crMatterObject *>(targetNode)->getPhysicsCenter();
-					//else
-					//	trackTarget = targetNode->getBound().center();
-					weapon->fire(dynamic_cast<crMatterGroup *>(m_this->getParent(0)),m_itemUseParam->m_targetPos,time);
-				}
+				//else
+				//{//目标性攻击
+				//	weapon->fire(dynamic_cast<crMatterGroup *>(m_this->getParent(0)),m_itemUseParam->m_targetPos,time);
+				//}
 			}
 		}
 		//m_itemUseParam->clear();
@@ -16916,25 +16904,36 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 					//sendpacket
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
 					stream->createBuf(/*26*/30);
-					if(itemTargetType & Target_Coord)
+					//if(itemTargetType & Target_Coord)
+					//{
+					//	targettype = Target_Coord;
+					//}
+					//stream->_writeUChar(targettype);
+					//if(targettype & Target_Instance || targettype & Target_StaticNpc/* || targettype & Target_StaticItem*/)
+					if(useItemParam.m_target.valid())
 					{
-						targettype = Target_Coord;
-					}
-					stream->_writeUChar(targettype);
-					if(targettype & Target_Instance || targettype & Target_StaticNpc/* || targettype & Target_StaticItem*/)
-					{
-						thisData->getParam(WCHDATA_TargetID,param);
-						int targetID = *(int *)param;
-						stream->_writeInt(targetID);//4
-						if(targettype & Target_Role)
+						targettype = useItemParam.m_target->getItemtype() == crInstanceItem::Role ? Target_Role : Target_Npc;
+						stream->_writeUChar(targettype);
+						int targetid = useItemParam.m_target->getID();
+						stream->_writeInt(targetid);//4
+						if (targettype & Target_Role)
 						{
-							thisData->getParam(WCHDATA_TargetRoleID,param);
-							int targetRoleID = *(int *)param;
-							stream->_writeInt(targetRoleID);//4
+							int targetroleid = useItemParam.m_target->getRoleID();
+							stream->_writeInt(targetroleid);//4
 						}
+						//thisData->getParam(WCHDATA_TargetID,param);
+						//int targetID = *(int *)param;
+						//stream->_writeInt(targetID);//4
+						//if(targettype & Target_Role)
+						//{
+						//	thisData->getParam(WCHDATA_TargetRoleID,param);
+						//	int targetRoleID = *(int *)param;
+						//	stream->_writeInt(targetRoleID);//4
+						//}
 					}
 					else
 					{
+						stream->_writeUChar(Target_Coord);
 						stream->_writeVec3(targetPos);//12
 					}
 
