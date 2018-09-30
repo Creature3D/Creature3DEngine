@@ -86,7 +86,8 @@ void crObject::releaseObjects(CRCore::crState* state)
 		itr!=m_drawables.end();
 		++itr)
 	{
-		(*itr)->releaseObjects(state);
+		if (itr->valid())
+			(*itr)->releaseObjects(state);
 	}
 }
 

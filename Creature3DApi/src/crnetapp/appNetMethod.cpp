@@ -8469,7 +8469,8 @@ void crNetControlMethod::operator()(crHandle &handle)
 		int targetid = 0;
 		int targetroleid = 0;
 		ref_ptr<crInstanceItem>targetItem;
-		if(targetType & Target_Instance || targetType & Target_Self || targetType & Target_StaticNpc/* || targetType & Target_StaticItem*/)
+		//if(targetType & Target_Instance || targetType & Target_Self || targetType & Target_StaticNpc/* || targetType & Target_StaticItem*/)
+		if(targetType & Target_Role || targetType & Target_Npc)
 		{
 			targetid = m_stream->_readInt();
 			targetroleid = targetType&Target_Role?m_stream->_readInt():0;
@@ -8539,6 +8540,7 @@ void crNetControlMethod::operator()(crHandle &handle)
 			if(m_netType == GameClient_Game)
 			{
 				UseItemParam useItemParam;
+				useItemParam.m_targetPos = targetPosition;
 				useItemParam.m_user = m_this;
 				if(targetItem.valid() && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 					useItemParam.m_target = targetItem.get();
@@ -8563,6 +8565,7 @@ void crNetControlMethod::operator()(crHandle &handle)
 				if(fabs(relRange-clientRelRange)<m_attackDelta)
 				{//攻击距离合法，防止玩家修改客户端攻击距离
 					UseItemParam useItemParam;
+					useItemParam.m_targetPos = targetPosition;
 					useItemParam.m_user = m_this;
 					if(targetItem.valid() && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 						useItemParam.m_target = targetItem.get();
@@ -11428,6 +11431,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 					hitParam->m_hitItem = m_useItemParam->m_target;
 					hitParam->m_rate = 1.0f;
 					hitParam->m_fireItem = m_useItemParam->m_user;
+					hitParam->m_targetPos = m_useItemParam->m_targetPos;
 					//CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod "<<m_this->getID()<<std::endl;
 					m_this->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
 
@@ -12372,7 +12376,7 @@ void crBotCollideMethod::operator()(crHandle &handle)
 							int bulletItemID = bulletItem->getInstanceItemID();
 
 							ref_ptr<crStreamBuf> stream = new crStreamBuf;
-							stream->createBuf(17);
+							stream->createBuf(29);
 							//stream->_writeUChar(hititem->getItemtype());
 							//stream->_writeInt(hitid);
 							stream->_writeUChar(fireItem->getItemtype());
@@ -12387,6 +12391,8 @@ void crBotCollideMethod::operator()(crHandle &handle)
 								rate = bullet->getExecutionRate(m_this->getTrans());
 							}
 							stream->_writeFloat(rate);
+							stream->_writeVec3(bullet->getFireTarget());
+							//CRCore::notify(CRCore::ALWAYS) << "crBotCollideMethod targetpos=" << bullet->getFireTarget() << std::endl;
 							crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 							if(netConductor)
 							{
@@ -12472,6 +12478,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 		int bulletItemID = m_stream->_readInt();
 		float rate = m_stream->_readFloat();
 		rate = CRCore::clampTo(rate,0.0f,1.0f);
+		crVector3 targetPos = m_stream->_readVec3();
 		crInstanceItem *bulletitem = NULL;
 		crData *serverData = crServerBrainHandle::getInstance()->getDataClass();
 		HitTestMap hitTestMap;
@@ -12592,8 +12599,9 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 							hitParam->m_hitItem = m_this;
 							hitParam->m_rate = rate;
 							hitParam->m_fireItem = fireRole.get();
+							hitParam->m_targetPos = targetPos;
 							//if(bulletitem->getAbstractItemID() == 26264)
-							//	CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod AddDamage:"<<m_this->getID()<<std::endl;
+							//	CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod targetPos:"<< targetPos<<std::endl;
 							bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
 
 							crData *bulletitemData = bulletitem->getDataClass();
@@ -12678,6 +12686,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 							hitParam->m_hitItem = m_this;
 							hitParam->m_rate = rate;
 							hitParam->m_fireItem = fireitem;
+							hitParam->m_targetPos = targetPos;
 							//CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod "<<m_this->getID()<<std::endl;
 							bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
 							
@@ -16385,7 +16394,7 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					int bulletItemID = bulletItem->getInstanceItemID();
 
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
-					stream->createBuf(17);
+					stream->createBuf(29);
 					//stream->_writeUChar(hititem->getItemtype());
 					//stream->_writeInt(hitid);
 					stream->_writeUChar(fireType);
@@ -16395,6 +16404,8 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 					stream->_writeInt(bulletItemID);
 					float rate = 1.0f;
 					stream->_writeFloat(rate);
+					stream->_writeVec3(bullet->getFireTarget());
+					//CRCore::notify(CRCore::ALWAYS) << "crNodeInBulletVolumeMethod targetpos=" << bullet->getFireTarget() << std::endl;
 					crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 					if(netConductor)
 					{
@@ -16881,6 +16892,7 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 			{//在使用范围内
 				//m_this->getOrCreatePathFinder()->dirty();
 				UseItemParam useItemParam;
+				useItemParam.m_targetPos = targetPos;
 				useItemParam.m_user = m_this;
 				if(targetItem.valid() && !(itemTargetType & Target_Coord) && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 					useItemParam.m_target = targetItem;

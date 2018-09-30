@@ -827,46 +827,38 @@ void crStateSet::reset()
 {
 	m_parents.clear();
 	// remove self from as attributes parent
-	for(AttributeList::iterator itr=m_attributeList.begin();
-		itr!=m_attributeList.end();
-		++itr)
-	{
-		itr->second.first->removeParent(this);
-	}
+	//for(AttributeList::iterator itr=m_attributeList.begin();
+	//	itr!=m_attributeList.end();
+	//	++itr)
+	//{
+	//	itr->second.first->removeParent(this);
+	//}
 
 	m_modeList.clear();
 	m_attributeList.clear();
 
 	// remove self from as texture attributes parent
-	for(unsigned int i=0;i<m_textureAttributeList.size();++i)
-	{
-		AttributeList& attributeList = m_textureAttributeList[i];
-		for(AttributeList::iterator itr=attributeList.begin();
-			itr!=attributeList.end();
-			++itr)
-		{
-			itr->second.first->removeParent(this);
-		}
-	}
+	//for(unsigned int i=0;i<m_textureAttributeList.size();++i)
+	//{
+	//	AttributeList& attributeList = m_textureAttributeList[i];
+	//	for(AttributeList::iterator itr=attributeList.begin();
+	//		itr!=attributeList.end();
+	//		++itr)
+	//	{
+	//		itr->second.first->removeParent(this);
+	//	}
+	//}
 
 	m_textureModeList.clear();
 	m_textureAttributeList.clear();
 
 	//// remove self from uniforms parent
-	//for(UniformList::iterator uitr = m_dirtyUniformList.begin();
-	//	uitr != m_dirtyUniformList.end();
+	//for(UniformList::iterator uitr = m_uniformList.begin();
+	//	uitr != m_uniformList.end();
 	//	++uitr)
 	//{
 	//	uitr->second.first->removeParent(this);
 	//}
-	//m_dirtyUniformList.clear();
-	//m_dirtyUniformList.swap(m_uniformList);
-	for(UniformList::iterator uitr = m_uniformList.begin();
-		uitr != m_uniformList.end();
-		++uitr)
-	{
-		uitr->second.first->removeParent(this);
-	}
 	m_uniformList.clear();
 	m_renderingHint = DEFAULT_BIN;
 	setRenderBinToInherit();

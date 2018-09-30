@@ -295,18 +295,24 @@ void crCameraNode::releaseObjects(CRCore::crState* state)
 
 	//if (state) (*const_cast<crCameraNode*>(this)->m_renderingCache_buf)[state->getContextID()] = 0;
 	//else const_cast<crCameraNode*>(this)->m_renderingCache_buf->setAllElementsTo(0);
-	for(unsigned i=0; i<m_renderingCache->size(); ++i)
+	if (m_renderingCache.valid())
 	{
-		if ((*m_renderingCache)[i].valid())
-			(*m_renderingCache)[i]->releaseObjects(state);
+		for (unsigned i = 0; i < m_renderingCache->size(); ++i)
+		{
+			if ((*m_renderingCache)[i].valid())
+				(*m_renderingCache)[i]->releaseObjects(state);
+		}
+		m_renderingCache->clear();
 	}
-	m_renderingCache->clear();
-	for(unsigned i=0; i<m_renderingCache_buf->size(); ++i)
+	if (m_renderingCache_buf.valid())
 	{
-		if ((*m_renderingCache_buf)[i].valid())
-			(*m_renderingCache_buf)[i]->releaseObjects(state);
+		for (unsigned i = 0; i < m_renderingCache_buf->size(); ++i)
+		{
+			if ((*m_renderingCache_buf)[i].valid())
+				(*m_renderingCache_buf)[i]->releaseObjects(state);
+		}
+		m_renderingCache_buf->clear();
 	}
-	m_renderingCache_buf->clear();
 	crTransform::releaseObjects(state);
 }
 

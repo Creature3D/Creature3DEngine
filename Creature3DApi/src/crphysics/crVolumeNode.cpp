@@ -146,7 +146,7 @@ void crVolumeNode::testVolumeEvent(crMatterObject *materObject,bool tested)
 }
 void crVolumeNode::testVolumeImplementation(crMatterObject *materObject)
 {
-	bool tested = intersects(materObject->getTrans());
+	bool tested = materObject->getEnableIntersect() && intersects(materObject->getTrans());
     testVolumeEvent(materObject,tested);
 }
 //bool crVolumeNode::intersects(const CRCore::crBoundingBox &bbox)
@@ -246,7 +246,7 @@ crSphereVolumeNode::crSphereVolumeNode(const crSphereVolumeNode &volumeNode,cons
 }
 void crSphereVolumeNode::testVolumeImplementation(crMatterObject *materObject)
 {
-	bool tested = intersects(materObject->getTrans());
+	bool tested = materObject->getEnableIntersect() && intersects(materObject->getTrans());
 	testVolumeEvent(materObject,tested);
 }
 bool crSphereVolumeNode::intersects(const CRCore::crVector3 &pos)
@@ -271,7 +271,7 @@ m_polytope(volumeNode.m_polytope)
 }
 void crPolytopeVolumeNode::testVolumeImplementation(crMatterObject *materObject)
 {
-	bool tested = intersects(materObject->getTrans());
+	bool tested = materObject->getEnableIntersect() && intersects(materObject->getTrans());
     testVolumeEvent(materObject,tested);
 }
 //bool crPolytopeVolumeNode::intersects(const CRCore::crBoundingBox &bbox)
@@ -305,7 +305,7 @@ void crMatrixVolumeNode::testVolumeImplementation(crMatterObject *materObject)
 	//newBB.m_min = m_bbox.m_min * m_matrix;
 	//newBB.correct();
 	//bool tested = newBB.intersects(materObject->getBoundBox());	
-	bool tested = intersects(materObject->getTrans());
+	bool tested = materObject->getEnableIntersect() && intersects(materObject->getTrans());
     testVolumeEvent(materObject,tested);
 }
 //bool crMatrixVolumeNode::intersects(const CRCore::crBoundingBox &bbox)

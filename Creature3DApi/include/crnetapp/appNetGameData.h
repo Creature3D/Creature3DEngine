@@ -1002,6 +1002,7 @@ struct UseItemParam : public CRCore::Referenced
 	CRCore::ref_ptr<crInstanceItem> m_user;
 	CRCore::ref_ptr<crInstanceItem> m_target;
 	CRCore::crVector3 m_dirOffset;
+	CRCore::crVector3 m_targetPos;
 };
 struct ItemUseParam : public CRCore::Referenced
 {
@@ -1093,6 +1094,7 @@ struct CRNETAPP_EXPORT HitParam : public CRCore::Referenced
 	CRCore::ref_ptr<crInstanceItem> m_hitItem;
 	CRCore::ref_ptr<crInstanceItem> m_fireItem;
 	float m_rate;
+	CRCore::crVector3 m_targetPos;
 };
 class CRNETAPP_EXPORT crQueryServerListData : public CRCore::Referenced
 {//

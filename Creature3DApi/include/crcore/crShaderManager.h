@@ -174,8 +174,11 @@ public :
 		if (m_currentReuseStateSetIndex<m_buf.size())
 		{
 			crStateSet *idle = m_buf[m_currentReuseStateSetIndex++].get();
-			idle->reset();
-			return idle;
+			if (idle)
+			{
+				idle->reset();
+				return idle;
+			}
 		}
 
 		crStateSet *idle = new crStateSet;

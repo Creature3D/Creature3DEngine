@@ -1005,8 +1005,8 @@ int crMyPlayerData::getCurrentRoleID()
 }
 bool crMyPlayerData::ifItemIsMe(crInstanceItem *item)
 {
-	return item && ((item->getItemtype() == crInstanceItem::Role && item->getID() == m_playerID) || (item->getOwnerRoleID()>0&&item->getOwnerItemID() == m_playerID));
-	//return item && item->getItemtype()==crInstanceItem::Role && (item->getID() == m_playerID || (item->getID()<0&&item->getIName()==getCharacterName()));
+	//return item && ((item->getItemtype() == crInstanceItem::Role && item->getID() == m_playerID) || (item->getOwnerRoleID()>0&&item->getOwnerItemID() == m_playerID));
+	return item && item->getItemtype()==crInstanceItem::Role && (item->getID() == m_playerID || (item->getID()<0&&item->getIName()==getCharacterName()));
 }
 bool crMyPlayerData::ifNodeIsMe(CRCore::crNode *relNode)
 {
@@ -1376,6 +1376,45 @@ void crMyPlayerData::removeInRangeNpc(int itemid)
 //	}
 //	return ItemNpcPair((crInstanceItem*)NULL,(CREncapsulation::crNPC*)NULL);
 //}
+crInstanceItem *crMyPlayerData::getOneInRangeItem(crRole *myRole, float range)
+{
+	void *param;
+	crVector3 epos;
+	crVector3 ipos = myRole->getPosition();
+	crInstanceItem *item;
+	unsigned char itemstate;
+	float dist;
+	crNode *relNode;
+	crData *itemData;
+	float mindist = range;
+	crInstanceItem *nearItem = nullptr;
+	CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_inRangeItemMapMutex);
+	for (InRangeItemMap::iterator itr = m_inRangeItemMap.begin();
+		itr != m_inRangeItemMap.end();
+		++itr)
+	{
+		item = itr->second.first.get();
+		relNode = item->getRelNode();
+		if (!relNode || !relNode->getVisiable())
+			continue;
+		itemData = item->getDataClass();
+		itemData->getParam(WCHDATA_ItemState, param);
+		if (!param)
+			continue;
+		itemstate = *(unsigned char *)param;
+		if (itemstate == IS_Dead)
+			continue;
+
+		epos = item->getPosition();
+		dist = (epos - ipos).length();
+		if (dist < mindist)
+		{
+			mindist = dist;
+			nearItem = item;
+		}
+	}
+	return nearItem;
+}
 crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float attackrange)
 {
 	int autoselectmode = crGlobalHandle::gData()->gWorldValue(WCHDATA_Word_AutoSelectTargetMode);

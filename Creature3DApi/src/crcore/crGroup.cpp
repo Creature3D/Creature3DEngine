@@ -502,6 +502,7 @@ void crGroup::releaseObjects(CRCore::crState* state)
         itr!=m_childArray.end();
         ++itr)
     {
-        (*itr)->releaseObjects(state);
+		if(itr->valid())
+			(*itr)->releaseObjects(state);
     }
 }
