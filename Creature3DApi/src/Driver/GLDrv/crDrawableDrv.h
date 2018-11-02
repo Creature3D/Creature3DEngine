@@ -353,9 +353,10 @@ void crDrawable::flushDeletedVertexBufferObjects(unsigned int contextID,double /
 
 			if (noDeleted!=0)
 			{
+				crDrawable::s_numberVBOs -= noDeleted;
 				char gbuf[256];
-				sprintf(gbuf,"VBOs deleted:%d\n\0",noDeleted);
-				gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
+				sprintf(gbuf, "É¾³ýVBOÊý:%d,Ê£ÓàVBOÊý:%d\n\0", noDeleted, crDrawable::s_numberVBOs);
+				gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 				//notify(CRCore::INFO)<<"Number VBOs deleted = "<<noDeleted<<std::endl;
 			}
 		}
@@ -391,9 +392,10 @@ void crDrawable::flushAllDeletedVertexBufferObjects(unsigned int contextID)
 
 			if (noDeleted!=0)
 			{
+				crDrawable::s_numberVBOs -= noDeleted;
 				char gbuf[256];
-				sprintf(gbuf,"Number VBOs deleted:%d\n\0",noDeleted);
-				gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
+				sprintf(gbuf, "É¾³ýVBOÊý:%d,Ê£ÓàVBOÊý:%d\n\0", noDeleted, crDrawable::s_numberVBOs);
+				gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 				//notify(CRCore::INFO)<<"Number VBOs deleted = "<<noDeleted<<std::endl;
 			}
 		}

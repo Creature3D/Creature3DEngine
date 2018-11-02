@@ -255,13 +255,19 @@ crDrawable *crFilterRenderManager::getDrawable(const std::string &name)
 	//CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_initMutex);
 	if(!m_inited)
 		return NULL;
-	for( crObject::DrawableList::iterator itr = m_orthoObject->getDrawableList().begin();
-		 itr != m_orthoObject->getDrawableList().end();
-		 ++itr )
+	crObject::DrawableList& drawableList = m_orthoObject->getDrawableList();
+	for (int i = 0; i<drawableList.size(); i++)
 	{
-		if(name.compare((*itr)->getName()) == 0)
-			return itr->get();
+		if (name.compare(drawableList[i]->getName()) == 0)
+			return drawableList[i].get();
 	}
+	//for( crObject::DrawableList::iterator itr = m_orthoObject->getDrawableList().begin();
+	//	 itr != m_orthoObject->getDrawableList().end();
+	//	 ++itr )
+	//{
+	//	if(name.compare((*itr)->getName()) == 0)
+	//		return itr->get();
+	//}
 	return NULL;
 }
 //void crFilterRenderManager::addMouse(crDrawable *drawable)
@@ -409,23 +415,33 @@ void crFilterRenderManager::traverse(crNodeVisitor& nv)
 		m_asyncDrawableListMutex.acquire();
 		if(!m_asyncAddDrawableList.empty())
 		{
-			for( crObject::DrawableList::iterator itr = m_asyncAddDrawableList.begin();
-				itr != m_asyncAddDrawableList.end();
-				++itr )
+			int count = m_asyncAddDrawableList.size();
+			for (int i=0; i<count; i++)
 			{
-				m_orthoObject->addDrawable(itr->get());
+				m_orthoObject->addDrawable(m_asyncAddDrawableList[i].get());
 			}
+			//for( crObject::DrawableList::iterator itr = m_asyncAddDrawableList.begin();
+			//	itr != m_asyncAddDrawableList.end();
+			//	++itr )
+			//{
+			//	m_orthoObject->addDrawable(itr->get());
+			//}
 			m_asyncAddDrawableList.resize(0);
 			//m_asyncAddDrawableList.clear();
 		}
 		if(!m_asyncRemoveDrawableList.empty())
 		{
-			for( crObject::DrawableList::iterator itr = m_asyncRemoveDrawableList.begin();
-				itr != m_asyncRemoveDrawableList.end();
-				++itr )
+			int count = m_asyncRemoveDrawableList.size();
+			for (int i = 0; i < count; i++)
 			{
-				m_orthoObject->removeDrawable(itr->get());
+				m_orthoObject->removeDrawable(m_asyncRemoveDrawableList[i].get());
 			}
+			//for( crObject::DrawableList::iterator itr = m_asyncRemoveDrawableList.begin();
+			//	itr != m_asyncRemoveDrawableList.end();
+			//	++itr )
+			//{
+			//	m_orthoObject->removeDrawable(itr->get());
+			//}
 			m_asyncRemoveDrawableList.resize(0);
 			//m_asyncRemoveDrawableList.clear();
 		}
@@ -466,6 +482,7 @@ void crFilterRenderManager::traverse(crNodeVisitor& nv)
 		{
 			canvas = m_activeCanvasTemp.front().get();
 			m_activeCanvasTemp.pop_front();
+			int count = m_activeCanvasDeque.size();
 			for( ActiveCanvasDeque::iterator itr = m_activeCanvasDeque.begin();
 				itr != m_activeCanvasDeque.end();
 				++itr )
@@ -646,13 +663,18 @@ crCanvasNode *crFilterRenderManager::findCanvas(const std::string& id)
 	if(id.compare(m_mainCanvas->getName()) == 0)
 		return m_mainCanvas.get();
 	NodeArray canvasArray = m_identicCamera->getChildArray();
-	for( NodeArray::iterator itr = canvasArray.begin();
-		 itr != canvasArray.end();
-		 ++itr )
+	for (int i=0; i<canvasArray.size(); i++)
 	{
-		if((*itr)->getName().compare(id) == 0)
-			return dynamic_cast<crCanvasNode *>(itr->get());
+		if (canvasArray[i]->getName().compare(id) == 0)
+			return dynamic_cast<crCanvasNode *>(canvasArray[i].get());
 	}
+	//for( NodeArray::iterator itr = canvasArray.begin();
+	//	 itr != canvasArray.end();
+	//	 ++itr )
+	//{
+	//	if((*itr)->getName().compare(id) == 0)
+	//		return dynamic_cast<crCanvasNode *>(itr->get());
+	//}
 	return NULL;
 }
 void crFilterRenderManager::closeAllCanvas()
@@ -660,13 +682,18 @@ void crFilterRenderManager::closeAllCanvas()
 	if(!m_inited)
 		return;
 	NodeArray &canvasArray = m_identicCamera->getChildArray();
-	for( NodeArray::iterator itr = canvasArray.begin();
-		itr != canvasArray.end();
-		++itr )
+	for (int i = 0; i < canvasArray.size(); i++)
 	{
-		if(m_mainCanvas.get() != itr->get() && dynamic_cast<crCanvasNode *>(itr->get()))
-			closeCanvas(dynamic_cast<crCanvasNode *>(itr->get()));
+		if (m_mainCanvas.get() != canvasArray[i].get() && dynamic_cast<crCanvasNode *>(canvasArray[i].get()))
+			closeCanvas(dynamic_cast<crCanvasNode *>(canvasArray[i].get()));
 	}
+	//for( NodeArray::iterator itr = canvasArray.begin();
+	//	itr != canvasArray.end();
+	//	++itr )
+	//{
+	//	if(m_mainCanvas.get() != itr->get() && dynamic_cast<crCanvasNode *>(itr->get()))
+	//		closeCanvas(dynamic_cast<crCanvasNode *>(itr->get()));
+	//}
 }
 void crFilterRenderManager::showCanvas(const std::string& id, bool show)
 {

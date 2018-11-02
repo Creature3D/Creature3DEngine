@@ -14,6 +14,8 @@
 
 #include <CRCore/crBase.h>
 #include <CRCore/crNotify.h>
+#include <CRCore/crStreamBuf.h>
+#include <CRCore/crArgumentParser.h>
 using namespace CRCore;
 
 crBase::crBase(const crBase& obj,const crCopyOp& copyop):
@@ -54,7 +56,10 @@ void crBase::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch(...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crBase::doEvent error msg = "<<kbmsg<<std::endl;
+				char gbuf[256];
+				sprintf(gbuf, "crBase::doEvent error msg=%s,NodeName=%s,NodeClassName=%s,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(),m_name.c_str(),className(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+				//CRCore::notify(CRCore::ALWAYS) << "crBase::doEvent error msg = " << kbmsg << std::endl;
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}

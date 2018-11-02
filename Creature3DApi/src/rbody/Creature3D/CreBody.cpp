@@ -42,7 +42,7 @@
 //#include <CRAL\crSoundState.h>
 //#include <CRAL\crSoundNode.h>
 #include <sys/stat.h>
-
+#include <CRCore/crCalcNodeParentsMatrixVisitor.h>
 using namespace rbody;
 using namespace CRCore;
 using namespace CRIOManager;
@@ -3215,7 +3215,23 @@ void CreBodyNode::eraseGeometry(int mesh)
 		else itr++;
 	}
 }
-
+RequestResult CreBodyNode::executeAction(ActionRequest *action, bool force)
+{
+	if (!force)
+	{
+		if (crDisplaySettings::instance()->getFreezeRender())
+			return UNKNOWN;
+		CRCore::crCalcNodeParentsMatrixVisitor parentMatrix;
+		accept(parentMatrix);
+		crBoundingBox bbox = getBoundBox();
+		bbox.m_max = bbox.m_max * parentMatrix.getResult();
+		bbox.m_min = bbox.m_min * parentMatrix.getResult();
+		bbox.correct();
+		if (!crBrain::getInstance()->getCameraFrustum().contains(bbox))
+			return UNKNOWN;
+	}
+	return getBody()->executeAction(action, force);
+}
 bool CreBodyNode::computeBound() const 
 {   
   // Instead get bounding box from bones (fast)

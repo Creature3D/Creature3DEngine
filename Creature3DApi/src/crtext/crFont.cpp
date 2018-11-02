@@ -323,32 +323,32 @@ crGlyph3D* crFont::getGlyph3D(unsigned int charcode)
 
 void crFont::releaseObjects(CRCore::crState* state)
 {
-	CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_glyphMapMutex);
-    ////if (m_stateset.valid()) m_stateset->releaseObjects(state);
+	//CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_glyphMapMutex);
+ //   ////if (m_stateset.valid()) m_stateset->releaseObjects(state);
 
-    for(GlyphTextureList::iterator itr=m_glyphTextureList.begin();
-        itr!=m_glyphTextureList.end();
-        ++itr)
-    {
-        (*itr)->releaseObjects(state);
-    }
-	m_glyphTextureList.clear();
-	//for( SizeGlyphMap::iterator itr=m_sizeGlyphMap.begin();
-	//	itr!=m_sizeGlyphMap.end();
-	//	++itr )
-	//{
-	//	GlyphMap& glyphmap = itr->second;
-	//	for( GlyphMap::iterator gitr = glyphmap.begin();
-	//		gitr != glyphmap.end();
-	//		++gitr )
-	//	{
-	//		gitr->second->releaseObjects(state);
-	//	}
-	//}
-	//if (m_implementation.valid()) m_implementation->m_facade = 0;
+ //   for(GlyphTextureList::iterator itr=m_glyphTextureList.begin();
+ //       itr!=m_glyphTextureList.end();
+ //       ++itr)
+ //   {
+ //       (*itr)->releaseObjects(state);
+ //   }
+	//m_glyphTextureList.clear();
+	////for( SizeGlyphMap::iterator itr=m_sizeGlyphMap.begin();
+	////	itr!=m_sizeGlyphMap.end();
+	////	++itr )
+	////{
+	////	GlyphMap& glyphmap = itr->second;
+	////	for( GlyphMap::iterator gitr = glyphmap.begin();
+	////		gitr != glyphmap.end();
+	////		++gitr )
+	////	{
+	////		gitr->second->releaseObjects(state);
+	////	}
+	////}
+	////if (m_implementation.valid()) m_implementation->m_facade = 0;
 
-    // const_cast<crFont*>(this)->m_glyphTextureList.clear();
-    // const_cast<crFont*>(this)->m_sizeGlyphMap.clear();
+ //   // const_cast<crFont*>(this)->m_glyphTextureList.clear();
+ //   // const_cast<crFont*>(this)->m_sizeGlyphMap.clear();
 }
 
 CRCore::crVector2 crFont::getKerning(unsigned int leftcharcode,unsigned int rightcharcode, KerningType kerningType)

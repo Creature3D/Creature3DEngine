@@ -19,7 +19,6 @@
 #include <CRCore/crEventGroup.h>
 #include <ode/ode.h>
 #include <algorithm>
-
 using namespace CRCore;
 namespace CRCore
 {
@@ -894,7 +893,11 @@ void crNode::doEvent(__int64 kbmsg, __int64 param)
 		}
 		catch (...)
 		{
-			CRCore::notify(CRCore::ALWAYS)<<"crNode::doEvent error "<<itr->second->_name()<<std::endl;
+			//CRCore::notify(CRCore::ALWAYS)<<"crNode::doEvent error "<<itr->second->_name()<<std::endl;
+			char gbuf[256];
+			sprintf(gbuf, "crNode::doEvent error %s,%s,%s,%d,%d,%s\n\0", getName().c_str(), className(), getParent(0)->className(), m_eventMap.size(), kbmsg, itr->second.valid()?itr->second->className():"ERR");
+			gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+			_asm   int   3   //只是为了让程序崩溃
 		}
 #endif
 	}

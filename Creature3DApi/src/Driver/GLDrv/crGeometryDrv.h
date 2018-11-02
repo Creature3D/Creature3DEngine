@@ -1105,7 +1105,7 @@ void crGeometry::drawImplementation(CRCore::crState& state ) const
 			{
 
 				//CRCore::notify(ALWAYS) << "creating VertexBuffer "<<buffer<<std::endl;
-
+				crDrawable::s_numberVBOs++;
 				extensions->glGenBuffers(1, &buffer);
 				extensions->glBindBuffer(GL_ARRAY_BUFFER_ARB,buffer);
 
@@ -2101,7 +2101,7 @@ void crGeometry::compileImplementation(CRCore::crState& state ) const
 			{
 
 				//CRCore::notify(ALWAYS) << "creating VertexBuffer "<<buffer<<std::endl;
-
+				crDrawable::s_numberVBOs++;
 				extensions->glGenBuffers(1, &buffer);
 				extensions->glBindBuffer(GL_ARRAY_BUFFER_ARB,buffer);
 

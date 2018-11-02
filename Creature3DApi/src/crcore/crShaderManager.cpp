@@ -95,9 +95,9 @@ crShaderManager::ShaderStateSetMap &crShaderManager::getShaderStateSetMap()
 void crShaderManager::releaseObjects(crState* state)
 {
 	//CRCore::ScopedLock<crMutex> lock(m_mutex);
-	for( ShaderStateSetMap::iterator itr = m_shaderStateSetMap.begin();
-		 itr != m_shaderStateSetMap.end();
-		 ++itr )
+	for (ShaderStateSetMap::iterator itr = m_shaderStateSetMap.begin();
+		itr != m_shaderStateSetMap.end();
+		++itr)
 	{
 		itr->second->releaseObjects(state);
 	}
@@ -112,6 +112,7 @@ void crShaderManager::releaseObjects(crState* state)
 		itr != m_buf.end();
 		++itr )
 	{
+		(*itr)->setName("buf");
 		(*itr)->releaseObjects(state);
 	}
     m_buf.clear();//getOrCreateIdleStateSet

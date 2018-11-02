@@ -25,7 +25,7 @@
 #include <CRCore/crArgumentParser.h>
 #include <CRCore/thread/crScopedLock.h>
 #include <CRCore/thread/crMutex.h>
-
+#include <CRCore/crStreamBuf.h>
 using namespace CRCore;
 
 ///////////////////////////////////////////////////////////////////////////
@@ -34,6 +34,7 @@ using namespace CRCore;
 
 crMutex    crShader::s_mutex_deletedGlShaderCache;
 crShader::DeletedGlShaderCache  crShader::s_deletedGlShaderCache;
+unsigned int crShader::s_numberShaders = 0;
 
 void crShader::deleteGlShader(unsigned int contextID, GLuint shader)
 {
@@ -43,6 +44,9 @@ void crShader::deleteGlShader(unsigned int contextID, GLuint shader)
 
         // add glShader to the cache for the appropriate context.
         s_deletedGlShaderCache[contextID].push_back(shader);
+		//char gbuf[256];
+		//sprintf(gbuf, "deleteGlShader:%d,%d\n\0", shader,s_deletedGlShaderCache[contextID].size());
+		//gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
     }
 }
 
@@ -61,11 +65,12 @@ void crShader::flushDeletedGlShaders(unsigned int contextID,double /*currentTime
     {
         CRCore::ScopedLock<crMutex> lock(s_mutex_deletedGlShaderCache);
 
-        GlShaderHandleList& pList = s_deletedGlShaderCache[contextID];
+		GlShaderHandleList& pList = s_deletedGlShaderCache[contextID];
         for(GlShaderHandleList::iterator titr=pList.begin();
             titr!=pList.end() && elapsedTime<availableTime;
             )
         {
+			crShader::s_numberShaders--;
             extensions->glDeleteShader( *titr );
             titr = pList.erase( titr );
             elapsedTime = timer.delta_s(start_tick,timer.tick());
@@ -81,15 +86,20 @@ void crShader::flushAllDeletedGlShaders(unsigned int contextID)
 
 	{
 		CRCore::ScopedLock<crMutex> lock(s_mutex_deletedGlShaderCache);
-
+		int delcount = 0;
 		GlShaderHandleList& pList = s_deletedGlShaderCache[contextID];
 		for(GlShaderHandleList::iterator titr=pList.begin();
 			titr!=pList.end();
 			)
 		{
+			delcount++;
 			extensions->glDeleteShader( *titr );
 			titr = pList.erase( titr );
 		}
+		crShader::s_numberShaders -= delcount;
+		char gbuf[256];
+		sprintf(gbuf, "É¾³ýShaderÊý:%d,Ê£ÓàShaderÊý:%d\n\0", delcount, crShader::s_numberShaders);
+		gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 	}
 }
 void crShader::discardDeletedGlShaders(unsigned int contextID)
@@ -286,12 +296,16 @@ crShader::PerContextShader::PerContextShader(const crShader* shader, unsigned in
     m_shader = shader;
     m_extensions = GL2Extensions::Get( m_contextID, true );
     m_glShaderHandle = m_extensions->glCreateShader( shader->getType() );
+	crShader::s_numberShaders++;
     requestCompile();
 }
 
 
 crShader::PerContextShader::~PerContextShader()
 {
+	//char gbuf[256];
+	//sprintf(gbuf, "DelPerContextShader:%d,%d\n\0", m_contextID, m_glShaderHandle);
+	//gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
     crShader::deleteGlShader( m_contextID, m_glShaderHandle );
 	m_shader = NULL;
 }

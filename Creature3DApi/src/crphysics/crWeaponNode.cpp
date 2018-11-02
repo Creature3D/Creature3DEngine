@@ -1744,8 +1744,14 @@ void crWeaponMatterObject::_fire(crBulletMatterObject *bulletMatterObject, crMat
 	doEvent(WCH_WEAPON_FIRE, MAKEINT64(&gunpoint, bulletMatterObject));
 }
 
-void crWeaponMatterObject::especialFire( crMatterGroup *firePerson, const CRCore::crVector3& target, double time )
+void crWeaponMatterObject::especialFire(crViewMatterObject *fireBody)
 {
+	if (m_currentBullet.valid() && !m_currentBullet->isBulletMatterObjectIdle() && m_fireBody == fireBody)
+	{
+		const crWeaponObject *weaponObject = getWeaponObject();
+		crVector3 gunpoint = weaponObject->getGunPoint() * m_matrix;
+		doEvent(WCH_WEAPON_ESPCIALFIRE, MAKEINT64(&gunpoint, m_currentBullet.get()));
+	}
 }
 
 void crWeaponMatterObject::replaceClip(crMatterGroup *firePerson, double time)

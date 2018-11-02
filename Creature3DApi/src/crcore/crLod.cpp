@@ -14,7 +14,6 @@
 #include <CRCore/crLod.h>
 #include <CRCore/crCullStack.h>
 #include <CRCore/crNotify.h>
-
 #include <algorithm>
 
 using namespace CRCore;

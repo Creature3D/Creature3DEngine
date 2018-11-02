@@ -12033,6 +12033,60 @@ void crItemUseMethod::operator()(crHandle &handle)
 }
 /////////////////////////////////////////
 //
+//crItemEspecialUseMethod
+//
+/////////////////////////////////////////
+crItemEspecialUseMethod::crItemEspecialUseMethod() {}
+crItemEspecialUseMethod::crItemEspecialUseMethod(const crItemEspecialUseMethod& handle) :
+	crMethod(handle)
+{
+}
+void crItemEspecialUseMethod::inputParam(int i, void *param)
+{
+	switch (i)
+	{
+	case 0:
+		if (param == 0)
+		{// Õ∑≈
+			m_this = NULL;
+			m_weapon = NULL;
+		}
+		break;
+	case 1:
+		m_this = (CRPhysics::crViewMatterObject*)param;
+		break;
+	case 2:
+		if (param)
+		{
+			_crInt64 param64 = *(_crInt64*)param;
+			m_weapon = (crGroup *)(LOINT64(param64));
+		}
+		else
+		{
+			m_weapon = NULL;
+		}
+		break;
+	}
+}
+
+void crItemEspecialUseMethod::addParam(int i, const std::string& str)
+{
+}
+
+void crItemEspecialUseMethod::operator()(crHandle &handle)
+{
+	if (m_weapon.valid())
+	{
+		crWeaponMatterObject *weapon = dynamic_cast<crWeaponMatterObject *>(m_weapon->getChild(0));
+		if (weapon)
+		{
+			m_this->selectWeaponMatterObject(weapon);
+			weapon->especialFire(m_this);
+		}
+	}
+}
+/////////////////////////////////////////
+//
 //crBindWeaponMatrixMethod
 //
 /////////////////////////////////////////

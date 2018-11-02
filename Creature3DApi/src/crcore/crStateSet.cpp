@@ -773,10 +773,6 @@ void crStateSet::setAllToInherit()
 
 void crStateSet::clear()
 {
-	m_renderingHint = DEFAULT_BIN;
-
-	setRenderBinToInherit();
-
 	// remove self from as attributes parent
 	for(AttributeList::iterator itr=m_attributeList.begin();
 		itr!=m_attributeList.end();
@@ -820,13 +816,19 @@ void crStateSet::clear()
 	}
 	m_uniformList.clear();
 
+	m_renderingHint = DEFAULT_BIN;
+	setRenderBinToInherit();
 	m_statesetMode = SS_Normal;
+
+	m_parents.clear();
+	dirtyShaderStr();
 }
 
 void crStateSet::reset()
 {
-	m_parents.clear();
-	// remove self from as attributes parent
+	clear();
+	//m_parents.clear();
+	//// remove self from as attributes parent
 	//for(AttributeList::iterator itr=m_attributeList.begin();
 	//	itr!=m_attributeList.end();
 	//	++itr)
@@ -834,10 +836,10 @@ void crStateSet::reset()
 	//	itr->second.first->removeParent(this);
 	//}
 
-	m_modeList.clear();
-	m_attributeList.clear();
+	//m_modeList.clear();
+	//m_attributeList.clear();
 
-	// remove self from as texture attributes parent
+	//// remove self from as texture attributes parent
 	//for(unsigned int i=0;i<m_textureAttributeList.size();++i)
 	//{
 	//	AttributeList& attributeList = m_textureAttributeList[i];
@@ -849,37 +851,20 @@ void crStateSet::reset()
 	//	}
 	//}
 
-	m_textureModeList.clear();
-	m_textureAttributeList.clear();
+	//m_textureModeList.clear();
+	//m_textureAttributeList.clear();
 
-	//// remove self from uniforms parent
+	////// remove self from uniforms parent
 	//for(UniformList::iterator uitr = m_uniformList.begin();
 	//	uitr != m_uniformList.end();
 	//	++uitr)
 	//{
 	//	uitr->second.first->removeParent(this);
 	//}
-	m_uniformList.clear();
-	m_renderingHint = DEFAULT_BIN;
-	setRenderBinToInherit();
-	m_statesetMode = SS_Normal;
-	//delete 20130606
-	//setDataVariance(CRCore::crStateAttribute::STATIC);
+	//m_uniformList.clear();
 	//m_renderingHint = DEFAULT_BIN;
 	//setRenderBinToInherit();
- //   //m_compileCallback = NULL;
-	//m_needCompile = true;
-	//m_updateCallback = NULL;
-	//m_numChildrenRequiringUpdateTraversal = 0;
 	//m_statesetMode = SS_Normal;
-	//m_getRtglmShaderStr.clear();
-	//memset(m_textureOperate,0,16 * sizeof(int));
-	//setTextureOperate(TEXTURE_BASEMAP,2);
-	////setTextureOperate(TEXTURE_SPECULARMAP,2);
-	////setTextureOperate(TEXTURE_EMISSIVEMAP,2);
-	//memset(m_alphaOperate,0,16 * sizeof(int));
-	//setAlphaOperate(TEXTURE_BASEMAP,3);
-	////m_renderInited = false;
 }
 
 void crStateSet::addParent(CRCore::crBase* object)
@@ -1664,37 +1649,39 @@ void crStateSet::compile(crState& state) const
 
 void crStateSet::releaseObjects(crState* state)
 {
-	for(AttributeList::iterator itr = m_attributeList.begin();
-		itr!=m_attributeList.end();
-		++itr)
+	if (m_name != "#buf")
 	{
-		itr->second.first->releaseObjects(state);
-	}
-	//m_attributeList.clear();
-	crTexture *tex;
-	for(TextureAttributeList::iterator taitr=m_textureAttributeList.begin();
-		taitr!=m_textureAttributeList.end();
-		++taitr)
-	{
-		for(AttributeList::iterator itr = taitr->begin();
-			itr!=taitr->end();
+		for (AttributeList::iterator itr = m_attributeList.begin();
+			itr != m_attributeList.end();
 			++itr)
 		{
-			if(referenceCount()<=1)
+			itr->second.first->releaseObjects(state);
+		}
+		//crTexture *tex;
+		for (TextureAttributeList::iterator taitr = m_textureAttributeList.begin();
+			taitr != m_textureAttributeList.end();
+			++taitr)
+		{
+			for (AttributeList::iterator itr = taitr->begin();
+				itr != taitr->end();
+				++itr)
 			{
-                itr->second.first->releaseObjects(state);
-			}
-			else
-			{
-				tex = dynamic_cast<crTexture *>(itr->second.first.get());
-				if(!tex || tex->getImageNameID().empty())
-				{
-					itr->second.first->releaseObjects(state);
-				}
+				itr->second.first->releaseObjects(state);
+				//if (referenceCount() <= 1)
+				//{
+				//	itr->second.first->releaseObjects(state);
+				//}
+				//else
+				//{
+				//	tex = dynamic_cast<crTexture *>(itr->second.first.get());
+				//	if (!tex || tex->getImageNameID().empty())
+				//	{
+				//		itr->second.first->releaseObjects(state);
+				//	}
+				//}
 			}
 		}
 	}
-	//m_textureAttributeList.clear();
 }
 
 void crStateSet::setRenderingHint(RenderingHint hint)

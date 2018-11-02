@@ -1738,11 +1738,17 @@ bool crGeometry::expand(const crGeometry& source,int& offset)
 void crGeometry::releaseObjects(crState* state)
 {
 	crDrawable::releaseObjects(state);
-	for( PrimitiveList::iterator itr = m_primitives.begin();
-		 itr != m_primitives.end();
-		 ++itr )
+	int count = m_primitives.size();
+	for (int i = 0; i < count; i++)
 	{
-        (*itr)->releaseObjects(state);
+		if (m_primitives[i].valid())
+			m_primitives[i]->releaseObjects(state);
 	}
+	//for( PrimitiveList::iterator itr = m_primitives.begin();
+	//	 itr != m_primitives.end();
+	//	 ++itr )
+	//{
+ //       (*itr)->releaseObjects(state);
+	//}
 }
 #include <Driver/GLDrv/crGeometryDrv.h>

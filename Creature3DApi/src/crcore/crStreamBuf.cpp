@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include "windows.h"
+#include <time.h>
 using namespace CRCore;
 #define CookSize 4
 crStreamBuf::crStreamBuf(int cook):
@@ -1375,9 +1376,13 @@ void crDebugInfo::init(const std::string &info)
 void crDebugInfo::debugInfo(const NotifySeverity severity,char *str)
 {
 	CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_mutex);
-	notify(severity)<<str;
+	time_t t = time(0);
+	char tmp[21];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S \0", localtime(&t));
+	notify(severity)<<tmp<<str;
 	if(m_stream.valid())
 	{
+		m_stream->write(tmp, strlen(tmp));
 		m_stream->write(str,strlen(str));
 		if(m_stream->getBufSize()>10000)
 			writeToFile();

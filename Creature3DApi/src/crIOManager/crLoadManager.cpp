@@ -177,7 +177,7 @@ void crLoadManager::requestNode(const std::string& fileName,CRCore::crGroup* par
 	//CRCore::notify(CRCore::FATAL)<<"crLoadManager::requestNode(): fileName = "<<fileName.c_str()<<std::endl;
 	do 
 	{
-		if(fileName.empty())
+		if(!parent || fileName.empty())
 			break;
 		crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
 		if(!reload && asyncLoad && dp->getInited())
@@ -222,7 +222,7 @@ void crLoadManager::requestNode(const std::string& fileName,CRCore::crGroup* par
 
 void crLoadManager::requestAddNode(CRCore::crGroup* parent,CRCore::crNode* loadedNode,bool needCompile)
 {
-	if(loadedNode)
+	if(parent && loadedNode)
 	{
 		ref_ptr<crGroup> dummyGroup = dynamic_cast<crGroup *>(loadedNode);
 		if(dummyGroup.valid()&&dummyGroup->getName().compare("LoadNodeDummy")==0)
@@ -247,25 +247,31 @@ void crLoadManager::requestAddNode(CRCore::crGroup* parent,CRCore::crNode* loade
 
 void crLoadManager::requestRemoveNode(CRCore::crGroup* parent,CRCore::crNode* loadedNode)
 {
-	crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
-	if(dp->getInited())
+	if (parent && loadedNode)
 	{
-		dp->requestRemoveNode(parent,loadedNode);
-	}
-	else
-	{
-		loadedNode->releaseObjects();
-		parent->removeChild(loadedNode);
+		crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
+		if (dp->getInited())
+		{
+			dp->requestRemoveNode(parent, loadedNode);
+		}
+		else
+		{
+			loadedNode->releaseObjects();
+			parent->removeChild(loadedNode);
+		}
 	}
 }
 
 void crLoadManager::requestCompile(CRCore::crNode* loadedNode)
 {
-	crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
-	if(dp->getInited())
+	if (loadedNode)
 	{
-		//CRCore::notify(CRCore::FATAL)<<"crLoadManager::requestCompile() "<<loadedNode->getName()<<std::endl;
-		dp->requestCompile(loadedNode);
+		crDatabasePager *dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
+		if (dp->getInited())
+		{
+			//CRCore::notify(CRCore::FATAL)<<"crLoadManager::requestCompile() "<<loadedNode->getName()<<std::endl;
+			dp->requestCompile(loadedNode);
+		}
 	}
 }
 //void crLoadManager::requestCompileStateSet(CRCore::crStateSet* ss)

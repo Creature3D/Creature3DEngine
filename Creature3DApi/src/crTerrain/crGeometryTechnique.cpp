@@ -326,8 +326,8 @@ void crGeometryTechnique::generateGeometry(crLocator* masterLocator, const CRCor
         unsigned int originalNumColumns = numColumns;
         unsigned int originalNumRows = numRows;
     
-        numColumns = std::max((unsigned int) (float(originalNumColumns)*sqrtf(sampleRatio)), 4u);
-        numRows = std::max((unsigned int) (float(originalNumRows)*sqrtf(sampleRatio)),4u);
+        numColumns = CRCore::maximum((unsigned int) (float(originalNumColumns)*sqrtf(sampleRatio)), 4u);
+        numRows = CRCore::maximum((unsigned int) (float(originalNumRows)*sqrtf(sampleRatio)),4u);
 
         i_sampleFactor = double(originalNumColumns-1)/double(numColumns-1);
         j_sampleFactor = double(originalNumRows-1)/double(numRows-1);

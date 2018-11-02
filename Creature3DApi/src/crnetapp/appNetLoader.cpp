@@ -237,6 +237,7 @@ void CRNetApp::registerHandleClass()
 	//CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crNetUseItemMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crCheckCurrentAttackWeaponMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crItemUseMethod);
+	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crItemEspecialUseMethod);
 
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crBotCollideMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crGetDamageFormula1Method);

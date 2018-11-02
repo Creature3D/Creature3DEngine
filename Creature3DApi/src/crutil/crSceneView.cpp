@@ -690,7 +690,10 @@ void crSceneView::update()
 		}
 		catch (...)
 		{
-			CRCore::notify(CRCore::ALWAYS)<<"crSceneView Brain Update error "<<std::endl;
+			//CRCore::notify(CRCore::ALWAYS)<<"crSceneView Brain Update error "<<std::endl;
+			char gbuf[256];
+			sprintf(gbuf, "%s\n\0", "crSceneView Brain Update error");
+			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		}
 #endif
 #if _DEBUG
@@ -702,7 +705,10 @@ void crSceneView::update()
 		}
 		catch (...)
 		{
-			CRCore::notify(CRCore::ALWAYS)<<"crSceneView::m_updateVisitor error "<<std::endl;
+			//CRCore::notify(CRCore::ALWAYS)<<"crSceneView::m_updateVisitor error "<<std::endl;
+			char gbuf[256];
+			sprintf(gbuf, "%s\n\0", "crSceneView::m_updateVisitor error");
+			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		}
 #endif
 #if _DEBUG
@@ -1020,7 +1026,10 @@ void crSceneView::cull(int vreye)
 		}
 		catch (...)
 		{
-			CRCore::notify(CRCore::ALWAYS) << "crSceneView::cull error " << std::endl;
+			//CRCore::notify(CRCore::ALWAYS) << "crSceneView::cull error " << std::endl;
+			char gbuf[256];
+			sprintf(gbuf, "%s\n\0", "crSceneView::cull error");
+			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		}
 #endif
 	}
@@ -1192,7 +1201,11 @@ void crSceneView::cullStage(const CRCore::crMatrixd& projection,const CRCore::cr
 	}
 	catch (...)
 	{
-		CRCore::notify(CRCore::ALWAYS)<<"crSceneView::cullvisitor error "<<std::endl;
+		//CRCore::notify(CRCore::ALWAYS)<<"crSceneView::cullvisitor error "<<std::endl;
+		char gbuf[256];
+		sprintf(gbuf, "%s\n\0", "crSceneView::cullvisitor error");
+		gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
+		_asm   int   3   //只是为了让程序崩溃
 	}
 #endif
 

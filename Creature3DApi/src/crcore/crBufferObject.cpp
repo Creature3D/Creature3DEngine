@@ -34,7 +34,7 @@ typedef std::map<unsigned int,DisplayListMap> DeletedBufferObjectCache;
 
 static crMutex s_mutex_deletedBufferObjectCache;
 static DeletedBufferObjectCache s_deletedBufferObjectCache;
-
+unsigned int crBufferObject::s_numberIBOs = 0;
 void crBufferObject::deleteBufferObject(unsigned int contextID,GLuint globj)
 {
     if (globj!=0)
@@ -84,9 +84,10 @@ void crBufferObject::flushDeletedBufferObjects(unsigned int contextID,double /*c
 
             if (noDeleted!=0)
 			{
+				crBufferObject::s_numberIBOs -= noDeleted;
 				char gbuf[256];
-				sprintf(gbuf,"IBOs deleted:%d\n\0",noDeleted);
-				gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
+				sprintf(gbuf, "É¾³ýIBOÊý:%d,Ê£ÓàIBOÊý:%d\n\0", noDeleted, crBufferObject::s_numberIBOs);
+				gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 				//notify(CRCore::INFO)<<"Number VBOs deleted = "<<noDeleted<<std::endl;
 			}
         }
@@ -120,9 +121,10 @@ void crBufferObject::flushAllDeletedBufferObjects(unsigned int contextID)
 
 		if (noDeleted!=0)
 		{
+			crBufferObject::s_numberIBOs -= noDeleted;
 			char gbuf[256];
-			sprintf(gbuf,"Number IBOs deleted:%d\n\0",noDeleted);
-			gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
+			sprintf(gbuf, "É¾³ýIBOÊý:%d,Ê£ÓàIBOÊý:%d\n\0", noDeleted, crBufferObject::s_numberIBOs);
+			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 			//notify(CRCore::INFO)<<"Number VBOs deleted = "<<noDeleted<<std::endl;
 		}
 	}
@@ -743,6 +745,7 @@ void crPixelBufferObject::compileBuffer(crState& state) const
         // don't generate buffer if size is zero.        
         if (m_totalSize==0) return;
 
+		crBufferObject::s_numberIBOs++;
         extensions->glGenBuffers(1, &pbo);
         extensions->glBindBuffer(m_target, pbo);
         extensions->glBufferData(m_target, m_totalSize, NULL,

@@ -290,6 +290,8 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 							return;
 					}
 				}
+				if(ea->getButton() == crGUIEventAdapter::LEFT_MOUSE_BUTTON && (ea->getEventType() == crGUIEventAdapter::PUSH || ea->getEventType() == crGUIEventAdapter::RELEASE))
+					return;
 			}
 			else
 			{

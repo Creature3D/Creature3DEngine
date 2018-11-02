@@ -148,10 +148,11 @@ void crGlobalHandle::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch (...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crGlobalHandle::doEvent error msg = "<<kbmsg<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crGlobalHandle::doEvent error msg = "<<kbmsg<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
-				//sprintf(gDebugInfo->buf(),"crGlobalHandle::doEvent error msg=%s\n\0",crArgumentParser::appI64toa(kbmsg).c_str());
-				//gDebugInfo->debugInfo(CRCore::ALWAYS);
+				char gbuf[256];
+				sprintf(gbuf, "crGlobalHandle::doEvent error msg=%s,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}
@@ -699,10 +700,11 @@ void crRunGameHandle::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch (...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crRunGameHandle::doEvent error msg = "<<kbmsg<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crRunGameHandle::doEvent error msg = "<<kbmsg<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
-				//sprintf(gDebugInfo->buf(),"crRunGameHandle::doEvent error msg=%s\n\0",crArgumentParser::appI64toa(kbmsg).c_str());
-				//gDebugInfo->debugInfo(CRCore::ALWAYS);
+				char gbuf[256];
+				sprintf(gbuf, "crRunGameHandle::doEvent error msg=%s,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}
@@ -830,10 +832,12 @@ void crServerBrainHandle::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch (...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crServerBrainHandle::doEvent error msg = "<<kbmsg<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crServerBrainHandle::doEvent error msg = "<<kbmsg<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
 				//sprintf(gDebugInfo->buf(),"crRunGameHandle::doEvent error msg=%s\n\0",crArgumentParser::appI64toa(kbmsg).c_str());
-				//gDebugInfo->debugInfo(CRCore::ALWAYS);
+				char gbuf[256];
+				sprintf(gbuf, "crServerBrainHandle::doEvent error msg=%s,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}

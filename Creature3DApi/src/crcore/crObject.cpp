@@ -55,24 +55,33 @@ crObject::crObject(const crObject& object,const crCopyOp& copyop):
   m_outlineColorMode(OL_Black)
 {
   m_NodeType = NT_OBJECT;
-  for(DrawableList::const_iterator itr=object.m_drawables.begin();
-    itr!=object.m_drawables.end();
-    ++itr)
+  for (int i = 0; i<object.m_drawables.size(); i++)
   {
-    crDrawable* drawable = copyop(itr->get());
-    if (drawable) addDrawable(drawable);
+	  crDrawable* drawable = copyop(object.m_drawables[i].get());
+	  if (drawable) addDrawable(drawable);
   }
+  //for(DrawableList::const_iterator itr=object.m_drawables.begin();
+  //  itr!=object.m_drawables.end();
+  //  ++itr)
+  //{
+  //  crDrawable* drawable = copyop(itr->get());
+  //  if (drawable) addDrawable(drawable);
+  //}
 }
 
 crObject::~crObject()
 {
   // remove reference to this from children's parent lists.
-  for(DrawableList::iterator itr=m_drawables.begin();
-    itr!=m_drawables.end();
-    ++itr)
-  {
-    (*itr)->removeParent(this);
-  }
+	for (int i = 0; i<m_drawables.size(); i++)
+	{
+		m_drawables[i]->removeParent(this);
+	}
+  //for(DrawableList::iterator itr=m_drawables.begin();
+  //  itr!=m_drawables.end();
+  //  ++itr)
+  //{
+  //  (*itr)->removeParent(this);
+  //}
 }
 
 void crObject::releaseObjects(CRCore::crState* state)
@@ -82,13 +91,19 @@ void crObject::releaseObjects(CRCore::crState* state)
 
 	crNode::releaseObjects(state);
 
-	for(DrawableList::iterator itr=m_drawables.begin();
-		itr!=m_drawables.end();
-		++itr)
+	int count = m_drawables.size();
+	for (int i = 0; i < count; i++)
 	{
-		if (itr->valid())
-			(*itr)->releaseObjects(state);
+		if (m_drawables[i].valid())
+			m_drawables[i]->releaseObjects(state);
 	}
+	//for(DrawableList::iterator itr=m_drawables.begin();
+	//	itr!=m_drawables.end();
+	//	++itr)
+	//{
+	//	if (itr->valid())
+	//		(*itr)->releaseObjects(state);
+	//}
 }
 
 void crObject::releaseOde()
@@ -111,35 +126,47 @@ void crObject::releaseOde()
 
 void crObject::compileDrawables(crState& state)
 {
-	for(DrawableList::iterator itr = m_drawables.begin();
-		itr!=m_drawables.end();
-		++itr)
+	for (int i = 0; i<m_drawables.size(); i++)
 	{
-		(*itr)->compile(state);
+		m_drawables[i]->compile(state);
 	}
+	//for(DrawableList::iterator itr = m_drawables.begin();
+	//	itr!=m_drawables.end();
+	//	++itr)
+	//{
+	//	(*itr)->compile(state);
+	//}
 }
 
 bool crObject::containsDrawable(const crDrawable* gset)
 {
 	const crDrawable::ParentList &parents = gset->getParents();
-	for(crDrawable::ParentList::const_iterator itr = parents.begin();
-		itr != parents.end();
-		++itr)
+	for (int i = 0; i < parents.size(); i++)
 	{
-		if( (*itr) == this ) return true;
+		if (parents[i] == this) return true;
 	}
+	//for(crDrawable::ParentList::const_iterator itr = parents.begin();
+	//	itr != parents.end();
+	//	++itr)
+	//{
+	//	if( (*itr) == this ) return true;
+	//}
 	return false;
 }
 
 bool crObject::containsDrawable(const crDrawable* gset) const
 {
 	const crDrawable::ParentList &parents = gset->getParents();
-	for(crDrawable::ParentList::const_iterator itr = parents.begin();
-		itr != parents.end();
-		++itr)
+	for (int i = 0; i < parents.size(); i++)
 	{
-		if( (*itr) == this ) return true;
+		if (parents[i] == this) return true;
 	}
+	//for(crDrawable::ParentList::const_iterator itr = parents.begin();
+	//	itr != parents.end();
+	//	++itr)
+	//{
+	//	if( (*itr) == this ) return true;
+	//}
 	return false;
 }
 
@@ -315,13 +342,17 @@ bool crObject::computeBound() const
 
 	m_bbox.init();
 
-    DrawableList::const_iterator itr;
-    for(itr = m_drawables.begin();
-        itr != m_drawables.end();
-        ++itr)
+	for (int i = 0; i < m_drawables.size(); i++)
 	{
-		m_bbox.expandBy((*itr)->getBoundBox());
+		m_bbox.expandBy(m_drawables[i]->getBoundBox());
 	}
+ //   DrawableList::const_iterator itr;
+ //   for(itr = m_drawables.begin();
+ //       itr != m_drawables.end();
+ //       ++itr)
+	//{
+	//	m_bbox.expandBy((*itr)->getBoundBox());
+	//}
 
 	if (m_bbox.valid())
 	{
@@ -395,13 +426,18 @@ void crObject::swapBuffers(int frameNumber)
 {//剪裁线程与绘制线程的同步
 	if(m_swapFrameNumber != frameNumber)
 	{
-		for( DrawableList::iterator itr = m_drawables.begin();
-			itr != m_drawables.end();
-			++itr )
+		int count = m_drawables.size();
+		for (int i = 0; i<count; i++)
 		{
-			if(itr->valid())
-				(*itr)->swapBuffers(frameNumber);
+			m_drawables[i]->swapBuffers(frameNumber);
 		}
+		//for( DrawableList::iterator itr = m_drawables.begin();
+		//	itr != m_drawables.end();
+		//	++itr )
+		//{
+		//	if(itr->valid())
+		//		(*itr)->swapBuffers(frameNumber);
+		//}
 		crNode::swapBuffers(frameNumber);
 		m_swapFrameNumber = frameNumber;
 	}

@@ -369,6 +369,8 @@ _crInt32 CREncapsulation::parseEventMsg( const std::string &str )
 
 	if(str.compare("WCH_WEAPON_FIRE") == 0)
 		return WCH_WEAPON_FIRE;
+	if (str.compare("WCH_WEAPON_ESPCIALFIRE") == 0)
+		return WCH_WEAPON_ESPCIALFIRE;
 	if(str.compare("WCH_WEAPON_REPLACECLIP") == 0)
 		return WCH_WEAPON_REPLACECLIP;
 	if(str.compare("WCH_WEAPON_SELECT") == 0)

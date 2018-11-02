@@ -51,7 +51,7 @@ void crBlockDetectThread::done()
 }
 void crBlockDetectThread::update()
 {
-	m_timer = 0;
+	m_timer = CRCore::Timer::instance()->tick();
 }
 void crBlockDetectThread::setTimeout(int timeout)
 {
@@ -68,29 +68,21 @@ void crBlockDetectThread::resume()
 void crBlockDetectThread::run()
 {
 	m_done = false;
-	m_timer = 0;
-	//int error = 1;
-	//CRCore::crCondition m_condition;
-	//CRCore::crMutex m_mutex;
-	setSchedulePriority(THREAD_PRIORITY_HIGH);
+	m_timer = CRCore::Timer::instance()->tick();
+	CRCore::Timer_t t1;
+	float dt;
+	setSchedulePriority(THREAD_PRIORITY_NOMINAL);
 	while(!m_done)
 	{
-		if(!m_pause) m_timer++;
-		if(m_timer>m_timeout)
+		if (!m_pause)
 		{
-			//if(MessageBox(::GetDesktopWindow(),"程序无响应，是否继续运行？","Creature3D",MB_YESNO)==IDNO)
-			//{
-				//if(m_timer>m_timeout)
-				//{
-					_asm   int   3   //只是为了让程序崩溃
-				//}
-			//}
-			//else
-			//{
-			//	m_timer = 0;
-			//}
+			t1 = CRCore::Timer::instance()->tick();
+			dt = CRCore::Timer::instance()->delta_s(m_timer, t1);
+			if (dt > m_timeout)
+			{
+				_asm   int   3   //只是为了让程序崩溃
+			}
 		}
 		crThread::sleep(1000);
-		//m_condition.wait(&m_mutex,1000);
 	}
 }

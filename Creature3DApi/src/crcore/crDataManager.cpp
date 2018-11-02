@@ -14,6 +14,8 @@
 #include <CRCore/crDataManager.h>
 #include <CRCore/crBrain.h>
 #include <CRCore/crState.h>
+#include <CRCore/crArgumentParser.h>
+#include <CRCore/crStreamBuf.h>
 using namespace CRCore;
 ref_ptr<crDataManager> crDataManager::m_instance = NULL;
 
@@ -115,7 +117,10 @@ void crDataObject::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch (...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crDataObject::doEvent error msg = "<<kbmsg<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crDataObject::doEvent error msg = "<<kbmsg<<std::endl;
+				char gbuf[256];
+				sprintf(gbuf, "crDataObject::doEvent error msg=%s,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}

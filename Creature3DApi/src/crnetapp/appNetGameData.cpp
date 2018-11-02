@@ -1118,10 +1118,11 @@ void crInstanceItem::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch (...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crInstanceItem::doEvent error msg = "<<kbmsg<<" itemid = "<<getInstanceItemID()<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crInstanceItem::doEvent error msg = "<<kbmsg<<" itemid = "<<getInstanceItemID()<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
-				//sprintf(gDebugInfo->buf(),"crInstanceItem::doEvent error msg=%s itemid=%d\n\0",crArgumentParser::appI64toa(kbmsg),getInstanceItemID());
-				//gDebugInfo->debugInfo(CRCore::FATAL);
+				char gbuf[256];
+				sprintf(gbuf,"crInstanceItem::doEvent error msg=%s itemid=%d,DataName=%s,DataClassName=%s\n\0",crArgumentParser::appI64toa(kbmsg),getInstanceItemID(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}
@@ -5240,8 +5241,11 @@ void crPlayerGameData::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch(...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crPlayerGameData::doEvent error msg = "<<kbmsg<<" playerid = "<<getPlayerID()<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crPlayerGameData::doEvent error msg = "<<kbmsg<<" playerid = "<<getPlayerID()<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
+				char gbuf[256];
+				sprintf(gbuf, "crPlayerGameData::doEvent error msg=%s,playerid=%d,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(), getPlayerID(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}
@@ -6367,8 +6371,11 @@ void crRoom::doEvent(_crInt64 kbmsg, _crInt64 param)
 			}
 			catch(...)
 			{
-				CRCore::notify(CRCore::ALWAYS)<<"crRoom::doEvent error msg = "<<kbmsg<<std::endl;
+				//CRCore::notify(CRCore::ALWAYS)<<"crRoom::doEvent error msg = "<<kbmsg<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
+				char gbuf[256];
+				sprintf(gbuf, "crRoom::doEvent error msg=%s,DataName=%s,DataClassName=%s\n\0", crArgumentParser::appI64toa(kbmsg).c_str(), data->_name(), data->className());
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 			}
 			crHandleManager::getInstance()->endExecuteHandle(handle);
 		}

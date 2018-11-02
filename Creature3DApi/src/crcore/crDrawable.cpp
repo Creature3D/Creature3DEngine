@@ -24,7 +24,7 @@ unsigned int crDrawable::s_numberDrawablesReusedLastInLastFrame = 0;
 unsigned int crDrawable::s_numberNewDrawablesInLastFrame = 0;
 unsigned int crDrawable::s_numberDeletedDrawablesInLastFrame = 0;
 unsigned int crDrawable::s_minimumNumberOfDisplayListsToRetainInCache = 0;
-
+unsigned int crDrawable::s_numberVBOs = 0;
 crMutex crDrawable::s_mutex_deletedDisplayListCache;
 crMutex crDrawable::s_mutex_deletedVertexBufferObjectCache;
 crDrawable::DeletedDisplayListCache crDrawable::s_deletedDisplayListCache;

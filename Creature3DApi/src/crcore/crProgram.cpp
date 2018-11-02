@@ -21,6 +21,7 @@
 #include <CRCore/ref_ptr.h>
 #include <CRCore/crProgram.h>
 #include <CRCore/crShader.h>
+#include <CRCore/crStreamBuf.h>
 #include <crgl/GL2Extensions.h>
 
 #include <CRCore/thread/crScopedLock.h>
@@ -33,7 +34,7 @@ using namespace CRCore;
 
 crMutex    crProgram::s_mutex_deletedGlProgramCache;
 crProgram::DeletedGlProgramCache crProgram::s_deletedGlProgramCache;
-
+unsigned int crProgram::s_numberPrograms = 0;
 void crProgram::deleteGlProgram(unsigned int contextID, GLuint program)
 {
     if( program )
@@ -42,6 +43,9 @@ void crProgram::deleteGlProgram(unsigned int contextID, GLuint program)
 
         // add glProgram to the cache for the appropriate context.
         s_deletedGlProgramCache[contextID].push_back(program);
+		//char gbuf[256];
+		//sprintf(gbuf, "deleteGlProgram:%d,%d\n\0", program, s_deletedGlProgramCache[contextID].size());
+		//gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
     }
 }
 
@@ -65,6 +69,7 @@ void crProgram::flushDeletedGlPrograms(unsigned int contextID,double /*currentTi
             titr!=pList.end() && elapsedTime<availableTime;
             )
         {
+			crProgram::s_numberPrograms--;
             extensions->glDeleteProgram( *titr );
             titr = pList.erase( titr );
             elapsedTime = timer.delta_s(start_tick,timer.tick());
@@ -79,15 +84,20 @@ void crProgram::flushAllDeletedGlPrograms(unsigned int contextID)
 	const GL2Extensions* extensions = GL2Extensions::Get(contextID,true);
 	if( ! extensions->isGlslSupported() ) return;
 	{
-
+		int delcount = 0;
 		GlProgramHandleList& pList = s_deletedGlProgramCache[contextID];
 		for(GlProgramHandleList::iterator titr=pList.begin();
 			titr!=pList.end();
 			)
 		{
+			delcount++;
 			extensions->glDeleteProgram( *titr );
 			titr = pList.erase( titr );
 		}
+		crProgram::s_numberPrograms -= delcount;
+		char gbuf[256];
+		sprintf(gbuf, "É¾³ýProgramÊý:%d,Ê£ÓàProgramÊý:%d\n\0", delcount, crProgram::s_numberPrograms);
+		gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 	}
 }
 void crProgram::discardDeletedGlPrograms(unsigned int contextID)
@@ -463,11 +473,15 @@ crProgram::PerContextProgram::PerContextProgram(const crProgram* program, unsign
     m_program = program;
     m_extensions = GL2Extensions::Get( m_contextID, true );
     m_glProgramHandle = m_extensions->glCreateProgram();
+	crProgram::s_numberPrograms++;
     requestLink();
 }
 
 crProgram::PerContextProgram::~PerContextProgram()
 {
+	//char gbuf[256];
+	//sprintf(gbuf, "DelPerContextProgram:%d,%d\n\0", m_contextID, m_glProgramHandle);
+	//gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
     crProgram::deleteGlProgram( m_contextID, m_glProgramHandle );
 	m_program = NULL;
 }

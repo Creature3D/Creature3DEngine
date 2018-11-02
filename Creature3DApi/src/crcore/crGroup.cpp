@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <algorithm>
-
+#include <CRCore/crStreamBuf.h>
 using namespace CRCore;
 
 crGroup::crGroup()
@@ -35,60 +35,114 @@ crNode(group,copyop),
 m_attributeMask(group.m_attributeMask)
 {
   m_NodeType = NT_GROUP;
-  for(NodeArray::const_iterator itr=group.m_childArray.begin();
-    itr!=group.m_childArray.end();
-    ++itr)
+  for (int i = 0; i<group.m_childArray.size(); i++)
   {
-    crNode* child = copyop(itr->get());
-    if (child) addChild(child);
+	  crNode* child = copyop(group.m_childArray[i].get());
+	  if (child) addChild(child);
   }
+  //for(NodeArray::const_iterator itr=group.m_childArray.begin();
+  //  itr!=group.m_childArray.end();
+  //  ++itr)
+  //{
+  //  crNode* child = copyop(itr->get());
+  //  if (child) addChild(child);
+  //}
 }
 
 crGroup::~crGroup()
 {
   // remove reference to this from children's parent lists.
-  for(NodeArray::iterator itr=m_childArray.begin();
-    itr!=m_childArray.end();
-    ++itr)
-  {
-	  (*itr)->removeParent(this);
-  }
-
+  //for(NodeArray::iterator itr=m_childArray.begin();
+  //  itr!=m_childArray.end();
+  //  ++itr)
+  //{
+	 // (*itr)->removeParent(this);
+  //}
+	for (int i=0; i<m_childArray.size();i++)
+	{
+		m_childArray[i]->removeParent(this);
+	}
 }
 
 
 void crGroup::traverse(crNodeVisitor& nv)
 {
-  for(NodeArray::iterator itr=m_childArray.begin();
-    itr!=m_childArray.end();
-    ++itr)
-  {
-	  (*itr)->accept(nv);
-  }
+	int count = m_childArray.size();
+	//try
+	//{
+	for (int i = 0; i<count; i++)
+	{
+		if(m_childArray[i].valid())
+			m_childArray[i]->accept(nv);
+	}
+	//}
+	//catch (...)
+	//{
+	//	//CRCore::notify(CRCore::ALWAYS)<<"crNode::doEvent error "<<itr->second->_name()<<std::endl;
+	//	char gbuf[256];
+	//	sprintf(gbuf, "crGroup::traverse error %s,%s,%s,%d,%d,%d\n\0", getName().c_str(), className(), getParent(0)->className(), count, GetLastError(),nv.getNodePath().size());
+	//	gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+	//	NodePath &nodePath = nv.getNodePath();
+	//	for (int i = 0; i<nodePath.size(); i++)
+	//	{
+	//		char gbuf1[256];
+	//		sprintf(gbuf1, "NodePath %s,%s\n\0", nodePath[i]->getName().c_str(), nodePath[i]->className());
+	//		gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf1);
+	//	}
+	//	HANDLE handle = GetCurrentProcess();
+	//	PROCESS_MEMORY_COUNTERS pmc;
+	//	GetProcessMemoryInfo(handle, &pmc, sizeof(pmc));
+	//	sprintf(gbuf, "内存使用:%d,峰值内存:%d,虚拟内存:%d,峰值虚拟内存:%d\n\0", pmc.WorkingSetSize / 1000, pmc.PeakWorkingSetSize / 1000, pmc.PagefileUsage / 1000, pmc.PeakPagefileUsage / 1000);
+	//	gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+	//	for (int i = 0; i < count; i++)
+	//	{
+	//		if (m_childArray[i].valid())
+	//		{
+	//			char gbuf1[256];
+	//			sprintf(gbuf1, "crGroup::traverse1 error %s,%s,%f\n\0", m_childArray[i]->getName().c_str(), m_childArray[i]->className(), m_childArray[i]->getBound().radius());
+	//			gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf1);
+	//		}
+	//	}
+	//	_asm   int   3   //只是为了让程序崩溃
+	//}
+  //for(NodeArray::iterator itr=m_childArray.begin();
+  //  itr!=m_childArray.end();
+  //  ++itr)
+  //{
+	 // (*itr)->accept(nv);
+  //}
 }
 
 /** return true if node is contained within crGroup.*/
 bool crGroup::containsNode( const crNode* node )
 {
 	const ParentArray &parents = node->getParents();
-	for(ParentArray::const_iterator itr = parents.begin();
-		itr != parents.end();
-		++itr)
+	for (int i = 0; i<parents.size(); i++)
 	{
-		if( (*itr) == this ) return true;
+		if (parents[i] == this) return true;
 	}
+	//for(ParentArray::const_iterator itr = parents.begin();
+	//	itr != parents.end();
+	//	++itr)
+	//{
+	//	if( (*itr) == this ) return true;
+	//}
 	return false;
 }
 
 bool crGroup::containsNode( const crNode* node ) const
 {
 	const ParentArray &parents = node->getParents();
-	for(ParentArray::const_iterator itr = parents.begin();
-		itr != parents.end();
-		++itr)
+	for (int i = 0; i<parents.size();i++)
 	{
-		if( (*itr) == this ) return true;
+		if (parents[i] == this) return true;
 	}
+	//for(ParentArray::const_iterator itr = parents.begin();
+	//	itr != parents.end();
+	//	++itr)
+	//{
+	//	if( (*itr) == this ) return true;
+	//}
 	return false;
 }
 
@@ -458,18 +512,21 @@ bool crGroup::computeBound() const
   // note, special handling of the case when a child is an Transform,
   // such that only Transforms which are relative to their parents coordinates frame (i.e this group)
   // are handled, Transform relative to and absolute reference frame are ignored.
-
-  NodeArray::const_iterator itr;
-  for(itr=m_childArray.begin();
-    itr!=m_childArray.end();
-    ++itr)
+  for (int i = 0; i<m_childArray.size();i++)
   {
-    //const CRCore::crTransform* transform = (*itr)->asTransform();
-    //if (!transform || transform->getReferenceFrame()==CRCore::crTransform::RELATIVE_TO_PARENTS)
-    {
-      m_bbox.expandBy((*itr)->getBoundBox());
-    }
+	  m_bbox.expandBy(m_childArray[i]->getBoundBox());
   }
+  //NodeArray::const_iterator itr;
+  //for(itr=m_childArray.begin();
+  //  itr!=m_childArray.end();
+  //  ++itr)
+  //{
+  //  //const CRCore::crTransform* transform = (*itr)->asTransform();
+  //  //if (!transform || transform->getReferenceFrame()==CRCore::crTransform::RELATIVE_TO_PARENTS)
+  //  {
+  //    m_bbox.expandBy((*itr)->getBoundBox());
+  //  }
+  //}
 
   if (!m_bbox.valid()) 
   {
@@ -498,11 +555,17 @@ bool crGroup::computeBound() const
 void crGroup::releaseObjects(CRCore::crState* state)
 {
     crNode::releaseObjects(state);
-    for(NodeArray::iterator itr=m_childArray.begin();
-        itr!=m_childArray.end();
-        ++itr)
-    {
-		if(itr->valid())
-			(*itr)->releaseObjects(state);
-    }
+	int count = m_childArray.size();
+	for (int i = 0; i<count; i++)
+	{
+		if (m_childArray[i].valid())
+			m_childArray[i]->releaseObjects(state);
+	}
+  //  for(NodeArray::iterator itr=m_childArray.begin();
+  //      itr!=m_childArray.end();
+  //      ++itr)
+  //  {
+		//if(itr->valid())
+		//	(*itr)->releaseObjects(state);
+  //  }
 }

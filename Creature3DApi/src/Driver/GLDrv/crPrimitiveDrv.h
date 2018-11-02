@@ -57,6 +57,7 @@ void DrawElementsUByte::compile(crState& state, bool useVertexBufferObjects) con
 		GLuint& buffer = m_vboList[contextID].m_objectID;
 		if (!buffer)
 		{
+			crBufferObject::s_numberIBOs++;
 			extensions->glGenBuffers(1, &buffer);
 			extensions->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, buffer);
 			extensions->glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, getNumIndices(), getIndeciesAddr(), /*GL_DYNAMIC_DRAW_ARB*/GL_STATIC_DRAW_ARB);
@@ -97,6 +98,7 @@ void DrawElementsUByte::draw(crState& state, bool useVertexBufferObjects) const
 		GLuint& buffer = m_vboList[contextID].m_objectID;
 		if (!buffer)
 		{
+			crBufferObject::s_numberIBOs++;
 			extensions->glGenBuffers(1, &buffer);
 			extensions->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, buffer);
 			extensions->glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, getNumIndices(), getIndeciesAddr(), /*GL_DYNAMIC_DRAW_ARB*/GL_STATIC_DRAW_ARB);
@@ -162,6 +164,7 @@ void DrawElementsUShort::compile(crState& state, bool useVertexBufferObjects) co
 		GLuint& buffer = m_vboList[contextID].m_objectID;
 		if (!buffer)
 		{
+			crBufferObject::s_numberIBOs++;
 			extensions->glGenBuffers(1, &buffer);
 			extensions->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, buffer);
 			extensions->glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, getNumIndices() * 2, getIndeciesAddr(), /*GL_DYNAMIC_DRAW_ARB*/GL_STATIC_DRAW_ARB);
@@ -200,6 +203,7 @@ void DrawElementsUShort::draw(crState& state, bool useVertexBufferObjects) const
 		GLuint& buffer = m_vboList[contextID].m_objectID;
 		if (!buffer)
 		{
+			crBufferObject::s_numberIBOs++;
 			extensions->glGenBuffers(1, &buffer);
 			extensions->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, buffer);
 			extensions->glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, getNumIndices() * 2, getIndeciesAddr(), /*GL_DYNAMIC_DRAW_ARB*/GL_STATIC_DRAW_ARB);
@@ -268,6 +272,7 @@ void DrawElementsUInt::compile(crState& state, bool useVertexBufferObjects) cons
 		GLuint& buffer = m_vboList[contextID].m_objectID;
 		if (!buffer)
 		{
+			crBufferObject::s_numberIBOs++;
 			extensions->glGenBuffers(1, &buffer);
 			extensions->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, buffer);
 			extensions->glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, getNumIndices() * 4, getIndeciesAddr(), /*GL_DYNAMIC_DRAW_ARB*/GL_STATIC_DRAW_ARB);
@@ -305,6 +310,7 @@ void DrawElementsUInt::draw(crState& state, bool useVertexBufferObjects) const
 		GLuint& buffer = m_vboList[contextID].m_objectID;
 		if (!buffer)
 		{
+			crBufferObject::s_numberIBOs++;
 			extensions->glGenBuffers(1, &buffer);
 			extensions->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, buffer);
 			extensions->glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, getNumIndices() * 4, getIndeciesAddr(), /*GL_DYNAMIC_DRAW_ARB*/GL_STATIC_DRAW_ARB);

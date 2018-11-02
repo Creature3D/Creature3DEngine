@@ -598,7 +598,10 @@ void crStartHandler::run(/*CRGUI::crImageStage *main*/)
 
 	m_viewer->sync();
 	crBlockDetectThread::getInstance()->clear();
-	CRCore::notify(CRCore::ALWAYS)<<"crStartHandler::run() end"<<std::endl;
+	//CRCore::notify(CRCore::ALWAYS)<<"crStartHandler::run() end"<<std::endl;
+	char gbuf[256];
+	sprintf(gbuf, "%s\n\0", "crStartHandler::run() end");
+	gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 
 ///////////////////////////////////////////////
 /*	//CRCore::notify(CRCore::ALWAYS)<<"crStartHandler::run() end"<<std::endl;
@@ -644,6 +647,9 @@ void crCullAndUpdThread::run()
 	    m_viewer->cull_update();
 	}while (!m_viewer->done());
 	m_done = true;
+	char gbuf[256];
+	sprintf(gbuf, "%s\n\0", "crCullAndUpdThread::run() end");
+	gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 /////////////////////////
 /*
 	CRUtil::crAISystemUpdater::getInstance()->aiUpdateBlock();
@@ -715,6 +721,9 @@ void crLoadingDrawThread::run()
 		//CRCore::crDisplaySettings::instance()->restoreFpsControl();
 		rs->releaseCurrent();
 		crFilterRenderManager::getInstance()->init();
+		char gbuf[256];
+		sprintf(gbuf, "%s\n\0", "crLoadingDrawThread::run() end");
+		gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 	}
 	m_done = true;
 }

@@ -48,7 +48,8 @@ bool crWeaponEventPPC::parseParamImplementation( CRCore::crEventGroup& eg, CRCor
 					{
 						//weapon->setGunPoint(firePerson->getMatterObjectPosition());
 						crVector3 mousePickPoint = *(crVector3 *)(HIINT64(lparam));
-						weapon->especialFire(matterGroup,mousePickPoint/*-firePerson->getViewDirection()*/,crFrameStamp::getInstance()->getReferenceTime());
+						//weapon->especialFire(matterGroup);
+						//weapon->especialFire(matterGroup,mousePickPoint/*-firePerson->getViewDirection()*/,crFrameStamp::getInstance()->getReferenceTime());
 						//firePerson->refreshBulletCountInfo();
 					}
 					return true;
@@ -166,7 +167,8 @@ bool crWeaponFiringPPC::parseParamImplementation( CRCore::crEventGroup& eg, CRCo
 					{
 						//weapon->setGunPoint(firePerson->getMatterObjectPosition());
 						crVector3 mousePickPoint = *(crVector3 *)(HIINT64(lparam));
-						weapon->especialFire(matterGroup,mousePickPoint/*-firePerson->getViewDirection()*/,crFrameStamp::getInstance()->getReferenceTime());
+						//weapon->especialFire(matterGroup);
+						//weapon->especialFire(matterGroup,mousePickPoint/*-firePerson->getViewDirection()*/,crFrameStamp::getInstance()->getReferenceTime());
 						//firePerson->refreshBulletCountInfo();
 					}
 					return true;

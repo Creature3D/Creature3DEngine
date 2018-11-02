@@ -153,12 +153,14 @@ bool crDownload::moveFileToDirectory()
 			WaitForSingleObject(pi.hProcess,INFINITE);
 			CloseHandle(pi.hThread);
 			CloseHandle(pi.hProcess);
+			DeleteFileA(file.c_str());
 		}
 		else
 		{
 			int err = GetLastError();
 			sprintf_s(buf,"½âÑ¹Ëõ[%s]³ö´í!%d\0",file.c_str(),err);
 			MessageBox(::GetActiveWindow(),buf,"Creature3D",MB_OK);
+			DeleteFileA(file.c_str());
 			return false;
 		}
 	}
