@@ -617,7 +617,7 @@ class CR_EXPORT crState : public Referenced
         /** apply an attribute if required, passing in attribute and appropriate attribute stack */
         inline bool applyAttribute(const crStateAttribute* attribute,AttributeStack& as)
         {
-            if (as.last_applied_attribute != attribute)
+            if (attribute && as.last_applied_attribute != attribute)
             {
                 if (!as.global_default_attribute.valid()) as.global_default_attribute = dynamic_cast<crStateAttribute*>(attribute->cloneType());
 

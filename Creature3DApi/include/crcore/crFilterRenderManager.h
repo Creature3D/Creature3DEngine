@@ -75,8 +75,8 @@ public:
 	}
 	virtual void apply(crCanvasNode& node)
 	{
-		if(/*!m_pickedUI && */node.getVisiable())
-		{
+		if(/*!m_pickedUI && */node.getVisiable() && node.getCanFocus())
+		{//如果窗口不能获得焦点的话，那么窗口内的所有控件都不能
 			if(node.getEnableMatrix())
 				apply((crTransform &)node);
 			else
@@ -87,8 +87,8 @@ public:
 	}
 	virtual void apply(crWidgetNode& node)
 	{
-		if(/*!m_pickedUI && */node.getVisiable())
-		{
+		if(/*!m_pickedUI && */node.getVisiable()/* && node.getCanFocus()*/)
+		{//如果控件不能获得焦点，控件的子控件可以获得焦点
 			pick(node);
 			if(node.getEnableMatrix())
 				apply((crTransform &)node);
@@ -98,7 +98,7 @@ public:
 	}
 	virtual void pick(crWidgetNode& node)
 	{
-		if(/*!m_pickedUI && */node.getVisiable() && node.getCanFocus()/* && node.getEnable()*/)
+		if(/*!m_pickedUI && */node.getVisiable() && node.getCanFocus())
 		{
 			crBoundingBox bbox = node.getBoundBox();
 			if(bbox.valid())

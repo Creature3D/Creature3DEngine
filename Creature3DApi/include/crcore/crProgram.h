@@ -33,6 +33,8 @@ class crState;
 class CR_EXPORT crProgram : public CRCore::crStateAttribute
 {
 	public:
+		static unsigned int s_numberPrograms;
+
 		crProgram();
 
 		/** Copy constructor using crCopyOp to manage deep vs shallow copy.*/

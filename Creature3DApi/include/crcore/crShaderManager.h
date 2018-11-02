@@ -173,16 +173,17 @@ public :
 		}
 		if (m_currentReuseStateSetIndex<m_buf.size())
 		{
-			crStateSet *idle = m_buf[m_currentReuseStateSetIndex++].get();
+			crStateSet *idle = m_buf[m_currentReuseStateSetIndex].get();
 			if (idle)
 			{
+				m_currentReuseStateSetIndex++;
 				idle->reset();
 				return idle;
 			}
 		}
 
 		crStateSet *idle = new crStateSet;
-		idle->setName("Shader");
+		idle->setName("#buf");
 		m_buf.push_back(idle);
 		++m_currentReuseStateSetIndex;
 		//CRCore::notify(CRCore::WARN) << "getOrCreateIdleStateSet = "<<m_buf.size()<<" currentReuseStateSetIndex = "<<m_currentReuseStateSetIndex<<std::endl;

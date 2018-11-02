@@ -39,6 +39,7 @@ class crProgram;
 class CR_EXPORT crShader : public CRCore::crBase
 {
     public:
+		static unsigned int s_numberShaders;
 
         enum Type {
             VERTEX = GL_VERTEX_SHADER,

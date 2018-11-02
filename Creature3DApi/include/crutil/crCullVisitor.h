@@ -187,12 +187,20 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
 					return false;
 				break;
 			}
-
-			m_currentRenderGraph = m_currentRenderGraph->find_or_insert(ss,detailCompare);
-			if (ss->useRenderBinDetails())
-			{
-				m_currentRenderBin = m_currentRenderBin->find_or_insert(ss->getBinNumber(),ss->getBinName());
-			}
+			//try
+			//{
+				m_currentRenderGraph = m_currentRenderGraph->find_or_insert(ss, detailCompare);
+				if (ss->useRenderBinDetails())
+				{
+					m_currentRenderBin = m_currentRenderBin->find_or_insert(ss->getBinNumber(), ss->getBinName());
+				}
+			//}
+			//catch (...)
+			//{
+			//	char gbuf[256];
+			//	sprintf(gbuf, "pushStateSet error %d\n\0",GetLastError());
+			//	gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+			//}
 			return true;
 		}
         
@@ -381,8 +389,21 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
 			{
 				//CRCore::notify(CRCore::ALWAYS)<<"handle_cull_callbacks_and_traverse error "<<node.getName()<<std::endl;
 				char gbuf[256];
-				sprintf(gbuf,"handle_cull_callbacks_and_traverse error %s\n\0",node.getName().c_str());
+				sprintf(gbuf,"handle_cull_callbacks_and_traverse error %s,%s,%s,code=%d\n\0",node.getName().c_str(), node.className(),node.getParent(0)->className(), GetLastError());
 				gDebugInfo->debugInfo(CRCore::ALWAYS,gbuf);
+
+				CRCore::NodePath &nodePath = getNodePath();
+				for (int i = 0; i < nodePath.size(); i++)
+				{
+					sprintf(gbuf, "NodePath %s,%s\n\0", nodePath[i]->getName().c_str(), nodePath[i]->className());
+					gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+				}
+				HANDLE handle = GetCurrentProcess();
+				PROCESS_MEMORY_COUNTERS pmc;
+				GetProcessMemoryInfo(handle, &pmc, sizeof(pmc));
+				sprintf(gbuf, "内存使用:%d,峰值内存:%d,虚拟内存:%dKB,峰值虚拟内存:%dKB\n\0", pmc.WorkingSetSize / 1024, pmc.PeakWorkingSetSize / 1024, pmc.PagefileUsage / 1024, pmc.PeakPagefileUsage / 1024);
+				gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+				_asm   int   3   //只是为了让程序崩溃
 			}
 #endif
         }

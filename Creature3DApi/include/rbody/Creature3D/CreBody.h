@@ -257,6 +257,7 @@ public:
   void setAnimPlaySpeed(float speed);
   float getAnimPlaySpeed() const;
   void setLodLevel(float lod);
+  RequestResult executeAction(ActionRequest *action, bool force = false);
 protected:  
 	void update(/*int fn*/);
 	//virtual void _create(dWorldID worldID, dSpaceID spaceID);

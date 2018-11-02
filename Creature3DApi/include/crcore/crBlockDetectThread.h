@@ -18,6 +18,7 @@
 #include <CRCore/ref_ptr.h>
 #include <CRCore/Referenced.h>
 #include <CRCore/thread/crThread.h>
+#include <CRCore/crTimer.h>
 namespace CRCore
 {
 	class CR_EXPORT crBlockDetectThread: public CRCore::crThread, public CRCore::Referenced
@@ -31,7 +32,7 @@ namespace CRCore
 		virtual void run();
 		void update();
 		void done();
-		void setTimeout(int timeout);
+		void setTimeout(int timeout);//√Î
 		void pause();
 		void resume();
 	protected:
@@ -39,8 +40,8 @@ namespace CRCore
 		static CRCore::ref_ptr<crBlockDetectThread> m_instance;
 	private:
 		bool m_done;
-		int m_timer;
-		int m_timeout;
+		CRCore::Timer_t m_timer;
+		int m_timeout;//√Î
 		bool m_pause;
 	};
 }

@@ -344,7 +344,7 @@ public:
 	virtual void fire( crMatterGroup *firePerson, CRCore::crNode *target, double time );//攻击
 	virtual void fire_noTarget( crMatterGroup *firePerson, const CRCore::crVector3& offset, double time );//攻击
 
-	virtual void especialFire( crMatterGroup *firePerson, const CRCore::crVector3& target, double time );//武器特殊功能
+	virtual void especialFire(crViewMatterObject *fireBody);//武器特殊功能
 	virtual void replaceClip(crMatterGroup *firePerson, double time);//更换弹夹
 
 	void setBulletCount(int bulletCount);

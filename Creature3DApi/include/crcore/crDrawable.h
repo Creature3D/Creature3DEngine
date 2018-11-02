@@ -47,6 +47,7 @@ class CR_EXPORT crDrawable : public crBase
 	static unsigned int s_numberNewDrawablesInLastFrame;
 	static unsigned int s_numberDeletedDrawablesInLastFrame;
 	static unsigned int s_minimumNumberOfDisplayListsToRetainInCache;
+	static unsigned int s_numberVBOs;
 
 	typedef std::multimap<unsigned int,unsigned int> DisplayListMap;
 	typedef std::map<unsigned int,DisplayListMap> DeletedDisplayListCache;

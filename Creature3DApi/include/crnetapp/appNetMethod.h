@@ -1899,6 +1899,19 @@ protected:
 	//ItemUsePair *m_itemUsePair;
 	CRCore::ref_ptr<ItemUseParam> m_itemUseParam;
 };
+class crItemEspecialUseMethod : public CRCore::crMethod
+{//Client Method
+public:
+	crItemEspecialUseMethod();
+	crItemEspecialUseMethod(const crItemEspecialUseMethod& handle);
+	MethodClass(CRNetApp, ItemEspecialUse)
+	virtual void operator()(crHandle &handle);
+	virtual void inputParam(int i, void *param);
+	virtual void addParam(int i, const std::string& str);
+protected:
+	CRPhysics::crViewMatterObject* m_this;
+	CRCore::ref_ptr<CRCore::crGroup> m_weapon;
+};
 
 class crBindWeaponMatrixMethod : public CRCore::crMethod
 {//Client Method

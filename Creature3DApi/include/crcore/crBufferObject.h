@@ -103,7 +103,7 @@ class crState;
 class CR_EXPORT crBufferObject : public crBase
 {
     public:
-
+		static unsigned int s_numberIBOs;
         crBufferObject();
 
         /** Copy constructor using crCopyOp to manage deep vs shallow copy.*/
