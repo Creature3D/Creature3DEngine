@@ -78,7 +78,51 @@ void crWeaponManager::clear()
 {
 	m_instance = NULL;
 }
-
+void crWeaponManager::releaseObjects(crState *state)
+{
+	for (WeaponModelVec::iterator itr = m_weapons.begin();
+		 itr != m_weapons.end();
+		++itr)
+	{
+		(*itr)->releaseObjects(state);
+	}
+	for (BulletModelVec::iterator itr = m_bullets.begin();
+		itr != m_bullets.end();
+		++itr)
+	{
+		(*itr)->releaseObjects(state);
+	}
+	for (CaissonModelVec::iterator itr = m_caissons.begin();
+		itr != m_caissons.end();
+		++itr)
+	{
+		(*itr)->releaseObjects(state);
+	}
+	for (HpModelVec::iterator itr = m_hps.begin();
+		itr != m_hps.end();
+		++itr)
+	{
+		(*itr)->releaseObjects(state);
+	}
+	for (ArmorModelVec::iterator itr = m_armors.begin();
+		itr != m_armors.end();
+		++itr)
+	{
+		(*itr)->releaseObjects(state);
+	}
+	for (BulletMatterObjectMap::iterator itr = m_bulletMatterObjectMap.begin();
+		itr != m_bulletMatterObjectMap.end();
+		++itr)
+	{
+		itr->second->releaseObjects(state);
+	}
+	for (WeaponMatterObjectMap::iterator itr = m_weaponMatterObjectMap.begin();
+		itr != m_weaponMatterObjectMap.end();
+		++itr)
+	{
+		itr->second->releaseObjects(state);
+	}
+}
 int crWeaponManager::addWeapon(crWeaponObject *weapon)
 {
 	bool find = false;

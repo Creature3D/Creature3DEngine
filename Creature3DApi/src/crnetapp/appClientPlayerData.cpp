@@ -2476,7 +2476,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			}
 		}
 		{
-			int sight = crGlobalHandle::gData()->gSightRange();
+			int sight = crGlobalHandle::gData()->gEyePointRange();
 			GNE::LockMutex lock(m_eyePointMapMutex);
 			for( EyePointMap::iterator itr = m_eyePointMap.begin();
 				 itr != m_eyePointMap.end();
@@ -3361,7 +3361,7 @@ void crMyPlayerData::insertEyePoint(const CRCore::crVector2i &eye)
 		GNE::LockMutex lock( m_eyePointMapMutex );
 		float scale = crGlobalHandle::gData()->gUnitScale();
 		crVector2s coord = scenelayer->getCoord(eye * scale);
-		int height = scenelayer->getHeight(coord[0],coord[1])/scale + crGlobalHandle::gData()->gEyeHeight();
+		int height = scenelayer->getHeight(coord[0],coord[1])/scale + crGlobalHandle::gData()->gEyePointHeight();
 		m_eyePointMap[eye] = height;
 	}
 }

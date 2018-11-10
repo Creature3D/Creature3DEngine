@@ -289,7 +289,7 @@ void crSightInfo::roleInEyePointTest(const CRCore::crVector2i &eye,crRole *role)
 
 	bool inRange = true;
 	float scale = crGlobalHandle::gData()->gUnitScale();
-	float sightRange = crGlobalHandle::gData()->gSightRange()*scale;
+	float sightRange = crGlobalHandle::gData()->gEyePointRange()*scale;
 	crVector2 itemPos(role->getPosx(), role->getPosy());
 	crVector2 eyePos(eye[0], eye[1]);
 	itemPos *= scale;
@@ -338,7 +338,7 @@ void crSightInfo::itemInEyePointTest(const CRCore::crVector2i &eye,crInstanceIte
 	}
 	bool inRange = true;
 	float scale = crGlobalHandle::gData()->gUnitScale();
-	float sightRange = crGlobalHandle::gData()->gSightRange()*scale;
+	float sightRange = crGlobalHandle::gData()->gEyePointRange()*scale;
 	crVector2 itemPos(item->getPosx(),item->getPosy());
 	crVector2 eyePos(eye[0],eye[1]);
 	itemPos *= scale;
@@ -1045,4 +1045,30 @@ crInstanceItem *crSightInfo::dynamicCollideTest(crInstanceItem *item,const CRCor
 		}
 	}
 	return NULL;
+}
+void crSightInfo::sendPacketToInSight(crInstanceItem *item, CRNet::crStreamPacket &packet)
+{
+	crRole *role = dynamic_cast<crRole *>(item);
+	int id = item->getID();
+	if (role)
+	{
+		if ((id > 0 && isEyeRole(id)) || (id < 0 && isEyeItem(id)))
+		{
+			//if (id < 0)
+			//	sightInfo->sendPacketToEyePlayer(packet, ownerplayerid);
+			//else
+			sendPacketToEyePlayer(packet, id);
+		}
+		else if (isRoleInSight(role)/* || sightInfo->isItemInSight(role)*/)
+		{
+			sendPacketToEyePlayer(packet);
+		}
+	}
+	else
+	{
+		if (isItemInSight(item) || isEyeItem(id))
+		{
+			sendPacketToEyePlayer(packet);
+		}
+	}
 }

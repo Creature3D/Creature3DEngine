@@ -137,17 +137,18 @@ protected:
 };
 ////InstanceDB
 class crItemChild;
+class crRoom;
 class CRNETAPP_EXPORT crInstanceItem : public CRCore::Referenced/*: public crAbstractItem*/
 {
 public:
 	crInstanceItem();
 	crInstanceItem(const crInstanceItem& item);
-	ItemClass(CRNetApp,crInstanceItem)
-	void setAbstractItem(crAbstractItem *item);
+	ItemClass(CRNetApp, crInstanceItem)
+		void setAbstractItem(crAbstractItem *item);
 	crAbstractItem *getAbstractItem();
 	int getAbstractItemID();
 	void setAbstractItemID(int abstractid);
-	inline virtual int getID(){ return getInstanceItemID();}//itemid
+	inline virtual int getID() { return getInstanceItemID(); }//itemid
 	inline virtual int getRoleID() { return 0; }
 	inline virtual int getPlayerID() { return 0; }
 	void setInstanceItemID(int id);
@@ -162,7 +163,7 @@ public:
 	int getSceneID();
 	void setLayerID(unsigned short layerid);
 	unsigned short getLayerID();
-	void setPosxy(float posx,float posy);//单位:厘米
+	void setPosxy(float posx, float posy);//单位:厘米
 	void setPosxy(CRCore::crVector2i& posxy);//单位:厘米
 	void setPosxy(CRCore::crVector2f& posxy);//单位:厘米
 	float getPosx();//单位:厘米
@@ -179,7 +180,7 @@ public:
 	void clearExtra();
 	virtual void clearData();
 	bool hasSyncPos();
-	void closeToSyncPos(crScene *scene,float& distance);
+	void closeToSyncPos(crScene *scene, float& distance);
 	bool getFrontSyncPos(CRCore::crVector2 &pos);
 	void setDir(const CRCore::crVector3 &dir);
 	//void setDirx(float dirx);
@@ -199,8 +200,8 @@ public:
 	ChildItemMap &getChildItemMap();
 	void unlockChildItemMap();
 	crItemChild* findTemporaryItemChild(int abstractid);
-	
-	typedef std::deque< std::pair<CRCore::ref_ptr<crItemChild>,float> > RemovedItemChildDeque;
+
+	typedef std::deque< std::pair<CRCore::ref_ptr<crItemChild>, float> > RemovedItemChildDeque;
 	void insertRemovedItemChild(crItemChild *item);
 	crItemChild* findRemovedItemChild(int itemid);
 	virtual void clientUpdate(float dt);
@@ -211,7 +212,7 @@ public:
 	CRCore::crStreamBuf *getStream();
 
 	/////////////////////
-	void setDataClass( CRCore::crData *data );
+	void setDataClass(CRCore::crData *data);
 	CRCore::crData *getDataClass();
 	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
 	inline _crInt64 getCurrentMsg() const { return m_currentMsg; }
@@ -221,7 +222,7 @@ public:
 
 	enum ItemType
 	{
-        instanceitem,
+		instanceitem,
 		Npc,
 		Role,
 		Emporium,
@@ -241,22 +242,27 @@ public:
 	void recvItemChild(crItemChild *itemChild);
 	void completeCreateItemChild();
 	//
-	void loadItemData(char streamType,bool loadchild = false);
+	void loadItemData(char streamType, bool loadchild = false);
 	void childItemQuery(CRDataBase::crDataBase *instanceSession);
 	crItemChild *findChildItem(int itemid);
 	crItemChild *findChildItemByAbstractID(int abstractid);
 
 	typedef std::map<int, CRCore::ref_ptr<crInstanceItem> > TemporaryItemMap;
-    void insertTemporaryItem( crInstanceItem *item );
+	void insertTemporaryItem(crInstanceItem *item);
 	crInstanceItem *findTemporaryItem(int itemid);
 	void removeTemporaryItem(int itemid);
 
 	crInstanceItem *serverGetTarget();
-	void clientGetTarget(CRCore::ref_ptr<crInstanceItem> &outItem,CRCore::ref_ptr<CRCore::crMatrixTransform>&outNode);
+	void clientGetTarget(CRCore::ref_ptr<crInstanceItem> &outItem, CRCore::ref_ptr<CRCore::crMatrixTransform>&outNode);
 
 	//开房间式网游
 	void setRoomID(int roomid);
 	int getRoomID();
+	crRoom *getRoom();
+	CRNetApp::crScene *getScene();
+	void sendPacketToItemNeighbor(CRNet::crStreamPacket &packet);
+	void sendPacketToAll(CRNet::crStreamPacket &packet);
+	void sendPacketToInSight(CRNet::crStreamPacket &packet);
 
 	void clientRelease();
 	//void clientReload();
@@ -355,7 +361,7 @@ public:
 	void setSightInfo(crSightInfo *sight);
 	inline crSightInfo *getSightInfo(){return m_sightInfo.get();}
 	bool isMainAI();
-	CRNetApp::crScene *getScene();
+	//CRNetApp::crScene *getScene();
 	CRNetApp::crSceneLayer *getSceneLayer();
 	float getPosZ(float posx,float posy);//posx,posy,返回值均为米
 	void setDropItemTimer(float interval);
@@ -415,6 +421,8 @@ protected:
 
 	//开房间式网游的房间ID
 	int m_roomid;
+	crRoom *m_room;
+	crScene *m_scene;
 
 	CRCore::ref_ptr< crPathFinder > m_pathFinder;
 
@@ -653,7 +661,7 @@ public:
 
 	void insertSightInfo(crSightInfo *sightInfo);
 	void removeSightInfo(crSightInfo *sightinfo);
-	void sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacket &packet);//item可以是role
+	//void sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacket &packet);//item可以是role
 	void itemDead(crInstanceItem *item);//可以是role
 	void itemRelive(crInstanceItem *item);//可以是role
 
@@ -736,6 +744,7 @@ protected:
 ///GameDB
 ///crPlayerGameData
 class crRole;
+class crInstanceItem;
 class CRNETAPP_EXPORT crPlayerGameData : public CRCore::Referenced
 {
 public:
@@ -766,6 +775,22 @@ public:
 	virtual void clearData();
 	void setAdvertid(const std::string &advertid);
 	const std::string &getAdvertid();
+	typedef std::set< CRCore::ref_ptr<crInstanceItem> > InCameraItemSet;
+	void clearInCameraItemSet() 
+	{ 
+		GNE::LockMutex lock(m_inCameraItemSetMutex);
+		m_inCameraItemSet.clear(); 
+	}
+	void insertInCameraItem(crInstanceItem *item)
+	{
+		GNE::LockMutex lock(m_inCameraItemSetMutex);
+		m_inCameraItemSet.insert(item); 
+	}
+	bool isInCamera(crInstanceItem *item) 
+	{ 
+		GNE::LockMutex lock(m_inCameraItemSetMutex);
+		return m_inCameraItemSet.find(item) != m_inCameraItemSet.end(); 
+	}
 protected:
 	virtual ~crPlayerGameData();
 	int m_id;
@@ -780,6 +805,8 @@ protected:
 	//////////////////////
 	int m_mainRoleID;
 	CRCore::ref_ptr<crRole> m_mainRole;
+	GNE::Mutex m_inCameraItemSetMutex;
+	InCameraItemSet m_inCameraItemSet;
 };
 class CRNETAPP_EXPORT crRole : public crInstanceItem
 {
@@ -844,6 +871,7 @@ public:
 	char getBirthPointIndex();
 	void setReady(bool ready);
 	bool getReady();
+	bool isInCamera(crInstanceItem *item) { return m_playerGameData->isInCamera(item); }
 protected:
 	virtual ~crRoomPlayer(){}
 	int m_playerid;
@@ -857,6 +885,7 @@ protected:
 class CRNETAPP_EXPORT crRoom : public CRCore::Referenced
 {
 public:
+	friend class crInstanceItem;
 	crRoom(crScene *scene);
 	crScene *getScene();
 	int getSceneID();
@@ -960,6 +989,8 @@ protected:
 	virtual ~crRoom();
 	void sendStartGame(CRNet::crNetManager *netManager,CRNet::crNetDataManager *netDataManager,crRoomPlayer *roomPlayer);
 	void roomMessageDispose();
+	void sendPacketToItemNeighbor(crInstanceItem *item, CRNet::crStreamPacket &packet);
+	void sendPacketToInSight(crInstanceItem *item, CRNet::crStreamPacket &packet);
 	int m_sceneid;
 	CRCore::ref_ptr<crScene> m_scene;
 	char m_gameMode;

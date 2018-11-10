@@ -6216,14 +6216,14 @@ void crRecvRoleInfo2Method::operator()(crHandle &handle)
 			int playerid = role->getPlayerID();
 			crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 			crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
 			ref_ptr<crSceneServerPlayerData> playerData = dynamic_cast<crSceneServerPlayerData *>(netDataManager->getPlayerData(playerid));
 			if(playerData.valid())
 			{
 				role->setSceneID(playerData->getSceneID());
 				int roomid = playerData->getRoomID();
 				role->setRoomID(roomid);
-				crScene *scene = netCallback->findScene(role->getSceneID());
+				crScene *scene = role->getScene();//netCallback->findScene(role->getSceneID());
 				if(scene)
 				{
 					//ref_ptr<crPlayerGameData> playerGameData;
@@ -6254,7 +6254,7 @@ void crRecvRoleInfo2Method::operator()(crHandle &handle)
 					int index = -1;
 					if(roomid!=0)
 					{
-						ref_ptr<crRoom> room = netCallback->findRoom(roomid);
+						ref_ptr<crRoom> room = role->getRoom();//netCallback->findRoom(roomid);
 						if(room.valid())
 						{
 							ref_ptr<crRoomPlayer> roomplayer = room->getMember(playerid);
@@ -6360,7 +6360,7 @@ void crRecvMainRoleMethod::operator()(crHandle &handle)
 			int playerid = role->getPlayerID();
 			crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 			crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
 			ref_ptr<crSceneServerPlayerData> playerData = dynamic_cast<crSceneServerPlayerData *>(netDataManager->getPlayerData(playerid));
 			if(playerData.valid())
 			{
@@ -8740,11 +8740,11 @@ void crServerItemMoveMethod::operator()(crHandle &handle)
 
 						crItemEventPacket packet;
 						crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvStopMove,stream.get());
-						crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-						crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-						crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-						crScene *scene = netCallback->findScene(m_this->getSceneID());
-						if(scene) scene->sendPacketToItemNeighbor(m_this,packet);
+						//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+						//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+						//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+						//crRoom *room = netCallback->findRoom(m_this->getRoomID());
+						m_this->sendPacketToItemNeighbor(packet);
 					}
 				}
 				else
@@ -8759,10 +8759,10 @@ void crServerItemMoveMethod::operator()(crHandle &handle)
 					dy /= crGlobalHandle::gData()->gUnitScale();
 					m_this->setPosxy(m_this->getPosx() + dx,m_this->getPosy() + dy);
 
-					crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-					crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-					crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					crScene *scene = netCallback->findScene(m_this->getSceneID());
+					//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+					//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+					//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					crScene *scene = m_this->getScene();//netCallback->findScene(m_this->getSceneID());
 					if(scene)
 					{
 						float posz = scene->getPosZ(m_this->getLayerID(),m_this->getPosx() * crGlobalHandle::gData()->gUnitScale(),m_this->getPosy() * crGlobalHandle::gData()->gUnitScale(), m_this->getZoffset() *crGlobalHandle::gData()->gUnitScale());
@@ -11327,10 +11327,10 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 					{
 						crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 						crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-						crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-						CRNetApp::crScene *scene = netCallback->findScene(m_this->getSceneID());
-						if(scene)
-						{
+						//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+						//CRNetApp::crRoom *room = m_this->getRoom();//netCallback->findRoom(m_this->getRoomID());
+						//if(room)
+						//{
 							thisData->getParam(WCHDATA_UserExtraID,param);
 							_crInt32 userExtraID = *((_crInt32*)param);
 
@@ -11373,17 +11373,17 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 									{
 										sceneServerConductor->getNetManager()->sendPacket(firePlayerData->getPlayerConnectServerAddress(),packet);
 									}
-									scene->sendPacketToItemNeighbor(m_useItemParam->m_user.get(),packet);
+									m_useItemParam->m_user->sendPacketToItemNeighbor(packet);
 								}
 								else
 								{
 									crItemEventPacket packet;
 									crItemEventPacket::buildRequestPacket(packet,0,m_useItemParam->m_user.get(),WCH_RecvUserExtra,stream.get());
 
-									scene->sendPacketToItemNeighbor(m_useItemParam->m_user.get(),packet);
+									m_useItemParam->m_user->sendPacketToItemNeighbor(packet);
 								}
 							}
-						}
+						//}
 					}
 				}
 				//userData->excHandle(MAKEINT64(WCH_LockData,0));
@@ -12536,6 +12536,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 		crInstanceItem *bulletitem = NULL;
 		crData *serverData = crServerBrainHandle::getInstance()->getDataClass();
 		HitTestMap hitTestMap;
+		crScene *scene = m_this->getScene();
 		if(fireType == crInstanceItem::Role)
 		{
 			ref_ptr<crRole> fireRole;
@@ -12549,8 +12550,8 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 			}
 			else
 			{
-				crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-				crScene *scene = netCallback->findScene(m_this->getSceneID());
+				//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				//crScene *scene = netCallback->findScene(m_this->getSceneID());
 				fireRole = dynamic_cast<crRole *>(scene->findSceneItem(fireID,m_this->getRoomID()));
 			}
 			if(fireRole.valid() && fireRole->getDataClass())
@@ -12695,10 +12696,10 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 		}
 		else
 		{//firer is npc
-			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			crScene *scene = netCallback->findScene(m_this->getSceneID());
-			if(scene)
-			{
+			//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			//crScene *scene = netCallback->findScene(m_this->getSceneID());
+			//if(scene)
+			//{
 				crInstanceItem *fireitem = scene->findSceneItem(fireID,m_this->getRoomID());
 				if(fireitem && fireitem->getDataClass())
 				{
@@ -12762,7 +12763,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 						//CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod hitTestMap Empty "<<m_this->getID()<<std::endl;
 					}
 				}
-			}
+			//}
 			//crItemChild *itemChild = fireitem->findChildItem(bulletItemID);
 			//if(!itemChild)
 			//{
@@ -13908,8 +13909,8 @@ void crAddDamageFormula1Method::operator()(crHandle &handle)
 		damageStream->_writeShort((short)m_damage);
 		damageStream->_writeFloat(*rthp);
 
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//crRoom *room = m_this->getRoom();// netCallback->findRoom(m_this->getRoomID());
 		if(hittype == crInstanceItem::Role)
 		{
 			crPlayerEventPacket damagePacket;
@@ -13919,7 +13920,7 @@ void crAddDamageFormula1Method::operator()(crHandle &handle)
 			{
 				netManager->sendPacket(hitPlayerData->getPlayerConnectServerAddress(),damagePacket);
 			}
-			scene->sendPacketToItemNeighbor(m_this,damagePacket);
+			m_this->sendPacketToItemNeighbor(damagePacket);
 			if(*rthp<=0)
 			{
 				ref_ptr<crStreamBuf> deadStream = new crStreamBuf;
@@ -13930,14 +13931,14 @@ void crAddDamageFormula1Method::operator()(crHandle &handle)
 				crPlayerEventPacket deadPacket;
 				crPlayerEventPacket::buildRequestPacket(deadPacket,hitid,m_this,WCH_RecvItemDead,deadStream.get());
 				if(hitPlayerData.valid()) netManager->sendPacket(hitPlayerData->getPlayerConnectServerAddress(),deadPacket);
-				scene->sendPacketToItemNeighbor(m_this,deadPacket);
+				m_this->sendPacketToItemNeighbor(deadPacket);
 			}
 		}
 		else
 		{
 			crItemEventPacket damagePacket;
 			crItemEventPacket::buildRequestPacket(damagePacket,0,m_this,WCH_RecvDamage,damageStream.get());
-			scene->sendPacketToItemNeighbor(m_this,damagePacket);
+			m_this->sendPacketToItemNeighbor(damagePacket);
 			if(*rthp<=0)
 			{
 				ref_ptr<crStreamBuf> deadStream = new crStreamBuf;
@@ -13947,7 +13948,7 @@ void crAddDamageFormula1Method::operator()(crHandle &handle)
 
 				crItemEventPacket deadPacket;
 				crItemEventPacket::buildRequestPacket(deadPacket,0,m_this,WCH_RecvItemDead,deadStream.get());
-				scene->sendPacketToItemNeighbor(m_this,deadPacket);
+				m_this->sendPacketToItemNeighbor(deadPacket);
 			}
 		}
 
@@ -15217,113 +15218,111 @@ void crPatrolMethod::addParam(int i, const std::string& str)
 }
 void crPatrolMethod::operator()(crHandle &handle)
 {
-	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+	//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+	//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+	//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+	//crScene *scene = netCallback->findScene(m_this->getSceneID());
 
-		void *param;
-		crData *data = m_this->getDataClass();
+	void *param;
+	crData *data = m_this->getDataClass();
 		
-		bool patrol = false;
-		unsigned char count = 0;
-		crVector2 targetPos;
-		float scale = crGlobalHandle::gData()->gUnitScale();
-		crVector2 myPos(m_this->getPosx(), m_this->getPosy());// , 0.0f);
-		myPos *= scale;
-		data->excHandle(MAKEINT64(WCH_LockData,1));
-		data->getParam(WCHDATA_PatrolPointVec,param);
-		PatrolPointVec* patrolPointVec = (PatrolPointVec*)param;
-		count = patrolPointVec->size();
-		if(count == 1)
+	bool patrol = false;
+	unsigned char count = 0;
+	crVector2 targetPos;
+	float scale = crGlobalHandle::gData()->gUnitScale();
+	crVector2 myPos(m_this->getPosx(), m_this->getPosy());// , 0.0f);
+	myPos *= scale;
+	data->excHandle(MAKEINT64(WCH_LockData,1));
+	data->getParam(WCHDATA_PatrolPointVec,param);
+	PatrolPointVec* patrolPointVec = (PatrolPointVec*)param;
+	count = patrolPointVec->size();
+	if(count == 1)
+	{
+		targetPos[0] = (*patrolPointVec)[0][0];
+		targetPos[1] = (*patrolPointVec)[0][1];
+		patrol = true;
+	}
+	else
+	{
+		data->getParam(WCHDATA_PatrolIndex,param);
+		char* idx = (char*)param;
+		if(*idx<count)
 		{
-			targetPos[0] = (*patrolPointVec)[0][0];
-			targetPos[1] = (*patrolPointVec)[0][1];
-			patrol = true;
-		}
-		else
-		{
-			data->getParam(WCHDATA_PatrolIndex,param);
-			char* idx = (char*)param;
-			if(*idx<count)
+			targetPos[0] = (*patrolPointVec)[*idx][0];
+			targetPos[1] = (*patrolPointVec)[*idx][1];
+			crVector2 vec = targetPos - myPos;
+			if(vec.length()<=m_taskPointRange)
 			{
-				targetPos[0] = (*patrolPointVec)[*idx][0];
-				targetPos[1] = (*patrolPointVec)[*idx][1];
-				crVector2 vec = targetPos - myPos;
-				if(vec.length()<=m_taskPointRange)
-				{
-					(*idx)++;
-					if(*idx>=count)
-						*idx = 0;
-					targetPos[0] = (*patrolPointVec)[*idx][0];
-					targetPos[1] = (*patrolPointVec)[*idx][1];
-					patrol = true;
-				}
-			}
-			else
-			{
-				*idx = 0;
+				(*idx)++;
+				if(*idx>=count)
+					*idx = 0;
 				targetPos[0] = (*patrolPointVec)[*idx][0];
 				targetPos[1] = (*patrolPointVec)[*idx][1];
 				patrol = true;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
-		//targetPos[2] = scene->getPosZ(m_this->getLayerID(),targetPos[0],targetPos[1],m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale());
-		if(patrol)
+		else
 		{
-			//float scale = crGlobalHandle::gData()->gUnitScale();
-			crVector3 _targetPos(targetPos[0], targetPos[1], 0.0f);
-			data->getParam(WCHDATA_TargetPos,param);
-			crVector3 oldtargetpos = *(crVector3 *)param;
-			if ((oldtargetpos - _targetPos).length()>1.0f)
-			{
-				unsigned char itemstate = IS_Move;
-				unsigned char targettype = Target_Coord;
-				data->inputParam(WCHDATA_ItemState,&itemstate);
-				data->inputParam(WCHDATA_TargetType,&targettype);
-				data->inputParam(WCHDATA_TargetPos, &_targetPos);
-				scene->getPathFindingManager()->addPathFindRequest(m_this);
-			}
+			*idx = 0;
+			targetPos[0] = (*patrolPointVec)[*idx][0];
+			targetPos[1] = (*patrolPointVec)[*idx][1];
+			patrol = true;
 		}
-		//data->getParam(WCHDATA_ItemState,param);
-		//unsigned char lastState = *(unsigned char*)param;
-		//if(lastState != IS_Patrol && count>0)
-		//{
-		//	sendState = true;
-		//}
-
-		//if(sendState)
-		//{
-		//	//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		//	//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		//	//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		//	//crItemEventPacket packet;
-		//	//ref_ptr<crStreamBuf> stream = new crStreamBuf;
-		//	unsigned char itemstate = IS_Patrol;
-		//	unsigned char targettype = Target_Coord;
-
-		//	//stream->createBuf(26);
-		//	//stream->_writeInt(m_this->getPosx());
-		//	//stream->_writeInt(m_this->getPosy());
-		//	//stream->_writeInt(m_this->getPosz());
-		//	////stream->_writeFloat(m_this->getDirx());
-		//	////stream->_writeFloat(m_this->getDiry());
-		//	////stream->_writeFloat(m_this->getDirz());
-
-		//	//stream->_writeUChar(itemstate);
-		//	//stream->_writeUChar(targettype);
-		//	//stream->_writeVec3(targetPos);
-		//	data->inputParam(WCHDATA_ItemState,&itemstate);
-		//	data->inputParam(WCHDATA_TargetType,&targettype);
-		//	data->inputParam(WCHDATA_TargetPos,&targetPos);
-		//	scene->getPathFindingManager()->addPathFindRequest(m_this);
-
-		//	//crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_Patrol,stream.get());
-		//	//callback->findScene(m_this->getSceneID())->sendPacketToItemNeighbor(m_this,packet);
-		//}
 	}
+	data->excHandle(MAKEINT64(WCH_LockData,0));
+	//targetPos[2] = scene->getPosZ(m_this->getLayerID(),targetPos[0],targetPos[1],m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale());
+	if(patrol)
+	{
+		//float scale = crGlobalHandle::gData()->gUnitScale();
+		crVector3 _targetPos(targetPos[0], targetPos[1], 0.0f);
+		data->getParam(WCHDATA_TargetPos,param);
+		crVector3 oldtargetpos = *(crVector3 *)param;
+		if ((oldtargetpos - _targetPos).length()>1.0f)
+		{
+			unsigned char itemstate = IS_Move;
+			unsigned char targettype = Target_Coord;
+			data->inputParam(WCHDATA_ItemState,&itemstate);
+			data->inputParam(WCHDATA_TargetType,&targettype);
+			data->inputParam(WCHDATA_TargetPos, &_targetPos);
+			m_this->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
+		}
+	}
+	//data->getParam(WCHDATA_ItemState,param);
+	//unsigned char lastState = *(unsigned char*)param;
+	//if(lastState != IS_Patrol && count>0)
+	//{
+	//	sendState = true;
+	//}
+
+	//if(sendState)
+	//{
+	//	//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+	//	//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+	//	//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+	//	//crItemEventPacket packet;
+	//	//ref_ptr<crStreamBuf> stream = new crStreamBuf;
+	//	unsigned char itemstate = IS_Patrol;
+	//	unsigned char targettype = Target_Coord;
+
+	//	//stream->createBuf(26);
+	//	//stream->_writeInt(m_this->getPosx());
+	//	//stream->_writeInt(m_this->getPosy());
+	//	//stream->_writeInt(m_this->getPosz());
+	//	////stream->_writeFloat(m_this->getDirx());
+	//	////stream->_writeFloat(m_this->getDiry());
+	//	////stream->_writeFloat(m_this->getDirz());
+
+	//	//stream->_writeUChar(itemstate);
+	//	//stream->_writeUChar(targettype);
+	//	//stream->_writeVec3(targetPos);
+	//	data->inputParam(WCHDATA_ItemState,&itemstate);
+	//	data->inputParam(WCHDATA_TargetType,&targettype);
+	//	data->inputParam(WCHDATA_TargetPos,&targetPos);
+	//	scene->getPathFindingManager()->addPathFindRequest(m_this);
+
+	//	//crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_Patrol,stream.get());
+	//	//callback->findScene(m_this->getSceneID())->sendPacketToItemNeighbor(m_this,packet);
+	//}
 }
 /////////////////////////////////////////
 //
@@ -16707,9 +16706,9 @@ void crServerCloseTargetItemMethod::operator()(crHandle &handle)
 						if(/* m_this->getOrCreatePathFinder()->getPathStatus()!=crInstanceItem::crPathFinder::Found ||*/
 							pathFinder->isPortPathEmpty() && pathFinder->isWaypointEmpty() && curTargetPos != targetPos)
 						{
-							crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-							crScene *scene = netCallback->findScene(m_this->getSceneID());
-							scene->getPathFindingManager()->addPathFindRequest(m_this);
+							//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+							//crScene *scene = netCallback->findScene(m_this->getSceneID());
+							m_this->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
 							//crItemEventPacket packet;
 							//crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvCloseTarget,stream.get());
 							//scene->sendPacketToItemNeighbor(m_this,packet);
@@ -17048,12 +17047,12 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 					}
 					else
 					{
-						crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-						crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-						crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+						//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+						//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+						//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
 						crItemEventPacket packet;
 						crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_NetControl,stream.get());
-						callback->findScene(m_this->getSceneID())->sendPacketToItemNeighbor(m_this,packet);
+						m_this->sendPacketToItemNeighbor(packet);
 					}
 					//itemstate = IS_Stop;
 					//thisData->inputParam(WCHDATA_ItemState,&itemstate);
@@ -18205,8 +18204,8 @@ void crLvUpFormula1Method::operator()(crHandle &handle)
 		    stream->_writeUShort(*curSkillPoint);
 			stream->_writeFloat(maxhp);
 			stream->_writeFloat(maxmp);
-			crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			crScene *scene = callback->findScene(m_this->getSceneID());
+			//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			//crRoom *room = m_this->getRoom();// callback->findRoom(m_this->getRoomID());
 			if(m_this->getItemtype() == crInstanceItem::Role)
 			{
 				int playerid = m_this->getID();
@@ -18217,13 +18216,13 @@ void crLvUpFormula1Method::operator()(crHandle &handle)
 				{
 					sceneServerConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 				}
-				scene->sendPacketToItemNeighbor(m_this,packet);
+				m_this->sendPacketToItemNeighbor(packet);
 			}
 			else
 			{
 				crItemEventPacket packet;
 				crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvLvUp,stream.get());
-				scene->sendPacketToItemNeighbor(m_this,packet);
+				m_this->sendPacketToItemNeighbor(packet);
 			}
 		}
 	}
@@ -18382,8 +18381,9 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
 					stream->createBuf(4);
 					stream->_writeUInt(guiseState);
-					crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					crScene *scene = netCallback->findScene(m_this->getSceneID());
+					//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					crScene *scene = m_this->getScene(); //netCallback->findScene(m_this->getSceneID());
+					//crRoom *room = m_this->getRoom();//netCallback->findRoom(m_this->getRoomID());
 
 					thisData->inputParam(WCHDATA_GuiseState, &guiseState);
 					thisData->inputParam(WCHDATA_ControllerFlg, NULL);
@@ -18400,13 +18400,13 @@ void crDeadEventMethod::operator()(crHandle &handle)
 							netManager->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 							//playerData->clearInRanges();
 						}
-						scene->sendPacketToItemNeighbor(m_this,packet);
+						m_this->sendPacketToItemNeighbor(packet);
 					}
 					else
 					{
 						crItemEventPacket packet;
 						crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvGuiseState,stream.get());
-						scene->sendPacketToItemNeighbor(m_this,packet);
+						m_this->sendPacketToItemNeighbor(packet);
 					}
 				}
 			}
@@ -18420,10 +18420,10 @@ void crDeadEventMethod::operator()(crHandle &handle)
 				m_timer = 0.0f;
 				//m_corpseover = false;
 
-				crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-				crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-				crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-				crScene *scene = netCallback->findScene(m_this->getSceneID());
+				//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+				//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+				//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				crScene *scene = m_this->getScene();
 
 				void *param;
 				crData *thisData = m_this->getDataClass();
@@ -18462,7 +18462,7 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					m_this->setPosz(coordz / scale);
 				}
 				thisData->excHandle(MAKEINT64(WCH_LockData,0));
-				crRoom *room = netCallback->findRoom(m_this->getRoomID());
+				crRoom *room = m_this->getRoom();
 				if(room && room->getGameRunning())
 				{
 					thisData->getParam(WCHDATA_Camp,param);
@@ -18689,17 +18689,16 @@ void crRecvRelivePlayerMethod::operator()(crHandle &handle)
 					maxmp *= 0.5f;
 					thisData->inputParam(WCHDATA_RTHP,&maxhp);
 					thisData->inputParam(WCHDATA_RTMP,&maxmp);
-					crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					CRNetApp::crScene *scene = callback->findScene(m_this->getSceneID());
+					//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					CRNetApp::crScene *scene = m_this->getScene();//callback->findScene(m_this->getSceneID());
 					if(scene)
 					{
 						int index = -1;
-						int roomid = m_this->getRoomID();
-						if(roomid!=0)
+						//int roomid = m_this->getRoomID();
+						crRoom *room = m_this->getRoom();
+						if(room)
 						{
-							crRoom *room = callback->findRoom(roomid);
-							if(room)
-								index = room->getBirthPointIndex(room->getMember(m_this->getID()));
+							index = room->getBirthPointIndex(room->getMember(m_this->getID()));
 						}
 						//crVector3i pos = scene->gainBirthPoint(m_this->getLayerID(),m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale(),index);
 						//m_this->setPosx(pos[0]);
@@ -18712,15 +18711,13 @@ void crRecvRelivePlayerMethod::operator()(crHandle &handle)
 				{//竞技游戏复活
 					thisData->inputParam(WCHDATA_RTHP,&maxhp);
 					thisData->inputParam(WCHDATA_RTMP,&maxmp);
-					crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					CRNetApp::crScene *scene = callback->findScene(m_this->getSceneID());
+					//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					CRNetApp::crScene *scene = m_this->getScene();//callback->findScene(m_this->getSceneID());
 					int index = -1;
-					int roomid = m_this->getRoomID();
-					if(roomid!=0)
+					crRoom *room = m_this->getRoom();
+					if(room)
 					{
-						crRoom *room = callback->findRoom(roomid);
-						if(room)
-							index = room->getBirthPointIndex(room->getMember(m_this->getID()));
+						index = room->getBirthPointIndex(room->getMember(m_this->getID()));
 					}
 					//crVector3i pos = scene->gainBirthPoint(m_this->getLayerID(),m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale(),index);
 					//m_this->setPosx(pos[0]);
@@ -19482,8 +19479,8 @@ void crRecvTransportMethod::operator()(crHandle &handle)
 			crNetManager *netManager = sceneServerConductor->getNetManager();
 			crVector2 coord = m_stream->_readVec2();
 			m_this->setPosxy(coord[0] / crGlobalHandle::gData()->gUnitScale(),coord[1] / crGlobalHandle::gData()->gUnitScale());
-			crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			crScene *scene = callback->findScene(m_this->getSceneID());
+			//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			crScene *scene = m_this->getScene();//callback->findScene(m_this->getSceneID());
 			float posz = scene->getPosZ(layerid,coord[0],coord[1],m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale());
 			posz /= crGlobalHandle::gData()->gUnitScale();
 			m_this->setPosz(posz);
@@ -21728,8 +21725,9 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 					ref_ptr<crItemChild> itemchild;
 					if(insertToBackPack>=0)
 					{
-						crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-						CRNetApp::crScene *scene = netCallback->findScene(role->getSceneID());
+						//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+						CRNetApp::crScene *scene = role->getScene();// netCallback->findScene(role->getSceneID());
+						//CRNetApp::crRoom *room = role->getRoom();// netCallback->findRoom(role->getRoomID());
 						if(insertToBackPack == 1)
 						{
 							needInsertItemChild = 1;
@@ -21791,7 +21789,7 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 						crItemEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvNetPickItem,stream.get());
 						netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 						//将背包变化同步给附近玩家
-						scene->sendPacketToItemNeighbor(role,packet);
+						role->sendPacketToItemNeighbor(packet);
 						scene->wantToRemoveItem(m_this);
 						//role->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Server));
 					}
@@ -22298,8 +22296,8 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 							{
 								if(itemid<0)
 								{
-									crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-									CRNetApp::crScene *scene = netCallback->findScene(m_this->getSceneID());
+									//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+									//CRNetApp::crScene *scene = netCallback->findScene(m_this->getSceneID());
 									crGlobalHandle::recycleItemID(itemid);
 									crGlobalHandle::recycleItemChildID(itemchild->getItemChildID());
 								}
@@ -23309,8 +23307,8 @@ void crRecvDropItemMethod::operator()(crHandle &handle)
 					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
 					if(removeItem>=0)
 					{
-						crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-						CRNetApp::crScene *scene = netCallback->findScene(m_this->getSceneID());
+						//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+						CRNetApp::crScene *scene = m_this->getScene();// netCallback->findScene(m_this->getSceneID());
 						float posx,posy,posz;
 						posx = m_this->getPosx() + m_dropRangei.get_random();
 						posy = m_this->getPosy() + m_dropRangei.get_random();
@@ -24202,8 +24200,9 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 						break;
 					}
 					///购买（先收货，后扣钱）
-					crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					CRNetApp::crScene *scene = callback->findScene(m_this->getSceneID());
+					//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					CRNetApp::crScene *scene = m_this->getScene();// callback->findScene(m_this->getSceneID());
+					//CRNetApp::crRoom *room = m_this->getRoom();// callback->findRoom(m_this->getRoomID());
 					ref_ptr<crInstanceItem> newitem;
                     if(itemid<0)
 					{
@@ -24388,7 +24387,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					crItemEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvBuyItem,stream.get());
 					netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 					//将玩家背包的变化同步给附近玩家
-					scene->sendPacketToItemNeighbor(buyer,packet);
+					buyer->sendPacketToItemNeighbor(packet);
 
 					//if(m_this->getItemtype() == crInstanceItem::Role)
 					//{//卖家是玩家，则玩家钱增加，并发送消息给玩家（salemap change）
@@ -28227,8 +28226,8 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 							}
 						}
 					}
-					crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					CRNetApp::crScene *scene = netCallback->findScene(m_this->getSceneID());
+					//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					CRNetApp::crRoom *room = m_this->getRoom();// netCallback->findRoom(m_this->getRoomID());
 					std::vector<crVector2i>NeedRemoveFromEquipOn;
 					std::vector<int>NeedRemoveItemChild;
 					if(foundEquip)
@@ -28379,7 +28378,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					crPlayerEventPacket packet;
 					crPlayerEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvEquipOnItem,stream.get());
 					netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
-					scene->sendPacketToItemNeighbor(m_this,packet);
+					m_this->sendPacketToItemNeighbor(packet);
 					
 					//crPlayerEventPacket::buildRequestPacket(packet,0,playerData->getPlayerID(),WCH_RecvEquipOnMap,equipOnStream.get());
 					//playerData->sendPacketToNeighbor(packet);
@@ -29649,9 +29648,9 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 				netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 				if(returnCode == UC_Success)
 				{
-					crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
-					crScene *scene = callback->findScene(m_this->getSceneID());
-					scene->sendPacketToItemNeighbor(m_this,packet);
+					//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
+					//crScene *scene = callback->findScene(m_this->getSceneID());
+					m_this->sendPacketToItemNeighbor(packet);
 				}
 			}
 		}
@@ -29917,9 +29916,9 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 				netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 				if(returnCode == QC_Success)
 				{
-					crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
-					crScene *scene = callback->findScene(m_this->getSceneID());
-					scene->sendPacketToItemNeighbor(m_this,packet);
+					//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
+					//crScene *scene = callback->findScene(m_this->getSceneID());
+					m_this->sendPacketToItemNeighbor(packet);
 				}
 			}
 		}
@@ -30227,9 +30226,9 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 				netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 				if(returnCode == UQ_Success)
 				{
-					crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
-					crScene *scene = callback->findScene(m_this->getSceneID());
-					scene->sendPacketToItemNeighbor(m_this,packet);
+					//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
+					//crScene *scene = callback->findScene(m_this->getSceneID());
+					m_this->sendPacketToItemNeighbor(packet);
 				}
 			}
 		}
@@ -31380,9 +31379,9 @@ void crRecvNetUseThingMethod::operator()(crHandle &handle)
 							crPlayerEventPacket packet;
 							crPlayerEventPacket::buildRequestPacket(packet,playerid,role,WCH_RecvAboutToUseItemID,stream.get());
 							//netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
-							crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
-							crScene *scene = callback->findScene(m_this->getSceneID());
-							scene->sendPacketToItemNeighbor(m_this,packet);
+							//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netConductor->getNetDataManager()->getNetCallback());
+							//crScene *scene = callback->findScene(m_this->getSceneID());
+							m_this->sendPacketToItemNeighbor(packet);
 						}
 						roleData->excHandle(MAKEINT64(WCH_LockData,0));
 					}
@@ -31527,8 +31526,8 @@ void crUTCureHPMethod::operator()(crHandle &handle)
 		stream->createBuf(6);
 		stream->_writeShort(curehp);
 		stream->_writeFloat(*rthp);
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_user->getSceneID());
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//crScene *scene = netCallback->findScene(m_user->getSceneID());
 		if(usertype == crInstanceItem::Role)
 		{
 			crPlayerEventPacket packet;
@@ -31538,13 +31537,13 @@ void crUTCureHPMethod::operator()(crHandle &handle)
 			{
 				netManager->sendPacket(hitPlayerData->getPlayerConnectServerAddress(),packet);
 			}
-			scene->sendPacketToItemNeighbor(m_user.get(),packet);
+			m_user->sendPacketToItemNeighbor(packet);
 		}
 		else
 		{
 			crItemEventPacket packet;
 			crItemEventPacket::buildRequestPacket(packet,0,m_user.get(),WCH_RecvCureHP,stream.get());
-			scene->sendPacketToItemNeighbor(m_user.get(),packet);
+			m_user->sendPacketToItemNeighbor(packet);
 		}
 	}
 }
@@ -31624,8 +31623,8 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 		stream->createBuf(6);
 		stream->_writeShort(curemp);
 		stream->_writeFloat(*rtmp);
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_user->getSceneID());
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//crScene *scene = netCallback->findScene(m_user->getSceneID());
 		if(hittype == crInstanceItem::Role)
 		{
 			crPlayerEventPacket packet;
@@ -31635,13 +31634,13 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 			{
 				netManager->sendPacket(hitPlayerData->getPlayerConnectServerAddress(),packet);
 			}
-			scene->sendPacketToItemNeighbor(m_user.get(),packet);
+			m_user->sendPacketToItemNeighbor(packet);
 		}
 		else
 		{
 			crItemEventPacket packet;
 			crItemEventPacket::buildRequestPacket(packet,0,m_user.get(),WCH_RecvCureMP,stream.get());
-			scene->sendPacketToItemNeighbor(m_user.get(),packet);
+			m_user->sendPacketToItemNeighbor(packet);
 		}
 	}
 }
@@ -32315,8 +32314,8 @@ void crCureHPMethod::operator()(crHandle &handle)
 		stream->createBuf(6);
 		stream->_writeShort(curehp);
 		stream->_writeFloat(*rthp);
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//crScene *scene = netCallback->findScene(m_this->getSceneID());
 		if(hittype == crInstanceItem::Role)
 		{
 			crPlayerEventPacket packet;
@@ -32326,13 +32325,13 @@ void crCureHPMethod::operator()(crHandle &handle)
 			{
 				netManager->sendPacket(hitPlayerData->getPlayerConnectServerAddress(),packet);
 			}
-			scene->sendPacketToItemNeighbor(m_this,packet);
+			m_this->sendPacketToItemNeighbor(packet);
 		}
 		else
 		{
 			crItemEventPacket packet;
 			crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvCureHP,stream.get());
-			scene->sendPacketToItemNeighbor(m_this,packet);
+			m_this->sendPacketToItemNeighbor(packet);
 		}
 	}
 }
@@ -32463,8 +32462,8 @@ void crCureMPMethod::operator()(crHandle &handle)
 		stream->createBuf(6);
 		stream->_writeShort(curemp);
 		stream->_writeFloat(*rtmp);
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//crScene *scene = netCallback->findScene(m_this->getSceneID());
 		if(hittype == crInstanceItem::Role)
 		{
 			crPlayerEventPacket packet;
@@ -32474,13 +32473,13 @@ void crCureMPMethod::operator()(crHandle &handle)
 			{
 				netManager->sendPacket(hitPlayerData->getPlayerConnectServerAddress(),packet);
 			}
-			scene->sendPacketToItemNeighbor(m_this,packet);
+			m_this->sendPacketToItemNeighbor(packet);
 		}
 		else
 		{
 			crItemEventPacket packet;
 			crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvCureMP,stream.get());
-			scene->sendPacketToItemNeighbor(m_this,packet);
+			m_this->sendPacketToItemNeighbor(packet);
 		}
 	}
 }
@@ -32640,16 +32639,12 @@ void crUTTransportToBaseMethod::operator()(crHandle &handle)
 	{
 		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		CRNetApp::crScene *scene = callback->findScene(m_user->getSceneID());
+		//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		CRNetApp::crScene *scene = m_user->getScene();// callback->findScene(m_user->getSceneID());
 		int index = -1;
-		int roomid = m_user->getRoomID();
-		if(roomid!=0)
-		{
-			crRoom *room = callback->findRoom(roomid);
-			if(room)
-				index = room->getBirthPointIndex(room->getMember(m_user->getID()));
-		}
+		crRoom *room = m_user->getRoom();
+		if(room)
+			index = room->getBirthPointIndex(room->getMember(m_user->getID()));
 		//crVector3i pos = scene->gainBirthPoint(m_user->getLayerID(),m_user->getZoffset() * crGlobalHandle::gData()->gUnitScale(),index);
 		//m_user->setPosx(pos[0]);
 		//m_user->setPosy(pos[1]);
@@ -35622,26 +35617,23 @@ void crServerReadPathMethod::operator()(crHandle &handle)
 					float speed = 0;
 					m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
 					float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
-					crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-					crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-					crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					CRNetApp::crScene *scene = netCallback->findScene(m_this->getSceneID());
-					if(scene)
+					//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+					//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+					//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					CRNetApp::crScene *scene = m_this->getScene();// netCallback->findScene(m_this->getSceneID());
+					float distance = relspeed * m_dt;//(m_dt+delay);
+					float dt = m_dt;
+					do
 					{
-						float distance = relspeed * m_dt;//(m_dt+delay);
-						float dt = m_dt;
-						do
+						if(m_this->getOrCreatePathFinder()->readPath(m_this,scene,distance,dt))
 						{
-							if(m_this->getOrCreatePathFinder()->readPath(m_this,scene,distance,dt))
-							{
-								dt = 0.0f;
-							}
-							else
-							{
-								break;
-							}
-						}while(distance>0.0f);
-					}
+							dt = 0.0f;
+						}
+						else
+						{
+							break;
+						}
+					}while(distance>0.0f);
 				}
 				else if(stats!=crInstanceItem::crPathFinder::NotStarted && itemstate != IS_MoveToUseSkill && itemstate != IS_CloseTargetUseSkill)
 				{
@@ -35802,18 +35794,18 @@ void crCloseToSyncPositionMethod::operator()(crHandle &handle)
 {//获取目标位置，移动到目标位子自动停下
 	if(m_dt>0.0f && m_this->hasSyncPos())
 	{
-		CRNetApp::crScene *scene = NULL;
-		if(crGlobalHandle::isClient())
-		{
-			scene = crMyPlayerData::getInstance()->getScene();
-		}
-		else
-		{
-			crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-			crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			scene = netCallback->findScene(m_this->getSceneID());
-		}
+		CRNetApp::crScene *scene = m_this->getScene();
+		//if(crGlobalHandle::isClient())
+		//{
+		//	scene = crMyPlayerData::getInstance()->getScene();
+		//}
+		//else
+		//{
+		//	//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//	//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//	//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//	scene = netCallback->findScene(m_this->getSceneID());
+		//}
 		if(scene)
 		{
 			float speed = 0;
@@ -36500,16 +36492,16 @@ void crRecvFindPathToMethod::operator()(crHandle &handle)
 {
 	if(m_this && m_stream.valid())
 	{
-		crScene *scene=NULL;
-		if(m_netType == GameClient_Game)
-			scene = crMyPlayerData::getInstance()->getScene();
-		else if(m_netType == SceneServer)
-		{
-			crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-			crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			scene = netCallback->findScene(m_this->getSceneID());
-		}
+		crScene *scene= m_this->getScene();
+		//if(m_netType == GameClient_Game)
+		//	scene = crMyPlayerData::getInstance()->getScene();
+		//else if(m_netType == SceneServer)
+		//{
+		//	crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//	crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//	crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		//	scene = netCallback->findScene(m_this->getSceneID());
+		//}
 		if(scene)
 		{
 			m_this->setPosxy(m_stream->_readVec2i());
@@ -39067,18 +39059,18 @@ void crCarMoveMethod::operator()(crHandle &handle)
 				//	//itemstate = IS_Stop;
 				//	//data->inputParam(WCHDATA_ItemState,&itemstate);
 				//}
-				CRNetApp::crScene *scene = NULL;
-				if(crGlobalHandle::isClient())
-				{
-					scene = crMyPlayerData::getInstance()->getScene();
-				}
-				else
-				{
-					crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-					crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-					crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-					scene = netCallback->findScene(m_this->getSceneID());
-				}
+				CRNetApp::crScene *scene = m_this->getScene();
+				//if(crGlobalHandle::isClient())
+				//{
+				//	scene = crMyPlayerData::getInstance()->getScene();
+				//}
+				//else
+				//{
+				//	crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+				//	crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+				//	crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				//	scene = netCallback->findScene(m_this->getSceneID());
+				//}
 				crSceneLayer *scenelayer = scene->getSceneLayer(m_this->getLayerID());
 				crVector2s pos = scenelayer->getCoord(newPos[0],newPos[1]);
 				crVector2 info = scenelayer->getCollideInfo(pos[0], pos[1]);
@@ -39332,18 +39324,18 @@ void crTankMoveMethod::operator()(crHandle &handle)
 				}
 				if(currentSpeed!=0.0f || currentAngular!=0.0f)
 				{
-					CRNetApp::crScene *scene = NULL;
-					if(crGlobalHandle::isClient())
-					{
-						scene = crMyPlayerData::getInstance()->getScene();
-					}
-					else
-					{
-						crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-						crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-						crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-						scene = netCallback->findScene(m_this->getSceneID());
-					}
+					CRNetApp::crScene *scene = m_this->getScene();
+					//if(crGlobalHandle::isClient())
+					//{
+					//	scene = crMyPlayerData::getInstance()->getScene();
+					//}
+					//else
+					//{
+					//	crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+					//	crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+					//	crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+					//	scene = netCallback->findScene(m_this->getSceneID());
+					//}
 					if(currentAngular != 0.0f)
 					{
 						crMatrix rotStep = CRCore::crMatrix::rotate(currentAngular/** fcurrentSpeed*/ * m_time, CRCore::Z_AXIS);
@@ -43357,16 +43349,16 @@ void crPositionSyncMethod::operator()(crHandle &handle)
 			}
 			else
 			{
-				crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-				crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-				crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-				crScene *scene = netCallback->findScene(m_this->getSceneID());
-				if(scene)
-				{
+				//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+				//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+				//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				//crScene *scene = netCallback->findScene(m_this->getSceneID());
+				//if(scene)
+				//{
 					crItemEventPacket packet;
 					crItemEventPacket::buildRequestPacket(packet,0,m_this,WCH_RecvPositionSync,stream.get());
-					scene->sendPacketToItemNeighbor(m_this,packet);
-				}
+					m_this->sendPacketToInSight(packet);
+				//}
 			}
 		}
 	}
@@ -43868,10 +43860,10 @@ void crRecvAdvanceRoomProgressMethod::operator()(crHandle &handle)
 {
 	if(m_stream.valid())
 	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crRoom *room = netCallback->findRoom(m_this->getRoomID());
+		//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		crRoom *room = m_this->getRoom();// netCallback->findRoom(m_this->getRoomID());
 		if(room && room->getGameRunning())
 		{
 			void *param;
@@ -43922,10 +43914,10 @@ void crSetRoomProgressMethod::inputParam(int i, void *param)
 }
 void crSetRoomProgressMethod::operator()(crHandle &handle)
 {
-	crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-	crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-	crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-	crRoom *room = netCallback->findRoom(m_this->getRoomID());
+	//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+	//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+	//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+	crRoom *room = m_this->getRoom();// netCallback->findRoom(m_this->getRoomID());
 	if(room && room->getGameRunning())
 	{
 		crData *data = room->getDataClass();
@@ -43970,10 +43962,10 @@ void crReliveItemsMethod::operator()(crHandle &handle)
 {
 	if(!m_itemidVec.empty())
 	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+		//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		crScene *scene = m_this->getScene();//netCallback->findScene(m_this->getSceneID());
 		if(scene)
 		{
 			crInstanceItem *item;
@@ -44066,10 +44058,10 @@ void crKillItemsMethod::operator()(crHandle &handle)
 {
 	if(!m_itemidVec.empty())
 	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+		//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		crScene *scene = m_this->getScene();//netCallback->findScene(m_this->getSceneID());
 		if(scene)
 		{
 			crInstanceItem *item;
@@ -44384,10 +44376,10 @@ void crIFItemsDeadMethod::operator()(crHandle &handle)
 	bool condition = true;
 	if(!m_itemidVec.empty())
 	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crScene *scene = netCallback->findScene(m_this->getSceneID());
+		//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		crScene *scene = m_this->getScene();// netCallback->findScene(m_this->getSceneID());
 		if(scene)
 		{
 			crInstanceItem *item;

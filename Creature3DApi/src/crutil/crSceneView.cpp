@@ -23,7 +23,7 @@
 #include <CRUtil/crRenderInitVisitor.h>
 #include <CRPhysics/crPhysicsInitVisitor.h>
 #include <CRPhysics/crPhysicsUpdateVisitor.h>
-
+#include <CRPhysics/crWeaponManager.h>
 #include <CRCore/crShapeDrawable.h>
 //#include <CRCore/crWaterSimulationNode.h>
 //#include <CRCore/crDepthSortedObject.h>
@@ -53,7 +53,7 @@
 
 using namespace CRCore;
 using namespace CRUtil;
-
+using namespace CRPhysics;
 //CRCore::ref_ptr<crSceneView::NetWorkUpdateCallback> crSceneView::m_netWorkUpdateCallback;
 //CRCore::ref_ptr<crSceneView::SceneManagerUpdater> crSceneView::s_sceneManagerUpdater;
 crSceneView::ExternUpdaterVec crSceneView::s_externUpdaterVec;
@@ -1319,6 +1319,7 @@ void crSceneView::releaseAllObjects()
 
 	crShaderManager::getInstance()->releaseObjects(m_state.get());
 	crEnvironmentManager::getInstance()->releaseObjects(m_state.get());
+	crWeaponManager::getInstance()->releaseObjects(m_state.get());
     m_camera->releaseObjects(m_state.get());
 	m_globalStateSet->releaseObjects(m_state.get());
 	m_localStateSet->releaseObjects(m_state.get());

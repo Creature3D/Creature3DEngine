@@ -115,8 +115,9 @@ public:
 	void UpdateWorldValue(int id, float value);
 	inline bool gShowDebugInfo() { return g_showDebugInfo; }
 	inline bool gEnableRobotTest() { return g_enableRobotTest; }
-	inline short gSightRange() { return g_sightRange; }
-	inline short gEyeHeight() { return g_eyeHeight; }
+	inline float gSightRange() { return g_sightRange; }
+	inline short gEyePointRange() { return g_eyePointRange; }
+	inline short gEyePointHeight() { return g_eyePointHeight; }
 	inline float gItemAdjustAngular() { return g_itemAdjustAngular; }
 	inline float gFollowDelta() { return g_followDelta; }
 	inline float gPortScopeSqr() { return g_portScopeSqr; }
@@ -175,8 +176,9 @@ protected:
 	////////DebugInfo
 	bool g_showDebugInfo;
 	bool g_enableRobotTest;
-	short g_sightRange;
-	short g_eyeHeight;
+	float g_sightRange;
+	short g_eyePointRange;//
+	short g_eyePointHeight;
 	float g_itemAdjustAngular;
 	float g_portScopeSqr;
 	float g_itemVisiableInterval;

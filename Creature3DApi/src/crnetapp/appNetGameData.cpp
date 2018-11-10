@@ -314,7 +314,9 @@ m_delayTime(0.0f),
 m_dropItemTimer(300.0f),
 m_sightInfo(NULL),
 m_ownerid(0L),
-m_reliveTimer(0.0f)
+m_reliveTimer(0.0f),
+m_room(NULL),
+m_scene(NULL)
 {
 	m_dir.set(0,-1,0);
 	m_targetDir.set(0,-1,0);
@@ -357,7 +359,9 @@ m_delayTime(0.0f),
 m_dropItemTimer(300.0f),
 m_sightInfo(NULL),
 m_ownerid(0L),
-m_reliveTimer(0.0f)
+m_reliveTimer(0.0f),
+m_room(NULL),
+m_scene(NULL)
 {
 	if(item.m_dataClass.valid())
 		m_dataClass = item.m_dataClass->clone(CRCore::crCopyOp::DEEP_COPY_ALL);
@@ -437,6 +441,7 @@ const std::string &crInstanceItem::getAName() const
 void crInstanceItem::setSceneID(int sceneid)
 {
 	m_sceneid = sceneid;
+	m_scene = NULL;
 }
 int crInstanceItem::getSceneID()
 {
@@ -955,8 +960,6 @@ void crInstanceItem::serverUpdate(float dt)
 			crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 			crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
 			crNetManager *netManager = sceneServerConductor->getNetManager();
-			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			crScene *scene = netCallback->findScene(getSceneID());
 			if(m_dataClass.valid())
 			{
 				void *param;
@@ -970,7 +973,6 @@ void crInstanceItem::serverUpdate(float dt)
 				ref_ptr<crStreamBuf> stream = new crStreamBuf;
 				stream->createBuf(4);
 				stream->_writeUInt(guiseState);
-				
 				if(getItemtype() == crInstanceItem::Role)
 				{
 					int playerid = getID();
@@ -981,18 +983,18 @@ void crInstanceItem::serverUpdate(float dt)
 					{
 						netManager->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 					}
-					scene->sendPacketToItemNeighbor(this,packet);
+					sendPacketToItemNeighbor(packet);
 				}
 				else
 				{
 					crItemEventPacket packet;
 					crItemEventPacket::buildRequestPacket(packet,0,this,WCH_RecvGuiseState,stream.get());
-					scene->sendPacketToItemNeighbor(this,packet);
+					sendPacketToItemNeighbor(packet);
 				}
 				m_dataClass->inputParam(WCHDATA_GuiseState, &guiseState);
 				m_dataClass->inputParam(WCHDATA_ControllerFlg,NULL);
 			}
-			scene->wantToRemoveItem(this);
+			if (getScene()) m_scene->wantToRemoveItem(this);
 			crGlobalHandle::recycleItemID(m_instanceitemid);
 		}
 	}
@@ -1434,16 +1436,16 @@ crInstanceItem *crInstanceItem::serverGetTarget()
 			}
 			else
 			{
-				crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-				crScene *scene = callback->findScene(m_sceneid);
-				return scene?scene->findSceneItem(targetid,m_roomid):NULL;
+				//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				//crScene *scene = callback->findScene(m_sceneid);
+				return getScene()? m_scene->findSceneItem(targetid,m_roomid):NULL;
 			}
 		}
 		else if(targetType == Target_Npc || targetType == Target_Item || targetType == Target_StaticNpc/* || targetType == Target_StaticItem*/)
 		{
-			crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-			crScene *scene = callback->findScene(m_sceneid);
-			return scene?scene->findSceneItem(targetid,m_roomid):NULL;
+			//crSceneServerCallback *callback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			//crScene *scene = callback->findScene(m_sceneid);
+			return getScene() ? m_scene->findSceneItem(targetid,m_roomid):NULL;
 		}
 	}
 	return NULL;
@@ -1530,10 +1532,58 @@ void crInstanceItem::clientGetTarget(CRCore::ref_ptr<crInstanceItem> &outItem,CR
 void crInstanceItem::setRoomID(int roomid)
 {
 	m_roomid = roomid;
+	m_room = NULL;
 }
 int crInstanceItem::getRoomID()
 {
 	return m_roomid;
+}
+crRoom *crInstanceItem::getRoom()
+{
+	if (crGlobalHandle::isClient())
+		m_room = crMyPlayerData::getInstance()->getSelectedRoom();
+	else if(!m_room)
+	{
+		crNetConductor *netConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		if (netConductor)
+		{
+			crNetDataManager *netDataManager = netConductor->getNetDataManager();
+			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			m_room = netCallback->findRoom(m_roomid);
+		}
+	}
+	return m_room;
+}
+crScene *crInstanceItem::getScene()
+{
+	if (crGlobalHandle::isClient())
+		m_scene = crMyPlayerData::getInstance()->getScene();
+	else if (!m_scene)
+	{
+		crNetConductor *netConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		if (netConductor)
+		{
+			crNetDataManager *netDataManager = netConductor->getNetDataManager();
+			crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+			m_scene = netCallback->findScene(m_sceneid);
+		}
+	}
+	return m_scene;
+}
+void crInstanceItem::sendPacketToItemNeighbor(CRNet::crStreamPacket &packet)
+{ 
+	crRoom *room = getRoom();
+	if (room) room->sendPacketToItemNeighbor(this, packet);
+}
+void crInstanceItem::sendPacketToAll(CRNet::crStreamPacket &packet)
+{
+	crRoom *room = getRoom();
+	if (room) room->sendPacketToAll(packet,getPlayerID());
+}
+void crInstanceItem::sendPacketToInSight(CRNet::crStreamPacket &packet)
+{
+	crRoom *room = getRoom();
+	if (room) room->sendPacketToInSight(this, packet);
 }
 void crInstanceItem::clientRelease()
 {
@@ -2010,39 +2060,29 @@ bool crInstanceItem::isMainAI()
 	}
 	return mainai;
 }
-CRNetApp::crScene *crInstanceItem::getScene()
-{
-	CRNetApp::crScene *scene = NULL;
-	if(crGlobalHandle::isClient()) 
-	{
-		scene = crMyPlayerData::getInstance()->getScene();
-	}
-	else
-	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		scene = netCallback->findScene(getSceneID());
-	}
-	return scene;
-}
+//CRNetApp::crScene *crInstanceItem::getScene()
+//{
+//	CRNetApp::crScene *scene = NULL;
+//	if(crGlobalHandle::isClient()) 
+//	{
+//		scene = crMyPlayerData::getInstance()->getScene();
+//	}
+//	else
+//	{
+//		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+//		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+//		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+//		scene = netCallback->findScene(getSceneID());
+//	}
+//	return scene;
+//}
 CRNetApp::crSceneLayer *crInstanceItem::getSceneLayer()
 {
-	CRNetApp::crScene *scene = getScene();
-	if(scene)
-	{
-		return scene->getSceneLayer(m_layerid);
-	}
-	return NULL;
+	return getScene() ? m_scene->getSceneLayer(m_layerid) : NULL;
 }
 float crInstanceItem::getPosZ(float posx,float posy)
 {
-	CRNetApp::crScene *scene = getScene();
-	if(scene)
-	{
-		return scene->getPosZ(m_layerid,posx,posy,getZoffset()*crGlobalHandle::gData()->gUnitScale());
-	}
-	return 0.0f;
+	return getScene() ? m_scene->getPosZ(m_layerid, posx, posy, getZoffset()*crGlobalHandle::gData()->gUnitScale()) : 0.0f;
 }
 //bool crInstanceItem::intersect(const CRCore::crVector2s &coord)
 //{//判断点在多边形内
@@ -3557,45 +3597,45 @@ void crScene::removeSightInfo(crSightInfo *sightinfo)
 	GNE::LockMutex lock( m_sightInfoSetMutex );
 	m_sightInfoSet.erase(sightinfo);
 }
-void crScene::sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacket &packet)
-{
-	GNE::LockMutex lock( m_sightInfoSetMutex );
-	ref_ptr<crSightInfo> sightInfo;
-	int roomid = item->getRoomID();
-	crRole *role = dynamic_cast<crRole *>(item);
-	int id = item->getID();
-	//int ownerplayerid = LOINT64(item->getOwnerID());
-	for( SightInfoSet::iterator sitr = m_sightInfoSet.begin();
-		sitr != m_sightInfoSet.end();
-		++sitr )
-	{
-		sightInfo = *sitr;
-		if(sightInfo->getRoomID() == roomid)
-		{
-			if(role)
-			{
-				if ((id>0 && sightInfo->isEyeRole(id)) || (id<0 && sightInfo->isEyeItem(id)))
-				{
-					//if (id < 0)
-					//	sightInfo->sendPacketToEyePlayer(packet, ownerplayerid);
-					//else
-					sightInfo->sendPacketToEyePlayer(packet, id);
-				}
-				else if (sightInfo->isRoleInSight(role)/* || sightInfo->isItemInSight(role)*/)
-				{
-					sightInfo->sendPacketToEyePlayer(packet);
-				}
-			}
-			else
-			{
-				if(sightInfo->isItemInSight(item) || sightInfo->isEyeItem(id))
-				{
-					sightInfo->sendPacketToEyePlayer(packet);
-				}
-			}
-		}
-	}
-}
+//void crScene::sendPacketToItemNeighbor(crInstanceItem *item,CRNet::crStreamPacket &packet)
+//{
+//	GNE::LockMutex lock( m_sightInfoSetMutex );
+//	ref_ptr<crSightInfo> sightInfo;
+//	int roomid = item->getRoomID();
+//	crRole *role = dynamic_cast<crRole *>(item);
+//	int id = item->getID();
+//	//int ownerplayerid = LOINT64(item->getOwnerID());
+//	for( SightInfoSet::iterator sitr = m_sightInfoSet.begin();
+//		sitr != m_sightInfoSet.end();
+//		++sitr )
+//	{
+//		sightInfo = *sitr;
+//		if(sightInfo->getRoomID() == roomid)
+//		{
+//			if(role)
+//			{
+//				if ((id>0 && sightInfo->isEyeRole(id)) || (id<0 && sightInfo->isEyeItem(id)))
+//				{
+//					//if (id < 0)
+//					//	sightInfo->sendPacketToEyePlayer(packet, ownerplayerid);
+//					//else
+//					sightInfo->sendPacketToEyePlayer(packet, id);
+//				}
+//				else if (sightInfo->isRoleInSight(role)/* || sightInfo->isItemInSight(role)*/)
+//				{
+//					sightInfo->sendPacketToEyePlayer(packet);
+//				}
+//			}
+//			else
+//			{
+//				if(sightInfo->isItemInSight(item) || sightInfo->isEyeItem(id))
+//				{
+//					sightInfo->sendPacketToEyePlayer(packet);
+//				}
+//			}
+//		}
+//	}
+//}
 void crScene::itemDead(crInstanceItem *item)
 {
 	GNE::LockMutex lock( m_sightInfoSetMutex );
@@ -3762,10 +3802,10 @@ void crScene::wantToRemoveItem(crInstanceItem *item)
 	CRCore::ref_ptr<crSightInfo> sightInfo = item->getSightInfo();
 	if (sightInfo.valid())
 	{
-		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
-		crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
-		crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-		crRoom *room = netCallback->findRoom(roomid);
+		//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
+		//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+		crRoom *room = item->getRoom();
 		if (room)
 		{
 			room->removeSightInfo(sightInfo.get());
@@ -5988,6 +6028,62 @@ void crRoom::sendPacketToGroup(unsigned char groupid, CRNet::crStreamPacket &pac
 					netManager->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 				}
 			}
+		}
+	}
+}
+void crRoom::sendPacketToItemNeighbor(crInstanceItem *item, CRNet::crStreamPacket &packet)
+{
+	GNE::LockMutex lock(m_playerListMutex);
+	if (!m_playerList.empty())
+	{
+		crNetConductor *sceneServer = crNetContainer::getInstance()->getNetConductor(SceneServer);
+		crNetDataManager *netDataManager = sceneServer->getNetDataManager();
+		crNetManager *netManager = sceneServer->getNetManager();
+		ref_ptr<crStreamBuf> packetStream = packet.getStreamBuf();
+		int bufsize = packetStream->getBufSize();
+		crRoomPlayer *roomPlayer;
+		int itemPlayerID = item->getPlayerID();
+		int playerid;
+		ref_ptr<crSceneServerPlayerData> playerData;
+		for (PlayerList::iterator itr = m_playerList.begin();
+			itr != m_playerList.end();
+			++itr)
+		{
+			roomPlayer = itr->get();
+			playerid = roomPlayer->getPlayerID();
+			if (playerid == itemPlayerID)
+				continue;
+			if (roomPlayer->isInCamera(item))
+			{
+				playerData = dynamic_cast<crSceneServerPlayerData *>(netDataManager->getPlayerData(playerid));
+				packetStream->seekBegin();
+				packetStream->_writeInt(playerid);
+				packetStream->setBufSize(bufsize);
+				netManager->sendPacket(playerData->getPlayerConnectServerAddress(), packet);
+			}
+		}
+	}
+}
+void crRoom::sendPacketToInSight(crInstanceItem *item,CRNet::crStreamPacket &packet)
+{
+	{
+		GNE::LockMutex lock(m_sightInfoMapMutex);
+		for (SightInfoMap::iterator itr = m_sightInfoMap.begin();
+			itr != m_sightInfoMap.end();
+			++itr)
+		{
+			itr->second->sendPacketToInSight(item,packet);
+		}
+	}
+	{
+		GNE::LockMutex lock(m_sightInfoSetMutex);
+		ref_ptr<crSightInfo> sightinfo;
+		for (SightInfoSet::iterator itr = m_sightInfoSet.begin();
+			itr != m_sightInfoSet.end();
+			++itr)
+		{
+			sightinfo = *itr;
+			sightinfo->sendPacketToInSight(item,packet);
 		}
 	}
 }

@@ -215,8 +215,8 @@
 #define WCHDATA_gMainRoleAItemID	  171
 #define WCHDATA_gMainRoleAMetierID	  172
 #define WCHDATA_gShowDebugInfo		  173
-#define WCHDATA_gSightRange			  174
-#define WCHDATA_gEyeHeight			  175
+#define WCHDATA_gEyePointRange		  174
+#define WCHDATA_gEyePointHeight		  175
 #define WCHDATA_gItemAdjustAngular	  176
 #define WCHDATA_gFollowDelta		  177
 #define WCHDATA_gPortScopeSqr		  178
@@ -231,6 +231,7 @@
 //#define WCHDATA_gGMTable			  186
 #define WCHDATA_gEnableRobotTest	  187
 #define WCHDATA_gStartDate			  188
+#define WCHDATA_gSightRange			  189
 
 #define WCHDATA_ControllerTime		  200
 #define WCHDATA_DefaultKey			  201

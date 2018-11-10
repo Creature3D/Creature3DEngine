@@ -16,6 +16,7 @@
 #include <CRPhysics/crExport.h>
 #include <CRCore/crNode.h>
 #include <CRPhysics/crWeaponNode.h>
+#include <CRCore/crState.h>
 #include <vector>
 namespace CRPhysics{
 
@@ -59,6 +60,7 @@ public :
   static crWeaponMatterObject *createWeaponMatterObject(crWeaponMatterObject *weapon);
 
   virtual void clear();
+  void releaseObjects(CRCore::crState* state);
 protected:
   virtual ~crWeaponManager(); 
   static CRCore::ref_ptr<crWeaponManager> m_instance;

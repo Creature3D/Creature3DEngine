@@ -73,8 +73,9 @@ g_mainRoleAItemID(0),
 g_mainRoleAMetierID(0),
 g_showDebugInfo(0),
 g_enableRobotTest(0),
-g_sightRange(1000),
-g_eyeHeight(150),
+g_sightRange(20.0f),
+g_eyePointHeight(150),
+g_eyePointRange(2000),
 g_itemAdjustAngular(20.0f),
 g_followDelta(2.0f),
 g_portScopeSqr(100.0f),
@@ -123,7 +124,8 @@ g_mainRoleAMetierID(data.g_mainRoleAMetierID),
 g_showDebugInfo(data.g_showDebugInfo),
 g_enableRobotTest(data.g_enableRobotTest),
 g_sightRange(data.g_sightRange),
-g_eyeHeight(data.g_eyeHeight),
+g_eyePointHeight(data.g_eyePointHeight),
+g_eyePointRange(data.g_eyePointRange),
 g_itemAdjustAngular(data.g_itemAdjustAngular),
 g_followDelta(data.g_followDelta),
 g_portScopeSqr(data.g_portScopeSqr),
@@ -290,17 +292,20 @@ void crGlobalData::addParam(int i, const std::string& str)
 		g_enableRobotTest = (bool)(atoi(relStr.c_str()));
 		break;
 	case WCHDATA_gSightRange:
-		{
-			float range = atof(relStr.c_str());
-			range /= crGlobalHandle::gData()->gUnitScale();
-			g_sightRange = (short)range;
-		}
+		g_sightRange = atof(relStr.c_str());
 		break;
-	case WCHDATA_gEyeHeight:
+	case WCHDATA_gEyePointHeight:
 		{
 			float height = atof(relStr.c_str());
 			height /= crGlobalHandle::gData()->gUnitScale();
-			g_eyeHeight = (short)height;
+			g_eyePointHeight = (short)height;
+		}
+		break;
+	case WCHDATA_gEyePointRange:
+		{
+			float range = atof(relStr.c_str());
+			range /= crGlobalHandle::gData()->gUnitScale();
+			g_eyePointRange = (short)range;
 		}
 		break;
 	case WCHDATA_gItemAdjustAngular:

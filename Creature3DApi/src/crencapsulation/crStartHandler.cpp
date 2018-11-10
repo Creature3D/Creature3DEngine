@@ -27,6 +27,8 @@
 #include <CRProducer/crKeyboardMouseHandle.h>
 #include <CRProducer/crSceneHandler.h>
 #include <CRProducer/Producer/RenderSurface>
+#include <psapi.h>
+#pragma  comment(lib,"Psapi.lib")
 using namespace CREncapsulation;
 using namespace CRCore;
 using namespace CRPhysics;
@@ -474,6 +476,12 @@ void crStartHandler::start(unsigned int options1, unsigned int options2, Produce
 	//	crFilterRenderManager::getInstance()->closeCanvas(loadingCanvas);
 	//}
 	//CRCore::notify(CRCore::ALWAYS)<<"loading end ShaderStateSetMap = "<<crShaderManager::getInstance()->getShaderStateSetMap().size()<<std::endl;
+	char gbuf[256];
+	HANDLE handle = GetCurrentProcess();
+	PROCESS_MEMORY_COUNTERS pmc;
+	GetProcessMemoryInfo(handle, &pmc, sizeof(pmc));
+	sprintf(gbuf, "内存使用:%d,峰值内存:%d,虚拟内存:%dKB,峰值虚拟内存:%dKB\n\0",pmc.WorkingSetSize / 1024, pmc.PeakWorkingSetSize / 1024, pmc.PagefileUsage / 1024, pmc.PeakPagefileUsage / 1024);
+	gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
 }
 void crStartHandler::doMessaging()
 {

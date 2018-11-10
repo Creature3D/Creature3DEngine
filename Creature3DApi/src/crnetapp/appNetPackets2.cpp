@@ -5643,10 +5643,13 @@ void crPlayerEventPacket::parsePacket(const std::string &sender)
 				//crPlayerEventPacket::buildReplyPacket(packet,0,m_streamBuf.get());
 				_crInt64 msg = m_streamBuf->_readInt64();
 				role->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
-				crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-				crScene *scene = netCallback->findScene(role->getSceneID());
-				if(scene)
-					scene->sendPacketToItemNeighbor(role.get(),*this);
+				//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				//crScene *scene = netCallback->findScene(role->getSceneID());
+				//if(scene)
+				if (msg == WCH_RecvPositionSync)
+					role->sendPacketToInSight(*this);
+				else
+					role->sendPacketToItemNeighbor(*this);
 			}
 		}
 	}
@@ -7022,12 +7025,12 @@ void crPlayerMetierEventPacket::parsePacket(const std::string &sender)
 			{
 				crPlayerMetierEventPacket packet;
 				crPlayerMetierEventPacket::buildReplyPacket(packet,0,m_streamBuf.get());
-				crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
-				crScene *scene = netCallback->findScene(role->getSceneID());
-				if(scene)
-				{
-					scene->sendPacketToItemNeighbor(role,packet);
-				}
+				//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
+				//crScene *scene = netCallback->findScene(role->getSceneID());
+				//if(scene)
+				//{
+				role->sendPacketToItemNeighbor(packet);
+				//}
 				_crInt64 msg = m_streamBuf->_readInt64();
 				role->doMetierEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
 			}
