@@ -257,8 +257,10 @@ int main( int argc, char **argv )
 
 	CRNetApp::crGlobalHandle::argvstr() = argvstr;
 
+	char programDir[256];
+	GetCurrentDirectory(256, programDir);
 	char gbuf[256];
-	sprintf(gbuf,"%s\n\0",argvstr.c_str());
+	sprintf(gbuf,"%s/%s\n\0", programDir,argvstr.c_str());
 	gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
 	gDebugInfo->writeToFile();
 	//MessageBox(NULL,argvstr.c_str(),"Creature3D",MB_OKCANCEL);

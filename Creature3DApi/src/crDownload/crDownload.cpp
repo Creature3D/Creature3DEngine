@@ -139,9 +139,11 @@ bool crDownload::moveFileToDirectory()
 	std::string file = crDownloadManager::getInstance()->getFileRootDir()+"/"+getFileName();
 	if(is7zfile())
 	{
+		char programDir[256];
+		GetCurrentDirectory(256, programDir);
 		char buf[256];
 		memset(buf,0,256);
-		sprintf_s(buf,"7zr.exe x -r %s -y",file.c_str());
+		sprintf_s(buf,"%s/7zr.exe x -r %s -y", programDir,file.c_str());
 		PROCESS_INFORMATION pi;
 		STARTUPINFO si; //This is an [in] parameter
 		ZeroMemory(&si, sizeof(si));
@@ -153,7 +155,7 @@ bool crDownload::moveFileToDirectory()
 			WaitForSingleObject(pi.hProcess,INFINITE);
 			CloseHandle(pi.hThread);
 			CloseHandle(pi.hProcess);
-			DeleteFileA(file.c_str());
+			//DeleteFileA(file.c_str());
 		}
 		else
 		{
