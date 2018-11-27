@@ -155,7 +155,9 @@ bool crDownload::moveFileToDirectory()
 			WaitForSingleObject(pi.hProcess,INFINITE);
 			CloseHandle(pi.hThread);
 			CloseHandle(pi.hProcess);
-			//DeleteFileA(file.c_str());
+			char *notdelete7z = getenv("NotDeleteUpdate7zFile");
+			if(!notdelete7z)
+				DeleteFileA(file.c_str());
 		}
 		else
 		{

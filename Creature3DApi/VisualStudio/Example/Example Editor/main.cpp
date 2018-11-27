@@ -292,6 +292,11 @@ int main( int argc, char **argv )
 	{
 		_putenv("WebLogin=\0");
 	}
+	if (argvstr.find("NotDeleteUpdate7zFile") != std::string::npos)
+	{
+		_putenv("NotDeleteUpdate7zFile=1\0");
+	}
+
 	////_putenv(program.c_str());
 	HANDLE hMutex = NULL;
 	if(runMode > 0/* && runMode < WebGame*/)

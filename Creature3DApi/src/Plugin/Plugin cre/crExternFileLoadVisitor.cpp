@@ -299,7 +299,7 @@ void crExternFileLoadVisitor::apply(CRCore::crExternNode& node)
 	{
 		//CRCore::notify(CRCore::ALWAYS)<<" #CharacterNode "<< std::endl;
 		CRCore::crArgumentParser::readKeyValue(command,"FileName",strbuf);
-		CRCore::ref_ptr<CRCore::crGroup> externNode = dynamic_cast<crGroup *>(CRIOManager::readNodeFile(strbuf));
+		CRCore::ref_ptr<CRCore::crGroup> externNode = g_ReplicantBodyMgr->readCharacterFile(strbuf);
 		//CRCore::notify(CRCore::ALWAYS)<<" #CharacterNode getfilename "<<node.getfilename().c_str()<<" externNode = "<<externNode.get()<< std::endl;
 
 		if(externNode.valid())
