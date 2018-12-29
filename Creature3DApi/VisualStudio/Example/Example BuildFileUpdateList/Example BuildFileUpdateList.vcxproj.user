@@ -5,4 +5,9 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommandArguments>..\JXJClientCook_Last img$cre$crs$cru$ogg$wav$mp3$caf$csf$cmf jxjpkg</LocalDebuggerCommandArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerWorkingDirectory>D:\JXJPublish\Version\JXJClientCook</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>..\JXJClientCook_Last img$cre$crs$cru$ogg$wav$mp3$caf$csf$cmf jxjpkg</LocalDebuggerCommandArguments>
+  </PropertyGroup>
 </Project>
