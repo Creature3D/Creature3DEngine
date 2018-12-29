@@ -1,17 +1,13 @@
-﻿生成启动时间为 2016/6/3 21:26:32。
-     1>项目“F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8\ZERO_CHECK.vcxproj”在节点 2 上(rebuild 个目标)。
-     1>_PrepareForClean:
-         正在删除文件“Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate”。
-       InitializeBuildStatus:
-         正在创建“Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+﻿生成启动时间为 2018/12/26 16:21:31。
+     1>项目“G:\svn\Creature3DApi\zlib-1.2.8\ZERO_CHECK.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild”执行 Touch 任务。
        CustomBuild:
          Checking Build System
-         CMake does not need to re-run because F:/CAI宸ヤ綔瀹?Develop/Creature3DApi/zlib-1.2.8/CMakeFiles/generate.stamp is up-to-date.
-       FinalizeBuildStatus:
-         正在删除文件“Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild”。
-         正在对“Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8\ZERO_CHECK.vcxproj”(rebuild 个目标)的操作。
+         系统找不到指定的路径。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(151,5): error MSB6006: “cmd.exe”已退出，代码为 3。
+     1>已完成生成项目“G:\svn\Creature3DApi\zlib-1.2.8\ZERO_CHECK.vcxproj”(build 个目标)的操作 - 失败。
 
-生成成功。
+生成失败。
 
-已用时间 00:00:00.85
+已用时间 00:00:00.64

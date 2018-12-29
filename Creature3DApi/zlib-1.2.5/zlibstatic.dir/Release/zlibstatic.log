@@ -1,52 +1,14 @@
-﻿生成启动时间为 2016/6/3 21:26:33。
-     1>项目“F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8\zlibstatic.vcxproj”在节点 2 上(rebuild 个目标)。
-     1>_PrepareForClean:
-         正在删除文件“zlibstatic.dir\Release\zlibstatic.lastbuildstate”。
-       InitializeBuildStatus:
-         正在创建“zlibstatic.dir\Release\zlibstatic.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+﻿生成启动时间为 2018/12/26 16:21:58。
+     1>项目“G:\svn\Creature3DApi\zlib-1.2.8\zlibstatic.vcxproj”在节点 3 上(build 个目标)。
+     1>C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.Targets(1422,5): warning : The referenced project 'F:/CAI工作室/Develop/Creature3DApi/zlib-1.2.8/ZERO_CHECK.vcxproj' does not exist.
+     1>InitializeBuildStatus:
+         正在对“zlibstatic.dir\Release\zlibstatic.unsuccessfulbuild”执行 Touch 任务。
        CustomBuild:
          Building Custom Rule F:/CAI工作室/Develop/Creature3DApi/zlib-1.2.8/CMakeLists.txt
-         CMake does not need to re-run because F:\CAI宸ヤ綔瀹Develop\Creature3DApi\zlib-1.2.8\CMakeFiles\generate.stamp is up-to-date.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8" /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D NO_FSEEKO /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"zlibstatic.dir\Release\\" /Fd"zlibstatic.dir\Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt adler32.c compress.c crc32.c deflate.c gzclose.c gzlib.c gzread.c gzwrite.c inflate.c infback.c inftrees.c inffast.c trees.c uncompr.c zutil.c
-         adler32.c
-         compress.c
-         crc32.c
-         deflate.c
-         gzclose.c
-         gzlib.c
-         gzread.c
-         gzwrite.c
-         inflate.c
-         infback.c
-         inftrees.c
-         inffast.c
-         trees.c
-         uncompr.c
-         zutil.c
-         正在生成代码...
-       Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8\Release\zlibstatic.lib" /NOLOGO zlibstatic.dir\Release\adler32.obj
-         zlibstatic.dir\Release\compress.obj
-         zlibstatic.dir\Release\crc32.obj
-         zlibstatic.dir\Release\deflate.obj
-         zlibstatic.dir\Release\gzclose.obj
-         zlibstatic.dir\Release\gzlib.obj
-         zlibstatic.dir\Release\gzread.obj
-         zlibstatic.dir\Release\gzwrite.obj
-         zlibstatic.dir\Release\inflate.obj
-         zlibstatic.dir\Release\infback.obj
-         zlibstatic.dir\Release\inftrees.obj
-         zlibstatic.dir\Release\inffast.obj
-         zlibstatic.dir\Release\trees.obj
-         zlibstatic.dir\Release\uncompr.obj
-         zlibstatic.dir\Release\zutil.obj  /machine:X86 
-         zlibstatic.vcxproj -> F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8\Release\zlibstatic.lib
-       FinalizeBuildStatus:
-         正在删除文件“zlibstatic.dir\Release\zlibstatic.unsuccessfulbuild”。
-         正在对“zlibstatic.dir\Release\zlibstatic.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“F:\CAI工作室\Develop\Creature3DApi\zlib-1.2.8\zlibstatic.vcxproj”(rebuild 个目标)的操作。
+         系统找不到指定的路径。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(151,5): error MSB6006: “cmd.exe”已退出，代码为 3。
+     1>已完成生成项目“G:\svn\Creature3DApi\zlib-1.2.8\zlibstatic.vcxproj”(build 个目标)的操作 - 失败。
 
-生成成功。
+生成失败。
 
-已用时间 00:00:04.51
+已用时间 00:00:00.22
