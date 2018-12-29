@@ -277,7 +277,8 @@ void crEventAdapter::adaptKeyPress( double time, Producer::KeySymbol key)
     copyStaticVariables();
 
 	if(m_key == KEY_F12 && getModKeyMask() & MODKEY_ALT)
-		_asm   int   3   //只是为了让程序崩溃
+		//_asm   int   3   //只是为了让程序崩溃
+		DebugBreak();
 }
 
 void crEventAdapter::adaptKeyRelease( double time, Producer::KeySymbol key)

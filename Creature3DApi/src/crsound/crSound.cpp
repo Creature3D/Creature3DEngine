@@ -42,8 +42,11 @@ void crSound::createSound(FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo)
 		FMERRCHECK(result);
 	}
 }
-void crSound::playSound(FMOD_CHANNELINDEX channelid, bool paused)
+void crSound::playSound(/*FMOD_CHANNELINDEX channelid, */bool paused)
 {
-	FMOD_RESULT result = crSoundSystem::getInstance()->getSystem()->playSound(channelid, m_sound, paused, &m_channel);
+	//FMOD_RESULT result = crSoundSystem::getInstance()->getSystem()->playSound(channelid, m_sound, paused, &m_channel);
+	FMOD::ChannelGroup *masterChannelGroup = nullptr;
+	crSoundSystem::getInstance()->getSystem()->getMasterChannelGroup(&masterChannelGroup);
+	FMOD_RESULT result = crSoundSystem::getInstance()->getSystem()->playSound(m_sound, masterChannelGroup, paused,&m_channel);
 	FMERRCHECK(result);
 }

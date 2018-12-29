@@ -3869,7 +3869,7 @@ void crCreateSoundLogic::operator()(crHandle &handle)
 		else
 			m_sound->getSound()->setMode(FMOD_LOOP_OFF);
 		
-		m_sound->playSound(FMOD_CHANNEL_FREE, true);
+		m_sound->playSound(/*FMOD_CHANNEL_FREE, */true);
 		bool disableSound = crDisplaySettings::instance()->getDisableSound();
 		if(!m_ambient)
 		{

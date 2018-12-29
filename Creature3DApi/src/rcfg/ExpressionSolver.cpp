@@ -118,7 +118,7 @@ ExpressionSolver::ExpressionSolver() :
   m_err_messages.push_back("Empty expression");
 }
 
-void ExpressionSolver::allocateMemory(unsigned int size)
+void ExpressionSolver::allocateMemory(std::size_t size)
 {
   if (m_buffer_size >= size)
     return;

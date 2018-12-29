@@ -14,10 +14,10 @@
 #include <CRCore/crBrain.h>
 #include <CRCore/crNotify.h>
 #include <my_global.h>
-#include <my_sys.h>
+//#include <my_sys.h>
 #include <mysql.h>
 #include <errmsg.h>
-#include <my_getopt.h>
+//#include <my_getopt.h>
 #include <string>
 #include <CRCore/thread/crScopedLock.h>
 using namespace CRDataBase;

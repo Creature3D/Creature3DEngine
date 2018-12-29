@@ -379,7 +379,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
             // an error!
             //KillGLWindow();
             _realized = false;
-            SetWindowLong(_win, GWL_WNDPROC, (long)_oldWndProc);
+            SetWindowLong(_win, GWLP_WNDPROC, (long)_oldWndProc);
             lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
             ev = new ShutdownEvent(hWnd,1);
             dispatch(ev);
@@ -402,7 +402,7 @@ LONG WINAPI RenderSurface::proc( Window hWnd, UINT uMsg, WPARAM wParam, LPARAM l
                         // an error!
             //KillGLWindow();
             _realized = false;
-            SetWindowLong(_win, GWL_WNDPROC, (long)_oldWndProc);
+            SetWindowLong(_win, GWLP_WNDPROC, (long)_oldWndProc);
             lRet = CallWindowProc(_oldWndProc, hWnd, uMsg, wParam, lParam);
         }
         //else
@@ -933,7 +933,7 @@ bool RenderSurface::_init()
             //_windowX = p.x;
             //_windowY = _screenHeight - _windowHeight - p.y;
             //_isFullScreen = false;
-            _oldWndProc = (WNDPROC)SetWindowLong(_win, GWL_WNDPROC, (long)((WNDPROC)s_proc));
+            _oldWndProc = (WNDPROC)SetWindowLong(_win, GWLP_WNDPROC, (long)((WNDPROC)s_proc));
         }
 
         if (!(_hdc=GetDC(_win)))
@@ -2012,7 +2012,7 @@ void RenderSurface::_fini()
     if( _win/*_realized*/ && _drawableType == DrawableType_Window )
     {
         if (!_ownWindow)
-            SetWindowLong(_win, GWL_WNDPROC, (long)_oldWndProc);
+            SetWindowLong(_win, GWLP_WNDPROC, (long)_oldWndProc);
         PostThreadMessage(getThreadId(), WM_QUIT, 0, 0);
     }
 	_ext = 0;

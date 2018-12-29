@@ -39,7 +39,7 @@ public:
 	std::string getFileName() const { return m_fileName; }
 
 	void createSound(FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo = NULL);
-	void playSound(FMOD_CHANNELINDEX channelid, bool paused);
+	void playSound(/*FMOD_CHANNELINDEX channelid,*/ bool paused);
 	FMOD::Sound *getSound(){ return m_sound; }
 	FMOD::Channel *getChannel(){ return m_channel; }
 protected:

@@ -451,7 +451,8 @@ void crNetBridge::sendPacket( const std::string &address, GNE::Packet &packet, b
 			if( CRIOManager::fileExists(filename))
 			{
 				DeleteFile(filename.c_str());
-				_asm   int   3   //只是为了让程序崩溃
+				//_asm   int   3   //只是为了让程序崩溃
+				DebugBreak();
 			}
 			//ref_ptr<crStreamBuf> stream = ((crStreamPacket &)packet).getStreamBuf();
 			//int playerid = stream->_readInt();

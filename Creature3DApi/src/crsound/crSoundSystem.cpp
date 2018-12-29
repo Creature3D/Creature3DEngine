@@ -33,9 +33,9 @@ void crSoundSystem::init()
 	FMOD_RESULT      result;
 	unsigned int     version;
 	int              numdrivers;
-	FMOD_SPEAKERMODE speakermode;
-	FMOD_CAPS        caps;
-	char             name[256];
+	//FMOD_SPEAKERMODE speakermode;
+	//FMOD_CAPS        caps;
+	//char             name[256];
 	/*
         Create a System object and initialize.
     */
@@ -45,11 +45,11 @@ void crSoundSystem::init()
     result = m_system->getVersion(&version);
     FMERRCHECK(result);
 
-    if (version < FMOD_VERSION)
-    {
-        printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
-        return;
-    }
+	if (version < FMOD_VERSION)
+	{
+		printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
+		return;
+	}
 	result = m_system->getNumDrivers(&numdrivers);
 	FMERRCHECK(result);
 
@@ -58,39 +58,40 @@ void crSoundSystem::init()
 		result = m_system->setOutput(FMOD_OUTPUTTYPE_NOSOUND);
 		FMERRCHECK(result);
 	}
-	else
-	{
-		result = m_system->getDriverCaps(0, &caps, 0, 0, &speakermode);
-		FMERRCHECK(result);
+	//else
+	//{
+	//	result = m_system->getDriverCaps(0, &caps, 0, 0, &speakermode);
+	//	FMERRCHECK(result);
 
-		result = m_system->setSpeakerMode(speakermode);       /* Set the user selected speaker mode. */
-		FMERRCHECK(result);
+	//	result = m_system->setSpeakerMode(speakermode);       /* Set the user selected speaker mode. */
+	//	FMERRCHECK(result);
 
-		if (caps & FMOD_CAPS_HARDWARE_EMULATED)             /* The user has the 'Acceleration' slider set to off!  This is really bad for latency!. */
-		{                                                   /* You might want to warn the user about this. */
-			result = m_system->setDSPBufferSize(1024, 10);
-			FMERRCHECK(result);
-		}
+	//	if (caps & FMOD_CAPS_HARDWARE_EMULATED)             /* The user has the 'Acceleration' slider set to off!  This is really bad for latency!. */
+	//	{                                                   /* You might want to warn the user about this. */
+	//		result = m_system->setDSPBufferSize(1024, 10);
+	//		FMERRCHECK(result);
+	//	}
 
-		result = m_system->getDriverInfo(0, name, 256, 0);
-		FMERRCHECK(result);
+	//	result = m_system->getDriverInfo(0, name, 256, 0);
+	//	FMERRCHECK(result);
 
-		if (strstr(name, "SigmaTel"))   /* Sigmatel sound devices crackle for some reason if the format is PCM 16bit.  PCM floating point output seems to solve it. */
-		{
-			result = m_system->setSoftwareFormat(48000, FMOD_SOUND_FORMAT_PCMFLOAT, 0,0, FMOD_DSP_RESAMPLER_LINEAR);
-			FMERRCHECK(result);
-		}
-	}
+	//	if (strstr(name, "SigmaTel"))   /* Sigmatel sound devices crackle for some reason if the format is PCM 16bit.  PCM floating point output seems to solve it. */
+	//	{
+	//		result = m_system->setSoftwareFormat(48000, FMOD_SOUND_FORMAT_PCMFLOAT, 0,0, FMOD_DSP_RESAMPLER_LINEAR);
+	//		FMERRCHECK(result);
+	//	}
+	//}
 
 	result = m_system->init(100, FMOD_INIT_NORMAL, 0);
-	if (result == FMOD_ERR_OUTPUT_CREATEBUFFER)         /* Ok, the speaker mode selected isn't supported by this soundcard.  Switch it back to stereo... */
-	{
-		result = m_system->setSpeakerMode(FMOD_SPEAKERMODE_STEREO);
-		FMERRCHECK(result);
+	FMERRCHECK(result);
+	//if (result == FMOD_ERR_OUTPUT_CREATEBUFFER)         /* Ok, the speaker mode selected isn't supported by this soundcard.  Switch it back to stereo... */
+	//{
+	//	result = m_system->setSpeakerMode(FMOD_SPEAKERMODE_STEREO);
+	//	FMERRCHECK(result);
 
-		result = m_system->init(100, FMOD_INIT_NORMAL, 0);/* ... and re-init. */
-		FMERRCHECK(result);
-	}
+	//	result = m_system->init(100, FMOD_INIT_NORMAL, 0);/* ... and re-init. */
+	//	FMERRCHECK(result);
+	//}
 	/*
         Set the distance units. (meters/feet etc).
     */

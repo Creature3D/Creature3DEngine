@@ -80,7 +80,8 @@ void crBlockDetectThread::run()
 			dt = CRCore::Timer::instance()->delta_s(m_timer, t1);
 			if (dt > m_timeout)
 			{
-				_asm   int   3   //只是为了让程序崩溃
+				//_asm   int   3   //只是为了让程序崩溃
+				DebugBreak();
 			}
 		}
 		crThread::sleep(1000);
