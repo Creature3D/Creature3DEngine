@@ -219,7 +219,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\ode-0.13\include;..\..\..\cal3d-0.11.0\src;..\..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\3rdparty\gnelib-0.70\include;..\..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\3rdparty\ode-0.13\include;..\..\..\3rdparty\cal3d-0.11.0\src;..\..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>
       </StringPooling>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -254,7 +254,7 @@ copy ..\..\..\Intermediate\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creatur
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\gnelib-0.70\include;..\..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\ode-0.13\include;..\..\..\cal3d-0.11.0\src;..\..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\3rdparty\gnelib-0.70\include;..\..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\3rdparty\ode-0.13\include;..\..\..\3rdparty\cal3d-0.11.0\src;..\..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>
       </StringPooling>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>

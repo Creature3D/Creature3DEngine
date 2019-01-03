@@ -631,7 +631,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\gnelib-0.70\include;..\..\cal3d-0.11.0\src;..\..\src;..\..\include\crUtil;..\..\include\crUtil\tristripper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\ode\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\cal3d-0.11.0\src;..\..\src;..\..\include\crUtil;..\..\include\crUtil\tristripper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRUTIL_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -675,7 +675,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\gnelib-0.70\include;..\..\cal3d-0.11.0\src;..\..\src;..\..\include\crUtil;..\..\include\crUtil\tristripper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\ode\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\cal3d-0.11.0\src;..\..\src;..\..\include\crUtil;..\..\include\crUtil\tristripper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRUTIL_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>

@@ -618,7 +618,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\cal3d-0.11.0\src;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\ode\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -640,7 +640,7 @@
       <AdditionalDependencies>CRCore.lib;CRUtil.lib;CRProducer.lib;CRPhysics.lib;ConfigScript.lib;CRParticle.lib;CRGUI.lib;CRText.lib;CRIOManager.lib;vrutils.lib;ReplicantBody.lib;ode_single.lib;CRTerrain.lib;CRDataBase.lib;CRSound.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\ode-0.13\lib\releasesingledll\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\3rdparty\ode-0.13\lib\releasesingledll\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -662,7 +662,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\ode-0.13\include;..\..\ode-0.13\ode\src;..\..\cal3d-0.11.0\src;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\ode\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -684,7 +684,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <AdditionalDependencies>CRCore.lib;CRUtil.lib;CRProducer.lib;CRPhysics.lib;ConfigScript.lib;CRParticle.lib;CRGUI.lib;CRText.lib;CRIOManager.lib;vrutils.lib;ReplicantBody.lib;ode_single.lib;CRTerrain.lib;CRDataBase.lib;CRSound.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../x64/lib;..\..\ode-0.13\lib\releasesingledll\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../x64/lib;..\..\3rdparty\ode-0.13\lib\releasesingledll\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>

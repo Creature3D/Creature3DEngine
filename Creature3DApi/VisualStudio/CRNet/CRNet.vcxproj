@@ -622,7 +622,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.5;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\zlib-1.2.5;..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNET_DLL;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -646,7 +646,7 @@
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;gne.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\lpng159\projects\vstudio\Release Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\3rdparty\lpng159\projects\vstudio\Release Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -668,7 +668,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\gnelib-0.70\include;..\..\zlib-1.2.5;..\..\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\ode-0.13\include;..\..\ode-0.13\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\zlib-1.2.5;..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNET_DLL;_NOAUTOLIBMSG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -692,7 +692,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;gne.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../x64/lib;..\..\lpng159\projects\vstudio\x64\Release Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../x64/lib;..\..\3rdparty\lpng159\projects\vstudio\x64\Release Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -1290,10 +1290,6 @@ copy C:\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
     <ClInclude Include="..\..\include\crnet\crStreamPacket.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\gnelib-0.70\gne.vcxproj">
-      <Project>{f5030cde-42c7-499d-befb-2e7af162a1a5}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\CRCore\CRCore.vcxproj">
       <Project>{ffc2087a-7859-47b1-a7a0-da98fd1aff32}</Project>
     </ProjectReference>
