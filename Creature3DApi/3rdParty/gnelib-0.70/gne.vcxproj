@@ -610,7 +610,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
-      <ProgramDatabaseFile>..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <ResourceCompile>
@@ -619,7 +619,7 @@
     </ResourceCompile>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|x64'">
@@ -657,7 +657,7 @@ copy ..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
-      <ProgramDatabaseFile>..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -665,7 +665,7 @@ copy ..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
     </ResourceCompile>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease_Console|Win32'">
