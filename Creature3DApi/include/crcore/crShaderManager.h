@@ -27,11 +27,11 @@
 #include <CRCore/thread/crMutex.h>
 #include <CRCore/thread/crScopedLock.h>
 #include <map>
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS 1
 #include <hash_map>
 #include <vector>
 #include <string>
 #include <deque>
-
 namespace CRCore {
 
 class CR_EXPORT crShaderManager : public CRCore::Referenced

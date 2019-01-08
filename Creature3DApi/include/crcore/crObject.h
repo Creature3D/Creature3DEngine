@@ -15,6 +15,7 @@
 #define CRCORE_CROBJECT_H
 
 #include <list>
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS 1
 #include <hash_set>
 #include <CRCore\crNode.h>
 #include <CRCore/crGroup.h>

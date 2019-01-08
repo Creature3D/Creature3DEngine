@@ -57,7 +57,7 @@ int CurrentIMESize			= 0;
 //static bool s_imestart = false;
 LRESULT CALLBACK WndProc(HWND m_hwnd,UINT msg,WPARAM wParam,LPARAM lParam)
 {
-	crWindow *win=(crWindow *)GetWindowLong(m_hwnd,GWLP_USERDATA);
+	crWindow *win=(crWindow *)GetWindowLongPtr(m_hwnd,GWLP_USERDATA);
 	if(!win) return DefWindowProc(m_hwnd,msg,wParam,lParam);
 	// which message
 	//int lRet;
@@ -94,7 +94,7 @@ LRESULT CALLBACK WndProc(HWND m_hwnd,UINT msg,WPARAM wParam,LPARAM lParam)
 			PostQuitMessage(0);
 			return 0;
 		case WM_DESTROY:
-			SetWindowLong(m_hwnd, GWLP_USERDATA,0);	// pretend we weren't here
+			SetWindowLongPtr(m_hwnd, GWLP_USERDATA,0);	// pretend we weren't here
 			return 0;
 		case WM_SIZE:
 			win->dataAccess(WINSIZED,1);				// say it's been resized
@@ -400,7 +400,7 @@ bool crWindow :: setup(int x,int y,int wid,int hit, const char *name, int exstyl
 	if(!m_hwnd)
 		return false;
 	// store a pointer to the class in HWND
-	SetWindowLong(m_hwnd, GWLP_USERDATA,(long)this);
+	SetWindowLongPtr(m_hwnd, GWLP_USERDATA,(LONG_PTR)this);
 	//insertWindowMap(m_hwnd,this);
 	
 	// show the window
@@ -440,7 +440,7 @@ bool crWindow :: setupTitle(int x,int y,int wid,int hit, const char *name)
 	if(!m_hwnd)
 		return false;
 	// store a pointer to the class in HWND
-	SetWindowLong(m_hwnd, GWLP_USERDATA,(long)this);
+	SetWindowLongPtr(m_hwnd, GWLP_USERDATA,(long)this);
 	//insertWindowMap(m_hwnd,this);
 	// show the window
 	ShowWindow(m_hwnd,SW_SHOW);
@@ -488,7 +488,7 @@ void crWindow :: close()
 
 	//removeWindowMap(m_hwnd);
 	// pretend we weren't here
-	SetWindowLong(m_hwnd, GWLP_USERDATA,0);
+	SetWindowLongPtr(m_hwnd, GWLP_USERDATA,0);
 	DestroyWindow(m_hwnd);
 	UnregisterClass(m_windowName.c_str(), m_hins);
 	m_hwnd = NULL;

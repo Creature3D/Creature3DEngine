@@ -28,27 +28,27 @@ rvrutils::myround( float n )
      rounding mode.  rintl is the long float counterpart of rint.  rint
      has no counterpart that accepts an argument of type float.
      */
-float rint(float x) 
-{
-  float y, z;
-  int n;
-  
-  if(x >= 0) 
-  {
-    y = x + 0.5;
-    z = floor(y);
-    n = (int) z;
-    if (y == z && n % 2) --z;
-  } 
-  else 
-  {
-    y = x - 0.5;
-    z = ceil(y);
-    n = (int) z;
-    if(y == z && n % 2) ++z;
-  }
-  return z;
-}
+//float rint(float x) 
+//{
+//  float y, z;
+//  int n;
+//  
+//  if(x >= 0) 
+//  {
+//    y = x + 0.5;
+//    z = floor(y);
+//    n = (int) z;
+//    if (y == z && n % 2) --z;
+//  } 
+//  else 
+//  {
+//    y = x - 0.5;
+//    z = ceil(y);
+//    n = (int) z;
+//    if(y == z && n % 2) ++z;
+//  }
+//  return z;
+//}
 
 
 double drand48( void )

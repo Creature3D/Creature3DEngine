@@ -27,7 +27,7 @@
 
 #ifdef _WIN32
 #include <math.h>
-VRUTILS_API float rint(float x);
+//VRUTILS_API float rint(float x);
 VRUTILS_API double drand48( void );
 #define srand48 srand
 #define snprintf _snprintf

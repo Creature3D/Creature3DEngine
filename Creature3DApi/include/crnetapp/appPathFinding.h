@@ -22,6 +22,7 @@
 #include <map>
 #include <vector>
 #include <deque>
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS 1
 #include <hash_map>
 namespace CRNetApp {
 class crScene;

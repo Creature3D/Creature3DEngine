@@ -18,6 +18,7 @@
 #define _crInt16   __int16
 #define _crInt32   __int32
 #define _crInt64   __int64
+#define _crUInt64	unsigned __int64
 
 #ifndef MAKEINT64
 #define MAKEINT64(low, high) (((_crInt64)((_crInt32)(low)) & 0xffffffff) | ((_crInt64)((_crInt32)(high) & 0xffffffff) << 32))
