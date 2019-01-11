@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "creBroswer", "creBroswer\creBroswer.vcxproj", "{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Debug|Win32.Build.0 = Debug|Win32
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Debug|x64.ActiveCfg = Debug|x64
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Debug|x64.Build.0 = Debug|x64
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Release|Win32.ActiveCfg = Release|Win32
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Release|Win32.Build.0 = Release|Win32
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Release|x64.ActiveCfg = Release|x64
+		{4B495B71-D5B0-4355-8BBC-75AB1BB542BA}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A324B07-455A-4342-A1C1-57C59817138F}
+	EndGlobalSection
+EndGlobal
