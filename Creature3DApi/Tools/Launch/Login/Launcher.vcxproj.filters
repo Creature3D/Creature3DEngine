@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BtnST.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CDialogSK.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Launcher.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LauncherDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TextProgress.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UninstallDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateNetEventSink.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BtnST.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDialogSK.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Launcher.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LauncherDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TextProgress.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UninstallDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateNetEventSink.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="jxjicons0\close_hover.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\close_hover.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\close_press.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\close_press.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Launcher.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\min_hover.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\min_hover.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\min_press.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\min_press.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\Quxiao_Normal.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Quxiao_Normal.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\Quxiao_Touch.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Quxiao_Touch.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="XuanzeHuamian_Normal.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\XuanzeHuamian_Normal.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="XuanzeHuamian_Touch.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\XuanzeHuamian_Touch.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="XuanzeKuang.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\XuanzeKuang.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="XuanzeQuyu.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\XuanzeQuyu.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Yingyong_Normal.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\Yingyong_Normal.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="jxjicons0\Yingyong_Touch.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Yingyong_Touch.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Launcher.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Launcher.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
