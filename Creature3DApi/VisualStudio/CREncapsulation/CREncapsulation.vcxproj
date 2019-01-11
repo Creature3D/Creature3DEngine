@@ -620,8 +620,7 @@
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\ode\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <StringPooling>
-      </StringPooling>
+      <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -632,7 +631,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
     </ClCompile>
@@ -648,11 +647,11 @@
       <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
-      <ProgramDatabaseFile>..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\bin\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|x64'">
@@ -664,8 +663,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\ode\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRENCAPSULATION_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <StringPooling>
-      </StringPooling>
+      <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -676,7 +674,7 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
     </ClCompile>
@@ -691,11 +689,11 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImportLibrary>..\..\x64\lib\$(TargetName).lib</ImportLibrary>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
-      <ProgramDatabaseFile>..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\x64\bin\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\x64\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease_Console|Win32'">

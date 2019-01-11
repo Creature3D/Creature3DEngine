@@ -220,10 +220,11 @@
       <AdditionalIncludeDirectories>..\..\include;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -232,13 +233,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>../../lib;..\..\3rdParty\FMOD\Win32</AdditionalLibraryDirectories>
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;fmod_vc.lib</AdditionalDependencies>
-      <ProgramDatabaseFile>..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
       <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -253,10 +254,11 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <AdditionalIncludeDirectories>..\..\include;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -265,13 +267,13 @@ copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEdi
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>../../x64/lib;..\..\3rdParty\FMOD\Win64</AdditionalLibraryDirectories>
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;fmod64_vc.lib</AdditionalDependencies>
-      <ProgramDatabaseFile>..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\x64\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
       <ImportLibrary>..\..\x64\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\x64\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease_Console|Win32'">

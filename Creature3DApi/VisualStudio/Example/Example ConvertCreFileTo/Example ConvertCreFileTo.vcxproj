@@ -184,10 +184,11 @@
       <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\3rdparty\gnelib-0.70\include;..\..\..\3rdparty\ode-0.13\include;..\..\..\3rdparty\ode-0.13\ode\src;..\..\..\3rdparty\cal3d-0.11.0\src;..\..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -196,12 +197,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>../../../lib;..\..\..\3rdparty\cal3d-0.11.0\bin\release\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRParticle.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;ConfigScript.lib;CREncapsulation.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ProgramDatabaseFile>..\..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\..\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\..\Intermediate\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\..\bin\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -216,10 +217,11 @@ copy ..\..\..\Intermediate\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creatur
       <AdditionalIncludeDirectories>../../../include;../../../src;..\..\..\3rdparty\gnelib-0.70\include;..\..\..\3rdparty\ode-0.13\include;..\..\..\3rdparty\ode-0.13\ode\src;..\..\..\3rdparty\cal3d-0.11.0\src;..\..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -228,12 +230,12 @@ copy ..\..\..\Intermediate\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creatur
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>../../../x64/lib;..\..\..\3rdparty\cal3d-0.11.0\bin\release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>CRCore.lib;CRIOManager.lib;CRParticle.lib;vrutils.lib;ReplicantBody.lib;cal3d.lib;ConfigScript.lib;CREncapsulation.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ProgramDatabaseFile>..\..\..\Intermediate\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\..\x64\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
     </Link>
     <PostBuildEvent>
       <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\..\Intermediate\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+copy ..\..\..\x64\bin\$(TargetName).pdb ..\..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease_Console|Win32'">
