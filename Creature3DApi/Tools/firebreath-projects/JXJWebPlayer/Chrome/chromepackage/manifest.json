@@ -1,0 +1,9 @@
+{
+  "name": "JXJWebPlayer",
+  "version": "${FBSTRING_PLUGIN_VERSION}",
+  "description": "½«ÐÇ¾÷ÓÎÏ·²å¼þ",
+
+	"plugins": [
+    { "path": "npJXJWebPlayer.dll", "public": true }
+  ]
+}

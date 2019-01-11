@@ -1,0 +1,9 @@
+{
+  "name": "Creature3D",
+  "version": "${FBSTRING_PLUGIN_VERSION}",
+  "description": "Creature3DÓÎÏ·ÒıÇæ²å¼ş",
+
+	"plugins": [
+    { "path": "npCreature3D.dll", "public": true }
+  ]
+}
