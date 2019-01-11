@@ -9,9 +9,10 @@
 void CreateDesktopShortCut(const wchar_t * pDir)
 {
 	wchar_t szBuf[255] = {0};
+	HRESULT hr;
 	wsprintf(szBuf, L"%s/Launcher.exe\0", pDir);
 
-	HRESULT hr = CoInitialize(NULL);
+	hr = CoInitialize(NULL);
 	if (SUCCEEDED(hr))
 	{
 		IShellLink *pisl;
@@ -223,153 +224,221 @@ void CUpdateNetEventSink::ProcDownload()
 {
 	if (m_bIsDownloading && m_strFileURLInServer != "" && m_strFileLocalFullPath != "")
 	{
-		int tryCount = 0;
-		bool isSucess = true;
-		do 
-		{
-			if(tryCount>=TRY_DOWNLOAD_MAXCOUNT)
-			{
-				AfxMessageBox(m_strFileLocalFullPath);
-				break;
-			}
-			DownloadFile(m_strFileURLInServer, m_strFileLocalFullPath);
-			tryCount++;
+		DownloadFile(m_strFileURLInServer, m_strFileLocalFullPath);
+		//int tryCount = 0;
+		//bool isSucess = true;
+		//do 
+		//{
+		//	if(tryCount>=TRY_DOWNLOAD_MAXCOUNT)
+		//	{
+		//		AfxMessageBox(m_strFileLocalFullPath);
+		//		break;
+		//	}
+		//	DownloadFile(m_strFileURLInServer, m_strFileLocalFullPath);
+		//	tryCount++;
 
-			int index = m_strFileLocalFullPath.Find(L"/");
-			CString strLocalPath = m_strFileLocalFullPath.Right(index-1);
-			char * path = "c:/";
-			debuglog(path,"%s:%d\n",strLocalPath,tryCount);
-		} while (!isSucess);
-		
+		//	int index = m_strFileLocalFullPath.Find(L"/");
+		//	CString strLocalPath = m_strFileLocalFullPath.Right(index-1);
+		//	char * path = "c:/";
+		//	debuglog(path,"%s:%d\n",strLocalPath,tryCount);
+		//} while (!isSucess);
 	}
 }
 bool CUpdateNetEventSink::DownloadFile( CString strFileURLInServer, CString strFileLocalFullPath, bool bCallBack)
 {
-	ASSERT(strFileURLInServer != "" );
-	ASSERT(strFileLocalFullPath != "" );
-	CInternetSession session;
-	CHttpConnection *  pHttpConnection = NULL;
-	CHttpFile *  pHttpFile  =  NULL;
-	CString strServer, strObject;
-	INTERNET_PORT wPort;
-
-	DWORD dwType;
-	const int nTimeOut = 2000 ;
-	session.SetOption(INTERNET_OPTION_CONNECT_TIMEOUT, nTimeOut);  // 重试之间的等待延时 
-	session.SetOption(INTERNET_OPTION_CONNECT_RETRIES, 5);    // 重试次数 
-	session.SetOption(INTERNET_OPTION_RECEIVE_TIMEOUT,7000);//接受数据的超时时间
-	session.SetOption(INTERNET_OPTION_DATA_RECEIVE_TIMEOUT, 7000);       // 7秒的接收超时
-	session.SetOption(INTERNET_OPTION_CONNECT_BACKOFF,500);//两次重试之间的间隔时间
-
-	char *  pszBuffer = NULL;
-	try
-	{
-		DWORD dwHttpRequestFlags= INTERNET_FLAG_NO_AUTO_REDIRECT | INTERNET_FLAG_RELOAD;
-		AfxParseURL(strFileURLInServer, dwType, strServer, strObject, wPort);
-		pHttpConnection  =  session.GetHttpConnection(strServer, wPort);
-		pHttpFile  =  pHttpConnection -> OpenRequest(CHttpConnection::HTTP_VERB_GET, strObject,NULL,1,NULL,NULL,dwHttpRequestFlags);
-		if (pHttpFile -> SendRequest()  ==  FALSE)
-			return false ;
-
-		DWORD dwStateCode;
-		pHttpFile -> QueryInfoStatusCode(dwStateCode);
-		if (dwStateCode == HTTP_STATUS_OK)
-		{
-			HANDLE hFile = CreateFile(strFileLocalFullPath, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);   // 创建本地文件 
-			if (hFile == INVALID_HANDLE_VALUE)
-			{
-				pHttpFile->Close();
-				pHttpConnection->Close();
-				session.Close();
-				return   false ;
-			}
-
-			BOOL bResult = FALSE;
-			CString strLength;
-			bResult = pHttpFile->QueryInfo(HTTP_QUERY_CONTENT_LENGTH, strLength);
-			DWORD dwFileSize = _wtoi(strLength);
-
-			const int BUFFER_LENGTH = 1024;//buffer大小16K
-			pszBuffer = new char [BUFFER_LENGTH];   // 读取文件的缓冲 
-			DWORD dwWrite, dwTotalWrite;
-			dwWrite = dwTotalWrite = 0;
-			UINT nRead = pHttpFile->Read(pszBuffer, BUFFER_LENGTH);  // 读取服务器上数据 
-			while (nRead > 0 )
-			{
-				WriteFile(hFile, pszBuffer, nRead, &dwWrite, NULL);   // 写到本地文件 
-				dwTotalWrite += dwWrite;
-
-				nRead = pHttpFile -> Read(pszBuffer, BUFFER_LENGTH);
-
-				if (bCallBack)
-					m_pCallBack->CurDownloadProc(CString(L""),dwTotalWrite, dwFileSize);
-			}
-
-
-			delete[]pszBuffer;
-			pszBuffer  =  NULL;
-
-			DWORD fileSize = GetFileSize(hFile,NULL);
-			if(fileSize!=dwFileSize)
-			{
-				CloseHandle(hFile);
-				throw(0);
-			}
-			CloseHandle(hFile);
-
-			m_bIsDownloading = false;
-
-			
-
-			if (bCallBack)
-				m_pCallBack->OnDownloadFinish(strFileURLInServer, strFileLocalFullPath);
-		}
-		else 
-		{
-			delete[]pszBuffer;
-			pszBuffer  =  NULL;
-			if (pHttpFile  !=  NULL)
-			{
-				pHttpFile -> Close();
-				delete pHttpFile;
-				pHttpFile  =  NULL;
-			}
-			if (pHttpConnection  !=  NULL)
-			{
-				pHttpConnection -> Close();
-				delete pHttpConnection;
-				pHttpConnection  =  NULL;
-			}
-			session.Close();
-			return   false ;
-		}
+	ASSERT(strFileURLInServer != "");
+	ASSERT(strFileLocalFullPath != "");
+	HINTERNET internetopen = InternetOpen(NULL, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
+	if (internetopen == NULL) {
+		MessageBoxA(::GetActiveWindow(), "Internet open failed!", "error", MB_OK);
+		return false;
 	}
-	catch (...)
-	{
-		delete[]pszBuffer;
-		pszBuffer  =  NULL;
-		if (pHttpFile  !=  NULL)
-		{
-			pHttpFile -> Close();
-			delete pHttpFile;
-			pHttpFile  =  NULL;
-		}
-		if (pHttpConnection  !=  NULL)
-		{
-			pHttpConnection -> Close();
-			delete pHttpConnection;
-			pHttpConnection  =  NULL;
-		}
-		session.Close();
-
-		return false ;
+	HINTERNET internetopenurl = InternetOpenUrl(internetopen, strFileURLInServer.GetString(), NULL, 0, INTERNET_FLAG_RELOAD, 0);
+	if (internetopenurl == NULL) {
+		wchar_t szError[1024] = { 0 };
+		wsprintf(szError, L"url:%s\0", strFileURLInServer.GetString());
+		MessageBox(::GetActiveWindow(), szError, L"Internet open url failed!", MB_OK);
+		InternetCloseHandle(internetopen);
+		return false;
 	}
 
-	if (pHttpFile != NULL)
-		pHttpFile->Close();
-	if (pHttpConnection != NULL)
-		pHttpConnection->Close();
-	session.Close();
+	HANDLE distFile = CreateFile(strFileLocalFullPath, GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);   // 创建本地文件 
+	if (distFile == INVALID_HANDLE_VALUE) {
+		wchar_t szError[1024] = { 0 };
+		wsprintf(szError, L"创建文件（%s）失败! 通常是您没有写文件权限引起\0", strFileLocalFullPath.GetString());
+		MessageBox(::GetActiveWindow(), szError, L"创建文件失败", MB_OK);
+		InternetCloseHandle(internetopenurl);
+		InternetCloseHandle(internetopen);
+		return 0;
+	}
+
+	BOOL hwrite;
+	DWORD written;
+	DWORD byteread = 0;
+	char buffer[1024];
+	memset(buffer, 0, 1024);
+	DWORD recvedsize = 0;
+
+	DWORD dwFileSize = 0;
+	DWORD dwSize = sizeof(dwFileSize);
+	::HttpQueryInfo(internetopenurl, HTTP_QUERY_CONTENT_LENGTH | HTTP_QUERY_FLAG_NUMBER, (LPVOID)&dwFileSize, &dwSize, NULL);
+	//char buf[256] = {0};
+	//sprintf(buf,"dwFileSize=%d\0",dwFileSize);
+	//MessageBoxA(NULL,buf,"dwFileSize",MB_OK);
+	//float progress = 0.0f;
+	while (1)
+	{
+		BOOL internetreadfile = InternetReadFile(internetopenurl, buffer, sizeof(buffer), &byteread);
+		if (byteread == 0)
+		{
+			break;
+		}
+		hwrite = WriteFile(distFile, buffer, byteread, &written, NULL);
+		if (hwrite == 0) {
+			char szError[1024] = { 0 };
+			//sprintf(szError, "写文件出错，请检查%s盘剩余空间是否充足！", theCtrl->m_disk.c_str());
+			MessageBoxA(::GetActiveWindow(), szError, "文件下载出错", MB_OK);
+			break;
+		}
+		recvedsize += byteread;
+		//progress = float(recvedsize) / float(dwFileSize);
+		if (bCallBack)
+			m_pCallBack->CurDownloadProc(CString(L""), recvedsize, dwFileSize);
+	}
+	InternetCloseHandle(internetopenurl);
+	InternetCloseHandle(internetopen);
+	CloseHandle(distFile);
+	if (recvedsize != dwFileSize)//文件大小不正确，下载失败
+	{
+		DeleteFile(strFileLocalFullPath.GetString());
+		return false;
+	}
+	m_bIsDownloading = false;
+	if (bCallBack)
+		m_pCallBack->OnDownloadFinish(strFileURLInServer, strFileLocalFullPath);
+	//CInternetSession session;
+	//CHttpConnection *  pHttpConnection = NULL;
+	//CHttpFile *  pHttpFile  =  NULL;
+	//CString strServer, strObject;
+	//INTERNET_PORT wPort;
+
+	//DWORD dwType;
+	//const int nTimeOut = 2000 ;
+	//session.SetOption(INTERNET_OPTION_CONNECT_TIMEOUT, nTimeOut);  // 重试之间的等待延时 
+	//session.SetOption(INTERNET_OPTION_CONNECT_RETRIES, 5);    // 重试次数 
+	//session.SetOption(INTERNET_OPTION_RECEIVE_TIMEOUT,7000);//接受数据的超时时间
+	//session.SetOption(INTERNET_OPTION_DATA_RECEIVE_TIMEOUT, 7000);       // 7秒的接收超时
+	//session.SetOption(INTERNET_OPTION_CONNECT_BACKOFF,500);//两次重试之间的间隔时间
+
+	//char *  pszBuffer = NULL;
+	//try
+	//{
+	//	DWORD dwHttpRequestFlags= INTERNET_FLAG_NO_AUTO_REDIRECT | INTERNET_FLAG_RELOAD;
+	//	AfxParseURL(strFileURLInServer, dwType, strServer, strObject, wPort);
+	//	pHttpConnection  =  session.GetHttpConnection(strServer, wPort);
+	//	pHttpFile  =  pHttpConnection -> OpenRequest(CHttpConnection::HTTP_VERB_GET, strObject,NULL,1,NULL,NULL,dwHttpRequestFlags);
+	//	if (pHttpFile -> SendRequest()  ==  FALSE)
+	//		return false ;
+
+	//	DWORD dwStateCode;
+	//	pHttpFile -> QueryInfoStatusCode(dwStateCode);
+	//	if (dwStateCode == HTTP_STATUS_OK)
+	//	{
+	//		HANDLE hFile = CreateFile(strFileLocalFullPath, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);   // 创建本地文件 
+	//		if (hFile == INVALID_HANDLE_VALUE)
+	//		{
+	//			pHttpFile->Close();
+	//			pHttpConnection->Close();
+	//			session.Close();
+	//			return   false ;
+	//		}
+
+	//		BOOL bResult = FALSE;
+	//		CString strLength;
+	//		bResult = pHttpFile->QueryInfo(HTTP_QUERY_CONTENT_LENGTH, strLength);
+	//		DWORD dwFileSize = _wtoi(strLength);
+
+	//		const int BUFFER_LENGTH = 1024;//buffer大小16K
+	//		pszBuffer = new char [BUFFER_LENGTH];   // 读取文件的缓冲 
+	//		DWORD dwWrite, dwTotalWrite;
+	//		dwWrite = dwTotalWrite = 0;
+	//		UINT nRead = pHttpFile->Read(pszBuffer, BUFFER_LENGTH);  // 读取服务器上数据 
+	//		while (nRead > 0 )
+	//		{
+	//			WriteFile(hFile, pszBuffer, nRead, &dwWrite, NULL);   // 写到本地文件 
+	//			dwTotalWrite += dwWrite;
+
+	//			nRead = pHttpFile -> Read(pszBuffer, BUFFER_LENGTH);
+
+	//			if (bCallBack)
+	//				m_pCallBack->CurDownloadProc(CString(L""),dwTotalWrite, dwFileSize);
+	//		}
+
+
+	//		delete[]pszBuffer;
+	//		pszBuffer  =  NULL;
+
+	//		DWORD fileSize = GetFileSize(hFile,NULL);
+	//		if(fileSize!=dwFileSize)
+	//		{
+	//			DeleteFile(strFileLocalFullPath.GetString());
+	//			return false;
+	//		}
+	//		CloseHandle(hFile);
+
+	//		m_bIsDownloading = false;
+
+	//		
+
+	//		if (bCallBack)
+	//			m_pCallBack->OnDownloadFinish(strFileURLInServer, strFileLocalFullPath);
+	//	}
+	//	else 
+	//	{
+	//		delete[]pszBuffer;
+	//		pszBuffer  =  NULL;
+	//		if (pHttpFile  !=  NULL)
+	//		{
+	//			pHttpFile -> Close();
+	//			delete pHttpFile;
+	//			pHttpFile  =  NULL;
+	//		}
+	//		if (pHttpConnection  !=  NULL)
+	//		{
+	//			pHttpConnection -> Close();
+	//			delete pHttpConnection;
+	//			pHttpConnection  =  NULL;
+	//		}
+	//		session.Close();
+	//		return   false ;
+	//	}
+	//}
+	//catch (...)
+	//{
+	//	delete[]pszBuffer;
+	//	pszBuffer  =  NULL;
+	//	if (pHttpFile  !=  NULL)
+	//	{
+	//		pHttpFile -> Close();
+	//		delete pHttpFile;
+	//		pHttpFile  =  NULL;
+	//	}
+	//	if (pHttpConnection  !=  NULL)
+	//	{
+	//		pHttpConnection -> Close();
+	//		delete pHttpConnection;
+	//		pHttpConnection  =  NULL;
+	//	}
+	//	session.Close();
+
+	//	return false ;
+	//}
+
+	//if (pHttpFile != NULL)
+	//	pHttpFile->Close();
+	//if (pHttpConnection != NULL)
+	//	pHttpConnection->Close();
+	//session.Close();
 
 	return true ;
 }

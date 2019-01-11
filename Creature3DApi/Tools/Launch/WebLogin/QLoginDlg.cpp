@@ -230,30 +230,35 @@ void CqLoginDlg::DoInitCheckGame()
 	//查找运行程序Launcher.exe是否存在，如果不存在，则强制下载
 	BOOL bCheckReg4Game = CheckReg4Game();
 	BOOL bCanRunGame = CanRunGame();
-
-	//检查注册表中是否有那项
-	BOOL bRunUpdate = FALSE;
 	if (bCanRunGame)
 	{
-		bRunUpdate = FALSE;
+		wchar_t buf[256];
+		memset(buf, 0, 256);
+		wsprintf(buf, L"%s/Login.exe\0", m_strModule);
+		ShellExecute(NULL, L"open", buf, NULL, NULL, SW_SHOW);
+		exit(0);
 	}
 	else
-		bRunUpdate = TRUE;
-
-	if (bRunUpdate)
 	{
 		Install();
-		
-	}else
-	{
-		//MessageBox(L"安装成功",L"Jiangxingjue");
-		m_Process.ShowWindow(SW_HIDE);
-		m_Text.ShowWindow(SW_HIDE);
-		m_button1.ShowWindow(SW_SHOW);
-		m_button2.ShowWindow(SW_SHOW);
-		//exit(0);
+		vedioSetting();
 	}
-	vedioSetting();
+	//	bRunUpdate = TRUE;
+
+	//if (bRunUpdate)
+	//{
+	//	Install();
+	//	
+	//}else
+	//{
+	//	//MessageBox(L"安装成功",L"Jiangxingjue");
+	//	m_Process.ShowWindow(SW_HIDE);
+	//	m_Text.ShowWindow(SW_HIDE);
+	//	m_button1.ShowWindow(SW_SHOW);
+	//	m_button2.ShowWindow(SW_SHOW);
+	//	//exit(0);
+	//}
+	//vedioSetting();
 }
 void CqLoginDlg::Install()
 {
@@ -263,37 +268,49 @@ void CqLoginDlg::Install()
 	m_button2.ShowWindow(SW_HIDE);
 
 	CSystemInfo stSysInfo;
-	CString chProcessorName, chProcessorType;DWORD dwNum = 50;
+	CString chProcessorName, chProcessorType;
 	//stSysInfo.GetCpuInfo(chProcessorName, chProcessorType, dwNum, dwMaxClockSpeed);
+	DWORD dwNum = 50;
 	enum { eBufferSize = 50, };
-	CString strDiskInfo[eBufferSize];
+	std::string strDiskInfo[eBufferSize];
 	unsigned __int64 iDiskFreeSize[eBufferSize];
-	wchar_t disk[eBufferSize];
+	char disk[eBufferSize];
 	ZeroMemory(iDiskFreeSize, eBufferSize * sizeof(unsigned _int64));
 	stSysInfo.GetDiskInfo(dwNum, strDiskInfo, iDiskFreeSize,disk);
-
-	//C盘和D盘比较大小
-	wchar_t szBuf[255] = {0};
-	const wchar_t * pTmp = NULL;
-	wchar_t cDisk = disk[0];//L'C';
-	wcscpy_s(szBuf, 255, strDiskInfo[1]); 
-	pTmp = wcsstr(szBuf, L"本地磁盘(");
-	unsigned __int64 uTmpValue = 5 * 1024 * 1024;
-	uTmpValue *= 1024;
-	if (pTmp && iDiskFreeSize[0] < uTmpValue)	//如果C盘剩余小于5G则安装在D盘，以后不比较大小了
+	if (dwNum > 5)//cdefgh
+		dwNum = 5;
+	////C盘和D盘比较大小
+	//const wchar_t * pTmp = NULL;
+	//wchar_t cDisk = disk[0];//L'C';
+	//wcscpy_s(szBuf, 255, strDiskInfo[1]); 
+	//pTmp = wcsstr(szBuf, L"本地磁盘(");
+	//unsigned __int64 uTmpValue = 5 * 1024 * 1024;
+	//uTmpValue *= 1024;
+	//if (pTmp && iDiskFreeSize[0] < uTmpValue)	//如果C盘剩余小于5G则安装在D盘，以后不比较大小了
+	//{
+	//	cDisk = disk[1];//L'D';
+	//}
+	//安装在剩余空间最大的硬盘上
+	const char * pTmp = NULL;
+	char cDisk = disk[0];//L'C';
+	unsigned __int64 maxDiskFreeSize = 0;
+	for (int i = 0; i < dwNum; i++)
 	{
-		cDisk = disk[1];//L'D';
+		if (iDiskFreeSize[i] >= maxDiskFreeSize)
+		{
+			maxDiskFreeSize = iDiskFreeSize[i];
+			cDisk = disk[i];
+		}
 	}
 	swprintf_s(m_strModule, L"%c:\\Jiangxingjue", cDisk);
 	swprintf_s(m_Download.m_strModule, L"%c:\\Jiangxingjue", cDisk);
-
 
 	CreateDirectory(m_strModule, NULL);
 
 	//将解压到临时目录的东西移动到游戏目录
 	//判断当前文件运行目录是否是临时文件件
 	//如果是临时文件夹则复制文件，否则不复制
-
+	wchar_t szBuf[255] = { 0 };
 	GetModuleFileName(NULL, szBuf, 255); //得到当前模块路径
 	wchar_t * pcurLast = NULL, * pcurTmp = wcsstr(szBuf, L"\\");
 	while (pcurTmp)
@@ -524,8 +541,7 @@ BOOL CqLoginDlg::CheckReg4Game()
 BOOL CqLoginDlg::CanRunGame()
 {
 	wstring strTmp(m_strModule);
-	strTmp += L"/Launcher.exe";
-
+	strTmp += L"/Login.exe";
 	WIN32_FIND_DATA stFindFileData;
 	HANDLE hFile = FindFirstFile(strTmp.c_str(), &stFindFileData);
 	if (INVALID_HANDLE_VALUE == hFile)

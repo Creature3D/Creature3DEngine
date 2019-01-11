@@ -229,108 +229,115 @@ void CSystemInfo::GetInterFaceName(CString &InterfaceName,int pNum)
 	InterfaceName = InterfaceName + str;
 }
 
-void CSystemInfo::GetDiskInfo(DWORD &dwNum, CString chDriveInfo[], unsigned __int64 iDiskFreeSize[],wchar_t disk[])
+void CSystemInfo::GetDiskInfo(DWORD &dwNum, std::string chDriveInfo[], unsigned __int64 iDiskFreeSize[], char disk[])
 {
 	DWORD DiskCount = 0;
 
 	//利用GetLogicalDrives()函数可以获取系统中逻辑驱动器的数量，函数返回的是一个32位无符号整型数据。
 	DWORD DiskInfo = GetLogicalDrives();
 
-	//通过循环操作查看每一位数据是否为1，如果为1则磁盘为真,如果为0则磁盘不存在。
-	while(DiskInfo)
-	{
-		//通过位运算的逻辑与操作，判断是否为1
-		Sleep(10);
-		if(DiskInfo&1)
-		{
-			DiskCount++;
-		}
-		DiskInfo = DiskInfo >> 1;//通过位运算的右移操作保证每循环一次所检查的位置向右移动一位。*/
-	}
+	////通过循环操作查看每一位数据是否为1，如果为1则磁盘为真,如果为0则磁盘不存在。
+	//while(DiskInfo)
+	//{
+	//	//通过位运算的逻辑与操作，判断是否为1
+	//	Sleep(10);
+	//	if(DiskInfo&1)
+	//	{
+	//		DiskCount++;
+	//	}
+	//	DiskInfo = DiskInfo >> 1;//通过位运算的右移操作保证每循环一次所检查的位置向右移动一位。*/
+	//}
 
-	if (dwNum < DiskCount)
-	{
-		return;//实际的磁盘数目大于dwNum
-	}
-	dwNum = DiskCount;//将磁盘分区数量保存
+	//if (dwNum < DiskCount)
+	//{
+	//	return;//实际的磁盘数目大于dwNum
+	//}
+	//dwNum = DiskCount;//将磁盘分区数量保存
 
 	//通过GetLogicalDriveStrings()函数获取所有驱动器字符串信息长度
-	int DSLength = GetLogicalDriveStrings(0, NULL);
+	int DSLength = GetLogicalDriveStringsA(0, NULL);
 
-	WCHAR* DStr = new WCHAR[DSLength];
+	char* DStr = new char[DSLength];
 	memset(DStr, 0, DSLength);
 
 	//通过GetLogicalDriveStrings将字符串信息复制到堆区数组中,其中保存了所有驱动器的信息。
-	GetLogicalDriveStrings(DSLength,DStr);
+	GetLogicalDriveStringsA(DSLength, DStr);
 
 	int DType;
-	int si=0;
+	//int si=0;
 	BOOL fResult;
 	unsigned __int64 i64FreeBytesToCaller;
 	unsigned __int64 i64TotalBytes;
 	unsigned __int64 i64FreeBytes;
 
 	//读取各驱动器信息，由于DStr内部数据格式是A:\NULLB:\NULLC:\NULL，所以DSLength/4可以获得具体大循环范围
-	for(int i=0; i<DSLength/4; ++i)
+	char buf[128];
+	for (int i = 0; i < DSLength / 4; ++i)
 	{
 		Sleep(10);
-		CString strdriver = DStr + i*4;
-		CString strTmp,strTotalBytes, strFreeBytes;
-		DType = GetDriveType(strdriver);//GetDriveType函数，可以获取驱动器类型，参数为驱动器的根目录
-		disk[i] = strdriver[0];
-		switch (DType)
+		std::string strdriver = DStr + i * 4;
+		std::string strTmp, strTotalBytes, strFreeBytes;
+		DType = GetDriveTypeA(strdriver.c_str());//GetDriveType函数，可以获取驱动器类型，参数为驱动器的根目录
+		if (DType == DRIVE_FIXED)
 		{
-		case DRIVE_FIXED:
+			disk[DiskCount] = strdriver[0];
+			//GetDiskFreeSpaceEx函数，可以获取驱动器磁盘的空间状态,函数返回的是个BOOL类型数据
+			fResult = GetDiskFreeSpaceExA(strdriver.c_str(), (PULARGE_INTEGER)&i64FreeBytesToCaller, (PULARGE_INTEGER)&i64TotalBytes, (PULARGE_INTEGER)&i64FreeBytes);
+			if (fResult)
 			{
-				strTmp.Format(_T("本地磁盘"));
+				iDiskFreeSize[DiskCount] = i64FreeBytesToCaller;
+				sprintf(buf, "磁盘总容量%fMB\0", (float)i64TotalBytes / 1024 / 1024);
+				strTotalBytes = buf;
+				sprintf(buf, "磁盘剩余空间%fMB\0", (float)i64FreeBytesToCaller / 1024 / 1024);
+				strFreeBytes = buf;
 			}
-			break;
-		case DRIVE_CDROM:
+			else
 			{
-				strTmp.Format(_T("DVD驱动器"));
+				strTotalBytes = "";
+				strFreeBytes = "";
 			}
-			break;
-		case DRIVE_REMOVABLE:
-			{
-				strTmp.Format(_T("可移动磁盘"));
-			}
-			break;
-		case DRIVE_REMOTE:
-			{
-				strTmp.Format(_T("网络磁盘"));
-			}
-			break;
-		case DRIVE_RAMDISK:
-			{
-				strTmp.Format(_T("虚拟RAM磁盘"));
-			}
-			break;
-		case DRIVE_UNKNOWN:
-			{
-				strTmp.Format(_T("虚拟RAM未知设备"));
-			}
-			break;
-		default:
-			strTmp.Format(_T("未知设备"));
-			break;
+			chDriveInfo[DiskCount] = /*strTmp + */"(" + strdriver + "):" + strTotalBytes + strFreeBytes;
+			DiskCount++;
 		}
-
-		//GetDiskFreeSpaceEx函数，可以获取驱动器磁盘的空间状态,函数返回的是个BOOL类型数据
-		fResult = GetDiskFreeSpaceEx (strdriver, (PULARGE_INTEGER)&i64FreeBytesToCaller, (PULARGE_INTEGER)&i64TotalBytes, (PULARGE_INTEGER)&i64FreeBytes);
-		if(fResult)
-		{
-			iDiskFreeSize[i] = i64FreeBytesToCaller;
-			strTotalBytes.Format(_T("磁盘总容量%fMB"), (float)i64TotalBytes/1024/1024);
-			strFreeBytes.Format(_T("磁盘剩余空间%fMB"), (float)i64FreeBytesToCaller / 1024 / 1024);
-		}
-		else
-		{
-			strTotalBytes.Format(_T(""));
-			strFreeBytes.Format(_T(""));
-		}
-		chDriveInfo[i] = strTmp + _T("(") + strdriver + _T("):") + strTotalBytes + strFreeBytes;
-		si+=4;
+		//si+=4;
+		//switch (DType)
+		//{
+		//case DRIVE_FIXED:
+		//	{
+		//		strTmp="本地磁盘";
+		//	}
+		//	break;
+		//case DRIVE_CDROM:
+		//	{
+		//		strTmp="DVD驱动器";
+		//	}
+		//	break;
+		//case DRIVE_REMOVABLE:
+		//	{
+		//		strTmp="可移动磁盘";
+		//	}
+		//	break;
+		//case DRIVE_REMOTE:
+		//	{
+		//		strTmp="网络磁盘";
+		//	}
+		//	break;
+		//case DRIVE_RAMDISK:
+		//	{
+		//		strTmp="虚拟RAM磁盘";
+		//	}
+		//	break;
+		//case DRIVE_UNKNOWN:
+		//	{
+		//		strTmp="虚拟RAM未知设备";
+		//	}
+		//	break;
+		//default:
+		//	strTmp="未知设备";
+		//	break;
+		//}
 	}
+	dwNum = DiskCount;
 }
 
 void CSystemInfo::GetDisplayCardInfo(DWORD &dwNum, CString chCardName[])

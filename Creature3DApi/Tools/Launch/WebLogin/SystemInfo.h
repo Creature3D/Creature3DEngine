@@ -1,7 +1,7 @@
 #pragma once
 
 #include <afxtempl.h>  
-
+#include<string>
 class CSystemInfo
 {  
 public:  
@@ -23,7 +23,7 @@ public:
 	void GetCpuInfo(CString &chProcessorName,CString &chProcessorType,DWORD &dwNum,DWORD &dwMaxClockSpeed);  
 
 	/****获取硬盘信息****/  
-	void GetDiskInfo(DWORD &dwNum,CString chDriveInfo[], unsigned __int64 iDiskFreeSize[],wchar_t disk[]);  
+	void GetDiskInfo(DWORD &dwNum, std::string chDriveInfo[], unsigned __int64 iDiskFreeSize[], char disk[]);
 
 	/****获取显卡信息*****/  
 	void GetDisplayCardInfo(DWORD &dwNum,CString chCardName[]);
