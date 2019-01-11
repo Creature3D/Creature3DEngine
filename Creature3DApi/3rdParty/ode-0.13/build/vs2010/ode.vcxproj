@@ -512,6 +512,7 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <OmitFramePointers>true</OmitFramePointers>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_MT;NDEBUG;dNODEBUG;dIDESINGLE;CCD_IDESINGLE;WIN32;_CRT_SECURE_NO_DEPRECATE;_USE_MATH_DEFINES;_OU_NAMESPACE=odeou;ODE_DLL;_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -544,6 +545,7 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <OmitFramePointers>true</OmitFramePointers>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_MT;NDEBUG;dNODEBUG;dIDESINGLE;CCD_IDESINGLE;WIN32;_CRT_SECURE_NO_DEPRECATE;_USE_MATH_DEFINES;_OU_NAMESPACE=odeou;ODE_DLL;_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
