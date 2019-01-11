@@ -54,7 +54,7 @@ void findFileInDir(const char* rootDir, std::vector<std::string>& fileNameVec)
 	char filePathName[1024];
 	char tmpPath[1024];
 	ZeroMemory(filePathName, 1024);
-	ZeroMemory(tmpPath, 1024;
+	ZeroMemory(tmpPath, 1024);
 
 	strcpy(filePathName, rootDir);
 
