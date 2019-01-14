@@ -14,7 +14,7 @@
 #define CRNET_CRNETDATAMANAGER_H
 
 #include <CRNet/crStreamPacket.h>
-#include <CRNet\crExport.h>
+#include <CRNet/crExport.h>
 #include <CRNet/crNetCallbackManager.h>
 #include <CRNet/crNetManager.h>
 #include <CRCore/Referenced.h>

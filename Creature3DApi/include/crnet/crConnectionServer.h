@@ -13,7 +13,7 @@
 #ifndef CRNET_CRCONNECTIONSERVER_H
 #define CRNET_CRCONNECTIONSERVER_H
 
-#include <CRNet\crExport.h>
+#include <CRNet/crExport.h>
 #include <CRCore/ref_ptr.h>
 
 #include <gnelib/ServerConnectionListener.h>

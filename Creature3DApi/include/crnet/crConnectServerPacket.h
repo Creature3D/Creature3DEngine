@@ -13,8 +13,8 @@
 #ifndef CRNET_CRCONNECTSERVERPACKET_H
 #define CRNET_CRCONNECTSERVERPACKET_H 1
 
-#include <CRNet\crExport.h>
-#include <CRNet\crStreamPacket.h>
+#include <CRNet/crExport.h>
+#include <CRNet/crStreamPacket.h>
 
 namespace CRNet {
 

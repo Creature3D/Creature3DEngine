@@ -13,7 +13,7 @@
 #ifndef CRNET_CRNETBRIDGE_H
 #define CRNET_CRNETBRIDGE_H
 
-#include <CRNet\crExport.h>
+#include <CRNet/crExport.h>
 #include <CRCore/Referenced.h>
 #include <CRCore/ref_ptr.h>
 #include <CRCore/crTimer.h>

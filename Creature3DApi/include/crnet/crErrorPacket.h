@@ -13,9 +13,9 @@
 #ifndef CRNET_CRERRORPACKET_H
 #define CRNET_CRERRORPACKET_H 1
 
-#include <CRNet\crExport.h>
-#include <CRNet\crStreamPacket.h>
-#include <CRCore\crStreamBuf.h>
+#include <CRNet/crExport.h>
+#include <CRNet/crStreamPacket.h>
+#include <CRCore/crStreamBuf.h>
 namespace CRNet {
 
 class CRNET_EXPORT crErrorPacket : public crStreamPacket

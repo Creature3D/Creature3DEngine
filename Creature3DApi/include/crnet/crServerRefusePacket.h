@@ -13,8 +13,8 @@
 #ifndef CRNET_CRSERVERREFUSEPACKET_H
 #define CRNET_CRSERVERREFUSEPACKET_H 1
 
-#include <CRNet\crExport.h>
-#include <CRNet\crStreamPacket.h>
+#include <CRNet/crExport.h>
+#include <CRNet/crStreamPacket.h>
 
 namespace CRNet {
 //服务器拒绝连接，客户端受到该包后停止自动重连机制

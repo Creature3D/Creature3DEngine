@@ -13,10 +13,10 @@
 #ifndef CRNET_CRSTREAMPACKET_H
 #define CRNET_CRSTREAMPACKET_H 1
 
-#include <CRCore\ref_ptr.h>
-#include <CRCore\Referenced.h>
-#include <CRNet\crExport.h>
-#include <CRCore\crStreamBuf.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/Referenced.h>
+#include <CRNet/crExport.h>
+#include <CRCore/crStreamBuf.h>
 #include <gnelib.h>
 
 #define WCHNETID               5
