@@ -162,7 +162,7 @@ void Connection::disconnectSendAll(int waitTime) {
   disconnect();
 }
 
-bool Connection::checkCode(int code)
+bool Connection::checkCRCCode(int code)
 {//code×¤Áô1£­2·ÖÖÓ
 	LockMutex lock( m_codesetMutex );
 	if(m_codeset->find(code) != m_codeset->end())

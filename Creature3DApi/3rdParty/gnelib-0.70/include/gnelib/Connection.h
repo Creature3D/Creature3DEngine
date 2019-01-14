@@ -253,7 +253,7 @@ public:
 
   //void onReceivePacket();
   typedef std::set<int> CodeSet;
-  bool checkCode(int code);
+  bool checkCRCCode(int code);
   void update();
 protected:
 	Mutex m_codesetMutex;
