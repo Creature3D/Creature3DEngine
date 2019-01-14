@@ -15,11 +15,11 @@
 #include <CRIOManager/crReadFile.h>
 #include <CRIOManager/crRegistry.h>
 
-#include <Plugin flt\MaterialPaletteRecord.h>
-#include <Plugin flt\OldMaterialPaletteRecord.h>
-#include <Plugin flt\Pool.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\AttrData.h>
+#include <Plugin flt/MaterialPaletteRecord.h>
+#include <Plugin flt/OldMaterialPaletteRecord.h>
+#include <Plugin flt/Pool.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/AttrData.h>
 
 #include <stdio.h>
 

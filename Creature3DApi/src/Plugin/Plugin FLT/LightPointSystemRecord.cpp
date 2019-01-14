@@ -1,6 +1,6 @@
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\LightPointSystemRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/LightPointSystemRecord.h>
 
 using namespace flt;
 

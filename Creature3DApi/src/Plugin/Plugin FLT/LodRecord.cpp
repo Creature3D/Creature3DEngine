@@ -1,7 +1,7 @@
 // LodRecord.cpp
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\LodRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/LodRecord.h>
 
 using namespace flt;
 

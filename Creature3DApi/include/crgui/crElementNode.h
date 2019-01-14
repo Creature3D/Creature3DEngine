@@ -14,7 +14,7 @@
 #define CRGUI_CRELEMENTNODE_H 1
 
 #include <CRGUI/crExport.h>
-#include <CRGUI\crTypes.h>
+#include <CRGUI/crTypes.h>
 #include <CRGUI/crElement.h>
 #include <CRCore/crNode.h>
 

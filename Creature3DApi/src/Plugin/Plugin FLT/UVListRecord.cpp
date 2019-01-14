@@ -1,8 +1,8 @@
 // UVListRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\UVListRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/UVListRecord.h>
 
 using namespace flt;
 

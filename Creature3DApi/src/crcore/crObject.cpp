@@ -11,11 +11,11 @@
  * OpenSceneGraph Public License for more details.
 */
 //Modified by Wucaihua
-#include <CRCore\crObject.h>
-#include <CRCore\crPolygonMode.h>
-#include <CRCore\crStateAttribute.h>
-#include <CRCore\crShapeDrawable.h>
-#include <CRCore\crDisplaySettings.h>
+#include <CRCore/crObject.h>
+#include <CRCore/crPolygonMode.h>
+#include <CRCore/crStateAttribute.h>
+#include <CRCore/crShapeDrawable.h>
+#include <CRCore/crDisplaySettings.h>
 #include <ode/ode.h>
 
 using namespace std;

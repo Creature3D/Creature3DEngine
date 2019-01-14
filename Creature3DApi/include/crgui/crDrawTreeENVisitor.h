@@ -12,8 +12,8 @@
 */
 #ifndef CRGUI_CRDRAWTREEENVISITOR_H
 #define CRGUI_CRDRAWTREEENVISITOR_H 1
-#include <CRGUI\crElementNodeVisitor.h>
-#include <CRGUI\crElementNode.h>
+#include <CRGUI/crElementNodeVisitor.h>
+#include <CRGUI/crElementNode.h>
 
 namespace CRGUI {
 

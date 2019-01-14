@@ -1,8 +1,8 @@
 // ExternalRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\ExternalRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/ExternalRecord.h>
 
 using namespace flt;
 

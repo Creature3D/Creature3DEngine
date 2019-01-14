@@ -4,8 +4,8 @@
 #pragma warning(disable:4786) // Truncated debug names.
 #endif
 
-#include <Plugin flt\MeshPrimitiveRecord.h>
-#include <Plugin flt\Registry.h>
+#include <Plugin flt/MeshPrimitiveRecord.h>
+#include <Plugin flt/Registry.h>
 
 #include <assert.h>
 

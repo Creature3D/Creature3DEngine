@@ -13,9 +13,9 @@
 #ifndef CRGUI_CRCOMPUTEPOSENVISITOR_H
 #define CRGUI_CRCOMPUTEPOSENVISITOR_H 1
 
-#include <CRGUI\crElementNodeVisitor.h>
-#include <CRGUI\crElementNode.h>
-#include <CRCore\crVector2.h>
+#include <CRGUI/crElementNodeVisitor.h>
+#include <CRGUI/crElementNode.h>
+#include <CRCore/crVector2.h>
 
 namespace CRGUI {
 

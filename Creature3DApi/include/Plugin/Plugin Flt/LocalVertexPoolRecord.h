@@ -3,9 +3,9 @@
 #ifndef __FLT_LOCAL_VERTEX_POOL_RECORDS_H
 #define __FLT_LOCAL_VERTEX_POOL_RECORDS_H
 
-#include <Plugin flt\opcodes.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\RecordVisitor.h>
+#include <Plugin flt/opcodes.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/RecordVisitor.h>
 
 namespace flt {
 

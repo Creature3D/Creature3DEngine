@@ -13,13 +13,13 @@
 #ifndef CRGUI_CRELEMENT_H
 #define CRGUI_CRELEMENT_H 1
 
-#include <CRGUI\crExport.h>
-#include <CRGUI\crTypes.h>
+#include <CRGUI/crExport.h>
+#include <CRGUI/crTypes.h>
 #include <CRGUI/crTextAttribute.h>
-#include <CRCore\ref_ptr.h>
-#include <CRCore\Referenced.h>
-#include <CRCore\crVector2.h>
-#include <CRCore\crVector4.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/crVector2.h>
+#include <CRCore/crVector4.h>
 #include <CRCore/crEventCallbackManager.h>
 #include <CRCore/crDataManager.h>
 #include <CRCore/crTimer.h>

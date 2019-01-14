@@ -11,8 +11,8 @@
  * OpenSceneGraph Public License for more details.
 */
 //Modified by Wucaihua
-#include <CRCore\crGeometry.h>
-#include <CRCore\crNotify.h>
+#include <CRCore/crGeometry.h>
+#include <CRCore/crNotify.h>
 #include <ode/ode.h>
 using namespace CRCore;
 

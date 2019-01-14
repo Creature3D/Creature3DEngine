@@ -9,8 +9,8 @@
 #include <string>
 
 
-#include <Plugin flt\Record.h>
-#include <Plugin flt\GeoSetBuilder.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/GeoSetBuilder.h>
 
 
 namespace CRCore {

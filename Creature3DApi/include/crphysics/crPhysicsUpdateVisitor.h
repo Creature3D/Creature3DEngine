@@ -13,7 +13,7 @@
 #ifndef CRPHYSICS_CRPHYSICSUPDATEVISITOR_H
 #define CRPHYSICS_CRPHYSICSUPDATEVISITOR_H 1
 
-#include <CRPhysics\crExport.h>
+#include <CRPhysics/crExport.h>
 
 #include <CRCore/crNodeVisitor.h>
 #include <CRCore/crNode.h>

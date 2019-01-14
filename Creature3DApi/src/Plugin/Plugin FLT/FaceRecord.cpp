@@ -1,10 +1,10 @@
 // FaceRecord.cpp
 
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\FaceRecord.h>
-#include <Plugin flt\Input.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/FaceRecord.h>
+#include <Plugin flt/Input.h>
 
 
 using namespace flt;

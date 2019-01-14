@@ -13,7 +13,7 @@
 #ifndef CRENCAPSULATION_CRCOLLIDECALLBACK_H
 #define CRENCAPSULATION_CRCOLLIDECALLBACK_H 1
 
-#include <CREncapsulation\crExport.h>
+#include <CREncapsulation/crExport.h>
 #include <CRCore/crCollideCallback.h>
 #include <CRCore/ref_ptr.h>
 #include <CRCore/crEffectSequenceManager.h>

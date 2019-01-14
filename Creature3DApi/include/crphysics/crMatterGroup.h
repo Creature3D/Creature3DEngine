@@ -14,14 +14,14 @@
 #define CRPHYSICS_CRMATTERGROUP_H 1
 
 #include <CRPhysics/crExport.h>
-#include <CRCore\crEventGroup.h>
-#include <CRCore\crTransform.h>
-#include <CRCore\crVector3.h>
-#include <CRCore\crMatrix.h>
-#include <CRCore\crGeometry.h>
-#include <CRPhysics\crJoint.h>
-#include <CRPhysics\crOdeWorld.h>
-#include <CRPhysics\crMatterObject.h>
+#include <CRCore/crEventGroup.h>
+#include <CRCore/crTransform.h>
+#include <CRCore/crVector3.h>
+#include <CRCore/crMatrix.h>
+#include <CRCore/crGeometry.h>
+#include <CRPhysics/crJoint.h>
+#include <CRPhysics/crOdeWorld.h>
+#include <CRPhysics/crMatterObject.h>
 #include <ode/ode.h>
 
 #include <map>

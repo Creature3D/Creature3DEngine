@@ -1,7 +1,7 @@
 // LightSourceRecord.cpp
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\LightSourceRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/LightSourceRecord.h>
 
 using namespace flt;
 

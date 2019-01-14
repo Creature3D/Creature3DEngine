@@ -13,10 +13,10 @@
 #ifndef CRCORE_CRGUID_H
 #define CRCORE_CRGUID_H 1
 
-#include <CRCore\ref_ptr.h>
-#include <CRCore\Referenced.h>
-#include <CRCore\crWchMsg.h>
-#include <CRCore\crExport.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/crWchMsg.h>
+#include <CRCore/crExport.h>
 #include <string>
 
 namespace CRCore {

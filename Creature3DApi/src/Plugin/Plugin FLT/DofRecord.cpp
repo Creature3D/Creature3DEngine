@@ -1,8 +1,8 @@
 // DofRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\DofRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/DofRecord.h>
 
 using namespace flt;
 

@@ -4,10 +4,10 @@
 #pragma warning(disable:4786) // Truncated debug names.
 #endif
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\MeshRecord.h>
-#include <Plugin flt\Input.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/MeshRecord.h>
+#include <Plugin flt/Input.h>
 
 #include <assert.h>
 

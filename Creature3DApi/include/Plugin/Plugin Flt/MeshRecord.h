@@ -5,7 +5,7 @@
 
 
 
-#include <Plugin flt\FaceRecord.h>
+#include <Plugin flt/FaceRecord.h>
 
 
 namespace flt {

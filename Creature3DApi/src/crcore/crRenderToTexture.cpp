@@ -18,8 +18,8 @@
 #include <CRCore/crLightSourceManager.h>
 #include <CRCore/crNotify.h>
 #include <CRCore/crDepth.h>
-#include <CRCore\crGeometry.h>
-#include <CRCore\crBrain.h>
+#include <CRCore/crGeometry.h>
+#include <CRCore/crBrain.h>
 using namespace CRCore;
 
 crPolytope crRenderToTexture::m_currentViewFrustum;

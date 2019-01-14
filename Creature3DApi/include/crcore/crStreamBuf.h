@@ -13,18 +13,18 @@
 #ifndef CRCORE_CRSTREAMBUF_H
 #define CRCORE_CRSTREAMBUF_H 1
 
-#include <CRCore\ref_ptr.h>
-#include <CRCore\Referenced.h>
-#include <CRCore\crWchMsg.h>
-#include <CRCore\crVector2.h>
-#include <CRCore\crVector3.h>
-#include <CRCore\crVector4.h>
-#include <CRCore\crPlane.h>
-#include <CRCore\crQuat.h>
-#include <CRCore\crArray.h>
-#include <CRCore\crGuid.h>
-#include <CRCore\crExport.h>
-#include <CRCore\thread\crCriticalMutex.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/crWchMsg.h>
+#include <CRCore/crVector2.h>
+#include <CRCore/crVector3.h>
+#include <CRCore/crVector4.h>
+#include <CRCore/crPlane.h>
+#include <CRCore/crQuat.h>
+#include <CRCore/crArray.h>
+#include <CRCore/crGuid.h>
+#include <CRCore/crExport.h>
+#include <CRCore/thread/crCriticalMutex.h>
 
 #include <string>
 

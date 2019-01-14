@@ -10,15 +10,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crMatterGroup.h>
-#include <CRPhysics\crMatterObject.h>
+#include <CRPhysics/crMatterGroup.h>
+#include <CRPhysics/crMatterObject.h>
 #include <CRPhysics/crJointSetParamPPC.h>
 #include <CRPhysics/crSetForceAndTorquePPC.h>
 #include <CRPhysics/crSetGravityModePPC.h>
-#include <CRPhysics\crViewMatterObject.h>
+#include <CRPhysics/crViewMatterObject.h>
 #include <CRPhysics/crWeaponNode.h>
 #include <CRPhysics/crCharacterMatterObject.h>
-#include <CRCore\crNotify.h>
+#include <CRCore/crNotify.h>
 
 using namespace CRCore;
 using namespace CRPhysics;

@@ -24,7 +24,7 @@
 #include <CRCore/crNotify.h>
 #include <CRCore/crLineSegment.h>
 #include <CRCore/crIntersectVisitor.h>
-#include <CRPhysics\crMatterObject.h>
+#include <CRPhysics/crMatterObject.h>
 #include <CRCore/crTriangleFunctor.h>
 #include <CRUtil/crRenderStage.h>
 

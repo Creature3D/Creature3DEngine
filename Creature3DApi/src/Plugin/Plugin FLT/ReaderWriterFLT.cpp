@@ -4,9 +4,9 @@
 #pragma warning( disable : 4786 )
 #endif
 
-#include <Plugin flt\ReaderWriterFLT.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\FltFile.h>
+#include <Plugin flt/ReaderWriterFLT.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/FltFile.h>
 
 #include <CRCore/crBase.h>
 #include <CRCore/crNode.h>

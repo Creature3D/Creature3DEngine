@@ -13,9 +13,9 @@
 #ifndef CRCORE_CREVENTGROUP_H
 #define CRCORE_CREVENTGROUP_H 1
 
-#include <CRCore\crGroup.h>
-#include <CRCore\crEventMsg.h>
-#include <CRCore\crEventMsgVisitor.h>
+#include <CRCore/crGroup.h>
+#include <CRCore/crEventMsg.h>
+#include <CRCore/crEventMsgVisitor.h>
 #include <CRCore/thread/crMutex.h>
 
 #include <vector>

@@ -13,7 +13,7 @@
 #include <CRPhysics/crWeaponEventPPC.h>
 #include <CRPhysics/crGameBodyInfo.h>
 #include <CRPhysics/crViewMatterObject.h>
-#include <CRPhysics\crWeaponNode.h>
+#include <CRPhysics/crWeaponNode.h>
 using namespace CRCore;
 using namespace CRPhysics;
 

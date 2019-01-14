@@ -10,11 +10,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRCore\crEventGroup.h>
-#include <CRCore\crSearchNodeBYNameVisitor.h>
-#include <CRCore\crNotify.h>
-#include <CRCore\crSwitch.h>
-#include <CRCore\crTransform.h>
+#include <CRCore/crEventGroup.h>
+#include <CRCore/crSearchNodeBYNameVisitor.h>
+#include <CRCore/crNotify.h>
+#include <CRCore/crSwitch.h>
+#include <CRCore/crTransform.h>
 
 using namespace CRCore;
 

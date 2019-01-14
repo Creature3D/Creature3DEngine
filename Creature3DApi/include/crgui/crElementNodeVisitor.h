@@ -13,10 +13,10 @@
 #ifndef CRGUI_CRELEMENTNODEVISITOR_H
 #define CRGUI_CRELEMENTNODEVISITOR_H 1
 
-#include <CRGUI\crExport.h>
-#include <CRCore\ref_ptr.h>
-#include <CRCore\referenced.h>
-#include <CRGUI\crElementNode.h>
+#include <CRGUI/crExport.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/referenced.h>
+#include <CRGUI/crElementNode.h>
 
 namespace CRGUI {
 

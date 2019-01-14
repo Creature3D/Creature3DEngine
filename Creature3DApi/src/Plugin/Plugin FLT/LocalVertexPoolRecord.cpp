@@ -5,8 +5,8 @@
 #endif
 
 
-#include <Plugin flt\LocalVertexPoolRecord.h>
-#include <Plugin flt\Registry.h>
+#include <Plugin flt/LocalVertexPoolRecord.h>
+#include <Plugin flt/Registry.h>
 
 #include <assert.h>
 

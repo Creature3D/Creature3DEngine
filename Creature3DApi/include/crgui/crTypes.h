@@ -13,7 +13,7 @@
 #ifndef CRGUI_CRTYPES
 #define CRGUI_CRTYPES 1
 
-#include <CRGUI\crExport.h>
+#include <CRGUI/crExport.h>
 
 #ifdef _WIN32_IMPLEMENTATION
 #define WIN32_LEAN_AND_MEAN

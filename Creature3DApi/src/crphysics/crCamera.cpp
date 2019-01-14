@@ -10,9 +10,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crCamera.h>
-#include <CRPhysics\crViewMatterObject.h>
-#include <CRCore\crMath.h>
+#include <CRPhysics/crCamera.h>
+#include <CRPhysics/crViewMatterObject.h>
+#include <CRCore/crMath.h>
 using namespace CRPhysics;
 using namespace CRCore;
 ref_ptr<crCameraManager> crCameraManager::m_instance = NULL;

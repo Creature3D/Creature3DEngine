@@ -1,8 +1,8 @@
 // GroupRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\GroupRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/GroupRecord.h>
 
 using namespace flt;
 

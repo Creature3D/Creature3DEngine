@@ -13,10 +13,10 @@
 #ifndef CRGUI_CRWIN32_H
 #define CRGUI_CRWIN32_H 1
 
-#include <CRGUI\crExport.h>
-#include <CRCore\ref_ptr.h>
-#include <CRCore\Referenced.h>
-#include <CRCore\crVector4.h>
+#include <CRGUI/crExport.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/crVector4.h>
 #include <deque>
 //#define STRICT
 #define WIN32_LEAN_AND_MEAN

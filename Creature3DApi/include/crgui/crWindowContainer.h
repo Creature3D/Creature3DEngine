@@ -13,8 +13,8 @@
 #ifndef CRGUI_CRWINDOWCONTAINER_H
 #define CRGUI_CRWINDOWCONTAINER_H 1
 
-#include <CRGUI\crExport.h>
-#include <CRGUI\crTypes.h>
+#include <CRGUI/crExport.h>
+#include <CRGUI/crTypes.h>
 #include <CRGUI/crWin32.h>
 #include <CRGUI/crImageStage.h>
 #include <CRCore/ref_ptr.h>

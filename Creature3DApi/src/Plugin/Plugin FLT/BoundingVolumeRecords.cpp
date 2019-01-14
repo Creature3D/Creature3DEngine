@@ -1,8 +1,8 @@
 // BoundingVolumeRecords.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\BoundingVolumeRecords.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/BoundingVolumeRecords.h>
 
 using namespace flt;
 

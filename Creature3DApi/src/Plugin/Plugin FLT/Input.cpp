@@ -7,9 +7,9 @@
 #include <CRCore/crNotify.h>
 #include <CRIOManager/crFileUtils.h>
 
-#include <Plugin flt\Input.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\Registry.h>
+#include <Plugin flt/Input.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/Registry.h>
 
 using namespace flt;
 

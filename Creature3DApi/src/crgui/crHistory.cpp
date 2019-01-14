@@ -11,9 +11,9 @@
  * Lesser General Public License for more details.
 */
 
-#include <CRGUI\crHistory.h>
-#include <CRGUI\crElementNode.h>
-#include <CRGUI\crElementNodeManager.h>
+#include <CRGUI/crHistory.h>
+#include <CRGUI/crElementNode.h>
+#include <CRGUI/crElementNodeManager.h>
 
 using namespace CRGUI;
 

@@ -1,8 +1,8 @@
 // UnknownRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\UnknownRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/UnknownRecord.h>
 
 using namespace flt;
 

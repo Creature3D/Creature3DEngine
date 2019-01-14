@@ -3,9 +3,9 @@
 #ifndef __FLT_OLD_VERTEX_RECORDS_H
 #define __FLT_OLD_VERTEX_RECORDS_H
 
-#include <Plugin flt\opcodes.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\RecordVisitor.h>
+#include <Plugin flt/opcodes.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/RecordVisitor.h>
 
 #include <map>
 #include <iostream>

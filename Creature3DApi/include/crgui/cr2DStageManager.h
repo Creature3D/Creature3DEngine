@@ -13,7 +13,7 @@
 #ifndef CRGUI_CR2DSTAGEMANAGER_H
 #define CRGUI_CR2DSTAGEMANAGER_H 1
 
-#include <CRGUI\crTypes.h>
+#include <CRGUI/crTypes.h>
 #include <CRGUI/crWin32.h>
 #include <CRGUI/crExport.h>
 #include <CRGUI/crImageStage.h>

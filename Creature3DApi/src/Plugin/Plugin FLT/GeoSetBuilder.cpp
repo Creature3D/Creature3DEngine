@@ -8,12 +8,12 @@
 #pragma warning( disable : 4786 )
 #endif
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\FltFile.h>
-#include <Plugin flt\Pool.h>
-#include <Plugin flt\opcodes.h>
-#include <Plugin flt\GeoSetBuilder.h>
-#include <Plugin flt\AttrData.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/FltFile.h>
+#include <Plugin flt/Pool.h>
+#include <Plugin flt/opcodes.h>
+#include <Plugin flt/GeoSetBuilder.h>
+#include <Plugin flt/AttrData.h>
 
 #include <CRCore/crBase.h>
 #include <CRCore/crLod.h>

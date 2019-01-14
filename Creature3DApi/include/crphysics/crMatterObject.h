@@ -17,7 +17,7 @@
 #include <CRCore/crMatrixTransform.h>
 #include <CRCore/crVector3.h>
 #include <CRCore/crMatrix.h>
-#include <CRPhysics\crOdeWorld.h>
+#include <CRPhysics/crOdeWorld.h>
 #include <CRCore/crEventCallbackManager.h>
 #include <CRCore/crEventGroup.h>
 #include <CRCore/thread/crMutex.h>

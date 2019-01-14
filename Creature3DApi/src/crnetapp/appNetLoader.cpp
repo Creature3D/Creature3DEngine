@@ -18,9 +18,9 @@
 #include <CRNetApp/appNetMethod.h>
 #include <CRNetApp/appNetLogic.h>
 #include <CRNetApp/appDataClass.h>
-#include <CRNet\crConnectServerPacket.h>
-#include <CRNet\crServerRefusePacket.h>
-#include <CRNet\crErrorPacket.h>
+#include <CRNet/crConnectServerPacket.h>
+#include <CRNet/crServerRefusePacket.h>
+#include <CRNet/crErrorPacket.h>
 #include <CRPhysics/crViewMatterObject.h>
 #include <CRNetApp/appSingleGameMethod.h>
 #include <CRNetApp/appSingleGameLogic.h>

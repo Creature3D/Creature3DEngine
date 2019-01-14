@@ -14,9 +14,9 @@
 #ifndef CRCORE_CRGROUP_H
 #define CRCORE_CRGROUP_H 1
 
-#include <CRCore\crNode.h>
-#include <CRCore\crNodeVisitor.h>
-#include <CRCore\crVector3.h>
+#include <CRCore/crNode.h>
+#include <CRCore/crNodeVisitor.h>
+#include <CRCore/crVector3.h>
 
 namespace CRCore{
   

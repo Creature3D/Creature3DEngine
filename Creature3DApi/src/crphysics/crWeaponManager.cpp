@@ -10,11 +10,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crWeaponManager.h>
-#include <CRPhysics\crViewMatterObject.h>
-#include <CRCore\crIntersectVisitor.h>
+#include <CRPhysics/crWeaponManager.h>
+#include <CRPhysics/crViewMatterObject.h>
+#include <CRCore/crIntersectVisitor.h>
 #include <CRCore/crBrain.h>
-#include <CRCore\crNotify.h>
+#include <CRCore/crNotify.h>
 using namespace CRCore;
 using namespace CRPhysics;
 

@@ -11,8 +11,8 @@
  * Lesser General Public License for more details.
 */
 #include <CRPhysics/crSetGravityModePPC.h>
-#include <CRPhysics\crMatterGroup.h>
-#include <CRPhysics\crMatterObject.h>
+#include <CRPhysics/crMatterGroup.h>
+#include <CRPhysics/crMatterObject.h>
 #include <ode/ode.h>
 
 using namespace CRCore;

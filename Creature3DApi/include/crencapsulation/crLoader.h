@@ -13,10 +13,10 @@
 #ifndef CRENCAPSULATION_CRLOADER_H
 #define CRENCAPSULATION_CRLOADER_H 1
 
-#include <CREncapsulation\crExport.h>
+#include <CREncapsulation/crExport.h>
 #include <CREncapsulation/crSceneManager.h>
-#include <CRCore\crNode.h>
-#include <CRCore\crGroup.h>
+#include <CRCore/crNode.h>
+#include <CRCore/crGroup.h>
 #include <CRCore/crDataManager.h>
 #include <CRProducer/crViewer.h>
 #include <string>

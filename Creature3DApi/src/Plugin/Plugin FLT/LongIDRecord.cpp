@@ -1,8 +1,8 @@
 // LongIDRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\LongIDRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/LongIDRecord.h>
 
 using namespace flt;
 

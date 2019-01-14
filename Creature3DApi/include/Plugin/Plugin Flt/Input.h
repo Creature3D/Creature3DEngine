@@ -1,7 +1,7 @@
 #ifndef __FLT_INPUT_H
 #define __FLT_INPUT_H
 
-#include <Plugin flt\Record.h>
+#include <Plugin flt/Record.h>
 
 #include <map>
 #include <list>

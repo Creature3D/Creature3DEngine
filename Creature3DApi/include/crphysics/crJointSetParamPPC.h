@@ -13,8 +13,8 @@
 #ifndef CRPHYSICS_CRJOINTSETPARAMPPC_H
 #define CRPHYSICS_CRJOINTSETPARAMPPC_H 1
 
-#include <CRPhysics\crExport.h>
-#include <CRCore\crEventMsg.h>
+#include <CRPhysics/crExport.h>
+#include <CRCore/crEventMsg.h>
 
 namespace CRPhysics{
 

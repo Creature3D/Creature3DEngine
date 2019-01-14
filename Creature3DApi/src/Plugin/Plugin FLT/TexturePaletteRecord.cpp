@@ -1,8 +1,8 @@
 // TexturePaletteRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\TexturePaletteRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/TexturePaletteRecord.h>
 
 using namespace flt;
 

@@ -4,7 +4,7 @@
 #ifndef __FLT_RECORDS_H
 #define __FLT_RECORDS_H
 
-#include <Plugin flt\flt.h>
+#include <Plugin flt/flt.h>
 
 namespace flt {
 

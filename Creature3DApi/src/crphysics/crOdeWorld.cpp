@@ -12,7 +12,7 @@
 */
 #include <CRPhysics/crOdeWorld.h>
 #include <CRPhysics/crMatterGroup.h>
-#include <CRPhysics\crViewMatterObject.h>
+#include <CRPhysics/crViewMatterObject.h>
 #include <CRPhysics/crWeaponNode.h>
 #include <CRPhysics/crCharacterMatterObject.h>
 //#include <CRPhysics/crCollideCallback.h>

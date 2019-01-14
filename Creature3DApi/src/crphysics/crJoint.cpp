@@ -10,8 +10,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crJoint.h>
-#include <CRPhysics\crMatterObject.h>
+#include <CRPhysics/crJoint.h>
+#include <CRPhysics/crMatterObject.h>
 
 using namespace CRCore;
 using namespace CRPhysics;

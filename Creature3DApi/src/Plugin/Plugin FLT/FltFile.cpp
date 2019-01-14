@@ -1,10 +1,10 @@
-#include <Plugin flt\FltFile.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\RecordVisitor.h>
-#include <Plugin flt\ExternalRecord.h>
-#include <Plugin flt\flt2osg.h>        // ConvertFromFLT
-#include <Plugin flt\Input.h>
+#include <Plugin flt/FltFile.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/RecordVisitor.h>
+#include <Plugin flt/ExternalRecord.h>
+#include <Plugin flt/flt2osg.h>        // ConvertFromFLT
+#include <Plugin flt/Input.h>
 
 #include <CRCore/crNode.h>
 #include <CRCore/crNodeVisitor.h>

@@ -9,8 +9,8 @@
 #include <string>
 
 
-#include <Plugin flt\Pool.h>
-#include <Plugin flt\HeaderRecord.h>
+#include <Plugin flt/Pool.h>
+#include <Plugin flt/HeaderRecord.h>
 
 namespace flt {
 

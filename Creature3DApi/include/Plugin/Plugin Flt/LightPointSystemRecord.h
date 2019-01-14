@@ -3,9 +3,9 @@
 #define __FLT_LIGHT_POINT_SYSTEM_RECORD_H
 
 
-#include <Plugin flt\opcodes.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\RecordVisitor.h>
+#include <Plugin flt/opcodes.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/RecordVisitor.h>
 
 
 namespace flt {

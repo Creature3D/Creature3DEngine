@@ -4,9 +4,9 @@
 #define __FLT_COMMENT_RECORD_H
 
 
-#include <Plugin flt\opcodes.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\RecordVisitor.h>
+#include <Plugin flt/opcodes.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/RecordVisitor.h>
 
 namespace flt {
 

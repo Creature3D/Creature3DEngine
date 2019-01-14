@@ -10,9 +10,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crAircraftMatterObject.h>
+#include <CRPhysics/crAircraftMatterObject.h>
 #include <CRPhysics/crWeaponNode.h>
-#include <CRCore\crMath.h>
+#include <CRCore/crMath.h>
 
 using namespace CRPhysics;
 using namespace CRCore;

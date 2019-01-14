@@ -1,8 +1,8 @@
 // CommentRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\CommentRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/CommentRecord.h>
 
 using namespace flt;
 

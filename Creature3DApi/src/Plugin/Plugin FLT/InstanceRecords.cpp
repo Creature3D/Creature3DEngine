@@ -1,8 +1,8 @@
 // InstanceRecords.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\InstanceRecords.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/InstanceRecords.h>
 
 using namespace flt;
 

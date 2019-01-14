@@ -1,7 +1,7 @@
 // LightSourcePaletteRecord.cpp
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\LightSourcePaletteRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/LightSourcePaletteRecord.h>
 
 using namespace flt;
 

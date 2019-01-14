@@ -14,15 +14,15 @@
 #ifndef CRCORE_CRDRAWABLE_H
 #define CRCORE_CRDRAWABLE_H
 
-#include <CRCore\crVector2.h>
-#include <CRCore\crVector3.h>
-#include <CRCore\crVector4.h>
-#include <CRCore\crBase.h>
-#include <CRCore\crBoundingBox.h>
-#include <CRCore\crState.h>
-#include <CRCore\crObject.h>
-#include <CRCore\buffered_value.h>
-#include <CRCore\crShape.h>
+#include <CRCore/crVector2.h>
+#include <CRCore/crVector3.h>
+#include <CRCore/crVector4.h>
+#include <CRCore/crBase.h>
+#include <CRCore/crBoundingBox.h>
+#include <CRCore/crState.h>
+#include <CRCore/crObject.h>
+#include <CRCore/buffered_value.h>
+#include <CRCore/crShape.h>
 #include <CRCore/crNotify.h>
 #include <CRCore/thread/crScopedLock.h>
 #include <CRCore/thread/crMutex.h>

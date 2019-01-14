@@ -14,7 +14,7 @@
 #define CRGUI_CRTextAttribute_H 1
 
 #include <CRGUI/crExport.h>
-#include <CRGUI\crTypes.h>
+#include <CRGUI/crTypes.h>
 #include <CRGUI/crWin32.h>
 #include <CRCore/crVector2.h>
 #include <CRCore/crVector3.h>

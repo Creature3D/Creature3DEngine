@@ -44,7 +44,7 @@
 #include <iostream>
 #include <fstream>
 
-#include <Plugin flt\AttrData.h>
+#include <Plugin flt/AttrData.h>
 
 typedef signed char     int8;
 typedef unsigned char   uint8;

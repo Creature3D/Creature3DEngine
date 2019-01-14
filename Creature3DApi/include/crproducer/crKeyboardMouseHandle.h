@@ -13,10 +13,10 @@
 #ifndef CRPRODUCER_CRKEYBOARDMOUSEHANDLE_H
 #define CRPRODUCER_CRKEYBOARDMOUSEHANDLE_H 1
 
-#include <CRProducer\crExport.h>
-#include <CRCore\crVector2.h>
-#include <CRCore\Referenced.h>
-#include <CRCore\ref_ptr.h>
+#include <CRProducer/crExport.h>
+#include <CRCore/crVector2.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/ref_ptr.h>
 #include <CRCore/crWchMsg.h>
 #include <CRCore/crWidgetNode.h>
 #include <CRCore/thread/crThread.h>

@@ -18,7 +18,7 @@
 #include <CRCore/crArray.h>
 #include <CRCore/crGeometry.h>
 #include <CRCore/crGroup.h>
-#include <CRCore\crShapeDrawable.h>
+#include <CRCore/crShapeDrawable.h>
 
 using namespace CRCore;
 crBillboard::NewBBVec crBillboard::m_newbbvec;

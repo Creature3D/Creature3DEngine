@@ -12,12 +12,12 @@
 */
 #include <CRPhysics/crWeaponNode.h>
 #include <CRPhysics/crViewMatterObject.h>
-#include <CRCore\crIntersectVisitor.h>
+#include <CRCore/crIntersectVisitor.h>
 #include <CRCore/crFilterRenderManager.h>
 #include <CRCore/crMath.h>
-#include <CRCore\crEffectSequenceManager.h>
-#include <CRCore\crNotify.h>
-#include <CRPhysics\crWeaponManager.h>
+#include <CRCore/crEffectSequenceManager.h>
+#include <CRCore/crNotify.h>
+#include <CRPhysics/crWeaponManager.h>
 //#include <CRAL/crSoundState.h>
 //#include <CRAL/crSoundManager.h>
 using namespace CRCore;

@@ -13,8 +13,8 @@
 #ifndef CRCORE_CREVENTMSG_H
 #define CRCORE_CREVENTMSG_H 1
 
-#include <CRCore\crBrain.h>
-#include <CRCore\crWchMsg.h>
+#include <CRCore/crBrain.h>
+#include <CRCore/crWchMsg.h>
 #include <vector>
 #include <string>
 

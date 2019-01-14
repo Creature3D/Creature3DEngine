@@ -13,7 +13,7 @@
 #ifndef CRPHYSICS_ODEWORLD_H
 #define CRPHYSICS_ODEWORLD_H
 
-#include <CRPhysics\crExport.h>
+#include <CRPhysics/crExport.h>
 
 #include <vector>
 #include <map>

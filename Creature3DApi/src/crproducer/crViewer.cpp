@@ -28,7 +28,7 @@
 #include <CRIOManager/crWriteFile.h>
 #include <CRCore/crStatistics.h>
 #include <CRParticle/crParticleSystemUpdater.h>
-#include <CRPhysics\crCamera.h>
+#include <CRPhysics/crCamera.h>
 #include <CRProducer/crKeyboardMouseHandle.h>
 #include <iterator>
 using namespace Producer;

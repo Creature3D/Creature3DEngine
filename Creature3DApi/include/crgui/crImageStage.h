@@ -14,7 +14,7 @@
 #define CRGUI_CRIMAGESTAGE_H 1
 
 #include <CRGUI/crExport.h>
-#include <CRGUI\crTypes.h>
+#include <CRGUI/crTypes.h>
 #include <CRGUI/crWin32.h>
 #include <CRGUI/crElement.h>
 #include <CRGUI/crTextAttribute.h>

@@ -13,8 +13,8 @@
 #ifndef CRCORE_CREVENTMSGVISITOR_H
 #define CRCORE_CREVENTMSGVISITOR_H 1
 
-//#include <CRCore\crEventGroup.h>
-#include <CRCore\crEventMsg.h>
+//#include <CRCore/crEventGroup.h>
+#include <CRCore/crEventMsg.h>
 
 namespace CRCore{
 class crEventGroup;

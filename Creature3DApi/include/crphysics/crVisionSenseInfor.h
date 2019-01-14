@@ -13,10 +13,10 @@
 #ifndef CRPHYSICS_CRVISIONSENSEINFOR_H
 #define CRPHYSICS_CRVISIONSENSEINFOR_H 1
 
-#include <CRPhysics\crExport.h>
-#include <CRCore\crAITaskManager.h>
-#include <CRCore\crVector3.h>
-#include <CRCore\crNode.h>
+#include <CRPhysics/crExport.h>
+#include <CRCore/crAITaskManager.h>
+#include <CRCore/crVector3.h>
+#include <CRCore/crNode.h>
 #include <CRCore/crRange.h>
 #include <CRPhysics/crRadarMatterObject.h>
 #include <map>

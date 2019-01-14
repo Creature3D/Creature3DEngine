@@ -4,16 +4,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <CRCore\crNotify.h>
+#include <CRCore/crNotify.h>
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\Record.h>
-#include <Plugin flt\FltRecords.h>
-#include <Plugin flt\UnknownRecord.h>
-#include <Plugin flt\opcodes.h>
-#include <Plugin flt\Input.h>
-#include <Plugin flt\RecordVisitor.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/FltRecords.h>
+#include <Plugin flt/UnknownRecord.h>
+#include <Plugin flt/opcodes.h>
+#include <Plugin flt/Input.h>
+#include <Plugin flt/RecordVisitor.h>
 
 using namespace flt;
 
@@ -242,7 +242,7 @@ Record* PrimNodeRecord::readRecord(Input& fr)
     return pRec;
 }
 
-#include <Plugin flt\UVListRecord.h>
+#include <Plugin flt/UVListRecord.h>
 #include <stdio.h>
 
 // virtual

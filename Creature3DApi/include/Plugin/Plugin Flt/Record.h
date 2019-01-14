@@ -7,7 +7,7 @@
 #include <CRCore/Referenced.h>
 #include <CRCore/ref_ptr.h>
 
-#include <Plugin flt\FltRecords.h>
+#include <Plugin flt/FltRecords.h>
 
 #include <iostream>
 

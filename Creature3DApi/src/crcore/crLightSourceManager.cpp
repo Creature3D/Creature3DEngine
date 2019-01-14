@@ -13,7 +13,7 @@
 #include <CRCore/crLightSourceManager.h>
 #include <CRCore/crBrain.h>
 #include <CRCore/crMath.h>
-#include <CRCore\crDisplaySettings.h>
+#include <CRCore/crDisplaySettings.h>
 #include <CRCore/thread/crScopedLock.h>
 
 //+1sunlight

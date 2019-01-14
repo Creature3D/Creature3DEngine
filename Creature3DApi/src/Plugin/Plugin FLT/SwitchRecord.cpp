@@ -1,8 +1,8 @@
 // SwitchRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\SwitchRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/SwitchRecord.h>
 
 using namespace flt;
 

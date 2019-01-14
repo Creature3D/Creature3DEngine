@@ -1,11 +1,11 @@
 // HeaderRecord.cpp
 
-#include <CRCore\crGroup.h>
+#include <CRCore/crGroup.h>
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\HeaderRecord.h>
-#include <Plugin flt\Input.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/HeaderRecord.h>
+#include <Plugin flt/Input.h>
 
 using namespace flt;
 

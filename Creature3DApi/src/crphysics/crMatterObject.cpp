@@ -10,13 +10,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crMatterObject.h>
-#include <CRPhysics\crOdeWorld.h>
+#include <CRPhysics/crMatterObject.h>
+#include <CRPhysics/crOdeWorld.h>
 #include <CRPhysics/crPhysicsInitVisitor.h>
-#include <CRCore\crBoundingBox.h>
-#include <CRCore\crBoundingSphere.h>
-#include <CRCore\crArray.h>
-#include <CRCore\crNotify.h>
+#include <CRCore/crBoundingBox.h>
+#include <CRCore/crBoundingSphere.h>
+#include <CRCore/crArray.h>
+#include <CRCore/crNotify.h>
 #include <CRCore/crMath.h>
 #include <CRCore/crArgumentParser.h>
 #include <CRPhysics/crVolumeNode.h>

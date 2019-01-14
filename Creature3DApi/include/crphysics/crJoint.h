@@ -13,12 +13,12 @@
 #ifndef CRPHYSICS_CRJOINT_H
 #define CRPHYSICS_CRJOINT_H 1
 
-#include <CRPhysics\crExport.h>
-#include <CRPhysics\crMatterObject.h>
-#include <CRCore\crVector3.h>
-#include <CRCore\crQuat.h>
-#include <CRCore\Referenced.h>
-#include <CRCore\ref_ptr.h>
+#include <CRPhysics/crExport.h>
+#include <CRPhysics/crMatterObject.h>
+#include <CRCore/crVector3.h>
+#include <CRCore/crQuat.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/ref_ptr.h>
 
 #include <ode/ode.h>
 

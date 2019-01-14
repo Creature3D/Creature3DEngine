@@ -1,8 +1,8 @@
 // TransformationRecords.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\TransformationRecords.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/TransformationRecords.h>
 
 using namespace flt;
 

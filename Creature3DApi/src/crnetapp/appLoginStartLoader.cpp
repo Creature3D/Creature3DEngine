@@ -17,7 +17,7 @@
 #include <CRProducer/crViewer.h>
 #include <CRCore/crNotify.h>
 #include <CREncapsulation/crSceneManager.h>
-#include <CRPhysics\crCamera.h>
+#include <CRPhysics/crCamera.h>
 //#include <CREncapsulation/crAILoader.h>
 //#include <CRNetApp/appNetRoleManipulatorPPC.h>
 #include <CRCore/crDataManager.h>

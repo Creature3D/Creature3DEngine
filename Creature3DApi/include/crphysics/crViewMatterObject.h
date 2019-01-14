@@ -23,7 +23,7 @@
 #include <CRPhysics/crGameBodyInfo.h>
 #include <CRCore/crIntersectVisitor.h>
 #include <CRPhysics/crVisionSenseInfor.h>
-#include <CRPhysics\crCamera.h>
+#include <CRPhysics/crCamera.h>
 //#define Height 1.5f
 namespace CRPhysics{
 class crWeaponMatterObject;

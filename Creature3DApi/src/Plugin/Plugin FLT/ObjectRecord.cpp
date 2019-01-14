@@ -1,8 +1,8 @@
 // ObjectRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\ObjectRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/ObjectRecord.h>
 
 using namespace flt;
 

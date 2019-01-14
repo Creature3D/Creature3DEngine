@@ -10,11 +10,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
 */
-#include <CRPhysics\crBodyCaseMatterObject.h>
+#include <CRPhysics/crBodyCaseMatterObject.h>
 #include <CRPhysics/crWeaponNode.h>
-#include <CRCore\crMath.h>
-#include <CRCore\crSearchNodeBYNameVisitor.h>
-//#include <CRPhysics\crBotManager.h>
+#include <CRCore/crMath.h>
+#include <CRCore/crSearchNodeBYNameVisitor.h>
+//#include <CRPhysics/crBotManager.h>
 
 using namespace CRPhysics;
 using namespace CRCore;

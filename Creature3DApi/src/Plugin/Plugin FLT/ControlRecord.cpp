@@ -1,8 +1,8 @@
 // ControlRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\ControlRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/ControlRecord.h>
 
 using namespace flt;
 

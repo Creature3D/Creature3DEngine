@@ -8,12 +8,12 @@
 #pragma warning( disable : 4786 )
 #endif
 
-#include <CRCore\Referenced.h>
-#include <CRCore\ref_ptr.h>
-#include <CRCore\crStateSet.h>
+#include <CRCore/Referenced.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/crStateSet.h>
 
-#include <Plugin flt\FltFile.h>
-#include <Plugin flt\AttrData.h>
+#include <Plugin flt/FltFile.h>
+#include <Plugin flt/AttrData.h>
 
 #include <map>
 #include <vector>

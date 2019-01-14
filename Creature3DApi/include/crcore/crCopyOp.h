@@ -14,7 +14,7 @@
 #ifndef CRCORE_CRCOPYOP
 #define CRCORE_CRCOPYOP 1
 
-#include <CRCore\crExport.h>
+#include <CRCore/crExport.h>
 
 namespace CRCore {
 

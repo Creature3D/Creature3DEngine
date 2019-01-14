@@ -4,7 +4,7 @@
 // Modify TexturePool to store a flt::AttrData object instead of a CRCore::crStateSet
 // Julian Ortiz, June 18th 2003.
 
-#include <Plugin flt\flt.h>
+#include <Plugin flt/flt.h>
 
 #include <CRCore/ref_ptr.h>
 #include <CRCore/Referenced.h>
@@ -15,7 +15,7 @@
 #include <CRCore/crGroup.h>
 //#include <CRSim/crBlinkSequence.h>
 
-#include <Plugin flt\AttrData.h>
+#include <Plugin flt/AttrData.h>
 
 #include <string>
 #include <algorithm>

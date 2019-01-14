@@ -13,8 +13,8 @@
 #ifndef CRPHYSICS_CRGENERALPARAMTRANSFERPPC_H
 #define CRPHYSICS_CRGENERALPARAMTRANSFERPPC_H 1
 
-#include <CRPhysics\crExport.h>
-#include <CRCore\crEventMsg.h>
+#include <CRPhysics/crExport.h>
+#include <CRCore/crEventMsg.h>
 #include <CRPhysics/crMatterGroup.h>
 #include <CRPhysics/crMatterObject.h>
 namespace CRPhysics{

@@ -17,12 +17,12 @@
 #include <list>
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS 1
 #include <hash_set>
-#include <CRCore\crNode.h>
+#include <CRCore/crNode.h>
 #include <CRCore/crGroup.h>
 //#include <CRCore/crEventGroup.h>
-#include <CRCore\crBoundingBox.h>
-#include <CRCore\crDrawable.h>
-#include <CRCore\crNodeVisitor.h>
+#include <CRCore/crBoundingBox.h>
+#include <CRCore/crDrawable.h>
+#include <CRCore/crNodeVisitor.h>
 #include <CRCore/crEventCallbackManager.h>
 
 namespace CRCore{

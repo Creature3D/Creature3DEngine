@@ -16,7 +16,7 @@
 #include <CRCore/crExport.h>
 #include <CRCore/Referenced.h>	
 #include <CRCore/ref_ptr.h>
-#include <CRCore\crWchMsg.h>
+#include <CRCore/crWchMsg.h>
 #include <CRCore/crCopyOp.h>
 #include <CRCore/crHandleManager.h>
 #include <CRCore/thread/crScopedLock.h>

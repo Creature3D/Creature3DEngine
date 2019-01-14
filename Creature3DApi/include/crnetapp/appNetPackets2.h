@@ -15,8 +15,8 @@
 
 #include <CRNetApp/appExport.h>
 #include <CRNetApp/appNetCallbacks.h>
-#include <CRNet\crStreamPacket.h>
-#include <CRNet\crNetContainer.h>
+#include <CRNet/crStreamPacket.h>
+#include <CRNet/crNetContainer.h>
 #include <CRNetApp/appExport.h>
 #include <CRNetApp/appServerPlayerData.h>
 #include <CRNetApp/appNetDefine.h>

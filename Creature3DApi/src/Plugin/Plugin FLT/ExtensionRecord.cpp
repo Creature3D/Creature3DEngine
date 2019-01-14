@@ -1,8 +1,8 @@
 // ExtensionRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\ExtensionRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/ExtensionRecord.h>
 
 using namespace flt;
 

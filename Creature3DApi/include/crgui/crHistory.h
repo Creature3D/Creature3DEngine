@@ -13,10 +13,10 @@
 #ifndef CRGUI_CRHISTORY_H
 #define CRGUI_CRHISTORY_H 1
 
-#include <CRCore\ref_ptr.h>
-#include <CRCore\referenced.h>
-#include <CRCore\crVector2.h>
-#include <CRGUI\crElementNode.h>
+#include <CRCore/ref_ptr.h>
+#include <CRCore/referenced.h>
+#include <CRCore/crVector2.h>
+#include <CRGUI/crElementNode.h>
 
 #include <string>
 #include <stack>

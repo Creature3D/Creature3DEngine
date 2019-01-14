@@ -9,11 +9,11 @@
 #include <algorithm>
 #include <set>
 
-#include <Plugin flt\Record.h>
-#include <Plugin flt\Input.h>
-#include <Plugin flt\FltFile.h>
-#include <Plugin flt\AttrData.h>
-#include <Plugin flt\Registry.h>
+#include <Plugin flt/Record.h>
+#include <Plugin flt/Input.h>
+#include <Plugin flt/FltFile.h>
+#include <Plugin flt/AttrData.h>
+#include <Plugin flt/Registry.h>
 
 using namespace flt;
 

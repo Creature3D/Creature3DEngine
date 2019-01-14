@@ -15,7 +15,7 @@
 
 #include <CRNetApp/appExport.h>
 #include <CRNet/crNetContainer.h>
-#include <CRNet\crNetDataManager.h>
+#include <CRNet/crNetDataManager.h>
 #include <CRNetApp/appNetGameData.h>
 #include <CRNetApp/appNetChatData.h>
 #include <CRNetApp/appSightInfo.h>

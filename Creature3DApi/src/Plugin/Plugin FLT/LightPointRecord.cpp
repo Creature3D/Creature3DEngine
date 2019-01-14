@@ -1,8 +1,8 @@
 // LightPointRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\LightPointRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/LightPointRecord.h>
 
 using namespace flt;
 

@@ -1,9 +1,9 @@
 // ColorPaletteRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Input.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\ColorPaletteRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Input.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/ColorPaletteRecord.h>
 
 using namespace flt;
 

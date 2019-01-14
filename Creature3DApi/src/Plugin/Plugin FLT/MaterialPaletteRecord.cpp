@@ -1,8 +1,8 @@
 // MaterialPaletteRecord.cpp
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\MaterialPaletteRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/MaterialPaletteRecord.h>
 
 using namespace flt;
 

@@ -3,9 +3,9 @@
 // Author: Michael M. Morrison
 //
 
-#include <Plugin flt\flt.h>
-#include <Plugin flt\Registry.h>
-#include <Plugin flt\BSPRecord.h>
+#include <Plugin flt/flt.h>
+#include <Plugin flt/Registry.h>
+#include <Plugin flt/BSPRecord.h>
 
 using namespace flt;
 

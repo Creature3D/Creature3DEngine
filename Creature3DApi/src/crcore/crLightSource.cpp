@@ -14,7 +14,7 @@
 #include <CRCore/crLightSource.h>
 #include <CRCore/crNotify.h>
 #include <CRCore/crBrain.h>
-#include <CRCore\crSearchNodeBYNameVisitor.h>
+#include <CRCore/crSearchNodeBYNameVisitor.h>
 #include <CRCore/crArgumentParser.h>
 #include <CRCore/crLight.h>
 #include <CRCore/crBillboard.h>

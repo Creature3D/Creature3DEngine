@@ -14,14 +14,14 @@
 #ifndef   CRCORE_CRGEOMETRY_H
 #define   CRCORE_CRGEOMETRY_H
 
-#include <CRCore\crCopyOp.h>
-#include <CRCore\crPrimitive.h>
-#include <CRCore\crDrawable.h>
-//#include <CRCore\crVertexList.h>
-#include <CRCore\crVector2.h>
-#include <CRCore\crVector3.h>
-#include <CRCore\crVector4.h>
-#include <CRCore\crArray.h>
+#include <CRCore/crCopyOp.h>
+#include <CRCore/crPrimitive.h>
+#include <CRCore/crDrawable.h>
+//#include <CRCore/crVertexList.h>
+#include <CRCore/crVector2.h>
+#include <CRCore/crVector3.h>
+#include <CRCore/crVector4.h>
+#include <CRCore/crArray.h>
 
 namespace CRCore{
 

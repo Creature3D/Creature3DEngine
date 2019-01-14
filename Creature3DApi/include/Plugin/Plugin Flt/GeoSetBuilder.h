@@ -15,7 +15,7 @@
 #include <CRCore/crMaterial.h>
 #include <CRCore/crStateSet.h>
 
-#include <Plugin flt\AttrData.h>
+#include <Plugin flt/AttrData.h>
 
 #include <map>
 #include <list>
