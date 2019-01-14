@@ -476,7 +476,7 @@ bool crStreamPacket::unCook(crNetConductor *netConductor,GNE::Connection &conn)
 			return false;
 		if(crNetBridgeUpdater::isvalid(netConductor))
 		{//code驻留100－200ms，只是ConnectServer有效
-			if(!conn.checkCode(code))
+			if(!conn.checkCRCCode(code))
 				return false;
 		}
 		//}
