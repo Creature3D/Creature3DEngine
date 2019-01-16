@@ -123,6 +123,7 @@
 #define WCH_Startup			  0x00150028
 #define WCH_ShowCanvasFaild	  0x00150029
 #define WCH_ShowCanvasRecover 0x00150030
+#define WCH_Shutdown		  0x00150031
 //physics msg
 #define WCH_SETGRAVITYMODE         0x00150101
 #define WCH_FORCEANDTORQUE         0x00150102
