@@ -28,7 +28,35 @@ crColorMask::crColorMask()
 crColorMask::~crColorMask()
 {
 }
+int crColorMask::compare(const crStateAttribute& sa) const
+{
+	// check the types are equal and then create the rhs variable
+	// used by the COMPARE_StateAttribute_Paramter macro's below.
+	COMPARE_StateAttribute_Types(crColorMask, sa)
 
+	// compare each paramter in turn against the rhs.
+	COMPARE_StateAttribute_Parameter(m_red)
+	COMPARE_StateAttribute_Parameter(m_green)
+	COMPARE_StateAttribute_Parameter(m_blue)
+	COMPARE_StateAttribute_Parameter(m_alpha)
+
+	return 0; // passed all the above comparison macro's, must be equal.
+}
+
+int crColorMask::compare(const crStateAttribute& sa)
+{
+	// check the types are equal and then create the rhs variable
+	// used by the COMPARE_StateAttribute_Paramter macro's below.
+	COMPARE_StateAttribute_Types(crColorMask, sa)
+
+	// compare each paramter in turn against the rhs.
+	COMPARE_StateAttribute_Parameter(m_red)
+	COMPARE_StateAttribute_Parameter(m_green)
+	COMPARE_StateAttribute_Parameter(m_blue)
+	COMPARE_StateAttribute_Parameter(m_alpha)
+
+	return 0; // passed all the above comparison macro's, must be equal.
+}
 void crColorMask::addAttributeParam(int i, const std::string &str)
 {
 	switch(i) 

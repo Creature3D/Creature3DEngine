@@ -304,7 +304,7 @@ namespace CRParticle
 		inline void setDrawableIdRange(const CRCore::rangei& r){ m_idr = r; }
 		inline void setDrawableIdInterpolator(crInterpolator* i){ m_idi = i; }
 		inline const CRCore::rangei& getDrawableIdRange() const{ return m_idr; }
-		inline const crInterpolator* crParticle::getDrawableIdInterpolator() const
+		inline const crInterpolator* getDrawableIdInterpolator() const
 		{
 			return m_idi.get();
 		}

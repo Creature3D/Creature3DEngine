@@ -46,35 +46,9 @@ class CR_EXPORT crViewPort : public crStateAttribute
         META_StateAttribute(CRCore, crViewPort,VIEWPORT);
         
         /** return -1 if *this < *rhs, 0 if *this==*rhs, 1 if *this>*rhs.*/
-        virtual int compare(const crStateAttribute& sa) const
-        {
-            // check the types are equal and then create the rhs variable
-            // used by the COMPARE_StateAttribute_Paramter macro's below.
-            COMPARE_StateAttribute_Types(crViewPort,sa)
+		virtual int compare(const crStateAttribute& sa) const;
 
-            // compare each paramter in turn against the rhs.
-            COMPARE_StateAttribute_Parameter(m_x)
-            COMPARE_StateAttribute_Parameter(m_y)
-            COMPARE_StateAttribute_Parameter(m_width)
-            COMPARE_StateAttribute_Parameter(m_height)
-            
-            return 0; // passed all the above comparison macro's, must be equal.
-        }
-
-		virtual int compare(const crStateAttribute& sa)
-		{
-			// check the types are equal and then create the rhs variable
-			// used by the COMPARE_StateAttribute_Paramter macro's below.
-			COMPARE_StateAttribute_Types(crViewPort,sa)
-
-			// compare each paramter in turn against the rhs.
-			COMPARE_StateAttribute_Parameter(m_x)
-			COMPARE_StateAttribute_Parameter(m_y)
-			COMPARE_StateAttribute_Parameter(m_width)
-			COMPARE_StateAttribute_Parameter(m_height)
-
-			return 0; // passed all the above comparison macro's, must be equal.
-		}
+		virtual int compare(const crStateAttribute& sa);
 
         inline void setViewport(int x,int y,int width,int height)
         {

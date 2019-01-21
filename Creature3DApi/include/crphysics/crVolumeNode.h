@@ -32,7 +32,7 @@ public:
 	META_Node(CRPhysics,crVolumeNode)
 	virtual void releaseObjects(CRCore::crState* state);
 	virtual void traverse(CRCore::crNodeVisitor& nv);
-	void crVolumeNode::trigger(/*const CRCore::crFrameStamp* frameStamp*/);	
+	void trigger(/*const CRCore::crFrameStamp* frameStamp*/);	
 	virtual void testVolumeImplementation(crMatterObject *materObject);
 	//virtual bool intersects(const CRCore::crBoundingBox &bbox);
 	virtual bool intersects(const CRCore::crVector3 &pos);

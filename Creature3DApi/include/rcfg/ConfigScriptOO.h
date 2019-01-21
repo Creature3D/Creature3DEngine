@@ -443,7 +443,7 @@ class  CONFIGSCRIPT_API ConfigScript {
 
     ConfigValue::ValueType ToInternalType(Type type) const;
 
-    Type ConfigScript::FromInternalType(ConfigValue::ValueType type) const;
+    Type FromInternalType(ConfigValue::ValueType type) const;
 
 
 

@@ -291,12 +291,12 @@ void ReplicantBodyMgr::updateCharacter(float dt)
 		 ++itr )
 	{
 		setItr = *itr;
-		#if _DEBUG
+		#ifdef _DEBUG
 		try
 		{
         #endif
         setItr->doUpdate(dt);
-		#if _DEBUG
+		#ifdef _DEBUG
 		}
 		catch (...)
 		{

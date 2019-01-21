@@ -59,7 +59,7 @@ void crNetWorkUpdater::done()
 
 void crNetWorkUpdater::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -71,7 +71,7 @@ void crNetWorkUpdater::run()
 			//crBlockDetectThread::getInstance()->update();
 		}
 		//crBlockDetectThread::getInstance()->clear();
-#if _DEBUG
+#ifdef _DEBUG
 		CRCore::notify(CRCore::ALWAYS)<<"crNetWorkUpdater end"<<std::endl;
 		//sprintf(gDebugInfo->buf(),"crNetWorkUpdater end\n\0");
 		//gDebugInfo->debugInfo(CRCore::ALWAYS);
@@ -136,7 +136,7 @@ void crNetBridgeUpdater::done()
 
 void crNetBridgeUpdater::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -146,7 +146,7 @@ void crNetBridgeUpdater::run()
 			m_netConductor->bridgeupdate();
 			CRCore::crThread::sleep(60000);
 		}
-#if _DEBUG
+#ifdef _DEBUG
 		CRCore::notify(CRCore::ALWAYS)<<"crNetBridgeUpdater end"<<std::endl;
 	}
 	catch (...)
@@ -205,7 +205,7 @@ void crNetWorkReconnecter::wakeup()
 
 void crNetWorkReconnecter::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -220,7 +220,7 @@ void crNetWorkReconnecter::run()
         crNetCallbackManager::getInstance()->clientReconnectToServer();
 		CRCore::crThread::sleep(6000);
 	}
-#if _DEBUG
+#ifdef _DEBUG
 	CRCore::notify(CRCore::ALWAYS)<<"crNetWorkReconnecter end"<<std::endl;
 	//sprintf(gDebugInfo->buf(),"crNetWorkReconnecter end\n\0");
 	//gDebugInfo->debugInfo(CRCore::ALWAYS);

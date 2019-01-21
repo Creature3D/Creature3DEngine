@@ -46,35 +46,9 @@ class CR_EXPORT crColorMask : public crStateAttribute
         META_StateAttribute(CRCore, crColorMask, COLORMASK);
         
         /** return -1 if *this < *rhs, 0 if *this==*rhs, 1 if *this>*rhs.*/
-        virtual int compare(const crStateAttribute& sa) const
-        {
-            // check the types are equal and then create the rhs variable
-            // used by the COMPARE_StateAttribute_Paramter macro's below.
-            COMPARE_StateAttribute_Types(crColorMask,sa)
+		virtual int compare(const crStateAttribute& sa) const;
 
-            // compare each paramter in turn against the rhs.
-            COMPARE_StateAttribute_Parameter(m_red)
-            COMPARE_StateAttribute_Parameter(m_green)
-            COMPARE_StateAttribute_Parameter(m_blue)
-            COMPARE_StateAttribute_Parameter(m_alpha)
-
-            return 0; // passed all the above comparison macro's, must be equal.
-        }
-
-		virtual int compare(const crStateAttribute& sa)
-		{
-			// check the types are equal and then create the rhs variable
-			// used by the COMPARE_StateAttribute_Paramter macro's below.
-			COMPARE_StateAttribute_Types(crColorMask,sa)
-
-				// compare each paramter in turn against the rhs.
-				COMPARE_StateAttribute_Parameter(m_red)
-				COMPARE_StateAttribute_Parameter(m_green)
-				COMPARE_StateAttribute_Parameter(m_blue)
-				COMPARE_StateAttribute_Parameter(m_alpha)
-
-				return 0; // passed all the above comparison macro's, must be equal.
-		}
+		virtual int compare(const crStateAttribute& sa);
 
         inline void setMask(bool red,bool green,bool blue,bool alpha)
         {

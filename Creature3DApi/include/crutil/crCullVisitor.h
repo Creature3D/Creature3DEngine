@@ -375,7 +375,7 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
 
         inline void handle_cull_callbacks_and_traverse(CRCore::crNode& node)
         {
-#if _DEBUG
+#ifdef _DEBUG
 			try
 			{
 #endif
@@ -383,7 +383,7 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
             CRCore::crNodeCallback* callback = node.getCullCallback();
             if (callback) (*callback)(&node,this);
             else traverse(node);
-#if _DEBUG
+#ifdef _DEBUG
 			}
 			catch (...)
 			{

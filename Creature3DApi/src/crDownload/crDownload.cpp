@@ -499,7 +499,7 @@ catch( sockerr e )
 //}
 void crDownloadThread::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -528,7 +528,7 @@ void crDownloadThread::run()
 				sleep(250);
 			}
 		}
-#if _DEBUG
+#ifdef _DEBUG
 		CRCore::notify(CRCore::ALWAYS)<<"crDownload end"<<std::endl;
 	}
 	catch (...)
