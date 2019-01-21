@@ -746,6 +746,48 @@ void crCullVisitor::addDrawableAndDepth(const CRCore::crObject *obj, CRCore::crD
 	//	CRCore::notify(CRCore::FATAL)<<"crCullVisitor::addDrawableAndDepth() error "<<m_renderMode<<getTraverseString()<<std::endl;
 	//}
 }
+void crCullVisitor::handle_cull_callbacks_and_traverse(CRCore::crNode& node)
+{
+#ifdef _DEBUG
+	try
+	{
+#endif
+		node.doEvent(WCH_CULLVISITOR, MAKEINT64(this, NULL));
+		CRCore::crNodeCallback* callback = node.getCullCallback();
+		if (callback) (*callback)(&node, this);
+		else traverse(node);
+#ifdef _DEBUG
+	}
+	catch (...)
+	{
+		//CRCore::notify(CRCore::ALWAYS)<<"handle_cull_callbacks_and_traverse error "<<node.getName()<<std::endl;
+		char gbuf[256];
+		sprintf(gbuf, "handle_cull_callbacks_and_traverse error %s,%s,%s,code=%d\n\0", node.getName().c_str(), node.className(), node.getParent(0)->className(), GetLastError());
+		gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+
+		CRCore::NodePath &nodePath = getNodePath();
+		for (int i = 0; i < nodePath.size(); i++)
+		{
+			sprintf(gbuf, "NodePath %s,%s\n\0", nodePath[i]->getName().c_str(), nodePath[i]->className());
+			gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+		}
+		HANDLE handle = GetCurrentProcess();
+		PROCESS_MEMORY_COUNTERS pmc;
+		GetProcessMemoryInfo(handle, &pmc, sizeof(pmc));
+		sprintf(gbuf, "内存使用:%d,峰值内存:%d,虚拟内存:%dKB,峰值虚拟内存:%dKB\n\0", pmc.WorkingSetSize / 1024, pmc.PeakWorkingSetSize / 1024, pmc.PagefileUsage / 1024, pmc.PeakPagefileUsage / 1024);
+		gDebugInfo->debugInfo(CRCore::ALWAYS, gbuf);
+		_asm   int   3   //只是为了让程序崩溃
+	}
+#endif
+}
+
+void crCullVisitor::handle_cull_callbacks_and_accept(CRCore::crNode& node, CRCore::crNode* acceptNode)
+{
+	node.doEvent(WCH_CULLVISITOR, MAKEINT64(this, NULL));
+	CRCore::crNodeCallback* callback = node.getCullCallback();
+	if (callback) (*callback)(&node, this);
+	else acceptNode->accept(*this);
+}
 void crCullVisitor::setState(CRCore::crState* state) 
 { 
 	m_state = state; 
