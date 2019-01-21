@@ -377,7 +377,7 @@
     <CodeAnalysisRules />
     <CodeAnalysisRuleAssemblies />
     <OutDir>..\..\x64\bin\</OutDir>
-    <IntDir>..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease_Console|Win32'">
     <OutDir>..\bin\</OutDir>
