@@ -103,11 +103,11 @@ class CRUTIL_EXPORT crSceneView : public CRCore::Referenced, public CRCore::crCu
 		void setViewport(CRCore::crViewPort* viewport);
 		void setViewport(int x,int y,int width,int height);
 
-		inline CRCore::crViewPort* crSceneView::getViewport() 
+		inline CRCore::crViewPort* getViewport() 
 		{ 
 			return (m_camera->getViewport()!=0) ? m_camera->getViewport() : 0; 
 		}
-		inline const CRCore::crViewPort* crSceneView::getViewport() const 
+		inline const CRCore::crViewPort* getViewport() const 
 		{ 
 			return (m_camera->getViewport()!=0) ? m_camera->getViewport() : 0; 
 		}
