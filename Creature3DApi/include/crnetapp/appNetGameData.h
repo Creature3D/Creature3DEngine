@@ -666,7 +666,7 @@ public:
 	void itemRelive(crInstanceItem *item);//可以是role
 
 	typedef std::vector< CRCore::ref_ptr<crSceneLayer> >LayerVec;
-	crScene::crSceneLayer *getSceneLayer(unsigned short layerid);
+	crSceneLayer *getSceneLayer(unsigned short layerid);
 	int getBirthPointCount(unsigned short layerid);
 	void gainBirthPoint(crInstanceItem *item,/*unsigned short layerid,float zoffset,*/int index = -1);//index = -1表示随机
 

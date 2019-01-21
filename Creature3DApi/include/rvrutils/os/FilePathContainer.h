@@ -45,7 +45,7 @@ public:
   void setFilePath(const std::string& path);
   
   /** Adds a list of paths to the previous one */
-  void FilePathContainer::addFilePath(const std::string& path);
+  void addFilePath(const std::string& path);
 
   /**  Adds a filepath to the end of the list */
   void pushbackPath(const std::string& path);
