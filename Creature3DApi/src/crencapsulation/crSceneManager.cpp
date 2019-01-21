@@ -890,7 +890,7 @@ CRCore::crGroup *crSceneManager::getEditorRoot()
 
 //void crSceneManager::run()
 //{
-//#if _DEBUG
+//#ifdef _DEBUG
 //	try
 //	{
 //#endif
@@ -900,7 +900,7 @@ CRCore::crGroup *crSceneManager::getEditorRoot()
 //			CRCore::crThread::sleep(100);
 //			update();
 //		}
-//#if _DEBUG
+//#ifdef _DEBUG
 //		CRCore::notify(CRCore::ALWAYS)<<"crSceneManager end"<<std::endl;
 //	}
 //	catch (...)

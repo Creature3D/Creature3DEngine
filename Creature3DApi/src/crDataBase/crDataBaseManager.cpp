@@ -396,15 +396,23 @@ unsigned long crDataBase::realEscapeString(char *to, const char *from, int from_
 
 crDataBase *crDataBase::beginSession()
 {
-	crDataBase *session = this;
-	session->m_sessionMutex.lock();
-    return session;
+	//crDataBase *session = this;
+	m_sessionMutex.lock();
+    return this;
 }
 
 void crDataBase::endSession(crDataBase *session)
 {
-	session->releaseQuery();
-	session->m_sessionMutex.unlock();
+	if (session)
+	{
+		session->releaseQuery();
+		session->m_sessionMutex.unlock();
+	}
+	else
+	{
+		releaseQuery();
+		m_sessionMutex.unlock();
+	}
 }
 void crDataBase::dbping()
 {

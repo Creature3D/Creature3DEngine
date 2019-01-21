@@ -880,7 +880,7 @@ void crNode::doEvent(__int64 kbmsg, __int64 param)
 		itr != m_eventMap.end() && itr->first == kbmsg; 
 		itr++ )
 	{
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
@@ -889,7 +889,7 @@ void crNode::doEvent(__int64 kbmsg, __int64 param)
 			(*(dynamic_cast<PhysicsObjectCallback *>(itr->second.get())))(*this,param);
 		else (*(itr->second))();
 		if(!itr->second->continueCallbackTask()) break;
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{

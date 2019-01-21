@@ -91,7 +91,7 @@ CRCore::crBarrier *crKeyboardMouseHandle::getFrameBlock()
 
 void crKeyboardMouseHandle::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -128,7 +128,7 @@ void crKeyboardMouseHandle::run()
 				}
 			}
 		}
-#if _DEBUG
+#ifdef _DEBUG
 		CRCore::notify(CRCore::ALWAYS)<<"crKeyboardMouseHandle end"<<std::endl;
 	}
 	catch (...)

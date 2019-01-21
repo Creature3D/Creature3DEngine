@@ -191,7 +191,7 @@ public:
 	  m_timerecord += dt;
 	  if(m_needUpdate && m_timerecord>0.05f)
 	  {
-#if _DEBUG
+#ifdef _DEBUG
 		  try
 		  {
 #endif
@@ -214,7 +214,7 @@ public:
 				return;
 			}
 			//m_last_tick = curr_tick;
-#if _DEBUG
+#ifdef _DEBUG
 		  }
 		  catch (...)
 		  {

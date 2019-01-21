@@ -43,7 +43,7 @@ void crRenderLeaf::renderZprePass(CRCore::crState& state,crRenderLeaf* previous)
 		crRenderGraph* prev_rg = previous->m_parent;
 		crRenderGraph* prev_rg_parent = prev_rg->m_parent;
 		crRenderGraph* rg = m_parent;
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
@@ -62,7 +62,7 @@ void crRenderLeaf::renderZprePass(CRCore::crState& state,crRenderLeaf* previous)
 				//if(statistics->getStat())
 				//	statistics->addState();
 			}
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -70,12 +70,12 @@ void crRenderLeaf::renderZprePass(CRCore::crState& state,crRenderLeaf* previous)
 		}
 #endif
 		// draw the drawable
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
 			m_drawable->draw(state);
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -111,7 +111,7 @@ void crRenderLeaf::renderZprePass(CRCore::crState& state,crRenderLeaf* previous)
 		// apply state if required.
 		crRenderGraph::moveRenderGraph(state,NULL,m_parent->m_parent);
 
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
@@ -121,7 +121,7 @@ void crRenderLeaf::renderZprePass(CRCore::crState& state,crRenderLeaf* previous)
 
 			// draw the drawable
 			m_drawable->draw(state);
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -187,7 +187,7 @@ void crRenderLeaf::render(crState& state,crRenderLeaf* previous)
         crRenderGraph* prev_rg = previous->m_parent;
         crRenderGraph* prev_rg_parent = prev_rg->m_parent;
         crRenderGraph* rg = m_parent;
-		#if _DEBUG
+		#ifdef _DEBUG
 		try
 		{
         #endif
@@ -207,7 +207,7 @@ void crRenderLeaf::render(crState& state,crRenderLeaf* previous)
 			if(statistics->getStat())
 				statistics->addState();
         }
-		#if _DEBUG
+		#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -215,12 +215,12 @@ void crRenderLeaf::render(crState& state,crRenderLeaf* previous)
 		}
         #endif
         // draw the drawable
-		#if _DEBUG
+		#ifdef _DEBUG
 		try
 		{
         #endif
 	        m_drawable->draw(state);
-        #if _DEBUG
+        #ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -256,7 +256,7 @@ void crRenderLeaf::render(crState& state,crRenderLeaf* previous)
         // apply state if required.
         crRenderGraph::moveRenderGraph(state,NULL,m_parent->m_parent);
 
-		#if _DEBUG
+		#ifdef _DEBUG
 		try
 		{
         #endif
@@ -266,7 +266,7 @@ void crRenderLeaf::render(crState& state,crRenderLeaf* previous)
 
         // draw the drawable
         m_drawable->draw(state);
-		#if _DEBUG
+		#ifdef _DEBUG
 		}
 		catch (...)
 		{

@@ -1908,7 +1908,7 @@ bool crOptimizer::crMergeGeometryVisitor::mergeObject(CRCore::crObject& object)
                 {
                     geometryDuplicateMap[geom].push_back(geom);
                 }
-#if _DEBUG
+#ifdef _DEBUG
 				else
 				{
 					CRCore::notify(WARN)<<"Warning: in CRUtil::crOptimizer::crMergeGeometryVisitor::mergeObject "<<std::endl
@@ -4081,12 +4081,12 @@ void crOptimizer::crFreezeTransformsVisitor::apply(CRCore::crMatrixTransform& no
 
 		pushMatrix(matrix.get());
 
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
 			traverse(node);
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{

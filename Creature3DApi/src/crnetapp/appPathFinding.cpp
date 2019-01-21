@@ -1466,7 +1466,7 @@ void crPathFindingUpdater::registerPathFindingManager(crPathFindingManager *mana
 }
 void crPathFindingUpdater::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -1508,7 +1508,7 @@ void crPathFindingUpdater::run()
 			}
 			//sleep(10);
 		}
-#if _DEBUG
+#ifdef _DEBUG
 		CRCore::notify(CRCore::ALWAYS)<<"crPathFindingUpdater end"<<std::endl;
 	}
 	catch (...)

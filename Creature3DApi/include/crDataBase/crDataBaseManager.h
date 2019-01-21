@@ -91,7 +91,7 @@ public:
 	unsigned long realEscapeString(char *to, const char *from, int from_length);
 
 	crDataBase *beginSession();
-	void endSession(crDataBase *session);
+	void endSession(crDataBase *session = nullptr);
 	void dbping();
 	const char *getQueryError();
 	const char *getUpdateError();

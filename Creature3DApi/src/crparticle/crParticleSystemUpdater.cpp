@@ -137,7 +137,7 @@ void crParticleSystemUpdater:: run()
 			}
 		}
 	}
-#if _DEBUG
+#ifdef _DEBUG
     CRCore::notify(CRCore::ALWAYS)<<"crParticleSystemUpdater end"<<std::endl;
 #endif
 	//}

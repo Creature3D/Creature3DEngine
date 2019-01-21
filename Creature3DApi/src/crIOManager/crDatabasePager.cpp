@@ -685,7 +685,7 @@ void crDatabasePager::run()
 		//crBrain::getInstance()->dataThreadPaused(false);
 
     } while (!testCancel() && !m_done);
-#if _DEBUG
+#ifdef _DEBUG
 	CRCore::notify(CRCore::ALWAYS)<<"crDatabasePager::run() end"<<std::endl;
 #endif
 //}

@@ -458,7 +458,7 @@ void crSceneView::draw(int vreye)
 		crStatistics::getInstance()->reset();
 	if (!m_displaySettings->getFreezeRender())
 	{
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
@@ -1016,7 +1016,7 @@ void crSceneView::draw(int vreye)
 				gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 			}
 #endif
-#if _DEBUG
+#ifdef _DEBUG
 	}
 	catch (...)
 	{

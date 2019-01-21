@@ -84,7 +84,7 @@ void crCharacterSystemUpdater::done()
 
 void crCharacterSystemUpdater::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -129,7 +129,7 @@ void crCharacterSystemUpdater::run()
 		}
 	}
 	rbody::ReplicantBodyMgr::instance()->clear();
-#if _DEBUG
+#ifdef _DEBUG
 	CRCore::notify(CRCore::ALWAYS)<<"crCharacterSystemUpdater end"<<std::endl;
 	//sprintf(gDebugInfo->buf(),"crCharacterSystemUpdater end\n\0");
 	//gDebugInfo->debugInfo(CRCore::ALWAYS);

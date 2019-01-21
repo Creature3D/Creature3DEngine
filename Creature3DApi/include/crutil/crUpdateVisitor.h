@@ -89,7 +89,7 @@ class CRUTIL_EXPORT crUpdateVisitor : public CRCore::crNodeVisitor
 
         inline void handle_callbacks_and_traverse(CRCore::crNode& node)
         {
-#if _DEBUG
+#ifdef _DEBUG
 			try
 			{
 #endif
@@ -99,7 +99,7 @@ class CRUTIL_EXPORT crUpdateVisitor : public CRCore::crNodeVisitor
 			CRCore::crNodeCallback* callback = node.getUpdateCallback();
 			if (callback) (*callback)(&node,this);
 			else if (node.getNumChildrenRequiringUpdateTraversal()>0) traverse(node);
-#if _DEBUG
+#ifdef _DEBUG
 			}
 			catch (...)
 			{

@@ -425,7 +425,7 @@ bool crSceneView::getUseRenderDoubleBuffer()const{ return m_useRenderDoubleBuf; 
 
 void crSceneView::init()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -467,7 +467,7 @@ void crSceneView::init()
 		//CRCore::notify(CRCore::ALWAYS)<<"crSceneView::init()1 "<< std::endl;
 
 		m_initCalled = true;
-#if _DEBUG
+#ifdef _DEBUG
 	}
 	catch (...)
 	{
@@ -680,13 +680,13 @@ void crSceneView::update()
 		//CRParticle::crParticleSystemUpdater::getInstance()->updateBlock();
 		//rbody::crCharacterSystemUpdater::getInstance()->updateBlock();
 		float dt = crFrameStamp::getInstance()->getFrameInterval();
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
 		crBrain::getInstance()->update(dt);
 		crBrain::getInstance()->doEvent(WCH_UPDATE,MAKEINT64(&dt,m_updateVisitor.get()));
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -696,12 +696,12 @@ void crSceneView::update()
 			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		}
 #endif
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
 		m_camera->accept(*m_updateVisitor);
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -711,7 +711,7 @@ void crSceneView::update()
 			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		}
 #endif
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
@@ -721,7 +721,7 @@ void crSceneView::update()
 		{
 			(*(itr->get()))(dt);
 		}
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -925,7 +925,7 @@ void crSceneView::cull(int vreye)
 		//m_camera->computerViewInverseMatrix();
 		crMatrixd* viewInverseMatrix = m_camera->getViewInverseMatrix();
 		//CRCore::notify(ALWAYS)<<"crSceneView::cull:viewInverseMatrix = "<<*viewInverseMatrix<<std::endl;
-#if _DEBUG
+#ifdef _DEBUG
 		try
 		{
 #endif
@@ -1022,7 +1022,7 @@ void crSceneView::cull(int vreye)
 				//m_renderStage.get()->createRenderDataList(*m_state, previous );
 			}
 			//updateUniforms();
-#if _DEBUG
+#ifdef _DEBUG
 		}
 		catch (...)
 		{
@@ -1185,7 +1185,7 @@ void crSceneView::cullStage(const CRCore::crMatrixd& projection,const CRCore::cr
 	CRCore::crBrain::getInstance()->setCameraFrustum(cullVisitor->getCurrentCullingSet().getFrustum());
     // traverse the scene graph to generate the rendergraph.
 
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -1197,7 +1197,7 @@ void crSceneView::cullStage(const CRCore::crMatrixd& projection,const CRCore::cr
 	{
 		m_camera->getChild(childNo)->accept(*cullVisitor);
 	}
-#if _DEBUG
+#ifdef _DEBUG
 	}
 	catch (...)
 	{

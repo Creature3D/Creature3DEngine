@@ -3123,7 +3123,7 @@ float CreBodyNode::getAnimPlaySpeed() const
 void CreBodyNode::update(/*int fn*/)
 {//do update, when body is in FOV
 	//crObject::DrawableList &drawableList = m_body_geode->getDrawableList();
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -3141,7 +3141,7 @@ void CreBodyNode::update(/*int fn*/)
 		dirtyBound();
 		computeBound();
 	}
-#if _DEBUG
+#ifdef _DEBUG
 	}
 	catch (...)
 	{

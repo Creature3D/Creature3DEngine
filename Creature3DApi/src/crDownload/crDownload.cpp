@@ -228,7 +228,7 @@ crDownloadThread::~crDownloadThread()
 		else
 			host = crDownloadManager::getInstance()->getHost();
  		sio->rdbuf()->connect( host.c_str(), 80 );
-		sio->rdbuf()->recvtimeout(250);
+		sio->rdbuf()->recvtimeout(2000);
 
  		std::string requestAdd ="/" + CRIOManager::convertFileNameToUnixStyle(crDownloadManager::getInstance()->getHostDir()+m_download->getPkgFileName());
  		//requestAdd = CRIOManager::convertUTF8toUTF16(requestAdd);

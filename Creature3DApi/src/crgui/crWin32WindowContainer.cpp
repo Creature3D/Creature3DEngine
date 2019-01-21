@@ -262,7 +262,7 @@ std::string crWindowContainer::doModal()
 	int frameDelay = m_stage->getFrameDelay();
 	//SetForegroundWindow(wnd);
 
-#if _DEBUG
+#ifdef _DEBUG
 try
 {
 #endif
@@ -326,7 +326,7 @@ try
 		sleep(m_stage->getFrameInterval());//10000
 		//YieldCurrentThread();
 	}
-#if _DEBUG
+#ifdef _DEBUG
 }
 catch (...)
 {
@@ -417,7 +417,7 @@ void crWindowContainer::run()
 	int frameCount = 0;
 	int frameDelay = m_stage->getFrameDelay();
 	
-#if _DEBUG
+#ifdef _DEBUG
 try
 {
 #endif
@@ -514,7 +514,7 @@ try
 		sleep(m_stage->getFrameInterval());//10000
 		//YieldCurrentThread();
 	}
-#if _DEBUG
+#ifdef _DEBUG
 }
 catch (...)
 {

@@ -1034,7 +1034,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			arrayData.array = 0;
 			arrayData.indices = 0;
 			arrayData.binding = CRCore::crGeometry::BIND_OFF;
-            #if _DEBUG
+            #ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() vertex array is empty but "<<std::endl
 				<<"         vertex array is empty but"<<arrayName<<" is set"<<std::endl
 				<<"         reseting "<<arrayName<< " binding to BIND_OFF and array & indices to 0."<<std::endl;
@@ -1052,7 +1052,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 		{
 			arrayData.array = 0;
 			arrayData.indices = 0;
-            #if _DEBUG
+            #ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_OFF but "<<arrayName<< " array is attached"<<std::endl
 				<<"         reseting array to 0."<<std::endl;
@@ -1065,7 +1065,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			arrayData.array = 0;
 			arrayData.indices = 0;
 			arrayData.binding = CRCore::crGeometry::BIND_OFF;
-            #if _DEBUG
+            #ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_OVERALL but "<<arrayName<< " array is empty"<<std::endl
 				<<"         reseting binding to BIND_OFF "<<arrayName<<"array to 0."<<std::endl;
@@ -1073,7 +1073,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 		}
 		else if (numElements>1) 
 		{
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_OVERALL but "<<std::endl
 				<<"         "<<arrayName<< " contains more than one entry"<<std::endl;
@@ -1086,7 +1086,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			arrayData.array = 0;
 			arrayData.indices = 0;
 			arrayData.binding = CRCore::crGeometry::BIND_OFF;
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_PER_PRIMITIVE_SET but "<<std::endl
 				<<"         "<<arrayName<< " array is not attached"<<std::endl
@@ -1098,7 +1098,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			arrayData.array = 0;
 			arrayData.indices = 0;
 			arrayData.binding = CRCore::crGeometry::BIND_OFF;
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_PER_PRIMITIVE_SET but "<<std::endl
 				<<"         "<<arrayName<< " array contains too few entries"<<std::endl
@@ -1107,7 +1107,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 		}
 		else if (numElements>geom.getPrimitiveList().size()) 
 		{
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_PER_PRIMITIVE_SET but "<<std::endl
 				<<"         "<<arrayName<< " array contains too many entries"<<std::endl;
@@ -1122,7 +1122,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 				arrayData.array = 0;
 				arrayData.indices = 0;
 				arrayData.binding = CRCore::crGeometry::BIND_OFF;
-				#if _DEBUG
+				#ifdef _DEBUG
 				notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 					<<"         "<<arrayName<<" binding is BIND_PER_PRIMITIVE but "<<std::endl
 					<<"         "<<arrayName<< " array is not attached"<<std::endl
@@ -1134,7 +1134,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 				arrayData.array = 0;
 				arrayData.indices = 0;
 				arrayData.binding = CRCore::crGeometry::BIND_OFF;
-				#if _DEBUG
+				#ifdef _DEBUG
 				notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 					<<"         "<<arrayName<<" binding is BIND_PER_PRIMITIVE but "<<std::endl
 					<<"         "<<arrayName<< " array contains too few entries"<<std::endl
@@ -1143,7 +1143,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			}
 			else if (numElements>numPrimitives)
 			{
-				#if _DEBUG
+				#ifdef _DEBUG
 				notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 					<<"         "<<arrayName<<" binding is BIND_PER_PRIMITIVE but "<<std::endl
 					<<"         "<<arrayName<< " array contains too many entries"<<std::endl;
@@ -1158,7 +1158,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			arrayData.array = 0;
 			arrayData.indices = 0;
 			arrayData.binding = CRCore::crGeometry::BIND_OFF;
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_PER_VERTEX but "<<std::endl
 				<<"         "<<arrayName<< " array is not attached"<<std::endl
@@ -1170,7 +1170,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 			arrayData.array = 0;
 			arrayData.indices = 0;
 			arrayData.binding = CRCore::crGeometry::BIND_OFF;
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes()"<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_PER_VERTEX but "<<std::endl
 				<<"         "<<arrayName<< " array contains too few entries"<<std::endl
@@ -1179,7 +1179,7 @@ void _computeCorrectBindingsAndArraySizes(const CRCore::crGeometry& geom, A& arr
 		}
 		else if (numElements>numVertices) 
 		{
-			#if _DEBUG
+			#ifdef _DEBUG
 			notify(WARN)<<"Warning: in CRCore::crGeometry::computeCorrectBindingsAndArraySizes() "<<std::endl
 				<<"         "<<arrayName<<" binding is BIND_PER_VERTEX but "<<std::endl
 				<<"         "<<arrayName<< " array contains too many entries"<<std::endl;

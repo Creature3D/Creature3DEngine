@@ -537,7 +537,7 @@ void crEventGroup::traverse(crNodeVisitor& nv)
 
 bool crEventGroup::parseParam(crNodeVisitor& nv)
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -556,7 +556,7 @@ bool crEventGroup::parseParam(crNodeVisitor& nv)
 			}
 		}
 		return parseParamImplementation(nv);
-#if _DEBUG
+#ifdef _DEBUG
 	}
 	catch (...) 
 	{

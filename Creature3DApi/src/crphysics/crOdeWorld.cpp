@@ -198,7 +198,7 @@ bool crOdeWorld::isCollideValid(dGeomID o1, dGeomID o2,CRCore::ref_ptr<crNode>&n
 }
 void crOdeWorld::s_nearCallback( void *data, dGeomID o1, dGeomID o2 )
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -321,7 +321,7 @@ void crOdeWorld::s_nearCallback( void *data, dGeomID o1, dGeomID o2 )
 			}
 		}
 	}
-#if _DEBUG
+#ifdef _DEBUG
 	}
 	catch (...)
 	{
@@ -463,7 +463,7 @@ CRCore::crBarrier *crPhysicsSystemUpdater::getFrameBlock()
 
 void crPhysicsSystemUpdater::run()
 {
-#if _DEBUG
+#ifdef _DEBUG
 	try
 	{
 #endif
@@ -518,7 +518,7 @@ void crPhysicsSystemUpdater::run()
 			}
 		}
 	}
-#if _DEBUG
+#ifdef _DEBUG
 	CRCore::notify(CRCore::ALWAYS)<<"crPhysicsSystemUpdater end"<<std::endl;
 	}
 	catch (...)

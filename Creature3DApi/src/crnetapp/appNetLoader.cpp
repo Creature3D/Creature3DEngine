@@ -845,10 +845,10 @@ void CRNetApp::registerServerDataClass()
 {
 	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crGlobalData);
 	//CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameRoleData);
-	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameMetierData);
+	//CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameMetierData);
 	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameBotData);
-	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameItemData);
-	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameSkillData);
+	//CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameItemData);
+	//CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRpgGameSkillData);
 	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crSceneServerData);
 	CRCore::crDataManager::RegisterDataProxy(new CRNetApp::crRoomData);
 }

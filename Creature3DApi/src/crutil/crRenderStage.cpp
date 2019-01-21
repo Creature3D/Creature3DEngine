@@ -674,7 +674,7 @@ void crRenderStage::runCameraSetUp(CRCore::crState& state)
 					glReadBuffer( GL_NONE );
 				}
 				GLenum status = fbo_ext->glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-#if _DEBUG
+#ifdef _DEBUG
 				switch(status) 
 				{
 				case GL_FRAMEBUFFER_COMPLETE_EXT:

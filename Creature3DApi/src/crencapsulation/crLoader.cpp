@@ -282,6 +282,8 @@ _crInt32 CREncapsulation::parseEventMsg( const std::string &str )
 		return WCH_DOWNLOAD;
 	if(str.compare("WCH_Startup") == 0)
 		return WCH_Startup;
+	if (str.compare("WCH_Shutdown") == 0)
+		return WCH_Shutdown;
 	if(str.compare("WCH_ShowCanvasFaild") == 0)
 		return WCH_ShowCanvasFaild;
 	if(str.compare("WCH_ShowCanvasRecover") == 0)
