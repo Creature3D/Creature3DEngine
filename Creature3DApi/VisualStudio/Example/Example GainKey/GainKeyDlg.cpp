@@ -16,7 +16,7 @@
 #include "stdafx.h"
 #include "GainKey.h"
 #include "GainKeyDlg.h"
-#include ".\gainkeydlg.h"
+#include "./gainkeydlg.h"
 //#ifdef _DEBUG
 //#define new DEBUG_NEW
 //#endif
