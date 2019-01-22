@@ -18,7 +18,8 @@ class CcreBroswerApp : public CWinApp
 {
 public:
 	CcreBroswerApp();
-
+	void WriteWebBrowserRegKey(LPCTSTR lpKey, DWORD dwValue);
+	char m_exeName[256];
 // ÖØÐ´
 public:
 	virtual BOOL InitInstance();

@@ -38,7 +38,6 @@
 BEGIN_MESSAGE_MAP(CcreBroswerApp, CWinApp)
 END_MESSAGE_MAP()
 
-
 // CcreBroswerApp 构造
 
 CcreBroswerApp::CcreBroswerApp()
@@ -96,10 +95,50 @@ extern  "C" __declspec(dllexport) void release()
 }
 
 // CcreBroswerApp 初始化
-
+void CcreBroswerApp::WriteWebBrowserRegKey(LPCTSTR lpKey, DWORD dwValue)
+{
+	HKEY hk;
+	CString str = "Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\";
+	str += lpKey;
+	if (RegCreateKey(HKEY_CURRENT_USER, str, &hk) == 0)
+	{
+		RegSetValueEx(hk, m_exeName, NULL, REG_DWORD, (const byte*)&dwValue, 4);
+		RegCloseKey(hk);
+	}
+}
 BOOL CcreBroswerApp::InitInstance()
 {
 	CWinApp::InitInstance();
+
+	//先获取运行程序的完整路径
+	char szFileName[256];
+	memset(szFileName, '\0', sizeof(szFileName));
+
+	GetModuleFileName(NULL, szFileName, sizeof(szFileName));
+
+	//再分割完整路径的字符串，最后一个就是程序的名字 
+	char seps[] = "\\";
+	char *token = NULL;
+
+	memset(m_exeName, '\0', sizeof(m_exeName));
+
+	token = strtok(szFileName, seps);
+	while (token != NULL)
+	{
+		sprintf(m_exeName, "%s", token);
+		token = strtok(NULL, seps);
+	}
+	//MessageBox(NULL, m_exeName, m_exeName, MB_OK);
+
+	WriteWebBrowserRegKey("FEATURE_BROWSER_EMULATION", 10000);
+	WriteWebBrowserRegKey("FEATURE_ACTIVEX_REPURPOSEDETECTION", 1);
+	WriteWebBrowserRegKey("FEATURE_BLOCK_LMZ_IMG", 1);
+	WriteWebBrowserRegKey("FEATURE_BLOCK_LMZ_OBJECT", 1);
+	WriteWebBrowserRegKey("FEATURE_BLOCK_LMZ_SCRIPT", 1);
+	WriteWebBrowserRegKey("FEATURE_Cross_Domain_Redirect_Mitigation", 1);
+	WriteWebBrowserRegKey("FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 1);
+	WriteWebBrowserRegKey("FEATURE_LOCALMACHINE_LOCKDOWN", 1);
+	WriteWebBrowserRegKey("FEATURE_GPU_RENDERING", 1);
 
 	return TRUE;
 }
