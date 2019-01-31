@@ -669,8 +669,8 @@
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|x64'">
@@ -712,8 +712,10 @@ copy ..\..\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\<
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Editor\Creature3DEditor\bin\
-copy ..\..\x64\bin\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor\bin\</Command>
+      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\Creature3DEditor\bin\
+copy ..\..\x64\bin\$(TargetName).pdb ..\..\..\Projects\Creature3DEditor\bin\
+copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Projects\SceneMasterServer\bin\
+copy ..\..\x64\bin\$(TargetName).pdb ..\..\..\Projects\SceneMasterServer\bin\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease_Console|Win32'">

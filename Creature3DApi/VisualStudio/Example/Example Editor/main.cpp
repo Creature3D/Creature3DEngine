@@ -451,7 +451,7 @@ int main( int argc, char **argv )
 		std::string client = std::string(webstr.begin() + comma + 1, webstr.end());
 		if (client.find(".cfg")==std::string::npos)
 			client = "Client.cfg";
-		CRNetApp::crGlobalHandle::gData()->gClientCfg() = client;//
+		CRNetApp::crGlobalHandle::gData()->setClientCfg(client);//
 		int sceneid = CRNetApp::crGlobalHandle::getInstance()->gData()->gFirstGameSceneID();
 		data = CREncapsulation::loadData("script/RunGame.cfg");
 		data->inputParam(WCHDATA_SceneID,&sceneid);

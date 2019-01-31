@@ -1906,7 +1906,6 @@ void startDBServer(/*int serverid*/)
 //}
 
 //#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
-
 #define NetCookFile 1 
 int main( int argc, char **argv )
 {
@@ -1918,6 +1917,13 @@ int main( int argc, char **argv )
 	}
 	crGlobalHandle::argvstr()=argvstr;
 	CRCore::notify(CRCore::ALWAYS)<<argvstr<<std::endl;
+	//int a = 100; int b = 200;
+	//_crInt64 x = MAKEINTPTR(&a, &b);
+	//int *pa =(int*)LOINTPTR(x);
+	//int *pb =(int*)HIINTPTR(x);
+	//int aa = *pa;
+	//int bb = *pb;
+	//CRCore::notify(CRCore::ALWAYS) << aa << bb << std::endl;
 //#ifndef _DEBUG
 #ifdef CookFile
 	CRIOManager::SetCooked(true);
