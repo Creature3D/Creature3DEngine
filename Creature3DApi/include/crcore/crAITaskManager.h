@@ -34,9 +34,9 @@ namespace CRCore {
 struct CR_EXPORT Msg
 {
 public :
-	Msg():m_msg(NULL),m_param(NULL),m_interval(NULL){}
+	Msg():m_msg(NULL),m_interval(NULL){}
 	_crInt64   m_msg;
-	_crInt64   m_param;
+	CREPARAM   m_param;
 	int        m_interval;
 	inline bool operator < (const Msg& item) const
 	{

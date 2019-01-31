@@ -70,28 +70,12 @@ void crVR_ICBCMousePickLogic::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-			m_ea = NULL;
-			m_param = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crRole*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -166,7 +150,7 @@ void crVR_ICBCMousePickLogic::operator()(crHandle &handle)
 	thisData->inputParam(WCHDATA_TargetID,&targetid);
 	thisData->inputParam(WCHDATA_TargetRoleID,&targetroleid);
 
-	//m_this->doEvent(WCH_ShowTargetInfo,MAKEINT64(targetItem,NULL));
+	//m_this->doEvent(WCH_ShowTargetInfo,MAKECREPARAM(targetItem,NULL));
 
 	crVector3 myPos = bot->getTrans();
 	crVector3 targetDir = targetPosition - myPos;
@@ -186,7 +170,7 @@ void crVR_ICBCMousePickLogic::operator()(crHandle &handle)
 				itemstate = IS_Move;
 
 				//float speed = 0;
-				//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+				//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 				//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 				//bot->doEvent(WCH_NetMoveToTarget,MAKEINT64(&m_targetPosition,&relspeed));
 				crMyPlayerData::getInstance()->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
@@ -205,7 +189,7 @@ void crVR_ICBCMousePickLogic::operator()(crHandle &handle)
 			float followDistance = relDist - 0.2f;
 			if(dist<=relDist)
 			{//在使用范围内
-				targetItem->doEvent(WCH_Touch,MAKEINT64(NULL,NULL));
+				targetItem->doEvent(WCH_Touch );
 				itemstate = IS_Stop;
 			}
 			else
@@ -214,7 +198,7 @@ void crVR_ICBCMousePickLogic::operator()(crHandle &handle)
 				//crVector3 dir = targetDir.normalize();
 				//crVector3 moveToPos = m_targetPosition - (dir * followDistance);
 				//float speed = 0;
-				//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+				//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 				//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 				//bot->doEvent(MAKEINT64(WCH_NetMoveToTarget,NULL),MAKEINT64(&moveToPos,&relspeed));//移动到使用范围
 				crMyPlayerData::getInstance()->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
@@ -240,7 +224,7 @@ void crVR_ICBCMousePickLogic::operator()(crHandle &handle)
 		//float speed = 0.0f;
 		//crVector3 nullpos;
 		//bot->doEvent(WCH_NetMoveToTarget,MAKEINT64(&nullpos,&speed));//停止移动
-		m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_RotMatrix));//转向拾取点
+		m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_RotMatrix));//转向拾取点
 	}
 	thisData->inputParam(WCHDATA_ItemState,&itemstate);
 }

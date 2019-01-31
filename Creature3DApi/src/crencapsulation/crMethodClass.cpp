@@ -107,17 +107,11 @@ void crExcEventContainerMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crBase*)param;
 		break;
 	case 2:
-		m_param = param==NULL?NULL:*(_crInt64*)param;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -137,7 +131,7 @@ void crExcEventContainerMethod::addParam(int i, const std::string& str)
 
 void crExcEventContainerMethod::operator()(crHandle &handle)
 {
-	m_this->doEvent(MAKEINT64(m_lmsg,m_hmsg),MAKEINT64(WCH_EXCEVENT,LOINT64(m_param)));
+	m_this->doEvent(MAKEINT64(m_lmsg,m_hmsg), MAKECREPARAM(WCH_EXCEVENT,LOCREPARAM(m_param)));
 }
 /////////////////////////////////////////
 //
@@ -169,8 +163,8 @@ void crAITaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_param = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_param = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -195,7 +189,7 @@ void crAITaskMethod::operator()(crHandle &handle)
 {
 	if(m_task.valid())
 	{
-		m_this->doEvent(WCH_INPUTAITASK,MAKEINT64(m_param,m_task.get()));
+		m_this->doEvent(WCH_INPUTAITASK,MAKECREPARAM(m_param,m_task.get()));
 	}
 }
 /////////////////////////////////////////
@@ -230,9 +224,9 @@ void crInputAITaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_param = LOINT64(param64);
-			m_task = (CRCore::crAITask *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_param = LOCREPARAM(param64);
+			m_task = (CRCore::crAITask *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -286,7 +280,7 @@ void crInputAITaskMethod::operator()(crHandle &handle)
 			//	}
 			//}
 			if(m_task->getTaskState() == crAITask::TaskEnd)
-				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_DOAITASK,m_task.get()));
+				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_DOAITASK,m_task.get()));
 			m_task->setTaskState(crAITask::TaskBegin);
 		}
 		else if(lparam == WCHAI_Pause)
@@ -296,7 +290,7 @@ void crInputAITaskMethod::operator()(crHandle &handle)
 		else if(lparam == WCHAI_Resume)
 		{
 			m_task->setTaskState(crAITask::TaskDoing);
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_DOAITASK,m_task.get()));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_DOAITASK,m_task.get()));
 		}
 		else if(lparam == WCHAI_End)
 		{
@@ -342,8 +336,8 @@ void crDoAITaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_task = (crAITask *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_task = (crAITask *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -480,7 +474,7 @@ void crDoAITaskMethod::operator()(crHandle &handle)
 					//bodyNC->acceptEventMessage(msg->m_msg,msg->m_wparam,msg->m_lparam);
 					if(msg->m_msg == WCH_TASKEND)
 					{
-						m_this->doEvent(WCH_INPUTAITASK,MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_task.get()));
+						m_this->doEvent(WCH_INPUTAITASK,MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_task.get()));
 					}
 					else
 					{
@@ -493,7 +487,7 @@ void crDoAITaskMethod::operator()(crHandle &handle)
 		}
 
 		if(m_task->getTaskState() == crAITask::TaskDoing)
-		    m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_DOAITASK,m_task.get()));
+		    m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_DOAITASK,m_task.get()));
 	}
 }
 float crDoAITaskMethod::computeAngle(const CRCore::crVector3f &targetDir,const CRCore::crVector3f &myDir)
@@ -538,19 +532,19 @@ void crDoAITaskMethod::turnToDir(const CRCore::crVector3f &targetDir,const CRCor
 	if(angle>0.01f)//0.5弧度每秒，25帧的精度是0.02
 	{
 	    //bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNLEFT,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYDOWN));
-		m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNLEFT,crGUIEventAdapter::KEYDOWN),m_task.get()));
+		m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNLEFT,crGUIEventAdapter::KEYDOWN),m_task.get()));
 	}
 	else if(angle<-0.01f)
 	{
 		//bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNRIGHT,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYDOWN));
-		m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNRIGHT,crGUIEventAdapter::KEYDOWN),m_task.get()));
+		m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNRIGHT,crGUIEventAdapter::KEYDOWN),m_task.get()));
 	}
 	else
 	{
 		if(0/*m_isAircraft*/)
 		{
 			//bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNLEFT,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYUP));
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNLEFT,crGUIEventAdapter::KEYUP),m_task.get()));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNLEFT,crGUIEventAdapter::KEYUP),m_task.get()));
 			_targetDir = targetDir;
 			_myDir = myDir;
 			_targetDir[0] = 0.0f;
@@ -563,23 +557,23 @@ void crDoAITaskMethod::turnToDir(const CRCore::crVector3f &targetDir,const CRCor
 			if(angle>0.02f)
 			{
 				//bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNDOWN,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYDOWN));
-				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNDOWN,crGUIEventAdapter::KEYDOWN),m_task.get()));
+				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNDOWN,crGUIEventAdapter::KEYDOWN),m_task.get()));
 			}
 			else if(angle<-0.02f)
 			{
 				//bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNUP,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYDOWN));
-				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNUP,crGUIEventAdapter::KEYDOWN),m_task.get()));
+				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNUP,crGUIEventAdapter::KEYDOWN),m_task.get()));
 			}
 			else
 			{
 				//bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNUP,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYUP));
-				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNUP,crGUIEventAdapter::KEYUP),m_task.get()));
+				m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNUP,crGUIEventAdapter::KEYUP),m_task.get()));
 			}
 		}
 		else
 		{
 			//bodyNC->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(WCH_TURNLEFT,NULL),MAKEINT64(WCH_INPUTPARAM,WCH_KEYUP));
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_TURNLEFT,crGUIEventAdapter::KEYUP),m_task.get()));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_TURNLEFT,crGUIEventAdapter::KEYUP),m_task.get()));
 		}
 	}
 }
@@ -685,8 +679,8 @@ void crAttachNodeUpdateMethod::inputParam(int i, void *param)
 	//case 2:
 	//	if(param)
 	//	{
-	//		_crInt64 param64 = *(_crInt64*)param;
-	//		m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOINT64(param64));
+	//		CREPARAM& param64 = *(CREPARAM*)param;
+	//		m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOCREPARAM(param64));
 	//	}
 	//	else
 	//	{
@@ -25033,7 +25027,7 @@ void crEditChangeCameraMethod::operator()(crHandle &handle)
 			{
 				currentSelectNode->setEditorHidden(true);
 				camera->attachNode(currentSelectNode);
-				body->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_USER+177,camera));
+				body->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_USER+177,camera));
 			}
 		}
 	}
@@ -25072,10 +25066,10 @@ void crEditReturnCameraMethod::operator()(crHandle &handle)
 		//crNode *lenui = crFilterRenderManager::getInstance()->getFilterNode("LenUI",OBJECT);
 		//if(lenui && !lenui->getVisiable())
 		//{
-		//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
+		//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
 		//	short speed = 200;
 		//	short timeDelay = 500;
-		//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFade,MAKEINT32(speed,timeDelay)));
+		//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFade,MAKEINT32(speed,timeDelay)));
 		//}
 	}
 }
@@ -26141,24 +26135,9 @@ void crGetModKeyMaskMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_ea = NULL;
-			m_param = NULL;
-		}
-		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -26240,8 +26219,8 @@ void crNodeUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -26260,7 +26239,7 @@ void crNodeUpdateMethod::operator()(crHandle &handle)
 	if(m_this && m_updateVisitor.valid())
 	{
 		float dt = crFrameStamp::getInstance()->getFrameInterval();
-		m_this->doEvent(WCH_UPDATE,MAKEINT64(&dt,m_updateVisitor.get()));
+		m_this->doEvent(WCH_UPDATE,MAKECREPARAM(&dt,m_updateVisitor.get()));
 	}
 }
 /////////////////////////////////////////

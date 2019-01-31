@@ -129,7 +129,7 @@ public :
 	 // virtual ~Callback(){}
   //};
 
-  //virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+  //virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 
   inline virtual void initPhysicsBuffers() { m_matrix_buf = m_matrix; }
   inline virtual void swapPhysicsBuffers() { m_matrix = m_matrix_buf; dirtyBound(); }

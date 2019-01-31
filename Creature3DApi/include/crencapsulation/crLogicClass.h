@@ -36,8 +36,8 @@ public:
 	virtual void inputHandle(int i, void *param);
 	virtual void outputParam(int i, void *param);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
+	CRCore::crNode* m_node;
+	CREPARAM m_param;
     CRCore::ref_ptr<CRCore::crHandle> m_convertToTransformMathod;
 	CRCore::ref_ptr<CRCore::crHandle> m_panNodeMathod;
 	CRCore::ref_ptr<CRCore::crHandle> m_rotNodeMathod;
@@ -319,8 +319,8 @@ public:
 	virtual void inputHandle(int i, void *param);
 	virtual void outputParam(int i, void *param);
 protected:
-	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
+	CRCore::crNode* m_node;
+	CREPARAM m_param;
 
 	CRCore::ref_ptr<CRCore::crHandle> m_turnToTarget;
 	CRCore::ref_ptr<CRCore::crHandle> m_moveToTarget;

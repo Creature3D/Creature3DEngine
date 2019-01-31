@@ -685,7 +685,7 @@ void crSceneView::update()
 		{
 #endif
 		crBrain::getInstance()->update(dt);
-		crBrain::getInstance()->doEvent(WCH_UPDATE,MAKEINT64(&dt,m_updateVisitor.get()));
+		crBrain::getInstance()->doEvent(WCH_UPDATE, MAKECREPARAM(&dt,m_updateVisitor.get()));
 #ifdef _DEBUG
 		}
 		catch (...)

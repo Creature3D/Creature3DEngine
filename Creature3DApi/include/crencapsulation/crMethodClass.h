@@ -38,7 +38,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crBase* m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	_crInt32 m_lmsg;
 	_crInt32 m_hmsg;
 };
@@ -3451,8 +3451,8 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	_crInt64 m_param;
-	CRCore::ref_ptr<CRProducer::crGUIEventAdapter> m_ea;
+	CREPARAM m_param;
+	CRProducer::crGUIEventAdapter* m_ea;
 };
 
 class crSceneModifiedMethod : public CRCore::crMethod

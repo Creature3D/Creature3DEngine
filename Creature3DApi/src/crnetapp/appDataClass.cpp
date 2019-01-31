@@ -87,6 +87,7 @@ g_dynamicTryWait(1.0f)
 }
 crGlobalData::crGlobalData(const crGlobalData& data):
 crData(data),
+g_clientfile(data.g_clientfile),
 g_startDate(data.g_startDate),
 g_unitScale(data.g_unitScale),
 g_maxLapover(data.g_maxLapover),
@@ -631,7 +632,7 @@ void crGameClientData::recvedFileStream(crRecvFileStream *fileStream)
 		}
 		if (itr->second.empty())
 		{
-			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,fileStream->getDownloadFlg()),NULL);
+			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,fileStream->getDownloadFlg()));
 			m_downloadFileTaskMap.erase(itr);
 		}
 		else
@@ -644,7 +645,7 @@ void crGameClientData::recvedFileStream(crRecvFileStream *fileStream)
 	}
 	else
 	{
-		crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,fileStream->getDownloadFlg()),NULL);
+		crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,fileStream->getDownloadFlg()));
 	}
 }
 void crGameClientData::fileNotExist(unsigned short downloadFlg,const std::string &file,short netType)
@@ -659,7 +660,7 @@ void crGameClientData::fileNotExist(unsigned short downloadFlg,const std::string
 		}
 		if (itr->second.empty())
 		{
-			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,downloadFlg),NULL);
+			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,downloadFlg));
 			m_downloadFileTaskMap.erase(itr);
 		}
 		else
@@ -672,7 +673,7 @@ void crGameClientData::fileNotExist(unsigned short downloadFlg,const std::string
 	}
 	else
 	{
-		crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,downloadFlg),NULL);
+		crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedFileStream,downloadFlg));
 	}
 }
 //void crGameClientData::lockHttpDownload()
@@ -849,7 +850,7 @@ void crGameClientData::downloadUpdate()
 			hiid = HIINT32(*itr);
 			sprintf(gbuf,"DownloadTaskDone HttpDownload:%d,GainID:%d\n\0",loid,hiid);
 			gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
-			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_DownloadTaskDone,loid),MAKEINT64(hiid,NULL));
+			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_DownloadTaskDone,loid),MAKECREPARAM(hiid,NULL));
 			if(loid == HttpD_DownLoadItem || loid == HttpD_DownLoadItemChild)
 			{
 				crGlobalHandle::recycleHttpDownloadID(hiid);
@@ -1521,7 +1522,7 @@ void crRoleData::checkItemChild(CRNet::crNetConductor *netConductor,crInstanceIt
 		//crCreateItemChildPacket::buildRequestPacket(packet,item,item->getInstanceItemID(),first);
 		//netConductor->getNetManager()->sendPacket("all",packet);
 		////if(!itemChild->isLoaded())
-		////	crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,role));
+		////	crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,role));
 	}
 }
 void crRoleData::checkItemChildMultiMap(CRNet::crNetConductor *netConductor,crInstanceItem *item,int first,int &second,std::set<int>&TemporaryAbstractIDSet,int &count)
@@ -1617,8 +1618,8 @@ void crRoleData::clientCheckItemChild(crInstanceItem *item,int first,int &second
 		{//check And download itemchild
 			if(!itemChild->isLoaded())
 			{
-				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
-				//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(NULL,NULL));//清理
+				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
+				//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild );//清理
 			}
 		}
 		else
@@ -1660,8 +1661,8 @@ void crRoleData::clientCheckItemChildMultiMap(crInstanceItem *item,int first,int
 				if(!itemChild->isLoaded())
 				{
 					TemporaryItemIDSet.insert(second);
-					crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
-					//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(NULL,NULL));//清理
+					crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
+					//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild );//清理
 				}
 			}
 			else
@@ -3585,7 +3586,7 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 	//			itemChild = item->findChildItem(itr->second);
 	//			if(itemChild && !itemChild->getInstanceItem()->isLoaded())
 	//			{//check And download itemchild
-	//				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
+	//				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
 	//			}
 	//		}
 	//		else
@@ -3600,7 +3601,7 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 	//		itemChild = item->findChildItem(itr->second);
 	//		if(itemChild && !itemChild->getInstanceItem()->isLoaded())
 	//		{//check And download itemchild
-	//			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
+	//			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
 	//		}
 	//	}
 	//	std::set<int> TemporaryItemIDSet;
@@ -3616,7 +3617,7 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 	//			if(taitr == TemporaryItemIDSet.end())
 	//			{
 	//				TemporaryItemIDSet.insert(itr->second);
-	//				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
+	//				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
 	//			}
 	//		}
 	//	}
@@ -3631,7 +3632,7 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 	//			if(taitr == TemporaryItemIDSet.end())
 	//			{
 	//				TemporaryItemIDSet.insert(itr->second[0]);
-	//				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
+	//				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
 	//			}
 	//		}
 	//	}
@@ -4926,7 +4927,7 @@ void crRpgGameItemData::excHandle(_crInt64 msg)
 		//				if(!itemChild->isLoaded())
 		//				{
 		//					TemporaryItemIDSet.insert(itr->second[0]);
-		//					crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
+		//					crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
 		//				}
 		//			}
 		//			else
@@ -4946,7 +4947,7 @@ void crRpgGameItemData::excHandle(_crInt64 msg)
 		//	//	if(taitr == TemporaryItemIDSet.end())
 		//	//	{
 		//	//		TemporaryItemIDSet.insert(itr->second[0]);
-		//	//		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,item));
+		//	//		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,item));
 		//	//	}
 		//	//}
 		//}

@@ -95,7 +95,7 @@ class CRUTIL_EXPORT crUpdateVisitor : public CRCore::crNodeVisitor
 #endif
 			handle_callbacks(node.getStateSet());
 
-			node.doEvent(WCH_UPDATEVISITOR,MAKEINT64(this,NULL));
+			node.doEvent(WCH_UPDATEVISITOR, MAKECREPARAM(this,NULL));
 			CRCore::crNodeCallback* callback = node.getUpdateCallback();
 			if (callback) (*callback)(&node,this);
 			else if (node.getNumChildrenRequiringUpdateTraversal()>0) traverse(node);
@@ -115,7 +115,7 @@ class CRUTIL_EXPORT crUpdateVisitor : public CRCore::crNodeVisitor
         {
 			handle_callbacks(node.getStateSet());
 
-			node.doEvent(WCH_UPDATEVISITOR,MAKEINT64(this,NULL));
+			node.doEvent(WCH_UPDATEVISITOR, MAKECREPARAM(this,NULL));
 			CRCore::crNodeCallback* callback = node.getUpdateCallback();
 			if (callback) (*callback)(&node,this);
 

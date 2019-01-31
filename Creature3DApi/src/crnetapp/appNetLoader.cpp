@@ -203,7 +203,7 @@ void CRNetApp::registerHandleClass()
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crLoadRoleDataMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crSendToBotMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crNetPickTargetMethod);
-	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crNodeMouseEventMethod);
+	//CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crNodeMouseEventMethod);
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crNetControlMethod);
 
 	CRCore::crHandleManager::RegisterHandleProxy(new CRNetApp::crRevertUpdateMethod);

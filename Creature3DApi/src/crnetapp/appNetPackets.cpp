@@ -920,7 +920,7 @@ void crLoginPacket::parsePacket(const std::string &sender)
 			//myPlayerData->setAccountData(accountData);
 		}
 		//s_success = loginCode==0?-1:loginCode;
-		crGlobalHandle::getInstance()->doEvent(WCH_LoginReturn,MAKEINT64(loginCode,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_LoginReturn,MAKECREPARAM(loginCode,NULL));
 		//CRCore::notify(CRCore::ALWAYS)<<"crLoginPacket "<<loginCode<<std::endl;
 	}
 }
@@ -1634,7 +1634,7 @@ void crLoginChatPacket::parsePacket(const std::string &sender)
 			}
 			netChatData->setMyChatState(crNetChatData::OnLine);
 		}
-		crGlobalHandle::getInstance()->doEvent(WCH_LoginChatReturn,MAKEINT64(loginCode,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_LoginChatReturn,MAKECREPARAM(loginCode,NULL));
 		//CRCore::notify(CRCore::ALWAYS)<<"crLoginChatPacket "<<loginCode<<std::endl;
 	}
 }
@@ -1823,7 +1823,7 @@ void crChatStateChangePacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Chat)
 	{//id name
-		crGlobalHandle::getInstance()->doEvent(WCH_ChatStateChange,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_ChatStateChange,MAKECREPARAM(m_streamBuf.get(),NULL));
 		//CRCore::notify(CRCore::ALWAYS)<<"crChatStateChangePacket"<<std::endl;
 	}
 }
@@ -1996,7 +1996,7 @@ void crDataStreamPacket::parsePacket(const std::string &sender)
 			ref_ptr<crChatServerPlayerData> senderPlayerData = dynamic_cast<crChatServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(senderid));
 			if(senderPlayerData.valid())
 			{
-				//senderPlayerData->doEvent(WCH_StreamDataRevChat,MAKEINT64(m_streamBuf.get(),NULL));
+				//senderPlayerData->doEvent(WCH_StreamDataRevChat,MAKECREPARAM(m_streamBuf.get(),NULL));
 			}
 		}
 	}
@@ -2072,7 +2072,7 @@ void crDataStreamPacket::parsePacket(const std::string &sender)
 		//crHeartJumpPacket packet;
 		//m_netConductor->getNetManager()->sendPacket("all",packet);
 		crDataStreamTransfer::getInstance()->recvStream(m_streamBuf.get());
-		//crGlobalHandle::getInstance()->doEvent(WCH_StreamDataRevChat,MAKEINT64(m_streamBuf.get(),NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_StreamDataRevChat,MAKECREPARAM(m_streamBuf.get(),NULL));
 		//CRCore::notify(CRCore::ALWAYS)<<"StreamDataRevChat count = "<<m_streamBuf->getRemainSize()<<std::endl;
 	}
 	///////////DownloadServer
@@ -2174,7 +2174,7 @@ void crDataStreamPacket::parsePacket(const std::string &sender)
 			ref_ptr<crGameServerPlayerData> senderPlayerData = dynamic_cast<crGameServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(senderid));
 			if(senderPlayerData.valid())
 			{
-				//senderPlayerData->doEvent(CSM_StreamDataRev,MAKEINT64(m_streamBuf.get(),NULL));
+				//senderPlayerData->doEvent(CSM_StreamDataRev,MAKECREPARAM(m_streamBuf.get(),NULL));
 			}
 		}
 	}
@@ -2257,7 +2257,7 @@ void crDataStreamPacket::parsePacket(const std::string &sender)
 	//		crSceneServerPlayerData *senderPlayerData = dynamic_cast<crSceneServerPlayerData *>(m_netConductor->getNetDataManager()->getPlayerData(senderid));
 	//		if(senderPlayerData)
 	//		{
-	//			//senderPlayerData->doEvent(CSM_StreamDataRev,MAKEINT64(m_streamBuf.get(),NULL));
+	//			//senderPlayerData->doEvent(CSM_StreamDataRev,MAKECREPARAM(m_streamBuf.get(),NULL));
 	//		}
 	//	}
 	//}
@@ -2529,7 +2529,7 @@ void crChatDataTransferEndPacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Chat)
 	{//id name
-		crGlobalHandle::getInstance()->doEvent(WCH_ChatDataTransferEnd,MAKEINT64(NULL,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_ChatDataTransferEnd);
 	    //CRCore::notify(CRCore::ALWAYS)<<"crChatDataTransferEndPacket"<<std::endl;
 	}
 }
@@ -2660,7 +2660,7 @@ void crAddChatFriendPacket::parsePacket(const std::string &sender)
 					{
 						friendChatdbid = friendPlayerData->getChatDBID();
 						stream->seekBegin();
-						crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_ChatSystemMsg,CD_AddChatFriend),MAKEINT64(stream.get(),friendPlayerData.get()));
+						crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_ChatSystemMsg,CD_AddChatFriend),MAKECREPARAM(stream.get(),friendPlayerData.get()));
 					}
 					else
 					{
@@ -2768,16 +2768,16 @@ void crAddChatFriendPacket::parsePacket(const std::string &sender)
 				chatFriend->setNickName(m_streamBuf->_readString());
 				myChatData->insertFriend(chatFriend);
 
-				crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_AddChatFriend,1),MAKEINT64(chatFriend->getPlayerID(),NULL));
+				crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_AddChatFriend,1),MAKECREPARAM(chatFriend->getPlayerID(),NULL));
 			}
 		}
 		else if(befriendvalid == 0)
 		{//提示对方拒绝添加
-			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_AddChatFriend,0),MAKEINT64(NULL,NULL));
+			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_AddChatFriend,0));
 		}
 		else if(befriendvalid == 2)
 		{//提示对方需要消息验证
-			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_AddChatFriend,2),MAKEINT64(NULL,NULL));
+			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_AddChatFriend,2));
 		}
 		//CRCore::notify(CRCore::ALWAYS)<<"crAddChatFriendPacket "<<std::endl;
 	}
@@ -3109,7 +3109,7 @@ void crChatPacket::parsePacket(const std::string &sender)
 			if(senderid == 0)
 			{//系统消息
 				unsigned short msg = m_streamBuf->_readUShort();
-				crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_ChatSystemMsg,msg),MAKEINT64(m_streamBuf.get(),recvPlayerData.get()));
+				crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_ChatSystemMsg,msg),MAKECREPARAM(m_streamBuf.get(),recvPlayerData.get()));
 			}
 			else
 			{
@@ -3125,11 +3125,11 @@ void crChatPacket::parsePacket(const std::string &sender)
 		{//系统消息
 			int recvid = m_streamBuf->_readInt();
 			unsigned short msg = m_streamBuf->_readUShort();
-			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_ChatSystemMsg,msg),MAKEINT64(m_streamBuf.get(),NULL));
+			crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_ChatSystemMsg,msg),MAKECREPARAM(m_streamBuf.get(),NULL));
 		}
 		else
 		{
-			crGlobalHandle::getInstance()->doEvent(WCH_FriendChat,MAKEINT64(m_streamBuf.get(),NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_FriendChat,MAKECREPARAM(m_streamBuf.get(),NULL));
 		}
 	}
 }
@@ -3368,7 +3368,7 @@ void crGroupChatPacket::parsePacket(const std::string &sender)
 		int senderid = m_streamBuf->_readInt();
 		int recvid = m_streamBuf->_readInt();
 		int groupid = m_streamBuf->_readInt(); 
-		crGlobalHandle::getInstance()->doEvent(WCH_GroupChat,MAKEINT64(groupid,m_streamBuf.get()));
+		crGlobalHandle::getInstance()->doEvent(WCH_GroupChat,MAKECREPARAM(groupid,m_streamBuf.get()));
 		//CRCore::notify(CRCore::ALWAYS)<<"crChatPacket"<<std::endl;
 	}
 }
@@ -3645,7 +3645,7 @@ void crApplyJoinGroupPacket::parsePacket(const std::string &sender)
 		int senderid = m_streamBuf->_readInt();
 		int recvid = m_streamBuf->_readInt();
 		int groupid = m_streamBuf->_readInt(); 
-		crGlobalHandle::getInstance()->doEvent(WCH_ApplyJoinGroup,MAKEINT64(groupid,m_streamBuf.get()));
+		crGlobalHandle::getInstance()->doEvent(WCH_ApplyJoinGroup,MAKECREPARAM(groupid,m_streamBuf.get()));
 		//CRCore::notify(CRCore::ALWAYS)<<"crApplyJoinGroupPacket"<<std::endl;
 	}
 }
@@ -3886,7 +3886,7 @@ void crAcceptJoinGroupPacket::parsePacket(const std::string &sender)
 		int senderid = m_streamBuf->_readInt();
 		int recvid = m_streamBuf->_readInt();
 		int groupid = m_streamBuf->_readInt(); 
-		crGlobalHandle::getInstance()->doEvent(WCH_AcceptJoinGroup,MAKEINT64(groupid,m_streamBuf.get()));
+		crGlobalHandle::getInstance()->doEvent(WCH_AcceptJoinGroup,MAKECREPARAM(groupid,m_streamBuf.get()));
 		//CRCore::notify(CRCore::ALWAYS)<<"crAcceptJoinGroupPacket"<<std::endl;
 	}
 }
@@ -4339,7 +4339,7 @@ void crAddGroupMemberPacket::parsePacket(const std::string &sender)
 			if(chatGroup)
 				chatGroup->insertMember(chatMember.get());
 
-			crGlobalHandle::getInstance()->doEvent(WCH_AddGroupMember,MAKEINT64(chatMember.get(),NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_AddGroupMember,MAKECREPARAM(chatMember.get(),NULL));
 			//CRCore::notify(CRCore::ALWAYS)<<"crAddGroupMemberPacket"<<std::endl;
 		}
 	}
@@ -4584,7 +4584,7 @@ void crRemoveGroupMemberPacket::parsePacket(const std::string &sender)
 			if(chatGroup)
 				chatGroup->insertMember(chatMember.get());
 
-			crGlobalHandle::getInstance()->doEvent(WCH_AddGroupMember,MAKEINT64(chatMember.get(),NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_AddGroupMember,MAKECREPARAM(chatMember.get(),NULL));
 			//CRCore::notify(CRCore::ALWAYS)<<"crRemoveGroupMemberPacket"<<std::endl;
 		}
 	}
@@ -4711,7 +4711,7 @@ void crQueryOnlinePlayerListPacket::parsePacket(const std::string &sender)
 	{//id name
         int recvid = m_streamBuf->_readInt();
 		//short count = m_streamBuf->_readShort();
-		crGlobalHandle::getInstance()->doEvent(WCH_QueryOnlinePlayerList,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_QueryOnlinePlayerList,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 
@@ -4837,7 +4837,7 @@ void crQueryChatGroupListPacket::parsePacket(const std::string &sender)
 	else if(netType == GameClient_Chat)
 	{//id name
 		int recvid = m_streamBuf->_readInt();
-		crGlobalHandle::getInstance()->doEvent(WCH_QueryGroupList,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_QueryGroupList,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 
@@ -5091,7 +5091,7 @@ void crRegisterAccountPacket::parsePacket(const std::string &sender)
 		//CRCore::notify(CRCore::ALWAYS)<<"crRegisterAccountPacket "<<std::endl;
 		//bool sucess = m_streamBuf->_readBool();
 		//s_success = sucess?1:-1;
-		crGlobalHandle::getInstance()->doEvent(WCH_RegisterAccountReturn,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RegisterAccountReturn,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -5395,7 +5395,7 @@ void crCreateChatGroupPacket::parsePacket(const std::string &sender)
 
 		myChatData->insertChatGroup(chatGroup.get());
 
-		crGlobalHandle::getInstance()->doEvent(WCH_CreateChatGroup,MAKEINT64(chatGroup->getGroupID(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_CreateChatGroup,MAKECREPARAM(chatGroup->getGroupID(),NULL));
 		//CRCore::notify(CRCore::ALWAYS)<<"crCreateChatGroupPacket "<<std::endl;
 	}
 }

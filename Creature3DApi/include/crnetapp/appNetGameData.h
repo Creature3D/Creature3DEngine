@@ -214,7 +214,7 @@ public:
 	/////////////////////
 	void setDataClass(CRCore::crData *data);
 	CRCore::crData *getDataClass();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 	inline _crInt64 getCurrentMsg() const { return m_currentMsg; }
 	CRCore::crHandle* getHandle(__int64 kbmsg, const std::string& name);
 	bool hasHandle(__int64 kbmsg);
@@ -759,7 +759,7 @@ public:
 	/////////////////////
 	void setDataClass( CRCore::crData *data );
 	CRCore::crData *getDataClass();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 	inline _crInt64 getCurrentMsg() const { return m_currentMsg; }
 	CRCore::crHandle* getHandle(__int64 kbmsg, const std::string& name);
 	bool hasHandle(__int64 kbmsg);
@@ -828,7 +828,7 @@ public:
 	/////////////////////
 	void setMetierDataClass( CRCore::crData *data );
 	CRCore::crData *getMetierDataClass();
-	virtual void doMetierEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doMetierEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 	inline _crInt64 getCurrentMetierMsg() const { return m_currentMetierMsg; }
 	CRCore::crHandle* getMetierHandle(__int64 kbmsg, const std::string& name);
 	bool hasMetierHandle(__int64 kbmsg);
@@ -962,7 +962,7 @@ public:
 	/////////////////////
 	virtual void setDataClass( CRCore::crData *data );
 	CRCore::crData *getDataClass();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 	inline _crInt64 getCurrentMsg() const { return m_currentMsg; }
 	bool hasHandle(_crInt64 kbmsg);
 	void clearData();

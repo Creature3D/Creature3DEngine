@@ -82,18 +82,11 @@ void crTransformNodeLogic::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{// Õ∑≈
-			m_node = NULL;
-		}
-		break;
 	case 1:
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -136,7 +129,7 @@ void crTransformNodeLogic::outputParam(int i, void *param)
 
 void crTransformNodeLogic::operator()(crHandle &handle)
 {
-	if(!m_node.valid() || !m_convertToTransformMathod.valid()) return;
+	if(!m_node || !m_convertToTransformMathod.valid()) return;
 	crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 	if(!bindview || !bindview->isInited())
 		return;
@@ -147,7 +140,7 @@ void crTransformNodeLogic::operator()(crHandle &handle)
 		return;
 	}
 
-	crViewMatterObject *body = dynamic_cast<crViewMatterObject *>(m_node.get());
+	crViewMatterObject *body = dynamic_cast<crViewMatterObject *>(m_node);
 	if(body)
 	{
 		crGameBodyInfo *bodyInfo = body->getGameBodyInfo();
@@ -206,7 +199,7 @@ void crTransformNodeLogic::operator()(crHandle &handle)
 			case 1:
 				if(m_panNodeMathod.valid())
 				{
-					m_panNodeMathod->inputParam(1,m_node.get());
+					m_panNodeMathod->inputParam(1,m_node);
                     m_panNodeMathod->inputParam(2,&m_param);
 					(*m_panNodeMathod)(*this);
 					m_panNodeMathod->inputParam(1,NULL);
@@ -215,7 +208,7 @@ void crTransformNodeLogic::operator()(crHandle &handle)
 			case 2:
 				if(m_rotNodeMathod.valid())
 				{
-					m_rotNodeMathod->inputParam(1,m_node.get());
+					m_rotNodeMathod->inputParam(1,m_node);
 					m_rotNodeMathod->inputParam(2,&m_param);
 					(*m_rotNodeMathod)(*this);
 					m_rotNodeMathod->inputParam(1,NULL);
@@ -224,7 +217,7 @@ void crTransformNodeLogic::operator()(crHandle &handle)
 			case 3:
 				if(m_scaleNodeMathod.valid())
 				{
-					m_scaleNodeMathod->inputParam(1,m_node.get());
+					m_scaleNodeMathod->inputParam(1,m_node);
 					m_scaleNodeMathod->inputParam(2,&m_param);
 					(*m_scaleNodeMathod)(*this);
 					m_scaleNodeMathod->inputParam(1,NULL);
@@ -1786,8 +1779,8 @@ void crMousePickMoveLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -1930,17 +1923,11 @@ void crRpgFireAndFollowLogic::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{// Õ∑≈
-			m_node = NULL;
-		}
-		break;
 	case 1:
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		m_param = param?*(_crInt64*)param:NULL;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 	if(m_turnToTarget.valid())
@@ -1972,7 +1959,7 @@ void crRpgFireAndFollowLogic::outputParam(int i, void *param)
 
 void crRpgFireAndFollowLogic::operator()(crHandle &handle)
 {
-	crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_node.get());
+	crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_node);
     crData *data = bot->getDataClass();
 	if(bot->isDead())
 	{

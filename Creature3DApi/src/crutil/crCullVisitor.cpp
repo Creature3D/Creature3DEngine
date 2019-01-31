@@ -752,7 +752,7 @@ void crCullVisitor::handle_cull_callbacks_and_traverse(CRCore::crNode& node)
 	try
 	{
 #endif
-		node.doEvent(WCH_CULLVISITOR, MAKEINT64(this, NULL));
+		node.doEvent(WCH_CULLVISITOR, MAKECREPARAM(this, NULL));
 		CRCore::crNodeCallback* callback = node.getCullCallback();
 		if (callback) (*callback)(&node, this);
 		else traverse(node);
@@ -783,7 +783,7 @@ void crCullVisitor::handle_cull_callbacks_and_traverse(CRCore::crNode& node)
 
 void crCullVisitor::handle_cull_callbacks_and_accept(CRCore::crNode& node, CRCore::crNode* acceptNode)
 {
-	node.doEvent(WCH_CULLVISITOR, MAKEINT64(this, NULL));
+	node.doEvent(WCH_CULLVISITOR, MAKECREPARAM(this, NULL));
 	CRCore::crNodeCallback* callback = node.getCullCallback();
 	if (callback) (*callback)(&node, this);
 	else acceptNode->accept(*this);

@@ -18,6 +18,8 @@
 #include <string>
 namespace CRIOManager {
 
+extern CRIOMANAGER_EXPORT void SetFileRoot(const std::string &fileRoot);
+extern CRIOMANAGER_EXPORT const std::string& GetFileRoot();
 extern CRIOMANAGER_EXPORT void SetCooked(bool cook);
 extern CRIOMANAGER_EXPORT void SetRetainSourceFile(bool retain);
 extern CRIOMANAGER_EXPORT void SetNetCooked(bool cook);

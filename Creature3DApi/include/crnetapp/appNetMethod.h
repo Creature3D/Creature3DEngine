@@ -1432,7 +1432,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	crInstanceItem* m_this;
-	_crInt64 *m_param;
+	CREPARAM m_param;
 };
 //class crSendToNetMethod : public CRCore::crMethod
 //{//
@@ -1460,20 +1460,20 @@ protected:
     CRCore::ref_ptr<CRProducer::crGUIEventAdapter> m_ea;
 	CRCore::ref_ptr<CRCore::crNode> m_root;
 };
-class crNodeMouseEventMethod : public CRCore::crMethod
-{//
-public:
-	crNodeMouseEventMethod();
-	crNodeMouseEventMethod(const crNodeMouseEventMethod& handle);
-	MethodClass(CRNetApp, NodeMouseEvent)
-	virtual void operator()(crHandle &handle);
-	virtual void inputParam(int i, void *param);
-	virtual void addParam(int i, const std::string& str);
-protected:
-	CRCore::ref_ptr<CRProducer::crGUIEventAdapter> m_ea;
-	_crInt64 m_msg;
-	_crInt64 m_param;
-};
+//class crNodeMouseEventMethod : public CRCore::crMethod
+//{//
+//public:
+//	crNodeMouseEventMethod();
+//	crNodeMouseEventMethod(const crNodeMouseEventMethod& handle);
+//	MethodClass(CRNetApp, NodeMouseEvent)
+//	virtual void operator()(crHandle &handle);
+//	virtual void inputParam(int i, void *param);
+//	virtual void addParam(int i, const std::string& str);
+//protected:
+//	CRCore::ref_ptr<CRProducer::crGUIEventAdapter> m_ea;
+//	_crInt64 m_msg;
+//	_crInt64 m_param;
+//};
 class crNetControlMethod : public CRCore::crMethod
 {//SceneServer & Client Method
 public:
@@ -2458,7 +2458,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	crInstanceItem* m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	float m_time;
 	float m_interval;
 };
@@ -3176,7 +3176,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	_crInt64 m_msg;
-	_crInt64 m_param;
+	CREPARAM m_param;
 };
 class crGetTaskMethod : public CRCore::crMethod
 {//GameClient & SceneServer Method 
@@ -3230,7 +3230,7 @@ protected:
 	crInstanceItem* m_this;
 	CRCore::ref_ptr<crRole> m_killerRole;
 	_crInt64 m_msg;
-	_crInt64 m_param;
+	CREPARAM m_param;
 };
 class crRecvGetTaskMethod : public CRCore::crMethod
 {//SceneServer & GameClient Method
@@ -6526,7 +6526,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crMatrixTransform *m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	CRProducer::crGUIEventAdapter* m_ea;
 };
 class crInvalidMousePosMethod : public CRCore::crMethod
@@ -6540,7 +6540,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crMatrixTransform *m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	CRProducer::crGUIEventAdapter* m_ea;
 };
 class crDrawDragRectMethod : public CRCore::crNodeMethod
@@ -6557,7 +6557,7 @@ public:
 protected:
 	void init();
 	CRCore::crMatrixTransform *m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	CRProducer::crGUIEventAdapter* m_ea;
 	CRCore::crVector4 m_lineColor;
 	CRCore::ref_ptr<CRCore::crGeometry> m_rectGeo;
@@ -6576,7 +6576,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crMatrixTransform *m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	CRProducer::crGUIEventAdapter* m_ea;
 	CRCore::Timer_t m_timer;
 };
@@ -6591,7 +6591,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crMatrixTransform *m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	CRProducer::crGUIEventAdapter* m_ea;
 	CRCore::Timer_t m_timer;
 };

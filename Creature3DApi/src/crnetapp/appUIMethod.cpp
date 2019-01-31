@@ -424,7 +424,7 @@ void crShowItemTalkMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_taskid = LOINT64(param64);
 //			m_canvas = (std::string *)(HIINT64(param64));
 //		}
@@ -754,7 +754,7 @@ void crShowItemTalkMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_ea = (CRProducer::crGUIEventAdapter*)(LOINT64(param64));
 //		}
 //		else
@@ -914,10 +914,10 @@ void crUIShowTask2Method::operator()(crHandle &handle)
 			crData *metierData = me->getMetierDataClass();
 			metierData->getParam(WCHDATA_CurrentTaskID,param);
 			int taskid = *(int *)param;
-			me->doEvent(WCH_UIShowTask,MAKEINT64(taskid,&m_canvas));
+			me->doEvent(WCH_UIShowTask,MAKECREPARAM(taskid,&m_canvas));
 		}
 		else
-			me->doEvent(WCH_UIShowTask,MAKEINT64(m_taskid,&m_canvas));
+			me->doEvent(WCH_UIShowTask,MAKECREPARAM(m_taskid,&m_canvas));
 	}
 	else if(m_this)
 	{
@@ -929,7 +929,7 @@ void crUIShowTask2Method::operator()(crHandle &handle)
 			int taskid = _wtoi(curData.c_str());
 			if(taskid == 0)
 				break;
-			me->doEvent(WCH_UIShowTask,MAKEINT64(taskid,&m_canvas));
+			me->doEvent(WCH_UIShowTask,MAKECREPARAM(taskid,&m_canvas));
 		} while (0);
 	}
 }
@@ -989,8 +989,8 @@ void cr3DUINotifyMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			std::string notice = *(std::string *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			std::string notice = *(std::string *)(LOCREPARAM(param64));
 			crTextAttrWidgetNode::parseText(notice);
 			m_notice = CRIOManager::convertUTF8toUTF16(notice);
 		}
@@ -1088,9 +1088,9 @@ void crUIListControlTipInfoMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
+			CREPARAM& param64 = *(CREPARAM*)param;
 			//m_selectIndex = LOINT64(param64);
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			m_ea = (CRProducer::crGUIEventAdapter*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -1228,9 +1228,9 @@ void crUIItemListTipInfoMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
+			CREPARAM& param64 = *(CREPARAM*)param;
 			//m_selectIndex = LOINT64(param64);
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -1474,16 +1474,16 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipStrength,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipStrength,MAKECREPARAM(m_this,&equip));
 				equipStrengthSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipAgility,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAgility,MAKECREPARAM(m_this,&equip));
 				equipAgilitySum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipIntellect,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipIntellect,MAKECREPARAM(m_this,&equip));
 				equipIntellectSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -1537,7 +1537,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 			roleData->getParam(WCHDATA_Experience,param);
 			int exp = *((int*)param);
 			int nextexp = exp;
-			role->doEvent(WCH_GetNextLvExp,MAKEINT64(&nextexp,NULL));
+			role->doEvent(WCH_GetNextLvExp,MAKECREPARAM(&nextexp,NULL));
 			str = crArgumentParser::appItoa(exp) + "/" + crArgumentParser::appItoa(nextexp);
 			expWidge->setString(str);
 			//str = crArgumentParser::appItoa(nextexp);
@@ -1553,7 +1553,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 		if(hpWidge)
 		{
 			float maxhp = 0;
-			role->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+			role->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 			roleData->getParam(WCHDATA_RTHP,param);
 			float rthp = *(float*)param;
 			str = crArgumentParser::appItoa(rthp) + "/" + crArgumentParser::appItoa(maxhp);
@@ -1562,7 +1562,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 		if(mpWidget)
 		{
 			float maxmp = 0;
-			role->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+			role->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 			roleData->getParam(WCHDATA_RTMP,param);
 			float rtmp = *(float*)param;
 			str = crArgumentParser::appItoa(rtmp) + "/" + crArgumentParser::appItoa(maxmp);
@@ -1571,7 +1571,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 		if(attackWidge)
 		{
 			float attack = 0;
-			role->doEvent(MAKEINT64(WCH_GetDamage,NULL),MAKEINT64(&attack,NULL));
+			role->doEvent(WCH_GetDamage,MAKECREPARAM(&attack,NULL));
 			str = crArgumentParser::appItoa(attack);
 			ItemMap itemMap;
 			rcfg::ConfigScript cfg_script(&itemMap);
@@ -1604,7 +1604,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 		if(defendWidge)
 		{
 			float defend = 0;
-			role->doEvent(MAKEINT64(WCH_GetDefend,NULL),MAKEINT64(&defend,NULL));
+			role->doEvent(WCH_GetDefend,MAKECREPARAM(&defend,NULL));
 			str = crArgumentParser::appItoa(defend);
 			ItemMap itemMap;
 			rcfg::ConfigScript cfg_script(&itemMap);
@@ -1832,10 +1832,10 @@ void crUIUpdateExpProgressMethod::operator()(crHandle &handle)
 		unsigned char* lv = (unsigned char *)param;
 		(*lv)--;
 		int lvexp;
-		role->doEvent(WCH_GetNextLvExp,MAKEINT64(&lvexp,NULL));
+		role->doEvent(WCH_GetNextLvExp,MAKECREPARAM(&lvexp,NULL));
 		(*lv)++;
 		int nextexp = exp;
-		role->doEvent(WCH_GetNextLvExp,MAKEINT64(&nextexp,NULL));
+		role->doEvent(WCH_GetNextLvExp,MAKECREPARAM(&nextexp,NULL));
 		progressWidget->setProgress((float)(exp-lvexp)/(float)(nextexp-lvexp));
 		//progressWidget->setProgress(0.1f);
 	}
@@ -2045,7 +2045,7 @@ void crUIUpdateMyInfoMethod::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -2093,7 +2093,7 @@ void crUIUpdateMyInfoMethod::operator()(crHandle &handle)
 		if(hpProgressWidget)
 		{
 			float maxhp = 0;
-			role->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+			role->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 			roleData->getParam(WCHDATA_RTHP,param);
 			float rthp = *(float*)param;
 			hpProgressWidget->setProgress(rthp/maxhp);
@@ -2102,7 +2102,7 @@ void crUIUpdateMyInfoMethod::operator()(crHandle &handle)
 		if(mpProgressWidget)
 		{
 			float maxmp = 0;
-			role->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+			role->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 			roleData->getParam(WCHDATA_RTMP,param);
 			float rtmp = *(float*)param;
 			mpProgressWidget->setProgress(rtmp/maxmp);
@@ -2246,7 +2246,7 @@ void crUIUpdateTargetInfoMethod::operator()(crHandle &handle)
 					if(rthp)
 					{
 						float maxhp = 0;
-						targetItem->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+						targetItem->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 						str = crArgumentParser::appItoa(*rthp) + "/" + crArgumentParser::appItoa(maxhp);
 						hpProgressWidget->setProgress((*rthp)/maxhp);
 					}
@@ -2314,7 +2314,7 @@ void crMyHPTipInfoMethod::operator()(crHandle &handle)
 		{
 			void *param;
 			float maxhp = 0;
-			me->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+			me->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 			crData *data = me->getDataClass();
 			data->getParam(WCHDATA_RTHP,param);
 			float rthp = *(float*)param;
@@ -2394,7 +2394,7 @@ void crMyMPTipInfoMethod::operator()(crHandle &handle)
 		{
 			void *param;
 			float maxmp = 0;
-			me->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+			me->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 			crData *data = me->getDataClass();
 			data->getParam(WCHDATA_RTMP,param);
 			float rtmp = *(float*)param;
@@ -2486,7 +2486,7 @@ void crTargetHPTipInfoMethod::operator()(crHandle &handle)
 				if(rthp)
 				{
 					float maxhp = 0;
-					targetItem->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+					targetItem->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 					std::string str = crArgumentParser::appItoa(*rthp) + "/" + crArgumentParser::appItoa(maxhp);
 
 					ItemMap itemMap;
@@ -2577,7 +2577,7 @@ void crTargetMPTipInfoMethod::operator()(crHandle &handle)
 				if(rtmp)
 				{
 					float maxmp = 0;
-					targetItem->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+					targetItem->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 					std::string str = crArgumentParser::appItoa(*rtmp) + "/" + crArgumentParser::appItoa(maxmp);
 
 					ItemMap itemMap;
@@ -2911,7 +2911,7 @@ void crUIUpdateMapInfoMethod::operator()(crHandle &handle)
 			iconWidget = NULL;
 			player = itr->second.first.get();
 			isEnemy = 0;
-			me->doEvent(WCH_EnemyCheck,MAKEINT64(player,&isEnemy));
+			me->doEvent(WCH_EnemyCheck,MAKECREPARAM(player,&isEnemy));
 			if(isEnemy==1)
 			{
 				if(i<friendCount)
@@ -2950,7 +2950,7 @@ void crUIUpdateMapInfoMethod::operator()(crHandle &handle)
 				//	iconWidget = NULL;
 				//}
 				unsigned int guisestate = GS_Normal;
-				player->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+				player->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 				if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable)
 				{
 					iconWidget = NULL;
@@ -3043,7 +3043,7 @@ void crUIUpdateMapInfoMethod::operator()(crHandle &handle)
 			iconWidget = NULL;
 			item = itr->second.first.get();
 			isEnemy = 0;
-			me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+			me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 			if(isEnemy==1)
 			{
 				if(i<friendCount)
@@ -3247,8 +3247,8 @@ void crMapHitMoveMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3302,7 +3302,7 @@ void crMapHitMoveMethod::operator()(crHandle &handle)
 		crVector3 hitPos;
 		hitPos[0] = (mouse[0] - centerCoord[0])/mapFactor[0]+myX;
 		hitPos[1] = (mouse[1] - centerCoord[1])/mapFactor[1]+myY;
-		me->doEvent(WCH_PlayerMoveTo,MAKEINT64(&hitPos,NULL));
+		me->doEvent(WCH_PlayerMoveTo,MAKECREPARAM(&hitPos,NULL));
 	}
 }
 ///////////////////////////////////////////
@@ -3336,7 +3336,7 @@ void crMapHitMoveMethod::operator()(crHandle &handle)
 //	//case 2:
 //	//	if(param)
 //	//	{
-//	//		_crInt64 param64 = *(_crInt64*)param;
+//	//		CREPARAM& param64 = *(CREPARAM*)param;
 //	//		m_selectIndex = LOINT64(param64);
 //	//	}
 //	//	else
@@ -3380,7 +3380,7 @@ void crMapHitMoveMethod::operator()(crHandle &handle)
 //		if(!saleParam || (*saleParam)[1]==0)
 //		{//ui提示没有库存
 //			//std::string str = "没有库存了，请下次再来！";
-//			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+//			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 //			break;
 //		}
 //		ref_ptr<crCanvasNode> canvas = crFilterRenderManager::getInstance()->findCanvas(m_canvasWidget);
@@ -3429,7 +3429,7 @@ void crMapHitMoveMethod::operator()(crHandle &handle)
 //	//case 2:
 //	//	if(param)
 //	//	{
-//	//		_crInt64 param64 = *(_crInt64*)param;
+//	//		CREPARAM& param64 = *(CREPARAM*)param;
 //	//		m_selectIndex = LOINT64(param64);
 //	//	}
 //	//	else
@@ -3538,7 +3538,7 @@ void crMapHitMoveMethod::operator()(crHandle &handle)
 //		if(!saleParam || (*saleParam)[1]==0)
 //		{//ui提示没有库存
 //			//std::string str = "没有库存了，请下次再来！";
-//			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+//			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 //			break;
 //		}
 //		const std::wstring &data = m_this->getString();
@@ -3620,7 +3620,7 @@ void crMapHitMoveMethod::operator()(crHandle &handle)
 //			break;
 //		}
 //		short maxcount;
-//		me->doEvent(WCH_GetItemCountInBackPack,MAKEINT64(item,&maxcount));
+//		me->doEvent(WCH_GetItemCountInBackPack,MAKECREPARAM(item,&maxcount));
 //		if(maxcount == 0)
 //		{
 //			break;
@@ -3912,8 +3912,8 @@ void crBackPackItemDragEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4014,8 +4014,8 @@ void crSaleItemDragEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4098,8 +4098,8 @@ void crSkillItemDragEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4181,8 +4181,8 @@ void crQuickItemDragEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4259,8 +4259,8 @@ void crEquipOnItemDragEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4344,8 +4344,8 @@ void crStorageItemDragEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (CRProducer::crGUIEventAdapter*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (CRProducer::crGUIEventAdapter*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4529,7 +4529,7 @@ void crUIUpdateHPProgressMethod::operator()(crHandle &handle)
 		if(hpProgressWidget)
 		{
 			float maxhp = 0;
-			role->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+			role->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 			roleData->getParam(WCHDATA_RTHP,param);
 			float rthp = *(float*)param;
 			hpProgressWidget->setProgress(rthp/maxhp);

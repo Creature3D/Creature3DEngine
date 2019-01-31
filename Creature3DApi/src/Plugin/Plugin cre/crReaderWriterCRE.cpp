@@ -267,7 +267,7 @@ class crReaderWriterCRE : public crReaderWriter
 				//	}
 				//}
 				if(CRNetApp::crGlobalHandle::isClient() && crDisplaySettings::instance()->getRunMode()>0)
-					crBrain::getInstance()->doEvent(WCH_DOWNLOAD,MAKEINT64(&file,NULL));
+					crBrain::getInstance()->doEvent(WCH_DOWNLOAD,MAKECREPARAM(&file,NULL));
 				return ReadResult::FILE_NOT_FOUND;
 			}
 
@@ -333,7 +333,7 @@ class crReaderWriterCRE : public crReaderWriter
 				//	}
 				//}
 				if(CRNetApp::crGlobalHandle::isClient() && crDisplaySettings::instance()->getRunMode()>0)
-					crBrain::getInstance()->doEvent(WCH_DOWNLOAD,MAKEINT64(&file,NULL));
+					crBrain::getInstance()->doEvent(WCH_DOWNLOAD,MAKECREPARAM(&file,NULL));
 				return ReadResult::FILE_NOT_FOUND;
 			}
 
@@ -515,7 +515,7 @@ class crReaderWriterCRE : public crReaderWriter
 						fileName = CRNetApp::crGlobalHandle::getInstance()->getTextureDir() + file;
 					else
 						fileName = file;
-					crBrain::getInstance()->doEvent(WCH_DOWNLOAD,MAKEINT64(&fileName,NULL));
+					crBrain::getInstance()->doEvent(WCH_DOWNLOAD,MAKECREPARAM(&fileName,NULL));
 				}
 				return ReadResult::FILE_NOT_FOUND;
 			}

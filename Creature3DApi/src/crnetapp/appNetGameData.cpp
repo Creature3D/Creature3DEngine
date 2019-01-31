@@ -531,7 +531,7 @@ float crInstanceItem::getDirz()
 void crInstanceItem::setTargetDir(const CRCore::crVector3 &dir)
 {
 	unsigned int guisestate = GS_Normal;
-	doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+	doEvent(WCH_GetGuiseState,MAKECREPARAM(&guisestate,NULL));
 	if(guisestate & GS_ExtraShifting)
 		return;
 	if(crGlobalHandle::isClient())
@@ -724,7 +724,7 @@ void crInstanceItem::closeToSyncPos(crScene *scene,float& distance)
 			crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(getRelNode());
 			if(bot)
 			{
-				doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+				doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 			}
 		}
 	}
@@ -878,7 +878,7 @@ void crInstanceItem::serverUpdate(float dt)
 		unsigned char itemstate = *(unsigned char*)param;
 		if(itemstate == IS_Dead)
 		{
-			doEvent(MAKEINT64(WCH_DeadEvent,IR_ServerRefash),MAKEINT64(&dt,NULL));
+			doEvent(MAKEINT64(WCH_DeadEvent,IR_ServerRefash),MAKECREPARAM(&dt,NULL));
 		}
 		else if(itemstate == IS_Relive)
 		{
@@ -899,7 +899,7 @@ void crInstanceItem::serverUpdate(float dt)
 		else
 		{
 			float updatedt = dt;
-			doEvent(WCH_ServerUpdate,MAKEINT64(&updatedt,NULL));
+			doEvent(WCH_ServerUpdate,MAKECREPARAM(&updatedt,NULL));
 		}
 		if(getItemtype() == crInstanceItem::Npc)
 		{
@@ -1049,7 +1049,7 @@ crItemChild* crInstanceItem::findTemporaryItemChild(int abstractid)
 //		instanceItem = itemChild->getInstanceItem();
 //		if(!instanceItem->isLoaded())
 //		{
-//			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild,this));
+//			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild,this));
 //		}
 //		instanceItem->clientLoadItemChild();
 //	}
@@ -1100,7 +1100,7 @@ CRCore::crData *crInstanceItem::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crInstanceItem::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crInstanceItem::doEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	//bool isClient = crNetContainer::getInstance()->getMainNetType() == CRNetApp::Client;
 	//if(isClient) m_eventMutex.acquire();
@@ -1204,7 +1204,7 @@ void crInstanceItem::recvItemChild(crItemChild *itemChild)
 }
 void crInstanceItem::completeCreateItemChild()
 {
-	doEvent(m_completeMsg,MAKEINT64(&m_createItemChildVec,m_completeParam));
+	doEvent(m_completeMsg,MAKECREPARAM(&m_createItemChildVec,m_completeParam));
 	m_createItemChildVec.clear();
 	//m_begin = false;
 	m_completeMsg = 0;
@@ -1868,13 +1868,13 @@ bool crInstanceItem::dynamicCollideTest(crInstanceItem *item,const CRCore::crVec
 		return false;
 	//void *param;
 	unsigned int guisestate1 = GS_Normal;
-	doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate1,NULL));
+	doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate1,NULL));
 	if(guisestate1 & GS_UnVisiable || guisestate1 & GS_StaticUnVisiable || guisestate1 & GS_StaticNoneBlock)
 	{
 		return false;
 	}
 	unsigned int guisestate2 = GS_Normal;
-	item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate2,NULL));
+	item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate2,NULL));
 	if(guisestate2 & GS_UnVisiable || guisestate2 & GS_StaticUnVisiable || guisestate2 & GS_StaticNoneBlock)
 	{
 		return false;
@@ -1882,13 +1882,13 @@ bool crInstanceItem::dynamicCollideTest(crInstanceItem *item,const CRCore::crVec
 	if(guisestate1 & GS_NoneBlock ||  guisestate2 & GS_NoneBlock)
 	{
 		//char isEnemy = 0;
-		//doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+		//doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 		//if(isEnemy == 1 )
 		return false;
 	}
 	////友军不阻挡
 	//char isEnemy = 0;
-	//doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+	//doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 	//if (isEnemy == 1)
 	//	return false;
 	void *param;
@@ -1974,11 +1974,11 @@ bool crInstanceItem::dynamicCollideTest(crInstanceItem *item,const CRCore::crVec
 float crInstanceItem::getMinDistance(crInstanceItem *item)
 {
 	float radius = 0.0f;
-	doEvent(MAKEINT64(WCH_GetRadius,0),MAKEINT64(&radius,NULL));
+	doEvent(WCH_GetRadius,MAKECREPARAM(&radius,NULL));
 	if(item)
 	{
 		float itemRadius = 0.0f;
-		item->doEvent(MAKEINT64(WCH_GetRadius,0),MAKEINT64(&itemRadius,NULL));
+		item->doEvent(WCH_GetRadius,MAKECREPARAM(&itemRadius,NULL));
 		radius += itemRadius;
 	}
 	return radius;
@@ -1988,7 +1988,7 @@ float crInstanceItem::getAttackDistance(crInstanceItem *item)
 	//void *param;
 	float dist = getMinDistance(item);
 	float extraDist = 0;
-	doEvent(MAKEINT64(WCH_GetAttackDist,0),MAKEINT64(&extraDist,NULL));
+	doEvent(WCH_GetAttackDist,MAKECREPARAM(&extraDist,NULL));
 	return maximum(dist + extraDist,1.0f);
 }
 bool crInstanceItem::isCoordInItem(const CRCore::crVector2 &coordPos)
@@ -2487,8 +2487,8 @@ bool crInstanceItem::crPathFinder::readPath(crInstanceItem *item,crScene *scene,
 								++itr )
 							{
 								blockItem = *itr;
-								blockItem->doEvent(WCH_DynamicCollide,MAKEINT64(item,NULL));
-								//item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+								blockItem->doEvent(WCH_DynamicCollide,MAKECREPARAM(item,NULL));
+								//item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 								//if(guisestate & GS_StaticUnVisiable || guisestate & GS_StaticNoneBlock || guisestate & GS_UnVisiable || guisestate & GS_NoneBlock )
 								//{
 								//	distance = 0.0f;
@@ -2520,7 +2520,7 @@ bool crInstanceItem::crPathFinder::readPath(crInstanceItem *item,crScene *scene,
 									++itr )
 								{
 									blockItem = *itr;
-									item->doEvent(WCH_EnemyCheck,MAKEINT64(blockItem.get(),&isEnemy));
+									item->doEvent(WCH_EnemyCheck,MAKECREPARAM(blockItem.get(),&isEnemy));
 									if(isEnemy != 1)
 									{
 										hasEnemy = true;
@@ -2599,7 +2599,7 @@ bool crInstanceItem::crPathFinder::readPath(crInstanceItem *item,crScene *scene,
 				crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(item->getRelNode());
 				if(bot)
 				{
-					item->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+					item->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 				}
 			}
 			if(m_bestPath.empty())
@@ -2675,7 +2675,7 @@ void crInstanceItem::crPathFinder::nextWaypoint(crInstanceItem *item,crScene *sc
 		WayPoint waypoint = getFrontWaypoint();
 		if(waypoint.m_msg != NULL)
 		{
-			item->doEvent(waypoint.m_msg,MAKEINT64(LOINT64(waypoint.m_param),MAKEINT32(HIINT64(waypoint.m_param),crGlobalHandle::isClient()?1:0)));
+			item->doEvent(waypoint.m_msg,MAKECREPARAM(LOINT64(waypoint.m_param),MAKEINT32(HIINT64(waypoint.m_param),crGlobalHandle::isClient()?1:0)));
 			if(waypoint.m_msg == WCH_ITransport)
 			{
 				popFrontWaypoint();
@@ -2705,7 +2705,7 @@ void crInstanceItem::crPathFinder::nextWaypoint(crInstanceItem *item,crScene *sc
 				if(crGlobalHandle::isClient())
 				{
 					//std::string str = "所在场景不支持跨图寻路";
-					crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(26,NULL));
+					crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(26,NULL));
 				}
 				clearWaypointDeque();
 				unsigned char itemstate = IS_Stop;
@@ -3702,7 +3702,7 @@ void crScene::itemRelive(crInstanceItem *item)
 	crRole *role = dynamic_cast<crRole *>(item);
 	int id = item->getID();
 	ref_ptr<crStreamBuf> rtDataStream;
-	item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+	item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 	if(!rtDataStream.valid())
 	{
 		return;
@@ -4052,7 +4052,7 @@ void crScene::serverUpdate(float dt,crSceneServerCallback *sc)
 	if(m_emporium.valid())
 	{
 		float updatedt = dt;
-		m_emporium->doEvent(WCH_ServerUpdate,MAKEINT64(&updatedt,NULL));
+		m_emporium->doEvent(WCH_ServerUpdate,MAKECREPARAM(&updatedt,NULL));
 	}
 	updateRemovedItemMap(dt);
 	//s_recycleItemIDDequeMutex.acquire();
@@ -5096,7 +5096,7 @@ CRCore::crData *crRole::getMetierDataClass()
 {
 	return m_metierDataClass.get();
 }
-void crRole::doMetierEvent(_crInt64 kbmsg, _crInt64 param)
+void crRole::doMetierEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	//bool isClient = crNetContainer::getInstance()->getMainNetType() == CRNetApp::Client;
 	//if(isClient) m_eventMutex.acquire();
@@ -5206,7 +5206,7 @@ void crRole::clearData()
 //		else
 //		{
 //			float updatedt = dt;
-//			doEvent(WCH_ServerUpdate,MAKEINT64(&updatedt,NULL));
+//			doEvent(WCH_ServerUpdate,MAKECREPARAM(&updatedt,NULL));
 //		}
 //	}
 //	removedItemChildUpdate(dt);
@@ -5261,7 +5261,7 @@ CRCore::crData *crPlayerGameData::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crPlayerGameData::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crPlayerGameData::doEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	//bool isClient = crNetContainer::getInstance()->getMainNetType() == CRNetApp::Client;
 	//if(isClient) m_eventMutex.acquire();
@@ -5572,7 +5572,7 @@ int crRoom::isEnemy(crInstanceItem *thisItem,crInstanceItem *targetItem)
 	{
 		char enemy = 0;
 		std::pair<crInstanceItem *,crInstanceItem *> ItemPair(thisItem,targetItem);
-		doEvent(WCH_EnemyCheck,MAKEINT64(&ItemPair,&enemy));
+		doEvent(WCH_EnemyCheck,MAKECREPARAM(&ItemPair,&enemy));
 		return enemy;
 	}
 	else
@@ -5690,7 +5690,7 @@ void crRoom::removeMember(int playerid,bool send)
 			sendPacketToAll(packet,playerid);
 		}
 	}
-	doEvent(WCH_RoomPlayerLeave,MAKEINT64(playerid,playerGameData.get()));
+	doEvent(WCH_RoomPlayerLeave,MAKECREPARAM(playerid,playerGameData.get()));
 }
 crRoomPlayer *crRoom::getMember(int playerid)
 {
@@ -5836,7 +5836,7 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 					sightinfo->clearAllInsights();
 				}
 			}
-			doEvent(WCH_RoomEnd,MAKEINT64(NULL,sc));
+			doEvent(WCH_RoomEnd,MAKECREPARAM(NULL,sc));
 			//sc->endRoomGame(this);
 			crEndRoomGamePacket packet;
 			crEndRoomGamePacket::buildReplyPacket(packet,0);
@@ -5887,7 +5887,7 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 					CRCore::notify(CRCore::WARN) << tmp << " SceneName=" << m_scene->getSceneName() << " Time to SightUpdate=" << t << " sightInfoMap=" << m_sightInfoMap.size() << " sightInfoSet=" << m_sightInfoSet.size() << " roleeyecount=" << roleeyecount << " itemeyecount=" << itemeyecount << std::endl;
 				}
 				float _dt = dt;
-				doEvent(WCH_RoomUpdate,MAKEINT64(&_dt,sc));
+				doEvent(WCH_RoomUpdate,MAKECREPARAM(&_dt,sc));
 				start_tick = end_tick;
 				end_tick = CRCore::Timer::instance()->tick();
 				t = CRCore::Timer::instance()->delta_s(start_tick, end_tick);
@@ -5913,7 +5913,7 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 			m_timeRemain = 0.0f;
 			sc->startRoomGame(this);
 			startGame();
-			doEvent(WCH_RoomStart,MAKEINT64(NULL,sc));
+			doEvent(WCH_RoomStart,MAKECREPARAM(NULL,sc));
 		}
 	}
 	else
@@ -5922,7 +5922,7 @@ void crRoom::serverUpdate(float dt,crSceneServerCallback *sc)
 		if(m_timeRemain<=-m_removeTime)
 		{
 			m_timeRemain = 0.0f;
-			doEvent(WCH_RoomRemoved,MAKEINT64(NULL,sc));
+			doEvent(WCH_RoomRemoved,MAKECREPARAM(NULL,sc));
 			crRemoveRoomGamePacket packet;
 			crRemoveRoomGamePacket::buildReplyPacket(packet,0);
 			sendPacketToAll(packet);
@@ -6280,7 +6280,7 @@ void crRoom::sendStartGame(crNetManager *netManager,crNetDataManager *netDataMan
 				//unsigned char itemstate = IS_Stop;
 				//roleData->inputParam(WCHDATA_ItemState, &itemstate);
 				//m_scene->gainBirthPoint(role,getBirthPointIndex(roomPlayer));
-				doEvent(WCH_GainBirthPoint,MAKEINT64(role,getBirthPointIndex(roomPlayer)));
+				doEvent(WCH_GainBirthPoint,MAKECREPARAM(role,getBirthPointIndex(roomPlayer)));
 				stream->_writeFloat(role->getPosx());
 				stream->_writeFloat(role->getPosy());
 				stream->_writeFloat(role->getPosz());
@@ -6298,7 +6298,7 @@ void crRoom::sendStartGame(crNetManager *netManager,crNetDataManager *netDataMan
 		crStartRoomGamePacket::buildReplyPacket(packet,stream.get());
 		netManager->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
 
-		doEvent(WCH_AddPlayer,MAKEINT64(playerData.get(),NULL));
+		doEvent(WCH_AddPlayer,MAKECREPARAM(playerData.get(),NULL));
 	}
 }
 void crRoom::startGame(crRoomPlayer *roomPlayer)
@@ -6449,7 +6449,7 @@ CRCore::crData *crRoom::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crRoom::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crRoom::doEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	m_currentMsg = kbmsg;
 	if(m_dataClass.valid())

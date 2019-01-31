@@ -55,7 +55,7 @@ void crRecvDataStream::recvStream(CRCore::crStreamBuf *stream)
 {
     //m_recvedCount += stream->getRemainSize();
 	m_stream->write(stream->getPtr(),stream->getRemainSize());
-	crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecveDataStream,m_packetid),MAKEINT64(this,NULL));
+	crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecveDataStream,m_packetid),MAKECREPARAM(this,NULL));
 }
 CRCore::crStreamBuf *crRecvDataStream::getStream()
 {
@@ -115,7 +115,7 @@ void crRecvFileStream::recvStream(CRCore::crStreamBuf *stream)
 {
 	//m_recvedCount += stream->getRemainSize();
 	m_stream->write(stream->getPtr(),stream->getRemainSize());
-	crGlobalHandle::getInstance()->doEvent(WCH_RecvingFileStream,MAKEINT64(this,NULL));
+	crGlobalHandle::getInstance()->doEvent(WCH_RecvingFileStream,MAKECREPARAM(this,NULL));
 }
 CRCore::crStreamBuf *crRecvFileStream::getStream()
 {
@@ -305,7 +305,7 @@ void crDataStreamTransfer::recvStream(CRCore::crStreamBuf *stream)
 			if(dataStream->isRecvComplete())
 			{
 				removeTransferingStream(dataStream.get());
-				crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedDataStream,packetid),MAKEINT64(dataStream.get(),streamid));
+				crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_RecvedDataStream,packetid),MAKECREPARAM(dataStream.get(),streamid));
 			}
 		}
 	}

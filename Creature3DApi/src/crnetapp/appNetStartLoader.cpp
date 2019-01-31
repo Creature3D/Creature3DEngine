@@ -225,16 +225,16 @@ void crNetStartLoader::loading(CRProducer::crViewer *viewer,Producer::Window par
 			//int playerid = role->getPlayerID();
 			bot->getDataClass()->inputParam(WCHDATA_Item,role);
 			//crSceneManager::getInstance()->setPlayer(npc.get());
-			role->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_LoadMatrix));
+			role->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_LoadMatrix));
 		}
 		role->setNode(npc->getNPCBody());
 		data = role->getDataClass();
 		data->excHandle(MAKEINT64(/*WCH_CheckPlayerData*/WCH_CheckNetData,role));
 
 		float rt = 0;
-		role->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&rt,NULL));
+		role->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
 		data->inputParam(WCHDATA_RTHP,&rt);
-		role->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
+		role->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 		data->inputParam(WCHDATA_RTMP,&rt);
 		unsigned char itemstate = IS_Dead;
 		data->inputParam(WCHDATA_ItemState,&itemstate);
@@ -561,16 +561,16 @@ void crNetStartLoader2::loading(CRProducer::crViewer *viewer,Producer::Window pa
 			//int playerid = role->getPlayerID();
 			bot->getDataClass()->inputParam(WCHDATA_Item,role);
 			//crSceneManager::getInstance()->setPlayer(npc.get());
-			role->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_LoadMatrix));
+			role->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_LoadMatrix));
 		}
 		role->setNode(npc->getNPCBody());
 		data = role->getDataClass();
 		data->excHandle(MAKEINT64(/*WCH_CheckPlayerData*/WCH_CheckNetData,role));
 
 		float rt = 0;
-		role->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&rt,NULL));
+		role->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
 		data->inputParam(WCHDATA_RTHP,&rt);
-		role->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
+		role->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 		data->inputParam(WCHDATA_RTMP,&rt);
 		unsigned char itemstate = IS_Dead;
 		data->inputParam(WCHDATA_ItemState,&itemstate);

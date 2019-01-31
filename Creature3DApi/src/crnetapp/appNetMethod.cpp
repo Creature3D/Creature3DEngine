@@ -281,8 +281,8 @@ void crQuickKeyPressedMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_itemid = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_itemid = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -310,7 +310,7 @@ void crQuickKeyPressedMethod::operator()(crHandle &handle)
 			crData *thisData = m_this->getDataClass();
 			if(dataType == DT_Thing || dataType == DT_AttackThing)
 			{
-				m_this->doEvent(WCH_NetUseThing,MAKEINT64(item,NULL));
+				m_this->doEvent(WCH_NetUseThing,MAKECREPARAM(item,NULL));
 			}
 			else if(dataType == DT_Skill)
 			{
@@ -459,7 +459,7 @@ void crConnectToLoginServerNewMethod::operator()(crHandle &handle)
 	{
 		int serverid = 1;
 		CRCore::ref_ptr<CRNet::crNetConductor> netConductor = new CRNet::crNetConductor;
-		std::string file = crGlobalHandle::gData()->gClientCfg();// "Client.cfg";
+		std::string file = crGlobalHandle::gData()->getClientCfg();// "Client.cfg";
 		rcfg::ConfigScript cfg_script;
 		if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 		{
@@ -712,7 +712,7 @@ void crRegisterAccountMethod::operator()(crHandle &handle)
 		noticeText->setText(notice.c_str());
 		noticeText->setVisiable(true);
 		}*/
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(1,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(1,NULL));
 		return;
 	}
 	ref_ptr<crEditWidgetNode> password2Widget = dynamic_cast<crEditWidgetNode *>(canvas->getWidget(m_password2Widget));
@@ -728,7 +728,7 @@ void crRegisterAccountMethod::operator()(crHandle &handle)
 			noticeText->setText(notice.c_str());
 			noticeText->setVisiable(true);
 			}*/
-			crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(2,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(2,NULL));
 			return;
 		}
 	}
@@ -745,7 +745,7 @@ void crRegisterAccountMethod::operator()(crHandle &handle)
 			noticeText->setText(notice.c_str());
 			noticeText->setVisiable(true);
 			}*/
-			crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(3,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(3,NULL));
 			return;
 		}
 		else if(email.find('@')==std::string::npos)
@@ -756,7 +756,7 @@ void crRegisterAccountMethod::operator()(crHandle &handle)
 			//	noticeText->setText(notice.c_str());
 			//	noticeText->setVisiable(true);
 			//}
-			crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(4,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(4,NULL));
 			return;
 		}
 	}
@@ -767,12 +767,12 @@ void crRegisterAccountMethod::operator()(crHandle &handle)
 		code = codeWidget->getUTF8String();
 		if(code.empty())
 		{
-			crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(31,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(31,NULL));
 			return;
 		}
 		else if(code.size()<10)
 		{
-			crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(32,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(32,NULL));
 			return;
 		}
 	}
@@ -865,7 +865,7 @@ void crConnectToLoginServerNew2Method::operator()(crHandle &handle)
 			//	noticeText->setText(notice.c_str());
 			//	noticeText->setVisiable(true);
 			//}
-			crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(1,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(1,NULL));
 			handle.outputParam(0,&sucess);
 			return;
 		}
@@ -881,7 +881,7 @@ void crConnectToLoginServerNew2Method::operator()(crHandle &handle)
 				noticeText->setText(notice.c_str());
 				noticeText->setVisiable(true);
 				}*/
-				crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(2,NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(2,NULL));
 				handle.outputParam(0,&sucess);
 				return;
 			}
@@ -899,7 +899,7 @@ void crConnectToLoginServerNew2Method::operator()(crHandle &handle)
 				noticeText->setText(notice.c_str());
 				noticeText->setVisiable(true);
 				}*/
-				crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(3,NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(3,NULL));
 				handle.outputParam(0,&sucess);
 				return;
 			}
@@ -911,7 +911,7 @@ void crConnectToLoginServerNew2Method::operator()(crHandle &handle)
 				noticeText->setText(notice.c_str());
 				noticeText->setVisiable(true);
 				}*/
-				crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(4,NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(4,NULL));
 				handle.outputParam(0,&sucess);
 				return;
 			}
@@ -925,7 +925,7 @@ void crConnectToLoginServerNew2Method::operator()(crHandle &handle)
 		int port = DEFAULTPORT;
 		int bufSizeScale = 1;
 
-		std::string file = crGlobalHandle::gData()->gClientCfg();// "Client.cfg";
+		std::string file = crGlobalHandle::gData()->getClientCfg();// "Client.cfg";
 		rcfg::ConfigScript cfg_script;
 		if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 		{
@@ -1292,7 +1292,7 @@ void crLoginChatMethod::operator()(crHandle &handle)
 
 	//const std::string& userName = crMyPlayerData::getInstance()->getPlayerName();
 	int playerid = crMyPlayerData::getInstance()->getPlayerID();
-	std::string file = crGlobalHandle::gData()->gClientCfg();//"Client.cfg";
+	std::string file = crGlobalHandle::gData()->getClientCfg();//"Client.cfg";
 	rcfg::ConfigScript cfg_script;
 	if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 	{
@@ -1402,8 +1402,8 @@ void crRecvChatFriendListMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -1473,8 +1473,8 @@ void crRecvChatGroupListMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -1547,8 +1547,8 @@ void crRecvChatGroupMemberListMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -1830,8 +1830,8 @@ void crRecvChatStateChangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -2259,7 +2259,7 @@ void crConnectToLoginServer2Method::operator()(crHandle &handle)
 	int port = DEFAULTPORT;
 	int bufSizeScale = 1;
 
-	std::string file = crGlobalHandle::gData()->gClientCfg();//"Client.cfg";
+	std::string file = crGlobalHandle::gData()->getClientCfg();//"Client.cfg";
 	rcfg::ConfigScript cfg_script;
 	if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 	{
@@ -2448,8 +2448,8 @@ void crOnlinePlayerListMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -2587,8 +2587,8 @@ void crInsertToChatFriendTreeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_playerid = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_playerid = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -2747,8 +2747,8 @@ void crInsertToChatGroupTreeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_groupid = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_groupid = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -3012,8 +3012,8 @@ void crChatGroupListMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3178,8 +3178,8 @@ void crRecvFriendChatMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3407,8 +3407,8 @@ void crSendSceneChat2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3588,8 +3588,8 @@ void crRecvGameChatMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3669,8 +3669,8 @@ void crRecvGameChat2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3768,9 +3768,9 @@ void crAddChatFriendSystemMsgMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_recvPlayerData = (crChatServerPlayerData *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_recvPlayerData = (crChatServerPlayerData *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -4283,7 +4283,7 @@ void crExternSelectedGameMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_recvFileStream = (crRecvFileStream *)(LOINT64(param64));
 //		}
 //		else
@@ -4356,7 +4356,7 @@ void crExternSelectedGameMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_recvFileStream = (crRecvFileStream *)(LOINT64(param64));
 //		}
 //		else
@@ -4445,7 +4445,7 @@ void crEnterGameMethod::operator()(crHandle &handle)
 	//	noticeText->setText("Login game...");
 	//	noticeText->setVisiable(true);
 	//}
-	crGlobalHandle::getInstance()->doEvent(WCH_LoginGame,NULL);
+	crGlobalHandle::getInstance()->doEvent(WCH_LoginGame);
 }
 /////////////////////////////////////////
 //
@@ -4471,7 +4471,7 @@ void crEnterSceneMethod::operator()(crHandle &handle)
 	//	noticeText->setText("Login scene...");
 	//	noticeText->setVisiable(true);
 	//}
-	crGlobalHandle::getInstance()->doEvent(WCH_LoginScene,NULL);
+	crGlobalHandle::getInstance()->doEvent(WCH_LoginScene);
 }
 ///////////////////////////////////////////
 ////
@@ -4567,8 +4567,8 @@ void crRecvedItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_id = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_id = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -4585,7 +4585,7 @@ void crRecvedItemMethod::operator()(crHandle &handle)
 	crInstanceItem* item = crMyPlayerData::getInstance()->findDownloadItem(m_id);
 	if(item)
 	{
-		crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item,NULL));
 		crMyPlayerData::getInstance()->removeDownloadItem(m_id);
 		//std::string updateCfg = item->getAbstractItem()->getUpdatecfg();
 		//if(!updateCfg.empty())
@@ -4594,7 +4594,7 @@ void crRecvedItemMethod::operator()(crHandle &handle)
 		//	crGlobalHandle::getInstance()->doEvent(WCH_DownloadedUpdatecfg,MAKEINT64(&updateCfg,MAKEINT32(GameClient_Game,DF_DownLoadItem2)));
 		//}
 		//else
-		//	crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+		//	crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 	}
 }
 ///////////////////////////////////////////
@@ -4619,7 +4619,7 @@ void crRecvedItemMethod::operator()(crHandle &handle)
 //	if(item.valid())
 //	{
 //		crMyPlayerData::getInstance()->popFrontDownloadItem();
-//		crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+//		crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 //	}
 //}
 /////////////////////////////////////////
@@ -4639,8 +4639,8 @@ void crRecvedItemChildMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_id = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_id = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -4657,8 +4657,8 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 	crMyPlayerData::ItemChildPair itemChildPair;
 	if(crMyPlayerData::getInstance()->findDownloadItemChild(m_id,itemChildPair))
 	{
-		crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(itemChildPair.first.get(),itemChildPair.second.get()));
-		//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(NULL,NULL));//清理
+		crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(itemChildPair.first.get(),itemChildPair.second.get()));
+		//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild );//清理
 		crMyPlayerData::getInstance()->removeDownloadItemChild(m_id);
 	}
 }
@@ -4684,7 +4684,7 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 //	if(crMyPlayerData::getInstance()->getFrontDownloadItemChild(itemChildPair))
 //	{
 //		crMyPlayerData::getInstance()->popFrontDownloadItemChild();
-//		crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(itemChildPair.first.get(),itemChildPair.second.get()));
+//		crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(itemChildPair.first.get(),itemChildPair.second.get()));
 //	}
 //}
 ///////////////////////////////////////////
@@ -4713,8 +4713,8 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_stream = (CRCore::crStreamBuf *)(LOINT64(param64));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_stream = (CRCore::crStreamBuf *)(LOCREPARAM(param64));
 //		}
 //		else
 //		{
@@ -4805,7 +4805,7 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 //					if(needDownload)
 //						crMyPlayerData::getInstance()->pushDownloadItem(item.get(),DF_DownLoadItem2);
 //					else
-//			            crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+//			            crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 //				}
 //			}
 //			else if(downloadFlg == DF_DownLoadItem2)
@@ -4814,7 +4814,7 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 //				if(item.valid())
 //				{
 //					crMyPlayerData::getInstance()->popFrontDownloadItem();
-//					crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+//					crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 //				}
 //			}
 //			else if(downloadFlg == DF_DownLoadItemChild)
@@ -4832,7 +4832,7 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 //					if(needDownload)
 //						crMyPlayerData::getInstance()->pushDownloadItemChild(itemChildPair.first.get(),itemChildPair.second.get(),DF_DownLoadItemChild2);
 //					else
-//						crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(itemChildPair.first.get(),itemChildPair.second.get()));
+//						crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(itemChildPair.first.get(),itemChildPair.second.get()));
 //				}
 //			}
 //			else if(downloadFlg == DF_DownLoadItemChild2)
@@ -4841,7 +4841,7 @@ void crRecvedItemChildMethod::operator()(crHandle &handle)
 //				if(crMyPlayerData::getInstance()->getFrontDownloadItemChild(itemChildPair))
 //				{
 //                    crMyPlayerData::getInstance()->popFrontDownloadItemChild();
-//					crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(itemChildPair.first.get(),itemChildPair.second.get()));
+//					crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(itemChildPair.first.get(),itemChildPair.second.get()));
 //				}
 //			}
 //		}
@@ -5109,8 +5109,8 @@ void crLoginGameReturnMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_loginCode = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_loginCode = LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -5299,8 +5299,8 @@ void crRecvGameRoleListStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -5324,11 +5324,11 @@ void crRecvGameRoleListStreamMethod::operator()(crHandle &handle)
 		{
 			readItem(item,stream,false);
 			//download role and loadrole
-			crBrain::getInstance()->doEvent(WCH_SetSelectRolePosition,MAKEINT64(item.get(),i));
+			crBrain::getInstance()->doEvent(WCH_SetSelectRolePosition,MAKECREPARAM(item.get(),i));
 			if(item->getAbstractItem())
-				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 			else
-				crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 			crMyPlayerData::getInstance()->addGameRole(dynamic_cast<crRole *>(item.get()));
 // 			if(i == 0)
 // 				crMyPlayerData::getInstance()->setSelectedGameRole(dynamic_cast<crRole *>(item.get()));
@@ -5359,8 +5359,8 @@ void crRecvCreateRoleStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -5380,11 +5380,11 @@ void crRecvCreateRoleStreamMethod::operator()(crHandle &handle)
 		ref_ptr<crInstanceItem> item;
 		readItem(item,stream,false);
 		//download role and loadrole
-		crBrain::getInstance()->doEvent(WCH_SetSelectRolePosition,MAKEINT64(item.get(),crMyPlayerData::getInstance()->getGameRoleCount()));
+		crBrain::getInstance()->doEvent(WCH_SetSelectRolePosition,MAKECREPARAM(item.get(),crMyPlayerData::getInstance()->getGameRoleCount()));
 		if(item->getAbstractItem())
-			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 		else
-			crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 		crMyPlayerData::getInstance()->addGameRole(dynamic_cast<crRole *>(item.get()));
 	}
 }
@@ -5412,8 +5412,8 @@ void crRecvCreateMainRoleStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -5439,13 +5439,13 @@ void crRecvCreateMainRoleStreamMethod::operator()(crHandle &handle)
 			myPlayer->doEvent(WCH_RecvCreateMainRole);
 			//download role and loadrole
 			//crMyPlayerData::getInstance()->addGameRole(dynamic_cast<crRole *>(item.get()));
-			//crBrain::getInstance()->doEvent(WCH_SetSelectRolePosition,MAKEINT64(item.get(),crMyPlayerData::getInstance()->getGameRoleCount()-1));
+			//crBrain::getInstance()->doEvent(WCH_SetSelectRolePosition,MAKECREPARAM(item.get(),crMyPlayerData::getInstance()->getGameRoleCount()-1));
 			//crMyPlayerData::getInstance()->setLoadMainRoleCase(3);
 			if(item->getAbstractItem())
-				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 			else
-				crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
-			//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+				crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 		}
 	}
 }
@@ -5477,9 +5477,9 @@ void crSetSelectRolePositionMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_role = (crInstanceItem *)(LOINT64(param64));
-			m_roleIndex = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_role = (crInstanceItem *)(LOCREPARAM(param64));
+			m_roleIndex = HICREPARAM(param64);
 		}
 		else
 		{
@@ -5545,7 +5545,7 @@ void crCheckAndLoadGameRolesMethod::operator()(crHandle &handle)
 		 ++itr )
 	{
 		role = itr->second.get();
-		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(role,HttpD_DownLoadItem));
+		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(role,HttpD_DownLoadItem));
 	}
 	crMyPlayerData::getInstance()->unlockGameRoleMap();
 }
@@ -5708,7 +5708,7 @@ void crQuerySceneInfoMethod::operator()(crHandle &handle)
 				if(extindex>0) querySceneInfoData->setExternSceneType(atoi(record[extindex].c_str()));
 
 				crMyPlayerData::getInstance()->setSceneInfoData(querySceneInfoData.get());
-				crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo,MAKEINT64(NULL,NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo );
 			}
 		}
 		//crQuerySceneInfoPacket packet;
@@ -5762,7 +5762,7 @@ void crQuerySceneInfo2Method::operator()(crHandle &handle)
 				if(extindex>0) querySceneInfoData->setExternSceneType(atoi(record[extindex].c_str()));
 
 				crMyPlayerData::getInstance()->setSceneInfoData(querySceneInfoData.get());
-				crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo,MAKEINT64(NULL,NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo );
 			}
 		}
 		//crQuerySceneInfoPacket packet;
@@ -5917,8 +5917,8 @@ void crLoginSceneReturnMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_loginCode = (char)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_loginCode = (char)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -5960,7 +5960,7 @@ void crLoginSceneReturnMethod::operator()(crHandle &handle)
 	//	//	noticeText->setText("登陆场景失败...");
 	//	//	noticeText->setVisiable(true);
 	//	//}
-	//	crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(28,NULL));
+	//	crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(28,NULL));
 	//	//crWaitStartGameMethod::startGame(0);
 	//}
 }
@@ -5987,8 +5987,8 @@ void crIsNetReturnSuccessMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6026,8 +6026,8 @@ void crIsSuccessMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_code = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_code = LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -6064,8 +6064,8 @@ void crRecvSceneItemListMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6110,9 +6110,9 @@ void crRecvSceneItemListMethod::operator()(crHandle &handle)
 						if(item->getItemtype()>crInstanceItem::instanceitem)
 						{//npc或role
 							float rt = 0;
-							item->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&rt,NULL));
+							item->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
 							item->getDataClass()->inputParam(WCHDATA_RTHP,&rt);
-							item->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
+							item->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 							item->getDataClass()->inputParam(WCHDATA_RTMP,&rt);
 						}
 					}
@@ -6160,7 +6160,7 @@ void crQueryRoleInfoMethod::operator()(crHandle &handle)
 	//else
 	//{
 	//	std::string str = "请先创建角色！";
-	//	crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(2,NULL));
+	//	crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(2,NULL));
 	//}
 }
 /////////////////////////////////////////
@@ -6187,8 +6187,8 @@ void crRecvRoleInfo2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6297,7 +6297,7 @@ void crRecvRoleInfo2Method::operator()(crHandle &handle)
 					crPlayerGameData *playerGameData = playerData->getPlayerGameData();
 					role->setPlayerGameData(playerGameData);
 					if(playerGameData)
-						playerGameData->doEvent(WCH_RecvRoleInfo2,MAKEINT64(playerData.get(),role));
+						playerGameData->doEvent(WCH_RecvRoleInfo2,MAKECREPARAM(playerData.get(),role));
 					//CRCore::notify(CRCore::ALWAYS)<<"WCH_ServerCheckRoleData "<<item->getRoleID()<<std::endl;
 					item->getDataClass()->excHandle(MAKEINT64(WCH_ServerCheckRoleData,item.get()));
 					//CRCore::notify(CRCore::ALWAYS)<<"WCH_ServerCheckRoleData end"<<item->getRoleID()<<std::endl;
@@ -6330,8 +6330,8 @@ void crRecvMainRoleMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6411,9 +6411,9 @@ void crServerCheckRoleDataMethod::operator()(crHandle &handle)
 		if(playerData.valid())
 		{
 			//float rt = 0;
-			//m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&rt,NULL));
+			//m_this->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
 			//m_this->getDataClass()->inputParam(WCHDATA_RTHP,&rt);
-			//m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
+			//m_this->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 			//m_this->getDataClass()->inputParam(WCHDATA_RTMP,&rt);
 
 			/////write and send
@@ -6504,8 +6504,8 @@ void crRecvRoleInfoMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6532,14 +6532,14 @@ void crRecvRoleInfoMethod::operator()(crHandle &handle)
 		if(playerGameData && playerGameData->getMainRoleID() == role->getRoleID())
 		{
 			playerGameData->setMainRole(role);
-			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 		}
 		else
 		{
 			crRunGameHandle::getInstance()->addRole(role);
 			//crMyPlayerData::getInstance()->addRole(role);
 			//role->setPlayerGameData(playerGameData);
-			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_EnterSceneSuccess));
+			crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_EnterSceneSuccess));
 		}
 	}
 }
@@ -6567,8 +6567,8 @@ void crRecvItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6588,7 +6588,7 @@ void crRecvItemMethod::operator()(crHandle &handle)
 	{
 		ref_ptr<crInstanceItem> item;
 		readItem(item,m_recvDataStream->getStream(),false);
-        crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+        crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 	}
 }
 /////////////////////////////////////////
@@ -7148,9 +7148,9 @@ void crPlayerInRangeTestMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_sight = (crSightInfo *)(LOINT64(param64));
-			m_role2 = (crRole *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_sight = (crSightInfo *)(LOCREPARAM(param64));
+			m_role2 = (crRole *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -7170,7 +7170,7 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 	if(m_sight && m_role2 && m_role2->getDataClass())
 	{
 		unsigned int guisestate = GS_Normal;
-		m_role2->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		m_role2->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable || (guisestate & GS_Hide && !(guisestate & GS_UnHide)))
 		{
 			if(m_sight->isRoleInSight(m_role2))
@@ -7212,14 +7212,14 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 		//data->getParam(WCHDATA_SightRange,param);
 		//short sightRange = *((short*)param);
 		float sightRange = 0;
-		m_this->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+		m_this->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 
 		float stealth = 0;
-		m_role2->doEvent(MAKEINT64(WCH_GetStealth,NULL),MAKEINT64(&stealth,NULL));
+		m_role2->doEvent(WCH_GetStealth,MAKECREPARAM(&stealth,NULL));
 		if(stealth>0.0f)
 		{
 			float stealthspy = 0;
-			m_this->doEvent(MAKEINT64(WCH_GetStealthSpy,NULL),MAKEINT64(&stealthspy,NULL));
+			m_this->doEvent(WCH_GetStealthSpy,MAKECREPARAM(&stealthspy,NULL));
 			stealth -= stealthspy;
 			if(stealth<0.0f)
 				stealth = 0.0f;
@@ -7273,11 +7273,11 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 				if(itemstate != IS_Dead)
 				{
 					char isEnemy = 0;
-					m_this->doEvent(WCH_EnemyCheck,MAKEINT64(m_role2,&isEnemy));
+					m_this->doEvent(WCH_EnemyCheck,MAKECREPARAM(m_role2,&isEnemy));
 					if(isEnemy == -1)
 					{
 						//_crInt64 distEnmity = MAKEINT64(-(int)dist,enmity);
-						m_this->doEvent(WCH_InPatrolTest, MAKEINT64(m_role2, &dist));
+						m_this->doEvent(WCH_InPatrolTest, MAKECREPARAM(m_role2, &dist));
 					}
 				}
 			}
@@ -7307,8 +7307,8 @@ void crLoadItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -7349,7 +7349,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 					(dynamic_cast<crRole *>(m_item.get()))->loadMetierData(PlayerStream);
 				}
 				crGlobalHandle::getInstance()->setStartupLoadingProgress(1.0f);
-				crGlobalHandle::getInstance()->doEvent(WCH_LoginGameReturn,MAKEINT64(crMyPlayerData::getInstance()->getLoadMainRoleCase(),NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_LoginGameReturn,MAKECREPARAM(crMyPlayerData::getInstance()->getLoadMainRoleCase(),NULL));
 			}
 			else if(!m_item->getAbstractItem())
 			{
@@ -7414,12 +7414,12 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				unsigned char itemstate = IS_Stop;//IS_ItemLoad;
 				itemdata->inputParam(WCHDATA_ItemState,&itemstate);
 
-				m_item->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+				m_item->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 				if(itemtype == crInstanceItem::Role)
 				{
 					(dynamic_cast<crRole *>(m_item.get()))->loadMetierData(NetStream);
 					crMyPlayerData::getInstance()->insertInRangePlayer(dynamic_cast<crRole *>(m_item.get()),npc.get());
-					m_item->doEvent(WCH_CheckAndRackEquipOnMesh,NULL);
+					m_item->doEvent(WCH_CheckAndRackEquipOnMesh);
 				}
 				else
 				{
@@ -7430,10 +7430,10 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				if( runcode == crRunGameHandle::RoleSelect)
 				{
 					//角色选择场景
-					//m_item->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+					//m_item->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 					bot->setVisiable(true);
 					bot->setEnableIntersect(true);
-					//bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+					//bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				}
 				else if( runcode >= crRunGameHandle::NetGame)
 				{//NetGame
@@ -7442,13 +7442,13 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				}
 
 				float rt = 0;
-				m_item->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&rt,NULL));
+				m_item->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
 				itemdata->inputParam(WCHDATA_RTHP,&rt);
-				m_item->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
+				m_item->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 				itemdata->inputParam(WCHDATA_RTMP,&rt);
 			}
 			float dt = 0.1f;
-			m_item->doEvent(WCH_ChangeActState, MAKEINT64(ACT_Idle, &dt));
+			m_item->doEvent(WCH_ChangeActState, MAKECREPARAM(ACT_Idle, &dt));
 		}
 		else if(itemtype == crInstanceItem::instanceitem)
 		{
@@ -7519,7 +7519,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			crMyPlayerData::getInstance()->insertInRangeItem(m_item.get(),group.get());
 
 			float dt = 0.1f;
-			m_item->doEvent(WCH_ChangeActState, MAKEINT64(ACT_Idle, &dt));
+			m_item->doEvent(WCH_ChangeActState, MAKECREPARAM(ACT_Idle, &dt));
 
 			crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 			if(netConductor && itemtype == crInstanceItem::instanceitem)
@@ -7597,7 +7597,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			}
 			crMyPlayerData::getInstance()->getScene()->insertSceneItem(m_item.get());
 			float dt = 0.1f;
-			m_item->doEvent(WCH_ChangeActState, MAKEINT64(ACT_Idle, &dt));
+			m_item->doEvent(WCH_ChangeActState, MAKECREPARAM(ACT_Idle, &dt));
 			m_item->doEvent(WCH_RecvItemRTData);
 			//char gbuf[256];
 			//sprintf(gbuf,"LoadLocalItem %s,visiable:%d\n\0",m_item->getIName().c_str(),group->getVisiable());
@@ -7641,9 +7641,9 @@ void crItemInRangeTestMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_sight = (crSightInfo *)(LOINT64(param64));
-			m_item = (crInstanceItem *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_sight = (crSightInfo *)(LOCREPARAM(param64));
+			m_item = (crInstanceItem *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -7663,7 +7663,7 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 	if(m_sight && m_item && m_item->getDataClass())
 	{
 		unsigned int guisestate = GS_Normal;
-		m_item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		m_item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable || (guisestate & GS_Hide && !(guisestate & GS_UnHide)))
 		{
 			if(m_sight->isItemInSight(m_item))
@@ -7707,13 +7707,13 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 		//data->getParam(WCHDATA_SightRange,param);
 		//short sightRange = *((short*)param);
 		float sightRange = 0;
-		m_this->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+		m_this->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 		float stealth = 0;
-		m_item->doEvent(MAKEINT64(WCH_GetStealth,NULL),MAKEINT64(&stealth,NULL));
+		m_item->doEvent(WCH_GetStealth,MAKECREPARAM(&stealth,NULL));
 		if(stealth>0.0f)
 		{
 			float stealthspy = 0;
-			m_this->doEvent(MAKEINT64(WCH_GetStealthSpy,NULL),MAKEINT64(&stealthspy,NULL));
+			m_this->doEvent(WCH_GetStealthSpy,MAKECREPARAM(&stealthspy,NULL));
 			stealth -= stealthspy;
 			if(stealth<0.0f)
 				stealth = 0.0f;
@@ -7767,11 +7767,11 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 				if(itemstate != IS_Dead)
 				{
 					char isEnemy = 0;
-					m_this->doEvent(WCH_EnemyCheck,MAKEINT64(m_item,&isEnemy));
+					m_this->doEvent(WCH_EnemyCheck,MAKECREPARAM(m_item,&isEnemy));
 					if(isEnemy == -1)
 					{
 						//_crInt64 distEnmity = MAKEINT64(-(int)dist,enmity);
-						m_this->doEvent(WCH_InPatrolTest,MAKEINT64(m_item,&dist));
+						m_this->doEvent(WCH_InPatrolTest, MAKECREPARAM(m_item,&dist));
 					}
 				}
 			}
@@ -7807,7 +7807,7 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_player = (crSceneServerPlayerData *)(LOINT64(param64));
 //			m_rolePlayer2 = (RolePlayerPair *)(HIINT64(param64));
 //		}
@@ -7882,7 +7882,7 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_player = (crSceneServerPlayerData *)(LOINT64(param64));
 //			m_item = (crInstanceItem *)(HIINT64(param64));
 //		}
@@ -7964,7 +7964,7 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 //			}
 //			if(m_item->getItemtype() != crInstanceItem::Role)
 //			{
-//				m_item->doEvent(WCH_ItemInRangeTest,MAKEINT64(role,&dist));
+//				m_item->doEvent(WCH_ItemInRangeTest,MAKECREPARAM(role,&dist));
 //			}
 //			if(inRange)
 //				m_player->insertInRangeItemMap(m_item.get(),dist);
@@ -8056,17 +8056,11 @@ void crSendToBotMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crInstanceItem*)param;
 		break;
 	case 2:
-		m_param = (_crInt64*)param;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -8081,7 +8075,7 @@ void crSendToBotMethod::operator()(crHandle &handle)
 	if(role)
 	{
 		crNode *bot = role->getRelNode();
-		bot->doEvent(m_this->getCurrentMsg(),*m_param);
+		bot->doEvent(m_this->getCurrentMsg(),m_param);
 	}
 }
 
@@ -8112,8 +8106,8 @@ void crNetPickTargetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -8196,7 +8190,7 @@ void crNetPickTargetMethod::operator()(crHandle &handle)
 				{
 					unsigned int guisestate = GS_Normal;
 					guisestate = GS_Normal;
-					targetItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+					targetItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 					if(guisestate & GS_Static)
 					{
 						targetType = Target_StaticNpc;
@@ -8213,7 +8207,7 @@ void crNetPickTargetMethod::operator()(crHandle &handle)
 					targetType = Target_Item;
 					//unsigned int guisestate = GS_Normal;
 					//guisestate = GS_Normal;
-					//targetItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+					//targetItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 					//if(guisestate & GS_Static)
 					//{
 					////	targetType = Target_StaticItem;
@@ -8288,96 +8282,90 @@ void crNetPickTargetMethod::operator()(crHandle &handle)
 	handle.outputParam(WCHDATA_TargetType,&targetType);
 }
 
-/////////////////////////////////////////
+///////////////////////////////////////////
+////
+////crNodeMouseEventMethod
+////
+///////////////////////////////////////////
+//crNodeMouseEventMethod::crNodeMouseEventMethod()
+//{
+//}
 //
-//crNodeMouseEventMethod
+//crNodeMouseEventMethod::crNodeMouseEventMethod(const crNodeMouseEventMethod& handle):
+//crMethod(handle)
+//{
+//}
 //
-/////////////////////////////////////////
-crNodeMouseEventMethod::crNodeMouseEventMethod()
-{
-}
-
-crNodeMouseEventMethod::crNodeMouseEventMethod(const crNodeMouseEventMethod& handle):
-crMethod(handle)
-{
-}
-
-void crNodeMouseEventMethod::inputParam(int i, void *param)
-{
-	switch(i) 
-	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_ea = NULL;
-		}
-		break;
-	case 2:
-		if(param)
-		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
-		}
-		else
-		{
-			m_ea = NULL;
-		}
-		break;
-	}
-}
-
-void crNodeMouseEventMethod::addParam(int i, const std::string& str)
-{
-}
-
-void crNodeMouseEventMethod::operator()(crHandle &handle)
-{
-	if(!m_ea.valid()) return;
-	crNode *targetNode = NULL;
-	crVector2 mouse(m_ea->getXnormalized(),m_ea->getYnormalized());
-	crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
-	if(!bindview||!bindview->isInited())
-		return;
-	CRCore::crIntersectVisitor::HitList hits;
-	bindview->computeIntersections(mouse[0],mouse[1],hits,~AutoTransMask);
-    
-	if(!hits.empty())
-	{
-		targetNode = hits[0].getObject();
-		if(targetNode->hasHandle(m_msg))
-			targetNode->doEvent(m_msg,m_param);
-		else
-		{
-			CRCore::NodePath &nodePath = hits[0].getNodePath();
-			for( CRCore::NodePath::iterator pitr = nodePath.begin();
-				pitr != nodePath.end();
-				++pitr )
-			{
-				targetNode = *pitr;
-				if(targetNode->hasHandle(m_msg))
-				{
-					targetNode->doEvent(m_msg,m_param);
-					break;
-				}
-			}
-		}
-	}
-	if(m_ea->getEventType() == crGUIEventAdapter::MOVE)
-	{
-		crData *brainData = crBrain::getInstance()->getDataClass();
-		void *param;
-		brainData->getParam(WCHDATA_CurrentFocusNode,param);
-		crNode *currentFocusNode = (crNode *)param;
-		if(targetNode != currentFocusNode)
-		{
-			if(currentFocusNode)
-				currentFocusNode->doEvent(WCH_NODELOSTFOCUS);
-			if(targetNode)
-				targetNode->doEvent(WCH_NODEGETFOCUS);
-			brainData->inputParam(WCHDATA_CurrentFocusNode,targetNode);
-		}
-	}
-}
+//void crNodeMouseEventMethod::inputParam(int i, void *param)
+//{
+//	switch(i) 
+//	{
+//	case 2:
+//		if(param)
+//		{
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+//		}
+//		else
+//		{
+//			m_ea = NULL;
+//		}
+//		break;
+//	}
+//}
+//
+//void crNodeMouseEventMethod::addParam(int i, const std::string& str)
+//{
+//}
+//
+//void crNodeMouseEventMethod::operator()(crHandle &handle)
+//{
+//	if(!m_ea.valid()) return;
+//	crNode *targetNode = NULL;
+//	crVector2 mouse(m_ea->getXnormalized(),m_ea->getYnormalized());
+//	crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
+//	if(!bindview||!bindview->isInited())
+//		return;
+//	CRCore::crIntersectVisitor::HitList hits;
+//	bindview->computeIntersections(mouse[0],mouse[1],hits,~AutoTransMask);
+//    
+//	if(!hits.empty())
+//	{
+//		targetNode = hits[0].getObject();
+//		if(targetNode->hasHandle(m_msg))
+//			targetNode->doEvent(m_msg,m_param);
+//		else
+//		{
+//			CRCore::NodePath &nodePath = hits[0].getNodePath();
+//			for( CRCore::NodePath::iterator pitr = nodePath.begin();
+//				pitr != nodePath.end();
+//				++pitr )
+//			{
+//				targetNode = *pitr;
+//				if(targetNode->hasHandle(m_msg))
+//				{
+//					targetNode->doEvent(m_msg,m_param);
+//					break;
+//				}
+//			}
+//		}
+//	}
+//	if(m_ea->getEventType() == crGUIEventAdapter::MOVE)
+//	{
+//		crData *brainData = crBrain::getInstance()->getDataClass();
+//		void *param;
+//		brainData->getParam(WCHDATA_CurrentFocusNode,param);
+//		crNode *currentFocusNode = (crNode *)param;
+//		if(targetNode != currentFocusNode)
+//		{
+//			if(currentFocusNode)
+//				currentFocusNode->doEvent(WCH_NODELOSTFOCUS);
+//			if(targetNode)
+//				targetNode->doEvent(WCH_NODEGETFOCUS);
+//			brainData->inputParam(WCHDATA_CurrentFocusNode,targetNode);
+//		}
+//	}
+//}
 
 /////////////////////////////////////////
 //
@@ -8411,9 +8399,9 @@ void crNetControlMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -8451,7 +8439,7 @@ void crNetControlMethod::operator()(crHandle &handle)
 			return;
 		}
 		unsigned int guisestate = GS_Normal;
-		m_this->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		m_this->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable)
 		{
 			return;
@@ -8544,13 +8532,13 @@ void crNetControlMethod::operator()(crHandle &handle)
 				useItemParam.m_user = m_this;
 				if(targetItem.valid() && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 					useItemParam.m_target = targetItem.get();
-				item->doEvent(MAKEINT64(WCH_UseItem,UT_NetClient),MAKEINT64(&useItemParam,NULL));
+				item->doEvent(MAKEINT64(WCH_UseItem,UT_NetClient),MAKECREPARAM(&useItemParam,NULL));
 				if(!(guisestate & GS_Static) && !(guisestate & GS_StaticNoneBlock))
 				{
 					crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_this->getRelNode());
 					if(bot)
 					{
-						m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_RotMatrix));
+						m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_RotMatrix));
 					}
 				}
 			}
@@ -8570,7 +8558,7 @@ void crNetControlMethod::operator()(crHandle &handle)
 					if(targetItem.valid() && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 						useItemParam.m_target = targetItem.get();
 					unsigned short useResult = UR_None;
-					item->doEvent(MAKEINT64(WCH_UseItem,UT_NetServer),MAKEINT64(&useItemParam,&useResult));
+					item->doEvent(MAKEINT64(WCH_UseItem,UT_NetServer),MAKECREPARAM(&useItemParam,&useResult));
 				}
 			}
 			//itemstate = IS_Stop;
@@ -8609,7 +8597,7 @@ void crNetControlMethod::operator()(crHandle &handle)
 		//	crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_this->getRelNode());
 		//	if(bot)
 		//	{
-		//		m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+		//		m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 		//	}
 		//}
 		//if(m_netType == GameClient_Game)
@@ -8620,15 +8608,15 @@ void crNetControlMethod::operator()(crHandle &handle)
 		//		//float speed = 0.0f;
 		//		if(itemstate >= IS_Move)
 		//		{
-		//			//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+		//			//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 		//			//speed *= crGlobalHandle::gData()->gUnitScale();
 		//			//bot->doEvent(WCH_NetMoveToTarget2,MAKEINT64(&targetPosition,&speed));
-		//			m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_TransMatrix));
+		//			m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_TransMatrix));
 		//			crMyPlayerData::getInstance()->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
 		//		}
 		//		else
 		//		{
-		//			m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+		//			m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 		//		}
 		//		//else
 		//		//{
@@ -8680,8 +8668,8 @@ void crServerItemMoveMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -8714,7 +8702,7 @@ void crServerItemMoveMethod::operator()(crHandle &handle)
 			if(itemstate >= IS_Move)
 			{
 				float speed = 0;
-				m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+				m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 				float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 				data->getParam(WCHDATA_TargetPos,param);
 				crVector3 targetPosition = *((crVector3*)param);
@@ -8806,8 +8794,8 @@ void crRevertUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -8835,12 +8823,12 @@ void crRevertUpdateMethod::operator()(crHandle &handle)
 		float maxhp = 0;
 		float maxmp = 0;
 		float revert = 0;
-		m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
-		m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+		m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
+		m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 
 		if(*rthp<maxhp)
 		{
-			m_this->doEvent(MAKEINT64(WCH_GetHPRevert,NULL),MAKEINT64(&revert,NULL));
+			m_this->doEvent(WCH_GetHPRevert,MAKECREPARAM(&revert,NULL));
 			*rthp += revert * m_dt;
 			if(*rthp>maxhp) *rthp = maxhp;
 		}
@@ -8849,7 +8837,7 @@ void crRevertUpdateMethod::operator()(crHandle &handle)
 		float* rtmp = (float*)param;
         if(*rtmp<maxmp)
 		{
-		    m_this->doEvent(MAKEINT64(WCH_GetMPRevert,NULL),MAKEINT64(&revert,NULL));
+		    m_this->doEvent(WCH_GetMPRevert,MAKECREPARAM(&revert,NULL));
 		    *rtmp += revert * m_dt;
 			if(*rtmp>maxmp) *rtmp = maxmp;
 		}
@@ -8876,8 +8864,8 @@ void crItemUpdateMethod::inputParam(int i, void *param)
 	//case 2:
 	//	if(param)
 	//	{
-	//		_crInt64 param64 = *(_crInt64*)param;
-	//		m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOINT64(param64));
+	//		CREPARAM& param64 = *(CREPARAM*)param;
+	//		m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOCREPARAM(param64));
 	//	}
 	//	else
 	//	{
@@ -8906,7 +8894,7 @@ void crItemUpdateMethod::operator()(crHandle &handle)
 			{
 				float dt = crFrameStamp::getInstance()->getFrameInterval();
 				item->clientUpdate(dt);
-				item->doEvent(WCH_UPDATEVISITOR,MAKEINT64(&dt,m_this));
+				item->doEvent(WCH_UPDATEVISITOR,MAKECREPARAM(&dt,m_this));
 			}
 		}
 	}
@@ -8942,8 +8930,8 @@ void crNodeCoordToItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_node = (crNode*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_node = (crNode*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -9018,9 +9006,9 @@ void crItemCoordToNodeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_node = (crNode*)(LOINT64(param64));
-			m_mode = (crMatterObject::MatrixDummyType)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_node = (crNode*)(LOCREPARAM(param64));
+			m_mode = (crMatterObject::MatrixDummyType)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -9140,9 +9128,9 @@ void crNetMoveToTargetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetPosition = *((crVector3*)(LOINT64(param64)));
-			m_velocity = *((float*)(HIINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetPosition = *((crVector3*)(LOCREPARAM(param64)));
+			m_velocity = *((float*)(HICREPARAM(param64)));
 		}
 		break;
 	//case 3:
@@ -9171,23 +9159,23 @@ void crNetMoveToTargetMethod::init()
 		omcp->setIgnoreZ(true);
 		CRCore::Msg msg;
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYDOWN),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYDOWN),NULL);
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		//时间到后停下
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(WCH_USER+47,NULL);//WCH_NetStopMove
+		msg.m_param = MAKECREPARAM(WCH_USER+47,NULL);//WCH_NetStopMove
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_INPUTAITASK,NULL);
-		msg.m_param = MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
@@ -9197,17 +9185,17 @@ void crNetMoveToTargetMethod::init()
 		omcp->setNeedVelocity(false);
 		omcp->setIgnoreZ(true);
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(WCH_USER+47,NULL);//WCH_NetStopMove
+		msg.m_param = MAKECREPARAM(WCH_USER+47,NULL);//WCH_NetStopMove
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_INPUTAITASK,NULL);
-		msg.m_param = MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
@@ -9242,14 +9230,14 @@ void crNetMoveToTargetMethod::operator()(crHandle &handle)
 			omcp = dynamic_cast<crOrdinalMsgControlPoint *>(taskPointVec[1].get());
 			omcp->setPosition(m_targetPosition);
 
-			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKEINT64(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot),m_aiTask.get()));
+			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKECREPARAM(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot),m_aiTask.get()));
 
 			//m_time = t1;
 		}
 		else
 		{//停止移动
-			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get()));
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL));
+			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get()));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL));
 			//m_this->doEvent(WCH_NetStopMove);
 			//CRCore::notify(CRCore::ALWAYS)<<"crNetMoveToTargetMethod "<<std::endl;
 		}
@@ -9290,9 +9278,9 @@ void crNetMoveToTarget2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetPosition = *((crVector3*)(LOINT64(param64)));
-			m_velocity = *((float*)(HIINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetPosition = *((crVector3*)(LOCREPARAM(param64)));
+			m_velocity = *((float*)(HICREPARAM(param64)));
 		}
 		break;
 	//case 3:
@@ -9321,18 +9309,18 @@ void crNetMoveToTarget2Method::init()
 		omcp->setIgnoreZ(true);
 		CRCore::Msg msg;
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYDOWN),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYDOWN),NULL);
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		//时间到停止
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_INPUTAITASK,NULL);
-		msg.m_param = MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
@@ -9342,12 +9330,12 @@ void crNetMoveToTarget2Method::init()
 		omcp->setNeedVelocity(false);
 		omcp->setIgnoreZ(true);
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL);
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_INPUTAITASK,NULL);
-		msg.m_param = MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
@@ -9382,14 +9370,14 @@ void crNetMoveToTarget2Method::operator()(crHandle &handle)
 			omcp = dynamic_cast<crOrdinalMsgControlPoint *>(taskPointVec[1].get());
 			omcp->setPosition(m_targetPosition);
 
-			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKEINT64(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot),m_aiTask.get()));
+			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKECREPARAM(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot),m_aiTask.get()));
 
 			//m_time = t1;
 		}
 		else
 		{//停止移动
-			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get()));
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL));
+			m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get()));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYUP),NULL));
 		}
 	}
 }
@@ -9678,8 +9666,8 @@ void crNetMouseControlViewMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -9787,7 +9775,7 @@ void crNetStopMoveMethod::operator()(crHandle &handle)
 		crNode *bot = m_this->getRelNode();
 		if(bot)
 		{
-		    m_this->doEvent(WCH_NodeCoordToItem,MAKEINT64(NULL,bot));
+		    m_this->doEvent(WCH_NodeCoordToItem,MAKECREPARAM(NULL,bot));
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
 			stream->createBuf(24);
 			stream->_writeInt(m_this->getPosx());
@@ -9836,9 +9824,9 @@ void crRecvStopMoveMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -9882,7 +9870,7 @@ void crRecvStopMoveMethod::operator()(crHandle &handle)
 		//		crVector3 nullpos;
 		//		float speed = 0.0f;
 		//		this_bot->doEvent(WCH_NetMoveToTarget2,MAKEINT64(&nullpos,&speed));//停止移动
-		//		m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(this_bot,crMatterObject::MD_FullMatrix));
+		//		m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(this_bot,crMatterObject::MD_FullMatrix));
 		//	}
 		//}
 		//CRCore::notify(CRCore::ALWAYS)<<"recv crPlayerEventPacket WCH_RecvStopMove"<<std::endl;
@@ -9917,8 +9905,8 @@ void crRecvItemRTDataMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -9964,12 +9952,12 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 		{
 			if(relNode)
 			{
-				m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_FullMatrix));
+				m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(relNode,crMatterObject::MD_FullMatrix));
 				if(crMyPlayerData::getInstance()->isTeammateAndShareSight(m_this))
 				{
 					relNode->setVisiable(true);
 					relNode->setEnableIntersect(true);
-					//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+					//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				}
 			}
 
@@ -10009,7 +9997,7 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 			//	if(!(targetType & Target_Instance) && itemstate >= IS_Move/* && itemstate <= IS_Patrol*/)
 			//	{
 			//		//float speed = 0;
-			//		//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+			//		//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 			//		//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 			//		//if(m_this == crMyPlayerData::getInstance()->getRole())
 			//		//	node->doEvent(WCH_NetMoveToTarget,MAKEINT64(&targetPos,&relspeed));
@@ -10090,7 +10078,7 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 				//	relNode->accept(acceptGI);
 				//}
 
-			    m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_FullMatrix));
+			    m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(relNode,crMatterObject::MD_FullMatrix));
 				void *param;
 				data->getParam(WCHDATA_ItemState,param);
 				unsigned char itemstate = *(unsigned char *)param;
@@ -10113,7 +10101,7 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 						CRCore::notify(CRCore::FATAL)<<"crLoadItemMethod(): resScript是空的 "<<std::endl;
 					}
 				}
-				//if(!m_staticRoot) node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				//if(!m_staticRoot) node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				if(m_staticRoot)
 				{
 					relNode->setVisiable(true);
@@ -10151,8 +10139,8 @@ void crRecvItemChildDataMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -10176,8 +10164,8 @@ void crRecvItemChildDataMethod::operator()(crHandle &handle)
 		readItem(item,m_stream.get(),false);
 		itemchild->setInstanceItem(item.get());
 		//m_this->insertChildItem(itemchild.get());
-		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemchild.get(),m_this));
-		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(NULL,NULL));//清理
+		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemchild.get(),m_this));
+		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild );//清理
 	}
 }
 /////////////////////////////////////////
@@ -10206,8 +10194,8 @@ void crNodeInRangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_frameDelay = (short)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_frameDelay = (short)(LOCREPARAM(param64));
 			//m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
 		}
 		else
@@ -10229,14 +10217,14 @@ void crNodeInRangeMethod::operator()(crHandle &handle)
 	//{//可以加入一个能程现半透明渐变的材质
 		//m_frameDelay--;
 		//if(m_frameDelay>0)
-		//          m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,m_frameDelay));
+		//          m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,m_frameDelay));
 		float dt = crFrameStamp::getInstance()->getFrameInterval();
 		if(m_frameDelay>0)
 		{
 			float delay = (float)m_frameDelay / 1000.0f;
 			delay -= dt;
 			m_frameDelay = floor(delay * 1000.0f);
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,m_frameDelay));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,m_frameDelay));
 		}
 		else
 		{
@@ -10278,8 +10266,8 @@ void crNodeOutRangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_frameDelay = (short)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_frameDelay = (short)(LOCREPARAM(param64));
 			//m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
 		}
 		else
@@ -10301,14 +10289,14 @@ void crNodeOutRangeMethod::operator()(crHandle &handle)
 	//{//可以加入一个能程现半透明渐变的材质
 		//m_frameDelay--;
 		//if(m_frameDelay>0)
-		//	m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,m_frameDelay));
+		//	m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,m_frameDelay));
 		float dt = crFrameStamp::getInstance()->getFrameInterval();
 		if(m_frameDelay>0)
 		{
 			float delay = (float)m_frameDelay / 1000.0f;
 			delay -= dt;
 			m_frameDelay = floor(delay * 1000.0f);
-			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,m_frameDelay));
+			m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,m_frameDelay));
 		}
 		else
 		{
@@ -10342,8 +10330,8 @@ void crRecvCreateItemChildMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -10437,8 +10425,8 @@ void crRecvCreateItemChildMethod::operator()(crHandle &handle)
 				itemChild->setParentItem(parentItem.get());
 				parentItem->insertChildItem(itemChild.get());
 
-				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemChild.get(),rootitem.get()));
-				//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(NULL,NULL));//清理
+				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemChild.get(),rootitem.get()));
+				//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild );//清理
 			}
 		}
 	}
@@ -10467,9 +10455,9 @@ void crLoadItemChildMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_itemchild = (crItemChild *)(LOINT64(param64));
-			m_rootitem = (crInstanceItem *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_itemchild = (crItemChild *)(LOCREPARAM(param64));
+			m_rootitem = (crInstanceItem *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -10570,7 +10558,7 @@ void crLoadItemChildMethod::operator()(crHandle &handle)
 					{
 						//if( crMyPlayerData::getInstance()->ifItemIsMe(m_rootitem.get()) )
 						//	m_rootitem->doEvent(WCH_BuildEquipOnList,NULL);
-						m_rootitem->doEvent(WCH_CheckAndRackEquipOnMesh,NULL);
+						m_rootitem->doEvent(WCH_CheckAndRackEquipOnMesh);
 					}
 				}
 				rootData->getParam(WCHDATA_SkillMap,param);
@@ -10755,9 +10743,9 @@ void crUseItemCheckMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_useItemParam = (UseItemParam*)(LOINT64(param64));
-			m_useResult = (unsigned short *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_useItemParam = (UseItemParam*)(LOCREPARAM(param64));
+			m_useResult = (unsigned short *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -10809,9 +10797,9 @@ void crUseItemCheckMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_DataType,param);
 			unsigned char datatype = *(unsigned char*)param;
 			if(datatype == DT_Attack)
-				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,0),MAKEINT64(&cdreduce,NULL));
+				m_useItemParam->m_user->doEvent(WCH_GetSkillCD,MAKECREPARAM(&cdreduce,NULL));
 			else
-				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,1),MAKEINT64(&cdreduce,NULL));
+				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,1),MAKECREPARAM(&cdreduce,NULL));
 			if(cdreduce<=-1.0f)
 				cdreduce = -0.99f; 
 			cdtime = cdtime/(1.0f+cdreduce);
@@ -10904,9 +10892,9 @@ void crUseItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_useItemParam = (UseItemParam*)(LOINT64(param64));
-			m_useResult = (unsigned short *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_useItemParam = (UseItemParam*)(LOCREPARAM(param64));
+			m_useResult = (unsigned short *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -10956,9 +10944,9 @@ void crUseItemMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_DataType,param);
 			unsigned char datatype = *(unsigned char*)param;
 			if(datatype == DT_Attack)
-				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,0),MAKEINT64(&cdreduce,NULL));
+				m_useItemParam->m_user->doEvent(WCH_GetSkillCD,MAKECREPARAM(&cdreduce,NULL));
 			else
-				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,1),MAKEINT64(&cdreduce,NULL));
+				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,1),MAKECREPARAM(&cdreduce,NULL));
 			if(cdreduce<=-1.0f)
 				cdreduce = -0.99f; 
 			cdtime = cdtime/(1.0f+cdreduce);
@@ -11120,11 +11108,11 @@ void crUseItemMethod::operator()(crHandle &handle)
 			}
 			//if(!userNode->getVisiable()||!userNode->getEnableIntersect())
 			//{
-   //             userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,5));
+   //             userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,5));
 			//}
 			//userData->inputParam(WCHDATA_ItemUseParam,itemUseParam.get());
 			//if(userNode)
-			//    userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_ItemUse,itemUseParam/*itemUsePair*/));
+			//    userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_ItemUse,itemUseParam/*itemUsePair*/));
 
 			thisData->getParam(WCHDATA_UseItemProtectTime,param);//吟唱时间
 			float itemProtectTime = *(float *)param;
@@ -11140,7 +11128,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 				//if(!isMiss)
 				//	m_useItemParam->m_user->doEvent(WCH_CritTest);
 				userData->inputParam(WCHDATA_AttackUseParam,itemUseParam.get());
-				m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKEINT64(&cdtime,m_this));
+				m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&cdtime,m_this));
 				//char gbuf[256];
 				//sprintf(gbuf,"UseItem Weapon:%d,targetNode:%d\n\0",itemUseParam->m_weapon->getChild(0),itemUseParam->m_targetNode.get());
 				//gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
@@ -11148,13 +11136,13 @@ void crUseItemMethod::operator()(crHandle &handle)
 			else
 			{
 				userData->inputParam(WCHDATA_ItemUseParam,itemUseParam.get());
-				m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKEINT64(&itemProtectTime,m_this));
+				m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&itemProtectTime,m_this));
 			}
 
 			if(datatype == DT_AttackThing)
 			{//道具数量减1
 				char removeItem = -1;
-				m_useItemParam->m_user->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(m_this,&removeItem));
+				m_useItemParam->m_user->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(m_this,&removeItem));
 			}
 			//CRCore::notify(CRCore::ALWAYS)<<"crUseItemMethod "<<std::endl;
 		}while(0);
@@ -11192,9 +11180,9 @@ void crServerUseItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_useItemParam = (UseItemParam *)(LOINT64(param64));
-			m_useResult = (unsigned short *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_useItemParam = (UseItemParam *)(LOCREPARAM(param64));
+			m_useResult = (unsigned short *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -11244,9 +11232,9 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_DataType,param);
 			unsigned char datatype = *(unsigned char*)param;
 			if(datatype == DT_Attack)
-				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,0),MAKEINT64(&cdreduce,NULL));
+				m_useItemParam->m_user->doEvent(WCH_GetSkillCD,MAKECREPARAM(&cdreduce,NULL));
 			else
-				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,1),MAKEINT64(&cdreduce,NULL));
+				m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,1),MAKECREPARAM(&cdreduce,NULL));
 			if(cdreduce<=-1.0f)
 				cdreduce = -0.99f; 
 			cdtime = cdtime/(1.0f+cdreduce);
@@ -11397,7 +11385,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 			//if(datatype == DT_AttackThing)
 			//{//道具数量减1
 			//	char removeItem = -1;
-			//	m_useItemParam->m_user->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(m_this,&removeItem));
+			//	m_useItemParam->m_user->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(m_this,&removeItem));
 			//}
 			//else if(datatype == DT_Attack)
 			//{//普通攻击，做暴击判断
@@ -11433,7 +11421,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 					hitParam->m_fireItem = m_useItemParam->m_user;
 					hitParam->m_targetPos = m_useItemParam->m_targetPos;
 					//CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod "<<m_this->getID()<<std::endl;
-					m_this->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
+					m_this->doEvent(WCH_NodeCollideWithItem,MAKECREPARAM(hitParam.get(),NULL));
 
 					//if(datatype == DT_Attack)
 					//{//普通攻击，做暴击判断
@@ -11495,8 +11483,8 @@ void crNetUseItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_useItemParam = (UseItemParam *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_useItemParam = (UseItemParam *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -11645,11 +11633,11 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 		}
 		//if(!userNode->getVisiable()||!userNode->getEnableIntersect())
 		//{
-		//	userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,5));
+		//	userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,5));
 		//}
 		//userData->inputParam(WCHDATA_ItemUseParam,itemUseParam.get());
 		//if(userNode)
-		//    userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_ItemUse,itemUseParam/*itemUsePair*/));
+		//    userNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_ItemUse,itemUseParam/*itemUsePair*/));
 
 		//thisData->getParam(WCHDATA_CDTime,param);
 		//float cdtime = *(float *)param;
@@ -11664,30 +11652,30 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_CDTime,param);
 			float cdtime = *(float *)param;
 			float cdreduce = 0.0f;
-			m_useItemParam->m_user->doEvent(MAKEINT64(WCH_GetSkillCD,0),MAKEINT64(&cdreduce,NULL));
+			m_useItemParam->m_user->doEvent(WCH_GetSkillCD,MAKECREPARAM(&cdreduce,NULL));
 			if(cdreduce<=-1.0f)
 				cdreduce = -0.99f; 
 			cdtime = cdtime/(1.0f+cdreduce);
-			m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKEINT64(&cdtime,m_this));
+			m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&cdtime,m_this));
 		}
 		else
 		{
 			userData->inputParam(WCHDATA_ItemUseParam,itemUseParam.get());
 			thisData->getParam(WCHDATA_UseItemProtectTime,param);
 			float itemProtectTime = *(float *)param;
-			m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKEINT64(&itemProtectTime,m_this));
+			m_useItemParam->m_user->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&itemProtectTime,m_this));
 		}
 		//thisData->getParam(WCHDATA_DataType,param);
 		//unsigned char datatype = *(unsigned char*) param;
 		//if(datatype == DT_AttackThing)
 		//{//道具数量减1
 		//	char removeItem = -1;
-		//	m_userAndTargetItem->first->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(m_this,&removeItem));
+		//	m_userAndTargetItem->first->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(m_this,&removeItem));
 		//}
 		//发动攻击视野
 		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 		char isEnemy = 0;
-		me->doEvent(WCH_EnemyCheck,MAKEINT64(m_useItemParam->m_user.get(),&isEnemy));
+		me->doEvent(WCH_EnemyCheck,MAKECREPARAM(m_useItemParam->m_user.get(),&isEnemy));
 		if(isEnemy!=1)
 		{
 			bool visable = true;
@@ -11700,7 +11688,7 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 			//	else
 			//	{
 			//		isEnemy = 0;
-			//		me->doEvent(WCH_EnemyCheck,MAKEINT64(m_useItemParam->m_target.get(),&isEnemy));
+			//		me->doEvent(WCH_EnemyCheck,MAKECREPARAM(m_useItemParam->m_target.get(),&isEnemy));
 			//		if(isEnemy!=1)
 			//		{
 			//			visable = false;
@@ -11738,8 +11726,8 @@ void crNetServerUseItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_useItemParam = (UseItemParam *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_useItemParam = (UseItemParam *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -11833,7 +11821,7 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		//if(datatype == DT_AttackThing)
 		//{//道具数量减1
 		//	char removeItem = -1;
-		//	m_useItemParam->m_user->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(m_this,&removeItem));
+		//	m_useItemParam->m_user->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(m_this,&removeItem));
 		//}
 		//else if(datatype == DT_Attack && m_useItemParam->m_target.valid())
 		//{//普通攻击，目标做格挡躲避等判断
@@ -11956,8 +11944,8 @@ void crItemUseMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_itemUseParam = (ItemUseParam *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_itemUseParam = (ItemUseParam *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -11987,7 +11975,7 @@ void crItemUseMethod::operator()(crHandle &handle)
 				ref_ptr<crInstanceItem> item = ((crInstanceItem*)param);
 				if (item.valid())
 				{
-					weapon->doEvent(WCH_AdjustBulletSpeed, MAKEINT64(item.get(), NULL));
+					weapon->doEvent(WCH_AdjustBulletSpeed, MAKECREPARAM(item.get(), NULL));
 				}
 			}
 			m_this->selectWeaponMatterObject(weapon);//doEvent WCH_WEAPON_SELECT
@@ -12058,8 +12046,8 @@ void crItemEspecialUseMethod::inputParam(int i, void *param)
 	case 2:
 		if (param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_weapon = (crGroup *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_weapon = (crGroup *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -12121,8 +12109,8 @@ void crBindWeaponMatrixMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_bot = (CRPhysics::crViewMatterObject *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_bot = (CRPhysics::crViewMatterObject *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -12256,8 +12244,8 @@ void crShowAimUIMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_weapon = (CRPhysics::crWeaponMatterObject *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_weapon = (CRPhysics::crWeaponMatterObject *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -12333,9 +12321,9 @@ void crBotCollideMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_collideNode = (crNode *)(LOINT64(param64));
-			m_contactInfo = (dContact *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_collideNode = (crNode *)(LOCREPARAM(param64));
+			m_contactInfo = (dContact *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -12382,7 +12370,7 @@ void crBotCollideMethod::operator()(crHandle &handle)
 						}
 						//队友伤害校验
 						//格挡和闪避动作判断
-						//hititem->doEvent(WCH_ChangeActState,MAKEINT64(ACT_Hurt,&m_hurtActTime));
+						//hititem->doEvent(WCH_ChangeActState,MAKECREPARAM(ACT_Hurt,&m_hurtActTime));
 						crData *bulletData = bullet->getDataClass();
 						bulletData->getParam(WCHDATA_Item,param);
 						crInstanceItem *bulletItem = ((crInstanceItem*)param);
@@ -12393,7 +12381,7 @@ void crBotCollideMethod::operator()(crHandle &handle)
 							//gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
 							return;
 						}
-						hititem->doEvent(WCH_BULLET_COLLIDE,MAKEINT64(bulletItem,NULL));
+						hititem->doEvent(WCH_BULLET_COLLIDE, MAKECREPARAM(bulletItem,NULL));
 
 						bool sendevent = false;
 						/*if (crMyPlayerData::getInstance()->ifItemIsMe(hititem))
@@ -12491,9 +12479,9 @@ void crNodeCollideWithItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			//m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			//m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -12657,7 +12645,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 							hitParam->m_targetPos = targetPos;
 							//if(bulletitem->getAbstractItemID() == 26264)
 							//	CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod targetPos:"<< targetPos<<std::endl;
-							bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
+							bulletitem->doEvent(WCH_NodeCollideWithItem, MAKECREPARAM(hitParam.get(),NULL));
 
 							crData *bulletitemData = bulletitem->getDataClass();
 							if(bulletitemData)
@@ -12685,7 +12673,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 					//{//DT_AttackThing最后一枚炮弹再射击后就被移除，会导致其击中无效
 					//	bulletitem = itemChild->getInstanceItem();
 					//	hitParam->m_fireItem = role;
-					//	bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
+					//	bulletitem->doEvent(WCH_NodeCollideWithItem,MAKECREPARAM(hitParam.get(),NULL));
 					//}
 				}
 				//else
@@ -12743,7 +12731,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 							hitParam->m_fireItem = fireitem;
 							hitParam->m_targetPos = targetPos;
 							//CRCore::notify(CRCore::ALWAYS)<<"crNodeCollideWithItemMethod "<<m_this->getID()<<std::endl;
-							bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
+							bulletitem->doEvent(WCH_NodeCollideWithItem, MAKECREPARAM(hitParam.get(),NULL));
 							
 							crData *bulletitemData = bulletitem->getDataClass();
 							if(bulletitemData)
@@ -12773,7 +12761,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 			//{
 			//	bulletitem = itemChild->getInstanceItem();
 			//	hitParam->m_fireItem = fireitem;
-			//	bulletitem->doEvent(WCH_NodeCollideWithItem,MAKEINT64(hitParam.get(),NULL));
+			//	bulletitem->doEvent(WCH_NodeCollideWithItem,MAKECREPARAM(hitParam.get(),NULL));
 			//}
 		}
 	}
@@ -12809,8 +12797,8 @@ void crDamageCollideFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_hitParam = (HitParam *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_hitParam = (HitParam *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -12857,18 +12845,18 @@ void crDamageCollideFormula1Method::operator()(crHandle &handle)
 		float fireDamage = 0;
 		if(m_hitParam->m_fireItem.valid())
 		{
-		    m_hitParam->m_fireItem->doEvent(MAKEINT64(WCH_GetDamage,m_dmtype),MAKEINT64(&fireDamage,NULL));
+		    m_hitParam->m_fireItem->doEvent(MAKEINT64(WCH_GetDamage,m_dmtype), MAKECREPARAM(&fireDamage,NULL));
 		}
         
 		float hitDefend = 0;
-		m_hitParam->m_hitItem->doEvent(MAKEINT64(WCH_GetDefend,m_dmtype),MAKEINT64(&hitDefend,NULL));
+		m_hitParam->m_hitItem->doEvent(MAKEINT64(WCH_GetDefend,m_dmtype), MAKECREPARAM(&hitDefend,NULL));
 
         float damage = dmbase + fireDamage - hitDefend;
 		//if(damage>0.0f) damage = 0.0f;
 		damage *= m_hitParam->m_rate;
 		damage = CRCore::maximum(damage,1.0f);
 
-		m_hitParam->m_hitItem->doEvent(WCH_AddDamage,MAKEINT64(&damage,m_hitParam->m_fireItem.get()));
+		m_hitParam->m_hitItem->doEvent(WCH_AddDamage,MAKECREPARAM(&damage,m_hitParam->m_fireItem.get()));
 	}
 }
 /////////////////////////////////////////
@@ -12902,8 +12890,8 @@ void crGetDamageFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -12962,13 +12950,13 @@ void crGetDamageFormula1Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipAttack,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAttack, MAKECREPARAM(m_this,&equip));
 				equipAttackSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipStrength,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipStrength,MAKECREPARAM(m_this,&equip));
 				equipStrengthSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -13013,8 +13001,8 @@ void crGetDamageFormula2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13052,7 +13040,7 @@ void crGetDamageFormula2Method::operator()(crHandle &handle)
 			if(itemChild && itemChild->isLoaded())
 			{
 				equip = 0;
-				itemChild->getInstanceItem()->doEvent(MAKEINT64(WCH_GetEquipMagicDamage,m_formulaid),MAKEINT64(m_this,&equip));
+				itemChild->getInstanceItem()->doEvent(MAKEINT64(WCH_GetEquipMagicDamage,m_formulaid), MAKECREPARAM(m_this,&equip));
 				equipSum+=equip;
 			}
 		}
@@ -13091,8 +13079,8 @@ void crGetDefendFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13148,13 +13136,13 @@ void crGetDefendFormula1Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipDefend,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipDefend, MAKECREPARAM(m_this,&equip));
 				equipDefendSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipAgility,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAgility,MAKECREPARAM(m_this,&equip));
 				equipAgilitySum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -13198,8 +13186,8 @@ void crGetDefendFormula2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13237,7 +13225,7 @@ void crGetDefendFormula2Method::operator()(crHandle &handle)
 			if(itemChild && itemChild->isLoaded())
 			{
 				equip = 0;
-				itemChild->getInstanceItem()->doEvent(MAKEINT64(WCH_GetEquipMagicDefend,m_formulaid),MAKEINT64(m_this,&equip));
+				itemChild->getInstanceItem()->doEvent(MAKEINT64(WCH_GetEquipMagicDefend,m_formulaid), MAKECREPARAM(m_this,&equip));
 				equipSum+=equip;
 			}
 		}
@@ -13277,8 +13265,8 @@ void crGetSpeedFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13329,10 +13317,10 @@ void crGetSpeedFormula1Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipSpeed,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipSpeed, MAKECREPARAM(m_this,&equip));
 				equipSpeedSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipAgility,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAgility,MAKECREPARAM(m_this,&equip));
 				equipAgilitySum+=equip;
 			}
 		}
@@ -13374,8 +13362,8 @@ void crGetHPFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13431,13 +13419,13 @@ void crGetHPFormula1Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipHP,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipHP,MAKECREPARAM(m_this,&equip));
 				equipHPSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipStrength,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipStrength,MAKECREPARAM(m_this,&equip));
 				equipStrengthSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -13480,8 +13468,8 @@ void crGetMPFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13537,13 +13525,13 @@ void crGetMPFormula1Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipMP,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipMP, MAKECREPARAM(m_this,&equip));
 				equipMPSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipIntellect,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipIntellect, MAKECREPARAM(m_this,&equip));
 				equipIntellectSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -13587,8 +13575,8 @@ void crGetHPRevertFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13629,7 +13617,7 @@ void crGetHPRevertFormula1Method::operator()(crHandle &handle)
 			if(itemChild && itemChild->isLoaded())
 			{
 				equip = 0;
-				itemChild->getInstanceItem()->doEvent(WCH_GetEquipHPRevert,MAKEINT64(m_this,&equip));
+				itemChild->getInstanceItem()->doEvent(WCH_GetEquipHPRevert,MAKECREPARAM(m_this,&equip));
 				equipSum+=equip;
 			}
 		}
@@ -13669,8 +13657,8 @@ void crGetMPRevertFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13711,7 +13699,7 @@ void crGetMPRevertFormula1Method::operator()(crHandle &handle)
 			if(itemChild && itemChild->isLoaded())
 			{
 				equip = 0;
-				itemChild->getInstanceItem()->doEvent(WCH_GetEquipMPRevert,MAKEINT64(m_this,&equip));
+				itemChild->getInstanceItem()->doEvent(WCH_GetEquipMPRevert,MAKECREPARAM(m_this,&equip));
 				equipSum+=equip;
 			}
 		}
@@ -13750,8 +13738,8 @@ void crAttackSpeedFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -13807,13 +13795,13 @@ void crAttackSpeedFormula1Method::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipAttackSpeed,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAttackSpeed,MAKECREPARAM(m_this,&equip));
 				equipAttackSpeedSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipAgility,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAgility,MAKECREPARAM(m_this,&equip));
 				equipAgilitySum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -13857,9 +13845,9 @@ void crAddDamageFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_damage = *(float *)(LOINT64(param64));
-			m_fireItem = (crInstanceItem*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_damage = *(float *)(LOCREPARAM(param64));
+			m_fireItem = (crInstanceItem*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -13956,7 +13944,7 @@ void crAddDamageFormula1Method::operator()(crHandle &handle)
 		{
 			unsigned char itemstate = IS_Dead;
 			thisData->inputParam(WCHDATA_ItemState,&itemstate);
-			m_this->doEvent(WCH_ItemDead,MAKEINT64(m_fireItem.get(),NULL));
+			m_this->doEvent(WCH_ItemDead,MAKECREPARAM(m_fireItem.get(),NULL));
 		}
 	}
 }
@@ -13988,8 +13976,8 @@ void crRecvDamageMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -14017,7 +14005,7 @@ void crRecvDamageMethod::operator()(crHandle &handle)
 		//客户端显示
 		crNode *node = m_this->getRelNode();
 		if(node)
-		    node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvDamage,MAKEINT32(-damage,-1)));
+		    node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvDamage,MAKEINT32(-damage,-1)));
 	}
 }
 /////////////////////////////////////////
@@ -14047,8 +14035,8 @@ void crRecvItemDeadMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -14154,11 +14142,11 @@ void crShowStateTextMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			_crInt32 param32 = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			_crInt32 param32 = LOCREPARAM(param64);
 			m_value = LOINT32(param32);
 			m_index = HIINT32(param32);
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
+			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -14364,7 +14352,7 @@ void crShowStateTextMethod::operator()(crHandle &handle)
 					text->setPosition(texPos);
 					text->setVisiable(true);
 
-					m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(m_msg,MAKEINT32(m_value,m_index)));
+					m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(m_msg,MAKEINT32(m_value,m_index)));
 				//}
 				//else
 				//{
@@ -14519,7 +14507,7 @@ void crShowHeadTextMethod::operator()(crHandle &handle)
 					std::string headText = name;
 					crData *itemData = item->getDataClass();
 					float maxhp = 0;
-					item->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+					item->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 					if(maxhp>0.0f)
 					{
 						itemData->getParam(WCHDATA_RTHP,param);
@@ -14538,7 +14526,7 @@ void crShowHeadTextMethod::operator()(crHandle &handle)
 					else
 					{
 						char isEnemy = 0;
-						me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+						me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 						if(isEnemy==1)
 						{//队友
 							color = crVector4(0.0f,0.0f,1.0f,1.0f);
@@ -14958,9 +14946,9 @@ void crInPatrolTestMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_dist = *(float *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_dist = *(float *)(HICREPARAM(param64));
 			//m_distEnmity = *(_crInt64 *)(HIINT64(param64));
 		}
 		else
@@ -15351,9 +15339,9 @@ void crRecvPatrolMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -15400,12 +15388,12 @@ void crRecvPatrolMethod::operator()(crHandle &handle)
 		//	crNode *this_bot = m_this->getRelNode();
 		//	if(this_bot)
 		//	{
-		//		m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(this_bot,crMatterObject::MD_TransMatrix));
+		//		m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(this_bot,crMatterObject::MD_TransMatrix));
 
 		//		//if(itemstate = IS_Patrol)
 		//		//{
 		//		//	//float speed = 0;
-		//		//	//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+		//		//	//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 		//		//	//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
   //  // //               this_bot->doEvent(WCH_NetMoveToTarget2,MAKEINT64(&targetPos,&relspeed));
 		//		//	crMyPlayerData::getInstance()->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
@@ -15441,8 +15429,8 @@ void crHideBodyMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			_crInt32 lparam = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			_crInt32 lparam = LOCREPARAM(param64);
 			m_visiable = (bool)(LOINT32(lparam));
 			m_intersectable = (bool)(HIINT32(lparam));
 		}
@@ -15491,8 +15479,8 @@ void crRecvTargetExtraMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -15660,8 +15648,8 @@ void crRecvUserExtraMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -15771,18 +15759,11 @@ void crExtraUpdateMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-			m_param = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crInstanceItem*)param;
 		break;
 	case 2:
-		m_param = param?*(_crInt64*)param:NULL;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -15799,8 +15780,7 @@ void crExtraUpdateMethod::addParam(int i, const std::string& str)
 
 void crExtraUpdateMethod::operator()(crHandle &handle)
 {//获取目标位置，移动到目标位子自动停下
-	if(!m_param) return;
-	float *dt = (float *)(LOINT64(m_param));
+	float *dt = (float *)(LOCREPARAM(m_param));
 	if(m_time + *dt > m_interval)
 	{
 		*dt += m_time;
@@ -15910,8 +15890,8 @@ void crExtraLifeTimeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = (float*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -16001,7 +15981,7 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_dt = (float*)(LOINT64(param64));
 //		}
 //		else
@@ -16098,7 +16078,7 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_dt = (float*)(LOINT64(param64));
 //		}
 //		else
@@ -16193,8 +16173,8 @@ void crExtraRadiusMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = (float*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -16278,8 +16258,8 @@ void crEnableBulletVolumeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_enable = LOINT64(param64)==0?false:true;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_enable = LOCREPARAM(param64)==0?false:true;
 		}
 		else
 		{
@@ -16327,9 +16307,9 @@ void crNodeInBulletVolumeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_inVolumeNode = (crMatterObject *)(LOINT64(param64));
-			m_isvalid = (bool *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_inVolumeNode = (crMatterObject *)(LOCREPARAM(param64));
+			m_isvalid = (bool *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -16391,7 +16371,7 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 				else
 				{
 					char isEnemy = 0;
-					fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hititem.get(),&isEnemy));
+					fireItem->doEvent(WCH_EnemyCheck,MAKECREPARAM(hititem.get(),&isEnemy));
 					if(isEnemy == -1)
 					{//敌对
 						if(m_targetType & Target_Friend || (m_targetType == Target_Self))
@@ -16505,8 +16485,8 @@ void crNodeInBulletVolumeMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_dt = *((float*)(LOINT64(param64)));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_dt = *((float*)(LOCREPARAM(param64)));
 //		}
 //		else
 //		{
@@ -16613,8 +16593,8 @@ void crServerCloseTargetItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -16754,9 +16734,9 @@ void crRecvCloseTargetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -16939,7 +16919,7 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 			}
 			else if (targetItem.get())
 			{//技能默认
-				targetItem->doEvent(MAKEINT64(WCH_GetRadius, 0), MAKEINT64(&attackdist, NULL));
+				targetItem->doEvent(WCH_GetRadius,MAKECREPARAM(&attackdist, NULL));
 			}
 			if(itemUseRange == 0||dist<=relRange+attackdist)
 			{//在使用范围内
@@ -16949,7 +16929,7 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 				useItemParam.m_user = m_this;
 				if(targetItem.valid() && !(itemTargetType & Target_Coord) && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 					useItemParam.m_target = targetItem;
-				item->doEvent(MAKEINT64(WCH_UseItem,crGlobalHandle::isClient()?UT_Client:UT_Server),MAKEINT64(&useItemParam,&useResult));
+				item->doEvent(MAKEINT64(WCH_UseItem,crGlobalHandle::isClient()?UT_Client:UT_Server), MAKECREPARAM(&useItemParam,&useResult));
 				if(useResult == UR_Succeed)
 				{
 					if(m_isAboutToUseItem) 
@@ -17035,7 +17015,7 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 						if(!(guiseState & GS_Static) && !(guiseState & GS_StaticNoneBlock))
 						{
 							crMatrixTransform *thisNode = dynamic_cast<crMatrixTransform *>(m_this->getRelNode());
-							m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(thisNode,crMatterObject::MD_RotMatrix));//转向拾取点
+							m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(thisNode,crMatterObject::MD_RotMatrix));//转向拾取点
 						}
 						crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 						if(netConductor)
@@ -17134,9 +17114,9 @@ void crUseItemAndSendMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_stream = (crStreamBuf *)(LOINT64(param64));
-//			m_netType = HIINT64(param64);
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+//			m_netType = HICREPARAM(param64);
 //		}
 //		else
 //		{
@@ -17243,8 +17223,8 @@ void crGetItemRTDataMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_outstream = (CRCore::ref_ptr<crStreamBuf> *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_outstream = (CRCore::ref_ptr<crStreamBuf> *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -17392,9 +17372,9 @@ void crGetItemChildDataMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_outstream = (CRCore::ref_ptr<crStreamBuf> *)(LOINT64(param64));
-			m_itemid = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_outstream = (CRCore::ref_ptr<crStreamBuf> *)(LOCREPARAM(param64));
+			m_itemid = HICREPARAM(param64);
 		}
 		else
 		{
@@ -17459,8 +17439,8 @@ void crNpcDeadMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_killerItem = (crInstanceItem*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_killerItem = (crInstanceItem*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -17482,8 +17462,8 @@ void crNpcDeadMethod::operator()(crHandle &handle)
 		short expToKiller = *(short *)param;
 		thisData->getParam(WCHDATA_GoldToKiller,param);
 		short goldToKiller = *(short*)param;
-		if(expToKiller!=0) m_killerItem->doEvent(WCH_AddExperience,MAKEINT64(expToKiller,NULL));
-		if(goldToKiller!=0) m_killerItem->doEvent(WCH_AddGold,MAKEINT64(goldToKiller,NULL));
+		if(expToKiller!=0) m_killerItem->doEvent(WCH_AddExperience,MAKECREPARAM(expToKiller,NULL));
+		if(goldToKiller!=0) m_killerItem->doEvent(WCH_AddGold,MAKECREPARAM(goldToKiller,NULL));
 
 		////物品掉落
 		//if(m_killerItem->getItemtype() == crInstanceItem::Role)
@@ -17587,8 +17567,8 @@ void crAddExperienceMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_experience = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_experience = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -17658,8 +17638,8 @@ void crAddExperience2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_experience = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_experience = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -17731,8 +17711,8 @@ void crAddGoldMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_gold = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_gold = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -17801,8 +17781,8 @@ void crAddGold2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_gold = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_gold = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -17873,8 +17853,8 @@ void crRecvExperienceMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -17907,7 +17887,7 @@ void crRecvExperienceMethod::operator()(crHandle &handle)
 		crNode *bot = m_this->getRelNode();
 		if(bot)
 		{
-			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvExperience,MAKEINT32(changevalue,-1)));
+			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvExperience,MAKEINT32(changevalue,-1)));
 		}
 	}
 }
@@ -17938,8 +17918,8 @@ void crRecvExperience2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -17973,7 +17953,7 @@ void crRecvExperience2Method::operator()(crHandle &handle)
 		crNode *bot = crMyPlayerData::getInstance()->getRole(roleid)->getRelNode();
 		if(bot)
 		{
-			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvExperience,MAKEINT32(changevalue,-1)));
+			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvExperience,MAKEINT32(changevalue,-1)));
 		}
 	}
 }
@@ -18004,8 +17984,8 @@ void crRecvGoldMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -18036,7 +18016,7 @@ void crRecvGoldMethod::operator()(crHandle &handle)
 		crNode *bot = m_this->getRelNode();
 		if(bot)
 		{
-			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvGold,MAKEINT32(changevalue,-1)));
+			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvGold,MAKEINT32(changevalue,-1)));
 		}
 	}
 }
@@ -18067,8 +18047,8 @@ void crRecvGold2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -18100,7 +18080,7 @@ void crRecvGold2Method::operator()(crHandle &handle)
 		crNode *bot = crMyPlayerData::getInstance()->getRole(roleid)->getRelNode();
 		if(bot)
 		{
-			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvGold,MAKEINT32(changevalue,-1)));
+			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvGold,MAKEINT32(changevalue,-1)));
 		}
 	}
 }
@@ -18189,8 +18169,8 @@ void crLvUpFormula1Method::operator()(crHandle &handle)
 			//set hp and mp
 			float maxhp = 0;
 			float maxmp = 0;
-			m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
-			m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+			m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
+			m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 			thisData->inputParam(WCHDATA_RTHP,&maxhp);
 			thisData->inputParam(WCHDATA_RTMP,&maxmp);
 
@@ -18254,8 +18234,8 @@ void crRecvLvUpMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -18288,7 +18268,7 @@ void crRecvLvUpMethod::operator()(crHandle &handle)
 		crNode *bot = m_this->getRelNode();
 		if(bot)
 		{
-			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvLvUp,MAKEINT32(newlv,-1)));
+			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvLvUp,MAKEINT32(newlv,-1)));
 		}
 	}
 }
@@ -18328,8 +18308,8 @@ void crDeadEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -18432,9 +18412,9 @@ void crDeadEventMethod::operator()(crHandle &handle)
 				//unsigned char itemstate = IS_Relive;
 				//thisData->inputParam(WCHDATA_ItemState, &itemstate);
 				//float rt = 0;
-				//m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&rt,NULL));
+				//m_this->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
 				//thisData->inputParam(WCHDATA_RTHP,&rt);
-				//m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&rt,NULL));
+				//m_this->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 				//thisData->inputParam(WCHDATA_RTMP,&rt);
 
 				thisData->excHandle(MAKEINT64(WCH_LockData,1));
@@ -18636,9 +18616,9 @@ void crRecvRelivePlayerMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -18666,8 +18646,8 @@ void crRecvRelivePlayerMethod::operator()(crHandle &handle)
 		{
 			float maxhp = 0;
 			float maxmp = 0;
-			m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
-			m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+			m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
+			m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 			unsigned char reliveFlg = m_stream->_readUChar();
 
 			int playerid = m_this->getPlayerID();
@@ -18749,8 +18729,8 @@ void crRecvRelivePlayerMethod::operator()(crHandle &handle)
 			crNode *relNode = m_this->getRelNode();
 			if(relNode)
 			{
-				m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_FullMatrix));
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(relNode,crMatterObject::MD_FullMatrix));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				relNode->setVisiable(true);
 				relNode->setEnableIntersect(true);
 			}
@@ -18785,8 +18765,8 @@ void crSetKeyboardMouseModeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_mode = (unsigned short)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_mode = (unsigned short)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -18847,9 +18827,9 @@ void crBulletCollideTestMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_collideNode = (crNode *)(LOINT64(param64));
-			m_collideTest = (int *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_collideNode = (crNode *)(LOCREPARAM(param64));
+			m_collideTest = (int *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -18925,7 +18905,7 @@ void crBulletCollideTestMethod::operator()(crHandle &handle)
 							else
 							{
 								char isEnemy = 0;
-								fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hitItem,&isEnemy));
+								fireItem->doEvent(WCH_EnemyCheck,MAKECREPARAM(hitItem,&isEnemy));
 								if(isEnemy == -1)
 								{
 									if(m_targetType & Target_Friend || (m_targetType == Target_Self))
@@ -18951,7 +18931,7 @@ void crBulletCollideTestMethod::operator()(crHandle &handle)
 								}
 							}
 							//char isEnemy = 0;
-							//fireItem->doEvent(WCH_EnemyCheck,MAKEINT64(hitItem,&isEnemy));
+							//fireItem->doEvent(WCH_EnemyCheck,MAKECREPARAM(hitItem,&isEnemy));
 							//if(isEnemy == -1)
 							//{
 							//	if(m_targetType & Target_Friend)
@@ -19024,7 +19004,7 @@ void crBulletCollideTestMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_targetItem = (crInstanceItem *)(LOINT64(param64));
 //			m_isEnemy = (char *)(HIINT64(param64));
 //		}
@@ -19156,9 +19136,9 @@ void crEnemyCheckMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetItem = (crInstanceItem *)(LOINT64(param64));
-			m_isEnemy = (char *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetItem = (crInstanceItem *)(LOCREPARAM(param64));
+			m_isEnemy = (char *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -19337,9 +19317,9 @@ void crTransportCollideMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_collideNode = (crNode *)(LOINT64(param64));
-			m_contactInfo = (dContact *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_collideNode = (crNode *)(LOCREPARAM(param64));
+			m_contactInfo = (dContact *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -19388,7 +19368,7 @@ void crTransportCollideMethod::operator()(crHandle &handle)
 				//if(node) node->doEvent(WCH_NetMoveToTarget,MAKEINT64(&nullpos,&speed));//停止移动
 				unsigned char itemstate = IS_Stop;
 				item->getDataClass()->inputParam(WCHDATA_ItemState,&itemstate);
-				//bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				//bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				bot->setVisiable(false);
 				bot->setEnableIntersect(false);
 
@@ -19440,9 +19420,9 @@ void crRecvTransportMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -19543,8 +19523,8 @@ void crRecvTransportMethod::operator()(crHandle &handle)
 					m_this->setPosz(m_stream->_readInt());
 					if(relNode)
 					{
-						m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_TransMatrix));
-						//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+						m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(relNode,crMatterObject::MD_TransMatrix));
+						//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 						relNode->setVisiable(true);
 						relNode->setEnableIntersect(true);
 					}
@@ -19558,8 +19538,8 @@ void crRecvTransportMethod::operator()(crHandle &handle)
 
 					if(relNode)
 					{
-						m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_TransMatrix));
-						//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+						m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(relNode,crMatterObject::MD_TransMatrix));
+						//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 						relNode->setVisiable(true);
 						relNode->setEnableIntersect(true);
 					}
@@ -19574,7 +19554,7 @@ void crRecvTransportMethod::operator()(crHandle &handle)
 					crRole *gameRole = crMyPlayerData::getInstance()->getSelectedGameRole();
                     gameRole->setSceneID(sceneid);
                     gameRole->setLayerID(layerid);
-					relNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_ExitScene,EC_SwitchScene));
+					relNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_ExitScene,EC_SwitchScene));
 				}
 			}
 		}
@@ -19601,8 +19581,8 @@ void crExitSceneMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_exitCode = (char)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_exitCode = (char)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -19950,16 +19930,16 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 			{
 				item = itemChild->getInstanceItem();
 				equip = 0;
-				item->doEvent(WCH_GetEquipStrength,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipStrength, MAKECREPARAM(m_this,&equip));
 				equipStrengthSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipAgility,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipAgility, MAKECREPARAM(m_this,&equip));
 				equipAgilitySum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipIntellect,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipIntellect, MAKECREPARAM(m_this,&equip));
 				equipIntellectSum+=equip;
 				equip = 0;
-				item->doEvent(WCH_GetEquipLv,MAKEINT64(m_this,&equip));
+				item->doEvent(WCH_GetEquipLv,MAKECREPARAM(m_this,&equip));
 				equipLvSum+=equip;
 			}
 		}
@@ -20005,7 +19985,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 			roleData->getParam(WCHDATA_Experience,param);
 			int exp = *((int*)param);
 			int nextexp = exp;
-			role->doEvent(WCH_GetNextLvExp,MAKEINT64(&nextexp,NULL));
+			role->doEvent(WCH_GetNextLvExp,MAKECREPARAM(&nextexp,NULL));
 			str = crArgumentParser::appItoa(exp) + "/" + crArgumentParser::appItoa(nextexp);
 			oldstr = expElement->getStringArrayInString();
 			if(str.compare(oldstr)!=0)
@@ -20029,7 +20009,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 		if(hpElement)
 		{
 			float maxhp = 0;
-			role->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+			role->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 			roleData->getParam(WCHDATA_RTHP,param);
 			float rthp = *(float*)param;
 
@@ -20044,7 +20024,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 		if(mpElement)
 		{
 			float maxmp = 0;
-			role->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+			role->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 			roleData->getParam(WCHDATA_RTMP,param);
 			float rtmp = *(float*)param;
 
@@ -20059,7 +20039,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 		if(attackElement)
 		{
 			float attack = 0;
-			role->doEvent(MAKEINT64(WCH_GetDamage,NULL),MAKEINT64(&attack,NULL));
+			role->doEvent(WCH_GetDamage,MAKECREPARAM(&attack,NULL));
 			str = crArgumentParser::appItoa(attack);
 			oldstr = attackElement->getStringArrayInString();
 			if(str.compare(oldstr)!=0)
@@ -20071,7 +20051,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 		if(defendElement)
 		{
 			float defend = 0;
-			role->doEvent(MAKEINT64(WCH_GetDefend,NULL),MAKEINT64(&defend,NULL));
+			role->doEvent(WCH_GetDefend,MAKECREPARAM(&defend,NULL));
 			str = crArgumentParser::appItoa(defend);
 			oldstr = defendElement->getStringArrayInString();
 			if(str.compare(oldstr)!=0)
@@ -20230,8 +20210,8 @@ void crGetNextLvExpMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (int *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (int *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -20313,7 +20293,7 @@ void crItemDoEventMethod::addParam(int i, const std::string& str)
 }
 void crItemDoEventMethod::operator()(crHandle &handle)
 {
-	m_this->doEvent(m_msg,m_param);
+	m_this->doEvent(m_msg,MAKECREPARAM(m_param,NULL));
 }
 /////////////////////////////////////////
 //
@@ -20368,7 +20348,7 @@ void crNodeDoEventMethod::addParam(int i, const std::string& str)
 }
 void crNodeDoEventMethod::operator()(crHandle &handle)
 {
-	m_this->doEvent(m_msg,m_param);
+	m_this->doEvent(m_msg,MAKECREPARAM(m_param,NULL));
 }
 /////////////////////////////////////////
 //
@@ -20415,7 +20395,7 @@ void crMyRoleDoEventMethod::addParam(int i, const std::string& str)
 void crMyRoleDoEventMethod::operator()(crHandle &handle)
 {
 	crRole *role = crMyPlayerData::getInstance()->getLoadedRoleByIndex(m_roleindex);
-	if(role) role->doEvent(m_msg,m_param);
+	if(role) role->doEvent(m_msg,MAKECREPARAM(m_param,NULL));
 }
 /////////////////////////////////////////
 //
@@ -20423,8 +20403,7 @@ void crMyRoleDoEventMethod::operator()(crHandle &handle)
 //
 /////////////////////////////////////////
 crMyMetierEventMethod::crMyMetierEventMethod():
-m_msg(0),
-m_param(0)
+m_msg(0)
 {
 }
 crMyMetierEventMethod::crMyMetierEventMethod(const crMyMetierEventMethod& handle):
@@ -20453,7 +20432,7 @@ void crMyMetierEventMethod::addParam(int i, const std::string& str)
 		{
 			crVector2i vec2;
 			crArgumentParser::appAtoVec(str,vec2);
-			m_param = MAKEINT64(vec2[0],vec2[1]);
+			m_param = MAKECREPARAM(vec2[0],vec2[1]);
 		}
 		break;
 	}
@@ -20491,7 +20470,7 @@ void crGetTaskMethod::inputParam(int i, void *param)
 	//case 2:
 	//	if(param)
 	//	{
-	//		_crInt64 param64 = *(_crInt64*)param;
+	//		CREPARAM& param64 = *(CREPARAM*)param;
 	//		m_taskid = LOINT64(param64);
 	//	}
 	//	else
@@ -20581,9 +20560,9 @@ void crAdvanceTaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_taskid = LOINT64(param64);
-			m_stepType = (unsigned char)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_taskid = LOCREPARAM(param64);
+			m_stepType = (unsigned char)(HICREPARAM(param64));
 		}
 		break;
 	}
@@ -20726,8 +20705,7 @@ void crReferTaskMethod::operator()(crHandle &handle)
 //
 /////////////////////////////////////////
 crKillerMetierEventMethod::crKillerMetierEventMethod():
-m_msg(0),
-m_param(0)
+m_msg(0)
 {
 }
 crKillerMetierEventMethod::crKillerMetierEventMethod(const crKillerMetierEventMethod& handle):
@@ -20753,8 +20731,8 @@ void crKillerMetierEventMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_killerRole = (crRole*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_killerRole = (crRole*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -20780,7 +20758,7 @@ void crKillerMetierEventMethod::addParam(int i, const std::string& str)
 		{
 			crVector2i vec2;
 			crArgumentParser::appAtoVec(str,vec2);
-			m_param = MAKEINT64(vec2[0],vec2[1]);
+			m_param = MAKECREPARAM(vec2[0],vec2[1]);
 		}
 		break;
 	}
@@ -20820,9 +20798,9 @@ void crRecvGetTaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -20932,9 +20910,9 @@ void crRecvAdvanceTaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -21032,9 +21010,9 @@ void crTaskAwardMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_gameTask = (crGameTask *)(LOINT64(param64));
-            m_output = (bool *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_gameTask = (crGameTask *)(LOCREPARAM(param64));
+            m_output = (bool *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -21096,7 +21074,7 @@ void crTaskAwardMethod::operator()(crHandle &handle)
 			//			itemid = crGlobalHandle::gainTemporaryItemID();
 			//			item->setInstanceItemID(itemid);
 
-			//			m_this->doEvent(WCH_InsertItemToBackPack,MAKEINT64(item,&insertToBackPack));
+			//			m_this->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(item,&insertToBackPack));
 			//			//send result
 			//			bool needInsertItemChild = false;
 			//			ref_ptr<crItemChild> itemchild;
@@ -21163,8 +21141,8 @@ void crTaskAwardMethod::operator()(crHandle &handle)
 			//}
 			int exp = m_gameTask->getExp();
 			int gold = m_gameTask->getGold();
-			if(exp!=0) m_this->doEvent(WCH_AddExperience,MAKEINT64(exp,NULL));
-			if(gold!=0) m_this->doEvent(WCH_AddGold,MAKEINT64(gold,NULL));
+			if(exp!=0) m_this->doEvent(WCH_AddExperience,MAKECREPARAM(exp,NULL));
+			if(gold!=0) m_this->doEvent(WCH_AddGold,MAKECREPARAM(gold,NULL));
 			*m_output = true;
 		}
 	}
@@ -21197,9 +21175,9 @@ void crRecvTaskAwardItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -21261,7 +21239,7 @@ void crRecvTaskAwardItemMethod::operator()(crHandle &handle)
 			//			item->setInstanceItemID(m_stream->_readInt());
 			//		}
 			//		char insertToBackPack2 = -1;
-			//		me->doEvent(WCH_InsertItemToBackPack,MAKEINT64(item.get(),&insertToBackPack2));
+			//		me->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(item.get(),&insertToBackPack2));
 			//		me->doEvent(WCH_BuildBackPackList,NULL);
 			//		//me->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Client));
 			//	}
@@ -21297,9 +21275,9 @@ void crRecvReferTaskMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -21335,7 +21313,7 @@ void crRecvReferTaskMethod::operator()(crHandle &handle)
 				metierData->excHandle(MAKEINT64(WCH_LockData,0));
 				if(gameTask.valid() && gameTask->isTaskCanRefer())
 				{
-					m_this->doMetierEvent(WCH_TASKAWARD,MAKEINT64(gameTask.get(),&success));
+					m_this->doMetierEvent(WCH_TASKAWARD,MAKECREPARAM(gameTask.get(),&success));
 					if(success)
 					{
 						gameTask->refer();
@@ -21399,9 +21377,9 @@ void crRecvCorrectPositionMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -21427,7 +21405,7 @@ void crRecvCorrectPositionMethod::operator()(crHandle &handle)
 		crNode *node = m_this->getRelNode();
 		if(node)
 		{
-			m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(node,crMatterObject::MD_TransMatrix));
+			m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(node,crMatterObject::MD_TransMatrix));
 			//crVector3 nullpos;
 			//float speed = 0;
 			//if(m_this == crMyPlayerData::getInstance()->getRole())
@@ -21462,8 +21440,8 @@ void crRecvAbstractItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -21564,8 +21542,8 @@ void crRecvAbstractItemMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_dt = *((float*)(LOINT64(param64)));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_dt = *((float*)(LOCREPARAM(param64)));
 //		}
 //		else
 //		{
@@ -21681,9 +21659,9 @@ void crRecvNetPickItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -21717,7 +21695,7 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 					crRole *role = playerData->getRole(roleid);
 					int itemid = m_this->getInstanceItemID();
 					char insertToBackPack = -1;
-					role->doEvent(WCH_InsertItemToBackPack,MAKEINT64(m_this,&insertToBackPack));
+					role->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(m_this,&insertToBackPack));
 					thisData->inputParam(WCHDATA_BelongPlayerID,NULL);//避免玩家重复拾取
 
 					//send result
@@ -21846,8 +21824,8 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 				}
 				if(ipick)
 				{
-					picker->doEvent(WCH_InsertItemToBackPack,MAKEINT64(m_this,&insertToBackPack2));
-					picker->doEvent(WCH_BuildBackPackList,NULL);
+					picker->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(m_this,&insertToBackPack2));
+					picker->doEvent(WCH_BuildBackPackList);
 					//me->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Client));
 				}
 			}
@@ -21856,8 +21834,8 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 				m_this->setInstanceItemID(m_stream->_readInt());
 				if(ipick)
 				{
-					picker->doEvent(WCH_InsertItemToBackPack,MAKEINT64(m_this,&insertToBackPack2));
-					picker->doEvent(WCH_BuildBackPackList,NULL);
+					picker->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(m_this,&insertToBackPack2));
+					picker->doEvent(WCH_BuildBackPackList);
 				}
 			}
 		}
@@ -21893,9 +21871,9 @@ void crInsertItemToBackPackMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_output = (char *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_output = (char *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -22234,9 +22212,9 @@ void crRecvSaleItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -22284,13 +22262,13 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 					for( int i=0; i<count; i++)
 					{
 						removeItem = -1;
-						m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+						m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 						if(removeItem>=0)
 						{
 							if(price != 0)
 							{
 								*gold += price;
-								//m_this->doEvent(WCH_AddGold,MAKEINT64(price,NULL));
+								//m_this->doEvent(WCH_AddGold,MAKECREPARAM(price,NULL));
 							}
 							if(removeItem==1)
 							{
@@ -22359,7 +22337,7 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 			crNode *bot = m_this->getRelNode();
 			if(bot)
 			{
-				bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvGold,MAKEINT32(changevalue,-1)));
+				bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvGold,MAKEINT32(changevalue,-1)));
 			}
 			ref_ptr<crItemChild> itemchild = m_this->findChildItem(itemid);
 			if(itemchild.valid() && itemchild->isLoaded())
@@ -22370,7 +22348,7 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 					removeItem = RemoveItems[i];
 					if(removeItem>=0)
 					{
-						m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(itemchild->getInstanceItem(),&removeItem));
+						m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(itemchild->getInstanceItem(),&removeItem));
 					}
 				}
 			}
@@ -22460,7 +22438,7 @@ void crUIRemoveItemMethod::operator()(crHandle &handle)
 		}
 		else
 		{
-			crMyPlayerData::getInstance()->getCurrentRole()->doEvent(WCH_BuildBackPackList,NULL);
+			crMyPlayerData::getInstance()->getCurrentRole()->doEvent(WCH_BuildBackPackList);
 		}
 	}
 }
@@ -22531,7 +22509,7 @@ void crUIRemoveItem2Method::operator()(crHandle &handle)
 		}
 		else
 		{
-			crMyPlayerData::getInstance()->getCurrentRole()->doEvent(WCH_BuildBackPackList,NULL);
+			crMyPlayerData::getInstance()->getCurrentRole()->doEvent(WCH_BuildBackPackList);
 		}
 	}
 }
@@ -22565,9 +22543,9 @@ void crRemoveItemFromBackPackMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_output = (char *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_output = (char *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -22751,9 +22729,9 @@ void crGetItemCountInBackPackMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_output = (short *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_output = (short *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -23263,9 +23241,9 @@ void crRecvDropItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -23304,7 +23282,7 @@ void crRecvDropItemMethod::operator()(crHandle &handle)
 				if(itemchild.valid() && itemchild->isLoaded())
 				{
 					crInstanceItem *item = itemchild->getInstanceItem();
-					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 					if(removeItem>=0)
 					{
 						//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
@@ -23372,7 +23350,7 @@ void crRecvDropItemMethod::operator()(crHandle &handle)
 				if(itemchild.valid() && itemchild->isLoaded())
 				{
 					char removeItem2 = -1;
-					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(itemchild->getInstanceItem(),&removeItem2));
+					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(itemchild->getInstanceItem(),&removeItem2));
 				}
 			}
             char *ptr2 = m_stream->getPtr();
@@ -23712,7 +23690,7 @@ void crUIBuyItemMethod::operator()(crHandle &handle)
 				if(!saleParam || (*saleParam)[1]==0)
 				{//ui提示没有库存
 					//std::string str = "没有库存了，请下次再来！";
-					//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(30,NULL));
+					//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(30,NULL));
 				}
 				else
 				{
@@ -23763,7 +23741,7 @@ void crUIBuyItemMethod::operator()(crHandle &handle)
 								else
 								{
 									//std::string str = "您没有足够的金币！";
-									//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(31,NULL));
+									//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(31,NULL));
 								}
 							}
 						}
@@ -23804,7 +23782,7 @@ void crUIBuyItem2Method::inputParam(int i, void *param)
 	//case 2:
 	//	if(param)
 	//	{
-	//		_crInt64 param64 = *(_crInt64*)param;
+	//		CREPARAM& param64 = *(CREPARAM*)param;
 	//		m_selectIndex = LOINT64(param64);
 	//	}
 	//	else
@@ -23839,7 +23817,7 @@ void crUIBuyItem2Method::operator()(crHandle &handle)
 		if(!saleParam || (*saleParam)[1]==0)
 		{//ui提示没有库存
 			//std::string str = "没有库存了，请下次再来！";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(30,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(30,NULL));
 		}
 		else
 		{
@@ -23896,7 +23874,7 @@ void crUIBuyItem2Method::operator()(crHandle &handle)
 						else
 						{
 							//std::string str = "您没有足够的金币！";
-							//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(31,NULL));
+							//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(31,NULL));
 						}
 					}
 				}
@@ -23959,7 +23937,7 @@ void crUIBuyItem2Method::operator()(crHandle &handle)
 //		if(!saleParam || (*saleParam)[1]==0)
 //		{//ui提示没有库存
 //			//std::string str = "没有库存了，请下次再来！";
-//			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(30,NULL));
+//			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(30,NULL));
 //		}
 //		else
 //		{
@@ -24023,7 +24001,7 @@ void crUIBuyItem2Method::operator()(crHandle &handle)
 //						else
 //						{
 //							//std::string str = "您没有足够的金币！";
-//							//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(31,NULL));
+//							//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(31,NULL));
 //						}
 //					}
 //				}
@@ -24061,9 +24039,9 @@ void crRecvBuyItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -24221,7 +24199,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					{
 						char insertToBackPack = -1;
 						char needInsertItemChild = 0;
-						buyer->doEvent(WCH_InsertItemToBackPack,MAKEINT64(newitem.get(),&insertToBackPack));
+						buyer->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(newitem.get(),&insertToBackPack));
 						if(insertToBackPack>=0)
 						{//成功
 							if(insertToBackPack == 1)
@@ -24466,7 +24444,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 				crNode *bot = buyer->getRelNode();
 				if(bot)
 				{
-					bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_RecvGold,MAKEINT32(changevalue,-1)));
+					bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_RecvGold,MAKEINT32(changevalue,-1)));
 				}
 				int buyitemid = m_stream->_readInt();
 				int relcount = m_stream->_readUChar();
@@ -24561,19 +24539,19 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 								newitem->clientLoadItemChildNode(buyer);
 							}
 						}
-						buyer->doEvent(WCH_InsertItemToBackPack,MAKEINT64(newitem.get(),&insertToBackPack2));
+						buyer->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(newitem.get(),&insertToBackPack2));
 					}
 					else if(needInsertItemChild==0)
 					{
 						newitem = dynamic_cast<crInstanceItem*>(buyitem->clone());
 						newitem->setInstanceItemID(m_stream->_readInt());
-						buyer->doEvent(WCH_InsertItemToBackPack,MAKEINT64(newitem.get(),&insertToBackPack2));
+						buyer->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(newitem.get(),&insertToBackPack2));
 					}
 				}
-				m_this->doEvent(WCH_BuildSaleItemList,NULL);
+				m_this->doEvent(WCH_BuildSaleItemList);
 				if(ibuy)
 				{
-				    buyer->doEvent(WCH_BuildBackPackList,NULL);
+				    buyer->doEvent(WCH_BuildBackPackList);
 					//buyer->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Client));
 				}
 			}
@@ -24646,7 +24624,7 @@ void crBuyItemNotifyMethod::operator()(crHandle &handle)
 	//		break;
 	//	}
 	//}
-	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 }
 /////////////////////////////////////////
 //
@@ -24688,7 +24666,7 @@ void crUISetKeyboardMouseModeMethod::operator()(crHandle &handle)
 	//	{
 	//		flg &= ~crCamera::KM_RightMouse;
 	//	}
-	//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(WCH_SetKeyboardMouseMode,flg));
+	//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(WCH_SetKeyboardMouseMode,flg));
 	//}
 	CRProducer::crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 	if(bindview && bindview->isInited())
@@ -24816,9 +24794,9 @@ void crRecvSaleItemMapMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -24915,7 +24893,7 @@ void crRecvSaleItemMapMethod::operator()(crHandle &handle)
 				crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 				netConductor->getNetManager()->sendPacket("all",packet);
 			}
-			m_this->doEvent(WCH_BuildSaleItemList,NULL);
+			m_this->doEvent(WCH_BuildSaleItemList);
 		}
 	}
 }
@@ -24948,9 +24926,9 @@ void crRecvDownLoadItemChildsMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -25058,8 +25036,8 @@ void crRecvDownLoadItemChildsMethod::operator()(crHandle &handle)
 				readItem(item,m_stream.get(),false);
 				itemchild->setInstanceItem(item.get());
 				m_this->insertChildItem(itemchild.get());
-				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemchild.get(),m_this));
-				//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(NULL,NULL));//清理
+				crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemchild.get(),m_this));
+				//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild );//清理
 			}
 		}
 	}
@@ -25088,8 +25066,8 @@ void crRecvItemEventStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -25117,18 +25095,18 @@ void crRecvItemEventStreamMethod::operator()(crHandle &handle)
 			if(id == crMyPlayerData::getInstance()->getPlayerID())
 			{
 				crRole *role = crMyPlayerData::getInstance()->getRole(roleid);
-				if(role) role->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				if(role) role->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 			}
 			else
 			{
 				crMyPlayerData::RoleNpcPair roleNpcPair;
 				if(crMyPlayerData::getInstance()->findInRangePlayer(id,roleid,roleNpcPair))
 				{
-					roleNpcPair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+					roleNpcPair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 				}
 				//else if(crMyPlayerData::getInstance()->findOutRangePlayer(id,roleNpcPair))
 				//{
-				//	roleNpcPair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				//	roleNpcPair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 				//}
 			}
 		}
@@ -25137,11 +25115,11 @@ void crRecvItemEventStreamMethod::operator()(crHandle &handle)
 			crMyPlayerData::ItemNpcPair itemNpcPair;
 			if(crMyPlayerData::getInstance()->findInRangeNpc(id,itemNpcPair))
 			{
-				itemNpcPair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				itemNpcPair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 			}
 			else if(crMyPlayerData::getInstance()->findOutRangeNpc(id,itemNpcPair))
 			{
-				itemNpcPair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				itemNpcPair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 			}
 		}
 		else
@@ -25149,11 +25127,11 @@ void crRecvItemEventStreamMethod::operator()(crHandle &handle)
 			crMyPlayerData::ItemNodePair itemNodePair;
 			if(crMyPlayerData::getInstance()->findInRangeItem(id,itemNodePair))
 			{
-				itemNodePair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				itemNodePair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 			}
 			else if(crMyPlayerData::getInstance()->findOutRangeItem(id,itemNodePair))
 			{
-				itemNodePair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				itemNodePair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 			}
 		}
 	}
@@ -25182,8 +25160,8 @@ void crRecvPlayerEventStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -25208,18 +25186,18 @@ void crRecvPlayerEventStreamMethod::operator()(crHandle &handle)
 		if(playerid == crMyPlayerData::getInstance()->getPlayerID())
 		{
 			crRole* role = crMyPlayerData::getInstance()->getRole(roleid);
-			if(role) role->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+			if(role) role->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 		}
 		else
 		{
 			crMyPlayerData::RoleNpcPair roleNpcPair;
 			if(crMyPlayerData::getInstance()->findInRangePlayer(playerid,roleid,roleNpcPair))
 			{
-				roleNpcPair.first->doEvent(msg,MAKEINT64(stream,GameClient_Game));
+				roleNpcPair.first->doEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 			}
 			//else if(crMyPlayerData::getInstance()->findOutRangePlayer(playerid,roleNpcPair))
 			//{
-			//	roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			//	roleNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			//}
 		}
 	}
@@ -25248,8 +25226,8 @@ void crRecvPlayerMetierEventStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -25274,14 +25252,14 @@ void crRecvPlayerMetierEventStreamMethod::operator()(crHandle &handle)
 		if(playerid == crMyPlayerData::getInstance()->getPlayerID())
 		{
 			crRole *role = crMyPlayerData::getInstance()->getRole(roleid);
-			if(role) role->doMetierEvent(msg,MAKEINT64(stream,GameClient_Game));
+			if(role) role->doMetierEvent(msg,MAKECREPARAM(stream,GameClient_Game));
 		}
 		else
 		{
 			crMyPlayerData::RoleNpcPair roleNpcPair;
 			if(crMyPlayerData::getInstance()->findInRangePlayer(playerid,roleid,roleNpcPair))
 			{
-				roleNpcPair.first->doMetierEvent(msg,MAKEINT64(stream,GameClient_Game));
+				roleNpcPair.first->doMetierEvent(msg, MAKECREPARAM(stream,GameClient_Game));
 			}
 			//else if(crMyPlayerData::getInstance()->findOutRangePlayer(playerid,roleNpcPair))
 			//{
@@ -25521,8 +25499,8 @@ void crRecvBeginExchangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -25575,8 +25553,8 @@ void crRecvEndExchangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -25632,8 +25610,8 @@ void crRecvSaleItemMapChangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -25762,8 +25740,8 @@ void crUINotifyMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_notice = (std::string *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_notice = (std::string *)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -25829,8 +25807,8 @@ void crRefashSaleMapMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -25967,8 +25945,8 @@ void crRecvRefashSaleMapMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -26007,7 +25985,7 @@ void crRecvRefashSaleMapMethod::operator()(crHandle &handle)
 		}
 		thisData->excHandle(MAKEINT64(WCH_LockData,0));
 
-		m_this->doEvent(WCH_BuildSaleItemList,NULL);
+		m_this->doEvent(WCH_BuildSaleItemList);
 	}
 }
 /////////////////////////////////////////
@@ -26039,8 +26017,8 @@ void crGetPriceFormula1Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (int *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (int *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -26186,12 +26164,12 @@ void crBuildLearnSkillListMethod::operator()(crHandle &handle)
 							skillLevel = *(unsigned char *)param;
 							if(skillLevel >= crGlobalHandle::gData()->gMaxSkillLevelLearn())//已经到达最高可学等级
 								continue;
-							skill->doEvent(WCH_GetPrice,MAKEINT64(&price,NULL));
+							skill->doEvent(WCH_GetPrice,MAKECREPARAM(&price,NULL));
 						}
 					}
 					else
 					{
-						item->doEvent(WCH_GetPrice,MAKEINT64(&price,NULL));
+						item->doEvent(WCH_GetPrice,MAKECREPARAM(&price,NULL));
 					}
 					skillLevel++;
 					title2 = crArgumentParser::appItoa(skillLevel);
@@ -26333,12 +26311,12 @@ void crBuildLearnSkillList2Method::operator()(crHandle &handle)
 								skillLevel = *(unsigned char *)param;
 								if(skillLevel >= crGlobalHandle::gData()->gMaxSkillLevelLearn())//已经到达最高可学等级
 									continue;
-								skill->doEvent(WCH_GetPrice,MAKEINT64(&price,NULL));
+								skill->doEvent(WCH_GetPrice,MAKECREPARAM(&price,NULL));
 							}
 						}
 						else
 						{
-							item->doEvent(WCH_GetPrice,MAKEINT64(&price,NULL));
+							item->doEvent(WCH_GetPrice,MAKECREPARAM(&price,NULL));
 						}
 						skillLevel++;
 						title2 = crArgumentParser::appItoa(skillLevel);
@@ -26419,7 +26397,7 @@ void crUILearnSkillMethod::operator()(crHandle &handle)
 		if(skillpoint==0)
 		{
 			//std::string str = "您没有技能点了！";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			break;
 		}
         myData->getParam(WCHDATA_MaxSkill,param);
@@ -26432,7 +26410,7 @@ void crUILearnSkillMethod::operator()(crHandle &handle)
 			if((int)maxSkill<= skillMap->size())
 			{
 				//std::string str = "您的已经学不了更多的技能了";
-				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 				myData->excHandle(MAKEINT64(WCH_LockData,0));
 				break;
 			}
@@ -26444,7 +26422,7 @@ void crUILearnSkillMethod::operator()(crHandle &handle)
 		if(gold<(*saleParam)[2])
 		{
 			//std::string str = "您没有足够的金币！";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			break;
 		}
         //net send
@@ -26492,7 +26470,7 @@ void crUILearnSkill2Method::inputParam(int i, void *param)
 	//case 2:
 	//	if(param)
 	//	{
-	//		_crInt64 param64 = *(_crInt64*)param;
+	//		CREPARAM& param64 = *(CREPARAM*)param;
 	//		m_selectIndex = LOINT64(param64);
 	//	}
 	//	else
@@ -26537,7 +26515,7 @@ void crUILearnSkill2Method::operator()(crHandle &handle)
 		if(skillpoint==0)
 		{
 			//std::string str = "您没有技能点了！";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			break;
 		}
 		myData->getParam(WCHDATA_MaxSkill,param);
@@ -26550,7 +26528,7 @@ void crUILearnSkill2Method::operator()(crHandle &handle)
 			if((int)maxSkill<= skillMap->size())
 			{
 				//std::string str = "您的已经学不了更多的技能了";
-				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 				myData->excHandle(MAKEINT64(WCH_LockData,0));
 				break;
 			}
@@ -26562,7 +26540,7 @@ void crUILearnSkill2Method::operator()(crHandle &handle)
 		if(gold<(*saleParam)[2])
 		{
 			//std::string str = "您没有足够的金币！";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			break;
 		}
 		//net send
@@ -26609,9 +26587,9 @@ void crRecvLearnSkillMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -26724,7 +26702,7 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 						newSkill = skillItemChild->getInstanceItem();
 						newSkill->getDataClass()->getParam(WCHDATA_SkillLevel,param);
 						skillLevel = *(unsigned char *)param;
-						newSkill->doEvent(WCH_GetPrice,MAKEINT64(&price,NULL));
+						newSkill->doEvent(WCH_GetPrice,MAKECREPARAM(&price,NULL));
 					}
 					else
 					{//学习新技能
@@ -26738,7 +26716,7 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 							break;
 						}
 
-                        learnSkill->doEvent(WCH_GetPrice,MAKEINT64(&price,NULL));
+                        learnSkill->doEvent(WCH_GetPrice,MAKECREPARAM(&price,NULL));
 					}
 					learnerData->getParam(WCHDATA_Gold,param);
 					learnerGold = (int*)param;
@@ -26865,10 +26843,10 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 
 					if(islvup) 
 					{
-						m_this->doEvent(WCH_BuildSaleItemList,NULL);
-						learner->doEvent(WCH_BuildQuickList,NULL);
+						m_this->doEvent(WCH_BuildSaleItemList);
+						learner->doEvent(WCH_BuildQuickList);
 					}
-					learner->doEvent(WCH_BuildSkillList,NULL);
+					learner->doEvent(WCH_BuildSkillList);
 					learner->doEvent(MAKEINT64(WCH_LearnedSkill,abstractid));
 				}
 				//learner->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Client));
@@ -26915,8 +26893,8 @@ void crLearnSkillCreaterMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_createItemChildVec = (crInstanceItem::CreateItemChildVec *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_createItemChildVec = (crInstanceItem::CreateItemChildVec *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -26995,8 +26973,8 @@ void crRecvLearnSkillCreaterMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -27042,7 +27020,7 @@ void crRecvLearnSkillCreaterMethod::operator()(crHandle &handle)
 		//crRole *me = crMyPlayerData::getInstance()->getRole();
 		m_this->clientGetTarget(targetItem,targetNode);
 		if(targetItem.valid())
-		    targetItem->doEvent(WCH_BuildSaleItemList,NULL);
+		    targetItem->doEvent(WCH_BuildSaleItemList);
 
 		tempItem->clientLoadItemChildNode(m_this);
 
@@ -27134,7 +27112,7 @@ void crLearnSkillNotifyMethod::operator()(crHandle &handle)
 	//		break;
 	//	}
 	//}
-	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 }
 /////////////////////////////////////////
 //
@@ -27599,9 +27577,9 @@ void crRecvAttrChangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -27872,7 +27850,7 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 			if((int)maxEquipOn<=equipOnMap->size())
 			{//
 				//std::string str = "您的装备栏已经满了";
-				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 				myData->excHandle(MAKEINT64(WCH_LockData,0));
 				break;
 			}
@@ -27914,7 +27892,7 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 			if((int)maxQuick<=quickList->size())
 			{//
 				//std::string str = "您的快捷栏已经满了";
-				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 				myData->excHandle(MAKEINT64(WCH_LockData,0));
 				break;
 			}
@@ -27995,7 +27973,7 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 			if((int)maxEquipOn<=equipOnMap->size())
 			{//
 				//std::string str = "您的装备栏已经满了";
-				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 				myData->excHandle(MAKEINT64(WCH_LockData,0));
 				break;
 			}
@@ -28037,7 +28015,7 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 			if((int)maxQuick<=quickList->size())
 			{//
 				//std::string str = "您的快捷栏已经满了";
-				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 				myData->excHandle(MAKEINT64(WCH_LockData,0));
 				break;
 			}
@@ -28085,9 +28063,9 @@ void crRecvEquipOnItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -28148,14 +28126,14 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					}
 					//获得装备之前的MAXHP
 					float maxhp = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+					m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 					float maxmp = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+					m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 					//放入EquipOnMap
 					equipOnMap->insert(std::make_pair(abstractid,itemid));
 					//从backpack移除
 					char removeItem = -1;
-					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 					if(removeItem<0)
 					{
 						returnCode = EC_NotInBackPack;
@@ -28321,9 +28299,9 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					}
 					//获得装备之后的MAXHP
 					float maxhp2 = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp2,NULL));
+					m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp2,NULL));
 					float maxmp2 = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp2,NULL));
+					m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp2,NULL));
 					thisData->getParam(WCHDATA_RTHP,param);
 					float* rthp = (float*)param;
 					*rthp += maxhp2-maxhp;
@@ -28411,7 +28389,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					equipOnMap->insert(std::make_pair(abstractid,itemid));
 					crInstanceItem *item = itemChild->getInstanceItem();
 					char removeItem = -1;
-					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+					m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 				}
 				else if(returnCode == EC_Success)
 				{//需要下载itemChild
@@ -28475,10 +28453,10 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 				*rtmp = m_stream->_readFloat();
                 thisData->excHandle(MAKEINT64(WCH_LockData,0));
 
-				m_this->doEvent(WCH_CheckAndRackEquipOnMesh,NULL);
+				m_this->doEvent(WCH_CheckAndRackEquipOnMesh);
 				if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
 				{
-					m_this->doEvent(WCH_BuildEquipOnList,NULL);
+					m_this->doEvent(WCH_BuildEquipOnList);
 					//m_this->doEvent(WCH_BuildBackPackList,NULL);
 				}
 				else
@@ -28524,8 +28502,8 @@ void crComposeEquipCreaterMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_createItemChildVec = (crInstanceItem::CreateItemChildVec *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_createItemChildVec = (crInstanceItem::CreateItemChildVec *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -28629,8 +28607,8 @@ void crRecvComposeEquipCreaterMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -28654,8 +28632,8 @@ void crRecvComposeEquipCreaterMethod::operator()(crHandle &handle)
 		readItem(item,m_stream.get(),false);
 		itemchild->setInstanceItem(item.get());
 		m_this->insertChildItem(itemchild.get());
-		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(itemchild.get(),m_this));
-		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKEINT64(NULL,NULL));//清理
+		crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild,MAKECREPARAM(itemchild.get(),m_this));
+		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItemChild );//清理
 	}
 }
 /////////////////////////////////////////
@@ -28754,7 +28732,7 @@ void crEquipOnItemNotifyMethod::operator()(crHandle &handle)
 	//		break;
 	//	}
 	//}
-	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 }
 /////////////////////////////////////////
 //
@@ -28936,7 +28914,7 @@ void crUIBuildBackPackListMethod::addParam(int i, const std::string& str)
 void crUIBuildBackPackListMethod::operator()(crHandle &handle)
 {
 	crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
-	me->doEvent(WCH_BuildBackPackList,NULL);
+	me->doEvent(WCH_BuildBackPackList);
 }
 /////////////////////////////////////////
 //
@@ -28957,7 +28935,7 @@ void crUIBuildSkillListMethod::addParam(int i, const std::string& str)
 void crUIBuildSkillListMethod::operator()(crHandle &handle)
 {
 	crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
-	me->doEvent(WCH_BuildSkillList,NULL);
+	me->doEvent(WCH_BuildSkillList);
 } 
 /////////////////////////////////////////
 //
@@ -29052,7 +29030,7 @@ void crBuildQuickListMethod::operator()(crHandle &handle)
 					else
 					{
 						short count;
-						m_this->doEvent(WCH_GetItemCountInBackPack,MAKEINT64(item,&count));
+						m_this->doEvent(WCH_GetItemCountInBackPack,MAKECREPARAM(item,&count));
 						title2 = CRCore::crArgumentParser::appItoa((int)count);
 					}
 					title.clear();
@@ -29173,7 +29151,7 @@ void crBuildQuickList2Method::operator()(crHandle &handle)
 					else
 					{
 						short count;
-						me->doEvent(WCH_GetItemCountInBackPack,MAKEINT64(item,&count));
+						me->doEvent(WCH_GetItemCountInBackPack,MAKECREPARAM(item,&count));
 						title2 = CRCore::crArgumentParser::appItoa((int)count);
 					}
 					title.clear();
@@ -29239,9 +29217,9 @@ void crEquipValueMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_bot = (crInstanceItem *)(LOINT64(param64));
-			m_output = (float *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_bot = (crInstanceItem *)(LOCREPARAM(param64));
+			m_output = (float *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -29386,7 +29364,7 @@ void crUIUnEquipItemMethod::operator()(crHandle &handle)
 		if(!found)
 		{
 			//std::string str = "装备栏ID没有对应";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			myData->excHandle(MAKEINT64(WCH_LockData,0));
 			break;
 		}
@@ -29397,7 +29375,7 @@ void crUIUnEquipItemMethod::operator()(crHandle &handle)
 		if((int)maxBackPack<=backPackMap->size())
 		{//
 			//std::string str = "您的背包已经满了";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			myData->excHandle(MAKEINT64(WCH_LockData,0));
 			break;
 		}
@@ -29479,7 +29457,7 @@ void crUIUnEquipItem2Method::operator()(crHandle &handle)
 		if(!found)
 		{
 			//std::string str = "装备栏ID没有对应";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			myData->excHandle(MAKEINT64(WCH_LockData,0));
 			break;
 		}
@@ -29490,7 +29468,7 @@ void crUIUnEquipItem2Method::operator()(crHandle &handle)
 		if((int)maxBackPack<=backPackMap->size())
 		{//
 			//std::string str = "您的背包已经满了";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			myData->excHandle(MAKEINT64(WCH_LockData,0));
 			break;
 		}
@@ -29537,9 +29515,9 @@ void crRecvUnEquipItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -29609,7 +29587,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					}
 					//插入到backpack
 					char insertToBackPack = -1;
-					m_this->doEvent(WCH_InsertItemToBackPack,MAKEINT64(item,&insertToBackPack));
+					m_this->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(item,&insertToBackPack));
 					if(insertToBackPack<0)
 					{
 						returnCode = UC_InsertBackpackError;
@@ -29618,15 +29596,15 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					}
 					//获得卸载装备之前的MAXHP
 					float maxhp = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+					m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 					float maxmp = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+					m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 					equipOnMap->erase(itr);
 					//获得卸载装备之前的MAXHP
 					float maxhp2 = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp2,NULL));
+					m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp2,NULL));
 					float maxmp2 = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp2,NULL));
+					m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp2,NULL));
 					thisData->getParam(WCHDATA_RTHP,param);
 					float* rthp = (float*)param;
 					*rthp += maxhp2-maxhp;
@@ -29667,7 +29645,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					crInstanceItem *item = itemChild->getInstanceItem();
 					int abstractid = item->getAbstractItemID();
 					char insertToBackPack = -1;
-					m_this->doEvent(WCH_InsertItemToBackPack,MAKEINT64(item,&insertToBackPack));
+					m_this->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(item,&insertToBackPack));
 
 					void *param;
 					crData *thisData = m_this->getDataClass();
@@ -29696,11 +29674,11 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					*rtmp = m_stream->_readFloat();
 					thisData->excHandle(MAKEINT64(WCH_LockData,0));
 
-					m_this->doEvent(WCH_CheckAndRackEquipOnMesh,NULL);
+					m_this->doEvent(WCH_CheckAndRackEquipOnMesh);
 					if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
 					{
-						m_this->doEvent(WCH_BuildEquipOnList,NULL);
-						m_this->doEvent(WCH_BuildBackPackList,NULL);
+						m_this->doEvent(WCH_BuildEquipOnList);
+						m_this->doEvent(WCH_BuildBackPackList);
 					}
 					else
 					{
@@ -29769,7 +29747,7 @@ void crUnEquipItemNotifyMethod::operator()(crHandle &handle)
 			break;
 		}
 	}
-	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 }
 /////////////////////////////////////////
 //
@@ -29800,9 +29778,9 @@ void crRecvEquipQuickMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -29944,7 +29922,7 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 					thisData->excHandle(MAKEINT64(WCH_LockData,0));
 
 					if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
-						m_this->doEvent(WCH_BuildQuickList,NULL);
+						m_this->doEvent(WCH_BuildQuickList);
 					else
 						return;
 				}
@@ -30012,7 +29990,7 @@ void crUIUnEquipQuickMethod::operator()(crHandle &handle)
 		if(!found)
 		{
 			std::string str = "快捷栏ID没有对应";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			myData->excHandle(MAKEINT64(WCH_LockData,0));
 			break;
 		}
@@ -30094,7 +30072,7 @@ void crUIUnEquipQuick2Method::operator()(crHandle &handle)
 		if(!found)
 		{
 			std::string str = "快捷栏ID没有对应";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 			myData->excHandle(MAKEINT64(WCH_LockData,0));
 			break;
 		}
@@ -30141,9 +30119,9 @@ void crRecvUnEquipQuickMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -30278,7 +30256,7 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 					}
 					thisData->excHandle(MAKEINT64(WCH_LockData,0));
 					if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
-						m_this->doEvent(WCH_BuildQuickList,NULL);
+						m_this->doEvent(WCH_BuildQuickList);
 					else
 						return;
 				}
@@ -30341,7 +30319,7 @@ void crUnEquipQuickNotifyMethod::operator()(crHandle &handle)
 			break;
 		}
 	}
-	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 }
 /////////////////////////////////////////
 //
@@ -30428,8 +30406,8 @@ void crUISetQuickKey2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_key = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_key = LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -30492,9 +30470,9 @@ void crRecvSetQuickKeyMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -30591,7 +30569,7 @@ void crRecvSetQuickKeyMethod::operator()(crHandle &handle)
 					quickKeyVec->push_back(std::make_pair(key,abstractid));
 				}
 				thisData->excHandle(MAKEINT64(WCH_LockData,0));
-				m_this->doEvent(WCH_BuildQuickList,NULL);
+				m_this->doEvent(WCH_BuildQuickList);
 			}
 			char *ptr2 = m_stream->getPtr();
 			m_stream->seek(ptr - ptr2);
@@ -30688,7 +30666,7 @@ void crUIShowItemInfoMethod::operator()(crHandle &handle)
                     if(infoTextElement)
 					{
 						std::vector<std::string> infoTextArray;
-						item->doEvent(WCH_GetItemInfo,MAKEINT64(&infoTextArray,NULL));
+						item->doEvent(WCH_GetItemInfo,MAKECREPARAM(&infoTextArray,NULL));
                         infoTextElement->clearString();
 						for( std::vector<std::string>::iterator itr = infoTextArray.begin();
 							 itr != infoTextArray.end();
@@ -30733,8 +30711,8 @@ void crItemInfoMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_output = (std::vector<std::string> *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_output = (std::vector<std::string> *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -31043,7 +31021,7 @@ void crUIUseItemMethod::operator()(crHandle &handle)
 				int itemid = item->getInstanceItemID();
 				if(dataType == DT_Thing || dataType == DT_AttackThing)
 				{
-                    role->doEvent(WCH_NetUseThing,MAKEINT64(item.get(),NULL));
+                    role->doEvent(WCH_NetUseThing,MAKECREPARAM(item.get(),NULL));
 				}
 				else if(dataType == DT_Skill)
 				{
@@ -31141,7 +31119,7 @@ void crUIUseItem2Method::operator()(crHandle &handle)
 				int itemid = item->getInstanceItemID();
 				if(dataType == DT_Thing || dataType == DT_AttackThing)
 				{
-					role->doEvent(WCH_NetUseThing,MAKEINT64(item.get(),NULL));
+					role->doEvent(WCH_NetUseThing,MAKECREPARAM(item.get(),NULL));
 				}
 				else if(dataType == DT_Skill)
 				{
@@ -31195,7 +31173,7 @@ void crUIUseItem2Method::operator()(crHandle &handle)
 					if((int)maxEquipOn<=equipOnMap->size())
 					{//
 						std::string str = "您的装备栏已经满了";
-						//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+						//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 						roleData->excHandle(MAKEINT64(WCH_LockData,0));
 					}
 					else
@@ -31250,8 +31228,8 @@ void crNetUseThingMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -31314,9 +31292,9 @@ void crRecvNetUseThingMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -31390,13 +31368,13 @@ void crRecvNetUseThingMethod::operator()(crHandle &handle)
 						int abstractid = item->getAbstractItemID();
 						int itemid = item->getInstanceItemID();
 						char removeItem = -1;
-						role->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+						role->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 						if(removeItem<0)
 						{
 							returnCode = RC_Error;
 							break;
 						}
-						item->doEvent(MAKEINT64(WCH_ThingUse,UT_Server),MAKEINT64(role,NULL));
+						item->doEvent(MAKEINT64(WCH_ThingUse,UT_Server),MAKECREPARAM(role,NULL));
 					}
 					else
 					{
@@ -31433,11 +31411,11 @@ void crRecvNetUseThingMethod::operator()(crHandle &handle)
 					unsigned char dataType = *(unsigned char *)param;
 					if(dataType == DT_Thing)
 					{
-						item->doEvent(MAKEINT64(WCH_ThingUse,UT_Client),MAKEINT64(m_this,NULL));
+						item->doEvent(MAKEINT64(WCH_ThingUse,UT_Client),MAKECREPARAM(m_this,NULL));
 						char removeItem = -1;
-						m_this->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
-						m_this->doEvent(WCH_BuildBackPackList,NULL);
-						m_this->doEvent(WCH_BuildQuickList,NULL);
+						m_this->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
+						m_this->doEvent(WCH_BuildBackPackList);
+						m_this->doEvent(WCH_BuildQuickList);
 					}
 					else if(dataType == DT_AttackThing)
 					{
@@ -31477,8 +31455,8 @@ void crUTCureHPMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_user = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_user = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -31508,7 +31486,7 @@ void crUTCureHPMethod::operator()(crHandle &handle)
 		short curehp = *rthp;
 		*rthp+=m_curehp;
 		float maxhp = 0;
-		m_user->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+		m_user->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 		if(*rthp>maxhp)
 			*rthp = maxhp;
 		curehp = (short)(*rthp) - curehp;
@@ -31575,8 +31553,8 @@ void crUTCureMPMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_user = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_user = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -31606,7 +31584,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 		short curemp = *rtmp;
 		*rtmp+=m_curemp;
 		float maxmp = 0;
-		m_user->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+		m_user->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 		if(*rtmp>maxmp)
 			*rtmp = maxmp;
 		curemp = (short)(*rtmp) - curemp;
@@ -31665,8 +31643,8 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_user = (crInstanceItem *)(LOINT64(param64));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_user = (crInstanceItem *)(LOCREPARAM(param64));
 //		}
 //		else
 //		{
@@ -31696,7 +31674,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //		short hp = *rthp;
 //		*rthp+=m_hp;
 //		float maxhp = 0;
-//		m_user->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+//		m_user->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 //		if(*rthp>maxhp)
 //			*rthp = maxhp;
 //		hp = (short)(*rthp) - hp;
@@ -31711,7 +31689,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //		{
 //			node = (dynamic_cast<crGroup *>(m_user->getNode()))->getChild(0);
 //		}
-//		node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_CureHP,MAKEINT32(hp,-1)));
+//		node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_CureHP,MAKEINT32(hp,-1)));
 //	}
 //}
 ///////////////////////////////////////////
@@ -31735,8 +31713,8 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_user = (crInstanceItem *)(LOINT64(param64));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_user = (crInstanceItem *)(LOCREPARAM(param64));
 //		}
 //		else
 //		{
@@ -31766,7 +31744,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //		short mp = *rtmp;
 //		*rtmp+=m_mp;
 //		float maxmp = 0;
-//		m_user->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+//		m_user->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 //		if(*rtmp>maxmp)
 //			*rtmp = maxmp;
 //		mp = (short)(*rtmp) - mp;
@@ -31781,7 +31759,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //		{
 //			node = (dynamic_cast<crGroup *>(m_user->getNode()))->getChild(0);
 //		}
-//		node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_CureMP,MAKEINT32(mp,-1)));
+//		node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_CureMP,MAKEINT32(mp,-1)));
 //	}
 //}
 /////////////////////////////////////////
@@ -31858,8 +31836,8 @@ void crShowTargetInfoMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetItem = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetItem = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -32013,7 +31991,7 @@ void crUIUpdateTargetMethod::operator()(crHandle &handle)
 				if(targetItem->getItemtype()>crInstanceItem::instanceitem)
 				{
 					float maxhp = 0;
-					targetItem->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+					targetItem->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 					itemData->getParam(WCHDATA_RTHP,param);
 					float* rthp = (float*)param;
 					if(rthp)
@@ -32129,9 +32107,9 @@ void crCureHPCollideMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_hitItem = (crInstanceItem *)(LOINT64(param64));
-			m_fireItem = (crInstanceItem *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_hitItem = (crInstanceItem *)(LOCREPARAM(param64));
+			m_fireItem = (crInstanceItem *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -32167,7 +32145,7 @@ void crCureHPCollideMethod::operator()(crHandle &handle)
 		float curehpF = curehpR.get_random();
 		curehpF += (float)skilllevel * m_lvfactor;
 
-		m_hitItem->doEvent(WCH_CureHP,MAKEINT64(&curehpF,m_fireItem.get()));
+		m_hitItem->doEvent(WCH_CureHP,MAKECREPARAM(&curehpF,m_fireItem.get()));
 	}
 }
 /////////////////////////////////////////
@@ -32200,9 +32178,9 @@ void crCureMPCollideMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_hitItem = (crInstanceItem *)(LOINT64(param64));
-			m_fireItem = (crInstanceItem *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_hitItem = (crInstanceItem *)(LOCREPARAM(param64));
+			m_fireItem = (crInstanceItem *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -32238,7 +32216,7 @@ void crCureMPCollideMethod::operator()(crHandle &handle)
 		float curempF = curempR.get_random();
 		curempF += (float)skilllevel * m_lvfactor;
 
-		m_hitItem->doEvent(WCH_CureMP,MAKEINT64(&curempF,m_fireItem.get()));
+		m_hitItem->doEvent(WCH_CureMP,MAKECREPARAM(&curempF,m_fireItem.get()));
 	}
 }
 /////////////////////////////////////////
@@ -32270,9 +32248,9 @@ void crCureHPMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_curehp = *(float *)(LOINT64(param64));
-			m_fireItem = (crInstanceItem*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_curehp = *(float *)(LOCREPARAM(param64));
+			m_fireItem = (crInstanceItem*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -32297,7 +32275,7 @@ void crCureHPMethod::operator()(crHandle &handle)
 		short curehp = *rthp;
 		*rthp+=m_curehp;
 		float maxhp = 0;
-		m_this->doEvent(MAKEINT64(WCH_GetHP,NULL),MAKEINT64(&maxhp,NULL));
+		m_this->doEvent(WCH_GetHP,MAKECREPARAM(&maxhp,NULL));
 		if(*rthp>maxhp)
 			*rthp = maxhp;
 		curehp = (short)(*rthp) - curehp;
@@ -32362,8 +32340,8 @@ void crRecvCureHPMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -32386,7 +32364,7 @@ void crRecvCureHPMethod::operator()(crHandle &handle)
 		//客户端显示
 		crNode *node = m_this->getRelNode();
 		if(node)
-		    node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_CureHP,MAKEINT32(curehp,-1)));
+		    node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_CureHP,MAKEINT32(curehp,-1)));
 	}
 }
 /////////////////////////////////////////
@@ -32418,9 +32396,9 @@ void crCureMPMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_curemp = *(float *)(LOINT64(param64));
-			m_fireItem = (crInstanceItem*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_curemp = *(float *)(LOCREPARAM(param64));
+			m_fireItem = (crInstanceItem*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -32445,7 +32423,7 @@ void crCureMPMethod::operator()(crHandle &handle)
 		short curemp = *rtmp;
 		*rtmp+=m_curemp;
 		float maxmp = 0;
-		m_this->doEvent(MAKEINT64(WCH_GetMP,NULL),MAKEINT64(&maxmp,NULL));
+		m_this->doEvent(WCH_GetMP,MAKECREPARAM(&maxmp,NULL));
 		if(*rtmp>maxmp)
 			*rtmp = maxmp;
 		curemp = (short)(*rtmp) - curemp;
@@ -32510,8 +32488,8 @@ void crRecvCureMPMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -32534,7 +32512,7 @@ void crRecvCureMPMethod::operator()(crHandle &handle)
 		//客户端显示
 		crNode *node = m_this->getRelNode();
 		if(node)
-		    node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_CureMP,MAKEINT32(curemp,-1)));
+		    node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_CureMP,MAKEINT32(curemp,-1)));
 	}
 }
 /////////////////////////////////////////
@@ -32558,9 +32536,9 @@ void crServerRefuseMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_code = LOINT64(param64);
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_code = LOCREPARAM(param64);
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -32591,7 +32569,7 @@ void crServerRefuseMethod::operator()(crHandle &handle)
 		str+="(LoginServer)";
 		break;
 	}
-	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+	//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 }
 /////////////////////////////////////////
 //
@@ -32620,8 +32598,8 @@ void crUTTransportToBaseMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_user = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_user = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -33062,8 +33040,8 @@ void crUseItemProtectTimeUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -33223,7 +33201,7 @@ void crSetSelectedSceneMethod::operator()(crHandle &handle)
 				{
 					crQuerySceneInfoData *sceneInfoData = (crQuerySceneInfoData *)(selectNode->getData());
 					crMyPlayerData::getInstance()->setSceneInfoData(sceneInfoData);
-					crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo,MAKEINT64(NULL,NULL));
+					crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo );
 				}
 			}
 		}
@@ -33551,8 +33529,8 @@ void crRecvCreateSceneRoomMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_success = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_success = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -33702,7 +33680,7 @@ void crPreEnterSceneRoomMethod::operator()(crHandle &handle)
 		if(netConductor)
 		{
 			//std::string str = "登陆房间...";
-			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(3,NULL));
+			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(3,NULL));
 			//crWaitNetReturnStreamLogic::getLock();
 			crPreEnterSceneRoomPacket packet;
 			crPreEnterSceneRoomPacket::buildRequestPacket(packet,room->getRoomID(),crMyPlayerData::getInstance()->getCharacterName());
@@ -33711,7 +33689,7 @@ void crPreEnterSceneRoomMethod::operator()(crHandle &handle)
 		}
 	}
 	//false
-	crBrain::getInstance()->doEvent(WCH_RecvEnterSceneRoom,MAKEINT64(0,NULL));
+	crBrain::getInstance()->doEvent(WCH_RecvEnterSceneRoom);
 	//char mode = crMyPlayerData::getInstance()->getLoginGameSceneMode();
 	//if(mode == 2)
 	//{
@@ -33724,7 +33702,7 @@ void crPreEnterSceneRoomMethod::operator()(crHandle &handle)
 	//if(taskCanceled)
 	//{
 		//std::string str = "登陆房间失败...";
-		//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(4,NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(4,NULL));
 	//}
 	//handle.outputParam(0,&taskCanceled);
 }
@@ -33747,8 +33725,8 @@ void crRecvEnterSceneRoomMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_success = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_success = LOCREPARAM(param64);
 		}
 		else
 		{
@@ -33945,8 +33923,8 @@ void crUIRoomInfoUpdateMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_recvDataStream = (crRecvDataStream *)(LOINT64(param64));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_recvDataStream = (crRecvDataStream *)(LOCREPARAM(param64));
 //		}
 //		else
 //		{
@@ -33973,7 +33951,7 @@ void crUIRoomInfoUpdateMethod::operator()(crHandle &handle)
 //	//	roomPlayer->setGroupID(groupid);
 //	//	roomPlayer->setRole(dynamic_cast<crRole *>(item.get()));
 //	//	room->addMember(roomPlayer.get());
-//	//	crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+//	//	crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 //	//}
 //}
 /////////////////////////////////////////
@@ -34026,8 +34004,8 @@ void crRecvStartRoomGameMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -34064,12 +34042,12 @@ void crRecvStartRoomGameMethod::operator()(crHandle &handle)
 			relNode = role->getRelNode();
 			if(relNode)
 			{
-				role->doEvent(WCH_ItemCoordToNode,MAKEINT64(relNode,crMatterObject::MD_FullMatrix));
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				role->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(relNode,crMatterObject::MD_FullMatrix));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				relNode->setVisiable(true);
 				relNode->setEnableIntersect(true);
 			}
-			role->doEvent(WCH_ChangeActState,MAKEINT64(ACT_Idle,&dt));
+			role->doEvent(WCH_ChangeActState,MAKECREPARAM(ACT_Idle,&dt));
 			role->doEvent(WCH_CheckAndRackEquipOnMesh);
 			//CRCore::notify(CRCore::ALWAYS)<<"crRecvStartRoomGameMethod "<<role->getRoleID()<<" "<<role->getPosition()<<std::endl;
 		}
@@ -34100,8 +34078,8 @@ void crRecvStartRoomGameMethod::operator()(crHandle &handle)
 	//crNode *node = role->getRelNode();
 	//if(node)
 	//{
-	//	role->doEvent(WCH_ItemCoordToNode,MAKEINT64(node,crMatterObject::MD_FullMatrix));
-	//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+	//	role->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(node,crMatterObject::MD_FullMatrix));
+	//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 	//}
 }
 /////////////////////////////////////////
@@ -34354,8 +34332,8 @@ void crLenFadeInit2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_color = *(crVector4*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_color = *(crVector4*)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -34408,8 +34386,8 @@ void crLenFadeUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = (float*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -34533,7 +34511,7 @@ void crChangeCameraMethod::operator()(crHandle &handle)
 	if(camera && camera != mainCamera)
 	{
 		crNode *cameraNode = mainCamera->getAttachedNode();
-		cameraNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_BorrowCamera,camera));
+		cameraNode->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_BorrowCamera,camera));
 	}
 }
 /////////////////////////////////////////
@@ -34559,8 +34537,8 @@ void crIfInVolumeNodeIsMeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_inVolumeNode = (crNode *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_inVolumeNode = (crNode *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -34613,9 +34591,9 @@ void crBorrowCameraMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_borrower = (crCamera *)(LOINT64(param64));
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_borrower = (crCamera *)(LOCREPARAM(param64));
+			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -34705,7 +34683,7 @@ void crBorrowCameraMethod::operator()(crHandle &handle)
 		if(lenCanvas.valid() && !lenCanvas->getVisiable())
 		{
 			crVector4 color(0.0f,0.0f,0.0f,1.0f);
-			lenCanvas->doEvent(WCH_LenFadeInit,MAKEINT64(&color,NULL));
+			lenCanvas->doEvent(WCH_LenFadeInit,MAKECREPARAM(&color,NULL));
 		}
 	}
 }
@@ -34736,8 +34714,8 @@ void crCameraBorrowUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_updateVisitor = (CRUtil::crUpdateVisitor *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -34774,10 +34752,10 @@ void crCameraBorrowUpdateMethod::operator()(crHandle &handle)
 				//if(lenCanvas && !lenCanvas->getVisiable())
 				//{
 				//	crFilterRenderManager::getInstance()->showCanvas(lenCanvas,true);
-				//	lenCanvas->doEvent(WCH_LenFadeInit,MAKEINT64(MAKERGBA(0,0,0,255),m_updateVisitor.get()));
+				//	lenCanvas->doEvent(WCH_LenFadeInit,MAKECREPARAM(MAKERGBA(0,0,0,255),m_updateVisitor.get()));
 				//	short speed = 200;
 				//	short timeDelay = 500;
-				//	lenCanvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFade,MAKEINT32(speed,timeDelay)));
+				//	lenCanvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFade,MAKEINT32(speed,timeDelay)));
 				//}
 				//cameraBorrowTime = 0.0f;
 				//cameraBorrowInterval = 0.0f;
@@ -34835,12 +34813,12 @@ void crReturnCameraMethod::operator()(crHandle &handle)
 		if(lenCanvas.valid() && !lenCanvas->getVisiable())
 		{
 			//crFilterRenderManager::getInstance()->showCanvas(lenCanvas,true);
-			//lenCanvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
+			//lenCanvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
 			//short speed = 200;
 			//short timeDelay = 500;
-			//lenCanvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFade,MAKEINT32(speed,timeDelay)));
+			//lenCanvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFade,MAKEINT32(speed,timeDelay)));
 			crVector4 color(0.0f,0.0f,0.0f,1.0f);
-			lenCanvas->doEvent(WCH_LenFadeInit,MAKEINT64(&color,NULL));
+			lenCanvas->doEvent(WCH_LenFadeInit,MAKECREPARAM(&color,NULL));
 		}
 
 		double cameraBorrowTime = 0.0f;
@@ -34962,7 +34940,7 @@ void crBotTurnToTargetMethod::operator()(crHandle &handle)
 		//m_this->doEvent(WCH_NetMoveToTarget2,MAKEINT64(&nullpos,&speed));//停止移动
 		unsigned char itemstate = IS_Stop;
 		itemData->inputParam(WCHDATA_ItemState,&itemstate);
-		item->doEvent(WCH_ItemCoordToNode,MAKEINT64(m_this,crMatterObject::MD_RotMatrix));//转向拾取点
+		item->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(m_this,crMatterObject::MD_RotMatrix));//转向拾取点
 	}
 }
 /////////////////////////////////////////
@@ -35008,7 +34986,7 @@ void crItemTurnToMeMethod::operator()(crHandle &handle)
 			dir[2] = 0.0f;
 			dir.normalize();
 			item->setTargetDir(dir);
-			item->doEvent(WCH_ItemCoordToNode,MAKEINT64(node,crMatterObject::MD_RotMatrix));
+			item->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(node,crMatterObject::MD_RotMatrix));
 		}
 	}
 }
@@ -35048,7 +35026,7 @@ void crHideItemMethod::operator()(crHandle &handle)
 		{
 			relNode->setVisiable(false);
 			relNode->setEnableIntersect(false);
-			//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+			//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 		}
 	}
 }
@@ -35416,9 +35394,8 @@ void crRunFrequencyControlMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			int lparam = LOINT64(param64);
-			m_dt = (float*)lparam;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -35477,8 +35454,8 @@ void crMouseFrequencyControlMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			crGUIEventAdapter *ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			crGUIEventAdapter *ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 			m_time = ea->time();
 		}
 		else
@@ -35582,8 +35559,8 @@ void crServerReadPathMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -35615,7 +35592,7 @@ void crServerReadPathMethod::operator()(crHandle &handle)
 				if(stats==crInstanceItem::crPathFinder::Found||stats==crInstanceItem::crPathFinder::ReFound)
 				{
 					float speed = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+					m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 					float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 					//crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
 					//crNetDataManager *netDataManager = sceneServerConductor->getNetDataManager();
@@ -35673,8 +35650,8 @@ void crClientReadPathMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -35713,7 +35690,7 @@ void crClientReadPathMethod::operator()(crHandle &handle)
 				if(stats==crInstanceItem::crPathFinder::Found||stats==crInstanceItem::crPathFinder::ReFound)
 				{
 					float speed = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+					m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 					float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 					CRNetApp::crScene *scene = crMyPlayerData::getInstance()->getScene();
 					float distance = relspeed * m_dt;//(m_dt+reduce);
@@ -35734,7 +35711,7 @@ void crClientReadPathMethod::operator()(crHandle &handle)
 					if(moveAct)
 					{
 						float duration = -1.0f;
-						m_this->doEvent(WCH_ChangeActState,MAKEINT64(ACT_Move,&duration));
+						m_this->doEvent(WCH_ChangeActState,MAKECREPARAM(ACT_Move,&duration));
 					}
 				}
 				else if(stats!=crInstanceItem::crPathFinder::NotStarted && itemstate != IS_MoveToUseSkill && itemstate != IS_CloseTargetUseSkill)
@@ -35775,8 +35752,8 @@ void crCloseToSyncPositionMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -35811,7 +35788,7 @@ void crCloseToSyncPositionMethod::operator()(crHandle &handle)
 			float speed = 0;
 			crData *data = m_this->getDataClass();
 			//data->excHandle(MAKEINT64(WCH_LockData,1));//防止阻塞
-			m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+			m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 			//data->excHandle(MAKEINT64(WCH_LockData,0));//防止阻塞
 			float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 			float distance = relspeed * m_dt;
@@ -35819,7 +35796,7 @@ void crCloseToSyncPositionMethod::operator()(crHandle &handle)
 			if(crGlobalHandle::isClient())
 			{
 				float duration = -1.0f;
-				m_this->doEvent(WCH_ChangeActState,MAKEINT64(ACT_Move,&duration));
+				m_this->doEvent(WCH_ChangeActState,MAKECREPARAM(ACT_Move,&duration));
 			}
 		}
 	}
@@ -35869,7 +35846,7 @@ void crItemCutTalkMethod::operator()(crHandle &handle)
 {
 	crNode *bot = m_this->getRelNode();
 	if(bot)
-		bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(MAKEINT32(WCH_CutTalk,m_talkid),MAKEINT32(0,0)));
+		bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(MAKEINT32(WCH_CutTalk,m_talkid),MAKEINT32(0,0)));
 }
 ////////////////////////////////
 //
@@ -35918,7 +35895,7 @@ void crItemCutSceneMethod::operator()(crHandle &handle)
 	{
 		crNode *bot = m_this->getRelNode();
 		if(bot)
-			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(MAKEINT32(WCH_CutScene,m_id),MAKEINT32(0,0)));
+			bot->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(MAKEINT32(WCH_CutScene,m_id),MAKEINT32(0,0)));
 	}
 	//这里不需要同步给客户端，这是消息触发的结果，其他客户端收到相应消息也会触发
 	//if(m_this == crMyPlayerData::getInstance()->getRole())
@@ -36067,9 +36044,9 @@ void crChangeActStateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_actState = LOINT32(LOINT64(param64));
-			m_actDuration = *(float *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_actState = LOCREPARAM(param64);
+			m_actDuration = *(float *)(HICREPARAM(param64));
 		}
 		break;
 	}
@@ -36238,8 +36215,8 @@ void crDoItemControllerAndSendMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -36397,7 +36374,7 @@ void crPlayerFindPathToMethod::operator()(crHandle &handle)
 			else
 			{//
 				//std::string str = "所在场景不支持跨图寻路";
-				crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(26,NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(26,NULL));
 				return;
 			}
 		}
@@ -36472,9 +36449,9 @@ void crRecvFindPathToMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -36535,7 +36512,7 @@ void crRecvFindPathToMethod::operator()(crHandle &handle)
 					if(m_netType == GameClient_Game)
 					{
 						//std::string str = "所在场景不支持跨图寻路";
-						crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(26,NULL));
+						crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(26,NULL));
 					}
 					return;
 				}
@@ -36600,9 +36577,9 @@ void crRecvItemStateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -36687,7 +36664,7 @@ void crPlayerTransportMethod::operator()(crHandle &handle)
 	//crGroup *group = dynamic_cast<crGroup *>(player->getNode());
 	//if(group)
 	//	node = group->getChild(0);
-	//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+	//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 
 	unsigned char itemstate = IS_Stop;
 	data->inputParam(WCHDATA_ItemState,&itemstate);
@@ -36734,9 +36711,9 @@ void crRecvTargetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -36825,8 +36802,8 @@ void crITouchMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetid = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetid = LOCREPARAM(param64);
 			//m_isClient = HIINT32(HIINT64(param64)) == 1;
 		}
 		break;
@@ -36894,7 +36871,7 @@ void crITouchMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_sceneid = LOINT64(param64);
 //			_crInt32 hparam = HIINT64(param64);
 //			m_layerid = (unsigned short)(LOINT32(hparam));
@@ -37017,9 +36994,9 @@ void crRecvGuiseStateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -37058,7 +37035,7 @@ void crRecvGuiseStateMethod::operator()(crHandle &handle)
 					node->setVisiable(false);
 					node->setEnableIntersect(false);
 					//float dt = 0.1f;
-					//m_this->doEvent(WCH_ChangeActState,MAKEINT64(ACT_None,&dt));
+					//m_this->doEvent(WCH_ChangeActState,MAKECREPARAM(ACT_None,&dt));
 				}
 			}
 		}
@@ -37180,8 +37157,8 @@ void crPlayerMoveToMethod::inputParam(int i, void *param)
 	case 2:
 		if(m_inputPos && param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetPos = *(crVector3*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetPos = *(crVector3*)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -37295,9 +37272,9 @@ void crRecvStorageItemMapMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -37438,7 +37415,7 @@ void crRecvStorageItemMapMethod::operator()(crHandle &handle)
 					netConductor->getNetManager()->sendPacket("all",packet);
 				}
 				else
-					m_this->doEvent(WCH_BuildStorageItemList,NULL);
+					m_this->doEvent(WCH_BuildStorageItemList);
 			}
 		}
 	}
@@ -37596,9 +37573,9 @@ void crInsertItemToStorageMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_output = (char *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_output = (char *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -37742,9 +37719,9 @@ void crRemoveItemFromStorageMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_output = (char *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_output = (char *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -37861,9 +37838,9 @@ void crRecvDepositItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -37922,10 +37899,10 @@ void crRecvDepositItemMethod::operator()(crHandle &handle)
 						}
 						if(foundInBackPack)
 						{
-							player->doEvent(WCH_InsertItemToStorage,MAKEINT64(item,&insertItem));
+							player->doEvent(WCH_InsertItemToStorage,MAKECREPARAM(item,&insertItem));
 							if(insertItem>=0)
 							{
-								player->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+								player->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 							}
 						}
 						InsertItems.push_back(insertItem);
@@ -37975,8 +37952,8 @@ void crRecvDepositItemMethod::operator()(crHandle &handle)
 						insertItem = InsertItems[i];
 						if(insertItem>=0)
 						{
-							me->doEvent(WCH_InsertItemToStorage,MAKEINT64(item,&insertItem));
-							me->doEvent(WCH_RemoveItemFromBackPack,MAKEINT64(item,&removeItem));
+							me->doEvent(WCH_InsertItemToStorage,MAKECREPARAM(item,&insertItem));
+							me->doEvent(WCH_RemoveItemFromBackPack,MAKECREPARAM(item,&removeItem));
 						}
 					}
 				}
@@ -38020,9 +37997,9 @@ void crRecvTakeoutItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -38081,10 +38058,10 @@ void crRecvTakeoutItemMethod::operator()(crHandle &handle)
 						}
 						if(foundInStorage)
 						{
-							player->doEvent(WCH_InsertItemToBackPack,MAKEINT64(item,&insertItem));
+							player->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(item,&insertItem));
 							if(insertItem>=0)
 							{
-								player->doEvent(WCH_RemoveItemFromStorage,MAKEINT64(item,&removeItem));
+								player->doEvent(WCH_RemoveItemFromStorage,MAKECREPARAM(item,&removeItem));
 							}
 						}
 						InsertItems.push_back(insertItem);
@@ -38134,8 +38111,8 @@ void crRecvTakeoutItemMethod::operator()(crHandle &handle)
 						insertItem = InsertItems[i];
 						if(insertItem>=0)
 						{
-							me->doEvent(WCH_InsertItemToBackPack,MAKEINT64(item,&insertItem));
-							me->doEvent(WCH_RemoveItemFromStorage,MAKEINT64(item,&removeItem));
+							me->doEvent(WCH_InsertItemToBackPack,MAKECREPARAM(item,&insertItem));
+							me->doEvent(WCH_RemoveItemFromStorage,MAKECREPARAM(item,&removeItem));
 						}
 					}
 				}
@@ -38345,8 +38322,8 @@ void crLoginReturnMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_loginCode = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_loginCode = LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -38401,8 +38378,8 @@ void crRegisterAccountReturnMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -38425,34 +38402,34 @@ void crRegisterAccountReturnMethod::operator()(crHandle &handle)
 		success = true;
 		break;
 	case -1://帐号名格式不正确
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(33,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(33,NULL));
 		break;
 	case -2://帐号名字符数量超限
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(34,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(34,NULL));
 		break;
 	case -3://密码不正确
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(35,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(35,NULL));
 		break;
 	case -4://邮箱地址字符数量超限
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(36,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(36,NULL));
 		break;
 	case -5://昵称字符数量超限
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(37,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(37,NULL));
 		break;
 	case -6://真实名字字符数量超限
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(38,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(38,NULL));
 		break;
 	case -7://激活码输入错误
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(39,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(39,NULL));
 		break;
 	case -8://该激活码已经失效
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(40,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(40,NULL));
 		break;
 	case -9://帐号冲突
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(41,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(41,NULL));
 		break;
 	case -10://激活码不能为空
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(42,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(42,NULL));
 		break;
 	case -11://激活码有效期未到
 		{
@@ -38465,7 +38442,7 @@ void crRegisterAccountReturnMethod::operator()(crHandle &handle)
 		}
 		break;
 	default://注册失败
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(10,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(10,NULL));
 		break;
 	}
 	handle.outputParam(0,&success);
@@ -38491,8 +38468,8 @@ void crLoginDownloadReturnMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_loginCode = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_loginCode = LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -38526,8 +38503,8 @@ void crLoginDownloadCaseMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_case = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_case = LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -38827,9 +38804,9 @@ void crNetControlTankMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -38921,8 +38898,8 @@ void crCarMoveMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -38989,7 +38966,7 @@ void crCarMoveMethod::operator()(crHandle &handle)
 				float a = control & CF_Up?facc:-facc;
 				float fspeed = fcurrentSpeed + a * m_dt;
 				float speed = 0;
-				m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+				m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 				speed *= crGlobalHandle::gData()->gUnitScale();
 				if(fabs(fspeed)>speed)
 				{
@@ -39106,7 +39083,7 @@ void crCarMoveMethod::operator()(crHandle &handle)
 						crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_this->getRelNode());
 						if(bot)
 						{
-							m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+							m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 						}
 					}
 				}
@@ -39164,8 +39141,8 @@ void crTankMoveMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -39250,7 +39227,7 @@ void crTankMoveMethod::operator()(crHandle &handle)
 					float a = control & CF_Up?facc:-facc;
 					float fspeed = fcurrentSpeed + a * m_time;
 					float speed = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+					m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 					speed *= crGlobalHandle::gData()->gUnitScale();
 					if(fabs(fspeed)>speed)
 					{
@@ -39374,7 +39351,7 @@ void crTankMoveMethod::operator()(crHandle &handle)
 							m_this->setDir(dir);
 							if(crGlobalHandle::isClient())
 							{
-								m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+								m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 							}
 						}
 						else
@@ -39396,7 +39373,7 @@ void crTankMoveMethod::operator()(crHandle &handle)
 							m_this->setDir(dir);
 							if(crGlobalHandle::isClient())
 							{
-								m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+								m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 							}
 						}
 					}
@@ -39453,8 +39430,8 @@ void crRotateEmplacementLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -39669,7 +39646,7 @@ void crAttackMethod::operator()(crHandle &handle)
 			crVector3 dirOffset(aimrnd.get_random(),aimrnd.get_random(),aimrnd.get_random());
 			useItemParam.m_dirOffset = dirOffset;
 			unsigned short useResult = UR_None;
-			item->doEvent(MAKEINT64(WCH_UseItem,UT_Client),MAKEINT64(&useItemParam,&useResult));
+			item->doEvent(MAKEINT64(WCH_UseItem,UT_Client),MAKECREPARAM(&useItemParam,&useResult));
 			if(useResult == UR_Succeed)
 			{
 				//send to net
@@ -39752,9 +39729,9 @@ void crRecvAttackMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -39798,14 +39775,14 @@ void crRecvAttackMethod::operator()(crHandle &handle)
 				}
 				useItemParam.m_user = m_this;
 				useItemParam.m_target = NULL;
-				item->doEvent(MAKEINT64(WCH_UseItem,UT_NetClient),MAKEINT64(&useItemParam,NULL));
+				item->doEvent(MAKEINT64(WCH_UseItem,UT_NetClient),MAKECREPARAM(&useItemParam,NULL));
 			}
 			else if(m_netType == SceneServer)
 			{
 				useItemParam.m_user = m_this;
 				useItemParam.m_target = NULL;
 				unsigned short useResult = UR_None;
-				item->doEvent(MAKEINT64(WCH_UseItem,UT_NetServer),MAKEINT64(&useItemParam,&useResult));
+				item->doEvent(MAKEINT64(WCH_UseItem,UT_NetServer),MAKECREPARAM(&useItemParam,&useResult));
 			}
 		}
 	}
@@ -40113,8 +40090,8 @@ void crRecvCreateRoleMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_sucess = LOINT64(param64) != 0;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_sucess = LOCREPARAM(param64) != 0;
 		}
 		break;
 	}
@@ -40138,7 +40115,7 @@ void crRecvCreateRoleMethod::operator()(crHandle &handle)
 	else
 	{
 		//std::string str = "创建角色失败";
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(24,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(24,NULL));
 	}
 }
 /////////////////////////////////////////
@@ -40176,7 +40153,7 @@ void crCheckGameRoleCountMethod::operator()(crHandle &handle)
 	if(crMyPlayerData::getInstance()->getGameRoleCount()>=m_maxrole)
 	{
 		//std::string str = "坦克数量已经满了";
-		//crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(&str,NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
 		bool cancelTask = true;
 		handle.outputParam(0,&cancelTask);
 	}
@@ -40588,9 +40565,9 @@ void crRecvRemoveRoleMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_roleid = LOINT64(param64);
-			m_sucess = HIINT64(param64) != 0;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_roleid = LOCREPARAM(param64);
+			m_sucess = HICREPARAM(param64) != 0;
 		}
 		break;
 	}
@@ -40609,7 +40586,7 @@ void crRecvRemoveRoleMethod::operator()(crHandle &handle)
 	else
 	{
 		//std::string str = "删除角色失败";
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(25,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(25,NULL));
 	}
 }
 /////////////////////////////////////////
@@ -40759,9 +40736,9 @@ void crRecvAboutToUseItemMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -40812,8 +40789,8 @@ void crRecvAboutToUseItemMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_dt = *((float*)(LOINT64(param64)));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_dt = *((float*)(LOCREPARAM(param64)));
 //		}
 //		else
 //		{
@@ -40911,8 +40888,8 @@ void crNetReturnStreamMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -41289,9 +41266,9 @@ void crLoadLocalSceneMethod::operator()(crHandle &handle)
 				//sprintf(gbuf,"LoadLocalSceneItem %s,%d\n\0",item->getIName().c_str(),(int)(item->getItemtype()));
 				//gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
 				if(item->getAbstractItem())
-					crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+					crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 				else
-					crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(item.get(),NULL));
+					crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(item.get(),NULL));
 			}
 		}
 	} while (0);
@@ -41319,23 +41296,14 @@ void crRecordMousePosMethod::inputParam(int i, void *param)
 		{//释放
 			m_this = NULL;
 			m_ea = NULL;
-			m_param = NULL;
 		}
 		break;
 	case 1:
 		m_this = (crMatrixTransform*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -41376,23 +41344,14 @@ void crInvalidMousePosMethod::inputParam(int i, void *param)
 		{//释放
 			m_this = NULL;
 			m_ea = NULL;
-			m_param = NULL;
 		}
 		break;
 	case 1:
 		m_this = (crMatrixTransform*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -41437,28 +41396,12 @@ void crDrawDragRectMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-			m_ea = NULL;
-			m_param = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crMatrixTransform*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -41552,28 +41495,12 @@ void crRectSelectItemMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-			m_ea = NULL;
-			m_param = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crMatrixTransform*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -41639,7 +41566,7 @@ void crRectSelectItemMethod::operator()(crHandle &handle)
 					itr != ItemVec.end();
 					++itr )
 				{
-					(*itr)->doEvent(WCH_Touch,MAKEINT64(m_ea,m_this));
+					(*itr)->doEvent(WCH_Touch,MAKECREPARAM(m_ea,m_this));
 				}
 			}
 		}
@@ -41663,28 +41590,12 @@ void crRectSelectNodeMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		if(param == 0)
-		{//释放
-			m_this = NULL;
-			m_ea = NULL;
-			m_param = NULL;
-		}
-		break;
 	case 1:
 		m_this = (crMatrixTransform*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -42484,8 +42395,8 @@ void crCameraFocusMethod::inputParam(int i, void *param)
 	case 2:
 		if(m_inputPos && param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targetPos = *(crVector3*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targetPos = *(crVector3*)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -42571,9 +42482,9 @@ void crRecvCreateSightMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -43159,9 +43070,9 @@ void crSightFogUpdateMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_stream = (crStreamBuf *)(LOINT64(param64));
-//			m_netType = HIINT64(param64);
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+//			m_netType = HICREPARAM(param64);
 //		}
 //		else
 //		{
@@ -43304,8 +43215,8 @@ void crPositionSyncMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *((float*)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *((float*)(LOCREPARAM(param64)));
 		}
 		else
 		{
@@ -43391,9 +43302,9 @@ void crRecvPositionSyncMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -43495,10 +43406,8 @@ void crUseItemRecordMapUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			int lparam = LOINT64(param64);
-			if(lparam)
-				m_dt = (float*)lparam;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -43568,9 +43477,9 @@ void crUseItemRecordMapUpdateMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_stream = (crStreamBuf *)(LOINT64(param64));
-//			m_netType = HIINT64(param64);
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+//			m_netType = HICREPARAM(param64);
 //		}
 //		else
 //		{
@@ -43619,7 +43528,7 @@ void crUseItemRecordMapUpdateMethod::operator()(crHandle &handle)
 //			crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_this->getRelNode());
 //			if(bot)
 //			{
-//				m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+//				m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 //			}
 //		}
 //		//CRCore::notify(CRCore::ALWAYS)<<"crRecvStopPositionMethod"<<std::endl;
@@ -43840,9 +43749,9 @@ void crRecvAdvanceRoomProgressMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
-			m_netType = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
+			m_netType = HICREPARAM(param64);
 		}
 		else
 		{
@@ -44229,8 +44138,8 @@ void crRecvTriggerSetRoomProgressMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -44610,8 +44519,8 @@ void crSetRoomAutoStartMethod::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_dt = *((float*)(LOINT64(param64)));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_dt = *((float*)(LOCREPARAM(param64)));
 //		}
 //		else
 //		{
@@ -45001,8 +44910,8 @@ void crRecvConnectServerMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_stream = (crStreamBuf *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_stream = (crStreamBuf *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -45152,7 +45061,7 @@ void crInitDownloadMethod::addParam(int i, const std::string& str)
 void crInitDownloadMethod::operator()(crHandle &handle)
 {
 	char gbuf[256];
-	std::string file = crGlobalHandle::gData()->gClientCfg();//"Client.cfg";
+	std::string file = crGlobalHandle::gData()->getClientCfg();//"Client.cfg";
 	rcfg::ConfigScript cfg_script;
 	if(!crScriptLoadManager::getInstance()->loadConfigScript(cfg_script,file))
 	{
@@ -45537,9 +45446,9 @@ void crRoomUpdate2Method::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = (float*)(LOINT64(param64));
-			m_sc = (crSceneServerCallback*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
+			m_sc = (crSceneServerCallback*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -45556,7 +45465,7 @@ void crRoomUpdate2Method::addParam(int i, const std::string& str)
 
 void crRoomUpdate2Method::operator()(crHandle &handle)
 {
-	m_this->doEvent(WCH_RoomUpdate2,MAKEINT64(m_dt,m_sc));
+	m_this->doEvent(WCH_RoomUpdate2,MAKECREPARAM(m_dt,m_sc));
 }
 /////////////////////////////////////////
 //
@@ -45592,8 +45501,8 @@ void crDynamicCollideExtraMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = (float*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -45644,7 +45553,7 @@ void crDynamicCollideExtraMethod::operator()(crHandle &handle)
 			//data->getParam(WCHDATA_ItemState,param);
 			//unsigned char itemstate = *(unsigned char *)param;
 			//char isEnemy = 0;
-			//item->doEvent(WCH_EnemyCheck,MAKEINT64(m_this,&isEnemy));
+			//item->doEvent(WCH_EnemyCheck,MAKECREPARAM(m_this,&isEnemy));
 			//if(isEnemy == 1 && itemstate != IS_Stop)
 			//{
 			//	short extid = Ext_Block;
@@ -45682,7 +45591,7 @@ void crDynamicCollideExtraMethod::operator()(crHandle &handle)
 					crViewMatterObject *bot = dynamic_cast<crViewMatterObject *>(m_this->getRelNode());
 					if(bot)
 					{
-					m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_FullMatrix));
+					m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_FullMatrix));
 					}*/
 				}
 			//}
@@ -46159,9 +46068,8 @@ void crSetGamelogPathMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			int lparam = LOINT64(param64);
-			m_serverName = *(std::string*)lparam;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_serverName = *(std::string*)LOCREPARAM(param64);
 		}
 		break;
 	}
@@ -46206,9 +46114,8 @@ void crGameTaskUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			int lparam = LOINT64(param64);
-			m_dt = (float*)lparam;
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = (float*)LOCREPARAM(param64);
 		}
 		else
 		{
@@ -46236,7 +46143,7 @@ void crGameTaskUpdateMethod::operator()(crHandle &handle)
 			{
 				if (itr->second!=NULL && itr->second->getActivation() && !itr->second->isComplete())
 				{
-					itr->second->doEvent(WCH_UPDATE,MAKEINT64((int)(m_dt),NULL));
+					itr->second->doEvent(WCH_UPDATE,MAKECREPARAM((int)(m_dt),NULL));
 				}
 			}
 		}
@@ -46444,8 +46351,8 @@ void crStartupLoadingProgressMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *(float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *(float *)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -46892,9 +46799,9 @@ void crMoneyChangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_moneydata = *(MoneyChangeData *)(LOINT64(param64));
-			m_output = (bool *)HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_moneydata = *(MoneyChangeData *)(LOCREPARAM(param64));
+			m_output = (bool *)HICREPARAM(param64);
 		}
 		else
 		{
@@ -47050,7 +46957,7 @@ void crDoWebLoginMethod::operator()(crHandle &handle)
 			myPlayerData->setPlayerID(vec3[0]);
 			myPlayerData->setLastServerID(vec3[1]);
 			myPlayerData->setISP(vec3[2]);
-			crGlobalHandle::getInstance()->doEvent(WCH_LoginReturn,MAKEINT64(1,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_LoginReturn,MAKECREPARAM(1,NULL));
 		}
 	}
 }
@@ -47182,9 +47089,9 @@ void crGainBirthPointMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_role = (crRole *)(LOINT64(param64));
-			m_index = HIINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_role = (crRole *)(LOCREPARAM(param64));
+			m_index = HICREPARAM(param64);
 		}
 		else
 		{

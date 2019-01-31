@@ -259,13 +259,13 @@ void crOdeWorld::s_nearCallback( void *data, dGeomID o1, dGeomID o2 )
 			int collideTest = 1;
 			if(node1.valid()) 
 			{
-				node1->doEvent(WCH_COLLIDETEST,MAKEINT64(node2.get(),&collideTest));
+				node1->doEvent(WCH_COLLIDETEST,MAKECREPARAM(node2.get(),&collideTest));
 			    if(collideTest == 0) return;
 			}
 			if(node2.valid())
 			{
 				collideTest = 1;
-				node2->doEvent(WCH_COLLIDETEST,MAKEINT64(node1.get(),&collideTest));
+				node2->doEvent(WCH_COLLIDETEST,MAKECREPARAM(node1.get(),&collideTest));
 				if(collideTest == 0) return;
 			}
 			//crMatterObject *mo1 = dynamic_cast<crMatterObject *>(node1);
@@ -276,7 +276,7 @@ void crOdeWorld::s_nearCallback( void *data, dGeomID o1, dGeomID o2 )
 			crVector3 contactNormal(contact[0].geom.normal[0], contact[0].geom.normal[1], contact[0].geom.normal[2]);
 			if(node1.valid())
 			{
-				node1->doEvent(WCH_COLLIDE,MAKEINT64(node2.get(),&contact[0]));
+				node1->doEvent(WCH_COLLIDE,MAKECREPARAM(node2.get(),&contact[0]));
 				callback = node1->getCollideCallback();
 				if (callback) (*callback)(node1.get(),node2.get(),o1,o2,contactPos,contactNormal);
 			}
@@ -289,7 +289,7 @@ void crOdeWorld::s_nearCallback( void *data, dGeomID o1, dGeomID o2 )
 				contact[0].geom.normal[0] = -contact[0].geom.normal[0];
 				contact[1].geom.normal[1] = -contact[1].geom.normal[1];
 				contact[2].geom.normal[2] = -contact[2].geom.normal[2];
-				node2->doEvent(WCH_COLLIDE,MAKEINT64(node1.get(),&contact[0]));
+				node2->doEvent(WCH_COLLIDE,MAKECREPARAM(node1.get(),&contact[0]));
 				callback = node2->getCollideCallback();
 				if (callback) (*callback)(node2.get(),node1.get(),o2,o1,contactPos,-contactNormal);
 			}

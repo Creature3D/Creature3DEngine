@@ -357,7 +357,7 @@ inline void crViewer::update()
 	//m_queue.push_back(m_frame_event);
 	//if(/*!m_animationPathControl &&*/ m_viewEventGroup.valid())
 	//{
-	//	m_viewEventGroup->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKEINT64(this,NULL),MAKEINT64(&m_queue,m_frameStamp->getFrameNumber()));
+	//	m_viewEventGroup->acceptEventMessage(WCH_KEYBOARDMOUSE,MAKECREPARAM(this,NULL),MAKEINT64(&m_queue,m_frameStamp->getFrameNumber()));
 	//}
 	if(m_viewCameraNode.valid() && frameNum>INITFRAMENUMBER)
 	{

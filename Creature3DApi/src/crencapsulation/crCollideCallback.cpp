@@ -179,7 +179,7 @@ void crBulletCollideCallback::operator()(crNode* node1, crNode* node2, void *o1,
 		fparam[4] = collideNormal[1];
 		fparam[5] = collideNormal[2];
 
-		bulletMatterObject->doEvent(WCH_BULLET_COLLIDE,MAKEINT64(node2,fparam));
+		bulletMatterObject->doEvent(WCH_BULLET_COLLIDE,MAKECREPARAM(node2,fparam));
 
 		crBulletObject::EffectAttrMask effectAttrMask = bulletObject->getEffectAttrMask();
 		std::string attrStr;
@@ -997,7 +997,7 @@ void crMouseManipularCollideCallback::operator()(crNode* node1, crNode* node2, v
 						CRCore::notify(CRCore::FATAL)<<"CRPhysics::crMouseManipularCollideCallback(): bodyMG的AttachedEventGroup类型不正确"<<std::endl;
 						return;
 					}
-					bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVEND,NULL),MAKEINT64(NULL,NULL));//0:init movetask index
+					bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVEND,NULL) );//0:init movetask index
 					//CRCore::notify(CRCore::FATAL)<<"CRPhysics::crMouseManipularCollideCallback()"<<std::endl;
 				}
 			}

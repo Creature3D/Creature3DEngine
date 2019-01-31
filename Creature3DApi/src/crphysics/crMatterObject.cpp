@@ -495,7 +495,7 @@ CRCore::crMatrix crMatterObject::getMatterObjectRotation() const
 //	m_eventMap.insert(std::make_pair(kbmsg,callback));
 //}
 //
-//void crMatterObject::doEvent(_crInt64 kbmsg, _crInt64 param)
+//void crMatterObject::doEvent(_crInt64 kbmsg, CREPARAM param)
 //{
 //	for( EventMap::iterator itr = m_eventMap.find(kbmsg); 
 //		itr != m_eventMap.end() && itr->first == kbmsg; 

@@ -3273,7 +3273,7 @@ void CREncapsulation::loadEngineUI()
 			//if(lenCanvas.valid())
 			//{
 			//	crVector4 color(0.0f,0.0f,0.0f,1.0f);
-			//	lenCanvas->doEvent(WCH_LenFadeInit,MAKEINT64(&color,NULL));
+			//	lenCanvas->doEvent(WCH_LenFadeInit,MAKECREPARAM(&color,NULL));
 			//}
 			//CRCore::crSearchNodeBYClassNameVisitor searchVisitor;
 			//searchVisitor.insertClassNameId("crCanvasNode");
@@ -3282,10 +3282,10 @@ void CREncapsulation::loadEngineUI()
 			//if(canvas)
 			//{
 			//	crFilterRenderManager::getInstance()->showCanvas(canvas,true);
-			//	canvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
+			//	canvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
 			//	short speed = 200;
 			//	short timeDelay = 1000;
-			//	canvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFade,MAKEINT32(speed,timeDelay)));
+			//	canvas->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFade,MAKEINT32(speed,timeDelay)));
 			//}
 		}
 	}
@@ -8110,7 +8110,7 @@ void CREncapsulation::loadAITaskManagerCfg(const std::string &path)
 				{
 					param32[1] = MAKEINT32(param16[2],param16[3]);
 				}
-				msg.m_param = MAKEINT64(param32[0],param32[1]);
+				msg.m_param = MAKECREPARAM(param32[0],param32[1]);
 
 				cfg_script.Get("Probability", probability);
 				cfg_script.Get("Interval", flt1);
@@ -8174,7 +8174,7 @@ void CREncapsulation::loadAITaskManagerCfg(const std::string &path)
 				{
 					param32[1] = MAKEINT32(param16[2],param16[3]);
 				}
-				msg.m_param = MAKEINT64(param32[0],param32[1]);
+				msg.m_param = MAKECREPARAM(param32[0],param32[1]);
 
 				cfg_script.Get("Probability", probability);
 				cfg_script.Get("Interval", flt1);
@@ -8364,7 +8364,7 @@ bool CREncapsulation::loadSave(crSave *save)
 	//	if(gameState == crSave::SingleInit)
 	//	{
 	//		save->setGameState(crSave::SingleRunning);
- //           bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVBEGIN,0),MAKEINT64(NULL,NULL));//0:init movetask index
+ //           bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVBEGIN,0) );//0:init movetask index
  //           bot->setVisiable(false);
 	//		if(vf) vf->setShow(2);
 	//		save->setProgress(0);
@@ -8372,7 +8372,7 @@ bool CREncapsulation::loadSave(crSave *save)
 	//	else if(gameState == crSave::NetInit)
 	//	{
 	//		save->setGameState(crSave::NetRunning);
-	//		bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVBEGIN,3),MAKEINT64(NULL,NULL));//
+	//		bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVBEGIN,3) );//
 	//		bot->setVisiable(false);
 	//		if(vf) vf->setShow(2);
 	//		save->setProgress(0);
@@ -8402,7 +8402,7 @@ bool CREncapsulation::loadSave(crSave *save)
 	//		const crVector3 &position = save->getPosition();
 	//		bot->setPosition(position/*+crVector3(0.0f,0.0f,1.5f)*/);
 	//		bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_AIMOVBEGIN,0),MAKEINT64(1,NULL));//0:init movetask index
-	//		//bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_BOTCONTROLLER,WCH_LOADPROGRESS),MAKEINT64(NULL,NULL));
+	//		//bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_BOTCONTROLLER,WCH_LOADPROGRESS) );
 
 	//		bot->setVisiable(false);
 	//		if(vf) vf->setShow(2);

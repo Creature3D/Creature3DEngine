@@ -271,9 +271,9 @@ void crSingleGameItemInRangeTestMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_player = (crRole *)(LOINT64(param64));
-			m_item = (crInstanceItem *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_player = (crRole *)(LOCREPARAM(param64));
+			m_item = (crInstanceItem *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -314,7 +314,7 @@ void crSingleGameItemInRangeTestMethod::operator()(crHandle &handle)
 			}
 			if(m_item->getItemtype() != crInstanceItem::Role)
 			{
-				m_item->doEvent(WCH_ItemInRangeTest,MAKEINT64(m_player.get(),&dist));
+				m_item->doEvent(WCH_ItemInRangeTest,MAKECREPARAM(m_player.get(),&dist));
 			}
 			bool playerInRange = crMyPlayerData::getInstance()->isItemInRange(m_item.get());
 			if(playerInRange!=inRange)
@@ -336,7 +336,7 @@ void crSingleGameItemInRangeTestMethod::operator()(crHandle &handle)
 							}
 							else
 							{
-								crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(m_item.get(),NULL));
+								crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(m_item.get(),NULL));
 							}
 						}
 						else
@@ -357,7 +357,7 @@ void crSingleGameItemInRangeTestMethod::operator()(crHandle &handle)
 							}
 							else
 							{
-								crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(m_item.get(),NULL));
+								crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(m_item.get(),NULL));
 							}
 						}
 						else
@@ -376,7 +376,7 @@ void crSingleGameItemInRangeTestMethod::operator()(crHandle &handle)
 						crMyPlayerData::RoleNpcPair roleNpcPair;
 						if(crMyPlayerData::getInstance()->findInRangePlayer(id,roleid,roleNpcPair))
 						{
-							//roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+							//roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 							relNode = roleNpcPair.first->getRelNode();
 							if(relNode)
 							{
@@ -391,7 +391,7 @@ void crSingleGameItemInRangeTestMethod::operator()(crHandle &handle)
 						crMyPlayerData::ItemNpcPair itemNpcPair;
 						if(crMyPlayerData::getInstance()->findInRangeNpc(id,itemNpcPair))
 						{
-							//itemNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+							//itemNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 							relNode = itemNpcPair.first->getRelNode();
 							if(relNode)
 							{
@@ -406,7 +406,7 @@ void crSingleGameItemInRangeTestMethod::operator()(crHandle &handle)
 						crMyPlayerData::ItemNodePair itemNodePair;
 						if(crMyPlayerData::getInstance()->findInRangeItem(id,itemNodePair))
 						{
-							//itemNodePair->second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+							//itemNodePair->second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 							relNode = itemNodePair.first->getRelNode();
 							if(relNode)
 							{
@@ -466,8 +466,8 @@ void crSingleGameRecvItemRTDataMethod::operator()(crHandle &handle)
 	{
 		if(node)
 		{
-			m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(node,crMatterObject::MD_FullMatrix));
-			//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+			m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(node,crMatterObject::MD_FullMatrix));
+			//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 			node->setVisiable(true);
 			node->setEnableIntersect(true);
 		}
@@ -492,7 +492,7 @@ void crSingleGameRecvItemRTDataMethod::operator()(crHandle &handle)
 			if(!(targetType & Target_Instance) && itemstate >= IS_Move && itemstate <= IS_Patrol)
 			{
 				//float speed = 0;
-				//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+				//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 				//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 				//if(m_this == crMyPlayerData::getInstance()->getRole())
 				//	node->doEvent(WCH_NetMoveToTarget,MAKEINT64(&targetPos,&relspeed));
@@ -519,7 +519,7 @@ void crSingleGameRecvItemRTDataMethod::operator()(crHandle &handle)
 	{//只在loaditem的时候才会触发接收一次
 		if(node)
 		{
-			m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(node,crMatterObject::MD_FullMatrix));
+			m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(node,crMatterObject::MD_FullMatrix));
 			void *param;
 			data->getParam(WCHDATA_ItemState,param);
 			unsigned char itemstate = *(unsigned char *)param;
@@ -542,7 +542,7 @@ void crSingleGameRecvItemRTDataMethod::operator()(crHandle &handle)
 					CRCore::notify(CRCore::FATAL)<<"crLoadItemMethod(): resScript是空的 "<<std::endl;
 				}
 			}
-			//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+			//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 			node->setVisiable(true);
 			node->setEnableIntersect(true);
 		}
@@ -589,16 +589,16 @@ void crTransportCommandMethod::operator()(crHandle &handle)
 			{
 				node->setVisiable(false);
 				node->setEnableIntersect(false);
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,0));
-				node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_TransportCommand,&m_command));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,0));
+				node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_TransportCommand,&m_command));
 
 				//crNode *lenui = crFilterRenderManager::getInstance()->getFilterNode("LenUI",crSearchNodeBYNameVisitor::OBJECT);
 				//if(lenui && !lenui->getVisiable())
 				//{
-				//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
+				//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFadeInit,MAKERGBA(0,0,0,255)));
 				//	short speed = 200;
 				//	short timeDelay = 500;
-				//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_LenFade,MAKEINT32(speed,timeDelay)));
+				//	lenui->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_LenFade,MAKEINT32(speed,timeDelay)));
 				//}
 			}
 		}
@@ -612,10 +612,10 @@ void crTransportCommandMethod::operator()(crHandle &handle)
 			crNode *node = item->getRelNode();
 			if(node)
 			{
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,0));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,0));
 				node->setVisiable(false);
 				node->setEnableIntersect(false);
-				node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_TransportCommand,&m_command));
+				node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_TransportCommand,&m_command));
 			}
 		}
 	}
@@ -646,8 +646,8 @@ void crDoTransportCommandMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_command = *(std::string *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_command = *(std::string *)(LOCREPARAM(param64));
 		}
 		break;
 	}
@@ -677,8 +677,8 @@ void crDoTransportCommandMethod::operator()(crHandle &handle)
 		item->setPosxy(value[0],value[1]);
 		item->setPosz(value[2]);
 		item->setDir(crVector3(value[3],value[4],value[5]));
-		item->doEvent(WCH_ItemCoordToNode,MAKEINT64(m_this,crMatterObject::MD_FullMatrix));
-		//m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+		item->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(m_this,crMatterObject::MD_FullMatrix));
+		//m_this->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 		m_this->setVisiable(true);
 		m_this->setEnableIntersect(true);
 	}
@@ -708,8 +708,8 @@ void crDoTransportCommandMethod::operator()(crHandle &handle)
 	//	player->setDirz(value[5]);
 	//	if(node)
 	//	{
-	//		player->doEvent(WCH_ItemCoordToNode,MAKEINT64(node,crMatterObject::MD_FullMatrix));
-	//		node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+	//		player->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(node,crMatterObject::MD_FullMatrix));
+	//		node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeInRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 	//	}
 	//}
 }
@@ -1185,7 +1185,7 @@ void crPlayerChooseTalkMethod::operator()(crHandle &handle)
 			void *param;
 			data->getParam(WCHDATA_TextID,param);
 			unsigned short textid = *(unsigned short *)(param);
-			role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(MAKEINT32(WCH_CutTalk,textid),MAKEINT32(0,0)));
+			role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(MAKEINT32(WCH_CutTalk,textid),MAKEINT32(0,0)));
 		}
 	}
 }
@@ -1223,7 +1223,7 @@ void crCutTalkMethod::operator()(crHandle &handle)
 	crRole *role = crMyPlayerData::getInstance()->getCurrentRole();
 	if(role)
 	{
-		role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(MAKEINT32(WCH_CutTalk,m_talkid),MAKEINT32(0,0)));
+		role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(MAKEINT32(WCH_CutTalk,m_talkid),MAKEINT32(0,0)));
 	}
 }
 ////////////////////////////////
@@ -1259,7 +1259,7 @@ void crCutSceneMethod::operator()(crHandle &handle)
 {
 	crRole *role = crMyPlayerData::getInstance()->getCurrentRole();
 	if(role)
-		role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(MAKEINT32(WCH_CutScene,m_id),MAKEINT32(0,0)));
+		role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(MAKEINT32(WCH_CutScene,m_id),MAKEINT32(0,0)));
 }
 /////////////////////////////////////////
 //
@@ -1365,7 +1365,7 @@ void crShowTextMethod::operator()(crHandle &handle)
 {
 	crRole *role = crMyPlayerData::getInstance()->getCurrentRole();
 	if(role)
-		role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(MAKEINT32(WCH_ShowText,m_id),MAKEINT32(0,-2)));
+		role->getRelNode()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(MAKEINT32(WCH_ShowText,m_id),MAKEINT32(0,-2)));
 }
 ////////////////////////////////
 //

@@ -994,7 +994,7 @@ void crFilterRenderManager::setInputCapturer(crWidgetNode *node)
 	if(node && node->getCanCaptureInput())
 	{
 		node->kernelGetCapture();
-		node->doEvent(WCH_WIDGETGETCAPTURE,MAKEINT64(NULL,node));
+		node->doEvent(WCH_WIDGETGETCAPTURE,MAKECREPARAM(NULL,node));
 	}
 }
 void crFilterRenderManager::setActiveCanvas(crCanvasNode *canvas)

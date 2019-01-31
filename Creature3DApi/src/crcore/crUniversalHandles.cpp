@@ -1081,19 +1081,13 @@ void crBaseEventContainerMethod::inputParam(int i, void *param)
 {
 	switch(i) 
 	{
-	case 0:
-		//if(param == 0)
-		//{// Õ∑≈
-		//	m_this = NULL;
-		//}
-		break;
 	case 1:
 		m_this = (crBase*)param;
 		break;
 	case 2:
 		{
-			_crInt64 _param = param==NULL?NULL:*(_crInt64*)param;
-			if(LOINT64(_param)!=WCH_EXCEVENT)
+			CREPARAM _param = *(CREPARAM*)param;
+			if(LOCREPARAM(_param)!=WCH_EXCEVENT)
 			{
 				m_eventListMutex.lock();
 				m_eventList.push_back(_param);
@@ -1116,23 +1110,23 @@ void crBaseEventContainerMethod::addParam(int i, const std::string& str)
 
 void crBaseEventContainerMethod::operator()(crHandle &handle)
 {
-	if(m_this && LOINT64(m_param)==WCH_EXCEVENT)
+	if(m_this && LOCREPARAM(m_param)==WCH_EXCEVENT)
 	{
 		CRCore::ScopedLock<crMutex> lock(m_eventListBufMutex);
 
 		m_eventListMutex.lock();
-		int hparam = HIINT64(m_param);
-		m_param = NULL;
+		int hparam = HICREPARAM(m_param);
+		m_param = NULLPARAM;
 		m_eventList_buf.swap(m_eventList);
 		m_eventListMutex.unlock();
 
-		_crInt64 param;
+		CREPARAM param;
 		for( EventList::iterator itr = m_eventList_buf.begin();
 			 itr != m_eventList_buf.end();
 		     ++itr )
 		{
 			param = *itr;
-			m_this->doEvent(LOINT64(param),MAKEINT64(HIINT64(param),hparam));
+			m_this->doEvent(LOCREPARAM(param),MAKECREPARAM(HICREPARAM(param),hparam));
 		}
 		if(!m_eventList_buf.empty()) m_eventList_buf.clear();
 	}

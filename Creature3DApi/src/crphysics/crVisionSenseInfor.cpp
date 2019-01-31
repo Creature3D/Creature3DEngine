@@ -79,7 +79,7 @@ void crVisionSenseInfor::computerFrontContact(CRPhysics::crViewMatterObject *bot
 		m_frontContactNode = m_contactInfoVec[m_frontRayID]->m_contactNode.get();
 		if(m_frontContactNode.valid())
 		{
-			m_frontContactNode->doEvent(WCH_FRONTCONTACT,MAKEINT64(bot,NULL));
+			m_frontContactNode->doEvent(WCH_FRONTCONTACT,MAKECREPARAM(bot,NULL));
 		}
 	}
 	else m_frontContactNode = NULL;

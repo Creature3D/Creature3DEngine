@@ -680,8 +680,7 @@ void crAircraftWeaponSequenceMethod::inputParam(int i, void *param)
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -709,7 +708,7 @@ void crAircraftWeaponSequenceMethod::operator()(crHandle &handle)
 			return;
 		}
 	}
-	std::string *str = (std::string *)(LOINT64(m_param));
+	std::string *str = (std::string *)(LOCREPARAM(m_param));
 	if(str && m_weapons.find(*str) != m_weapons.end())
 	{
 		m_sequence->startEffect();
@@ -753,8 +752,7 @@ void crAircraftWeaponSequenceExMethod::inputParam(int i, void *param)
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -801,7 +799,7 @@ void crAircraftWeaponSequenceExMethod::operator()(crHandle &handle)
 		}
 	}
 
-	std::string *str = (std::string *)(LOINT64(m_param));
+	std::string *str = (std::string *)(LOCREPARAM(m_param));
 	if(str && m_weapons.find(*str) != m_weapons.end())
 	{
 		unsigned int nch = m_sequence->getNumChildren();
@@ -892,7 +890,7 @@ void crAircraftWeaponSequenceExMethod::operator()(crHandle &handle)
 //			return;
 //		}
 //		//CRCore::notify(CRCore::FATAL)<<"CRPhysics::crDeadCallback():WCH_NEXTPROGRESS "<<std::endl;
-//		bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_BOTCONTROLLER,WCH_NEXTPROGRESS),MAKEINT64(NULL,NULL));
+//		bodyNC->acceptEventMessage(WCH_AIMOVIES,MAKEINT64(WCH_BOTCONTROLLER,WCH_NEXTPROGRESS) );
 //	}
 //}
 ///////////////////////////////////////////
@@ -4289,7 +4287,7 @@ void crFilterNodeEventMethod::operator()(crHandle &handle)
 			m_eventMsg = MAKEINT64(parseEventMsg(m_eventMsg1),parseEventMsg(m_eventMsg2));
 			m_eventParam = MAKEINT64(parseEventMsg(m_eventParam1),parseEventMsg(m_eventParam2));
 		}
-		m_eventNode->doEvent(m_eventMsg,m_eventParam);
+		m_eventNode->doEvent(m_eventMsg,MAKECREPARAM(m_eventParam,NULL));
 	}
 }
 ////////////////////////////////
@@ -4374,7 +4372,7 @@ void crNodeEventMethod::operator()(crHandle &handle)
 			m_eventMsg = MAKEINT64(parseEventMsg(m_eventMsg1),parseEventMsg(m_eventMsg2));
 			m_eventParam = MAKEINT64(parseEventMsg(m_eventParam1),parseEventMsg(m_eventParam2));
 		}
-		m_eventNode->doEvent(m_eventMsg,m_eventParam);
+		m_eventNode->doEvent(m_eventMsg,MAKECREPARAM(m_eventParam,NULL));
 	}
 }
 //////////////////////////////////
@@ -4551,8 +4549,7 @@ void crEffectSequenceMethod::inputParam(int i, void *param)
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -4588,8 +4585,8 @@ void crEffectSequenceMethod::operator()(crHandle &handle)
 				CRPhysics::crWeaponMatterObject *weapon = dynamic_cast<CRPhysics::crWeaponMatterObject *>(m_node.get());
 				if(weapon)
 				{
-					crVector3 *gunpoint = (crVector3*)(LOINT64(m_param));
-					crVector3 *dir = (crVector3*)(HIINT64(m_param));
+					crVector3 *gunpoint = (crVector3*)(LOCREPARAM(m_param));
+					crVector3 *dir = (crVector3*)(HICREPARAM(m_param));
 					//crVector3 pos = *gunpoint + (*dir) * m_offset;
 
 					sequenceNode->setEffectPosition(*gunpoint + (*dir) * m_offset + m_positionOffset);
@@ -4653,8 +4650,7 @@ void crEffectLightMethod::inputParam(int i, void *param)
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -4683,7 +4679,7 @@ void crEffectLightMethod::operator()(crHandle &handle)
 				CRPhysics::crWeaponMatterObject *weapon = dynamic_cast<CRPhysics::crWeaponMatterObject *>(m_node.get());
 				if(weapon)
 				{
-					crVector3 *gunpoint = (crVector3*)(LOINT64(m_param));
+					crVector3 *gunpoint = (crVector3*)(LOCREPARAM(m_param));
 					//crVector3 *dir = (crVector3*)(HIINT64(param));
 					//crVector3 pos = *gunpoint + (*dir) * m_offset;
 					ls->setEffectPosition(*gunpoint);
@@ -4856,10 +4852,6 @@ void crXTransTMDofMethod::inputParam(int i, void *param)
 	case 1:
 		m_node = (crNode*)param;
 		break;
-	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
-		break;
 	}
 }
 
@@ -4981,10 +4973,6 @@ void crYTransTMDofMethod::inputParam(int i, void *param)
 		break;
 	case 1:
 		m_node = (crNode*)param;
-		break;
-	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
 		break;
 	}
 }
@@ -5314,8 +5302,8 @@ void crPointSelectMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -5865,8 +5853,8 @@ void crMouseControlViewMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -6101,8 +6089,7 @@ void crPanNodeMethod::inputParam(int i, void *param)
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -6142,7 +6129,7 @@ void crPanNodeMethod::operator()(crHandle &handle)
 				CRProducer::crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 				if(bindview && bindview->isInited())
 				{
-					CRProducer::crGUIEventAdapter* ea = (crGUIEventAdapter *)(LOINT64(m_param));
+					CRProducer::crGUIEventAdapter* ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 
 					float x = inDegrees(ea->getXnormalized()*200.0f*speed);
 					float y = inDegrees(ea->getYnormalized()*100.0f*speed);
@@ -6228,8 +6215,7 @@ void crRotNodeMethod::inputParam(int i, void *param)
 		m_node = (crNode*)param;
 		break;
 	case 2:
-		if(param) m_param = *(_crInt64*)param;
-		else m_param = 0;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -6264,7 +6250,7 @@ void crRotNodeMethod::operator()(crHandle &handle)
 				CRProducer::crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 				if(bindview && bindview->isInited())
 				{
-					CRProducer::crGUIEventAdapter* ea = (crGUIEventAdapter *)(LOINT64(m_param));
+					CRProducer::crGUIEventAdapter* ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 
 					float x = inDegrees(ea->getXnormalized()*200.0f*speed);
 					float y = inDegrees(ea->getYnormalized()*100.0f*speed);
@@ -7597,8 +7583,8 @@ void crPickTargetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -7692,8 +7678,8 @@ void crMouseMoveCursorMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -7881,9 +7867,9 @@ void crMoveToTargetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_targerPosition = *((crVector3*)(LOINT64(param64)));
-			m_velocity = *((float*)(HIINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_targerPosition = *((crVector3*)(LOCREPARAM(param64)));
+			m_velocity = *((float*)(HICREPARAM(param64)));
 		}
 		break;
 	case 3:
@@ -7911,12 +7897,12 @@ void crMoveToTargetMethod::init()
 		omcp->setIgnoreZ(true);
 		CRCore::Msg msg;
 		msg.m_msg = MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE);
-		msg.m_param = MAKEINT64(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYDOWN),NULL);
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCH_UP,crGUIEventAdapter::KEYDOWN),NULL);
 		msg.m_interval = 1.0f;
         omcp->addOrdinalMsg(msg);
 
 		msg.m_msg = MAKEINT64(WCH_INPUTAITASK,NULL);
-		msg.m_param = MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
 		msg.m_interval = 0.0f;
         omcp->addOrdinalMsg(msg);
 
@@ -7926,7 +7912,7 @@ void crMoveToTargetMethod::init()
 		omcp->setNeedVelocity(false);
 		omcp->setIgnoreZ(true);
 		msg.m_msg = MAKEINT64(WCH_INPUTAITASK,NULL);
-		msg.m_param = MAKEINT64(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
+		msg.m_param = MAKECREPARAM(MAKEINT32(WCHAI_End,NULL),m_aiTask.get());
 		msg.m_interval = 0.0f;
 		omcp->addOrdinalMsg(msg);
 
@@ -7965,7 +7951,7 @@ void crMoveToTargetMethod::operator()(crHandle &handle)
 				omcp = dynamic_cast<crOrdinalMsgControlPoint *>(taskPointVec[1].get());
 				omcp->setPosition(m_targerPosition);
 
-                m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKEINT64(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot),m_aiTask.get()));
+                m_this->doEvent(MAKEINT64(WCH_INPUTAITASK,NULL),MAKECREPARAM(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot),m_aiTask.get()));
 				m_time = t1;
 			}
 		}
@@ -8815,7 +8801,7 @@ void crMudererDoEventMethod::inputParam(int i, void *param)
 	switch(i) 
 	{
 	case 2:
-		m_param = param?*(_crInt64*)param:NULL;
+		m_param = *(CREPARAM*)param;
 		break;
 	}
 }
@@ -8835,9 +8821,9 @@ void crMudererDoEventMethod::addParam(int i, const std::string& str)
 
 void crMudererDoEventMethod::operator()(crHandle &handle)
 {
-	if(HIINT64(m_param))
+	if(HICREPARAM(m_param))
 	{
-		crViewMatterObject *muderer = (crViewMatterObject *)(HIINT64(m_param));
+		crViewMatterObject *muderer = (crViewMatterObject *)(HICREPARAM(m_param));
 		muderer->doEvent(MAKEINT64(m_msgParam1,m_msgParam2));
 	}
 }
@@ -9412,8 +9398,8 @@ void crTerrainEditMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -9467,7 +9453,7 @@ void crTerrainEditMethod::operator()(crHandle &handle)
 
 							crVector3 hitPoint = hits[0].getLocalIntersectPoint();
                             //ÏÔÊ¾±à¼­¿ò
-							m_this->doEvent(WCH_ShowTerrainEditDecal,MAKEINT64(terrain,&hitPoint));
+							m_this->doEvent(WCH_ShowTerrainEditDecal,MAKECREPARAM(terrain,&hitPoint));
 
 							infoData->getParam(EDP_CurrentTerTool,param);
 							unsigned char currentTerTool = *((unsigned char*)param);
@@ -9617,8 +9603,8 @@ void crColorWeightEditMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -9681,7 +9667,7 @@ void crColorWeightEditMethod::operator()(crHandle &handle)
 
 						crVector3 hitPoint = hits[0].getLocalIntersectPoint();
 						//ÏÔÊ¾±à¼­¿ò
-						m_this->doEvent(WCH_ShowTerrainEditDecal,MAKEINT64(terrain,&hitPoint));
+						m_this->doEvent(WCH_ShowTerrainEditDecal,MAKECREPARAM(terrain,&hitPoint));
 
 						ref_ptr<crImage> colorWeightImage = colorWeightTex->getImage();
 						if(!colorWeightImage.valid())
@@ -9803,8 +9789,8 @@ void crTerrainEditDecalMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -9847,7 +9833,7 @@ void crTerrainEditDecalMethod::operator()(crHandle &handle)
 					{
 						crVector3 hitPoint = hits[0].getLocalIntersectPoint();
 						//ÏÔÊ¾±à¼­¿ò
-						m_this->doEvent(WCH_ShowTerrainEditDecal,MAKEINT64(terrain,&hitPoint));
+						m_this->doEvent(WCH_ShowTerrainEditDecal,MAKECREPARAM(terrain,&hitPoint));
 					}
 				}
 			}
@@ -10062,9 +10048,9 @@ void crShowTerrainEditDecalMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_terrain = (crTerrainTile *)(LOINT64(param64));
-			m_hitPoint = *((crVector3 *)(HIINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_terrain = (crTerrainTile *)(LOCREPARAM(param64));
+			m_hitPoint = *((crVector3 *)(HICREPARAM(param64)));
 		}
 		break;
 	}
@@ -10275,8 +10261,8 @@ void crMoveWidgetMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -10343,8 +10329,8 @@ void crMoveParentCanvasMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_ea = (crGUIEventAdapter *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -11081,7 +11067,7 @@ void crWidgetDoEventMethod::operator()(crHandle &handle)
 {
 	ref_ptr<crWidgetNode> widget = m_this->getWidget(m_widget);
 	if(widget.valid() && widget->getEnable())
-		widget->doEvent(m_msg,m_param);
+		widget->doEvent(m_msg,MAKECREPARAM(m_param,NULL));
 }
 /////////////////////////////////////////
 //
@@ -11135,7 +11121,7 @@ void crWidgetDoEvent2Method::operator()(crHandle &handle)
 	{
 		ref_ptr<crWidgetNode>widget = canvas->getWidget(m_widget);
 		if(widget.valid() && widget->getEnable())
-			widget->doEvent(m_msg,m_param);
+			widget->doEvent(m_msg,MAKECREPARAM(m_param, NULL));
 	}
 }
 /////////////////////////////////////////
@@ -11184,7 +11170,7 @@ void crCanvasDoEventMethod::operator()(crHandle &handle)
 	ref_ptr<crCanvasNode>canvas = crFilterRenderManager::getInstance()->findCanvas(m_canvas);
 	if(canvas.valid() && canvas->getEnable())
 	{
-		canvas->doEvent(m_msg,m_param);
+		canvas->doEvent(m_msg,MAKECREPARAM(m_param, NULL));
 	}
 }
 /////////////////////////////////////////
@@ -11243,7 +11229,7 @@ void crParentCanvasDoEventMethod::operator()(crHandle &handle)
 	crCanvasNode *canvas = m_this->getParentCanvas();
 	if(canvas && canvas->getEnable())
 	{
-		canvas->doEvent(m_msg,m_param);
+		canvas->doEvent(m_msg,MAKECREPARAM(m_param, NULL));
 	}
 }
 /////////////////////////////////////////

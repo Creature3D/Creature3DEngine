@@ -66,7 +66,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 		{
 			if(!m_enable)
 			{
-				doEvent(WCH_OUTVOLUME,MAKEINT64(setItr.get(),NULL)); 
+				doEvent(WCH_OUTVOLUME,MAKECREPARAM(setItr.get(),NULL)); 
 			}
 		}
 		else
@@ -121,7 +121,7 @@ void crVolumeNode::trigger(/*const crFrameStamp* frameStamp*/)
 bool crVolumeNode::doVolumeEvent(crMatterObject *materObject)
 {
 	bool isvalid = false;
-	crNode::doEvent(WCH_INVOLUME,MAKEINT64(materObject,&isvalid));
+	crNode::doEvent(WCH_INVOLUME,MAKECREPARAM(materObject,&isvalid));
 	if(isvalid)
 	{
 		if(m_maxTriggerCount>0)
@@ -171,12 +171,12 @@ void crVolumeNode::inVolume(crMatterObject *materObject)
 
 void crVolumeNode::outVolume(crMatterObject *materObject) 
 {
-	doEvent(WCH_OUTVOLUME,MAKEINT64(materObject,NULL)); 
+	doEvent(WCH_OUTVOLUME,MAKECREPARAM(materObject,NULL)); 
 	m_inVolumeNodeSet.erase(materObject); 
 }
 void crVolumeNode::tryEnableVolume(bool enable)
 {
-	doEvent(WCH_ENABLEVOLUME,MAKEINT64(enable?1:0,NULL));
+	doEvent(WCH_ENABLEVOLUME,MAKECREPARAM(enable?1:0,NULL));
 }
 void crVolumeNode::setEnable(bool enable)
 {
@@ -224,7 +224,7 @@ void crVolumeNode::reset()
 		itr != m_inVolumeNodeSet.end();
 		++itr )
 	{
-		doEvent(WCH_OUTVOLUME,MAKEINT64(itr->get(),NULL)); 
+		doEvent(WCH_OUTVOLUME,MAKECREPARAM(itr->get(),NULL)); 
 	}
 	m_inVolumeNodeSet.clear();
 	m_interval = 0.0f;
@@ -442,7 +442,7 @@ void crVolumeNodeManager::traverse(crNodeVisitor& nv)
 			++itr )
 		{
 			node = itr->second.get();
-			node->doEvent(WCH_UPDATEVISITOR,MAKEINT64(&nv,NULL));
+			node->doEvent(WCH_UPDATEVISITOR,MAKECREPARAM(&nv,NULL));
 			node->trigger(/*nv.getFrameStamp()*/);
 			//node->accept(nv);
 		}

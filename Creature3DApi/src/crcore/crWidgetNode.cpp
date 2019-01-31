@@ -103,7 +103,7 @@ void crWidgetNode::traverse(crNodeVisitor& nv)
 		//doEvent(MAKEINT64(WCH_UI_UpdateData,NULL));
 		updateData();
 		float dt = crFrameStamp::getInstance()->getFrameInterval();
-		doEvent(WCH_UI_Frame,MAKEINT64(&dt,NULL));
+		doEvent(WCH_UI_Frame,MAKECREPARAM(&dt,NULL));
 		//}
 	}
 	crMatrixTransform::traverse(nv);

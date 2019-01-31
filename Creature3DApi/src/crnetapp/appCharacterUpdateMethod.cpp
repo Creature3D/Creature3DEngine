@@ -100,9 +100,9 @@ void crRpgGameCharacterUpdateMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *(float*)(LOINT64(param64));
-			m_bot = (CRPhysics::crViewMatterObject*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *(float*)(LOCREPARAM(param64));
+			m_bot = (CRPhysics::crViewMatterObject*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -669,8 +669,8 @@ void crRpgGameCharacterStateChangeMethod::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_actDuration = *(float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_actDuration = *(float *)(LOCREPARAM(param64));
 		}
 		else
 		{

@@ -210,7 +210,7 @@ void crSceneServerPlayerData::setClientRunning(bool bln)
 //			{
 //				m_inrangeRolePlayer[id] = itr->second;
 //				ref_ptr<crStreamBuf> rtDataStream;
-//				role->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+//				role->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 //				crItemInRangePacket::buildRequestPacket(inpacket,getPlayerID(),role,rtDataStream.get());
 //				sceneServerConductor->getNetManager()->sendPacket(getPlayerConnectServerAddress(),inpacket);
 //			}
@@ -325,7 +325,7 @@ void crSceneServerPlayerData::setClientRunning(bool bln)
 //			{
 //				m_inrangeItem[item->getInstanceItemID()] = item;
 //				ref_ptr<crStreamBuf> rtDataStream;
-//				item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+//				item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 //				crItemInRangePacket packet;
 //				crItemInRangePacket::buildRequestPacket(packet,getPlayerID(),item,rtDataStream.get());
 //				sceneServerConductor->getNetManager()->sendPacket(getPlayerConnectServerAddress(),packet);

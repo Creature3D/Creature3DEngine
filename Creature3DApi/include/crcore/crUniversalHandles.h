@@ -211,9 +211,9 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::crBase* m_this;
-	_crInt64 m_param;
+	CREPARAM m_param;
 
-	typedef std::vector<_crInt64> EventList;
+	typedef std::vector<CREPARAM> EventList;
 	EventList m_eventList;
 	EventList m_eventList_buf;
 	crMutex m_eventListMutex;

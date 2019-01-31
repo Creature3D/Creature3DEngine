@@ -40,8 +40,8 @@ public:
 	virtual void outputParam(int i, void *param);
 protected:
 	crRole* m_this;
-	_crInt64 m_param;
-	CRCore::ref_ptr<CRProducer::crGUIEventAdapter> m_ea;
+	CREPARAM m_param;
+	CRProducer::crGUIEventAdapter* m_ea;
 	CRCore::ref_ptr<CRCore::crHandle> m_pickTarget;
 	unsigned char m_targetType;
 	CRCore::ref_ptr<CRCore::crNode> m_targetNode;

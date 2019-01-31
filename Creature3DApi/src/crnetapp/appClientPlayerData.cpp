@@ -1139,7 +1139,7 @@ void crMyPlayerData::removeInRangePlayer(int playerid)
 	{
 		if(itr->second.first->getPlayerID() == playerid)
 		{
-			//itr->second.second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));//隐藏
+			//itr->second.second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));//隐藏
 			relNode = itr->second.first->getRelNode();
 			if(relNode)
 			{
@@ -1467,7 +1467,7 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 				attackrange = itemUseRange * crGlobalHandle::gData()->gUnitScale();
 				attackrange += iitem->getAttackDistance(NULL);
 			}
-			iitem->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
+			iitem->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange, NULL));
 			sightRange *= crGlobalHandle::gData()->gUnitScale();
 			if (sightRange < attackrange)
 				sightRange = attackrange;
@@ -1515,13 +1515,13 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 			//	}
 			//}
 			guisestate = GS_Normal;
-			enemyItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			enemyItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 			{
 				continue;
 			}
 			isEnemy = 0;
-			me->doEvent(WCH_EnemyCheck, MAKEINT64(enemyItem, &isEnemy));
+			me->doEvent(WCH_EnemyCheck, MAKECREPARAM(enemyItem, &isEnemy));
 			if(isEnemy == -1)
 			{
 				epos = enemyItem->getPosition();
@@ -1566,13 +1566,13 @@ crInstanceItem *crMyPlayerData::getOneInRangeEnemy(crInstanceItem *iitem, float 
 			if(itemstate == IS_Dead)
 				continue;
 			guisestate = GS_Normal;
-			enemyItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			enemyItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 			{
 				continue;
 			}
 			isEnemy = 0;
-			me->doEvent(WCH_EnemyCheck, MAKEINT64(enemyItem, &isEnemy));
+			me->doEvent(WCH_EnemyCheck, MAKECREPARAM(enemyItem, &isEnemy));
 			if(isEnemy == -1)
 			{
 				epos = enemyItem->getPosition();
@@ -1644,7 +1644,7 @@ crInstanceItem *crMyPlayerData::selectTargetInPointRange(const CRCore::crVector3
 				if (itemstate == IS_Dead)
 					continue;
 				guisestate = GS_Normal;
-				item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate, NULL));
 				if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 				{
 					continue;
@@ -1683,13 +1683,13 @@ crInstanceItem *crMyPlayerData::selectTargetInPointRange(const CRCore::crVector3
 				if (itemstate == IS_Dead)
 					continue;
 				guisestate = GS_Normal;
-				item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate, NULL));
 				if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 				{
 					continue;
 				}
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck, MAKEINT64(item, &isEnemy));
+				me->doEvent(WCH_EnemyCheck, MAKECREPARAM(item, &isEnemy));
 				if (isEnemy == -1 && (targetType & Target_Friend || targetType & Target_Self))
 				{
 					continue;
@@ -1732,7 +1732,7 @@ crInstanceItem *crMyPlayerData::selectTargetInPointRange(const CRCore::crVector3
 				if (itemstate == IS_Dead)
 					continue;
 				guisestate = GS_Normal;
-				item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate, NULL));
 				if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 				{
 					continue;
@@ -1748,7 +1748,7 @@ crInstanceItem *crMyPlayerData::selectTargetInPointRange(const CRCore::crVector3
 						continue;
 				}
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck, MAKEINT64(item, &isEnemy));
+				me->doEvent(WCH_EnemyCheck, MAKECREPARAM(item, &isEnemy));
 				if (isEnemy == -1 && (targetType & Target_Friend || targetType & Target_Self))
 				{
 					continue;
@@ -1797,7 +1797,7 @@ unsigned char crMyPlayerData::getTargetItemType(crInstanceItem *targetItem)
 			{
 				unsigned int guisestate = GS_Normal;
 				guisestate = GS_Normal;
-				targetItem->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+				targetItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate, NULL));
 				if (guisestate & GS_Static)
 				{
 					targetType = Target_StaticNpc;
@@ -1825,7 +1825,7 @@ void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 	//float fguardRange = (float)guardRange * crGlobalHandle::gData()->gUnitScale();
 	float scale = crGlobalHandle::gData()->gUnitScale();
 	float sightRange = 0;
-	iitem->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+	iitem->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 	sightRange *= scale;
 	crVector2 ipos(iitem->getPosx(),iitem->getPosy());
 	ipos *= scale;
@@ -1868,13 +1868,13 @@ void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 			//	}
 			//}
 			guisestate = GS_Normal;
-			enemyItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			enemyItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 			{
 				continue;
 			}
 			isEnemy = 0;
-			iitem->doEvent(WCH_EnemyCheck,MAKEINT64(enemyItem,&isEnemy));
+			iitem->doEvent(WCH_EnemyCheck,MAKECREPARAM(enemyItem,&isEnemy));
 			if(isEnemy == -1)
 			{
 				epos.set(enemyItem->getPosx(),enemyItem->getPosy());
@@ -1907,13 +1907,13 @@ void crMyPlayerData::updateInPatrolEnemyMap(crInstanceItem *iitem)
 			if(itemstate == IS_Dead)
 				continue;
 			guisestate = GS_Normal;
-			enemyItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			enemyItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 			{
 				continue;
 			}
 			isEnemy = 0;
-			iitem->doEvent(WCH_EnemyCheck,MAKEINT64(enemyItem,&isEnemy));
+			iitem->doEvent(WCH_EnemyCheck,MAKECREPARAM(enemyItem,&isEnemy));
 			if(isEnemy == -1)
 			{
 				epos.set(enemyItem->getPosx(),enemyItem->getPosy());
@@ -2047,7 +2047,7 @@ void crMyPlayerData::removeAllInRanges()
 			 ++itr )
 		{
 			insertOutRangePlayer(itr->second.first.get(),itr->second.second.get());
-			//itr->second.second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+			//itr->second.second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 			relNode = itr->second.first->getRelNode();
 			if(relNode)
 			{
@@ -2064,7 +2064,7 @@ void crMyPlayerData::removeAllInRanges()
 			 ++itr )
 		{
 			insertOutRangeNpc(itr->second.first.get(),itr->second.second.get());
-			//itr->second.second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+			//itr->second.second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 			relNode = itr->second.first->getRelNode();
 			if(relNode)
 			{
@@ -2081,7 +2081,7 @@ void crMyPlayerData::removeAllInRanges()
 			 ++itr )
 		{
 			insertOutRangeItem(itr->second.first.get(),itr->second.second.get());
-			//itr->second.second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+			//itr->second.second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 			relNode = itr->second.first->getRelNode();
 			if(relNode)
 			{
@@ -2267,7 +2267,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			item = itr->second.first.get();
 			data = item->getDataClass();
 			guisestate = GS_Normal;
-			item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Blind)
 			{
 				continue;
@@ -2288,7 +2288,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			//data->getParam(WCHDATA_SightRange,param);
 			//sightRange = *(short *)param;
 			sightRange = 0;
-			item->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+			item->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 
 			data->getParam(WCHDATA_EyeHeight,param);
 			eyeHeight = *(short *)param;
@@ -2309,7 +2309,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 				{//幻象
 					data = item->getDataClass();
 					guisestate = GS_Normal;
-					item->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+					item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate, NULL));
 					if (guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Blind)
 					{
 						continue;
@@ -2330,7 +2330,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					//data->getParam(WCHDATA_SightRange,param);
 					//sightRange = *(short *)param;
 					sightRange = 0;
-					item->doEvent(MAKEINT64(WCH_GetSightRange, NULL), MAKEINT64(&sightRange, NULL));
+					item->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange, NULL));
 					data->getParam(WCHDATA_EyeHeight, param);
 					eyeHeight = *(short *)param;
 					eye[0] = item->getPosx();
@@ -2355,12 +2355,12 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 				if (ifItemIsMe(item))
 					continue;
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy==1)
 				{//队友
 					data = item->getDataClass();
 					guisestate = GS_Normal;
-					item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+					item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 					if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Blind)
 					{
 						continue;
@@ -2381,7 +2381,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					//data->getParam(WCHDATA_SightRange,param);
 					//sightRange = *(short *)param;
 					sightRange = 0;
-					item->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+					item->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 					data->getParam(WCHDATA_EyeHeight,param);
 					eyeHeight = *(short *)param;
 					eye[0] = item->getPosx();
@@ -2400,12 +2400,12 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			{
 				item = itr->second.first.get();
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy==1)
 				{//队友
 					data = item->getDataClass();
 					guisestate = GS_Normal;
-					item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+					item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 					if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Blind)
 					{
 						continue;
@@ -2426,7 +2426,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					//data->getParam(WCHDATA_SightRange,param);
 					//sightRange = *(short *)param;
 					sightRange = 0;
-					item->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+					item->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 					data->getParam(WCHDATA_EyeHeight,param);
 					eyeHeight = *(short *)param;
 					eye[0] = item->getPosx();
@@ -2445,12 +2445,12 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 			{
 				item = itr->second.first.get();
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy==1)
 				{//队友
 					data = item->getDataClass();
 					//guisestate = GS_Normal;
-					//item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+					//item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 					//if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Blind)
 					//{
 					//	continue;
@@ -2464,7 +2464,7 @@ void crMyPlayerData::getEyes(std::vector<CRCore::crVector4i>&eyeVec)
 					//data->getParam(WCHDATA_SightRange,param);
 					//sightRange = *(short *)param;
 					sightRange = 0;
-					item->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+					item->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 					data->getParam(WCHDATA_EyeHeight,param);
 					eyeHeight = *(short *)param;
 					eye[0] = item->getPosx();
@@ -2503,7 +2503,7 @@ bool crMyPlayerData::isTeammateAndShareSight(crInstanceItem *item)
 		if (me.valid())
 		{
 			char isEnemy = 0;
-			me->doEvent(WCH_EnemyCheck, MAKEINT64(item, &isEnemy));
+			me->doEvent(WCH_EnemyCheck, MAKECREPARAM(item, &isEnemy));
 			return isEnemy == 1;
 		}
 	}
@@ -2536,7 +2536,7 @@ void crMyPlayerData::sightVisiableUpdate(float dt)
 			if(!relNode)
 				continue;
 			guisestate = GS_Normal;
-			item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable)
 			{//死亡消失
 				relNode->setVisiable(false);
@@ -2555,7 +2555,7 @@ void crMyPlayerData::sightVisiableUpdate(float dt)
 			if(isShareSight)
 			{
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy!=1)
 				{//不是队友
 					checkItemVisiable(eyeVec,item);
@@ -2578,7 +2578,7 @@ void crMyPlayerData::sightVisiableUpdate(float dt)
 			if(!relNode)
 				continue;
 			guisestate = GS_Normal;
-			item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+			item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 			if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable)
 			{//死亡消失
 				relNode->setVisiable(false);
@@ -2595,7 +2595,7 @@ void crMyPlayerData::sightVisiableUpdate(float dt)
 			if(isShareSight)
 			{
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy!=1)
 				{//
 					checkItemVisiable(eyeVec,item);
@@ -2954,7 +2954,7 @@ crInstanceItem* crMyPlayerData::dynamicCollideTest(crInstanceItem *item,const CR
 			if(ignoreflg==IG_Friends)
 			{
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy==1)
 					continue;
 			}
@@ -2977,7 +2977,7 @@ crInstanceItem* crMyPlayerData::dynamicCollideTest(crInstanceItem *item,const CR
 			if(ignoreflg==IG_Friends)
 			{
 				isEnemy = 0;
-				me->doEvent(WCH_EnemyCheck,MAKEINT64(item,&isEnemy));
+				me->doEvent(WCH_EnemyCheck,MAKECREPARAM(item,&isEnemy));
 				if(isEnemy==1)
 					continue;
 			}
@@ -3186,7 +3186,7 @@ void crMyPlayerData::rectSelectItem(const CRCore::crVector4i &rect,std::vector<c
 				data->getParam(WCHDATA_ItemState,param);
 				itemstate = *(unsigned char *)param;
 				guisestate = GS_Normal;
-				item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+				item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 				if(itemstate == IS_Dead || guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack || guisestate & GS_Taunt || guisestate & GS_Confusion || guisestate & GS_Scare)
 				{//不可被自己选中
 					continue;
@@ -3225,7 +3225,7 @@ void crMyPlayerData::rectSelectItem(const CRCore::crVector4i &rect,std::vector<c
 		//		data->getParam(WCHDATA_ItemState,param);
 		//		itemstate = *(unsigned char *)param;
 		//		guisestate = GS_Normal;
-		//		item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		//		item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		//		if(itemstate == IS_Dead || guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 		//		{//不可被别人选中
 		//			continue;
@@ -3268,7 +3268,7 @@ void crMyPlayerData::rectSelectItem(const CRCore::crVector4i &rect,std::vector<c
 		//		data->getParam(WCHDATA_ItemState,param);
 		//		itemstate = *(unsigned char *)param;
 		//		guisestate = GS_Normal;
-		//		item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		//		item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		//		if(itemstate == IS_Dead || guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 		//		{//不可被别人选中
 		//			continue;
@@ -3311,7 +3311,7 @@ void crMyPlayerData::rectSelectItem(const CRCore::crVector4i &rect,std::vector<c
 		//		data->getParam(WCHDATA_ItemState,param);
 		//		itemstate = *(unsigned char *)param;
 		//		guisestate = GS_Normal;
-		//		item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		//		item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		//		if(itemstate == IS_Dead || guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || guisestate & GS_Stagnate || guisestate & GS_NoAttack)
 		//		{//不可被别人选中
 		//			continue;

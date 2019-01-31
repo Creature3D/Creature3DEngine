@@ -170,7 +170,7 @@ void crQueryGameListPacket::parsePacket(const std::string &sender)
  //           crMyPlayerData::getInstance()->addGame(data);
 	//		CRCore::notify(CRCore::ALWAYS)<<"crQueryGameListPacket CName="<<data->getCName()<<std::endl;
 	//	}
-	//	crGlobalHandle::getInstance()->doEvent(WCH_RecvGameList,MAKEINT64(NULL,NULL));
+	//	crGlobalHandle::getInstance()->doEvent(WCH_RecvGameList );
 	//}
 }
 /////////////////////////////////////////
@@ -237,7 +237,7 @@ void crRecvGameListPacket::parsePacket(const std::string &sender)
 			crMyPlayerData::getInstance()->addGame(data);
 			//CRCore::notify(CRCore::ALWAYS)<<"crQueryGameListPacket CName="<<data->getCName()<<std::endl;
 		}
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvGameList,MAKEINT64(NULL,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvGameList );
 	}
 }
 ///////////////////////////////////////////
@@ -873,7 +873,7 @@ void crFileStreamPacket::parsePacket(const std::string &sender)
 //	}
 //	else if(netType == GameClient_Download || netType == GameClient_Game)
 //	{
-//		crGlobalHandle::getInstance()->doEvent(WCH_DownloadFileEnd,MAKEINT64(m_streamBuf.get(),NULL));
+//		crGlobalHandle::getInstance()->doEvent(WCH_DownloadFileEnd,MAKECREPARAM(m_streamBuf.get(),NULL));
 //	}
 //}
 /////////////////////////////////////////
@@ -1075,8 +1075,8 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 				netManager->sendPacket(sender,packet);
 				netDataManager->insertPlayerData(dropedPlayerData.get());
 
-				crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKEINT64(dropedPlayerData.get(),NULL));
-				dropedPlayerData->getPlayerGameData()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKEINT64(NULL,dropedPlayerData.get()));
+				crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKECREPARAM(dropedPlayerData.get(),NULL));
+				dropedPlayerData->getPlayerGameData()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKECREPARAM(NULL,dropedPlayerData.get()));
 			}
 			else
 			{
@@ -1173,8 +1173,8 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 							netManager->sendPacket(sender,packet);
 							netDataManager->insertPlayerData(dropedPlayerData.get());
 
-							crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKEINT64(dropedPlayerData.get(),NULL));
-							dropedPlayerData->getPlayerGameData()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKEINT64(NULL,dropedPlayerData.get()));
+							crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKECREPARAM(dropedPlayerData.get(),NULL));
+							dropedPlayerData->getPlayerGameData()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKECREPARAM(NULL,dropedPlayerData.get()));
 						}
 						else
 						{
@@ -1343,8 +1343,8 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 										netManager->sendPacket(sender,packet);
 										netDataManager->insertPlayerData(playerData.get());
 
-										crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKEINT64(playerData.get(),NULL));
-										playerGameData->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKEINT64(NULL,playerData.get()));
+										crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKECREPARAM(playerData.get(),NULL));
+										playerGameData->doEvent(MAKEINT64(WCH_PlayerLogin,GameServer),MAKECREPARAM(NULL,playerData.get()));
 									}
 									else
 									{
@@ -1453,7 +1453,7 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 						data->inputParam(WCHDATA_PlayerStream,m_streamBuf.get());
 					}
 					data->excHandle(MAKEINT64(WCH_InitData,playerGameData));
-					playerGameData->doEvent(WCH_PlayerLogin,NULL);
+					playerGameData->doEvent(WCH_PlayerLogin);
 					//CRCore::notify(CRCore::ALWAYS)<<"crLoginGamePacket doEvent WCH_PlayerLogin"<<std::endl;
 					//void *param;
 					//data->getParam(WCHDATA_HomeID,param);
@@ -1483,7 +1483,7 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 		{
 			crNetContainer::getInstance()->removeDynamicNetConductor(GameClient_Game);
 		}
-        crGlobalHandle::getInstance()->doEvent(WCH_LoginGameReturn,MAKEINT64(loginCode,NULL));
+        crGlobalHandle::getInstance()->doEvent(WCH_LoginGameReturn,MAKECREPARAM(loginCode,NULL));
 	}
 }
 /////////////////////////////////////////
@@ -1973,7 +1973,7 @@ void crCreateRolePacket::parsePacket(const std::string &sender)
 		else
 		{
 			CRCore::notify(CRCore::ALWAYS)<<"crCreateRolePacket faild"<<std::endl;
-			crGlobalHandle::getInstance()->doEvent(WCH_RecvCreateRole,MAKEINT64(0,NULL));
+			crGlobalHandle::getInstance()->doEvent(WCH_RecvCreateRole);
 		}
 	}
 }
@@ -2166,7 +2166,7 @@ void crCreateRolePacket::parsePacket(const std::string &sender)
 //		//querySceneInfoData->setUpdcfgModifyTime(m_streamBuf->_readInt64());
 //		//querySceneInfoData->setCollideFileModifyTime(m_streamBuf->_readInt64());
 //        crMyPlayerData::getInstance()->setSceneInfoData(querySceneInfoData.get());
-//		crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo,MAKEINT64(NULL,NULL));
+//		crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneInfo );
 //	}
 //}
 /////////////////////////////////////////
@@ -3826,7 +3826,7 @@ void crLoginScenePacket::parsePacket(const std::string &sender)
 		char loginCode = m_streamBuf->_readChar();
 		int msgid = m_streamBuf->_readInt();
 		m_streamBuf->seekBegin();
-		crBrain::getInstance()->doEvent(MAKEINT64(WCH_LoginSceneReturn,msgid),MAKEINT64(m_streamBuf.get(),NULL));
+		crBrain::getInstance()->doEvent(MAKEINT64(WCH_LoginSceneReturn,msgid),MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -4030,7 +4030,7 @@ void crLoginScene2Packet::parsePacket(const std::string &sender)
 				crLoginScenePacket packet;
 				crLoginScenePacket::buildReplyPacket(packet,loginCode,playerid,msgid);
 				sceneServer->getNetManager()->sendPacket(playerConnectServerAddress,packet);
-				crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,SceneServer),MAKEINT64(playerData.get(),NULL));
+				crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_PlayerLogin,SceneServer),MAKECREPARAM(playerData.get(),NULL));
 			}
 			else
 			{
@@ -4275,7 +4275,7 @@ void crQueryRoleInfo2Packet::parsePacket(const std::string &sender)
 			{
 				if(isMainRole)
 				{
-					role->doEvent(WCH_MainRoleInit,MAKEINT64(playerGameData,NULL));
+					role->doEvent(WCH_MainRoleInit,MAKECREPARAM(playerGameData,NULL));
 				}
 
 				/////write and send
@@ -4403,7 +4403,7 @@ void crQueryRoleInfo2Packet::parsePacket(const std::string &sender)
 							role->loadMetierData(SaveStream);
 							role->loadItemData(SaveStream,true);
 							role->getDataClass()->excHandle(MAKEINT64(WCH_GameServerCheckData,role.get()));
-							role->doEvent(WCH_MainRoleInit,MAKEINT64(playerGameData,NULL));
+							role->doEvent(WCH_MainRoleInit,MAKECREPARAM(playerGameData,NULL));
 						}
 
 						/////write and send
@@ -4680,7 +4680,7 @@ void crRequestPlayerPacket::parsePacket(const std::string &sender)
 		//role->setResScriptModifyTime(m_streamBuf->_readString());
   //      
 		//CRCore::notify(CRCore::ALWAYS)<<"crRequestPlayerPacket "<<std::endl;
-		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(role.get(),HttpD_DownLoadItem));
+		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(role.get(),HttpD_DownLoadItem));
 	}
 }
 /////////////////////////////////////////
@@ -4749,7 +4749,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			{
 				if(crMyPlayerData::getInstance()->findOutRangePlayer(id,roleid,roleNpcPair) && roleNpcPair.first->getAbstractItemID() == abstractid)
 				{
-					roleNpcPair.first->doEvent(WCH_RecvItemRTData,MAKEINT64(m_streamBuf.get(),NULL));
+					roleNpcPair.first->doEvent(WCH_RecvItemRTData,MAKECREPARAM(m_streamBuf.get(),NULL));
 					crMyPlayerData::getInstance()->insertInRangePlayer(roleNpcPair);
 					crMyPlayerData::getInstance()->removeOutRangePlayer(id,roleid);
 				}
@@ -4771,7 +4771,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			}
 			else if(roleNpcPair.first->getAbstractItemID() == abstractid)
 			{
-				roleNpcPair.first->doEvent(WCH_RecvItemRTData,MAKEINT64(m_streamBuf.get(),NULL));
+				roleNpcPair.first->doEvent(WCH_RecvItemRTData,MAKECREPARAM(m_streamBuf.get(),NULL));
 			}
 			else
 			{
@@ -4819,7 +4819,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			//		}
 			//		else
 			//		{
-			//			roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,-1));
+			//			roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,-1));
 			//			crMyPlayerData::getInstance()->removeInRangePlayer(id);
 			//			crMyPlayerData::getInstance()->removeOutRangePlayerInNextFrame(id);
 			//		}
@@ -4836,7 +4836,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			{
 				if(crMyPlayerData::getInstance()->findOutRangeNpc(id,itemNpcPair))
 				{
-					itemNpcPair.first->doEvent(WCH_RecvItemRTData,MAKEINT64(m_streamBuf.get(),NULL));
+					itemNpcPair.first->doEvent(WCH_RecvItemRTData,MAKECREPARAM(m_streamBuf.get(),NULL));
 					crMyPlayerData::getInstance()->insertInRangeNpc(itemNpcPair);
 					crMyPlayerData::getInstance()->removeOutRangeNpc(id);
 				}
@@ -4849,7 +4849,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			}
 			else
 			{
-				itemNpcPair.first->doEvent(WCH_RecvItemRTData,MAKEINT64(m_streamBuf.get(),NULL));
+				itemNpcPair.first->doEvent(WCH_RecvItemRTData,MAKECREPARAM(m_streamBuf.get(),NULL));
 			}
 		}
 		else
@@ -4859,7 +4859,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			{
 				if(crMyPlayerData::getInstance()->findOutRangeItem(id,itemNodePair))
 				{
-					itemNodePair.first->doEvent(WCH_RecvItemRTData,MAKEINT64(m_streamBuf.get(),NULL));
+					itemNodePair.first->doEvent(WCH_RecvItemRTData,MAKECREPARAM(m_streamBuf.get(),NULL));
 					crMyPlayerData::getInstance()->insertInRangeItem(itemNodePair);
 					crMyPlayerData::getInstance()->removeOutRangeItem(id);
 				}
@@ -4873,7 +4873,7 @@ void crItemInRangePacket::parsePacket(const std::string &sender)
 			}
 			else
 			{
-				itemNodePair.first->doEvent(WCH_RecvItemRTData,MAKEINT64(m_streamBuf.get(),NULL));
+				itemNodePair.first->doEvent(WCH_RecvItemRTData,MAKECREPARAM(m_streamBuf.get(),NULL));
 			}
 		}
 		//CRCore::notify(CRCore::ALWAYS)<<"crItemInRangePacket id = "<<id<<std::endl;
@@ -4938,7 +4938,7 @@ void crItemOutRangePacket::parsePacket(const std::string &sender)
 			//crMyPlayerData::RoleNpcPair* roleNpcPair;
 			//if(crMyPlayerData::getInstance()->findInRangePlayer(id,roleid,roleNpcPair))
 			//{
-				//roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				//roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				crMyPlayerData::getInstance()->removeInRangeRole(id,roleid);
 			//}
 		}
@@ -4947,7 +4947,7 @@ void crItemOutRangePacket::parsePacket(const std::string &sender)
 			//crMyPlayerData::ItemNpcPair* itemNpcPair;
 			//if(crMyPlayerData::getInstance()->findInRangeNpc(id,itemNpcPair))
 			//{
-				//itemNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				//itemNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				crMyPlayerData::getInstance()->removeInRangeNpc(id);
 			//}
 		}
@@ -4956,7 +4956,7 @@ void crItemOutRangePacket::parsePacket(const std::string &sender)
 			//crMyPlayerData::ItemNodePair* itemNodePair;
 			//if(crMyPlayerData::getInstance()->findInRangeItem(id,itemNodePair))
 			//{
-				//itemNodePair->second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+				//itemNodePair->second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 				crMyPlayerData::getInstance()->removeInRangeItem(id);
 			//}
 		}
@@ -5246,7 +5246,7 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 		int count = m_streamBuf->_readInt();
 		crDataStreamTransfer::getInstance()->createTransferingStream(streamid,crRequestItemPacket::ID,count);
 
-		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKEINT64(item.get(),HttpD_DownLoadItem));
+		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadItem,MAKECREPARAM(item.get(),HttpD_DownLoadItem));
 	}
 }
 ///////////////////////////////////////////
@@ -5642,7 +5642,7 @@ void crPlayerEventPacket::parsePacket(const std::string &sender)
 				//crPlayerEventPacket packet;
 				//crPlayerEventPacket::buildReplyPacket(packet,0,m_streamBuf.get());
 				_crInt64 msg = m_streamBuf->_readInt64();
-				role->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				role->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				//crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
 				//crScene *scene = netCallback->findScene(role->getSceneID());
 				//if(scene)
@@ -5675,18 +5675,18 @@ void crPlayerEventPacket::parsePacket(const std::string &sender)
 			if (playerid == crMyPlayerData::getInstance()->getPlayerID())
 			{
 				ref_ptr<crRole> role = crMyPlayerData::getInstance()->getRole(roleid);
-				if (role.valid()) role->doEvent(msg, MAKEINT64(m_streamBuf.get(), netType));
+				if (role.valid()) role->doEvent(msg,MAKECREPARAM(m_streamBuf.get(), netType));
 			}
 			else
 			{
 				crMyPlayerData::RoleNpcPair roleNpcPair;
 				if (crMyPlayerData::getInstance()->findInRangePlayer(playerid, roleid, roleNpcPair))
 				{
-					roleNpcPair.first->doEvent(msg, MAKEINT64(m_streamBuf.get(), netType));
+					roleNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(), netType));
 				}
 				//else if(crMyPlayerData::getInstance()->findOutRangePlayer(playerid,roleNpcPair))
 				//{
-				//	roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				//	roleNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				//}
 			}
 		}
@@ -5756,18 +5756,18 @@ void crItemEventPacket::parsePacket(const std::string &sender)
 			if(id == crMyPlayerData::getInstance()->getPlayerID())
 			{
 				ref_ptr<crRole> role = crMyPlayerData::getInstance()->getRole(roleid);
-				if(role.valid()) role->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				if(role.valid()) role->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 			else
 			{
 				crMyPlayerData::RoleNpcPair roleNpcPair;
 				if(crMyPlayerData::getInstance()->findInRangePlayer(id,roleid,roleNpcPair))
 				{
-					roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+					roleNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				}
 				//else if(crMyPlayerData::getInstance()->findOutRangePlayer(id,roleNpcPair))
 				//{
-				//	roleNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				//	roleNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				//}
 			}
 		}
@@ -5776,11 +5776,11 @@ void crItemEventPacket::parsePacket(const std::string &sender)
 			crMyPlayerData::ItemNpcPair itemNpcPair;
 			if(crMyPlayerData::getInstance()->findInRangeNpc(id,itemNpcPair))
 			{
-				itemNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				itemNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 			else if(crMyPlayerData::getInstance()->findOutRangeNpc(id,itemNpcPair))
 			{
-				itemNpcPair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				itemNpcPair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 		else if(itemtype == crInstanceItem::Emporium)
@@ -5788,7 +5788,7 @@ void crItemEventPacket::parsePacket(const std::string &sender)
 			crInstanceItem *emporium = crMyPlayerData::getInstance()->getScene()->getEmporium();
 			if(emporium)
 			{
-				emporium->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				emporium->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 		else
@@ -5796,11 +5796,11 @@ void crItemEventPacket::parsePacket(const std::string &sender)
 			crMyPlayerData::ItemNodePair itemNodePair;
 			if(crMyPlayerData::getInstance()->findInRangeItem(id,itemNodePair))
 			{
-				itemNodePair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				itemNodePair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 			else if(crMyPlayerData::getInstance()->findOutRangeItem(id,itemNodePair))
 			{
-				itemNodePair.first->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				itemNodePair.first->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 	}
@@ -5934,7 +5934,7 @@ void crRemovePlayerPacket::parsePacket(const std::string &sender)
 		//crMyPlayerData::RoleNpcPair* roleNpcPair;
 		//if(crMyPlayerData::getInstance()->findInRangePlayer(playerid,roleNpcPair))
 		//{
-		//	roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));//隐藏
+		//	roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));//隐藏
 		//	crMyPlayerData::getInstance()->removeInRangePlayer(playerid);
 		//}
 		//CRCore::notify(CRCore::ALWAYS)<<"crRemovePlayerPacket "<<std::endl;
@@ -6011,7 +6011,7 @@ void crSaveItemDataPacket::parsePacket(const std::string &sender)
 			{
 				std::string logdata = "SaveItemDataPacket Faild,stream is NULL,instanceitemid=" + crArgumentParser::appItoa(instanceitemid)+" gamedbid="+crArgumentParser::appItoa(gamedbid);
 				GameLogData gamelog(0,logdata);
-				crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(0,&gamelog));
+				crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(0,&gamelog));
 				CRCore::notify(CRCore::ALWAYS)<<"SaveItemDataPacket Faild,stream is NULL,instanceitemid="<<instanceitemid<<std::endl;
 			}
 		//	if(gameSession->executeUpdate(updateItem.get()))
@@ -6113,7 +6113,7 @@ void crSaveItemStreamPacket::parsePacket(const std::string &sender)
 				{
 					std::string logdata = "SaveItemStreamPacket Faild,stream is NULL,instanceitemid=" + crArgumentParser::appItoa(itemid)+" gamedbid="+crArgumentParser::appItoa(playerData->getGameDBID());
 					GameLogData gamelog(0,logdata);
-					crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(playerid,&gamelog));
+					crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(playerid,&gamelog));
 					CRCore::notify(CRCore::ALWAYS)<<"SaveItemDataPacket Faild,stream is NULL,instanceitemid="<<itemid<<std::endl;
 				}
 			//	if(gameSession->executeUpdate(updateItem.get()))
@@ -6143,7 +6143,7 @@ void crSaveItemStreamPacket::parsePacket(const std::string &sender)
 	//}
 	//else if(netType == GameClient_Game)
 	//{
-	//	crGlobalHandle::getInstance()->doEvent(WCH_NetReturnStream,MAKEINT64(m_streamBuf.get(),NULL));
+	//	crGlobalHandle::getInstance()->doEvent(WCH_NetReturnStream,MAKECREPARAM(m_streamBuf.get(),NULL));
 	//}
 }
 /////////////////////////////////////////
@@ -6210,7 +6210,7 @@ void crSaveRoleDataPacket::parsePacket(const std::string &sender)
 			{
 				std::string logdata = "SaveRoleDataPacket Faild,stream is NULL,roleid=" + crArgumentParser::appItoa(roleid)+" gamedbid="+crArgumentParser::appItoa(gamedbid);
 				GameLogData gamelog(0,logdata);
-				crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(0,&gamelog));
+				crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(0,&gamelog));
 				CRCore::notify(CRCore::ALWAYS)<<"Save SaveRoleDataPacket Faild,stream is NULL,roleid="<<roleid<<std::endl;
 			}
 	}
@@ -6434,8 +6434,8 @@ void crCreateItemChildPacket::parsePacket(const std::string &sender)
 					childItem->setSceneID(sceneid);
 					childItem->setRoomID(roomid);
 					//parentItem->insertChildItem(itemChild.get());
-					crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(itemChild.get(),parentItem));
-					//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(NULL,NULL));//清理
+					crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(itemChild.get(),parentItem));
+					//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild );//清理
                     parentItem->recvItemChild(itemChild.get());
 					//CRCore::notify(CRCore::ALWAYS)<<"crCreateItemChildPacket abstractitemid = "<<abstractitemid<<" queryAbstract = "<<(int)queryAbstract<<std::endl;
 					//crNetManager *netManager = sceneServerConductor->getNetManager();
@@ -6642,7 +6642,7 @@ void crPlayerServerEventPacket::parsePacket(const std::string &sender)
 			}
 			if(item.valid())
 			{
-				item->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				item->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				//CRCore::notify(CRCore::ALWAYS)<<"crPlayerServerEventPacket "<<std::endl;
 			}
 		}
@@ -6720,7 +6720,7 @@ void crRequestItemRTDataPacket::parsePacket(const std::string &sender)
 				ref_ptr<crRole> role = playerData->getRole(roleid);
 				if(role.valid())
 				{
-					role->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+					role->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 					crPlayerEventPacket packet;
 					crPlayerEventPacket::buildRequestPacket(packet,sendid,role.get(),WCH_RecvItemRTData,rtDataStream.get());
 					m_netConductor->getNetManager()->sendPacket(sender,packet);
@@ -6743,7 +6743,7 @@ void crRequestItemRTDataPacket::parsePacket(const std::string &sender)
 					if(item.valid())
 					{
 						ref_ptr<crStreamBuf> rtDataStream;
-						item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+						item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 						crItemEventPacket packet;
 						crItemEventPacket::buildRequestPacket(packet,sendid,item.get(),WCH_RecvItemRTData,rtDataStream.get());
 						m_netConductor->getNetManager()->sendPacket(sender,packet);
@@ -6830,7 +6830,7 @@ void crRequestItemChildPacket::parsePacket(const std::string &sender)
 				ref_ptr<crRole> role = playerData->getRole(roleid);
 				if(role.valid())
 				{
-					role->doEvent(WCH_GetItemChildData,MAKEINT64(&rtDataStream,itemid));
+					role->doEvent(WCH_GetItemChildData,MAKECREPARAM(&rtDataStream,itemid));
 
 					crPlayerEventPacket packet;
 					crPlayerEventPacket::buildRequestPacket(packet,sendid,role.get(),WCH_RecvItemChildData,rtDataStream.get());
@@ -6854,7 +6854,7 @@ void crRequestItemChildPacket::parsePacket(const std::string &sender)
 					if(item.valid())
 					{
 						ref_ptr<crStreamBuf> rtDataStream;
-						item->doEvent(WCH_GetItemChildData,MAKEINT64(&rtDataStream,itemid));
+						item->doEvent(WCH_GetItemChildData,MAKECREPARAM(&rtDataStream,itemid));
 						crItemEventPacket packet;
 						crItemEventPacket::buildRequestPacket(packet,sendid,item.get(),WCH_RecvItemChildData,rtDataStream.get());
 						m_netConductor->getNetManager()->sendPacket(sender,packet);
@@ -6926,7 +6926,7 @@ void crPlayerServerMetierEventPacket::parsePacket(const std::string &sender)
 		if(netPlayerData.valid())
 		{
 			crRole *role = netPlayerData->getRole(roleid);
-			if(role) role->doMetierEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			if(role) role->doMetierEvent(msg, MAKECREPARAM(m_streamBuf.get(),netType));
 			//CRCore::notify(CRCore::ALWAYS)<<"crPlayerServerMetierEventPacket "<<std::endl;
 		}
 	}
@@ -7032,7 +7032,7 @@ void crPlayerMetierEventPacket::parsePacket(const std::string &sender)
 				role->sendPacketToItemNeighbor(packet);
 				//}
 				_crInt64 msg = m_streamBuf->_readInt64();
-				role->doMetierEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				role->doMetierEvent(msg, MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 			//CRCore::notify(CRCore::ALWAYS)<<"crPlayerMetierEventPacket "<<std::endl;
 		}
@@ -7057,14 +7057,14 @@ void crPlayerMetierEventPacket::parsePacket(const std::string &sender)
 		if(playerid == crMyPlayerData::getInstance()->getPlayerID())
 		{
 			crRole *role = crMyPlayerData::getInstance()->getRole(roleid);
-			if(role) role->doMetierEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			if(role) role->doMetierEvent(msg, MAKECREPARAM(m_streamBuf.get(),netType));
 		}
 		else
 		{
 			crMyPlayerData::RoleNpcPair roleNpcPair;
 			if(crMyPlayerData::getInstance()->findInRangePlayer(playerid,roleid,roleNpcPair))
 			{
-				roleNpcPair.first->doMetierEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				roleNpcPair.first->doMetierEvent(msg, MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 			//else if(crMyPlayerData::getInstance()->findOutRangePlayer(playerid,roleNpcPair))
 			//{
@@ -7353,8 +7353,8 @@ void crCreateTemporaryItemChildPacket::parsePacket(const std::string &sender)
 					childItem->setSceneID(sceneid);
 					childItem->setRoomID(roomid);
 					//parentItem->insertChildItem(itemChild.get());
-					crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(itemChild.get(),parentItem));
-					//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(NULL,NULL));//清理
+					crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(itemChild.get(),parentItem));
+					//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild );//清理
 					parentItem->recvItemChild(itemChild.get());
 					//CRCore::notify(CRCore::ALWAYS)<<"crCreateTemporaryItemChildPacket abstractitemid = "<<abstractitemid<<" queryAbstract = "<<(int)queryAbstract<<std::endl;
 
@@ -7625,7 +7625,7 @@ void crSceneChatPacket::parsePacket(const std::string &sender)
 	{
 		//std::string senderName = m_streamBuf->_readString();
 		//std::string chatStr = m_streamBuf->_readString();
-        crGlobalHandle::getInstance()->doEvent(WCH_RecvGameChat,MAKEINT64(m_streamBuf.get(),NULL));
+        crGlobalHandle::getInstance()->doEvent(WCH_RecvGameChat,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -7746,7 +7746,7 @@ void crGameChatPacket::parsePacket(const std::string &sender)
 	{
 		//std::string senderName = m_streamBuf->_readString();
 		//std::string chatStr = m_streamBuf->_readString();
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvGameChat,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvGameChat,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -7933,7 +7933,7 @@ void crQuerySceneListPacket::parsePacket(const std::string &sender)
 			//querySceneInfoData->setUpdcfgModifyTime(m_streamBuf->_readInt64());
 			sceneList.push_back(querySceneInfoData.get());
 		}
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneList,MAKEINT64(NULL,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneList );
 	}
 }
 /////////////////////////////////////////
@@ -8084,7 +8084,7 @@ void crQuerySceneRoomsPacket::parsePacket(const std::string &sender)
 			roomMap[room->getRoomID()] = room.get();
 		}
 		crMyPlayerData::getInstance()->unlockRoomMap();
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneRooms,MAKEINT64(NULL,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvSceneRooms );
 	}
 }
 /////////////////////////////////////////
@@ -8230,7 +8230,7 @@ void crCreateSceneRoomPacket::parsePacket(const std::string &sender)
 		}
 		//crGlobalHandle::getInstance()->doEvent(WCH_RecvCreateSceneRoom,MAKEINT64(success?1:0,NULL));
 		m_streamBuf->seekBegin();
-		crBrain::getInstance()->doEvent(WCH_RecvCreateSceneRoom,MAKEINT64(m_streamBuf.get(),NULL));
+		crBrain::getInstance()->doEvent(WCH_RecvCreateSceneRoom,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -8389,7 +8389,7 @@ void crPreEnterSceneRoomPacket::parsePacket(const std::string &sender)
 			room->addMember(roomPlayer.get()/*,false*/);
 		}
 		//crGlobalHandle::getInstance()->doEvent(WCH_RecvEnterSceneRoom,MAKEINT64(success?1:0,NULL));
-		crBrain::getInstance()->doEvent(WCH_RecvEnterSceneRoom,MAKEINT64(success?1:0,NULL));
+		crBrain::getInstance()->doEvent(WCH_RecvEnterSceneRoom,MAKECREPARAM(success?1:0,NULL));
 		//char mode = crMyPlayerData::getInstance()->getLoginGameSceneMode();
 		//if(mode == 2)
 		//{
@@ -8690,7 +8690,7 @@ void crStartRoomGamePacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Game)
 	{//
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvStartRoomGame,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvStartRoomGame,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -8746,7 +8746,7 @@ void crEndRoomGamePacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Game)
 	{//
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvEndRoomGame,MAKEINT64(NULL,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvEndRoomGame );
 		crMyPlayerData::getInstance()->clearAllInsights();
 	}
 }
@@ -8866,7 +8866,7 @@ void crRemoveRoomGamePacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Game)
 	{//
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvRemoveRoomGame,MAKEINT64(NULL,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvRemoveRoomGame );
 	}
 }
 /////////////////////////////////////////
@@ -9199,7 +9199,7 @@ void crRemoveRolePacket::parsePacket(const std::string &sender)
 	{//id name
 		int roleid = m_streamBuf->_readInt();
 		bool success = m_streamBuf->_readBool();
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvRemoveRole,MAKEINT64(roleid,success));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvRemoveRole,MAKECREPARAM(roleid,success));
 	}
 }
 /////////////////////////////////////////
@@ -9375,7 +9375,7 @@ void crRoomPlayerEventPacket::parsePacket(const std::string &sender)
 				if(roomPlayer)
 				{
 					_crInt64 msg = m_streamBuf->_readInt64();
-					playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+					playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 
 					crRoomPlayerEventPacket packet;
 					crRoomPlayerEventPacket::buildReplyPacket(packet,0,m_streamBuf.get());
@@ -9408,7 +9408,7 @@ void crRoomPlayerEventPacket::parsePacket(const std::string &sender)
 			crRoomPlayer *roomPlayer = room->getMember(playerid);
 			 if(roomPlayer&&roomPlayer->getPlayerGameData())
 			 {
-				 roomPlayer->getPlayerGameData()->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				 roomPlayer->getPlayerGameData()->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			 }
 		}
 	}
@@ -9421,7 +9421,7 @@ void crRoomPlayerEventPacket::parsePacket(const std::string &sender)
 		if(netPlayerData.valid() && netPlayerData->getPlayerGameData())
 		{
 			_crInt64 msg = m_streamBuf->_readInt64();
-			netPlayerData->getPlayerGameData()->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			netPlayerData->getPlayerGameData()->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 		}
 	}
 }
@@ -9679,7 +9679,7 @@ void crRoomPlayerGameDataUpdatePacket::parsePacket(const std::string &sender)
 				ref_ptr<crPlayerGameData> playerGameData = roomPlayer->getPlayerGameData();
 				if(playerGameData.valid() && playerGameData->getDataClass())
 				{
-					playerGameData->doEvent(WCH_RecvRoomPlayerGameDataUpdate,MAKEINT64(m_streamBuf.get(),netType));
+					playerGameData->doEvent(WCH_RecvRoomPlayerGameDataUpdate,MAKECREPARAM(m_streamBuf.get(),netType));
 					//ref_ptr<crData> data = playerGameData->getDataClass();
 					//data->inputParam(WCHDATA_NetStream2,m_streamBuf.get());
 				}
@@ -9982,7 +9982,7 @@ void crCheckPlayerGameNamePacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Game)
 	{
-		crBrain::getInstance()->doEvent(WCH_RecvCheckPlayerGameName,MAKEINT64(m_streamBuf.get(),NULL));
+		crBrain::getInstance()->doEvent(WCH_RecvCheckPlayerGameName,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -10148,7 +10148,7 @@ void crCreatePlayerGameDataPacket::parsePacket(const std::string &sender)
 										role->loadMetierData(SaveStream);
 										role->loadItemData(SaveStream,true);
 										role->getDataClass()->excHandle(MAKEINT64(WCH_GameServerCheckData,role.get()));
-										role->doEvent(WCH_MainRoleInit,MAKEINT64(playerGameData,NULL));
+										role->doEvent(WCH_MainRoleInit,MAKECREPARAM(playerGameData,NULL));
 										/////write and send
 										int count = 0;
 										std::vector< ref_ptr<crStreamBuf> > BufVec;
@@ -10362,7 +10362,7 @@ void crCreatePlayerGameDataPacket::parsePacket(const std::string &sender)
 		}
 		//char *ptr2 = m_streamBuf->getPtr();
 		//m_streamBuf->seek(ptr-ptr2);
-		//crGlobalHandle::getInstance()->doEvent(WCH_NetReturnStream,MAKEINT64(m_streamBuf.get(),NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_NetReturnStream,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -10609,7 +10609,7 @@ void crPlayerDataEventPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				
 				crNetConductor *conductor = netPlayerData->getGameServerLineConductor();
 				if(conductor)
@@ -10631,7 +10631,7 @@ void crPlayerDataEventPacket::parsePacket(const std::string &sender)
 			if(playerGameData.valid())
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 	}
@@ -10646,7 +10646,7 @@ void crPlayerDataEventPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				crPlayerDataEventPacket packet;
 				crPlayerDataEventPacket::buildReplyPacket2(packet,m_streamBuf.get());
 				sceneServer->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
@@ -10689,7 +10689,7 @@ void crPlayerDataEventPacket::parsePacket(const std::string &sender)
 		if(playerGameData.valid())
 		{
 			_crInt64 msg = m_streamBuf->_readInt64();
-			playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 		}
 	}
 }
@@ -10798,7 +10798,7 @@ void crPlayerDataEventZipPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 
 				crNetConductor *conductor = netPlayerData->getGameServerLineConductor();
 				if(conductor)
@@ -10820,7 +10820,7 @@ void crPlayerDataEventZipPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 	}
@@ -10835,7 +10835,7 @@ void crPlayerDataEventZipPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 				crPlayerDataEventZipPacket packet;
 				crPlayerDataEventZipPacket::buildReplyPacket2(packet,m_streamBuf.get());
 				sceneServer->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
@@ -10878,7 +10878,7 @@ void crPlayerDataEventZipPacket::parsePacket(const std::string &sender)
 		if(playerGameData.valid())
 		{
 			_crInt64 msg = m_streamBuf->_readInt64();
-			playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 		}
 	}
 }
@@ -10967,7 +10967,7 @@ void crPlayerDataSceneEventPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 	}
@@ -10989,7 +10989,7 @@ void crPlayerDataSceneEventPacket::parsePacket(const std::string &sender)
 		if(playerGameData.valid())
 		{
 			_crInt64 msg = m_streamBuf->_readInt64();
-			playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 		}
 	}
 }
@@ -11078,7 +11078,7 @@ void crPlayerDataSceneEventZipPacket::parsePacket(const std::string &sender)
 			if(playerGameData)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
-				playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+				playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 			}
 		}
 	}
@@ -11100,7 +11100,7 @@ void crPlayerDataSceneEventZipPacket::parsePacket(const std::string &sender)
 		if(playerGameData.valid())
 		{
 			_crInt64 msg = m_streamBuf->_readInt64();
-			playerGameData->doEvent(msg,MAKEINT64(m_streamBuf.get(),netType));
+			playerGameData->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),netType));
 		}
 	}
 }
@@ -11664,7 +11664,7 @@ void crServerListQueryPacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Login)
 	{//
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvServerList,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvServerList,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -11969,7 +11969,7 @@ void crConnectServerQueryPacket::parsePacket(const std::string &sender)
 	}
 	else if(netType == GameClient_Login)
 	{//
-		crGlobalHandle::getInstance()->doEvent(WCH_RecvConnectServer,MAKEINT64(m_streamBuf.get(),NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_RecvConnectServer,MAKECREPARAM(m_streamBuf.get(),NULL));
 	}
 }
 /////////////////////////////////////////
@@ -12064,7 +12064,7 @@ void crRoomEventPacket::parsePacket(const std::string &sender)
 			{
 				_crInt64 msg = m_streamBuf->_readInt64();
 				CRCore::crVector2i nettypepair(netType,playerid);
-				room->doEvent(msg,MAKEINT64(m_streamBuf.get(),&nettypepair));
+				room->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),&nettypepair));
 				//crRoomEventPacket packet;
 				//crRoomEventPacket::buildReplyPacket(packet,0,m_streamBuf.get());
 				//room->sendPacketToAll(packet,playerid);
@@ -12091,7 +12091,7 @@ void crRoomEventPacket::parsePacket(const std::string &sender)
 		if(room)
 		{
 			CRCore::crVector2i nettypepair(netType,0);
-			room->doEvent(msg,MAKEINT64(m_streamBuf.get(),&nettypepair));
+			room->doEvent(msg,MAKECREPARAM(m_streamBuf.get(),&nettypepair));
 		}
 	}
 }

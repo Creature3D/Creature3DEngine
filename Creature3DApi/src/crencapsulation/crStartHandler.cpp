@@ -335,7 +335,7 @@ void crStartLoader::loading(CRProducer::crViewer *viewer, Producer::Window paren
 
 	//CRAL::crSoundManager::instance()->loadSound("script/sound1.cfg",sceneManager->getCurrentSceneName().c_str());
 
-	crSceneManager::getInstance()->getPlayer()->doEvent(MAKEINT64(WCH_AITASK,0),MAKEINT64(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot/*|WCHAI_TakeoverControl*/),NULL));
+	crSceneManager::getInstance()->getPlayer()->doEvent(MAKEINT64(WCH_AITASK,0), MAKECREPARAM(MAKEINT32(WCHAI_Begin,WCHAI_SetCPToBot/*|WCHAI_TakeoverControl*/),NULL));
 
 	//crBrain::getInstance()->doEvent(WCH_SceneStart);
 }

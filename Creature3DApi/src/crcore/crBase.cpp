@@ -38,7 +38,7 @@ CRCore::crData *crBase::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crBase::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crBase::doEvent(_crInt64 kbmsg, CREPARAM param)
 {///m_currentMsg并非多线程安全
 	m_currentMsg = kbmsg;
 	if(m_dataClass.valid())

@@ -176,13 +176,13 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 		//	if(pickUI)
 		//	{
 		//		crFilterRenderManager::getInstance()->setFocusNode(pickUI);
-		//		pickUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKEINT64(ea,NULL));
+		//		pickUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKECREPARAM(ea,NULL));
 		//		return;
 		//	}
 		//	else if(windowUI)
 		//	{
 		//		crFilterRenderManager::getInstance()->setFocusNode(windowUI);
-		//		windowUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKEINT64(ea,NULL));
+		//		windowUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKECREPARAM(ea,NULL));
 		//		return;
 		//	}
 		//	else
@@ -198,12 +198,12 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 		//	crFilterRenderManager::getInstance()->mousePick(mouse,pickUI,windowUI);
 		//	if(pickUI)
 		//	{
-		//		pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+		//		pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 		//		return;
 		//	}
 		//	else if(windowUI)
 		//	{
-		//		windowUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+		//		windowUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 		//		return;
 		//	}
 		//}
@@ -246,23 +246,23 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 					{
 						pickUI->kernelMouseEvent(mouse[0],mouse[1],ea);
 						if(ea->getEventType() == crGUIEventAdapter::MOVE)
-							pickUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKEINT64(ea,NULL));
+							pickUI->doEvent(MAKEINT32(NULL,ea->getEventType()),MAKECREPARAM(ea,NULL));
 						else if(ea->getButton() == crGUIEventAdapter::LEFT_MOUSE_BUTTON && ea->getEventType() == crGUIEventAdapter::RELEASE)
 						{
 							if(m_pressedUI == pickUI)
-								pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+								pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 						}
 						/*else if(ea->getEventType() == crGUIEventAdapter::DRAG)
-						pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));*/
+						pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));*/
 						else
 						{
-							pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+							pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 						}
 					}
 					else if (ea->getEventType() == crGUIEventAdapter::MOVE)
-						pickUI->doEvent(MAKEINT32(NULL, ea->getEventType()), MAKEINT64(ea, NULL));
+						pickUI->doEvent(MAKEINT32(NULL, ea->getEventType()),MAKECREPARAM(ea, NULL));
 					//else if(ea->getEventType() == crGUIEventAdapter::DRAG || ea->getEventType() == crGUIEventAdapter::RELEASE)
-					//	pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+					//	pickUI->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				} while (0);
 				////////Mouse Butten Event
 				if(ea->getEventType() == crGUIEventAdapter::PUSH || ea->getEventType()== crGUIEventAdapter::RELEASE || ea->getEventType()== crGUIEventAdapter::DOUBLECLICK)
@@ -314,7 +314,7 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 				{
 				case(crGUIEventAdapter::KEYDOWN):
 					inputWidget->kernelKeyDown(ea->getKey(),ea->getModKeyMask());
-					inputWidget->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+					inputWidget->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()), MAKECREPARAM(ea,NULL));
 					//if (ea->getKey() == crGUIEventAdapter::KEY_Escape)
 					//{
 					//	m_bindViewer->showCursor("Default");
@@ -323,21 +323,21 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 					break;
 				case(crGUIEventAdapter::KEYUP):
 					inputWidget->kernelKeyUp(ea->getKey(),ea->getModKeyMask());
-					inputWidget->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+					inputWidget->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()), MAKECREPARAM(ea,NULL));
 					//CRCore::notify(CRCore::ALWAYS)<<"KEYUP: "<<ea->getKey()<<std::endl;
 					break;
 				case(crGUIEventAdapter::INPUTCHAR):
 					inputWidget->kernelInputChar(ea->getChar());
-					inputWidget->doEvent(MAKEINT64(WCH_UI_InputChar,NULL),MAKEINT64(ea->getChar(),NULL));
+					inputWidget->doEvent(MAKEINT64(WCH_UI_InputChar,NULL), MAKECREPARAM(ea->getChar(),NULL));
 					//CRCore::notify(CRCore::ALWAYS)<<"KEYUP: "<<ea->getKey()<<std::endl;
 					break;
 				case(crGUIEventAdapter::SCROLLUP):
 					//inputWidget->kernelKeyEvent(WCH_UI_SCROLLUP);
-					inputWidget->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+					inputWidget->doEvent(MAKEINT32(0,ea->getEventType()), MAKECREPARAM(ea,NULL));
 					break;
 				case(crGUIEventAdapter::SCROLLDOWN):
 					//inputWidget->kernelKeyEvent(WCH_UI_SCROLLDOWN);
-					inputWidget->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+					inputWidget->doEvent(MAKEINT32(0,ea->getEventType()), MAKECREPARAM(ea,NULL));
 					break;
 				}
 				crCanvasNode *canvas = inputWidget->getParentCanvas();
@@ -347,25 +347,25 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 					{
 					case(crGUIEventAdapter::KEYDOWN):
 						canvas->kernelKeyDown(ea->getKey(),ea->getModKeyMask());
-						canvas->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+						canvas->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()), MAKECREPARAM(ea,NULL));
 						break;
 					case(crGUIEventAdapter::KEYUP):
 						canvas->kernelKeyUp(ea->getKey(),ea->getModKeyMask());
-						canvas->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+						canvas->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()), MAKECREPARAM(ea,NULL));
 						//CRCore::notify(CRCore::ALWAYS)<<"KEYUP: "<<ea->getKey()<<std::endl;
 						break;
 					case(crGUIEventAdapter::INPUTCHAR):
 						canvas->kernelInputChar(ea->getChar());
-						canvas->doEvent(MAKEINT64(WCH_UI_InputChar,NULL),MAKEINT64(ea->getChar(),NULL));
+						canvas->doEvent(MAKEINT64(WCH_UI_InputChar,NULL), MAKECREPARAM(ea->getChar(),NULL));
 						//CRCore::notify(CRCore::ALWAYS)<<"KEYUP: "<<ea->getKey()<<std::endl;
 						break;
 					case(crGUIEventAdapter::SCROLLUP):
 						//inputWidget->kernelKeyEvent(WCH_UI_SCROLLUP);
-						canvas->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+						canvas->doEvent(MAKEINT32(0,ea->getEventType()), MAKECREPARAM(ea,NULL));
 						break;
 					case(crGUIEventAdapter::SCROLLDOWN):
 						//inputWidget->kernelKeyEvent(WCH_UI_SCROLLDOWN);
-						canvas->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+						canvas->doEvent(MAKEINT32(0,ea->getEventType()), MAKECREPARAM(ea,NULL));
 						break;
 					}
 				}
@@ -393,42 +393,42 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 			switch(ea->getEventType())
 			{
 			case(crGUIEventAdapter::KEYDOWN):
- 				crBrain::getInstance()->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+ 				crBrain::getInstance()->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()), MAKECREPARAM(ea,NULL));
 				if (crDisplaySettings::instance()->getRunMode() == 0 && ea->getKey() == crGUIEventAdapter::KEY_Escape)
 				{
 					m_bindViewer->showCursor("Default");
 				}
 				break;
 			case(crGUIEventAdapter::KEYUP):
-				crBrain::getInstance()->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()), MAKECREPARAM(ea,NULL));
 				//CRCore::notify(CRCore::ALWAYS)<<"KEYUP: "<<ea->getKey()<<std::endl;
 				break;
 			case(crGUIEventAdapter::MOVE):
-				crBrain::getInstance()->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(0,ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::SCROLLUP):
-				crBrain::getInstance()->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(0,ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::SCROLLDOWN):
-				crBrain::getInstance()->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(0,ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::PUSH):
-				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::RELEASE):
-				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::DOUBLECLICK):
-				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::DRAG):
-				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				crBrain::getInstance()->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			//case(crGUIEventAdapter::RESIZE):
-			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
+			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
 			//	break;
 			//case (crGUIEventAdapter::WINFOCUS):
-			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
+			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
 			//	break;
 			}
 		}
@@ -440,10 +440,10 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 			//switch(ea->getEventType())
 			//{
 			//case(crGUIEventAdapter::RESIZE):
-			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
+			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
 			//	break;
 			//case (crGUIEventAdapter::WINFOCUS):
-			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
+			//	node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
 			//	break;
 			//}
 			unsigned short keyboardMouseMode = camera->getKeyboardMouseMode();
@@ -453,16 +453,16 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 			switch(ea->getEventType())
 			{
 			case(crGUIEventAdapter::MOVE):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(0,ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::SCROLLUP):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(0,ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::SCROLLDOWN):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(0,ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(0,ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(0,ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(0,ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			}
 
@@ -471,13 +471,13 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 				switch(ea->getEventType())
 				{
 				case(crGUIEventAdapter::KEYDOWN):
-					//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(ea->getKey(),ea->getEventType()),ea));
-					node->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+					//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(ea->getKey(),ea->getEventType()),ea));
+					node->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 					//CRCore::notify(CRCore::ALWAYS)<<"KEYDOWN: "<<ea->getKey()<<" EventType:"<<ea->getEventType()<<std::endl;
 					break;
 				case(crGUIEventAdapter::KEYUP):
-					//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(ea->getKey(),ea->getEventType()),ea));
-					node->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKEINT64(ea,NULL));
+					//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(ea->getKey(),ea->getEventType()),ea));
+					node->doEvent(MAKEINT32(ea->getKey(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 					//CRCore::notify(CRCore::ALWAYS)<<"KEYUP: "<<ea->getKey()<<std::endl;
 					break;
 				}
@@ -501,20 +501,20 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 			switch(ea->getEventType())
 			{
 			case(crGUIEventAdapter::PUSH):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::RELEASE):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::DOUBLECLICK):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			case(crGUIEventAdapter::DRAG):
-				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
-				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKEINT64(ea,NULL));
+				//node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(MAKEINT32(ea->getButton(),ea->getEventType()),ea));
+				node->doEvent(MAKEINT32(ea->getButton(),ea->getEventType()),MAKECREPARAM(ea,NULL));
 				break;
 			}
 		}

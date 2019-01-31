@@ -19,6 +19,20 @@
 #define _crInt32   __int32
 #define _crInt64   __int64
 #define _crUInt64	unsigned __int64
+#define CREPARAM	std::pair<_crInt64, _crInt64>
+#define NULLPARAM	std::pair<_crInt64, _crInt64>(0L,0L)
+
+#ifndef MAKECREPARAM
+#define MAKECREPARAM(low, high) (CREPARAM((_crInt64)low,(_crInt64)high))
+#endif
+
+#ifndef LOCREPARAM
+#define LOCREPARAM(p) (p.first)
+#endif
+
+#ifndef HICREPARAM
+#define HICREPARAM(p) (p.second)
+#endif
 
 #ifndef MAKEINT64
 #define MAKEINT64(low, high) (((_crInt64)((_crInt32)(low)) & 0xffffffff) | ((_crInt64)((_crInt32)(high) & 0xffffffff) << 32))

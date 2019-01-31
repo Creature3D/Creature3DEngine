@@ -394,7 +394,7 @@ namespace CRCore {
 
 			PhysicsObjectCallback(const PhysicsObjectCallback& callback):CRCore::crEventCallback(callback){}
 
-			virtual void operator()(crNode &node, __int64 param = 0){};
+			virtual void operator()(crNode &node, CREPARAM param = NULLPARAM){};
 		protected:
 			virtual ~PhysicsObjectCallback(){}
 		};
@@ -404,7 +404,7 @@ namespace CRCore {
 		inline bool hasMsgEvent(__int64 kbmsg) const { return m_eventMap.empty()?false:m_eventMap.find(kbmsg) != m_eventMap.end(); }
 		crEventCallback* getEventCallback(__int64 kbmsg, const std::string& name);
 
-		virtual void doEvent(__int64 kbmsg, __int64 param = 0);
+		virtual void doEvent(__int64 kbmsg, CREPARAM param = NULLPARAM);
 		inline bool hasEvent() const { return !m_eventMap.empty()||m_dataClass.valid(); }
 
 		virtual void setDataClass( CRCore::crData *data );

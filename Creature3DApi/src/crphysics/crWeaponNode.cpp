@@ -876,7 +876,7 @@ void crBulletMatterObject::explode(const CRCore::crVector3 &collidePos)
 	m_explodeFlag = 1;
 	m_explodeRadius = 1.0f;
 
-	doEvent(WCH_BULLET_EXPLODE,MAKEINT64(&m_fireTarget,NULL));
+	doEvent(WCH_BULLET_EXPLODE,MAKECREPARAM(&m_fireTarget,NULL));
 	//const crBulletObject *bulletObject = getBulletObject();
 	//crBulletObject::EffectAttrMask effectAttrMask = bulletObject->getEffectAttrMask();
 	//std::string effectString = getName()+"_explode";
@@ -993,7 +993,7 @@ void crBulletMatterObject::setFlying(bool flying)
 		setVisiable(true);
 		setEnableIntersect(true);
         enablePhysics(bulletObject->getDuration());
-		doEvent(WCH_BULLET_FLY,MAKEINT64(NULL,NULL));
+		doEvent(WCH_BULLET_FLY,MAKECREPARAM(NULL,NULL));
 	}
 }
 
@@ -1166,7 +1166,7 @@ void crBulletMatterObject::traverse(CRCore::crNodeVisitor& nv)
 				}
 				else
 				{
-					doEvent(WCH_BULLET_FLY,MAKEINT64(&linearVel,NULL));
+					doEvent(WCH_BULLET_FLY,MAKECREPARAM(&linearVel,NULL));
 				}
 			}
 			if(m_explodeFlag==1)
@@ -1511,8 +1511,8 @@ void crWeaponMatterObject::fire( crMatterGroup *firePerson, const CRCore::crVect
 #endif
 
 	m_fireBody = dynamic_cast<crViewMatterObject *>(firePerson->getChild(0));
-	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKEINT64(this,NULL));
-	//doEvent(WCH_WEAPON_FIRE,MAKEINT64(&m_name,NULL));
+	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(this,NULL));
+	//doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&m_name,NULL));
 
 	crBulletMatterObject *bulletMatterObject;
 	crWeaponManager *weaponManager = crWeaponManager::getInstance();
@@ -1569,8 +1569,8 @@ void crWeaponMatterObject::fire( crMatterGroup *firePerson, crGameBodyInfo::Lock
 #endif
 
 	m_fireBody = dynamic_cast<crViewMatterObject *>(firePerson->getChild(0));
-	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKEINT64(this,NULL));
-	//doEvent(WCH_WEAPON_FIRE,MAKEINT64(&m_name,NULL));
+	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(this,NULL));
+	//doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&m_name,NULL));
 
 	crBulletMatterObject *bulletMatterObject;
 	crVector3 fireDir;
@@ -1640,8 +1640,8 @@ void crWeaponMatterObject::fire( crMatterGroup *firePerson, CRCore::crNode *targ
 #endif
 
 	m_fireBody = dynamic_cast<crViewMatterObject *>(firePerson->getChild(0));
-	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKEINT64(this,NULL));
-	//doEvent(WCH_WEAPON_FIRE,MAKEINT64(&m_name,NULL));
+	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(this,NULL));
+	//doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&m_name,NULL));
 
 	crBulletMatterObject *bulletMatterObject;
 	crVector3 fireDir;
@@ -1699,8 +1699,8 @@ void crWeaponMatterObject::fire_noTarget( crMatterGroup *firePerson, const CRCor
 #endif
 
 	m_fireBody = dynamic_cast<crViewMatterObject *>(firePerson->getChild(0));
-	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKEINT64(this,NULL));
-	//doEvent(WCH_WEAPON_FIRE,MAKEINT64(&m_name,NULL));
+	m_fireBody->doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(this,NULL));
+	//doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&m_name,NULL));
 
 	crBulletMatterObject *bulletMatterObject;
 	crVector3 fireDir;
@@ -1741,7 +1741,7 @@ void crWeaponMatterObject::_fire(crBulletMatterObject *bulletMatterObject, crMat
 	//CRCore::crVector3 firetarget = target;
 	m_currentBullet = bulletMatterObject;
 	bulletMatterObject->fire(this,id,firePerson,gunpoint, target,m_lastFireTime);
-	doEvent(WCH_WEAPON_FIRE, MAKEINT64(&gunpoint, bulletMatterObject));
+	doEvent(WCH_WEAPON_FIRE,MAKECREPARAM(&gunpoint, bulletMatterObject));
 }
 
 void crWeaponMatterObject::especialFire(crViewMatterObject *fireBody)
@@ -1750,7 +1750,7 @@ void crWeaponMatterObject::especialFire(crViewMatterObject *fireBody)
 	{
 		const crWeaponObject *weaponObject = getWeaponObject();
 		crVector3 gunpoint = weaponObject->getGunPoint() * m_matrix;
-		doEvent(WCH_WEAPON_ESPCIALFIRE, MAKEINT64(&gunpoint, m_currentBullet.get()));
+		doEvent(WCH_WEAPON_ESPCIALFIRE,MAKECREPARAM(&gunpoint, m_currentBullet.get()));
 	}
 }
 
@@ -1767,7 +1767,7 @@ void crWeaponMatterObject::replaceClip(crMatterGroup *firePerson, double time)
 		if(m_bulletCount>0 && m_bulletsInWeapon<weapon->getMaxBulletsInOneClip())
 		{
 			crViewMatterObject *fireBody = dynamic_cast<crViewMatterObject *>(firePerson->getChild(0));
-			fireBody->doEvent(WCH_WEAPON_REPLACECLIP,MAKEINT64(this,NULL));
+			fireBody->doEvent(WCH_WEAPON_REPLACECLIP,MAKECREPARAM(this,NULL));
 
 			m_lastReplaceClipTime = time;
 			m_bulletCount -= weapon->getMaxBulletsInOneClip() - m_bulletsInWeapon;
@@ -1780,7 +1780,7 @@ void crWeaponMatterObject::replaceClip(crMatterGroup *firePerson, double time)
 
 			CRCore::crVector3f clippos;
 			clippos = weapon->getClipPos() * m_matrix;
-			doEvent(WCH_WEAPON_REPLACECLIP,MAKEINT64(&clippos,NULL));
+			doEvent(WCH_WEAPON_REPLACECLIP,MAKECREPARAM(&clippos,NULL));
 			//for( WeaponMatrixVec::iterator itr = m_weaponMatrixVec.begin();
 			//	itr != m_weaponMatrixVec.end();
 			//	++itr )

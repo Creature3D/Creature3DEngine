@@ -92,7 +92,7 @@ using namespace CRDownload;
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_fileName = (std::string *)(LOINT64(param64));
 //			int i = HIINT64(param64);
 //			m_netType = LOINT32(i);
@@ -464,7 +464,7 @@ void crRecvSceneInfoLogic::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_role = (crRole *)(LOINT64(param64));
 //		}
 //		else
@@ -637,9 +637,9 @@ void crDownloadItemLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem *)(LOINT64(param64));
-			m_downloadFlg = (unsigned short)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem *)(LOCREPARAM(param64));
+			m_downloadFlg = (unsigned short)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -716,7 +716,7 @@ void crDownloadItemLogic::operator()(crHandle &handle)
 			if(!needDownload)
 			{//不需要下载
 				//crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_DownloadTaskDone,m_downloadFlg));
-				crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKEINT64(m_item.get(),NULL));
+				crGlobalHandle::getInstance()->doEvent(WCH_LoadItem,MAKECREPARAM(m_item.get(),NULL));
 				crGlobalHandle::recycleHttpDownloadID(id);
 				char gbuf[256];
 				sprintf(gbuf,"DownloadItem LoadItem %s\n\0",m_item->getIName().c_str());
@@ -782,22 +782,13 @@ void crNetMousePickLogic::inputParam(int i, void *param)
 	case 0:
 		m_this = NULL;
 		m_ea = NULL;
-		m_param = NULL;
 		break;
 	case 1:
 		m_this = (crRole*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -845,7 +836,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 	thisData->getParam(WCHDATA_RTHP,param);
 	float rthp  = *((float*)param);
 	if(rthp <= 0) return;
-	m_this->doEvent(WCH_NodeCoordToItem,MAKEINT64(NULL,bot));
+	m_this->doEvent(WCH_NodeCoordToItem,MAKECREPARAM(NULL,bot));
 
 	ref_ptr<crInstanceItem> lastTargetItem;
 	ref_ptr<crMatrixTransform> lastTargetNode;
@@ -886,9 +877,9 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 
 	if(lastTargetItem.valid() && lastTargetItem != targetItem)
 	{
-		lastTargetItem->doEvent(WCH_UnTouch,MAKEINT64(NULL,NULL));
+		lastTargetItem->doEvent(WCH_UnTouch,MAKECREPARAM(NULL,NULL));
 	}
-	m_this->doEvent(WCH_ShowTargetInfo,MAKEINT64(targetItem,NULL));
+	m_this->doEvent(WCH_ShowTargetInfo,MAKECREPARAM(targetItem,NULL));
 
 	crVector3 myPos = bot->getTrans();
 	crVector3 targetDir = m_targetPosition - myPos;
@@ -908,7 +899,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 	{
 		char isEnemy = 0;
         if(targetItem)
-		    m_this->doEvent(WCH_EnemyCheck,MAKEINT64(targetItem,&isEnemy));
+		    m_this->doEvent(WCH_EnemyCheck,MAKECREPARAM(targetItem,&isEnemy));
 		//检查是否施法
 	    thisData->getParam(WCHDATA_AboutToUseItemID,param);
 		int itemid = *((int*)param);
@@ -962,7 +953,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 					if(targetItem && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 						useItemPair.m_target = targetItem;
 					unsigned short useResult = UR_None;
-					item->doEvent(MAKEINT64(WCH_UseItem,UT_Client),MAKEINT64(&useItemPair,&useResult));
+					item->doEvent(MAKEINT64(WCH_UseItem,UT_Client),MAKECREPARAM(&useItemPair,&useResult));
 					if(useResult == UR_Succeed)
 					{
 						thisData->inputParam(WCHDATA_AboutToUseItemID,NULL);//
@@ -995,7 +986,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 					//crVector3 moveToPos = m_targetPosition - (dir * followDistance);
 					crMyPlayerData::getInstance()->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
 					//float speed = 0;
-					//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+					//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 					//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 					//bot->doEvent(MAKEINT64(WCH_NetMoveToTarget,NULL),MAKEINT64(&moveToPos,&relspeed));//移动到使用范围
 					stream->_writeUChar(itemstate);
@@ -1033,7 +1024,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 				stream->_writeUChar(itemstate);
 				crMyPlayerData::getInstance()->getScene()->getPathFindingManager()->addPathFindRequest(m_this);
 				//float speed = 0;
-				//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+				//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 				//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 				//bot->doEvent(WCH_NetMoveToTarget,MAKEINT64(&m_targetPosition,&relspeed));
 				break;
@@ -1069,7 +1060,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 						if(targetItem && (targetItem->getItemtype()==crInstanceItem::Npc || targetItem->getItemtype()==crInstanceItem::Role))
 							useItemParam.m_target = targetItem;
 						unsigned short useResult = UR_None;
-						item->doEvent(MAKEINT64(WCH_UseItem,UT_Client),MAKEINT64(&useItemParam,&useResult));
+						item->doEvent(MAKEINT64(WCH_UseItem,UT_Client),MAKECREPARAM(&useItemParam,&useResult));
 						if(useResult == UR_Succeed)
 						{
 							itemstate = IS_UseItem;
@@ -1095,7 +1086,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 						//crVector3 dir = targetDir.normalize();
 						//crVector3 moveToPos = m_targetPosition - (dir * followDistance);
 						//float speed = 0;
-						//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+						//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 						//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 						//bot->doEvent(MAKEINT64(WCH_NetMoveToTarget,NULL),MAKEINT64(&moveToPos,&relspeed));//移动到使用范围
 						stream->_writeUChar(itemstate);
@@ -1125,7 +1116,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 				float followDistance = relDist - crGlobalHandle::gData()->gFollowDelta();
 				if(dist<=relDist)
 				{//在使用范围内
-                    targetItem->doEvent(WCH_Touch,MAKEINT64(NULL,NULL));
+                    targetItem->doEvent(WCH_Touch );
 					itemstate = IS_Stop;
 					stream->_writeUChar(itemstate);
 				}
@@ -1137,7 +1128,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 					//crVector3 dir = targetDir.normalize();
 					//crVector3 moveToPos = m_targetPosition - (dir * followDistance);
 					//float speed = 0;
-					//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+					//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 					//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 					//bot->doEvent(MAKEINT64(WCH_NetMoveToTarget,NULL),MAKEINT64(&moveToPos,&relspeed));//移动到使用范围
 					stream->_writeUChar(itemstate);
@@ -1150,7 +1141,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 		itemstate = IS_Stop;
 		stream->_writeUChar(itemstate);
 		//float speed = 0;
-		//m_this->doEvent(MAKEINT64(WCH_GetSpeed,NULL),MAKEINT64(&speed,NULL));
+		//m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
 		//float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 		//bot->doEvent(WCH_NetMoveToTarget,MAKEINT64(&m_targetPosition,&relspeed));
 	} while (0);
@@ -1171,7 +1162,7 @@ void crNetMousePickLogic::operator()(crHandle &handle)
 		//float speed = 0.0f;
 		//crVector3 nullpos;
 		//bot->doEvent(WCH_NetMoveToTarget,MAKEINT64(&nullpos,&speed));//停止移动
-		m_this->doEvent(WCH_ItemCoordToNode,MAKEINT64(bot,crMatterObject::MD_RotMatrix));//转向拾取点
+		m_this->doEvent(WCH_ItemCoordToNode,MAKECREPARAM(bot,crMatterObject::MD_RotMatrix));//转向拾取点
 	}
 	//if(itemstate!=IS_UseItem)
 	//{
@@ -1229,9 +1220,9 @@ void crDownloadItemChildLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_itemchild = (crItemChild *)(LOINT64(param64));
-			m_rootitem = (crInstanceItem *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_itemchild = (crItemChild *)(LOCREPARAM(param64));
+			m_rootitem = (crInstanceItem *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -1304,8 +1295,8 @@ void crDownloadItemChildLogic::operator()(crHandle &handle)
 		if(!needDownload)
 		{//不需要下载
 			//crGlobalHandle::getInstance()->doEvent(MAKEINT64(WCH_DownloadTaskDone,downloadFlg));
-			crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(m_itemchild.get(),m_rootitem.get()));
-			//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKEINT64(NULL,NULL));//清理
+			crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild,MAKECREPARAM(m_itemchild.get(),m_rootitem.get()));
+			//crGlobalHandle::getInstance()->doEvent(WCH_LoadItemChild );//清理
 			crGlobalHandle::recycleHttpDownloadID(id);
 		}
 		else
@@ -1357,9 +1348,9 @@ void crBulletCollideLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_collideNode = (crNode *)(LOINT64(param64));
-			m_contactInfo = (dContact *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_collideNode = (crNode *)(LOCREPARAM(param64));
+			m_contactInfo = (dContact *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -1426,7 +1417,7 @@ void crBulletCollideLogic::operator()(crHandle &handle)
 						{
 							if(item->getItemtype()==crInstanceItem::Role)
 							{//Player
-								firer->doEvent(WCH_TrackFireMiss,MAKEINT64(m_this,m_collideNode.get()));
+								firer->doEvent(WCH_TrackFireMiss,MAKECREPARAM(m_this,m_collideNode.get()));
 							}
 						}
 					}
@@ -1572,9 +1563,9 @@ void crBulletCollideSequenceLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_collideNode = (crNode *)(LOINT64(param64));
-			m_contactInfo = (dContact *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_collideNode = (crNode *)(LOCREPARAM(param64));
+			m_contactInfo = (dContact *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -1721,9 +1712,9 @@ void crBulletCollideSequence2Logic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_collideNode = (crNode *)(LOINT64(param64));
-			m_contactInfo = (dContact *)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_collideNode = (crNode *)(LOCREPARAM(param64));
+			m_contactInfo = (dContact *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -1861,9 +1852,9 @@ void crWeaponFireLightLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_gunpoint = *((crVector3 *)(LOINT64(param64)));
-			m_dir = *((crVector3 *)(LOINT64(param64)));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_gunpoint = *((crVector3 *)(LOCREPARAM(param64)));
+			m_dir = *((crVector3 *)(HICREPARAM(param64)));
 		}
 		break;
 	}
@@ -2043,8 +2034,8 @@ void crBulletFlyParticleLogic::operator()(crHandle &handle)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
-//			m_item = (crInstanceItem *)(LOINT64(param64));
+//			CREPARAM& param64 = *(CREPARAM*)param;
+//			m_item = (crInstanceItem *)(LOCREPARAM(param64));
 //			m_dist = *(float *)(HIINT64(param64));
 //		}
 //		else
@@ -2214,8 +2205,8 @@ void crNpcAI1Logic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *(float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *(float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -2280,7 +2271,7 @@ void crNpcAI1Logic::operator()(crHandle &handle)
 		if(itemstate == IS_Dead)
 			return;
 		unsigned int guisestate = GS_Normal;
-		m_this->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		m_this->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable)
 		{
 			return;
@@ -2465,7 +2456,7 @@ void crNpcAI1Logic::operator()(crHandle &handle)
 					//thisData->getParam(WCHDATA_SightRange,param);
 					//short sightRange = *(unsigned short *)param;
 					float sightRange = 0;
-					m_this->doEvent(MAKEINT64(WCH_GetSightRange,NULL),MAKEINT64(&sightRange,NULL));
+					m_this->doEvent(WCH_GetSightRange, MAKECREPARAM(&sightRange,NULL));
 					float fsightRange = sightRange * crGlobalHandle::gData()->gUnitScale();
 					crVector3 targetPos = targetItem->getPosition();
 					crVector3 mypos = m_this->getPosition();
@@ -2537,8 +2528,8 @@ void crPlayerAI1Logic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_dt = *(float *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_dt = *(float *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -2601,7 +2592,7 @@ void crPlayerAI1Logic::operator()(crHandle &handle)
 		if(itemstate == IS_Dead)
 			return;
 		unsigned int guisestate = GS_Normal;
-		m_this->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		m_this->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable)
 		{
 			return;
@@ -2675,17 +2666,17 @@ void crPlayerAI1Logic::operator()(crHandle &handle)
 								//	crPlayerEventPacket::buildRequestPacket(packet,m_this->getRoleID(),WCH_RecvItemState,stream.get());
 								//	netConductor->getNetManager()->sendPacket("all",packet);
 								//}
-								targetItem->doEvent(WCH_Touch,MAKEINT64(NULL,NULL));
+								targetItem->doEvent(WCH_Touch );
 							}
 							break;
 						}
 						autoFight = false;
 						char isEnemy = 0;
-						m_this->doEvent(WCH_EnemyCheck,MAKEINT64(targetItem.get(),&isEnemy));
+						m_this->doEvent(WCH_EnemyCheck,MAKECREPARAM(targetItem.get(),&isEnemy));
 						if(isEnemy == -1)
 						{
 							unsigned int guisestate = GS_Normal;
-							targetItem->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+							targetItem->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 							if(guisestate & GS_StaticUnVisiable || guisestate & GS_UnVisiable || !targetNode->getVisiable())
 							{
 								autoFight = true;
@@ -2775,7 +2766,7 @@ void crPlayerAI1Logic::operator()(crHandle &handle)
 						if(enemy)
 						{
 							//char isEnemy = 0;
-							//m_this->doEvent(WCH_EnemyCheck,MAKEINT64(itemnpc.first.get(),&isEnemy));
+							//m_this->doEvent(WCH_EnemyCheck,MAKECREPARAM(itemnpc.first.get(),&isEnemy));
 							//if(isEnemy == -1)
 							//{
 								bool isAboutToUseItem = false;
@@ -2874,8 +2865,8 @@ void crExtraEffectLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_bot = (CRPhysics::crViewMatterObject*)(HIINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_bot = (CRPhysics::crViewMatterObject*)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -2914,7 +2905,7 @@ void crExtraEffectLogic::operator()(crHandle &handle)
 	if (m_gs)
 	{
 		unsigned int guisestate = GS_Normal;
-		m_this->doEvent(MAKEINT64(WCH_GetGuiseState, 0), MAKEINT64(&guisestate, NULL));
+		m_this->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate, NULL));
 		gscheck = guisestate & m_gs;
 	}
 	if(!m_init && gscheck)
@@ -3053,7 +3044,7 @@ void crVolumeEffectLogic::releaseObjects(CRCore::crState* state)
 //	case 2:
 //		if(param)
 //		{
-//			_crInt64 param64 = *(_crInt64*)param;
+//			CREPARAM& param64 = *(CREPARAM*)param;
 //			m_hitParam = (HitParam *)(LOINT64(param64));
 //		}
 //		else
@@ -3184,7 +3175,7 @@ void crGameTaskCheckLogic::operator()(crHandle &handle)
 	{
 		//me->doEvent(WCH_SetKeyboardMouseMode,MAKEINT64(0,NULL));
 		//crNode *node = (dynamic_cast<crGroup *>(me->getNode()))->getChild(0);
-//         node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKEINT64(WCH_SetKeyboardMouseMode,0));
+//         node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_KEYBOARDMOUSE),MAKECREPARAM(WCH_SetKeyboardMouseMode,0));
 		if(gameTask->getActivation())
 		{
 			if(gameTask->isTaskCanRefer())
@@ -3316,7 +3307,7 @@ void crWaitNetReturnStreamLogic::operator()(crHandle &handle)
 		s_lostcount++;
 		s_protectMutex.unlock();
 		//std::string str = "网络未响应";
-		crGlobalHandle::getInstance()->doEvent(WCH_UINotify,MAKEINT64(27,NULL));
+		crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(27,NULL));
 	}
 	s_netReturnStream = NULL;
 }
@@ -3350,8 +3341,8 @@ void crUseThingParticleLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_user = (crInstanceItem *)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_user = (crInstanceItem *)(LOCREPARAM(param64));
 		}
 		else
 		{
@@ -3483,11 +3474,11 @@ void crSlotTimerLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			_crInt32 param32 = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			_crInt32 param32 = LOCREPARAM(param64);
 			m_inputid = (unsigned short)(LOINT32(param32));
 			m_inputInterval = (unsigned short)(HIINT32(param32));
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
+			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -3564,7 +3555,7 @@ void crSlotTimerLogic::operator()(crHandle &handle)
 			m_inputInterval = (unsigned short)(interval * 1000.0f);
 			if(m_persistEvent.valid()) (*m_persistEvent)(*this);
 		}
-		m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(m_msg,MAKEINT32(m_inputid,m_inputInterval)));
+		m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(m_msg,MAKEINT32(m_inputid,m_inputInterval)));
 
 		bool canceleTask = true;
 		handle.outputParam(0,&canceleTask);
@@ -3619,10 +3610,10 @@ void crSlotProgressLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			_crInt32 param32 = LOINT64(param64);
+			CREPARAM& param64 = *(CREPARAM*)param;
+			_crInt32 param32 = LOCREPARAM(param64);
 			m_inputid = (unsigned short)(LOINT32(param32));
-			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HIINT64(param64));
+			m_updateVisitor = (CRUtil::crUpdateVisitor *)(HICREPARAM(param64));
 		}
 		else
 		{
@@ -3700,7 +3691,7 @@ void crSlotProgressLogic::operator()(crHandle &handle)
 		{
             return;
 		}
-		m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(m_msg,MAKEINT32(m_inputid,0)));
+		m_node->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(m_msg,MAKEINT32(m_inputid,0)));
 
 		bool canceleTask = true;
 		handle.outputParam(0,&canceleTask);
@@ -3753,10 +3744,10 @@ void crCreateSoundLogic::inputParam(int i, void *param)
 	case 2:
 		if(!m_ambient && m_inputPos && param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			if(param64)
+			CREPARAM& param64 = *(CREPARAM*)param;
+			if(LOCREPARAM(param64))
 			{
-				m_position = *((crVector3 *)(LOINT64(param64)));
+				m_position = *((crVector3 *)(LOCREPARAM(param64)));
 				//m_dir = *((crVector3 *)(LOINT64(param64)));
 			}
 		}
@@ -3976,13 +3967,13 @@ void crPlaySceneFxLogic::inputParam(int i, void *param)
 			m_this = (CRCore::crNode*)param;
 		break;
 	case 2:
-		if(param)
+		if(m_placeLoadedNodeHandle.valid())
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			if(LOINT64(param64))
+			CREPARAM& param64 = *(CREPARAM*)param;
+			if(LOCREPARAM(param64) && HICREPARAM(param64))
 			{
-				m_position = *((crVector3 *)(LOINT64(param64)));
-				m_dir = *((crVector3 *)(LOINT64(param64)));
+				m_position = *((crVector3 *)(LOCREPARAM(param64)));
+				m_dir = *((crVector3 *)(HICREPARAM(param64)));
 			}
 		}
 		break;
@@ -4301,7 +4292,7 @@ void crAttachCallbackMethod::inputParam(int i, void *param)
 	//case 2:
 	//	if(param)
 	//	{
-	//		_crInt64 param64 = *(_crInt64*)param;
+	//		CREPARAM& param64 = *(CREPARAM*)param;
 	//		if(LOINT64(param64))
 	//		{
 	//			m_position = *((crVector3 *)(LOINT64(param64)));
@@ -4534,16 +4525,8 @@ void crSelectRolePickLogic::inputParam(int i, void *param)
 		m_this = (crRole*)param;
 		break;
 	case 2:
-		if(param)
-		{
-			m_param = *(_crInt64*)param;
-			m_ea = (crGUIEventAdapter *)(LOINT64(m_param));
-		}
-		else
-		{
-			m_ea = NULL;
-			m_param = NULL;
-		}
+		m_param = *(CREPARAM*)param;
+		m_ea = (crGUIEventAdapter *)(LOCREPARAM(m_param));
 		break;
 	}
 }
@@ -4928,8 +4911,8 @@ void crParamItemEffectLogic::inputParam(int i, void *param)
 	case 2:
 		if(param)
 		{
-			_crInt64 param64 = *(_crInt64*)param;
-			m_item = (crInstanceItem*)(LOINT64(param64));
+			CREPARAM& param64 = *(CREPARAM*)param;
+			m_item = (crInstanceItem*)(LOCREPARAM(param64));
 		}
 		else
 		{

@@ -212,7 +212,7 @@ public:
 
 	virtual void setEnableIntersect( bool enableIntersect);
 	float getDeathInterval();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 	void collided();
 
 	struct CRPHYSICS_EXPORT BotPhysicsObject : public CRCore::Referenced

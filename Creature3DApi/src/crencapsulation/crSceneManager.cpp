@@ -556,11 +556,11 @@ void crMapArea::update()
 	{
 		if(isInMapArea(firstPlayer->getTrans()))
 		{
-			firstPlayer->doEvent(WCH_INMAPAREA,MAKEINT64(&m_name,NULL));
+			firstPlayer->doEvent(WCH_INMAPAREA, MAKECREPARAM(&m_name,NULL));
 		}
 		else
 		{
-			firstPlayer->doEvent(WCH_OUTMAPAREA,MAKEINT64(&m_name,NULL));
+			firstPlayer->doEvent(WCH_OUTMAPAREA, MAKECREPARAM(&m_name,NULL));
 		}
 
 	}

@@ -94,7 +94,7 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 						if (itemState == IS_Dead)
 							continue;
 						guiseState = GS_Normal;
-						eye->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guiseState,NULL));
+						eye->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guiseState,NULL));
 						if(guiseState & GS_StaticUnVisiable || guiseState & GS_UnVisiable || guiseState & GS_Blind)
 						{//
 							continue;
@@ -111,7 +111,7 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 							role2 = sritr->second.get();
 							if(role2->getPlayerID() != eye->getPlayerID() && role2->getLayerID() == layerid && !isEyeRole(role2->getPlayerID()))
 							{
-								eye->doEvent(WCH_PlayerInRangeTest,MAKEINT64(this,role2));
+								eye->doEvent(WCH_PlayerInRangeTest,MAKECREPARAM(this,role2));
 							}
 						}
 						for( crScene::SceneItemMap::iterator siitr = _sceneItemMap.begin();
@@ -124,7 +124,7 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 								//if (item->getItemtype() == crInstanceItem::Role)
 								//	eye->doEvent(WCH_PlayerInRangeTest, MAKEINT64(this, item));
 								//else
-									eye->doEvent(WCH_ItemInRangeTest,MAKEINT64(this,item));
+									eye->doEvent(WCH_ItemInRangeTest,MAKECREPARAM(this,item));
 							}
 						}
 						haseye = true;
@@ -150,7 +150,7 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 					if (itemState == IS_Dead)
 						continue;
 					guiseState = GS_Normal;
-					eye->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guiseState,NULL));
+					eye->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guiseState,NULL));
 					if(guiseState & GS_StaticUnVisiable || guiseState & GS_UnVisiable || guiseState & GS_Blind)
 					{//
 						continue;
@@ -167,7 +167,7 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 						role2 = sritr->second.get();
 						if(role2->getLayerID() == layerid && !isEyeRole(role2->getPlayerID()))
 						{
-							eye->doEvent(WCH_PlayerInRangeTest,MAKEINT64(this,role2));
+							eye->doEvent(WCH_PlayerInRangeTest,MAKECREPARAM(this,role2));
 						}
 					}
 					for( crScene::SceneItemMap::iterator siitr = _sceneItemMap.begin();
@@ -180,7 +180,7 @@ void crSightInfo::update(crScene *scene, int roomid, int &roleeyecount, int &ite
 							//if (item->getItemtype() == crInstanceItem::Role)
 							//	eye->doEvent(WCH_PlayerInRangeTest, MAKEINT64(this, item));
 							//else
-								eye->doEvent(WCH_ItemInRangeTest, MAKEINT64(this, item));
+								eye->doEvent(WCH_ItemInRangeTest,MAKECREPARAM(this, item));
 						}
 					}
 					haseye = true;
@@ -277,7 +277,7 @@ void crSightInfo::roleInEyePointTest(const CRCore::crVector2i &eye,crRole *role)
 	//	}
 	//}
 	unsigned int guisestate = GS_Normal;
-	role->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+	role->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 	if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable || (guisestate & GS_Hide && !(guisestate & GS_UnHide)))
 	{
 		if(isRoleInSight(role))
@@ -327,7 +327,7 @@ void crSightInfo::itemInEyePointTest(const CRCore::crVector2i &eye,crInstanceIte
 	//	}
 	//}
 	unsigned int guisestate = GS_Normal;
-	item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+	item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 	if(guisestate & GS_UnVisiable || guisestate & GS_StaticUnVisiable || (guisestate & GS_Hide && !(guisestate & GS_UnHide)))
 	{
 		if(isItemInSight(item))
@@ -363,7 +363,7 @@ void crSightInfo::addEyeItem(crInstanceItem *item)
 	GNE::LockMutex lock( m_itemEyeMapMutex );
 	crItemInRangePacket inpacket;
 	ref_ptr<crStreamBuf> rtDataStream;
-	item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+	item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 	if(rtDataStream.valid())
 	{
 		crItemInRangePacket::buildRequestPacket(inpacket,0,item,rtDataStream.get());
@@ -424,7 +424,7 @@ void crSightInfo::addEyePlayer(crSceneServerPlayerData *player)
 			{
 				item = itr->second.get();
 				ref_ptr<crStreamBuf> rtDataStream;
-				item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+				item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 				if(rtDataStream.valid())
 				{
 					crItemInRangePacket::buildRequestPacket(inpacket,playerid,item,rtDataStream.get());
@@ -440,7 +440,7 @@ void crSightInfo::addEyePlayer(crSceneServerPlayerData *player)
 			{
 				role = itr->second.get();
 				ref_ptr<crStreamBuf> rtDataStream;
-				role->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+				role->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 				if(rtDataStream.valid())
 				{
 					crItemInRangePacket::buildRequestPacket(inpacket,playerid,role,rtDataStream.get());
@@ -456,7 +456,7 @@ void crSightInfo::addEyePlayer(crSceneServerPlayerData *player)
 			{
 				item = itr->second.get();
 				ref_ptr<crStreamBuf> rtDataStream;
-				item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+				item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 				if(rtDataStream.valid())
 				{
 					crItemInRangePacket::buildRequestPacket(inpacket,playerid,item,rtDataStream.get());
@@ -497,7 +497,7 @@ void crSightInfo::addEyePlayer(crSceneServerPlayerData *player)
 					if(itemstate != IS_Dead)
 					{
 						ref_ptr<crStreamBuf> rtDataStream;
-						role->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+						role->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 						if(rtDataStream.valid())
 						{
 							crItemInRangePacket::buildRequestPacket(inpacket,playerid,role,rtDataStream.get());
@@ -515,7 +515,7 @@ void crSightInfo::addEyePlayer(crSceneServerPlayerData *player)
 			{
 				ref_ptr<crStreamBuf> rtDataStream;
 				role = itr->second.get();
-				role->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+				role->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 				if(rtDataStream.valid())
 				{
 					crItemInRangePacket::buildRequestPacket(inpacket,0,role,rtDataStream.get());
@@ -686,7 +686,7 @@ void crSightInfo::roleInSightUpdate()
 			{
 				m_inSightRolePlayer[id] = role;
 				ref_ptr<crStreamBuf> rtDataStream;
-				role->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+				role->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 				if(rtDataStream.valid())
 				{
 					crItemInRangePacket::buildRequestPacket(inpacket,0,role.get(),rtDataStream.get());
@@ -854,7 +854,7 @@ void crSightInfo::itemInSightUpdate()
 			{
 				m_inSightItem[item->getInstanceItemID()] = item;
 				ref_ptr<crStreamBuf> rtDataStream;
-				item->doEvent(WCH_GetItemRTData,MAKEINT64(&rtDataStream,NULL));
+				item->doEvent(WCH_GetItemRTData,MAKECREPARAM(&rtDataStream,NULL));
 				if(rtDataStream.valid())
 				{
 					crItemInRangePacket packet;

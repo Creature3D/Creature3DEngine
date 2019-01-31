@@ -128,7 +128,7 @@ public:
 	bool isNodeSelected(CRCore::crNode *node) const;
 	bool isNodeSelected(const std::string &nodeName) const;
 	void selectNode(CRCore::crNode *node);
-	void selectNodeEvent(__int64 kbmsg, __int64 param = 0);
+	void selectNodeEvent(__int64 kbmsg, CREPARAM param = NULLPARAM);
 	void unSelectNode(CRCore::crNode *node);
 	void unSelectAll();
 	void translateSelectedNodes(CRCore::crMatrix &transMatrix);

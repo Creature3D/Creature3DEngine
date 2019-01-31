@@ -851,7 +851,7 @@ unsigned int crViewMatterObject::getCurrentWeaponMask()
 //	}
 //}
 //
-void crViewMatterObject::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crViewMatterObject::doEvent(_crInt64 kbmsg, CREPARAM param)
 {			
 	crMatterObject::doEvent(kbmsg,param);
 }
@@ -1708,7 +1708,7 @@ void crViewMatterObject::dead( int deadflg, crViewMatterObject *firePerson)
 
 	//crBotManager::getInstance()->killBot(this);
 	//deadcallback
-	doEvent(WCH_DEAD,MAKEINT64(deadflg,firePerson));
+	doEvent(WCH_DEAD,MAKECREPARAM(deadflg,firePerson));
 
 	setVelocity(crVector3f(0.0f,0.0f,0.0f));
 	m_deadFlag = true;
@@ -1906,10 +1906,10 @@ void crViewMatterObject::selectWeaponMatterObject(const std::string &weaponName)
 	WeaponMatterObjectMap::iterator itr = m_weaponMatterObjects.find(weaponName);
 	if(itr != m_weaponMatterObjects.end())
 	{
-		/*doEvent(WCH_WEAPON_SELECT,MAKEINT64(&(itr->first),NULL));
+		/*doEvent(WCH_WEAPON_SELECT,MAKECREPARAM(&(itr->first),NULL));
 		if(m_currentWeaponMatterObject.valid()) 
 		{
-			doEvent(WCH_WEAPON_UNSELECT,MAKEINT64(&(m_currentWeaponMatterObject->getName()),NULL));
+			doEvent(WCH_WEAPON_UNSELECT,MAKECREPARAM(&(m_currentWeaponMatterObject->getName()),NULL));
 			m_currentWeaponMatterObject->setVisiable(false);
 		}
 		m_currentWeaponMatterObject = itr->second.get();
@@ -1931,15 +1931,15 @@ void crViewMatterObject::selectWeaponMatterObject(crWeaponMatterObject *weapon)
 			return;
 		}
 		m_currentWeaponMatterObject->setVisiable(false);
-		//doEvent(WCH_WEAPON_UNSELECT,MAKEINT64(&(m_currentWeaponMatterObject->getName()),NULL));
-		doEvent(WCH_WEAPON_UNSELECT,MAKEINT64(m_currentWeaponMatterObject.get(),NULL));
-		m_currentWeaponMatterObject->doEvent(WCH_WEAPON_UNSELECT,MAKEINT64(this,NULL));
+		//doEvent(WCH_WEAPON_UNSELECT,MAKECREPARAM(&(m_currentWeaponMatterObject->getName()),NULL));
+		doEvent(WCH_WEAPON_UNSELECT,MAKECREPARAM(m_currentWeaponMatterObject.get(),NULL));
+		m_currentWeaponMatterObject->doEvent(WCH_WEAPON_UNSELECT,MAKECREPARAM(this,NULL));
 	}
 	m_currentWeaponMatterObject = weapon;
 	m_currentWeaponMatterObject->setVisiable(true);
-	//doEvent(WCH_WEAPON_SELECT,MAKEINT64(&(m_currentWeaponMatterObject->getName()),NULL));
-	doEvent(WCH_WEAPON_SELECT,MAKEINT64(m_currentWeaponMatterObject.get(),NULL));
-	m_currentWeaponMatterObject->doEvent(WCH_WEAPON_SELECT,MAKEINT64(this,NULL));
+	//doEvent(WCH_WEAPON_SELECT,MAKECREPARAM(&(m_currentWeaponMatterObject->getName()),NULL));
+	doEvent(WCH_WEAPON_SELECT,MAKECREPARAM(m_currentWeaponMatterObject.get(),NULL));
+	m_currentWeaponMatterObject->doEvent(WCH_WEAPON_SELECT,MAKECREPARAM(this,NULL));
 	//refreshBulletCountInfo();
 
 	//updateWeaponMatrix();
@@ -2096,13 +2096,13 @@ void crViewObjectNearCallback::nearCallbackImplementation( void * data, dGeomID 
 	int collideTest = 1;
 	if(node1.valid()) 
 	{
-		node1->doEvent(WCH_COLLIDETEST,MAKEINT64(node2.get(),&collideTest));
+		node1->doEvent(WCH_COLLIDETEST,MAKECREPARAM(node2.get(),&collideTest));
 		if(collideTest == 0) return;
 	}
 	if(node2.valid())
 	{
 		collideTest = 1;
-		node2->doEvent(WCH_COLLIDETEST,MAKEINT64(node1.get(),&collideTest));
+		node2->doEvent(WCH_COLLIDETEST,MAKECREPARAM(node1.get(),&collideTest));
 		if(collideTest == 0) return;
 	}
 
@@ -2221,7 +2221,7 @@ void crViewObjectNearCallback::nearCallbackImplementation( void * data, dGeomID 
 		crVector3 contactNormal(contact[0].geom.normal[0], contact[0].geom.normal[1], contact[0].geom.normal[2]);
 		if(node1.valid())
 		{
-			node1->doEvent(WCH_COLLIDE,MAKEINT64(node2.get(),&contact[0]));
+			node1->doEvent(WCH_COLLIDE,MAKECREPARAM(node2.get(),&contact[0]));
 			callback = node1->getCollideCallback();
 			if (callback) (*callback)(node1.get(),node2.get(),o1,o2,contactPos,contactNormal);
 		}
@@ -2234,7 +2234,7 @@ void crViewObjectNearCallback::nearCallbackImplementation( void * data, dGeomID 
 			contact[0].geom.normal[0] = -contact[0].geom.normal[0];
 			contact[1].geom.normal[1] = -contact[1].geom.normal[1];
 			contact[2].geom.normal[2] = -contact[2].geom.normal[2];
-			node2->doEvent(WCH_COLLIDE,MAKEINT64(node1.get(),&contact[0]));
+			node2->doEvent(WCH_COLLIDE,MAKECREPARAM(node1.get(),&contact[0]));
 			callback = node2->getCollideCallback();
 			if (callback) (*callback)(node2.get(),node1.get(),o2,o1,contactPos,-contactNormal);
 		}

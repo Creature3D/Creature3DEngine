@@ -1504,7 +1504,7 @@ void crHypertextWidgetNode::kernelMouseEvent(float mx, float my,void *ea)
 			int msgid = itr->second;
 			linkInfoPair.first = *wstr;
 			linkInfoPair.second = hit_text;
-			doEvent(MAKEINT64(msg,msgid),MAKEINT64(ea,&linkInfoPair));
+			doEvent(MAKEINT64(msg,msgid),MAKECREPARAM(ea,&linkInfoPair));
 		}
 	}
 
@@ -1515,7 +1515,7 @@ void crHypertextWidgetNode::kernelMouseEvent(float mx, float my,void *ea)
 
 	if(msg == WCH_UI_LBtnDown && m_lastHitText.get() != hit_text)
 	{
-		doEvent(MAKEINT64(WCH_UI_LostFocus,NULL),MAKEINT64(hit_text,NULL));
+		doEvent(MAKEINT64(WCH_UI_LostFocus,NULL),MAKECREPARAM(hit_text,NULL));
 		m_lastHitText = hit_text;
 	}
 }
@@ -2971,7 +2971,7 @@ void crListBoxWidgetNode::kernelMouseEvent(float mx, float my,void *ea)
 		if(m_parentWidget)
 		{
 			m_parentWidget->updateParentWidget(this,msg);
-			m_parentWidget->doEvent(MAKEINT32(_ea->getButton(),_ea->getEventType()),MAKEINT64(_ea,NULL));
+			m_parentWidget->doEvent(MAKEINT32(_ea->getButton(),_ea->getEventType()),MAKECREPARAM(_ea,NULL));
 		}
 	}
 }
@@ -5410,7 +5410,7 @@ void crListControlWidgetNode::kernelMouseEvent(float mx, float my,void *ea)
 			crFilterRenderManager::getInstance()->setMouseCapturer(NULL);
 			crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 			bindview->showCursor("Default");
-			doEvent(WCH_UI_ListItemDrag,MAKEINT64(m_select,ea));
+			doEvent(WCH_UI_ListItemDrag, MAKECREPARAM(m_select,ea));
 		}
 	}
 	else
@@ -5453,17 +5453,17 @@ void crListControlWidgetNode::kernelMouseEvent(float mx, float my,void *ea)
 					}
 					else
 					{
-						doEvent(msg,MAKEINT64(i,ea));
+						doEvent(msg,MAKECREPARAM(i,ea));
 					}
 					return;
 				}
 			}
 			select(-1);
-			doEvent(msg,MAKEINT64(-1,ea));
+			doEvent(msg,MAKECREPARAM(-1,ea));
 		}
 		else
 		{
-			doEvent(msg,MAKEINT64(m_select,ea));
+			doEvent(msg,MAKECREPARAM(m_select,ea));
 		}
 	}
 }
@@ -5685,7 +5685,7 @@ void crGroupWidgetNode::updateParentWidget(crWidgetNode *widget, _crInt32 msg)
 {
 	if(widget)
 	{
-		doEvent(msg,MAKEINT64(widget,NULL));
+		doEvent(msg,MAKECREPARAM(widget,NULL));
 	}
 }
 crGroupWidgetNode::WidgetGroup &crGroupWidgetNode::getWidgetGroup()

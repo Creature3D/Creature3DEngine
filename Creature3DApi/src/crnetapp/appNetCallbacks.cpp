@@ -238,7 +238,7 @@ void crLoginConnectServerCallback::clientUpdateImplementation(float dt)
 {
 	//if(!m_netConductor->getNetManager()->isRunning())
 	//{//客户端断线不进行重连接
-	//	//crGlobalHandle::getInstance()->doEvent(WCH_LoginConnectServerAbnormal,MAKEINT64(NULL,NULL));
+	//	//crGlobalHandle::getInstance()->doEvent(WCH_LoginConnectServerAbnormal );
 	//	CRCore::notify(CRCore::ALWAYS)<<"crLoginConnectServerCallback::clientUpdateImplementation"<<std::endl;
 	//}
 }
@@ -562,7 +562,7 @@ void crChatConnectServerCallback::clientUpdateImplementation(float dt)
 {
 	if(!m_netConductor->getNetManager()->isRunning())
 	{//客户端断线不进行重连接
-		//crGlobalHandle::getInstance()->doEvent(WCH_ChatConnectServerAbnormal,MAKEINT64(NULL,NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_ChatConnectServerAbnormal );
 		CRCore::notify(CRCore::ALWAYS)<<"crChatConnectServerCallback::clientUpdateImplementation Net已经断开"<<std::endl;
 		CRCore::crThread::sleep(1000);
 	}
@@ -1021,7 +1021,7 @@ void crDownloadConnectServerCallback::clientUpdateImplementation(float dt)
 {
 	if(!m_netConductor->getNetManager()->isRunning())
 	{//客户端断线不进行重连接
-		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadConnectServerAbnormal,MAKEINT64(NULL,NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_DownloadConnectServerAbnormal );
 		CRCore::notify(CRCore::ALWAYS)<<"crDownloadConnectServerCallback::clientUpdateImplementation Net已经断开"<<std::endl;
 		CRCore::crThread::sleep(1000);
 	}
@@ -1197,7 +1197,7 @@ void crGameServerCallback::serverInitImplementation()
 	}
 	db->endSession(globalSession.get());
 
-	crServerBrainHandle::getInstance()->doEvent(WCH_ServerInit,MAKEINT64(&m_serverName,m_serverid));
+	crServerBrainHandle::getInstance()->doEvent(WCH_ServerInit,MAKECREPARAM(&m_serverName,m_serverid));
 	CRCore::notify(CRCore::ALWAYS)<<"crGameServerCallback::serverInitImplementation() "<<m_serverName<<" 初始化完成,ServerID:"<<m_serverid<<std::endl;
 	//sprintf(gDebugInfo->buf(),"crGameServerCallback::serverInitImplementation() %s 初始化完成\n\0",m_serverName.c_str());
 	//gDebugInfo->debugInfo(CRCore::ALWAYS);
@@ -1306,7 +1306,7 @@ void crGameServerCallback::serverUpdateImplementation(float dt)
 		{
 			playerData = dynamic_cast<crGameServerPlayerData *>(itr->get());
 			float updatedt = dt;
-			playerData->getPlayerGameData()->doEvent(MAKEINT64(WCH_ServerUpdate,GameServer),MAKEINT64(&updatedt,playerData.get()));
+			playerData->getPlayerGameData()->doEvent(MAKEINT64(WCH_ServerUpdate,GameServer),MAKECREPARAM(&updatedt,playerData.get()));
 		}
 		for( PlayerVec::iterator itr = m_savePlayerVec.begin();
 			itr != m_savePlayerVec.end(); 
@@ -1319,7 +1319,7 @@ void crGameServerCallback::serverUpdateImplementation(float dt)
 		crDataStreamTransfer::getInstance()->update(dt);
 		crFileStreamCacheManager::getInstance()->update(dt);
 		float updatedt = dt;
-		crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_ServerUpdate,GameServer),MAKEINT64(&updatedt,NULL));
+		crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_ServerUpdate,GameServer),MAKECREPARAM(&updatedt,NULL));
 		updateDropedPlayerMap(dt);
 		/////////////////区服务器信息
 		//if(m_serverid == 0)
@@ -1561,7 +1561,7 @@ void crGameServerCallback::serverRemoveConnectionImplementation(const std::strin
 			if(itr->second.second.compare(address) == 0)
 			{
 				itr->second.second = "";
-				crServerBrainHandle::getInstance()->doEvent(WCH_SceneServerAbnormal,MAKEINT64(itr->first,NULL));
+				crServerBrainHandle::getInstance()->doEvent(WCH_SceneServerAbnormal,MAKECREPARAM(itr->first,NULL));
 			}
 		}
 	}
@@ -1575,7 +1575,7 @@ void crGameServerCallback::serverRemoveConnectionImplementation(const std::strin
 		std::string logdata = "掉线服务器个数超过"+crArgumentParser::appItoa(m_maxDropServerCount)+"个"+m_netConductor->getName();//+" 将在60s后自动重启！";
 		CRCore::notify(CRCore::ALWAYS)<<logdata<<std::endl;
 		GameLogData gamelog(0,logdata);
-		crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(0,&gamelog));
+		crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(0,&gamelog));
 		m_dropedServerCount = 0;
 	}
 }
@@ -1605,7 +1605,7 @@ void crGameServerCallback::playerDroped(crPlayerData *_playerData)
 	ref_ptr<crPlayerGameData> playerGameData = playerData->getPlayerGameData();
 	if(playerGameData.valid())
 	{
-		playerGameData->doEvent(MAKEINT64(WCH_ServerDroped,GameServer),MAKEINT64(_playerData,NULL));
+		playerGameData->doEvent(MAKEINT64(WCH_ServerDroped,GameServer),MAKECREPARAM(_playerData,NULL));
 	}
 	savePlayerData(playerData.get());
 	removeCharacterName(playerData->getPlayerID());
@@ -1658,7 +1658,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 					{
 						std::string logdata = "Save playergamedata Faild,stream is NULL,playerid=" + crArgumentParser::appItoa(playerid);
 						GameLogData gamelog(0,logdata);
-						crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(playerid,&gamelog));
+						crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(playerid,&gamelog));
 						CRCore::notify(CRCore::ALWAYS)<<"Save playergamedata Faild,stream is NULL,playerid="<<playerid<<std::endl;
 					}
 				}
@@ -1704,7 +1704,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 						{
 							std::string logdata = "Save MainRole Faild,stream is NULL,playerid=" + crArgumentParser::appItoa(playerid);
 							GameLogData gamelog(0,logdata);
-							crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(playerid,&gamelog));
+							crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(playerid,&gamelog));
 							CRCore::notify(CRCore::ALWAYS)<<"Save MainRole Faild,stream is NULL,playerid="<<playerid<<std::endl;
 						}
 					}
@@ -1785,7 +1785,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 						{
 							std::string logdata = "Save MainRole Faild,stream is NULL,playerid=" + crArgumentParser::appItoa(playerid);
 							GameLogData gamelog(0,logdata);
-							crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(playerid,&gamelog));
+							crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(playerid,&gamelog));
 							CRCore::notify(CRCore::ALWAYS)<<"Save MainRole Faild,stream is NULL,playerid="<<playerid<<std::endl;
 						}
 					}
@@ -2217,7 +2217,7 @@ void crGameConnectServerCallback::clientUpdateImplementation(float dt)
 	crGlobalHandle::getInstance()->timer()+=dt;
 	if(!m_netConductor->getNetManager()->isRunning())
 	{//客户端断线不进行重连接
-		//crGlobalHandle::getInstance()->doEvent(WCH_GameConnectServerAbnormal,MAKEINT64(NULL,NULL));
+		//crGlobalHandle::getInstance()->doEvent(WCH_GameConnectServerAbnormal );
 		if(m_inreconnect<30)
 		{
 			crThread::sleep(100);
@@ -2621,7 +2621,7 @@ void crSceneServerCallback::serverUpdateImplementation(float dt)
 			if(playerGameData)
 			{
 				float updatedt = dt;
-				playerGameData->doEvent(MAKEINT64(WCH_ServerUpdate,SceneServer),MAKEINT64(&updatedt,playerData));
+				playerGameData->doEvent(MAKEINT64(WCH_ServerUpdate,SceneServer),MAKECREPARAM(&updatedt,playerData));
 			}
 			if(playerData->isClientRunning())
 			{
@@ -2658,7 +2658,7 @@ void crSceneServerCallback::serverUpdateImplementation(float dt)
 		}
 		crDataStreamTransfer::getInstance()->update(dt);
 		float updatedt = dt;
-		crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_ServerUpdate,SceneServer),MAKEINT64(&updatedt,NULL));
+		crServerBrainHandle::getInstance()->doEvent(MAKEINT64(WCH_ServerUpdate,SceneServer),MAKECREPARAM(&updatedt,NULL));
 		crGlobalHandle::updateTimeRecycleID(dt);
 		updateDropedPlayerMap(dt);
 		updateRemovedRoomMap(dt);
@@ -2774,7 +2774,7 @@ void crSceneServerCallback::serverRemoveConnectionImplementation(const std::stri
 		std::string logdata = "掉线服务器个数超过"+crArgumentParser::appItoa(m_maxDropServerCount)+"个"+m_netConductor->getName();//+" 将在10s后自动重启！";
 		CRCore::notify(CRCore::ALWAYS)<<logdata<<std::endl;
 		GameLogData gamelog(0,logdata);
-		crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKEINT64(0,&gamelog));
+		crServerBrainHandle::getInstance()->doEvent(WCH_GameLog,MAKECREPARAM(0,&gamelog));
 		m_dropedServerCount = 0;
 		//_asm   int   3   //只是为了让程序崩溃
 	}
@@ -2869,7 +2869,7 @@ void crSceneServerCallback::playerDroped(crPlayerData *_playerData/*, bool kicko
 	crPlayerGameData *playerGameData = playerData->getPlayerGameData();
 	if (/*kickoff && */playerGameData)
 	{
-		playerGameData->doEvent(MAKEINT64(WCH_ServerDroped,SceneServer),MAKEINT64(_playerData,NULL));
+		playerGameData->doEvent(MAKEINT64(WCH_ServerDroped,SceneServer),MAKECREPARAM(_playerData,NULL));
 		//crPlayerDataEventPacket packet;
 		//crPlayerDataEventPacket::buildReplyPacket(packet,playerData->getPlayerID(),WCH_RecvPlayerLeaveScene,NULL);
 		//crNetConductor *gameServerLine = playerData->getGameServerLineConductor();
@@ -3198,7 +3198,7 @@ crRoom* crSceneServerCallback::createRoom(crSceneServerPlayerData *creator,crStr
 	room->setMinPlayerCount(1);
 	//crServerBrainHandle::getInstance()->doEvent(WCH_GetRoomMinPlayer,);
     m_roomMap[room->getRoomID()] = room.get();
-	room->doEvent(WCH_RoomCreate,MAKEINT64(creator,NULL));
+	room->doEvent(WCH_RoomCreate,MAKECREPARAM(creator,NULL));
 	//CRCore::notify(CRCore::ALWAYS)<<"CreateRoom "<<room->getRoomID()<<std::endl;
 	return room.get();
 }
@@ -3570,7 +3570,7 @@ bool crDBServerCallback::clientReconnectToServer()
 			{//需要重新注册
 				crGameServerCallback *callback = dynamic_cast<crGameServerCallback *>(gameServer->getNetDataManager()->getNetCallback());
 				std::string servername = callback->getServerName();
-				crServerBrainHandle::getInstance()->doEvent(WCH_SetGamelogPath,MAKEINT64(&servername,NULL));
+				crServerBrainHandle::getInstance()->doEvent(WCH_SetGamelogPath,MAKECREPARAM(&servername,NULL));
 			}
 		}
 		return true;
@@ -3785,7 +3785,7 @@ void crDBServerCallback::shutDown()
 //{
 //	if(!m_netConductor->getNetManager()->isRunning())
 //	{//客户端断线不进行重连接
-//		//crGlobalHandle::getInstance()->doEvent(WCH_SceneConnectServerAbnormal,MAKEINT64(NULL,NULL));
+//		//crGlobalHandle::getInstance()->doEvent(WCH_SceneConnectServerAbnormal );
 //		CRCore::notify(CRCore::ALWAYS)<<"crSceneConnectServerCallback::clientUpdateImplementation Net已经断开"<<std::endl;
 //		CRCore::crThread::sleep(10);
 //	}

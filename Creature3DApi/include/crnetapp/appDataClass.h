@@ -49,7 +49,8 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
 
-	inline std::string& gClientCfg() { return g_clientfile; }//服务器启动日期
+	inline std::string getClientCfg() { return g_clientfile; }//Client.cfg
+	inline void setClientCfg(const std::string &file) { g_clientfile = file; }
 	inline std::string& gStartDate() { return g_startDate; }//服务器启动日期
 	inline float gUnitScale() { return g_unitScale; }
 	inline unsigned char gMaxLapover() { return g_maxLapover; }

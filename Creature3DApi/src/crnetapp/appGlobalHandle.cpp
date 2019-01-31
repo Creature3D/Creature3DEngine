@@ -129,7 +129,7 @@ CRCore::crData *crGlobalHandle::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crGlobalHandle::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crGlobalHandle::doEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	//GNE::LockMutex lock( m_globalEventMutex );
 	m_currentMsg = kbmsg;
@@ -683,7 +683,7 @@ CRCore::crData *crRunGameHandle::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crRunGameHandle::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crRunGameHandle::doEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	if(m_dataClass.valid())
 	{
@@ -815,7 +815,7 @@ CRCore::crData *crServerBrainHandle::getDataClass()
 {
 	return m_dataClass.get();
 }
-void crServerBrainHandle::doEvent(_crInt64 kbmsg, _crInt64 param)
+void crServerBrainHandle::doEvent(_crInt64 kbmsg, CREPARAM param)
 {
 	if(m_dataClass.valid())
 	{

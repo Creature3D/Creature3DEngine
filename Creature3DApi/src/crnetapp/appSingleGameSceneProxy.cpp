@@ -135,7 +135,7 @@ void crSingleGameSceneProxy::operator()(float dt)
 	crNode *node = role->getRelNode();
 	if(!node)
 		return;
-	role->doEvent(WCH_NodeCoordToItem,MAKEINT64(NULL,node));
+	role->doEvent(WCH_NodeCoordToItem,MAKECREPARAM(NULL,node));
 
 	crInstanceItem *item;
 	crData *itemData;
@@ -144,7 +144,7 @@ void crSingleGameSceneProxy::operator()(float dt)
 	float *rthp;
 	unsigned char itemtype;
 	int id,roleid;
-	//role->doEvent(WCH_ServerUpdate,MAKEINT64(&dt,NULL));
+	//role->doEvent(WCH_ServerUpdate,MAKECREPARAM(&dt,NULL));
 	for( crScene::SceneItemMap::iterator sitr = sceneItemMap.begin();
 		sitr != sceneItemMap.end();
 		++sitr )
@@ -164,7 +164,7 @@ void crSingleGameSceneProxy::operator()(float dt)
 				crMyPlayerData::RoleNpcPair roleNpcPair;
 				if(crMyPlayerData::getInstance()->findInRangePlayer(id,roleid,roleNpcPair))
 				{
-					//roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+					//roleNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 					relNode = roleNpcPair.first->getRelNode();
 					if(relNode)
 					{
@@ -179,7 +179,7 @@ void crSingleGameSceneProxy::operator()(float dt)
 				crMyPlayerData::ItemNpcPair itemNpcPair;
 				if(crMyPlayerData::getInstance()->findInRangeNpc(id,itemNpcPair))
 				{
-					//itemNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+					//itemNpcPair->second->getNPCBot()->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 					relNode = itemNpcPair.first->getRelNode();
 					if(relNode)
 					{
@@ -194,7 +194,7 @@ void crSingleGameSceneProxy::operator()(float dt)
 				crMyPlayerData::ItemNodePair itemNodePair;
 				if(crMyPlayerData::getInstance()->findInRangeItem(id,itemNodePair))
 				{
-					//itemNodePair->second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKEINT64(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
+					//itemNodePair->second->doEvent(MAKEINT64(WCH_MSGCONTAINER,WCH_UPDATEVISITOR),MAKECREPARAM(WCH_NodeOutRange,crGlobalHandle::gData()->gItemVisiableDelay()));
 					relNode = itemNodePair.first->getRelNode();
 					if(relNode)
 					{
@@ -207,13 +207,13 @@ void crSingleGameSceneProxy::operator()(float dt)
 			CRCore::notify(CRCore::ALWAYS)<<"ItemOutRange "<<std::endl;
 		}
 		else
-		    role->doEvent(WCH_ItemInRangeTest,MAKEINT64(role,sitr->second.get()));
+		    role->doEvent(WCH_ItemInRangeTest,MAKECREPARAM(role,sitr->second.get()));
 
 		itemData->getParam(WCHDATA_ItemState,param);
 		itemstate = *(unsigned char*)param;
 		if(itemstate == IS_Dead)
 		{
-			item->doEvent(MAKEINT64(WCH_DeadEvent,IR_ServerRefash),MAKEINT64(&dt,NULL));
+			item->doEvent(MAKEINT64(WCH_DeadEvent,IR_ServerRefash),MAKECREPARAM(&dt,NULL));
 		}
 		else if(itemstate == IS_Relive)
 		{
@@ -227,7 +227,7 @@ void crSingleGameSceneProxy::operator()(float dt)
 		}
 		//else
 		//{
-		//	item->doEvent(WCH_ServerUpdate,MAKEINT64(&dt,NULL));
+		//	item->doEvent(WCH_ServerUpdate,MAKECREPARAM(&dt,NULL));
 		//}
 	}
 }

@@ -336,7 +336,7 @@ void crGameBodyInfo::selectNode(CRCore::crNode *node)
 	m_selectNodeVec.push_back(node);
 }
 
-void crGameBodyInfo::selectNodeEvent(__int64 kbmsg, __int64 param)
+void crGameBodyInfo::selectNodeEvent(__int64 kbmsg, CREPARAM param)
 {
 	for( SelectNodeVec::iterator itr = m_selectNodeVec.begin();
 		 itr != m_selectNodeVec.end();

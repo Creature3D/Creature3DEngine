@@ -162,7 +162,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-    _crInt64 m_param;
+    CREPARAM m_param;
 
 	std::string m_sequenceName;
 	typedef std::set<std::string> WeaponNameSet;
@@ -182,7 +182,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-    _crInt64 m_param;
+	CREPARAM m_param;
 
 	std::string m_sequenceName;
 	int m_min;
@@ -881,7 +881,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	std::string m_effectName;
 	float m_offset;
 	CRCore::crVector3 m_positionOffset;
@@ -897,7 +897,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	std::string m_effectName;
 };
 //class crEffectSoundMethod : public CRCore::crMethod
@@ -925,7 +925,6 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
 	std::string m_nodeName;
 	float m_min;
 	float m_max;
@@ -944,7 +943,6 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
 	std::string m_nodeName;
 	float m_min;
 	float m_max;
@@ -1098,7 +1096,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
+	CREPARAM m_param;
 	int m_keyboard;
 };
 
@@ -1113,7 +1111,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 protected:
 	CRCore::ref_ptr<CRCore::crNode> m_node;
-	_crInt64 m_param;
+	CREPARAM m_param;
     int m_keyboard;
 };
 
@@ -1633,7 +1631,7 @@ public:
 	virtual void inputParam(int i, void *param);
 	virtual void addParam(int i, const std::string& str);
 protected:
-	_crInt64 m_param;
+	CREPARAM m_param;
 	_crInt32 m_msgParam1;
 	_crInt32 m_msgParam2;
 };

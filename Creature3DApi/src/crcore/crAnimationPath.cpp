@@ -224,7 +224,7 @@ void crAnimationPathCallback::update(CRCore::crNode& node)
     {
         AnimationPathCallbackVisitor apcv(cp,m_pivotPoint,m_useInverseMatrix);
         node.accept(apcv);
-		node.doEvent(WCH_AnimationEvent,MAKEINT64(this,&cp));
+		node.doEvent(WCH_AnimationEvent,MAKECREPARAM(this,&cp));
     }
 }
 

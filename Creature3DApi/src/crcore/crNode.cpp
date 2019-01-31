@@ -872,7 +872,7 @@ void crNode::insertEvent(__int64 kbmsg, CRCore::crEventCallback *callback)
 	m_eventMap.insert(std::make_pair(kbmsg,callback));
 }
 
-void crNode::doEvent(__int64 kbmsg, __int64 param)
+void crNode::doEvent(__int64 kbmsg, CREPARAM param)
 {
 	crBase::doEvent(kbmsg,param);
 

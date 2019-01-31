@@ -23,6 +23,9 @@ static bool Cooked = false;
 static bool RetainSourceFile = false;
 static bool NetCooked = false;
 static bool PublishRun = false;
+static std::string FileRoot;
+void CRIOManager::SetFileRoot(const std::string &fileRoot) { FileRoot = fileRoot; }
+const std::string& CRIOManager::GetFileRoot() { return FileRoot; }
 void CRIOManager::SetCooked(bool cook){ Cooked = cook; }
 void CRIOManager::SetRetainSourceFile(bool retain){ RetainSourceFile = retain; }
 void CRIOManager::SetNetCooked(bool cook){ NetCooked = cook; }
@@ -58,7 +61,6 @@ bool CRIOManager::GetCookedFileName(std::string &fileName)
 //
 /////////////////////////////////////////
 crLoadCookFile::crLoadCookFile(const std::string &fileName)
-//:m_fileName(fileName) 
 {
 	//if(Cooked)
 	//    CRIOManager::readObjectFile(fileName + ".cook");
@@ -67,7 +69,7 @@ crLoadCookFile::crLoadCookFile(const std::string &fileName)
 	//	if(!fileExists(fileName))
 	//		CRIOManager::readObjectFile(fileName + ".cook");
 	//}
-	m_fileName = fileName;
+	m_fileName = FileRoot+fileName;
 	if(Cooked)
 	{
 		if(!RetainSourceFile)
@@ -96,8 +98,8 @@ crLoadCookFile::~crLoadCookFile()
 //
 /////////////////////////////////////////
 crWriteCookFile::crWriteCookFile(const std::string &fileName)
-:m_fileName(fileName) 
 {
+	m_fileName = FileRoot + fileName;
 	if(Cooked)
 	{
 		CRCore::ref_ptr<CRCore::crNode> cookObj = new CRCore::crNode;

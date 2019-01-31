@@ -33,7 +33,7 @@ public:
 
 	void setDataClass( CRCore::crData *data );
 	CRCore::crData *getDataClass();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 	inline _crInt64 getCurrentMsg() const { return m_currentMsg; }
 
 	//abstractitem»º³å
@@ -166,7 +166,7 @@ public:
 
 	void setDataClass( CRCore::crData *data );
 	CRCore::crData *getDataClass();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 
 	enum RunCode
 	{
@@ -226,7 +226,7 @@ public:
 
 	void setDataClass( CRCore::crData *data );
 	CRCore::crData *getDataClass();
-	virtual void doEvent(_crInt64 kbmsg, _crInt64 param = 0);
+	virtual void doEvent(_crInt64 kbmsg, CREPARAM param = NULLPARAM);
 protected:
 	virtual ~crServerBrainHandle(){}
 	static CRCore::ref_ptr<crServerBrainHandle> m_instance;

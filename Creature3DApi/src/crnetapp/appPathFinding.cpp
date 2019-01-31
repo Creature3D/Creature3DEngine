@@ -931,7 +931,7 @@ void crPathFindingManager::addPathFindRequest(crInstanceItem *item)
 	if(item->isMainAI() && !isInRequestDeque(item))
 	{
 		unsigned int guisestate = GS_Normal;
-		item->doEvent(MAKEINT64(WCH_GetGuiseState,0),MAKEINT64(&guisestate,NULL));
+		item->doEvent(WCH_GetGuiseState, MAKECREPARAM(&guisestate,NULL));
 		if(guisestate & GS_UnVisiable || guisestate & GS_Garrison || guisestate & GS_Fetter || guisestate & GS_Swoon || guisestate & GS_Stagnate || guisestate & GS_ExtraShifting || guisestate & GS_Confusion)
 		{//≤ªø…“∆∂Ø
 			return;
