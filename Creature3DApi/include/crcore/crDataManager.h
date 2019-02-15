@@ -72,7 +72,7 @@ class crState;
 			CRCore::ScopedLock<crMutex> lock(m_mutex);
 			m_handleMap.erase(msg); 
 		}
-		inline virtual void excHandle(_crInt64 msg){ excHandle(getHandle(msg)); }
+		inline virtual void excHandle(CREPARAM msg){ excHandle(getHandle(LOCREPARAM(msg))); }
 		inline void excHandle(crHandle *handle) 
 		{
 			if(handle)
@@ -85,8 +85,8 @@ class crState;
 		inline virtual void inputParam(int i, void *param)=0;
 		inline virtual void getParam(int i, void*& param){ param = NULL; }
 		inline virtual void clear(){ m_handleMap.clear(); }
-		inline void lock(){ excHandle(MAKEINT64(WCH_USER+5,1)); }//WCH_USER+5:WCH_LockData
-		inline void unlock(){ excHandle(MAKEINT64(WCH_USER+5,0)); }//WCH_USER+5:WCH_LockData
+		inline void lock(){ excHandle(MAKECREPARAM(WCH_USER+5,1)); }//WCH_USER+5:WCH_LockData
+		inline void unlock(){ excHandle(MAKECREPARAM(WCH_USER+5,0)); }//WCH_USER+5:WCH_LockData
 		inline virtual void lockParam(int i){}
 		inline virtual void unlockParam(int i){}
 		virtual void releaseObjects(crState* state);

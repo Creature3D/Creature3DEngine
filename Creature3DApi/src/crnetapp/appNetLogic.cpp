@@ -2109,7 +2109,7 @@ void crBulletFlyParticleLogic::operator()(crHandle &handle)
 //				}
 //			}
 //		}
-//		data->excHandle(MAKEINT64(WCH_LockData,1));
+//		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		if(m_item->getItemtype() == crInstanceItem::Role)
 //		{
 //			_crInt64 enmityid = MAKEINT64(m_item->getID(),m_item->getRoleID());
@@ -2160,7 +2160,7 @@ void crBulletFlyParticleLogic::operator()(crHandle &handle)
 //				npcEnmityMap->erase(enmityid);
 //			}
 //		}
-//		data->excHandle(MAKEINT64(WCH_LockData,0));
+//		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 //	}
 //}
 /////////////////////////////////////////
@@ -3165,11 +3165,11 @@ void crGameTaskCheckLogic::operator()(crHandle &handle)
 	crData *metierData = me->getMetierDataClass();
 	ref_ptr<crGameTask> gameTask;
 	metierData->getParam(WCHDATA_GameTaskMap,param);
-	metierData->excHandle(MAKEINT64(WCH_LockData,1));
+	metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 	GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 	GameTaskMap::iterator itr = gameTaskMap->find(m_taskid);
 	gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-	metierData->excHandle(MAKEINT64(WCH_LockData,0));
+	metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 	if(gameTask.valid())
 	{

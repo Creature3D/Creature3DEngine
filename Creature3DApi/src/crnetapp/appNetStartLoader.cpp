@@ -229,7 +229,7 @@ void crNetStartLoader::loading(CRProducer::crViewer *viewer,Producer::Window par
 		}
 		role->setNode(npc->getNPCBody());
 		data = role->getDataClass();
-		data->excHandle(MAKEINT64(/*WCH_CheckPlayerData*/WCH_CheckNetData,role));
+		data->excHandle(MAKECREPARAM(/*WCH_CheckPlayerData*/WCH_CheckNetData,role));
 
 		float rt = 0;
 		role->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));
@@ -565,7 +565,7 @@ void crNetStartLoader2::loading(CRProducer::crViewer *viewer,Producer::Window pa
 		}
 		role->setNode(npc->getNPCBody());
 		data = role->getDataClass();
-		data->excHandle(MAKEINT64(/*WCH_CheckPlayerData*/WCH_CheckNetData,role));
+		data->excHandle(MAKECREPARAM(/*WCH_CheckPlayerData*/WCH_CheckNetData,role));
 
 		float rt = 0;
 		role->doEvent(WCH_GetHP,MAKECREPARAM(&rt,NULL));

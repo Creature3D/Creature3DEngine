@@ -1633,7 +1633,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 				if(data)
 				{
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
-					data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+					data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 					//data->getParam(WCHDATA_DataStream,param);
 					if(stream->getRemainSize()>0)
 					{
@@ -1680,7 +1680,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 					if(data)
 					{
 						ref_ptr<crStreamBuf> stream = new crStreamBuf;
-						data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+						data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 						//data->getParam(WCHDATA_DataStream,param);
 						if(stream->getRemainSize()>0)
 						{
@@ -1722,7 +1722,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 						{//ÐèÒª´æ´¢
 							data = item->getDataClass();
 							ref_ptr<crStreamBuf> stream = new crStreamBuf;
-							data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+							data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 							//data->getParam(WCHDATA_DataStream,param);
 							if(stream->getRemainSize()>0)
 							{
@@ -1761,7 +1761,7 @@ void crGameServerCallback::savePlayerData(crGameServerPlayerData *playerData)
 					if(data)
 					{
 						ref_ptr<crStreamBuf> stream = new crStreamBuf;
-						data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+						data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 						//data->getParam(WCHDATA_DataStream,param);
 						if(stream->getRemainSize()>0)
 						{
@@ -2515,7 +2515,7 @@ void crSceneServerCallback::addScene(crScene *scene)
 		//emporium->getAbstractItem()->setScriptModifyTime(mtime);
 		ref_ptr<crData> data = CREncapsulation::loadData(m_emporiumScript);
 		emporium->setDataClass(data.get());
-		data->excHandle(MAKEINT64(WCH_ServerCheckItemData,emporium.get()));
+		data->excHandle(MAKECREPARAM(WCH_ServerCheckItemData,emporium.get()));
 	}
 }
 void crSceneServerCallback::registerSceneServer(crNetConductor *sceneclient_game)
@@ -2927,7 +2927,7 @@ void crSceneServerCallback::savePlayerData(crSceneServerPlayerData *playerData,S
 			if(data)
 			{
 				ref_ptr<crStreamBuf> stream = new crStreamBuf;
-				data->excHandle(MAKEINT64(WCH_BuildSceneSaveStream,stream.get()));
+				data->excHandle(MAKECREPARAM(WCH_BuildSceneSaveStream,stream.get()));
 				//data->getParam(WCHDATA_DataStream,param);
 				//if(param)
 				//{
@@ -2962,7 +2962,7 @@ void crSceneServerCallback::savePlayerData(crSceneServerPlayerData *playerData,S
 						if(data)
 						{
 							ref_ptr<crStreamBuf> stream = new crStreamBuf;
-							data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+							data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 							//data->getParam(WCHDATA_DataStream,param);
 							//if(param)
 							//{
@@ -2985,7 +2985,7 @@ void crSceneServerCallback::savePlayerData(crSceneServerPlayerData *playerData,S
 								if(data)
 								{
 									ref_ptr<crStreamBuf> stream = new crStreamBuf;
-									data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+									data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 									//data->getParam(WCHDATA_DataStream,param);
 									//if(param)
 									//{
@@ -3004,7 +3004,7 @@ void crSceneServerCallback::savePlayerData(crSceneServerPlayerData *playerData,S
 						if(data)
 						{
 							ref_ptr<crStreamBuf> stream = new crStreamBuf;
-							data->excHandle(MAKEINT64(WCH_BuildSaveStream,stream.get()));
+							data->excHandle(MAKECREPARAM(WCH_BuildSaveStream,stream.get()));
 							//data->getParam(WCHDATA_DataStream,param);
 							//if(param)
 							//{
@@ -3341,7 +3341,7 @@ void crSceneServerCallback::startRoomGame(crRoom *room)
 		{
 			roomitem = dynamic_cast<crInstanceItem *>(itr->second->clone());
 			itemData = roomitem->getDataClass();
-//			itemData->excHandle(MAKEINT64(WCH_InitData,NULL));
+//			itemData->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 			itemData->inputParam(WCHDATA_ItemState, &itemstate);
 			itemData->getParam(WCHDATA_GuiseState,param);
 			guiseState = *(unsigned int *)param;

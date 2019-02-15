@@ -1852,9 +1852,9 @@ void crRoleData::gameServerCheckItemChildMultiMap(crInstanceItem *item,int first
 		second = childitemid;
 	}
 }
-void crRoleData::excHandle(_crInt64 msg)
+void crRoleData::excHandle(CREPARAM msg)
 {
-	crData::excHandle(getHandle(msg)); 
+	crData::excHandle(getHandle(LOCREPARAM(msg))); 
 }
 void crRoleData::inputParam(int i, void *param)
 {
@@ -3081,12 +3081,12 @@ void crRpgGameRoleData::addParam(int i, const std::string& str)
 		crRoleData::addParam(i,str);
 	}
 }
-void crRpgGameRoleData::excHandle(_crInt64 msg)
+void crRpgGameRoleData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_BuildSaveStream)
+	if(LOCREPARAM(msg) == WCH_BuildSaveStream)
 	{
 		GNE::LockMutex lock( m_dataMutex );
-		ref_ptr<crStreamBuf> stream = (crStreamBuf *)(HIINT64(msg));
+		ref_ptr<crStreamBuf> stream = (crStreamBuf *)(HICREPARAM(msg));
 		ItemMap itemMap;
 		rcfg::ConfigScript cfg_script(&itemMap);
 		char buf[128];
@@ -3350,10 +3350,10 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 			DeleteFileA(buf);
 		}
 	}
-	else if(LOINT64(msg) == WCH_BuildPlayerStream)
+	else if(LOCREPARAM(msg) == WCH_BuildPlayerStream)
 	{
 		GNE::LockMutex lock( m_dataMutex );
-		crStreamBuf *stream = (crStreamBuf *)(HIINT64(msg));
+		crStreamBuf *stream = (crStreamBuf *)(HICREPARAM(msg));
 		stream->createBuf(1024);
 
 		stream->_writeInt(m_hp);
@@ -3466,10 +3466,10 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 		//}
 		stream->seekBegin();
 	}
-	if(LOINT64(msg) == WCH_BuildNetStream)
+	if(LOCREPARAM(msg) == WCH_BuildNetStream)
 	{
 		GNE::LockMutex lock( m_dataMutex );
-		crStreamBuf *stream = (crStreamBuf *)(HIINT64(msg));
+		crStreamBuf *stream = (crStreamBuf *)(HICREPARAM(msg));
 		stream->createBuf(1024);
 
 		stream->_writeInt(m_hp);
@@ -3540,10 +3540,10 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 		//}
 		stream->seekBegin();
 	}
-	else if(LOINT64(msg) == WCH_ServerCheckRoleData)
+	else if(LOCREPARAM(msg) == WCH_ServerCheckRoleData)
 	{
 		//GNE::LockMutex lock( m_dataMutex );
-		crInstanceItem *item = (crInstanceItem *)(HIINT64(msg));
+		crInstanceItem *item = (crInstanceItem *)(HICREPARAM(msg));
 		//item->getCreateItemChildLock();
 		//int count = 0;
         serverCheckData(item,WCH_ServerCheckRoleData);
@@ -3553,10 +3553,10 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 		//	item->completeCreateItemChild();
 		//}
 	}
-	else if(LOINT64(msg) == WCH_ServerCheckItemData)
+	else if(LOCREPARAM(msg) == WCH_ServerCheckItemData)
 	{
 		//GNE::LockMutex lock( m_dataMutex );
-		crInstanceItem *item = (crInstanceItem *)(HIINT64(msg));
+		crInstanceItem *item = (crInstanceItem *)(HICREPARAM(msg));
 		//item->getCreateItemChildLock();
 		//int count = 0;
 		serverCheckData(item,WCH_ServerCheckItemData);
@@ -3566,16 +3566,16 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 		//	item->completeCreateItemChild();
 		//}
 	}
-	else if(LOINT64(msg) == WCH_CheckNetData/*WCH_CheckPlayerData*/)
+	else if(LOCREPARAM(msg) == WCH_CheckNetData/*WCH_CheckPlayerData*/)
 	{
 		//GNE::LockMutex lock( m_dataMutex );避免与crGlobalHandle的互斥信号产生互锁现象
-		crInstanceItem *item = (crInstanceItem *)(HIINT64(msg));
+		crInstanceItem *item = (crInstanceItem *)(HICREPARAM(msg));
 		clientCheckData(item);
 	}
 	//else if(LOINT64(msg) == WCH_CheckNetData)
 	//{
 	//	//GNE::LockMutex lock( m_dataMutex );
-	//	crInstanceItem *item = (crInstanceItem *)(HIINT64(msg));
+	//	crInstanceItem *item = (crInstanceItem *)(HICREPARAM(msg));
 	//	crItemChild *itemChild;
 	//	for( AttackMap::iterator itr = m_attackMap.begin();
 	//		itr != m_attackMap.end();
@@ -3637,14 +3637,14 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 	//		}
 	//	}
 	//}
-	else if(LOINT64(msg) == WCH_LockData)
+	else if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
-	else if(LOINT64(msg) == WCH_InitData)
+	else if(LOCREPARAM(msg) == WCH_InitData)
 	{
 		if(m_guiseState & GS_StaticUnVisiable || m_guiseState & GS_Static || m_guiseState & GS_StaticNoneBlock)
 			m_guiseState = GS_Static;
@@ -3704,7 +3704,7 @@ void crRpgGameRoleData::excHandle(_crInt64 msg)
 		m_currentSpeed = 0;
 		m_dataMutex.release();
 	}
-	else if(msg == WCH_ResetExtra)
+	else if(LOCREPARAM(msg) == WCH_ResetExtra)
 	{
 		GNE::LockMutex lock( m_dataMutex );
 		m_extrahp_rd = m_extrahp;
@@ -4360,12 +4360,12 @@ void crRpgGameMetierData::addParam(int i, const std::string& str)
 		break;
 	}
 }
-void crRpgGameMetierData::excHandle(_crInt64 msg)
+void crRpgGameMetierData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_BuildSaveStream)
+	if(LOCREPARAM(msg) == WCH_BuildSaveStream)
 	{
 		GNE::LockMutex lock( m_dataMutex );
-		ref_ptr<crStreamBuf> stream = (crStreamBuf *)(HIINT64(msg));
+		ref_ptr<crStreamBuf> stream = (crStreamBuf *)(HICREPARAM(msg));
 		ItemMap itemMap;
 		rcfg::ConfigScript cfg_script(&itemMap);
 		char buf[128];
@@ -4420,11 +4420,11 @@ void crRpgGameMetierData::excHandle(_crInt64 msg)
 			DeleteFileA(buf);
 		}
 	}
-	else if(LOINT64(msg) == WCH_BuildPlayerStream)
+	else if(LOCREPARAM(msg) == WCH_BuildPlayerStream)
 	{
 		GNE::LockMutex lock( m_dataMutex );
 		//m_dataStream = new crStreamBuf;
-		crStreamBuf *stream = (crStreamBuf *)(HIINT64(msg));
+		crStreamBuf *stream = (crStreamBuf *)(HICREPARAM(msg));
 		///////
 		std::vector< ref_ptr<crGameTask> > GameTaskVec;
 		ref_ptr<crGameTask> gameTask;
@@ -4452,16 +4452,16 @@ void crRpgGameMetierData::excHandle(_crInt64 msg)
 		}
 		stream->seekBegin();
 	}
-	else if(LOINT64(msg) == WCH_LockData)
+	else if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
 	else
 	{
-		crData::excHandle(getHandle(msg)); 
+		crData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crRpgGameMetierData::inputParam(int i, void *param)
@@ -4847,12 +4847,12 @@ void crRpgGameItemData::addParam(int i, const std::string& str)
 		break;
 	}
 }
-void crRpgGameItemData::excHandle(_crInt64 msg)
+void crRpgGameItemData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_BuildNetStream||LOINT64(msg) == WCH_BuildPlayerStream)
+	if(LOCREPARAM(msg) == WCH_BuildNetStream||LOCREPARAM(msg) == WCH_BuildPlayerStream)
 	{
 		//GNE::LockMutex lock( m_dataMutex );
-		//crStreamBuf *stream = (crStreamBuf *)(HIINT64(msg));
+		//crStreamBuf *stream = (crStreamBuf *)(HICREPARAM(msg));
 		//stream->createBuf(512);
 		////SaleItemMap
 		//stream->_writeUChar(m_saleItemMap.size());
@@ -4865,10 +4865,10 @@ void crRpgGameItemData::excHandle(_crInt64 msg)
 		//}
 		//stream->seekBegin();
 	}
-	else if(LOINT64(msg) == WCH_ServerCheckItemData)
+	else if(LOCREPARAM(msg) == WCH_ServerCheckItemData)
 	{//SceneServer npc
 		////GNE::LockMutex lock( m_dataMutex );
-		//crInstanceItem *item = (crInstanceItem *)(HIINT64(msg));
+		//crInstanceItem *item = (crInstanceItem *)(HICREPARAM(msg));
 		//crNetConductor *netConductor = crNetContainer::getInstance()->getNetConductor(SceneServerClient_Game);
 		////item->getCreateItemChildLock();
 		//int count = 0;
@@ -4904,10 +4904,10 @@ void crRpgGameItemData::excHandle(_crInt64 msg)
 		//	}
 		//}
 	}
-	else if(LOINT64(msg) == WCH_CheckNetData)
+	else if(LOCREPARAM(msg) == WCH_CheckNetData)
 	{
 		////GNE::LockMutex lock( m_dataMutex );
-		//crInstanceItem *item = (crInstanceItem *)(HIINT64(msg));
+		//crInstanceItem *item = (crInstanceItem *)(HICREPARAM(msg));
 		//crItemChild *itemChild;
 		//std::set<int> TemporaryItemIDSet;
 		//std::set<int>::iterator taitr;
@@ -4952,16 +4952,16 @@ void crRpgGameItemData::excHandle(_crInt64 msg)
 		//	//}
 		//}
 	}
-	else if(LOINT64(msg) == WCH_LockData)
+	else if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
 	else
 	{
-		crData::excHandle(getHandle(msg)); 
+		crData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crRpgGameItemData::inputParam(int i, void *param)
@@ -5370,12 +5370,12 @@ void crRpgGameSkillData::addParam(int i, const std::string& str)
 		break;
 	}
 }
-void crRpgGameSkillData::excHandle(_crInt64 msg)
+void crRpgGameSkillData::excHandle(CREPARAM msg)
 {
-	//if(LOINT64(msg) == WCH_BuildSaveStream)
+	//if(LOCREPARAM(msg) == WCH_BuildSaveStream)
 	//{
 	//	GNE::LockMutex lock( m_dataMutex );
-	//	ref_ptr<crStreamBuf> stream = (crStreamBuf *)(HIINT64(msg));
+	//	ref_ptr<crStreamBuf> stream = (crStreamBuf *)(HICREPARAM(msg));
 	//	ItemMap itemMap;
 	//	rcfg::ConfigScript cfg_script(&itemMap);
 	//	char buf[128];
@@ -5395,10 +5395,10 @@ void crRpgGameSkillData::excHandle(_crInt64 msg)
 	//	}
 	//}
 	//else 
-	if(LOINT64(msg) == WCH_BuildPlayerStream||LOINT64(msg) == WCH_BuildNetStream)
+	if(LOCREPARAM(msg) == WCH_BuildPlayerStream||LOCREPARAM(msg) == WCH_BuildNetStream)
 	{
 		GNE::LockMutex lock( m_dataMutex );
-		crStreamBuf *stream = (crStreamBuf *)(HIINT64(msg));
+		crStreamBuf *stream = (crStreamBuf *)(HICREPARAM(msg));
 		//m_dataStream = new crStreamBuf;
 		stream->createBuf(5);
         stream->_writeUChar(m_skilllevel);
@@ -5407,7 +5407,7 @@ void crRpgGameSkillData::excHandle(_crInt64 msg)
 	}
 	else
 	{
-		crData::excHandle(getHandle(msg)); 
+		crData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crRpgGameSkillData::inputParam(int i, void *param)
@@ -5622,18 +5622,18 @@ crData(data)
 void crRpgGameExtraData::addParam(int i, const std::string& str)
 {
 }
-void crRpgGameExtraData::excHandle(_crInt64 msg)
+void crRpgGameExtraData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_LockData)
+	if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
 	else
 	{
-		crData::excHandle(getHandle(msg)); 
+		crData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crRpgGameExtraData::inputParam(int i, void *param)
@@ -5694,9 +5694,9 @@ void crTalkChooseUIData::addParam(int i, const std::string& str)
 		break;
 	}
 }
-void crTalkChooseUIData::excHandle(_crInt64 msg)
+void crTalkChooseUIData::excHandle(CREPARAM msg)
 {
-	crData::excHandle(getHandle(msg)); 
+	crData::excHandle(getHandle(LOCREPARAM(msg))); 
 }
 void crTalkChooseUIData::inputParam(int i, void *param)
 {
@@ -5754,9 +5754,9 @@ m_loadedNode(data.m_loadedNode)
 void crBrainData::addParam(int i, const std::string& str)
 {
 }
-void crBrainData::excHandle(_crInt64 msg)
+void crBrainData::excHandle(CREPARAM msg)
 {
-	crData::excHandle(getHandle(msg)); 
+	crData::excHandle(getHandle(LOCREPARAM(msg))); 
 }
 void crBrainData::inputParam(int i, void *param)
 {
@@ -5856,18 +5856,18 @@ crCameraData::crCameraData(const crCameraData& data):
 void crCameraData::addParam(int i, const std::string& str)
 {
 }
-void crCameraData::excHandle(_crInt64 msg)
+void crCameraData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_LockData)
+	if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
 	else
 	{
-		crNodeData::excHandle(getHandle(msg)); 
+		crNodeData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crCameraData::inputParam(int i, void *param)
@@ -5992,7 +5992,7 @@ void crCommandDlgData::inputParam(int i, void *param)
 		break;
 	}
 }
-void crCommandDlgData::excHandle(_crInt64 msg)
+void crCommandDlgData::excHandle(CREPARAM msg)
 {
 	//if(m_commandDlgWidget.valid())
 	//	m_commandDlgWidget->doEvent(msg);
@@ -6003,19 +6003,19 @@ void crCommandDlgData::excHandle(_crInt64 msg)
 		switch (m_parentType)
 		{
 		case CDP_Widget:
-			((crWidgetNode*)m_parent)->doEvent(msg);
+			((crWidgetNode*)m_parent)->doEvent(LOCREPARAM(msg));
 			break;
 		case CDP_PlayerGameData:
-			((crPlayerGameData*)m_parent)->doEvent(msg);
+			((crPlayerGameData*)m_parent)->doEvent(LOCREPARAM(msg));
 			break;
 		case CDP_InstanceItem:
-			((crInstanceItem*)m_parent)->doEvent(msg);
+			((crInstanceItem*)m_parent)->doEvent(LOCREPARAM(msg));
 			break;
 		case CDP_Base:
-			((crBase*)m_parent)->doEvent(msg);
+			((crBase*)m_parent)->doEvent(LOCREPARAM(msg));
 			break;
 		case CDP_DataObject:
-			((crDataObject*)m_parent)->doEvent(msg);
+			((crDataObject*)m_parent)->doEvent(LOCREPARAM(msg));
 			break;
 		}
 	}
@@ -6078,18 +6078,18 @@ crSceneServerData::crSceneServerData(const crSceneServerData& data):
 void crSceneServerData::addParam(int i, const std::string& str)
 {
 }
-void crSceneServerData::excHandle(_crInt64 msg)
+void crSceneServerData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_LockData)
+	if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
 	else
 	{
-		crData::excHandle(getHandle(msg)); 
+		crData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crSceneServerData::inputParam(int i, void *param)
@@ -6124,18 +6124,18 @@ crRoomData::crRoomData(const crRoomData& data):
 void crRoomData::addParam(int i, const std::string& str)
 {
 }
-void crRoomData::excHandle(_crInt64 msg)
+void crRoomData::excHandle(CREPARAM msg)
 {
-	if(LOINT64(msg) == WCH_LockData)
+	if(LOCREPARAM(msg) == WCH_LockData)
 	{
-		if(HIINT64(msg))
+		if(HICREPARAM(msg))
 			m_dataMutex.acquire();
 		else
 			m_dataMutex.release();
 	}
 	else
 	{
-		crData::excHandle(getHandle(msg)); 
+		crData::excHandle(getHandle(LOCREPARAM(msg))); 
 	}
 }
 void crRoomData::inputParam(int i, void *param)

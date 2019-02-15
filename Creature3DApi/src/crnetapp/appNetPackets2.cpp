@@ -934,7 +934,7 @@ void crLoginGamePacket::buildReplyPacket(crLoginGamePacket &packet,const std::st
 			//playerGameName = gameData->getName();
 			crData *data = gameData->getDataClass();
 			stream = new crStreamBuf;
-			data->excHandle(MAKEINT64(WCH_BuildPlayerStream,stream.get()));
+			data->excHandle(MAKECREPARAM(WCH_BuildPlayerStream,stream.get()));
 			//void *param;
 			//data->getParam(WCHDATA_DataStream,param);
 			//if(param)
@@ -1325,7 +1325,7 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 											playerGameData->setStream(NULL);
 										}
 										playerData->setPlayerGameData(playerGameData.get());
-										data->excHandle(MAKEINT64(WCH_InitData,ID_LoginGameServer));
+										data->excHandle(MAKECREPARAM(WCH_InitData,ID_LoginGameServer));
 
 										//crNetConductor *parentServer = crNetContainer::getInstance()->getNetConductor(GameServerClient_Parent);
 										//if(parentServer)
@@ -1452,7 +1452,7 @@ void crLoginGamePacket::parsePacket(const std::string &sender)
 					{
 						data->inputParam(WCHDATA_PlayerStream,m_streamBuf.get());
 					}
-					data->excHandle(MAKEINT64(WCH_InitData,playerGameData));
+					data->excHandle(MAKECREPARAM(WCH_InitData,playerGameData));
 					playerGameData->doEvent(WCH_PlayerLogin);
 					//CRCore::notify(CRCore::ALWAYS)<<"crLoginGamePacket doEvent WCH_PlayerLogin"<<std::endl;
 					//void *param;
@@ -2507,9 +2507,9 @@ void CRNetApp::writeItem(crInstanceItem *item,CRCore::ref_ptr<CRCore::crStreamBu
 			crData *data = role->getMetierDataClass();
 			if(data)
 			{
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				ref_ptr<crStreamBuf> dataStream = new crStreamBuf;
-				data->excHandle(MAKEINT64(WCH_BuildSaveStream+streamType-SaveStream,dataStream.get()));
+				data->excHandle(MAKECREPARAM(WCH_BuildSaveStream+streamType-SaveStream,dataStream.get()));
 				//void *param;
 				//data->getParam(WCHDATA_DataStream,param);
 				//if(param)
@@ -2523,7 +2523,7 @@ void CRNetApp::writeItem(crInstanceItem *item,CRCore::ref_ptr<CRCore::crStreamBu
 						streamwrited = true;
 					}
 				//}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 		}
 		else
@@ -2779,9 +2779,9 @@ void CRNetApp::writeItem(crInstanceItem *item,CRCore::ref_ptr<CRCore::crStreamBu
 			crData *data = item->getDataClass();
 			if(data)
 			{
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				ref_ptr<crStreamBuf> dataStream = new crStreamBuf;
-				data->excHandle(MAKEINT64(WCH_BuildSaveStream+streamType-SaveStream,dataStream.get()));
+				data->excHandle(MAKECREPARAM(WCH_BuildSaveStream+streamType-SaveStream,dataStream.get()));
 				//void *param;
 				//data->getParam(WCHDATA_DataStream,param);
 				//if(param)
@@ -2795,7 +2795,7 @@ void CRNetApp::writeItem(crInstanceItem *item,CRCore::ref_ptr<CRCore::crStreamBu
 						streamwrited = true;
 					}
 				//}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 		}
 		else
@@ -2999,9 +2999,9 @@ void CRNetApp::writeChildItem(crInstanceItem *parentItem,CRCore::ref_ptr<CRCore:
 			crData *data = instanceItem->getDataClass();
 			if(data)
 			{
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				ref_ptr<crStreamBuf> dataStream = new crStreamBuf;
-				data->excHandle(MAKEINT64(WCH_BuildSaveStream+streamType-SaveStream,dataStream.get()));
+				data->excHandle(MAKECREPARAM(WCH_BuildSaveStream+streamType-SaveStream,dataStream.get()));
 				//void *param;
 				//data->getParam(WCHDATA_DataStream,param);
 				//if(param)
@@ -3014,7 +3014,7 @@ void CRNetApp::writeChildItem(crInstanceItem *parentItem,CRCore::ref_ptr<CRCore:
 						streamwrited = true;
 					}
 				//}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 		}
 		else
@@ -3219,7 +3219,7 @@ void CRNetApp::readItem(CRCore::ref_ptr<crInstanceItem>&item,CRCore::crStreamBuf
 					{
 						data->inputParam(WCHDATA_DataStream,metierstream);
 					}
-					data->excHandle(MAKEINT64(WCH_InitData,role));
+					data->excHandle(MAKECREPARAM(WCH_InitData,role));
 					role->setMetierStream(NULL);
 				}
 			}
@@ -3305,7 +3305,7 @@ void CRNetApp::readItem(CRCore::ref_ptr<crInstanceItem>&item,CRCore::crStreamBuf
 					{
 						data->inputParam(WCHDATA_DataStream,itemstream);
 					}
-					data->excHandle(MAKEINT64(WCH_InitData,item.get()));
+					data->excHandle(MAKECREPARAM(WCH_InitData,item.get()));
 					item->setStream(NULL);
 				}
 			}
@@ -3395,7 +3395,7 @@ void CRNetApp::readChildItem(crInstanceItem *parentItem,CRCore::crStreamBuf *str
 					{
 						data->inputParam(WCHDATA_DataStream,itemstream);
 					}
-					data->excHandle(MAKEINT64(WCH_InitData,item.get()));
+					data->excHandle(MAKECREPARAM(WCH_InitData,item.get()));
 					item->setStream(NULL);
 				}
 			}
@@ -3454,7 +3454,7 @@ void CRNetApp::readAbstractItem(CRCore::ref_ptr<crAbstractItem>&item,CRCore::crS
 	//	if(data)
 	//	{
 	//		item->setDataClass(data);
-	//		data->excHandle(MAKEINT64(WCH_InitData,NULL));
+	//		data->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 	//	}
 	//}
 	//crGlobalHandle::getInstance()->insertAbstractItem(item.get());
@@ -3865,7 +3865,7 @@ void crLoginScene2Packet::buildReplyPacket(crLoginScene2Packet &packet,char logi
 		if(data)
 		{
 			dataStream = new crStreamBuf;
-			data->excHandle(MAKEINT64(WCH_BuildPlayerStream,dataStream.get()/*NetStream*/));
+			data->excHandle(MAKECREPARAM(WCH_BuildPlayerStream,dataStream.get()/*NetStream*/));
 			//void *param;
 			//data->getParam(WCHDATA_DataStream,param);
 			//if(param)
@@ -4021,7 +4021,7 @@ void crLoginScene2Packet::parsePacket(const std::string &sender)
 							//dataStream->seekBegin();
 							//stream->seek(streamCount);
 							data->inputParam(WCHDATA_PlayerStream,m_streamBuf.get());
-							data->excHandle(MAKEINT64(WCH_InitData,playerGameData.get()));
+							data->excHandle(MAKECREPARAM(WCH_InitData,playerGameData.get()));
 						}
 						playerData->setPlayerGameData(playerGameData.get());
 					}
@@ -4402,7 +4402,7 @@ void crQueryRoleInfo2Packet::parsePacket(const std::string &sender)
 							role->setRoomID(0);
 							role->loadMetierData(SaveStream);
 							role->loadItemData(SaveStream,true);
-							role->getDataClass()->excHandle(MAKEINT64(WCH_GameServerCheckData,role.get()));
+							role->getDataClass()->excHandle(MAKECREPARAM(WCH_GameServerCheckData,role.get()));
 							role->doEvent(WCH_MainRoleInit,MAKECREPARAM(playerGameData,NULL));
 						}
 
@@ -5347,7 +5347,7 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //			void *param;
 //			crRole *role = playerData->getRole(roleid);
 //			crData *metierData = role->getMetierDataClass();
-//			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+//			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //			metierData->getParam(WCHDATA_GameTaskMap,param);
 //			GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 //			GameTaskMap::iterator itr = gameTaskMap->find(taskid);
@@ -5379,7 +5379,7 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //							if(data)
 //							{
 //								item->setDataClass(data);
-//								//data->excHandle(MAKEINT64(WCH_InitData,NULL));
+//								//data->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 //							}
 //							itr->second = item;
 //						}
@@ -5394,7 +5394,7 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //					netManager->sendPacket(sender,packet);
 //				}
 //			}
-//			metierData->excHandle(MAKEINT64(WCH_LockData,0));
+//			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //		}
 //	}
 //	else if(netType == GameServer)
@@ -5429,13 +5429,13 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //			if(data)
 //			{
 //				item->setDataClass(data);
-//				//data->excHandle(MAKEINT64(WCH_InitData,NULL));
+//				//data->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 //			}
 //
 //			void *param;
 //			crRole *role = playerData->getRole(roleid);
 //			crData *metierData = role->getMetierDataClass();
-//			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+//			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //			metierData->getParam(WCHDATA_GameTaskMap,param);
 //			GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 //			GameTaskMap::iterator itr = gameTaskMap->find(taskid);
@@ -5444,7 +5444,7 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //			{
 //				gameTask->setAwardItem(item.get());
 //			}
-//			metierData->excHandle(MAKEINT64(WCH_LockData,0));
+//			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //			m_streamBuf->seekBegin();
 //			netManager->sendPacket(playerData->getPlayerConnectServerAddress(),*this);
 //		}
@@ -5473,13 +5473,13 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //		if(data)
 //		{
 //			item->setDataClass(data);
-//			//data->excHandle(MAKEINT64(WCH_InitData,NULL));
+//			//data->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 //		}
 //
 //		void *param;
 //		crRole *role = crMyPlayerData::getInstance()->getRole(roleid);
 //		crData *metierData = role->getMetierDataClass();
-//		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+//		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		metierData->getParam(WCHDATA_GameTaskMap,param);
 //		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 //		GameTaskMap::iterator itr = gameTaskMap->find(taskid);
@@ -5492,7 +5492,7 @@ void crRequestItemPacket::parsePacket(const std::string &sender)
 //				crWaitNetReturnStreamLogic::netReturn(NULL);
 //			}
 //		}
-//		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+//		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //	}
 //}
 /////////////////////////////////////////
@@ -6486,7 +6486,7 @@ void crCreateItemChildPacket::parsePacket(const std::string &sender)
 				//}
 				//else
 				//{
-				//	itemData->excHandle(MAKEINT64(WCH_BuildDataStream,NULL));
+				//	itemData->excHandle(MAKECREPARAM(WCH_BuildDataStream,NULL));
 				//	void *param;
 				//	itemData->getParam(WCHDATA_DataStream,param);
 				//	ref_ptr<crStreamBuf> itemStream = *((ref_ptr<crStreamBuf>*)param);
@@ -7406,7 +7406,7 @@ void crCreateTemporaryItemChildPacket::parsePacket(const std::string &sender)
 				//}
 				//else
 				//{
-				//	itemData->excHandle(MAKEINT64(WCH_BuildDataStream,NULL));
+				//	itemData->excHandle(MAKECREPARAM(WCH_BuildDataStream,NULL));
 				//	void *param;
 				//	itemData->getParam(WCHDATA_DataStream,param);
 				//	ref_ptr<crStreamBuf> itemStream = *((ref_ptr<crStreamBuf>*)param);
@@ -9602,7 +9602,7 @@ void crRoomSetPlayerGameDataPacket::parsePacket(const std::string &sender)
 					playerGameData->setPlayerID(playerid);
 					playerGameData->setDataClass(data.get());
 					data->inputParam(WCHDATA_PlayerStream,m_streamBuf.get());
-					data->excHandle(MAKEINT64(WCH_InitData,playerGameData.get()));
+					data->excHandle(MAKECREPARAM(WCH_InitData,playerGameData.get()));
 					roomPlayer->setPlayerGameData(playerGameData.get());
 				}
 			}
@@ -10147,7 +10147,7 @@ void crCreatePlayerGameDataPacket::parsePacket(const std::string &sender)
 										role->setRoomID(0);
 										role->loadMetierData(SaveStream);
 										role->loadItemData(SaveStream,true);
-										role->getDataClass()->excHandle(MAKEINT64(WCH_GameServerCheckData,role.get()));
+										role->getDataClass()->excHandle(MAKECREPARAM(WCH_GameServerCheckData,role.get()));
 										role->doEvent(WCH_MainRoleInit,MAKECREPARAM(playerGameData,NULL));
 										/////write and send
 										int count = 0;
@@ -10270,7 +10270,7 @@ void crCreatePlayerGameDataPacket::parsePacket(const std::string &sender)
 						//		role->setRoomID(0);
 						//		role->loadMetierData(SaveStream);
 						//		role->loadItemData(SaveStream,true);
-						//		role->getDataClass()->excHandle(MAKEINT64(WCH_GameServerCheckData,role.get()));
+						//		role->getDataClass()->excHandle(MAKECREPARAM(WCH_GameServerCheckData,role.get()));
 						//		role->doEvent(WCH_MainRoleInit,MAKEINT64(playerGameData,NULL));
 						//		/////write and send
 						//		int count = 0;

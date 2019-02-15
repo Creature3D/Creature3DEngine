@@ -317,7 +317,7 @@ void crQuickKeyPressedMethod::operator()(crHandle &handle)
 				//thisData->inputParam(WCHDATA_AboutToUseItemID,&m_itemid);
 				//crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 				//bindview->showCursor("UseSkill");
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_AboutToUseItemID,param);
 				int *id = (int *)param;
 				if(*id != m_itemid)
@@ -332,12 +332,12 @@ void crQuickKeyPressedMethod::operator()(crHandle &handle)
 					crPlayerEventPacket::buildRequestPacket(packet,m_this,WCH_RecvAboutToUseItemID,stream.get());
 					netConductor->getNetManager()->sendPacket("all",packet);
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 			else if(dataType == DT_Attack)
 			{
 				thisData->inputParam(WCHDATA_CurrentAttackID,&m_itemid);
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_AboutToUseItemID,param);
 				int *id = (int *)param;
 				if(*id != 0)
@@ -352,7 +352,7 @@ void crQuickKeyPressedMethod::operator()(crHandle &handle)
 					crPlayerEventPacket::buildRequestPacket(packet,m_this,WCH_RecvAboutToUseItemID,stream.get());
 					netConductor->getNetManager()->sendPacket("all",packet);
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 		}
 	}
@@ -6104,7 +6104,7 @@ void crRecvSceneItemListMethod::operator()(crHandle &handle)
 						float posz = scene->getPosZ(item->getLayerID(),item->getPosx() * crGlobalHandle::gData()->gUnitScale(),item->getPosy() * crGlobalHandle::gData()->gUnitScale(), item->getZoffset() * crGlobalHandle::gData()->gUnitScale());
 						item->setPosz(posz / crGlobalHandle::gData()->gUnitScale());
 						scene->insertSceneItem(item.get());
-						item->getDataClass()->excHandle(MAKEINT64(WCH_ServerCheckItemData,item.get()));
+						item->getDataClass()->excHandle(MAKECREPARAM(WCH_ServerCheckItemData,item.get()));
 
 						item->doEvent(WCH_ServerLoad);
 						if(item->getItemtype()>crInstanceItem::instanceitem)
@@ -6247,7 +6247,7 @@ void crRecvRoleInfo2Method::operator()(crHandle &handle)
 					//		//dataStream->seekBegin();
 					//		//stream->seek(streamCount);
 					//		data->inputParam(WCHDATA_PlayerStream,stream);
-					//		data->excHandle(MAKEINT64(WCH_InitData,NULL));
+					//		data->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 					//	}
 					//	role->setPlayerGameData(playerGameData.get());
 					//}
@@ -6263,7 +6263,7 @@ void crRecvRoleInfo2Method::operator()(crHandle &handle)
 								//roomplayer->setPlayerGameData(playerGameData.get());
 								index = room->getBirthPointIndex(roomplayer.get());
 								////将playergameData同步给同房间内的其它玩家
-								//data->excHandle(MAKEINT64(WCH_BuildDataStream,PlayerStream));
+								//data->excHandle(MAKECREPARAM(WCH_BuildDataStream,PlayerStream));
 								//void *param;
 								//data->getParam(WCHDATA_DataStream,param);
 								//if(param)
@@ -6299,7 +6299,7 @@ void crRecvRoleInfo2Method::operator()(crHandle &handle)
 					if(playerGameData)
 						playerGameData->doEvent(WCH_RecvRoleInfo2,MAKECREPARAM(playerData.get(),role));
 					//CRCore::notify(CRCore::ALWAYS)<<"WCH_ServerCheckRoleData "<<item->getRoleID()<<std::endl;
-					item->getDataClass()->excHandle(MAKEINT64(WCH_ServerCheckRoleData,item.get()));
+					item->getDataClass()->excHandle(MAKECREPARAM(WCH_ServerCheckRoleData,item.get()));
 					//CRCore::notify(CRCore::ALWAYS)<<"WCH_ServerCheckRoleData end"<<item->getRoleID()<<std::endl;
 				}
 			}
@@ -6432,7 +6432,7 @@ void crServerCheckRoleDataMethod::operator()(crHandle &handle)
 			//	crData *data = playerGameData->getDataClass();
 			//	if(data)
 			//	{
-			//		data->excHandle(MAKEINT64(WCH_BuildDataStream,PlayerStream));
+			//		data->excHandle(MAKECREPARAM(WCH_BuildDataStream,PlayerStream));
 			//		void *param;
 			//		data->getParam(WCHDATA_DataStream,param);
 			//		if(param)
@@ -7251,14 +7251,14 @@ void crPlayerInRangeTestMethod::operator()(crHandle &handle)
 		{
 			//void *param;
 			//int enmity = 0;
-			//data->excHandle(MAKEINT64(WCH_LockData,1));
+			//data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//data->getParam(WCHDATA_EnmityMap,param);
 			//EnmityMap *enmityMap = (EnmityMap *)param;
 			//_crInt64 id = MAKEINT64(m_role2->getRoleID(),m_role2->getID());
 			//EnmityMap::iterator eitr = enmityMap->find(id);
 			//if(eitr!=enmityMap->end())
 			//	enmity = eitr->second;
-			//data->excHandle(MAKEINT64(WCH_LockData,0));
+			//data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			if(inRange/*||enmity>0*/)
 			{
 				//if(inRange)
@@ -7334,7 +7334,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			crMyPlayerData::getInstance()->getScene()->setEmporium(m_item.get());
 			m_item->loadItemData(NetStream);
 			itemdata = m_item->getDataClass();
-			itemdata->excHandle(MAKEINT64(WCH_CheckNetData,m_item.get()));
+			itemdata->excHandle(MAKECREPARAM(WCH_CheckNetData,m_item.get()));
 		}
 		else if(itemtype>=crInstanceItem::Npc && itemtype<=crInstanceItem::Role)
 		{
@@ -7343,7 +7343,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			{
 				m_item->loadItemData(PlayerStream);
 				itemdata = m_item->getDataClass();
-				itemdata->excHandle(MAKEINT64(WCH_CheckNetData,m_item.get()));
+				itemdata->excHandle(MAKECREPARAM(WCH_CheckNetData,m_item.get()));
 				if(itemtype == crInstanceItem::Role)
 				{
 					(dynamic_cast<crRole *>(m_item.get()))->loadMetierData(PlayerStream);
@@ -7369,7 +7369,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			{
 				m_item->loadItemData(NetStream);
 				itemdata = m_item->getDataClass();
-				itemdata->excHandle(MAKEINT64(WCH_CheckNetData,m_item.get()));
+				itemdata->excHandle(MAKECREPARAM(WCH_CheckNetData,m_item.get()));
 				if(itemtype == crInstanceItem::Role)
 				{
 					(dynamic_cast<crRole *>(m_item.get()))->loadMetierData(NetStream);
@@ -7409,7 +7409,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 				m_item->setNode(npc->getNPCBody());
 				bot->getDataClass()->inputParam(WCHDATA_Item,m_item.get());
 				crData *itemdata = m_item->getDataClass();
-				itemdata->excHandle(MAKEINT64(WCH_CheckNetData,m_item.get()));
+				itemdata->excHandle(MAKECREPARAM(WCH_CheckNetData,m_item.get()));
 				//m_item->clientLoadItemChild();
 				unsigned char itemstate = IS_Stop;//IS_ItemLoad;
 				itemdata->inputParam(WCHDATA_ItemState,&itemstate);
@@ -7496,7 +7496,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			m_item->setNode(group.get());
 			//crAcceptGIVisitor acceptGI(true);
 			//group->accept(acceptGI);
-			itemdata->excHandle(MAKEINT64(WCH_CheckNetData,m_item.get()));
+			itemdata->excHandle(MAKECREPARAM(WCH_CheckNetData,m_item.get()));
 			//m_item->clientLoadItemChild();
 			unsigned char itemstate = IS_Stop;//IS_ItemLoad;
 			itemdata->inputParam(WCHDATA_ItemState,&itemstate);
@@ -7577,7 +7577,7 @@ void crLoadItemMethod::operator()(crHandle &handle)
 			m_item->setNode(group.get());
 			//crAcceptGIVisitor acceptGI(true);
 			//group->accept(acceptGI);
-			//itemdata->excHandle(MAKEINT64(WCH_CheckNetData,m_item.get()));
+			//itemdata->excHandle(MAKECREPARAM(WCH_CheckNetData,m_item.get()));
 			//m_item->clientLoadItemChild();
 			unsigned char itemstate = IS_Stop;//IS_ItemLoad;
 			itemdata->inputParam(WCHDATA_ItemState,&itemstate);
@@ -7745,14 +7745,14 @@ void crItemInRangeTestMethod::operator()(crHandle &handle)
 		{
 			//
 			//int enmity = 0;
-			//data->excHandle(MAKEINT64(WCH_LockData,1));
+			//data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//data->getParam(WCHDATA_EnmityMap,param);
 			//EnmityMap *enmityMap = (EnmityMap *)param;
 			//_crInt64 id = MAKEINT64(m_item->getInstanceItemID(),NULL);
 			//EnmityMap::iterator eitr = enmityMap->find(id);
 			//if(eitr!=enmityMap->end())
 			//	enmity = eitr->second;
-			//data->excHandle(MAKEINT64(WCH_LockData,0));
+			//data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			if(inRange/*||enmity>0*/)
 			{
 				//if(inRange)
@@ -8818,7 +8818,7 @@ void crRevertUpdateMethod::operator()(crHandle &handle)
 		data->getParam(WCHDATA_RTHP,param);
 		float* rthp = (float*)param;
 		if(!rthp || *rthp<=0) return;
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 
 		float maxhp = 0;
 		float maxmp = 0;
@@ -8841,7 +8841,7 @@ void crRevertUpdateMethod::operator()(crHandle &handle)
 		    *rtmp += revert * m_dt;
 			if(*rtmp>maxmp) *rtmp = maxmp;
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -10017,7 +10017,7 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 			//}
 			if(m_this->getItemtype() == crInstanceItem::Role)
 			{//如果是玩家，还应检查其身上装备的同步问题， 玩家的NetStream变化问题
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				unsigned char size = m_stream->_readUChar();
 				unsigned char i;
 				int int1,int2;
@@ -10062,9 +10062,9 @@ void crRecvItemRTDataMethod::operator()(crHandle &handle)
 					int2 = m_stream->_readInt();
 					backPackMap->insert(std::make_pair(int1,int2));
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
-				data->excHandle(MAKEINT64(WCH_CheckNetData,m_this));
+				data->excHandle(MAKECREPARAM(WCH_CheckNetData,m_this));
 				m_this->doEvent(WCH_CheckAndRackEquipOnMesh);
 			}
 		}
@@ -10497,7 +10497,7 @@ void crLoadItemChildMethod::operator()(crHandle &handle)
 			itemdata->getParam(WCHDATA_DataType,param);
 			unsigned char datatype = *((unsigned char*)param);
 			int abstractid = item->getAbstractItemID();
-			rootData->excHandle(MAKEINT64(WCH_LockData,1));
+			rootData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			bool loadNode = false;
 			if(datatype == DT_Attack)
 			{
@@ -10696,7 +10696,7 @@ void crLoadItemChildMethod::operator()(crHandle &handle)
 			//		}
 			//	}
 			//}
-			rootData->excHandle(MAKEINT64(WCH_LockData,0));
+			rootData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			if(crGlobalHandle::isClient())
 			{
 				if(loadNode)
@@ -10827,7 +10827,7 @@ void crUseItemCheckMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_NeedMP,param);
 			unsigned short needMP = *(unsigned short*)param;
 			float *rtmp = NULL;
-			userData->excHandle(MAKEINT64(WCH_LockData,1));
+			userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			if(needMP>0)
 			{
 				userData->getParam(WCHDATA_RTMP,param);
@@ -10835,7 +10835,7 @@ void crUseItemCheckMethod::operator()(crHandle &handle)
 				if(*rtmp<needMP)
 				{
 					*m_useResult = UR_MPLack;
-					userData->excHandle(MAKEINT64(WCH_LockData,0));
+					userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					break;
 				}
 			}
@@ -10849,12 +10849,12 @@ void crUseItemCheckMethod::operator()(crHandle &handle)
 				if(*rthp<=needHP)
 				{
 					*m_useResult = UR_HPLack;
-					userData->excHandle(MAKEINT64(WCH_LockData,0));
+					userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					break;
 				}
 			}
 			//UR_TargetInvalid check
-			userData->excHandle(MAKEINT64(WCH_LockData,0));
+			userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			*m_useResult = UR_Succeed;
 
 		}while(0);
@@ -10974,7 +10974,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_NeedMP,param);
 			unsigned short needMP = *(unsigned short*)param;
 			float *rtmp = NULL;
-			userData->excHandle(MAKEINT64(WCH_LockData,1));
+			userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			if(needMP>0)
 			{
                 userData->getParam(WCHDATA_RTMP,param);
@@ -10982,7 +10982,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 				if(*rtmp<needMP)
 				{
 					*m_useResult = UR_MPLack;
-					userData->excHandle(MAKEINT64(WCH_LockData,0));
+					userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					break;
 				}
 			}
@@ -10996,7 +10996,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 				if(*rthp<=needHP)
 				{
 					*m_useResult = UR_HPLack;
-					userData->excHandle(MAKEINT64(WCH_LockData,0));
+					userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					break;
 				}
 			}
@@ -11009,7 +11009,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 			{
                 *rthp -= needHP;
 			}
-			userData->excHandle(MAKEINT64(WCH_LockData,0));
+			userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			*m_useResult = UR_Succeed;
 			lastUseTime = t1;
 			thisData->inputParam(WCHDATA_LastUseTime,&lastUseTime);
@@ -11020,7 +11020,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 			//	thisData->getParam(WCHDATA_UserExtraID,param);
 			//	_crInt32 userExtraID = *((_crInt32*)param);
 
-			//	//userData->excHandle(MAKEINT64(WCH_LockData,1));
+			//	//userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//	userData->getParam(WCHDATA_ExtraData,param);
 			//	crData *extraData = (crData *)param;
 			//	if(extraData)
@@ -11028,7 +11028,7 @@ void crUseItemMethod::operator()(crHandle &handle)
 			//		bool can = true;
 			//		short extraid = LOINT32(userExtraID);
 			//		short extrapri = HIINT32(userExtraID);
-			//		extraData->excHandle(MAKEINT64(WCH_LockData,1));
+			//		extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//		extraData->getParam(WCHDATA_ExtraIDMap,param);
 			//		ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 			//		ExtraIDMap::iterator exitr = extraIDMap->find(extraid);
@@ -11050,9 +11050,9 @@ void crUseItemMethod::operator()(crHandle &handle)
 			//			extraData->insertHandle(MAKEINT64(WCH_DoExtra,extraid),cloneHandle);
 			//			(*extraIDMap)[extraid] = extrapri;
 			//		}
-			//		extraData->excHandle(MAKEINT64(WCH_LockData,0));
+			//		extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//	}
-			//	//userData->excHandle(MAKEINT64(WCH_LockData,0));
+			//	//userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//}
 			//CRCore::notify(CRCore::ALWAYS)<<"crUseItemMethod"<<std::endl;
 			//fire
@@ -11262,7 +11262,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 			thisData->getParam(WCHDATA_NeedMP,param);
 			unsigned short needMP = *(unsigned short*)param;
 			float *rtmp = NULL;
-			userData->excHandle(MAKEINT64(WCH_LockData,1));
+			userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			if(needMP>0)
 			{
 				userData->getParam(WCHDATA_RTMP,param);
@@ -11270,7 +11270,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 				if(*rtmp<needMP)
 				{
 					*m_useResult = UR_MPLack;
-					userData->excHandle(MAKEINT64(WCH_LockData,0));
+					userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					break;
 				}
 			}
@@ -11284,7 +11284,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 				if(*rthp<needHP)
 				{
 					*m_useResult = UR_HPLack;
-					userData->excHandle(MAKEINT64(WCH_LockData,0));
+					userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					break;
 				}
 			}
@@ -11298,14 +11298,14 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 			{
 				*rthp -= needHP;
 			}
-			userData->excHandle(MAKEINT64(WCH_LockData,0));
+			userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 			*m_useResult = UR_Succeed;
 			lastUseTime = t1;
 			thisData->inputParam(WCHDATA_LastUseTime,&lastUseTime);
 			if(datatype == DT_Skill)
 			{///UserExtra
-				//userData->excHandle(MAKEINT64(WCH_LockData,1));
+				//userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				userData->getParam(WCHDATA_ExtraData,param);
 				crData *extraData = (crData *)param;
 				if(extraData)
@@ -11325,7 +11325,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 							bool can = true;
 							short extraid = LOINT32(userExtraID);
 							short extrapri = HIINT32(userExtraID);
-							extraData->excHandle(MAKEINT64(WCH_LockData,1));
+							extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 							extraData->getParam(WCHDATA_ExtraIDMap,param);
 							ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 							ExtraIDMap::iterator exitr = extraIDMap->find(extraid);
@@ -11342,7 +11342,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 								extraData->insertHandle(MAKEINT64(WCH_DoExtra,extraid),cloneHandle);
 								(*extraIDMap)[extraid] = extrapri;
 							}
-							extraData->excHandle(MAKEINT64(WCH_LockData,0));
+							extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 							if(can)
 							{
@@ -11374,7 +11374,7 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 						//}
 					}
 				}
-				//userData->excHandle(MAKEINT64(WCH_LockData,0));
+				//userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 			//thisData->getParam(WCHDATA_UseItemProtectTime,param);
 			//float itemProtectTime = *(float *)param;
@@ -11443,11 +11443,11 @@ void crServerUseItemMethod::operator()(crHandle &handle)
 					userItemRecord->setDamageCount(damagecount);
 					userItemRecord->setDuration(duration);
 					crData *serverData = crServerBrainHandle::getInstance()->getDataClass();
-					serverData->excHandle(MAKEINT64(WCH_LockData,1));
+					serverData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					serverData->getParam(WCHDATA_UseItemRecordMap,param);
 					UseItemRecordMap *useItemRecordMap = (UseItemRecordMap *)param;
 					useItemRecordMap->insert(std::make_pair(userItemRecord->getUser(),userItemRecord.get()));
-					serverData->excHandle(MAKEINT64(WCH_LockData,0));
+					serverData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 			}
 		}while(0);
@@ -11516,7 +11516,7 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 		thisData->getParam(WCHDATA_NeedMP,param);
 		unsigned short needMP = *(unsigned short*)param;
 		float *rtmp = NULL;
-		userData->excHandle(MAKEINT64(WCH_LockData,1));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		if(needMP>0)
 		{
 			userData->getParam(WCHDATA_RTMP,param);
@@ -11538,7 +11538,7 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 		{
 			*rthp -= needHP;
 		}
-		userData->excHandle(MAKEINT64(WCH_LockData,0));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//crHandle *handle = thisData->getHandle(MAKEINT64(WCH_UserExtra,WCH_Client));
 		//if(handle)
@@ -11546,7 +11546,7 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 		//	thisData->getParam(WCHDATA_UserExtraID,param);
 		//	_crInt32 userExtraID = *((_crInt32*)param);
 
-		//	//userData->excHandle(MAKEINT64(WCH_LockData,1));
+		//	//userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		//	userData->getParam(WCHDATA_ExtraData,param);
 		//	crData *extraData = (crData *)param;
 		//	if(extraData)
@@ -11554,7 +11554,7 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 		//		bool can = true;
 		//		short extraid = LOINT32(userExtraID);
 		//		short extrapri = HIINT32(userExtraID);
-		//		extraData->excHandle(MAKEINT64(WCH_LockData,1));
+		//		extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		//		extraData->getParam(WCHDATA_ExtraIDMap,param);
 		//		ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 		//		ExtraIDMap::iterator exitr = extraIDMap->find(extraid);
@@ -11576,9 +11576,9 @@ void crNetUseItemMethod::operator()(crHandle &handle)
 		//			extraData->insertHandle(MAKEINT64(WCH_DoExtra,extraid),cloneHandle);
 		//			(*extraIDMap)[extraid] = extrapri;
 		//		}
-		//		extraData->excHandle(MAKEINT64(WCH_LockData,0));
+		//		extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//	}
-		//	//userData->excHandle(MAKEINT64(WCH_LockData,0));
+		//	//userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//}
 		//CRCore::notify(CRCore::ALWAYS)<<"crNetUseItemMethod"<<std::endl;
 		//fire
@@ -11753,7 +11753,7 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		thisData->getParam(WCHDATA_NeedMP,param);
 		unsigned short needMP = *(unsigned short*)param;
 		float *rtmp = NULL;
-		userData->excHandle(MAKEINT64(WCH_LockData,1));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		if(needMP>0)
 		{
 			userData->getParam(WCHDATA_RTMP,param);
@@ -11775,7 +11775,7 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		{
 			*rthp -= needHP;
 		}
-		userData->excHandle(MAKEINT64(WCH_LockData,0));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//crHandle *handle = thisData->getHandle(MAKEINT64(WCH_UserExtra,WCH_Server));
 		//if(handle)
@@ -11783,7 +11783,7 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		//	thisData->getParam(WCHDATA_UserExtraID,param);
 		//	_crInt32 userExtraID = *((_crInt32*)param);
 
-		//	//userData->excHandle(MAKEINT64(WCH_LockData,1));
+		//	//userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		//	userData->getParam(WCHDATA_ExtraData,param);
 		//	crData *extraData = (crData *)param;
 		//	if(extraData)
@@ -11794,7 +11794,7 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		//		bool can = true;
 		//		short extraid = LOINT32(userExtraID);
 		//		short extrapri = HIINT32(userExtraID);
-		//		extraData->excHandle(MAKEINT64(WCH_LockData,1));
+		//		extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		//		extraData->getParam(WCHDATA_ExtraIDMap,param);
 		//		ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 		//		ExtraIDMap::iterator exitr = extraIDMap->find(extraid);
@@ -11811,9 +11811,9 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		//			extraData->insertHandle(MAKEINT64(WCH_DoExtra,extraid),cloneHandle);
 		//			(*extraIDMap)[extraid] = extrapri;
 		//		}
-		//		extraData->excHandle(MAKEINT64(WCH_LockData,0));
+		//		extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//	}
-		//	//userData->excHandle(MAKEINT64(WCH_LockData,0));
+		//	//userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//}
 		//CRCore::notify(CRCore::ALWAYS)<<"crNetServerUseItemMethod"<<std::endl;
 		//thisData->getParam(WCHDATA_DataType,param);
@@ -11848,11 +11848,11 @@ void crNetServerUseItemMethod::operator()(crHandle &handle)
 		userItemRecord->setDamageCount(damagecount);
 		userItemRecord->setDuration(duration);
 		crData *serverData = crServerBrainHandle::getInstance()->getDataClass();
-		serverData->excHandle(MAKEINT64(WCH_LockData,1));
+		serverData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		serverData->getParam(WCHDATA_UseItemRecordMap,param);
 		UseItemRecordMap *useItemRecordMap = (UseItemRecordMap *)param;
 		useItemRecordMap->insert(std::make_pair(userItemRecord->getUser(),userItemRecord.get()));
-		serverData->excHandle(MAKEINT64(WCH_LockData,0));
+		serverData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -12602,7 +12602,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 				//}
 				//if(hitValid)
 				{
-					serverData->excHandle(MAKEINT64(WCH_LockData,1));
+					serverData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					serverData->getParam(WCHDATA_UseItemRecordMap,param);
 					UseItemRecordMap *useItemRecordMap = (UseItemRecordMap *)param;
 					//crInstanceItem *target;
@@ -12629,7 +12629,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 
 						}
 					}
-					serverData->excHandle(MAKEINT64(WCH_LockData,0));
+					serverData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					if(!hitTestMap.empty())
 					{
 						crUseItemRecord *record = hitTestMap.begin()->second.get();
@@ -12691,7 +12691,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 				crInstanceItem *fireitem = scene->findSceneItem(fireID,m_this->getRoomID());
 				if(fireitem && fireitem->getDataClass())
 				{
-					serverData->excHandle(MAKEINT64(WCH_LockData,1));
+					serverData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					serverData->getParam(WCHDATA_UseItemRecordMap,param);
 					UseItemRecordMap *useItemRecordMap = (UseItemRecordMap *)param;
 					//crInstanceItem *target;
@@ -12716,7 +12716,7 @@ void crNodeCollideWithItemMethod::operator()(crHandle &handle)
 							}
 						}
 					}
-					serverData->excHandle(MAKEINT64(WCH_LockData,0));
+					serverData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					if(!hitTestMap.empty())
 					{
 						crUseItemRecord *record = hitTestMap.begin()->second.get();
@@ -12932,7 +12932,7 @@ void crGetDamageFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraLevel,param);
 		char extraLevel = *((char*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -12960,7 +12960,7 @@ void crGetDamageFormula1Method::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-        data->excHandle(MAKEINT64(WCH_LockData,0));
+        data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		float fbase = (float)(base+extraAttack) + equipAttackSum;
 		float fstrength = (float)(strength+extraStrength) + equipStrengthSum;
@@ -13026,7 +13026,7 @@ void crGetDamageFormula2Method::operator()(crHandle &handle)
 	{
 		crData *data = m_this->getDataClass();
 		void *param;
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip;
@@ -13044,7 +13044,7 @@ void crGetDamageFormula2Method::operator()(crHandle &handle)
 				equipSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		*m_output = equipSum;
 	}
@@ -13118,7 +13118,7 @@ void crGetDefendFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraLevel,param);
 		char extraLevel = *((char*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -13146,7 +13146,7 @@ void crGetDefendFormula1Method::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		float fbase = (float)(base+extraDefend) + equipDefendSum;
 		float fagility = (float)(agility+extraAgility) + equipAgilitySum;
@@ -13211,7 +13211,7 @@ void crGetDefendFormula2Method::operator()(crHandle &handle)
 	{
 		crData *data = m_this->getDataClass();
 		void *param;
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip;
@@ -13229,7 +13229,7 @@ void crGetDefendFormula2Method::operator()(crHandle &handle)
 				equipSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		*m_output = equipSum;
 	}
@@ -13300,7 +13300,7 @@ void crGetSpeedFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraAgility,param);
 		short extraAgility = *((short*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -13324,7 +13324,7 @@ void crGetSpeedFormula1Method::operator()(crHandle &handle)
 				equipAgilitySum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		float fbase = (float)(base) + equipSpeedSum;
 		float fagility = (float)(agility+extraAgility) + equipAgilitySum;
@@ -13401,7 +13401,7 @@ void crGetHPFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraLevel,param);
 		char extraLevel = *((char*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -13429,7 +13429,7 @@ void crGetHPFormula1Method::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		float fhp = (float)(hp+extrahp) + equipHPSum;
 		float fstrength = (float)(strength+extraStrength) + equipStrengthSum;
@@ -13507,7 +13507,7 @@ void crGetMPFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraLevel,param);
 		char extraLevel = *((char*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -13535,7 +13535,7 @@ void crGetMPFormula1Method::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		float fmp = (float)(mp+extramp) + equipMPSum;
 		float fintellect = (float)(intellect+extraIntellect) + equipIntellectSum;
@@ -13603,7 +13603,7 @@ void crGetHPRevertFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_RTHP,param);
 		float base = *((float*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip;
@@ -13621,7 +13621,7 @@ void crGetHPRevertFormula1Method::operator()(crHandle &handle)
 				equipSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		*m_output = base*m_factor + equipSum;
 	}
@@ -13685,7 +13685,7 @@ void crGetMPRevertFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_RTMP,param);
 		float base = *((float*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip;
@@ -13703,7 +13703,7 @@ void crGetMPRevertFormula1Method::operator()(crHandle &handle)
 				equipSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		*m_output = base*m_factor + equipSum;
 	}
@@ -13777,7 +13777,7 @@ void crAttackSpeedFormula1Method::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraLevel,param);
 		char extraLevel = *((char*)param);
 
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -13805,7 +13805,7 @@ void crAttackSpeedFormula1Method::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		float fattackSpeed = attackSpeed+extraAttackSpeed + equipAttackSpeedSum;
 		float fagility = (float)(agility+extraAgility) + equipAgilitySum;
@@ -13865,16 +13865,16 @@ void crAddDamageFormula1Method::operator()(crHandle &handle)
 	{
 		crData *thisData = m_this->getDataClass();
 		void *param;
-        thisData->excHandle(MAKEINT64(WCH_LockData,1));
+        thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_RTHP,param);
 		float *rthp = (float*)param;
 		if(!rthp)
 		{
-		    thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		    thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	    	return;
 		}
 		*rthp -= m_damage;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//将信息传给m_this以及其附近玩家
 		unsigned char hittype = m_this->getItemtype();
 		int hitid = m_this->getID();
@@ -14072,7 +14072,7 @@ void crRecvItemDeadMethod::operator()(crHandle &handle)
 		if(m_this->getItemtype() == crInstanceItem::Npc)
 		{
 			void *param;
-			data->excHandle(MAKEINT64(WCH_LockData,1));
+			data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			data->getParam(WCHDATA_InPatrolEnemyMap,param);
 			InPatrolEnemyMap *inPatrolEnemyMap = (InPatrolEnemyMap *)param;
 			if(inPatrolEnemyMap)
@@ -14082,7 +14082,7 @@ void crRecvItemDeadMethod::operator()(crHandle &handle)
 			data->getParam(WCHDATA_EnmityMap,param);
 			EnmityMap *enmityMap = (EnmityMap *)param;
 			enmityMap->clear();
-			data->excHandle(MAKEINT64(WCH_LockData,0));
+			data->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 		//if(m_this == crMyPlayerData::getInstance()->getRole())
 		//{
@@ -14968,7 +14968,7 @@ void crInPatrolTestMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *data = m_this->getDataClass();
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_PatrolPointVec,param);
 		PatrolPointVec* patrolPointVec = (PatrolPointVec*)param;
 		bool inPatrol = false;
@@ -15007,7 +15007,7 @@ void crInPatrolTestMethod::operator()(crHandle &handle)
 				CRCore::notify(CRCore::FATAL)<<"(错误)crInstanceItem::serverUpdate NPC没有Patrol instanceid="<<m_this->getInstanceItemID()<<std::endl;
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -15082,7 +15082,7 @@ void crCalcEnmityByDistRateMethod::operator()(crHandle &handle)
 //	{
 //		void *param;
 //		crData *data = m_this->getDataClass();
-//		data->excHandle(MAKEINT64(WCH_LockData,1));
+//		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		data->getParam(WCHDATA_PlayerEnmityMap,param);
 //		PlayerEnmityMap* playerEnmityMap = (PlayerEnmityMap*)param;
 //		float maxEnmity = 0.0f;
@@ -15098,7 +15098,7 @@ void crCalcEnmityByDistRateMethod::operator()(crHandle &handle)
 //			}
 //		}
 //		handle.outputParam(1,&enemy);
-//		data->excHandle(MAKEINT64(WCH_LockData,0));
+//		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 //	}
 //}
 ///////////////////////////////////////////
@@ -15146,7 +15146,7 @@ void crCalcEnmityByDistRateMethod::operator()(crHandle &handle)
 //		//data->getParam(WCHDATA_DefaultAttack,param);
 //		//int defaultSkill = *((int*)param);
 //		//int selectSkill = defaultSkill;
-//		//data->excHandle(MAKEINT64(WCH_LockData,1));
+//		//data->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		//data->getParam(WCHDATA_SkillVec,param);
 //		//SkillVec* skillVec = (SkillVec*)param;
 //		//for( SkillVec::iterator itr = skillVec->begin();
@@ -15155,7 +15155,7 @@ void crCalcEnmityByDistRateMethod::operator()(crHandle &handle)
 //		//{
 //
 //		//}
-//		//data->excHandle(MAKEINT64(WCH_LockData,0));
+//		//data->excHandle(MAKECREPARAM(WCH_LockData,0));
 //		//if(currentSkill != selectSkill)
 //		//{
 //		//	data->inputParam(WCHDATA_CurrentUseItem,&selectSkill);
@@ -15220,7 +15220,7 @@ void crPatrolMethod::operator()(crHandle &handle)
 	float scale = crGlobalHandle::gData()->gUnitScale();
 	crVector2 myPos(m_this->getPosx(), m_this->getPosy());// , 0.0f);
 	myPos *= scale;
-	data->excHandle(MAKEINT64(WCH_LockData,1));
+	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 	data->getParam(WCHDATA_PatrolPointVec,param);
 	PatrolPointVec* patrolPointVec = (PatrolPointVec*)param;
 	count = patrolPointVec->size();
@@ -15257,7 +15257,7 @@ void crPatrolMethod::operator()(crHandle &handle)
 			patrol = true;
 		}
 	}
-	data->excHandle(MAKEINT64(WCH_LockData,0));
+	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	//targetPos[2] = scene->getPosZ(m_this->getLayerID(),targetPos[0],targetPos[1],m_this->getZoffset() * crGlobalHandle::gData()->gUnitScale());
 	if(patrol)
 	{
@@ -15578,7 +15578,7 @@ void crRecvTargetExtraMethod::operator()(crHandle &handle)
 			//}
 
 			crData *hitData = m_this->getDataClass();
-			//hitData->excHandle(MAKEINT64(WCH_LockData,1));
+			//hitData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			hitData->getParam(WCHDATA_ExtraData,param);
 			crData *extraData = (crData *)param;
 			if(extraData)
@@ -15588,7 +15588,7 @@ void crRecvTargetExtraMethod::operator()(crHandle &handle)
 				bool can = true;
 				short extraid = LOINT32(targetExtraID);
 				short extrapri = HIINT32(targetExtraID);
-				extraData->excHandle(MAKEINT64(WCH_LockData,1));
+				extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				extraData->getParam(WCHDATA_ExtraIDMap,param);
 				ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 				ExtraIDMap::iterator exitr = extraIDMap->find(extraid);
@@ -15615,9 +15615,9 @@ void crRecvTargetExtraMethod::operator()(crHandle &handle)
 					extraData->insertHandle(MAKEINT64(WCH_DoExtra,extraid),cloneHandle);
 					(*extraIDMap)[extraid] = extrapri;
 				}
-				extraData->excHandle(MAKEINT64(WCH_LockData,0));
+				extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
-			//hitData->excHandle(MAKEINT64(WCH_LockData,0));
+			//hitData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		} while (0);
 	}
 }
@@ -15699,7 +15699,7 @@ void crRecvUserExtraMethod::operator()(crHandle &handle)
 			//}
 
 			crData *hitData = m_this->getDataClass();
-			//hitData->excHandle(MAKEINT64(WCH_LockData,1));
+			//hitData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			hitData->getParam(WCHDATA_ExtraData,param);
 			crData *extraData = (crData *)param;
 			if(extraData)
@@ -15709,7 +15709,7 @@ void crRecvUserExtraMethod::operator()(crHandle &handle)
 				bool can = true;
 				short extraid = LOINT32(userExtraID);
 				short extrapri = HIINT32(userExtraID);
-				extraData->excHandle(MAKEINT64(WCH_LockData,1));
+				extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				extraData->getParam(WCHDATA_ExtraIDMap,param);
 				ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 				ExtraIDMap::iterator exitr = extraIDMap->find(extraid);
@@ -15735,9 +15735,9 @@ void crRecvUserExtraMethod::operator()(crHandle &handle)
 					extraData->insertHandle(MAKEINT64(WCH_DoExtra,extraid),cloneHandle);
 					(*extraIDMap)[extraid] = extrapri;
 				}
-				extraData->excHandle(MAKEINT64(WCH_LockData,0));
+				extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
-			//hitData->excHandle(MAKEINT64(WCH_LockData,0));
+			//hitData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		} while (0);
 	}
 }
@@ -15791,8 +15791,8 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 		data->getParam(WCHDATA_ExtraData,param);
 		if(param)
 		{
-			//data->excHandle(MAKEINT64(WCH_LockData,1));
-			data->excHandle(MAKEINT64(WCH_ResetExtra,NULL));
+			//data->excHandle(MAKECREPARAM(WCH_LockData,1));
+			data->excHandle(MAKECREPARAM(WCH_ResetExtra,NULL));
 			ref_ptr<crData> extraData = (crData *)param;
 			short id = 0;
 			//short pri = 0;
@@ -15801,7 +15801,7 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 			bool removeExtra = false;
 			std::vector<short> EraseVec;
 			ref_ptr<crHandle>handle;
-			extraData->excHandle(MAKEINT64(WCH_LockData,1));
+			extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			extraData->getParam(WCHDATA_ExtraIDMap,param);
 			ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 			ExtraIDMap extraIDMap_copy = *extraIDMap;
@@ -15850,9 +15850,9 @@ void crExtraUpdateMethod::operator()(crHandle &handle)
 				extraData->removeHandle(MAKEINT64(WCH_DoExtra,*itr));
 				extraIDMap->erase(*itr);
 			}
-			extraData->excHandle(MAKEINT64(WCH_LockData,0));
+			extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
-			//data->excHandle(MAKEINT64(WCH_LockData,0));
+			//data->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 	else
@@ -16014,11 +16014,11 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 //	{
 //		void *param;
 //		crData *thisData = m_this->getDataClass();
-//		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+//		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		thisData->getParam(WCHDATA_ExtraDefend,param);
 //		short* extra = (short *)param;
 //		*extra += m_extraValue;
-//		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+//		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //		m_start = true;
 //		m_timer = m_duration;
 //	}
@@ -16032,11 +16032,11 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 //			m_timer = 0.0f;
 //			void *param;
 //			crData *thisData = m_this->getDataClass();
-//			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+//			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //			thisData->getParam(WCHDATA_ExtraDefend,param);
 //			short* extra = (short *)param;
 //			*extra -= m_extraValue;
-//			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+//			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //		}
 //	}
 //}
@@ -16109,7 +16109,7 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 //{
 //	void *param;
 //	crData *data = m_this->getDataClass();
-//	data->excHandle(MAKEINT64(WCH_LockData,1));
+//	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 //	data->getParam(WCHDATA_ExtraGuise,param);
 //	unsigned int* extra = (unsigned int *)param;
 //	if(!m_start)
@@ -16133,7 +16133,7 @@ void crExtraLifeTimeMethod::operator()(crHandle &handle)
 //			*extra |= m_guise;
 //		}
 //	}
-//	data->excHandle(MAKEINT64(WCH_LockData,0));
+//	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 //}
 /////////////////////////////////////////
 //
@@ -16204,7 +16204,7 @@ void crExtraRadiusMethod::operator()(crHandle &handle)
 {
 	void *param;
 	crData *data = m_this->getDataClass();
-	data->excHandle(MAKEINT64(WCH_LockData,1));
+	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 	data->getParam(WCHDATA_ExtraRadius,param);
 	char* extra = (char *)param;
 	if(!m_start)
@@ -16228,7 +16228,7 @@ void crExtraRadiusMethod::operator()(crHandle &handle)
 			*extra = m_radius;
 		}
 	}
-	data->excHandle(MAKEINT64(WCH_LockData,0));
+	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 }
 /////////////////////////////////////////
 //
@@ -17297,7 +17297,7 @@ void crGetItemRTDataMethod::operator()(crHandle &handle)
 
 			if(m_this->getItemtype() == crInstanceItem::Role)
 			{//如果是玩家，还需要同步一些额外的信息
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_QuickList,param);
 				QuickList *quickList = (QuickList *)param;
 				(*m_outstream)->_writeUChar(quickList->size());
@@ -17339,7 +17339,7 @@ void crGetItemRTDataMethod::operator()(crHandle &handle)
 					(*m_outstream)->_writeInt(itr->first);
 					(*m_outstream)->_writeInt(itr->second);
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 		}
 	}
@@ -17469,7 +17469,7 @@ void crNpcDeadMethod::operator()(crHandle &handle)
 		//if(m_killerItem->getItemtype() == crInstanceItem::Role)
 		//{
 		//	int droppedItem = 0;
-		//	thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		//	thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		//	thisData->getParam(WCHDATA_ItemDropMap,param);
 		//	ItemDropMap* itemDropMap = (ItemDropMap*)param;
 		//	if(itemDropMap && !itemDropMap->empty())
@@ -17488,7 +17488,7 @@ void crNpcDeadMethod::operator()(crHandle &handle)
 		//			}
 		//		}
 		//	}
-		//	thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		//	thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//	if(droppedItem>0)
 		//	{
 		//		crNetConductor *sceneServerConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
@@ -17514,7 +17514,7 @@ void crNpcDeadMethod::operator()(crHandle &handle)
 		//			if(data)
 		//			{
 		//				item->setDataClass(data);
-		//				data->excHandle(MAKEINT64(WCH_InitData,item.get()));
+		//				data->excHandle(MAKECREPARAM(WCH_InitData,item.get()));
 
 		//				void *param;
 		//				//crData *data = item->getDataClass();
@@ -17524,7 +17524,7 @@ void crNpcDeadMethod::operator()(crHandle &handle)
 		//				data->inputParam(WCHDATA_BelongPlayerID,&belongid);
 		//				float posz = scene->getPosZ(item->getLayerID(),item->getPosx() * crGlobalHandle::gData()->gUnitScale(),item->getPosy() * crGlobalHandle::gData()->gUnitScale(), item->getZoffset() * crGlobalHandle::gData()->gUnitScale());
 		//				item->setPosz(posz / crGlobalHandle::gData()->gUnitScale());
-		//				//item->getDataClass()->excHandle(MAKEINT64(WCH_CheckItemData,item.get()));
+		//				//item->getDataClass()->excHandle(MAKECREPARAM(WCH_CheckItemData,item.get()));
 		//				//CRCore::notify(CRCore::ALWAYS)<<"FindAbstractItem DroppedItem "<<item->getPosx()<<","<<item->getPosy()<<std::endl;
 		//				scene->insertSceneItem(item.get());
 		//			}
@@ -17586,11 +17586,11 @@ void crAddExperienceMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Experience,param);
 		int* experience = (int *)param;
 		*experience += m_experience;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		m_this->doEvent(WCH_LvUp);
         //send to m_this，不需要发送给其他玩家
 		if(m_this->getItemtype() == crInstanceItem::Role)
@@ -17657,11 +17657,11 @@ void crAddExperience2Method::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Experience,param);
 		int* experience = (int *)param;
 		*experience += m_experience;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//m_this->doEvent(WCH_LvUp);
 		//send to m_this，不需要发送给其他玩家
 		int playerid = m_this->getPlayerID();
@@ -17730,11 +17730,11 @@ void crAddGoldMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Gold,param);
 		int* gold = (int *)param;
 		*gold += m_gold;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//send to m_this,不需要发送给其他玩家
 		if(m_this->getItemtype() == crInstanceItem::Role)
 		{
@@ -17800,11 +17800,11 @@ void crAddGold2Method::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Gold,param);
 		int* gold = (int *)param;
 		*gold += m_gold;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//send to m_this,不需要发送给其他玩家
 		int playerid = m_this->getPlayerID();
 		if(playerid>0)
@@ -17876,12 +17876,12 @@ void crRecvExperienceMethod::operator()(crHandle &handle)
 		int experience = m_stream->_readInt();
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Experience,param);
 		int* curExperience = (int *)param;
 		int changevalue = experience - *curExperience;
 		*curExperience = experience;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//客户端显示
 		crNode *bot = m_this->getRelNode();
@@ -17942,12 +17942,12 @@ void crRecvExperience2Method::operator()(crHandle &handle)
 		short experience = m_stream->_readShort();
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Experience,param);
 		short* curExperience = (short *)param;
 		short changevalue = experience - *curExperience;
 		*curExperience = experience;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//客户端显示
 		crNode *bot = crMyPlayerData::getInstance()->getRole(roleid)->getRelNode();
@@ -18005,12 +18005,12 @@ void crRecvGoldMethod::operator()(crHandle &handle)
 		int gold = m_stream->_readInt();
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Gold,param);
 		int* curGold = (int *)param;
 		int changevalue = gold - *curGold;
 		*curGold = gold;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//客户端显示
 		crNode *bot = m_this->getRelNode();
@@ -18069,12 +18069,12 @@ void crRecvGold2Method::operator()(crHandle &handle)
 		short gold = m_stream->_readInt();
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_Gold,param);
 		short* curGold = (short *)param;
 		short changevalue = gold - *curGold;
 		*curGold = gold;
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//客户端显示
 		crNode *bot = crMyPlayerData::getInstance()->getRole(roleid)->getRelNode();
@@ -18157,14 +18157,14 @@ void crLvUpFormula1Method::operator()(crHandle &handle)
 			unsigned char dt = nlv - lv;
 			unsigned char gainAttrPoint = dt * m_attrPointGrow;
 			unsigned char gainSkillPoint = dt * m_skillPointGrow;
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_AttrPoint,param);
 			unsigned short* curAttrPoint = (unsigned short *)param;
 			*curAttrPoint += gainAttrPoint;
 			thisData->getParam(WCHDATA_SkillPoint,param);
 			unsigned short* curSkillPoint = (unsigned short *)param;
 			*curSkillPoint += gainSkillPoint;
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 			//set hp and mp
 			float maxhp = 0;
@@ -18407,7 +18407,7 @@ void crDeadEventMethod::operator()(crHandle &handle)
 
 				void *param;
 				crData *thisData = m_this->getDataClass();
-				thisData->excHandle(MAKEINT64(WCH_InitData,m_this));
+				thisData->excHandle(MAKECREPARAM(WCH_InitData,m_this));
 
 				//unsigned char itemstate = IS_Relive;
 				//thisData->inputParam(WCHDATA_ItemState, &itemstate);
@@ -18417,7 +18417,7 @@ void crDeadEventMethod::operator()(crHandle &handle)
 				//m_this->doEvent(WCH_GetMP,MAKECREPARAM(&rt,NULL));
 				//thisData->inputParam(WCHDATA_RTMP,&rt);
 
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_PatrolPointVec,param);
 				PatrolPointVec* patrolPointVec = (PatrolPointVec*)param;
 				if(patrolPointVec && !patrolPointVec->empty())
@@ -18441,7 +18441,7 @@ void crDeadEventMethod::operator()(crHandle &handle)
 					m_this->setPosxy(coord[0] / scale, coord[1] / scale);
 					m_this->setPosz(coordz / scale);
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				crRoom *room = m_this->getRoom();
 				if(room && room->getGameRunning())
 				{
@@ -18566,7 +18566,7 @@ void crUIRelivePlayerMethod::operator()(crHandle &handle)
 {
 	crRole *player = crMyPlayerData::getInstance()->getCurrentRole();
 	crData *thisData = player->getDataClass();
-	thisData->excHandle(MAKEINT64(WCH_InitData,player));
+	thisData->excHandle(MAKECREPARAM(WCH_InitData,player));
 
 	unsigned char itemstate = IS_Stop;
 	thisData->inputParam(WCHDATA_ItemState, &itemstate);
@@ -18637,7 +18637,7 @@ void crRecvRelivePlayerMethod::operator()(crHandle &handle)
 	if(m_stream.valid())
 	{
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_InitData,m_this));
+		thisData->excHandle(MAKECREPARAM(WCH_InitData,m_this));
 		unsigned char itemstate = IS_Stop;
 		thisData->inputParam(WCHDATA_ItemState, &itemstate);
 		unsigned int guisestate = GS_Normal;
@@ -19911,7 +19911,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 		void *param;
 		crData *roleData = role->getDataClass();
 
-		roleData->excHandle(MAKEINT64(WCH_LockData,1));
+		roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		roleData->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -19943,7 +19943,7 @@ void crUIUpdateRoleMethod::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		roleData->excHandle(MAKEINT64(WCH_LockData,0));
+		roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		if(nameElement)
 		{
@@ -20492,7 +20492,7 @@ void crGetTaskMethod::operator()(crHandle &handle)
 		int taskid = *(int *)param;
 		ref_ptr<crGameTask> gameTask;
 		metierData->getParam(WCHDATA_GameTaskMap,param);
-		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 		GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 		gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
@@ -20523,7 +20523,7 @@ void crGetTaskMethod::operator()(crHandle &handle)
 				}
 			}
 		}
-		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -20589,11 +20589,11 @@ void crAdvanceTaskMethod::operator()(crHandle &handle)
 		}
 		ref_ptr<crGameTask> gameTask;
 		metierData->getParam(WCHDATA_GameTaskMap,param);
-		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 		GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 		gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		if(gameTask.valid())
 		{
 			crNetConductor *netConductor = crNetContainer::getInstance()->getNetConductor(SceneServer);
@@ -20678,11 +20678,11 @@ void crReferTaskMethod::operator()(crHandle &handle)
 		int taskid = *(int *)param;
 		ref_ptr<crGameTask> gameTask;
 		metierData->getParam(WCHDATA_GameTaskMap,param);
-		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 		GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 		gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		if(gameTask.valid() && gameTask->isTaskCanRefer())
 		{
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
@@ -20821,7 +20821,7 @@ void crRecvGetTaskMethod::operator()(crHandle &handle)
 		crData *metierData = m_this->getMetierDataClass();
 		ref_ptr<crGameTask> gameTask;
 		metierData->getParam(WCHDATA_GameTaskMap,param);
-		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 		GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 		gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
@@ -20876,7 +20876,7 @@ void crRecvGetTaskMethod::operator()(crHandle &handle)
 				crWaitNetReturnStreamLogic::netReturn(m_stream.get());
 			}
 		}
-		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -20939,7 +20939,7 @@ void crRecvAdvanceTaskMethod::operator()(crHandle &handle)
 		crData *metierData = m_this->getMetierDataClass();
 		ref_ptr<crGameTask> gameTask;
 		metierData->getParam(WCHDATA_GameTaskMap,param);
-		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 		GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 		gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
@@ -20975,7 +20975,7 @@ void crRecvAdvanceTaskMethod::operator()(crHandle &handle)
 					crWaitNetReturnStreamLogic::netReturn(m_stream.get());
 			}
 		}
-		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -21043,19 +21043,19 @@ void crTaskAwardMethod::operator()(crHandle &handle)
 			//	///检查背包
 			//	void *param;
 			//	crData *data = m_this->getDataClass();
-			//	data->excHandle(MAKEINT64(WCH_LockData,1));
+			//	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//	data->getParam(WCHDATA_BackPackMap,param);
 			//	BackPackMap* backPackMap = (BackPackMap* )param;
 			//	if(!backPackMap)
 			//	{
-			//		data->excHandle(MAKEINT64(WCH_LockData,0));
+			//		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//		return;
 			//	}
 			//	data->getParam(WCHDATA_MaxBackPack,param);
 			//	unsigned char maxBackPack = *(unsigned char *)param;
 			//	if((int)maxBackPack<backPackMap->size()+awardItemCount)
 			//	{
-			//		data->excHandle(MAKEINT64(WCH_LockData,0));
+			//		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//		return;
 			//	}
 			//	crSceneServerCallback *netCallback = dynamic_cast<crSceneServerCallback *>(netDataManager->getNetCallback());
@@ -21136,7 +21136,7 @@ void crTaskAwardMethod::operator()(crHandle &handle)
 			//			}
 			//		}
 			//	}
-			//	data->excHandle(MAKEINT64(WCH_LockData,0));
+			//	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//	//m_this->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Server));
 			//}
 			int exp = m_gameTask->getExp();
@@ -21203,11 +21203,11 @@ void crRecvTaskAwardItemMethod::operator()(crHandle &handle)
 			crData *metierData = m_this->getMetierDataClass();
 			ref_ptr<crGameTask> gameTask;
 			metierData->getParam(WCHDATA_GameTaskMap,param);
-			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 			GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 			gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-			metierData->excHandle(MAKEINT64(WCH_LockData,0));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//if(gameTask.valid())
 			//{
 			//	ref_ptr<crInstanceItem> item;
@@ -21306,11 +21306,11 @@ void crRecvReferTaskMethod::operator()(crHandle &handle)
 				crData *metierData = m_this->getMetierDataClass();
 				ref_ptr<crGameTask> gameTask;
 				metierData->getParam(WCHDATA_GameTaskMap,param);
-				metierData->excHandle(MAKEINT64(WCH_LockData,1));
+				metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 				GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 				gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-				metierData->excHandle(MAKEINT64(WCH_LockData,0));
+				metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				if(gameTask.valid() && gameTask->isTaskCanRefer())
 				{
 					m_this->doMetierEvent(WCH_TASKAWARD,MAKECREPARAM(gameTask.get(),&success));
@@ -21335,11 +21335,11 @@ void crRecvReferTaskMethod::operator()(crHandle &handle)
 			crData *metierData = m_this->getMetierDataClass();
 			ref_ptr<crGameTask> gameTask;
 			metierData->getParam(WCHDATA_GameTaskMap,param);
-			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 			GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 			gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-			metierData->excHandle(MAKEINT64(WCH_LockData,0));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			if(gameTask.valid())
 			{
 				gameTask->refer();
@@ -21492,7 +21492,7 @@ void crRecvAbstractItemMethod::operator()(crHandle &handle)
 				if(data)
 				{
 					item->setDataClass(data);
-					data->excHandle(MAKEINT64(WCH_InitData,item.get()));
+					data->excHandle(MAKECREPARAM(WCH_InitData,item.get()));
 
 					void *param;
 					//crData *data = item->getDataClass();
@@ -21502,7 +21502,7 @@ void crRecvAbstractItemMethod::operator()(crHandle &handle)
 					data->inputParam(WCHDATA_BelongPlayerID,&belongid);
 					float posz = scene->getPosZ(item->getLayerID(),item->getPosx() * crGlobalHandle::gData()->gUnitScale(),item->getPosy() * crGlobalHandle::gData()->gUnitScale(), item->getZoffset() * crGlobalHandle::gData()->gUnitScale());
 					item->setPosz(posz / crGlobalHandle::gData()->gUnitScale());
-					//item->getDataClass()->excHandle(MAKEINT64(WCH_CheckItemData,item.get()));
+					//item->getDataClass()->excHandle(MAKECREPARAM(WCH_CheckItemData,item.get()));
 					//CRCore::notify(CRCore::ALWAYS)<<"crRecvAbstractItemMethod DroppedItem "<<item->getPosx()<<","<<item->getPosy()<<std::endl;
 					scene->insertSceneItem(item.get());
 				}
@@ -21717,7 +21717,7 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 								{
 									needInsertItemChild = 2;
 									crData *roleData = role->getDataClass();
-									roleData->excHandle(MAKEINT64(WCH_LockData,1));
+									roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 									roleData->getParam(WCHDATA_BackPackMap,param);
 									BackPackMap *backPackMap = (BackPackMap *)param;
 									BackPackMap::iterator itr = backPackMap->find(abstractid);
@@ -21726,7 +21726,7 @@ void crRecvNetPickItemMethod::operator()(crHandle &handle)
 										if(itr->second == m_this->getInstanceItemID())
 											itr->second = itemchild->getInstanceItemID();
 									}
-									roleData->excHandle(MAKEINT64(WCH_LockData,0));
+									roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 								}
 							}
 							if(needInsertItemChild==1)
@@ -21895,7 +21895,7 @@ void crInsertItemToBackPackMethod::operator()(crHandle &handle)
 		crData *thisData = m_this->getDataClass();
 		int abstractid = m_item->getAbstractItemID();
 		int itemid = m_item->getInstanceItemID();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_BackPackMap,param);
 		BackPackMap* backPackMap = (BackPackMap* )param;
 		thisData->getParam(WCHDATA_MaxBackPack,param);
@@ -21983,7 +21983,7 @@ void crInsertItemToBackPackMethod::operator()(crHandle &handle)
 				*m_output = 1;
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		////////////////
 	}
 }
@@ -22244,7 +22244,7 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 			{
 				void *param;
 				crData *thisData = m_this->getDataClass();
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_Gold,param);
 				int* gold = (int *)param;
 				std::vector<char>RemoveItems;
@@ -22305,7 +22305,7 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 				//{
 				//    stream->_writeInt(itemid);
 				//}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				crPlayerEventPacket packet;
 				crPlayerEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvSaleItem,stream.get());
 				netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
@@ -22327,12 +22327,12 @@ void crRecvSaleItemMethod::operator()(crHandle &handle)
 			crData *data = m_this->getDataClass();
 			//钱
 			int changevalue = 0;
-			data->excHandle(MAKEINT64(WCH_LockData,1));
+			data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			data->getParam(WCHDATA_Gold,param);
 			int* curGold = (int *)param;
 			changevalue = gold - *curGold;
 			*curGold = gold;
-			data->excHandle(MAKEINT64(WCH_LockData,0));
+			data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//客户端显示
 			crNode *bot = m_this->getRelNode();
 			if(bot)
@@ -22567,7 +22567,7 @@ void crRemoveItemFromBackPackMethod::operator()(crHandle &handle)
 		crData *thisData = m_this->getDataClass();
 		int abstractid = m_item->getAbstractItemID();
 		int itemid = m_item->getInstanceItemID();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_BackPackMap,param);
 		BackPackMap* backPackMap = (BackPackMap* )param;
 		if(itemid>0)
@@ -22687,7 +22687,7 @@ void crRemoveItemFromBackPackMethod::operator()(crHandle &handle)
 				}
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		if(*m_output == 1)
 		{
@@ -22753,7 +22753,7 @@ void crGetItemCountInBackPackMethod::operator()(crHandle &handle)
 		crData *thisData = m_this->getDataClass();
 		int abstractid = m_item->getAbstractItemID();
 		int itemid = m_item->getInstanceItemID();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_BackPackMap,param);
 		BackPackMap* backPackMap = (BackPackMap* )param;
 		if(itemid>0)
@@ -22785,7 +22785,7 @@ void crGetItemCountInBackPackMethod::operator()(crHandle &handle)
 					*m_output = 1;
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -22843,7 +22843,7 @@ void crBuildBackPackListMethod::operator()(crHandle &handle)
 			//crRole *me = crMyPlayerData::getInstance()->getRole();
 			void *param;
 			crData *myData = m_this->getDataClass();
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_BackPackMap,param);
 			BackPackMap* backPackMap = (BackPackMap* )param;
 			crItemChild *itemchild;
@@ -22922,7 +22922,7 @@ void crBuildBackPackListMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			backPackList->unlockList();
 			imageStage->setNeedReDraw();
 		}
@@ -22966,7 +22966,7 @@ void crBuildBackPackList2Method::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			void *param;
 			crData *myData = me->getDataClass();
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_BackPackMap,param);
 			BackPackMap* backPackMap = (BackPackMap* )param;
 			crItemChild *itemchild;
@@ -23046,7 +23046,7 @@ void crBuildBackPackList2Method::operator()(crHandle &handle)
 					}
 				}
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -23175,7 +23175,7 @@ void crUIDropItem2Method::operator()(crHandle &handle)
 		if(!me) break;
 		crData *thisData = me->getDataClass();
 		void *param;
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_BackPackMap,param);
 		BackPackMap* backPackMap = (BackPackMap* )param;
 		bool foundInBackPack = false;
@@ -23190,7 +23190,7 @@ void crUIDropItem2Method::operator()(crHandle &handle)
 				break;
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		if(foundInBackPack)
 		{
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
@@ -23413,7 +23413,7 @@ void crBuildSaleItemListMethod::operator()(crHandle &handle)
 			crListControlElement::ListNodeVec& listNodeVec = saleItemList->getListNodeVec();
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_SaleItemMap,param);
 			SaleItemMap* saleItemMap = (SaleItemMap* )param;
 			crItemChild *itemchild;
@@ -23462,7 +23462,7 @@ void crBuildSaleItemListMethod::operator()(crHandle &handle)
 					listNodeVec.push_back(listNode.get());
 				}
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			saleItemList->unlockList();
 			imageStage->setNeedReDraw();
 		}
@@ -23519,7 +23519,7 @@ void crBuildSaleItemList2Method::operator()(crHandle &handle)
 		{
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_SaleItemMap,param);
 			SaleItemMap* saleItemMap = (SaleItemMap* )param;
 
@@ -23573,7 +23573,7 @@ void crBuildSaleItemList2Method::operator()(crHandle &handle)
 				}
 			}
 			saleItemList->setListNodeCount(i);
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -24084,13 +24084,13 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					//检查钱是否够
 					void *param;
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_SaleItemMap,param);
 					SaleItemMap* saleItemMap = (SaleItemMap* )param;
 					if(!saleItemMap)
 					{
 						buyItemReturn = BC_Error;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					bool found = false;
@@ -24113,7 +24113,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					if(!found)
 					{
                         buyItemReturn = BC_SaleOut;
-                        thisData->excHandle(MAKEINT64(WCH_LockData,0));
+                        thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					if(saleItemItr->second[1] != -1 && saleItemItr->second[1] < count)
@@ -24133,13 +24133,13 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 
 					crRole *buyer = playerData->getRole(roleid);
 					crData *buyerData = buyer->getDataClass();
-					buyerData->excHandle(MAKEINT64(WCH_LockData,1));//锁定，避免交易过程中玩家的金币发生变化
+					buyerData->excHandle(MAKECREPARAM(WCH_LockData,1));//锁定，避免交易过程中玩家的金币发生变化
 					crPlayerGameData *playerGameData = buyer->getPlayerGameData();
 					crData *_data = NULL;
 					if(playerGameData) _data = playerGameData->getDataClass();
 					if(_data)
 					{
-						_data->excHandle(MAKEINT64(WCH_LockData,1));//锁定，避免交易过程中玩家的金币发生变化
+						_data->excHandle(MAKECREPARAM(WCH_LockData,1));//锁定，避免交易过程中玩家的金币发生变化
 						_data->getParam(WCHDATA_Gold,param);
 						buyerGold = (int*)param;
 					}
@@ -24151,9 +24151,9 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					if(*buyerGold<price * count)
 					{
 						buyItemReturn = BC_MoneyNotEnough;
-						buyerData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
-						if(_data) _data->excHandle(MAKEINT64(WCH_LockData,0));
+						buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						if(_data) _data->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					///检查背包
@@ -24162,9 +24162,9 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					if(!backPackMap)
 					{
 						buyItemReturn = BC_Error;
-						buyerData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
-						if(_data) _data->excHandle(MAKEINT64(WCH_LockData,0));
+						buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						if(_data) _data->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					buyerData->getParam(WCHDATA_MaxBackPack,param);
@@ -24172,9 +24172,9 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					if((int)maxBackPack<=backPackMap->size())
 					{
 						buyItemReturn = BC_BackpackIsFull;
-						buyerData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
-						if(_data) _data->excHandle(MAKEINT64(WCH_LockData,0));
+						buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						if(_data) _data->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					///购买（先收货，后扣钱）
@@ -24258,8 +24258,8 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 						else
 						{
 							//buyItemReturn = BC_InsertBackpackError;
-							//buyerData->excHandle(MAKEINT64(WCH_LockData,0));
-							//thisData->excHandle(MAKEINT64(WCH_LockData,0));
+							//buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+							//thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 							newItemChild = NULL;
 							InsertBackPackVec.push_back(std::make_pair(-1,newItemChild));
 							break;
@@ -24268,9 +24268,9 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					if(relcount == 0)
 					{
 						buyItemReturn = BC_InsertBackpackError;
-						buyerData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
-						if(_data) _data->excHandle(MAKEINT64(WCH_LockData,0));
+						buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						if(_data) _data->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					else if(relcount<count)
@@ -24279,8 +24279,8 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					}
 					//后扣钱
 					*buyerGold -= price * relcount;
-					buyerData->excHandle(MAKEINT64(WCH_LockData,0));//帐户解锁
-					if(_data) _data->excHandle(MAKEINT64(WCH_LockData,0));
+					buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));//帐户解锁
+					if(_data) _data->excHandle(MAKECREPARAM(WCH_LockData,0));
 					ref_ptr<crStreamBuf> stream1 = new crStreamBuf;
 					stream1->createBuf(12);
 					stream1->_writeInt(itemid);
@@ -24333,7 +24333,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
                             exchangePlayerSet->erase(*itr);
 						}
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					//m_this->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Server));
 					//发送给客户端
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
@@ -24420,13 +24420,13 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 				int* curGold = NULL;
 				if(_data)
 				{
-					_data->excHandle(MAKEINT64(WCH_LockData,1));
+					_data->excHandle(MAKECREPARAM(WCH_LockData,1));
 					_data->getParam(WCHDATA_Gold,param);
 					curGold = (int *)param;
 				}
 				else
 				{
-					buyerData->excHandle(MAKEINT64(WCH_LockData,1));
+					buyerData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					buyerData->getParam(WCHDATA_Gold,param);
 					curGold = (int *)param;
 				}
@@ -24434,11 +24434,11 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 				*curGold = gold;
 				if(_data)
 				{
-					_data->excHandle(MAKEINT64(WCH_LockData,0));
+					_data->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				else
 				{
-					buyerData->excHandle(MAKEINT64(WCH_LockData,0));
+					buyerData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				//客户端显示
 				crNode *bot = buyer->getRelNode();
@@ -24456,7 +24456,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 				{
 					//SaleItemMap改变
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_SaleItemMap,param);
 					SaleItemMap* saleItemMap = (SaleItemMap* )param;
 					SaleItemMap::iterator saleItemItr;
@@ -24480,7 +24480,7 @@ void crRecvBuyItemMethod::operator()(crHandle &handle)
 					{
 						saleItemMap->erase(saleItemItr);
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				ref_ptr<crInstanceItem> newitem;
 				char needInsertItemChild;
@@ -24823,7 +24823,7 @@ void crRecvSaleItemMapMethod::operator()(crHandle &handle)
 				stream->createBuf(512);
 				void *param;
                 crData *data = m_this->getDataClass();
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				data->getParam(WCHDATA_SaleItemMap,param);
                 SaleItemMap *saleItemMap = (SaleItemMap*)param;
 				if(saleItemMap)
@@ -24841,7 +24841,7 @@ void crRecvSaleItemMapMethod::operator()(crHandle &handle)
 				{
                     stream->_writeUChar(0);
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				crItemEventPacket packet;
 				crItemEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvSaleItemMap,stream.get());
@@ -24853,7 +24853,7 @@ void crRecvSaleItemMapMethod::operator()(crHandle &handle)
 			std::set<int> NeedDownloadItem;
 			void *param;
 			crData *data = m_this->getDataClass();
-			data->excHandle(MAKEINT64(WCH_LockData,1));
+			data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			data->getParam(WCHDATA_SaleItemMap,param);
 			SaleItemMap *saleItemMap = (SaleItemMap*)param;
 			if(saleItemMap)
@@ -24874,7 +24874,7 @@ void crRecvSaleItemMapMethod::operator()(crHandle &handle)
 					saleItemMap->insert(std::make_pair(int1,vec3));
 				}
 			}
-			data->excHandle(MAKEINT64(WCH_LockData,0));
+			data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			if(!NeedDownloadItem.empty())
 			{//
 				int playerid = crMyPlayerData::getInstance()->getPlayerID();
@@ -25573,14 +25573,14 @@ void crRecvEndExchangeMethod::operator()(crHandle &handle)
 		int playerid = m_stream->_readInt();
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_ExchangePlayerSet,param);
 		ExchangePlayerSet* exchangePlayerSet = (ExchangePlayerSet* )param;
 		if(exchangePlayerSet)
 		{
 			exchangePlayerSet->erase(playerid);
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -25635,7 +25635,7 @@ void crRecvSaleItemMapChangeMethod::operator()(crHandle &handle)
 		crInstanceItem *item = itemchild->getInstanceItem();
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_SaleItemMap,param);
 		SaleItemMap* saleItemMap = (SaleItemMap* )param;
 		if(saleItemMap)
@@ -25663,7 +25663,7 @@ void crRecvSaleItemMapChangeMethod::operator()(crHandle &handle)
 				}
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -25844,7 +25844,7 @@ void crRefashSaleMapMethod::operator()(crHandle &handle)
 		{
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_SaleItemMap,param);
 			SaleItemMap* saleItemMap = (SaleItemMap*)param;
 			if(saleItemMap)
@@ -25912,7 +25912,7 @@ void crRefashSaleMapMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 			m_timer = 0.0f;
 		}
@@ -25964,7 +25964,7 @@ void crRecvRefashSaleMapMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_SaleItemMap,param);
 		SaleItemMap* saleItemMap = (SaleItemMap*)param;
 		if(saleItemMap)
@@ -25983,7 +25983,7 @@ void crRecvRefashSaleMapMethod::operator()(crHandle &handle)
 				}
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		m_this->doEvent(WCH_BuildSaleItemList);
 	}
@@ -26107,13 +26107,13 @@ void crBuildLearnSkillListMethod::operator()(crHandle &handle)
 			crListControlElement::ListNodeVec& listNodeVec = learnSkillList->getListNodeVec();
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_SaleItemMap,param);
 			SaleItemMap* saleItemMap = (SaleItemMap* )param;
 
 			crRole *role = crMyPlayerData::getInstance()->getCurrentRole();
 			crData *roleData = role->getDataClass();
-			roleData->excHandle(MAKEINT64(WCH_LockData,1));
+			roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			roleData->getParam(WCHDATA_SkillMap,param);
 			SkillMap* skillMap = (SkillMap* )param;
 			SkillMap::iterator skillMapItr;
@@ -26121,7 +26121,7 @@ void crBuildLearnSkillListMethod::operator()(crHandle &handle)
 			crData *skillData;
 
 			crData *metierData = role->getMetierDataClass();
-			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			metierData->getParam(WCHDATA_MetierSkillASet,param);
 			MetierSkillASet* metierSkillASet = (MetierSkillASet* )param;
 
@@ -26183,9 +26183,9 @@ void crBuildLearnSkillListMethod::operator()(crHandle &handle)
 					listNodeVec.push_back(listNode.get());
 				}
 			}
-			metierData->excHandle(MAKEINT64(WCH_LockData,0));
-			roleData->excHandle(MAKEINT64(WCH_LockData,0));
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
+			roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			learnSkillList->unlockList();
 			imageStage->setNeedReDraw();
 		}
@@ -26242,13 +26242,13 @@ void crBuildLearnSkillList2Method::operator()(crHandle &handle)
 		{
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_SaleItemMap,param);
 			SaleItemMap* saleItemMap = (SaleItemMap* )param;
 
 			crRole *role = crMyPlayerData::getInstance()->getCurrentRole();
 			crData *metierData = role->getMetierDataClass();
-			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			metierData->getParam(WCHDATA_MetierSkillASet,param);
 			MetierSkillASet* metierSkillASet = (MetierSkillASet* )param;
 
@@ -26267,7 +26267,7 @@ void crBuildLearnSkillList2Method::operator()(crHandle &handle)
 			if(!validVec.empty())
 			{
 				crData *roleData = role->getDataClass();
-				roleData->excHandle(MAKEINT64(WCH_LockData,1));
+				roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				roleData->getParam(WCHDATA_SkillMap,param);
 				SkillMap* skillMap = (SkillMap* )param;
 				SkillMap::iterator skillMapItr;
@@ -26330,10 +26330,10 @@ void crBuildLearnSkillList2Method::operator()(crHandle &handle)
 					}
 				}
 				learnSkillList->setListNodeCount(i);
-				roleData->excHandle(MAKEINT64(WCH_LockData,0));
+				roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
-			metierData->excHandle(MAKEINT64(WCH_LockData,0));
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -26402,7 +26402,7 @@ void crUILearnSkillMethod::operator()(crHandle &handle)
 		}
         myData->getParam(WCHDATA_MaxSkill,param);
 		unsigned char maxSkill = *(unsigned char *)param;
-		myData->excHandle(MAKEINT64(WCH_LockData,1));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		myData->getParam(WCHDATA_SkillMap,param);
 		SkillMap *skillMap = (SkillMap *)param;
 		if(skillMap->find(itemchild->getInstanceItem()->getAbstractItemID())==skillMap->end())
@@ -26411,11 +26411,11 @@ void crUILearnSkillMethod::operator()(crHandle &handle)
 			{
 				//std::string str = "您的已经学不了更多的技能了";
 				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
 		}
-		myData->excHandle(MAKEINT64(WCH_LockData,0));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//检查钱
 		myData->getParam(WCHDATA_Gold,param);
 		int gold = *(int *)param;
@@ -26520,7 +26520,7 @@ void crUILearnSkill2Method::operator()(crHandle &handle)
 		}
 		myData->getParam(WCHDATA_MaxSkill,param);
 		unsigned char maxSkill = *(unsigned char *)param;
-		myData->excHandle(MAKEINT64(WCH_LockData,1));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		myData->getParam(WCHDATA_SkillMap,param);
 		SkillMap *skillMap = (SkillMap *)param;
 		if(skillMap->find(itemchild->getInstanceItem()->getAbstractItemID())==skillMap->end())
@@ -26529,11 +26529,11 @@ void crUILearnSkill2Method::operator()(crHandle &handle)
 			{
 				//std::string str = "您的已经学不了更多的技能了";
 				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
 		}
-		myData->excHandle(MAKEINT64(WCH_LockData,0));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//检查钱
 		myData->getParam(WCHDATA_Gold,param);
 		int gold = *(int *)param;
@@ -26629,13 +26629,13 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 					//检查钱是否够
 					void *param;
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_SaleItemMap,param);
 					SaleItemMap* saleItemMap = (SaleItemMap* )param;
 					if(!saleItemMap)
 					{
 						learnSkillReturn = LC_Error;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					bool found = false;
@@ -26653,32 +26653,32 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 					if(!found)
 					{
 						learnSkillReturn = LC_Error;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					//
 					crRole *learner = playerData->getRole(roleid);
 					crData *learnerMetierData = learner->getMetierDataClass();
-					learnerMetierData->excHandle(MAKEINT64(WCH_LockData,1));
+					learnerMetierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					learnerMetierData->getParam(WCHDATA_MetierSkillASet,param);
                     MetierSkillASet *metierSkillASet = (MetierSkillASet *)param;
 					if(!metierSkillASet || metierSkillASet->find(abstractid) == metierSkillASet->end())
 					{
 						learnSkillReturn = LC_CantLearn;
-						learnerMetierData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						learnerMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
-					learnerMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+					learnerMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					crData *learnerData = learner->getDataClass();
-					learnerData->excHandle(MAKEINT64(WCH_LockData,1));
+					learnerData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					learnerData->getParam(WCHDATA_SkillPoint,param);
 					unsigned short *skillPoint = (unsigned short *)param;
 					if(*skillPoint==0)
 					{
 						learnSkillReturn = LC_SkillPointLack;
-						learnerData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					//金币
@@ -26695,8 +26695,8 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 						if(!skillItemChild || !skillItemChild->isLoaded())
 						{
 							learnSkillReturn = LC_Error;
-							learnerData->excHandle(MAKEINT64(WCH_LockData,0));
-							thisData->excHandle(MAKEINT64(WCH_LockData,0));
+							learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+							thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 							break;
 						}
 						newSkill = skillItemChild->getInstanceItem();
@@ -26711,8 +26711,8 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 						if((int)maxSkill<=skillMap->size())
 						{
 							learnSkillReturn = LC_SkillMapFull;
-							learnerData->excHandle(MAKEINT64(WCH_LockData,0));
-							thisData->excHandle(MAKEINT64(WCH_LockData,0));
+							learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+							thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 							break;
 						}
 
@@ -26723,8 +26723,8 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 					if(*learnerGold<price)
 					{
 						learnSkillReturn = LC_MoneyNotEnough;
-						learnerData->excHandle(MAKEINT64(WCH_LockData,0));
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					skillLevel++;
@@ -26757,8 +26757,8 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 					*learnerGold -= price;
 					//扣点数
 					(*skillPoint)--;
-					learnerData->excHandle(MAKEINT64(WCH_LockData,0));//帐户解锁
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));//帐户解锁
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					//m_this->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Server));
 					//发送给客户端
 					ref_ptr<crStreamBuf> stream = new crStreamBuf;
@@ -26802,14 +26802,14 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 				void *param;
 				crData *learnerData = learner->getDataClass();
 				//扣钱
-				learnerData->excHandle(MAKEINT64(WCH_LockData,1));
+				learnerData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				learnerData->getParam(WCHDATA_Gold,param);
 				int* curGold = (int *)param;
 				*curGold = gold;
 				learnerData->getParam(WCHDATA_SkillPoint,param);
 				unsigned short* curSkillPoint = (unsigned short *)param;
 				*curSkillPoint = skillPoint;
-				learnerData->excHandle(MAKEINT64(WCH_LockData,0));
+				learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				int buyitemid = m_stream->_readInt();
 				crItemChild *buyitemchild = m_this->findChildItem(buyitemid);
@@ -26818,7 +26818,7 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 					crInstanceItem *buyitem = buyitemchild->getInstanceItem();
 					int abstractid = buyitem->getAbstractItemID();
 
-					learnerData->excHandle(MAKEINT64(WCH_LockData,1));
+					learnerData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					learnerData->getParam(WCHDATA_SkillMap,param);
 					SkillMap *skillMap = (SkillMap *)param;
 					bool islvup = m_stream->_readBool();
@@ -26839,7 +26839,7 @@ void crRecvLearnSkillMethod::operator()(crHandle &handle)
 						(*skillMap)[abstractid] = newSkill->getInstanceItemID();
 						learner->insertTemporaryItem(newSkill.get());
 					}
-					learnerData->excHandle(MAKEINT64(WCH_LockData,0));
+					learnerData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 					if(islvup) 
 					{
@@ -26918,11 +26918,11 @@ void crLearnSkillCreaterMethod::operator()(crHandle &handle)
 
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_SkillMap,param);
 		SkillMap *skillMap = (SkillMap *)param;
 		(*skillMap)[skill->getAbstractItemID()] = skill->getInstanceItemID();
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		//m_this->doEvent(MAKEINT64(WCH_UpdateQuickList,UT_Server));
 
 		//send to client
@@ -26996,7 +26996,7 @@ void crRecvLearnSkillCreaterMethod::operator()(crHandle &handle)
 
 		void *param;
 		crData *thisData = m_this->getDataClass();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_SkillMap,param);
 		SkillMap *skillMap = (SkillMap *)param;
 		int tempItemID = (*skillMap)[abstractid];
@@ -27013,7 +27013,7 @@ void crRecvLearnSkillCreaterMethod::operator()(crHandle &handle)
             tempItem->getDataClass()->inputParam(WCHDATA_SkillLevel,&skillLevel);
 			(*skillMap)[abstractid] = itemid;
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		ref_ptr<crInstanceItem> targetItem;
 		ref_ptr<crMatrixTransform> targetNode;
@@ -27350,7 +27350,7 @@ void crUIAttrPointOKMethod::operator()(crHandle &handle)
 				crData *myData = me->getDataClass();
                 bool hasChange = false;
 
-				myData->excHandle(MAKEINT64(WCH_LockData,1));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 
 				myData->getParam(WCHDATA_AttrPoint,param);
 				unsigned short* attrpoint = (unsigned short *)param;
@@ -27405,7 +27405,7 @@ void crUIAttrPointOKMethod::operator()(crHandle &handle)
 						netConductor->getNetManager()->sendPacket("all",packet);
 					}
 				}
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				m_element->setShow(false);
 				m_element->setEnable(false);
@@ -27480,7 +27480,7 @@ void crUIAttrPointOK2Method::operator()(crHandle &handle)
 				crData *myData = me->getDataClass();
 				bool hasChange = false;
 
-				myData->excHandle(MAKEINT64(WCH_LockData,1));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 
 				myData->getParam(WCHDATA_AttrPoint,param);
 				unsigned short* attrpoint = (unsigned short *)param;
@@ -27541,7 +27541,7 @@ void crUIAttrPointOK2Method::operator()(crHandle &handle)
 						netConductor->getNetManager()->sendPacket("all",packet);
 					}
 				}
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				m_this->setVisiable(false);
 				//m_this->setEnable(false);
@@ -27663,7 +27663,7 @@ void crBuildSkillListMethod::operator()(crHandle &handle)
 			//crRole *me = crMyPlayerData::getInstance()->getRole();
 			void *param;
 			crData *myData = m_this->getDataClass();
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_SkillMap,param);
 			SkillMap* skillMap = (SkillMap* )param;
 			crItemChild *itemchild;
@@ -27700,7 +27700,7 @@ void crBuildSkillListMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			skillList->unlockList();
 			imageStage->setNeedReDraw();
 		}
@@ -27744,7 +27744,7 @@ void crBuildSkillList2Method::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			void *param;
 			crData *myData = me->getDataClass();
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_SkillMap,param);
 			SkillMap* skillMap = (SkillMap* )param;
 			crItemChild *itemchild;
@@ -27784,7 +27784,7 @@ void crBuildSkillList2Method::operator()(crHandle &handle)
 					}
 				}
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -27842,7 +27842,7 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 		if(datatype == DT_Equip)
 		{
 			//检查是否有空间
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_EquipOnMap,param);
 			EquipOnMap *equipOnMap = (EquipOnMap *)param;
 			myData->getParam(WCHDATA_MaxEquipon,param);
@@ -27851,10 +27851,10 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 			{//
 				//std::string str = "您的装备栏已经满了";
 				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
 			stream->createBuf(4);
 			stream->_writeInt(itemid);
@@ -27868,7 +27868,7 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 		else if(datatype == DT_Thing || datatype == DT_Skill || datatype == DT_Attack || datatype == DT_AttackThing)
 		{//重复性检查(仅客户端校验就可以了)
 			//检查是否有空间
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_QuickList,param);
 			QuickList *quickList = (QuickList *)param;
 			int abstractid = item->getAbstractItemID();
@@ -27884,7 +27884,7 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 			}
 			if(found)
 			{
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
 			myData->getParam(WCHDATA_MaxQuick,param);
@@ -27893,10 +27893,10 @@ void crUIEquipItemMethod::operator()(crHandle &handle)
 			{//
 				//std::string str = "您的快捷栏已经满了";
 				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
 			stream->createBuf(4);
 			stream->_writeInt(itemid);
@@ -27965,7 +27965,7 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 		if(datatype == DT_Equip)
 		{
 			//检查是否有空间
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_EquipOnMap,param);
 			EquipOnMap *equipOnMap = (EquipOnMap *)param;
 			myData->getParam(WCHDATA_MaxEquipon,param);
@@ -27974,10 +27974,10 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 			{//
 				//std::string str = "您的装备栏已经满了";
 				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
 			stream->createBuf(4);
 			stream->_writeInt(itemid);
@@ -27991,7 +27991,7 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 		else if(datatype == DT_Thing || datatype == DT_Skill || datatype == DT_Attack || datatype == DT_AttackThing)
 		{//重复性检查(仅客户端校验就可以了)
 			//检查是否有空间
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_QuickList,param);
 			QuickList *quickList = (QuickList *)param;
 			int abstractid = item->getAbstractItemID();
@@ -28007,7 +28007,7 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 			}
 			if(found)
 			{
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
 			myData->getParam(WCHDATA_MaxQuick,param);
@@ -28016,10 +28016,10 @@ void crUIEquipItem2Method::operator()(crHandle &handle)
 			{//
 				//std::string str = "您的快捷栏已经满了";
 				//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-				myData->excHandle(MAKEINT64(WCH_LockData,0));
+				myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				break;
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			ref_ptr<crStreamBuf> stream = new crStreamBuf;
 			stream->createBuf(4);
 			stream->_writeInt(itemid);
@@ -28113,7 +28113,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					}
 					int abstractid = item->getAbstractItemID();
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_EquipOnMap,param);
 					EquipOnMap *equipOnMap = (EquipOnMap *)param;
 					thisData->getParam(WCHDATA_MaxEquipon,param);
@@ -28121,7 +28121,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					if((int)maxEquipOn<=equipOnMap->size())
 					{//
 						returnCode = EC_EquipOnMapFull;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					//获得装备之前的MAXHP
@@ -28137,7 +28137,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					if(removeItem<0)
 					{
 						returnCode = EC_NotInBackPack;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 
@@ -28352,7 +28352,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 					//	equipOnStream->_writeInt(itr->first);
 					//	equipOnStream->_writeInt(itr->second);
 					//}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					crPlayerEventPacket packet;
 					crPlayerEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvEquipOnItem,stream.get());
 					netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
@@ -28379,7 +28379,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 				int itemid = m_stream->_readInt();
 				void *param;
 				crData *thisData = m_this->getDataClass();
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_EquipOnMap,param);
                 EquipOnMap *equipOnMap = (EquipOnMap *)param;
 
@@ -28451,7 +28451,7 @@ void crRecvEquipOnItemMethod::operator()(crHandle &handle)
 				thisData->getParam(WCHDATA_RTMP,param);
 				float* rtmp = (float*)param;
 				*rtmp = m_stream->_readFloat();
-                thisData->excHandle(MAKEINT64(WCH_LockData,0));
+                thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				m_this->doEvent(WCH_CheckAndRackEquipOnMesh);
 				if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
@@ -28787,7 +28787,7 @@ void crBuildEquipOnListMethod::operator()(crHandle &handle)
 			crListControlElement::ListNodeVec& listNodeVec = equiponList->getListNodeVec();
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_EquipOnMap,param);
 			EquipOnMap* equipOnMap = (EquipOnMap* )param;
 			crItemChild *itemchild;
@@ -28815,7 +28815,7 @@ void crBuildEquipOnListMethod::operator()(crHandle &handle)
 					listNodeVec.push_back(listNode.get());
 				}
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			equiponList->unlockList();
 			imageStage->setNeedReDraw();
 		}
@@ -28860,7 +28860,7 @@ void crBuildEquipOnList2Method::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			void *param;
 			crData *thisData = me->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_EquipOnMap,param);
 			EquipOnMap* equipOnMap = (EquipOnMap* )param;
 			crItemChild *itemchild;
@@ -28891,7 +28891,7 @@ void crBuildEquipOnList2Method::operator()(crHandle &handle)
 					listNodeVec[i]->setVisiable(true);
 				}
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -28990,7 +28990,7 @@ void crBuildQuickListMethod::operator()(crHandle &handle)
 			crListControlElement::ListNodeVec& listNodeVec = quickListControl->getListNodeVec();
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_QuickList,param);
 			QuickList* quickList = (QuickList* )param;
 			thisData->getParam(WCHDATA_QuickKeyVec,param);
@@ -29063,7 +29063,7 @@ void crBuildQuickListMethod::operator()(crHandle &handle)
 			//{
    //             quickList->erase(*itr);
 			//}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			quickListControl->unlockList();
 			imageStage->setNeedReDraw();
 		}
@@ -29108,7 +29108,7 @@ void crBuildQuickList2Method::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			void *param;
 			crData *thisData = me->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_QuickList,param);
 			QuickList* quickList = (QuickList* )param;
 			thisData->getParam(WCHDATA_QuickKeyVec,param);
@@ -29182,7 +29182,7 @@ void crBuildQuickList2Method::operator()(crHandle &handle)
 			{
 				quickList->erase(*itr);
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -29346,7 +29346,7 @@ void crUIUnEquipItemMethod::operator()(crHandle &handle)
 		void *param;
 		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 		crData *myData = me->getDataClass();
-		myData->excHandle(MAKEINT64(WCH_LockData,1));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		int abstractid = item->getAbstractItemID();
 		int itemid = item->getInstanceItemID();
 		myData->getParam(WCHDATA_EquipOnMap,param);
@@ -29365,7 +29365,7 @@ void crUIUnEquipItemMethod::operator()(crHandle &handle)
 		{
 			//std::string str = "装备栏ID没有对应";
 			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			break;
 		}
 		myData->getParam(WCHDATA_BackPackMap,param);
@@ -29376,10 +29376,10 @@ void crUIUnEquipItemMethod::operator()(crHandle &handle)
 		{//
 			//std::string str = "您的背包已经满了";
 			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			break;
 		}
-		myData->excHandle(MAKEINT64(WCH_LockData,0));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		ref_ptr<crStreamBuf> stream = new crStreamBuf;
 		stream->createBuf(4);
 		stream->_writeInt(itemid);
@@ -29439,7 +29439,7 @@ void crUIUnEquipItem2Method::operator()(crHandle &handle)
 		void *param;
 		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 		crData *myData = me->getDataClass();
-		myData->excHandle(MAKEINT64(WCH_LockData,1));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		int abstractid = item->getAbstractItemID();
 		int itemid = item->getInstanceItemID();
 		myData->getParam(WCHDATA_EquipOnMap,param);
@@ -29458,7 +29458,7 @@ void crUIUnEquipItem2Method::operator()(crHandle &handle)
 		{
 			//std::string str = "装备栏ID没有对应";
 			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			break;
 		}
 		myData->getParam(WCHDATA_BackPackMap,param);
@@ -29469,10 +29469,10 @@ void crUIUnEquipItem2Method::operator()(crHandle &handle)
 		{//
 			//std::string str = "您的背包已经满了";
 			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			break;
 		}
-		myData->excHandle(MAKEINT64(WCH_LockData,0));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		ref_ptr<crStreamBuf> stream = new crStreamBuf;
 		stream->createBuf(4);
 		stream->_writeInt(itemid);
@@ -29556,7 +29556,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					int abstractid = item->getAbstractItemID();
 					crData *thisData = m_this->getDataClass();
 					void *param;
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_EquipOnMap,param);
 					EquipOnMap *equipOnMap = (EquipOnMap *)param;
 					EquipOnMap::iterator itr = equipOnMap->find(abstractid);
@@ -29572,7 +29572,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					if(!found)
 					{
 						returnCode = UC_NotInEquip;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					thisData->getParam(WCHDATA_BackPackMap,param);
@@ -29582,7 +29582,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					if((int)maxBackPack<=backPackMap->size())
 					{//
 						returnCode = UC_BackpackIsFull;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					//插入到backpack
@@ -29591,7 +29591,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					if(insertToBackPack<0)
 					{
 						returnCode = UC_InsertBackpackError;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					//获得卸载装备之前的MAXHP
@@ -29615,7 +29615,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					stream->_writeInt(itemid);
 					stream->_writeFloat(*rthp);
 					stream->_writeFloat(*rtmp);
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				} while (0);
 				if(returnCode != UC_Success)
 				{
@@ -29649,7 +29649,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 
 					void *param;
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_EquipOnMap,param);
 					EquipOnMap *equipOnMap = (EquipOnMap *)param;
 					EquipOnMap::iterator itr = equipOnMap->find(abstractid);
@@ -29672,7 +29672,7 @@ void crRecvUnEquipItemMethod::operator()(crHandle &handle)
 					thisData->getParam(WCHDATA_RTMP,param);
 					float* rtmp = (float*)param;
 					*rtmp = m_stream->_readFloat();
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 					m_this->doEvent(WCH_CheckAndRackEquipOnMesh);
 					if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
@@ -29826,7 +29826,7 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 					}
 					int abstractid = item->getAbstractItemID();
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_QuickList,param);
 					QuickList *quickList = (QuickList *)param;
 					thisData->getParam(WCHDATA_MaxQuick,param);
@@ -29834,7 +29834,7 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 					if((int)maxQuick<=quickList->size())
 					{//
 						returnCode = QC_QuickMapFull;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					if(datatype == DT_Thing || datatype == DT_AttackThing)
@@ -29853,7 +29853,7 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 						if(!found)
 						{
 							returnCode = QC_NotInBackPack;
-							thisData->excHandle(MAKEINT64(WCH_LockData,0));
+							thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 							break;
 						}
 					}
@@ -29864,7 +29864,7 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 						if(skillMap->find(abstractid) == skillMap->end())
 						{
 							returnCode = QC_NotInSkillMap;
-							thisData->excHandle(MAKEINT64(WCH_LockData,0));
+							thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 							break;
 						}
 					}
@@ -29875,12 +29875,12 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 						if(attackMap->find(abstractid) == attackMap->end())
 						{
 							returnCode = QC_NotInAttackMap;
-							thisData->excHandle(MAKEINT64(WCH_LockData,0));
+							thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 							break;
 						}
 					}
 					quickList->push_back(std::make_pair(abstractid,itemid));
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				} while (0);
 				ref_ptr<crStreamBuf> stream = new crStreamBuf;
 				stream->createBuf(5);
@@ -29915,11 +29915,11 @@ void crRecvEquipQuickMethod::operator()(crHandle &handle)
 
 					void *param;
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_QuickList,param);
 					QuickList *quickList = (QuickList *)param;
 					quickList->push_back(std::make_pair(abstractid,itemid));
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 					if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
 						m_this->doEvent(WCH_BuildQuickList);
@@ -29972,7 +29972,7 @@ void crUIUnEquipQuickMethod::operator()(crHandle &handle)
 		void *param;
 		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 		crData *myData = me->getDataClass();
-		myData->excHandle(MAKEINT64(WCH_LockData,1));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		int abstractid = item->getAbstractItemID();
 		int itemid = item->getInstanceItemID();
 		myData->getParam(WCHDATA_QuickList,param);
@@ -29991,10 +29991,10 @@ void crUIUnEquipQuickMethod::operator()(crHandle &handle)
 		{
 			std::string str = "快捷栏ID没有对应";
 			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			break;
 		}
-		myData->excHandle(MAKEINT64(WCH_LockData,0));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		ref_ptr<crStreamBuf> stream = new crStreamBuf;
 		stream->createBuf(4);
 		stream->_writeInt(itemid);
@@ -30054,7 +30054,7 @@ void crUIUnEquipQuick2Method::operator()(crHandle &handle)
 		void *param;
 		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 		crData *myData = me->getDataClass();
-		myData->excHandle(MAKEINT64(WCH_LockData,1));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		int abstractid = item->getAbstractItemID();
 		int itemid = item->getInstanceItemID();
 		myData->getParam(WCHDATA_QuickList,param);
@@ -30073,10 +30073,10 @@ void crUIUnEquipQuick2Method::operator()(crHandle &handle)
 		{
 			std::string str = "快捷栏ID没有对应";
 			//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			break;
 		}
-		myData->excHandle(MAKEINT64(WCH_LockData,0));
+		myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		ref_ptr<crStreamBuf> stream = new crStreamBuf;
 		stream->createBuf(4);
 		stream->_writeInt(itemid);
@@ -30158,7 +30158,7 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 					int abstractid = item->getAbstractItemID();
 					crData *thisData = m_this->getDataClass();
 					void *param;
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_QuickList,param);
 					QuickList *quickList = (QuickList *)param;
 					QuickList::iterator itr = quickList->begin();
@@ -30174,7 +30174,7 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 					if(!found)
 					{
 						returnCode = UQ_NotInQuick;
-						thisData->excHandle(MAKEINT64(WCH_LockData,0));
+						thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						break;
 					}
 					quickList->erase(itr);
@@ -30190,7 +30190,7 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 							break;
 						}
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				} while (0);
 				ref_ptr<crStreamBuf> stream = new crStreamBuf;
 				stream->createBuf(5);
@@ -30225,7 +30225,7 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 
 					void *param;
 					crData *thisData = m_this->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_QuickList,param);
 					QuickList *quickList = (QuickList *)param;
 					QuickList::iterator itr = quickList->begin();
@@ -30254,7 +30254,7 @@ void crRecvUnEquipQuickMethod::operator()(crHandle &handle)
 							break;
 						}
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					if(crMyPlayerData::getInstance()->ifItemIsMe(m_this))
 						m_this->doEvent(WCH_BuildQuickList);
 					else
@@ -30507,7 +30507,7 @@ void crRecvSetQuickKeyMethod::operator()(crHandle &handle)
 					}
 					crData *thisData = m_this->getDataClass();
 					void *param;
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_QuickKeyVec,param);
 					QuickKeyVec *quickKeyVec = (QuickKeyVec *)param;
 					bool found = false;
@@ -30525,7 +30525,7 @@ void crRecvSetQuickKeyMethod::operator()(crHandle &handle)
 					{
 						quickKeyVec->push_back(std::make_pair(key,abstractid));
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				} while (0);
 				ref_ptr<crStreamBuf> stream = new crStreamBuf;
 				stream->createBuf(6);
@@ -30550,7 +30550,7 @@ void crRecvSetQuickKeyMethod::operator()(crHandle &handle)
 				char key = m_stream->_readChar();
 				void *param;
 				crData *thisData = m_this->getDataClass();
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_QuickKeyVec,param);
 				QuickKeyVec *quickKeyVec = (QuickKeyVec *)param;
 				bool found = false;
@@ -30568,7 +30568,7 @@ void crRecvSetQuickKeyMethod::operator()(crHandle &handle)
 				{
 					quickKeyVec->push_back(std::make_pair(key,abstractid));
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				m_this->doEvent(WCH_BuildQuickList);
 			}
 			char *ptr2 = m_stream->getPtr();
@@ -30773,12 +30773,12 @@ void crUIShowTaskInfoMethod::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			crData *myMetierData = me->getMetierDataClass();
 			void *param;
-			myMetierData->excHandle(MAKEINT64(WCH_LockData,1));
+			myMetierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myMetierData->getParam(WCHDATA_GameTaskMap,param);
 			GameTaskMap *gameTaskMap = (GameTaskMap *)param;
 			if(!gameTaskMap||gameTaskMap->empty())
 			{
-				myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+				myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				return;
 			}
 			for( GameTaskMap::iterator itr = gameTaskMap->begin();
@@ -30791,7 +30791,7 @@ void crUIShowTaskInfoMethod::operator()(crHandle &handle)
 					break;
 				}
 			}
-			myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+			myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
             crMyPlayerData::getInstance()->setCurrentGameTask(curGameTask);
 		}
 		crImageStage *stage = cr2DStageManager::getInstance()->findStage(m_stageName);
@@ -30894,12 +30894,12 @@ void crUIShowNextTaskInfoMethod::operator()(crHandle &handle)
 		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 		crData *myMetierData = me->getMetierDataClass();
 		void *param;
-		myMetierData->excHandle(MAKEINT64(WCH_LockData,1));
+		myMetierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		myMetierData->getParam(WCHDATA_GameTaskMap,param);
 		GameTaskMap *gameTaskMap = (GameTaskMap *)param;
 		if(!gameTaskMap||gameTaskMap->empty())
 		{
-			myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+			myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			return;
 		}
 		if(taskid == 0)
@@ -30925,7 +30925,7 @@ void crUIShowNextTaskInfoMethod::operator()(crHandle &handle)
 				curGameTask = itr->second.get();
 			}
 		}
-		myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+		myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
         if(curGameTask) crMyPlayerData::getInstance()->setCurrentGameTask(curGameTask);
 		crImageStage *stage = m_element->getParentStage();
 		if(stage)
@@ -31028,7 +31028,7 @@ void crUIUseItemMethod::operator()(crHandle &handle)
 					//roleData->inputParam(WCHDATA_AboutToUseItemID,&itemid);
 					//crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 					//bindview->showCursor("UseSkill");
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_AboutToUseItemID,param);
 					int *id = (int *)param;
 					if(*id != itemid)
@@ -31043,12 +31043,12 @@ void crUIUseItemMethod::operator()(crHandle &handle)
 						crPlayerEventPacket::buildRequestPacket(packet,role,WCH_RecvAboutToUseItemID,stream.get());
 						netConductor->getNetManager()->sendPacket("all",packet);
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				else if(dataType == DT_Attack)
 				{
 					thisData->inputParam(WCHDATA_CurrentAttackID,&itemid);
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_AboutToUseItemID,param);
 					int *id = (int *)param;
 					if(*id != 0)
@@ -31063,7 +31063,7 @@ void crUIUseItemMethod::operator()(crHandle &handle)
 						crPlayerEventPacket::buildRequestPacket(packet,role,WCH_RecvAboutToUseItemID,stream.get());
 						netConductor->getNetManager()->sendPacket("all",packet);
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 			}
 		}
@@ -31126,7 +31126,7 @@ void crUIUseItem2Method::operator()(crHandle &handle)
 					//roleData->inputParam(WCHDATA_AboutToUseItemID,&itemid);
 					//crViewer *bindview = crKeyboardMouseHandle::getInstance()->getBindViewer();
 					//bindview->showCursor("UseSkill");
-					roleData->excHandle(MAKEINT64(WCH_LockData,1));
+					roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					roleData->getParam(WCHDATA_AboutToUseItemID,param);
 					int *id = (int *)param;
 					if(*id != itemid)
@@ -31141,12 +31141,12 @@ void crUIUseItem2Method::operator()(crHandle &handle)
 						crPlayerEventPacket::buildRequestPacket(packet,role,WCH_RecvAboutToUseItemID,stream.get());
 						netConductor->getNetManager()->sendPacket("all",packet);
 					}
-					roleData->excHandle(MAKEINT64(WCH_LockData,0));
+					roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				else if(dataType == DT_Attack)
 				{
 					roleData->inputParam(WCHDATA_CurrentAttackID,&itemid);
-					roleData->excHandle(MAKEINT64(WCH_LockData,1));
+					roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					roleData->getParam(WCHDATA_AboutToUseItemID,param);
 					int *id = (int *)param;
 					if(*id != 0)
@@ -31161,11 +31161,11 @@ void crUIUseItem2Method::operator()(crHandle &handle)
 						crPlayerEventPacket::buildRequestPacket(packet,role,WCH_RecvAboutToUseItemID,stream.get());
 						netConductor->getNetManager()->sendPacket("all",packet);
 					}
-					roleData->excHandle(MAKEINT64(WCH_LockData,0));
+					roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				else if(dataType == DT_Equip)
 				{//检查是否有空间
-					roleData->excHandle(MAKEINT64(WCH_LockData,1));
+					roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					roleData->getParam(WCHDATA_EquipOnMap,param);
 					EquipOnMap *equipOnMap = (EquipOnMap *)param;
 					roleData->getParam(WCHDATA_MaxEquipon,param);
@@ -31174,11 +31174,11 @@ void crUIUseItem2Method::operator()(crHandle &handle)
 					{//
 						std::string str = "您的装备栏已经满了";
 						//crGlobalHandle::getInstance()->doEvent(WCH_UINotify, MAKECREPARAM(&str,NULL));
-						roleData->excHandle(MAKEINT64(WCH_LockData,0));
+						roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					}
 					else
 					{
-						roleData->excHandle(MAKEINT64(WCH_LockData,0));
+						roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 						crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 						if(netConductor)
 						{
@@ -31345,7 +31345,7 @@ void crRecvNetUseThingMethod::operator()(crHandle &handle)
 					unsigned char dataType = *(unsigned char *)param;
 					if(dataType == DT_AttackThing)
 					{
-						roleData->excHandle(MAKEINT64(WCH_LockData,1));
+						roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 						roleData->getParam(WCHDATA_AboutToUseItemID,param);
 						int *id = (int *)param;
 						if(*id != itemid)
@@ -31361,7 +31361,7 @@ void crRecvNetUseThingMethod::operator()(crHandle &handle)
 							//crScene *scene = callback->findScene(m_this->getSceneID());
 							m_this->sendPacketToItemNeighbor(packet);
 						}
-						roleData->excHandle(MAKEINT64(WCH_LockData,0));
+						roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					}
 					else if(dataType == DT_Thing)
 					{
@@ -31480,7 +31480,7 @@ void crUTCureHPMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *userData = m_user->getDataClass();
-		userData->excHandle(MAKEINT64(WCH_LockData,1));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		userData->getParam(WCHDATA_RTHP,param);
 		float* rthp = (float *)param;
 		short curehp = *rthp;
@@ -31490,7 +31490,7 @@ void crUTCureHPMethod::operator()(crHandle &handle)
 		if(*rthp>maxhp)
 			*rthp = maxhp;
 		curehp = (short)(*rthp) - curehp;
-		userData->excHandle(MAKEINT64(WCH_LockData,0));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//send
 		//将信息传给m_this以及其附近玩家
@@ -31578,7 +31578,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *userData = m_user->getDataClass();
-		userData->excHandle(MAKEINT64(WCH_LockData,1));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		userData->getParam(WCHDATA_RTMP,param);
 		float* rtmp = (float *)param;
 		short curemp = *rtmp;
@@ -31588,7 +31588,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 		if(*rtmp>maxmp)
 			*rtmp = maxmp;
 		curemp = (short)(*rtmp) - curemp;
-		userData->excHandle(MAKEINT64(WCH_LockData,0));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//将信息传给m_this以及其附近玩家
 		unsigned char hittype = m_user->getItemtype();
@@ -31668,7 +31668,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //	{
 //		void *param;
 //		crData *userData = m_user->getDataClass();
-//		userData->excHandle(MAKEINT64(WCH_LockData,1));
+//		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		userData->getParam(WCHDATA_RTHP,param);
 //		float* rthp = (float *)param;
 //		short hp = *rthp;
@@ -31678,7 +31678,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //		if(*rthp>maxhp)
 //			*rthp = maxhp;
 //		hp = (short)(*rthp) - hp;
-//		userData->excHandle(MAKEINT64(WCH_LockData,0));
+//		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //
 //		crNode *node;
 //		if(m_user->getItemtype() == crInstanceItem::instanceitem)
@@ -31738,7 +31738,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //	{
 //		void *param;
 //		crData *userData = m_user->getDataClass();
-//		userData->excHandle(MAKEINT64(WCH_LockData,1));
+//		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		userData->getParam(WCHDATA_RTMP,param);
 //		float* rtmp = (float *)param;
 //		short mp = *rtmp;
@@ -31748,7 +31748,7 @@ void crUTCureMPMethod::operator()(crHandle &handle)
 //		if(*rtmp>maxmp)
 //			*rtmp = maxmp;
 //		mp = (short)(*rtmp) - mp;
-//		userData->excHandle(MAKEINT64(WCH_LockData,0));
+//		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //
 //		crNode *node;
 //		if(m_user->getItemtype() == crInstanceItem::instanceitem)
@@ -32269,7 +32269,7 @@ void crCureHPMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *userData = m_this->getDataClass();
-		userData->excHandle(MAKEINT64(WCH_LockData,1));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		userData->getParam(WCHDATA_RTHP,param);
 		float* rthp = (float *)param;
 		short curehp = *rthp;
@@ -32279,7 +32279,7 @@ void crCureHPMethod::operator()(crHandle &handle)
 		if(*rthp>maxhp)
 			*rthp = maxhp;
 		curehp = (short)(*rthp) - curehp;
-		userData->excHandle(MAKEINT64(WCH_LockData,0));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//将信息传给m_this以及其附近玩家
 		unsigned char hittype = m_this->getItemtype();
@@ -32417,7 +32417,7 @@ void crCureMPMethod::operator()(crHandle &handle)
 	{
 		void *param;
 		crData *userData = m_this->getDataClass();
-		userData->excHandle(MAKEINT64(WCH_LockData,1));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		userData->getParam(WCHDATA_RTMP,param);
 		float* rtmp = (float *)param;
 		short curemp = *rtmp;
@@ -32427,7 +32427,7 @@ void crCureMPMethod::operator()(crHandle &handle)
 		if(*rtmp>maxmp)
 			*rtmp = maxmp;
 		curemp = (short)(*rtmp) - curemp;
-		userData->excHandle(MAKEINT64(WCH_LockData,0));
+		userData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		//将信息传给m_this以及其附近玩家
 		unsigned char hittype = m_this->getItemtype();
@@ -33061,12 +33061,12 @@ void crUseItemProtectTimeUpdateMethod::operator()(crHandle &handle)
 	//{
 	//	void *param;
 	//	crData *data = m_this->getDataClass();
-	//	//data->excHandle(MAKEINT64(WCH_LockData,1));
+	//	//data->excHandle(MAKECREPARAM(WCH_LockData,1));
 	//	data->getParam(WCHDATA_CurUseItemProtectTime,param);
 	//	float* protectTime = (float*)param;
 	//	if(protectTime && *protectTime>0.0f)
 	//		*protectTime -= m_dt;
-	//	//data->excHandle(MAKEINT64(WCH_LockData,0));
+	//	//data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	//}
 }
 ////////////开房间式网游
@@ -34035,7 +34035,7 @@ void crRecvStartRoomGameMethod::operator()(crHandle &handle)
 		if(role)
 		{
 			roleData = role->getDataClass();
-			roleData->excHandle(MAKEINT64(WCH_InitData,role));
+			roleData->excHandle(MAKECREPARAM(WCH_InitData,role));
 			//roleData->inputParam(WCHDATA_ItemState, &itemstate);
 			role->setPosxy(m_stream->_readVec2());
 			role->setPosz(m_stream->_readFloat());
@@ -34067,7 +34067,7 @@ void crRecvStartRoomGameMethod::operator()(crHandle &handle)
 	crBrain::getInstance()->doEvent(WCH_GameStart);
 	//crRole *role = crMyPlayerData::getInstance()->getCurrentRole();
 	//crData *roleData = role->getDataClass();
-	//roleData->excHandle(MAKEINT64(WCH_InitData,NULL));
+	//roleData->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 	//unsigned char itemstate = IS_Stop;
 	//roleData->inputParam(WCHDATA_ItemState, &itemstate);
 	//role->setPosx(m_stream->_readInt());
@@ -34154,7 +34154,7 @@ void crCheckAndRackEquipOnMeshMethod::operator()(crHandle &handle)
 		{
 			void *param;
 			crData *thisData = m_this->getDataClass();
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_EquipOnMap,param);
 			EquipOnMap* equipOnMap = (EquipOnMap* )param;
 			crItemChild *itemchild;
@@ -34220,7 +34220,7 @@ void crCheckAndRackEquipOnMeshMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			std::string currentPartMeshName;
 			std::string meshName;
 			Mesh *mesh;
@@ -35787,9 +35787,9 @@ void crCloseToSyncPositionMethod::operator()(crHandle &handle)
 		{
 			float speed = 0;
 			crData *data = m_this->getDataClass();
-			//data->excHandle(MAKEINT64(WCH_LockData,1));//防止阻塞
+			//data->excHandle(MAKECREPARAM(WCH_LockData,1));//防止阻塞
 			m_this->doEvent(WCH_GetSpeed,MAKECREPARAM(&speed,NULL));
-			//data->excHandle(MAKEINT64(WCH_LockData,0));//防止阻塞
+			//data->excHandle(MAKECREPARAM(WCH_LockData,0));//防止阻塞
 			float relspeed = speed * crGlobalHandle::gData()->gUnitScale();
 			float distance = relspeed * m_dt;
 			m_this->closeToSyncPos(scene,distance);
@@ -36060,7 +36060,7 @@ void crChangeActStateMethod::operator()(crHandle &handle)
 {
 	crData *data = m_this->getDataClass();
 	void *param;
-	data->excHandle(MAKEINT64(WCH_LockData,1));
+	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 	data->getParam(WCHDATA_CurActState,param);
 	unsigned short* act = (unsigned short *)param;
 	do 
@@ -36117,7 +36117,7 @@ void crChangeActStateMethod::operator()(crHandle &handle)
 			data->inputParam(WCHDATA_CurActDuration,&m_actDuration);
 		}
 	} while (0);
-	data->excHandle(MAKEINT64(WCH_LockData,0));
+	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 }
 ////////////////////////////////
 //
@@ -37304,7 +37304,7 @@ void crRecvStorageItemMapMethod::operator()(crHandle &handle)
 				stream->_writeInt(roleid);
 				void *param;
 				crData *data = player->getDataClass();
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				data->getParam(WCHDATA_StorageMap,param);
 				StorageMap *storageMap = (StorageMap*)param;
 				if(storageMap)
@@ -37339,7 +37339,7 @@ void crRecvStorageItemMapMethod::operator()(crHandle &handle)
 				{
 					stream->_writeUChar(0);
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				crItemEventPacket packet;
 				crItemEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvStorageItemMap,stream.get());
@@ -37354,7 +37354,7 @@ void crRecvStorageItemMapMethod::operator()(crHandle &handle)
 				std::set<int> NeedDownloadItem;
 				void *param;
 				crData *data = me->getDataClass();
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				unsigned char size = m_stream->_readUChar();
 				data->getParam(WCHDATA_StorageMap,param);
 				StorageMap *storageMap = (StorageMap*)param;
@@ -37395,7 +37395,7 @@ void crRecvStorageItemMapMethod::operator()(crHandle &handle)
 						storageCountMap->insert(std::make_pair(abstractid,count));
 					}
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 				if(!NeedDownloadItem.empty())
 				{//
 					int playerid = me->getPlayerID();
@@ -37458,7 +37458,7 @@ void crBuildStorageItemListMethod::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			void *param;
 			crData *myData = me->getDataClass();
-			myData->excHandle(MAKEINT64(WCH_LockData,1));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myData->getParam(WCHDATA_StorageMap,param);
 			StorageMap* storageMap = (StorageMap* )param;
 			crItemChild *itemchild;
@@ -37539,7 +37539,7 @@ void crBuildStorageItemListMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			myData->excHandle(MAKEINT64(WCH_LockData,0));
+			myData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -37597,7 +37597,7 @@ void crInsertItemToStorageMethod::operator()(crHandle &handle)
 		crData *thisData = m_this->getDataClass();
 		int abstractid = m_item->getAbstractItemID();
 		int itemid = m_item->getInstanceItemID();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_StorageMap,param);
 		StorageMap* storageMap = (StorageMap* )param;
 		thisData->getParam(WCHDATA_MaxStorage,param);
@@ -37685,7 +37685,7 @@ void crInsertItemToStorageMethod::operator()(crHandle &handle)
 				*m_output = 1;
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		////////////////
 	}
 }
@@ -37743,7 +37743,7 @@ void crRemoveItemFromStorageMethod::operator()(crHandle &handle)
 		crData *thisData = m_this->getDataClass();
 		int abstractid = m_item->getAbstractItemID();
 		int itemid = m_item->getInstanceItemID();
-		thisData->excHandle(MAKEINT64(WCH_LockData,1));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		thisData->getParam(WCHDATA_StorageMap,param);
 		StorageMap* storageMap = (StorageMap* )param;
 		if(itemid>0)
@@ -37806,7 +37806,7 @@ void crRemoveItemFromStorageMethod::operator()(crHandle &handle)
 				*m_output = 0;
 			}
 		}
-		thisData->excHandle(MAKEINT64(WCH_LockData,0));
+		thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -37871,7 +37871,7 @@ void crRecvDepositItemMethod::operator()(crHandle &handle)
 				crRole *player = playerData->getRole(roleid);
 				void *param;
 				crData *thisData = player->getDataClass();
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_BackPackMap,param);
 				BackPackMap* backPackMap = (BackPackMap* )param;
 				std::vector<char>InsertItems;
@@ -37918,7 +37918,7 @@ void crRecvDepositItemMethod::operator()(crHandle &handle)
 				{
 					stream->_writeChar(InsertItems[i]);
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				crItemEventPacket packet;
 				crItemEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvDepositItem,stream.get());
 				netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
@@ -37940,7 +37940,7 @@ void crRecvDepositItemMethod::operator()(crHandle &handle)
 					InsertItems.push_back(m_stream->_readChar());
 				}
 				crData *data = me->getDataClass();
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				ref_ptr<crItemChild> itemchild = me->findChildItem(itemid);
 				if(itemchild.valid() && itemchild->isLoaded())
 				{
@@ -37957,7 +37957,7 @@ void crRecvDepositItemMethod::operator()(crHandle &handle)
 						}
 					}
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 				m_this->doEvent(WCH_BuildStorageItemList);
 				me->doEvent(WCH_BuildBackPackList);
@@ -38030,7 +38030,7 @@ void crRecvTakeoutItemMethod::operator()(crHandle &handle)
 				crRole *player = playerData->getRole(roleid);
 				void *param;
 				crData *thisData = player->getDataClass();
-				thisData->excHandle(MAKEINT64(WCH_LockData,1));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 				thisData->getParam(WCHDATA_StorageMap,param);
 				StorageMap* storageMap = (StorageMap* )param;
 				std::vector<char>InsertItems;
@@ -38077,7 +38077,7 @@ void crRecvTakeoutItemMethod::operator()(crHandle &handle)
 				{
 					stream->_writeChar(InsertItems[i]);
 				}
-				thisData->excHandle(MAKEINT64(WCH_LockData,0));
+				thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				crItemEventPacket packet;
 				crItemEventPacket::buildRequestPacket(packet,playerid,m_this,WCH_RecvTakeoutItem,stream.get());
 				netConductor->getNetManager()->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
@@ -38099,7 +38099,7 @@ void crRecvTakeoutItemMethod::operator()(crHandle &handle)
 					InsertItems.push_back(m_stream->_readChar());
 				}
 				crData *data = me->getDataClass();
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				ref_ptr<crItemChild> itemchild = me->findChildItem(itemid);
 				if(itemchild.valid() && itemchild->isLoaded())
 				{
@@ -38116,7 +38116,7 @@ void crRecvTakeoutItemMethod::operator()(crHandle &handle)
 						}
 					}
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 				me->doEvent(WCH_BuildStorageItemList);
 				me->doEvent(WCH_BuildBackPackList);
 			}
@@ -38930,7 +38930,7 @@ void crCarMoveMethod::operator()(crHandle &handle)
 		crData *data = m_this->getDataClass();
 		if(!crGlobalHandle::isClient() || !crMyPlayerData::getInstance()->ifItemIsMe(m_this))
 		{
-			data->excHandle(MAKEINT64(WCH_LockData,1));
+			data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			data->getParam(WCHDATA_ControllerTime,param);
 			float *controllerTime = (float *)param;
 			if(*controllerTime > 0.0f)
@@ -38942,7 +38942,7 @@ void crCarMoveMethod::operator()(crHandle &handle)
 					*controllerTime = 0.0f;
 				}
 			}
-			data->excHandle(MAKEINT64(WCH_LockData,0));
+			data->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 		data->getParam(WCHDATA_RTHP,param);
 		float rthp = *(float *)param;
@@ -39182,7 +39182,7 @@ void crTankMoveMethod::operator()(crHandle &handle)
 			crData *data = m_this->getDataClass();
 			if(!crGlobalHandle::isClient() || !crMyPlayerData::getInstance()->ifItemIsMe(m_this))
 			{
-				data->excHandle(MAKEINT64(WCH_LockData,1));
+				data->excHandle(MAKECREPARAM(WCH_LockData,1));
 				data->getParam(WCHDATA_ControllerTime,param);
 				float *controllerTime = (float *)param;
 				if(*controllerTime > 0.0f)
@@ -39194,7 +39194,7 @@ void crTankMoveMethod::operator()(crHandle &handle)
 						*controllerTime = 0.0f;
 					}
 				}
-				data->excHandle(MAKEINT64(WCH_LockData,0));
+				data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			}
 			data->getParam(WCHDATA_RTHP,param);
 			float rthp = *(float *)param;
@@ -39668,7 +39668,7 @@ void crAttackMethod::operator()(crHandle &handle)
 		}
 		else
 		{
-			thisData->excHandle(MAKEINT64(WCH_LockData,1));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			thisData->getParam(WCHDATA_QuickList,param);
 			QuickList *quickList = (QuickList *)param;
 			bool found = false;
@@ -39697,7 +39697,7 @@ void crAttackMethod::operator()(crHandle &handle)
 				}
 				thisData->inputParam(WCHDATA_AboutToUseItemID,NULL);
 			}
-			thisData->excHandle(MAKEINT64(WCH_LockData,0));
+			thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -41142,9 +41142,9 @@ void crPlayerDataCreateStreamMethod::operator()(crHandle &handle)
 	{
 		crData *data = playerData->getDataClass();
 		//void *param;
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		ref_ptr<crStreamBuf> stream = new crStreamBuf;
-		data->excHandle(MAKEINT64(WCH_BuildCreateStream,stream.get()));
+		data->excHandle(MAKECREPARAM(WCH_BuildCreateStream,stream.get()));
 		//data->getParam(WCHDATA_DataStream,param);
 		//if(param)
 		//{
@@ -41154,7 +41154,7 @@ void crPlayerDataCreateStreamMethod::operator()(crHandle &handle)
 			crNetConductor *netConductor = crNetContainer::getInstance()->getDynamicNetConductor(GameClient_Game);
 			netConductor->getNetManager()->sendPacket("all",packet);
 		//}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -41537,7 +41537,7 @@ void crRectSelectItemMethod::operator()(crHandle &handle)
 				{//清除之前选中的自己人
 					void *param;
 					crData *cameraData = m_this->getDataClass();
-					cameraData->excHandle(MAKEINT64(WCH_LockData,1));
+					cameraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					cameraData->getParam(WCHDATA_SelectMyRoleVec,param);
 					crNode *fxNode;
 					crDecalUpdateCallback *callback;
@@ -41560,7 +41560,7 @@ void crRectSelectItemMethod::operator()(crHandle &handle)
 						}
 					}
 					selectMyRoles->resize(0);
-					cameraData->excHandle(MAKEINT64(WCH_LockData,0));
+					cameraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				}
 				for( std::vector<crInstanceItem *>::iterator itr = ItemVec.begin();
 					itr != ItemVec.end();
@@ -41707,7 +41707,7 @@ void crWaypointLinkMethod::operator()(crHandle &handle)
 		if(cameraData)
 		{
 			void *param;
-			cameraData->excHandle(MAKEINT64(WCH_LockData,1));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			cameraData->getParam(WCHDATA_WaypointNodeMap,param);
 			WaypointNodeMap *waypointNodeMap = (WaypointNodeMap *)param;
 			if(waypointNodeMap)
@@ -41767,7 +41767,7 @@ void crWaypointLinkMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			cameraData->excHandle(MAKEINT64(WCH_LockData,0));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -41953,7 +41953,7 @@ void crWaypointLoadMethod::operator()(crHandle &handle)
 		{
 			crData *cameraData = camera->getAttachedNode()->getDataClass();
 			void *param;
-			cameraData->excHandle(MAKEINT64(WCH_LockData,1));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			cameraData->getParam(WCHDATA_WaypointNodeMap,param);
 			WaypointNodeMap *waypointNodeMap = (WaypointNodeMap *)param;
 			if(waypointNodeMap)
@@ -42016,7 +42016,7 @@ void crWaypointLoadMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			cameraData->excHandle(MAKEINT64(WCH_LockData,0));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -42168,7 +42168,7 @@ void crWaypointPannedMethod::operator()(crHandle &handle)
 		if(cameraData)
 		{
 			void *param;
-			cameraData->excHandle(MAKEINT64(WCH_LockData,1));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			cameraData->getParam(WCHDATA_WaypointNodeMap,param);
 			WaypointNodeMap *waypointNodeMap = (WaypointNodeMap *)param;
 			if(waypointNodeMap)
@@ -42220,7 +42220,7 @@ void crWaypointPannedMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			cameraData->excHandle(MAKEINT64(WCH_LockData,0));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -42252,7 +42252,7 @@ void crWaypointDeleteMethod::operator()(crHandle &handle)
 		if(cameraData)
 		{
 			void *param;
-			cameraData->excHandle(MAKEINT64(WCH_LockData,1));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			cameraData->getParam(WCHDATA_WaypointNodeMap,param);
 			WaypointNodeMap *waypointNodeMap = (WaypointNodeMap *)param;
 			if(waypointNodeMap)
@@ -42302,7 +42302,7 @@ void crWaypointDeleteMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			cameraData->excHandle(MAKEINT64(WCH_LockData,0));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -42334,7 +42334,7 @@ void crSetWaypointMethod::operator()(crHandle &handle)
 		if(cameraData)
 		{
 			void *param;
-			cameraData->excHandle(MAKEINT64(WCH_LockData,1));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			cameraData->getParam(WCHDATA_WaypointNodeMap,param);
 			WaypointNodeMap *waypointNodeMap = (WaypointNodeMap *)param;
 			if(waypointNodeMap)
@@ -42362,7 +42362,7 @@ void crSetWaypointMethod::operator()(crHandle &handle)
 					}
 				}
 			}
-			cameraData->excHandle(MAKEINT64(WCH_LockData,0));
+			cameraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -43431,7 +43431,7 @@ void crUseItemRecordMapUpdateMethod::operator()(crHandle &handle)
 {
 	void *param;
 	crData *data = m_this->getDataClass();
-	data->excHandle(MAKEINT64(WCH_LockData,1));
+	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 	data->getParam(WCHDATA_UseItemRecordMap,param);
 	UseItemRecordMap *useItemRecordMap = (UseItemRecordMap *)param;
 	for( UseItemRecordMap::iterator itr = useItemRecordMap->begin();
@@ -43447,7 +43447,7 @@ void crUseItemRecordMapUpdateMethod::operator()(crHandle &handle)
 			++itr;
 		}
 	}
-	data->excHandle(MAKEINT64(WCH_LockData,0));
+	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 }
 ///////////////////////////////////////////
 ////
@@ -43777,11 +43777,11 @@ void crRecvAdvanceRoomProgressMethod::operator()(crHandle &handle)
 		{
 			void *param;
 			crData *data = room->getDataClass();
-			data->excHandle(MAKEINT64(WCH_LockData,1));
+			data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			data->getParam(WCHDATA_RoomProgress,param);
 			short *progress = (short *)param;
 			(*progress)++;
-			data->excHandle(MAKEINT64(WCH_LockData,0));
+			data->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -43896,11 +43896,11 @@ void crReliveItemsMethod::operator()(crHandle &handle)
 				if(item)
 				{
 					thisData = item->getDataClass();
-					thisData->excHandle(MAKEINT64(WCH_InitData,item));
+					thisData->excHandle(MAKECREPARAM(WCH_InitData,item));
 
 					//thisData->inputParam(WCHDATA_ItemState, &itemstate);
 
-					thisData->excHandle(MAKEINT64(WCH_LockData,1));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,1));
 					thisData->getParam(WCHDATA_PatrolPointVec,param);
 					patrolPointVec = (PatrolPointVec*)param;
 					if(patrolPointVec && !patrolPointVec->empty())
@@ -43922,7 +43922,7 @@ void crReliveItemsMethod::operator()(crHandle &handle)
 						item->setPosxy(coord[0] / scale, coord[1] / scale);
 						item->setPosz(coordz / scale);
 					}
-					thisData->excHandle(MAKEINT64(WCH_LockData,0));
+					thisData->excHandle(MAKECREPARAM(WCH_LockData,0));
 					scene->itemRelive(item);
 				}
 			}
@@ -44024,11 +44024,11 @@ void crNextRoomProgressMethod::operator()(crHandle &handle)
 {
 	void *param;
 	crData *data = m_this->getDataClass();
-	data->excHandle(MAKEINT64(WCH_LockData,1));
+	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 	data->getParam(WCHDATA_RoomProgress,param);
 	short *progress = (short *)param;
 	(*progress)++;
-	data->excHandle(MAKEINT64(WCH_LockData,0));
+	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 }
 /////////////////////////////////////////
 //
@@ -45560,12 +45560,12 @@ void crDynamicCollideExtraMethod::operator()(crHandle &handle)
 			//	crHandle *handle = data->getHandle(MAKEINT64(WCH_ExtraHandle,extid));
 			//	if(handle)
 			//	{
-			//		//data->excHandle(MAKEINT64(WCH_LockData,1));
+			//		//data->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//		data->getParam(WCHDATA_ExtraData,param);
 			//		crData *extraData = (crData *)param;
 			//		if(extraData)
 			//		{
-			//			extraData->excHandle(MAKEINT64(WCH_LockData,1));
+			//			extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//			extraData->getParam(WCHDATA_ExtraIDMap,param);
 			//			ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 			//			if(extraData && extraIDMap->find(extid) == extraIDMap->end())
@@ -45574,9 +45574,9 @@ void crDynamicCollideExtraMethod::operator()(crHandle &handle)
 			//				extraData->insertHandle(MAKEINT64(WCH_DoExtra,extid),cloneHandle);
 			//				(*extraIDMap)[extid] = 0;
 			//			}
-			//			extraData->excHandle(MAKEINT64(WCH_LockData,0));
+			//			extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//		}
-			//		//data->excHandle(MAKEINT64(WCH_LockData,0));
+			//		//data->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//	}
 			//}
 			//else
@@ -46134,7 +46134,7 @@ void crGameTaskUpdateMethod::operator()(crHandle &handle)
 	{
 		crData *data = myPlayer->getMainRole()->getMetierDataClass();
 		void *param;
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_GameTaskMap,param);
 		GameTaskMap *gameTaskMap = (GameTaskMap *)param;
 		if(gameTaskMap)
@@ -46147,7 +46147,7 @@ void crGameTaskUpdateMethod::operator()(crHandle &handle)
 				}
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////
@@ -46749,7 +46749,7 @@ void crBeginRunGameMethod::operator()(crHandle &handle)
 //				//if(playerData.valid() && playerData->getPlayerGameData() && playerData->getPlayerGameData()->getDataClass())
 //				//{//玩家在线
 //				//	data = playerData->getPlayerGameData()->getDataClass();
-//				//	data->excHandle(MAKEINT64(WCH_LockData,1));
+//				//	data->excHandle(MAKECREPARAM(WCH_LockData,1));
 //				//	data->getParam(WCHDATA_Money,param);
 //				//	int *curmoney = (int *)param;
 //				//	*curmoney = dbmoney+money;
@@ -46758,7 +46758,7 @@ void crBeginRunGameMethod::operator()(crHandle &handle)
 //				//	stream->_writeInt(*curmoney);
 //				//	crPlayerDataEventPacket::buildReplyPacket(packet,playerid,WCH_JXJRecvMoneyChange,stream.get());
 //				//	netManager->sendPacket(playerData->getPlayerConnectServerAddress(),packet);
-//				//	data->excHandle(MAKEINT64(WCH_LockData,0));
+//				//	data->excHandle(MAKECREPARAM(WCH_LockData,0));
 //				//}
 //			}
 //		}
@@ -46821,7 +46821,7 @@ void crMoneyChangeMethod::operator()(crHandle &handle)
 		*m_output = false;
 		void *param;
 		crData *data = m_this->getDataClass();
-		data->excHandle(MAKEINT64(WCH_LockData,1));
+		data->excHandle(MAKECREPARAM(WCH_LockData,1));
 		data->getParam(WCHDATA_Money,param);
 		int *money = (int *)param;
 		if(*money+m_moneydata.first>=0)
@@ -46892,7 +46892,7 @@ void crMoneyChangeMethod::operator()(crHandle &handle)
 				//}
 			}
 		}
-		data->excHandle(MAKEINT64(WCH_LockData,0));
+		data->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 /////////////////////////////////////////

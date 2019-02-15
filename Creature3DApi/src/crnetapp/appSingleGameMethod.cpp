@@ -144,7 +144,7 @@ void crCreateSingleGameDataMethod::operator()(crHandle &handle)
 {
 	ref_ptr<crData> data = CREncapsulation::loadData("script/clientevent.cfg");
 	crGlobalHandle::getInstance()->setDataClass(data.get());
-	data->excHandle(MAKEINT64(WCH_InitData,NULL));
+	data->excHandle(MAKECREPARAM(WCH_InitData,NULL));
 
 	crMyPlayerData *myPlayerData = crMyPlayerData::getInstance();
 	CRCore::ref_ptr<crQueryGameListData> queryGame = new crQueryGameListData;
@@ -200,7 +200,7 @@ void crCreateSingleGameDataMethod::operator()(crHandle &handle)
 			//{
 			//	data->inputParam(WCHDATA_DataStream,metierstream);
 			//}
-			data->excHandle(MAKEINT64(WCH_InitData,role.get()));
+			data->excHandle(MAKECREPARAM(WCH_InitData,role.get()));
 			role->setMetierStream(NULL);
 		}
 	}
@@ -233,7 +233,7 @@ void crCreateSingleGameDataMethod::operator()(crHandle &handle)
 		//{
 		//	data->inputParam(WCHDATA_DataStream,itemstream);
 		//}
-		data->excHandle(MAKEINT64(WCH_InitData,role.get()));
+		data->excHandle(MAKECREPARAM(WCH_InitData,role.get()));
 		role->setStream(NULL);
 	}
 	myPlayerData->addRole(role.get());

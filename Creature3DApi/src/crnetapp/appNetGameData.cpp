@@ -604,7 +604,7 @@ void crInstanceItem::clearExtra()
 		m_dataClass->getParam(WCHDATA_ExtraData,param);
 		if(param)
 		{
-			m_dataClass->excHandle(MAKEINT64(WCH_ResetExtra,NULL));
+			m_dataClass->excHandle(MAKECREPARAM(WCH_ResetExtra,NULL));
 			crData *extraData = (crData *)param;
 			if(crGlobalHandle::isClient())
 			{
@@ -612,7 +612,7 @@ void crInstanceItem::clearExtra()
 			}
 			extraData->clear();
 			//crHandle *handle;
-			//extraData->excHandle(MAKEINT64(WCH_LockData,1));
+			//extraData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			//extraData->getParam(WCHDATA_ExtraIDMap,param);
 			//ExtraIDMap *extraIDMap = (ExtraIDMap *)param;
 			//for( ExtraIDMap::iterator itr = extraIDMap->begin();
@@ -630,7 +630,7 @@ void crInstanceItem::clearExtra()
 			//	extraData->removeHandle(MAKEINT64(WCH_DoExtra,itr->first));
 			//}
 			//extraIDMap->clear();
-			//extraData->excHandle(MAKEINT64(WCH_LockData,0));
+			//extraData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			//extraData->clear();
 		}
 	}
@@ -850,7 +850,7 @@ void crInstanceItem::clientUpdate(float dt)
 	//			m_dataClass->inputParam(WCHDATA_ItemState, &itemstate);
 	//		}
 	//		//clearExtra();
-	//		//m_dataClass->excHandle(MAKEINT64(WCH_InitData,this));
+	//		//m_dataClass->excHandle(MAKECREPARAM(WCH_InitData,this));
 	//	}
 	//}
 	closeToTargetDir(dt);
@@ -894,7 +894,7 @@ void crInstanceItem::serverUpdate(float dt)
 				m_dataClass->inputParam(WCHDATA_ItemState, &itemstate);
 			}
 			//clearExtra();
-			//m_dataClass->excHandle(MAKEINT64(WCH_InitData,this));
+			//m_dataClass->excHandle(MAKECREPARAM(WCH_InitData,this));
 		}
 		else
 		{
@@ -903,7 +903,7 @@ void crInstanceItem::serverUpdate(float dt)
 		}
 		if(getItemtype() == crInstanceItem::Npc)
 		{
-			m_dataClass->excHandle(MAKEINT64(WCH_LockData,1));
+			m_dataClass->excHandle(MAKECREPARAM(WCH_LockData,1));
 			m_dataClass->getParam(WCHDATA_InPatrolEnemyMap,param);
 			InPatrolEnemyMap *inPatrolEnemyMap = (InPatrolEnemyMap *)param;
 			if(inPatrolEnemyMap)
@@ -948,7 +948,7 @@ void crInstanceItem::serverUpdate(float dt)
 				//sprintf(gDebugInfo->buf(),"(´íÎó)crInstanceItem::serverUpdate NPCÃ»ÓÐPatrol instanceid=%d\n\0",getInstanceItemID());
 				//gDebugInfo->debugInfo(CRCore::FATAL);
 			}
-			m_dataClass->excHandle(MAKEINT64(WCH_LockData,0));
+			m_dataClass->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 	removedItemChildUpdate(dt);
@@ -1237,7 +1237,7 @@ void crInstanceItem::loadItemData(char streamType,bool loadchild)
 				break;
 			}
 		}
-		m_dataClass->excHandle(MAKEINT64(WCH_InitData,this));
+		m_dataClass->excHandle(MAKECREPARAM(WCH_InitData,this));
 		setStream(NULL);
 		if(m_itemtype == Npc || m_itemtype == Role)
 		{
@@ -5171,7 +5171,7 @@ void crRole::loadMetierData(char streamType)
 					//	break;
 				}
 			}
-			m_metierDataClass->excHandle(MAKEINT64(WCH_InitData,this));
+			m_metierDataClass->excHandle(MAKECREPARAM(WCH_InitData,this));
 			setMetierStream(NULL);
 		}
 	}
@@ -6276,7 +6276,7 @@ void crRoom::sendStartGame(crNetManager *netManager,crNetDataManager *netDataMan
 			if(role)
 			{
 				crData *roleData = role->getDataClass();
-				roleData->excHandle(MAKEINT64(WCH_InitData,role));
+				roleData->excHandle(MAKECREPARAM(WCH_InitData,role));
 				//unsigned char itemstate = IS_Stop;
 				//roleData->inputParam(WCHDATA_ItemState, &itemstate);
 				//m_scene->gainBirthPoint(role,getBirthPointIndex(roomPlayer));

@@ -536,15 +536,15 @@ void crMyPlayerData::clear()
 	//	void *param;
 	//	ref_ptr<crStreamBuf> playerStream;
 	//	crData *olddata = m_playerGameData->getDataClass();
-	//	olddata->excHandle(MAKEINT64(WCH_LockData,1));
-	//	olddata->excHandle(MAKEINT64(WCH_BuildDataStream,PlayerStream));
+	//	olddata->excHandle(MAKECREPARAM(WCH_LockData,1));
+	//	olddata->excHandle(MAKECREPARAM(WCH_BuildDataStream,PlayerStream));
 	//	olddata->getParam(WCHDATA_DataStream,param);
 	//	if(param)
 	//	{
 	//		playerStream = *((ref_ptr<crStreamBuf>*)param);
 	//		playerStream->seekBegin();
 	//	}
-	//	olddata->excHandle(MAKEINT64(WCH_LockData,0));
+	//	olddata->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 	//	std::string script = crMyPlayerData::getInstance()->getSelectedGame()->getGameName() + "/playergamedata.cfg";
 	//	ref_ptr<crData> data = CREncapsulation::loadData(script);
@@ -558,15 +558,15 @@ void crMyPlayerData::clear()
 	//	if(mainrole)
 	//	{
 	//		olddata = mainrole->getDataClass();
-	//		olddata->excHandle(MAKEINT64(WCH_LockData,1));
-	//		olddata->excHandle(MAKEINT64(WCH_BuildDataStream,PlayerStream));
+	//		olddata->excHandle(MAKECREPARAM(WCH_LockData,1));
+	//		olddata->excHandle(MAKECREPARAM(WCH_BuildDataStream,PlayerStream));
 	//		olddata->getParam(WCHDATA_DataStream,param);
 	//		if(param)
 	//		{
 	//			playerStream = *((ref_ptr<crStreamBuf>*)param);
 	//			playerStream->seekBegin();
 	//		}
-	//		olddata->excHandle(MAKEINT64(WCH_LockData,0));
+	//		olddata->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 	//		script = mainrole->getAbstractItem()->getScript();
 	//		data = CREncapsulation::loadData(script);
@@ -577,15 +577,15 @@ void crMyPlayerData::clear()
 	//		mainrole->setDataClass(data.get());
 
 	//		//olddata = mainrole->getMetierDataClass();
-	//		//olddata->excHandle(MAKEINT64(WCH_LockData,1));
-	//		//olddata->excHandle(MAKEINT64(WCH_BuildDataStream,PlayerStream));
+	//		//olddata->excHandle(MAKECREPARAM(WCH_LockData,1));
+	//		//olddata->excHandle(MAKECREPARAM(WCH_BuildDataStream,PlayerStream));
 	//		//olddata->getParam(WCHDATA_DataStream,param);
 	//		//if(param)
 	//		//{
 	//		//	playerStream = *((ref_ptr<crStreamBuf>*)param);
 	//		//	playerStream->seekBegin();
 	//		//}
-	//		//olddata->excHandle(MAKEINT64(WCH_LockData,0));
+	//		//olddata->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 	//		//script = mainrole->getAbstractMetier()->getMetierScript();
 	//		//data = CREncapsulation::loadData(script);

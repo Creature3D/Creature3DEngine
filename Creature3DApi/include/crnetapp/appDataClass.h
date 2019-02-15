@@ -275,7 +275,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	void serverCheckData(crInstanceItem *item, _crInt64 completeMsg/*int& count*/);
 	void checkItemChild(CRNet::crNetConductor *netConductor,crInstanceItem *item,int first,int &second,std::set<int>&AbstractIDSet,int &count);
@@ -509,7 +509,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	//void serverCheckData(crInstanceItem *item, int &count);
 	//void checkItemChild(CRNet::crNetConductor *netConductor,crInstanceItem *item,int first,int &second,int &count);
@@ -630,7 +630,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	virtual ~crRpgGameMetierData();
 	MetierSkillASet m_metierSkillASet;//职业技能抽象ID列表,从脚本读取，不用存储到数据库
@@ -673,7 +673,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	unsigned char m_dataType;
 	unsigned char m_itemState;
@@ -742,7 +742,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	unsigned char m_dataType;
 	unsigned char m_skilllevel;
@@ -788,7 +788,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 	virtual void clear();
 protected:
     ExtraIDMap m_extraIDMap;
@@ -805,7 +805,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	unsigned short m_buttonid;
 	unsigned short m_textid;
@@ -820,7 +820,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	CRCore::crNode* m_currentFocusNode;
 	CRCore::ref_ptr<CREncapsulation::crTableIO> m_createRoleTab;
@@ -844,7 +844,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 	enum CameraMove
 	{
 		None = 0x0,
@@ -884,7 +884,7 @@ public:
 	crCommandDlgData(const crCommandDlgData& data);
 	DataClass(CRCore, CommandDlg)
 	virtual void inputParam(int i, void *param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	int m_parentType;
 	void *m_parent;
@@ -927,7 +927,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	UseItemRecordMap m_useItemRecordMap;
 	GNE::Mutex m_dataMutex;
@@ -941,7 +941,7 @@ public:
 	virtual void addParam(int i, const std::string& str);
 	virtual void inputParam(int i, void *param);
 	virtual void getParam(int i, void*& param);
-	virtual void excHandle(_crInt64 msg);
+	virtual void excHandle(CREPARAM msg);
 protected:
 	short m_progress;
 	GNE::Mutex m_dataMutex;

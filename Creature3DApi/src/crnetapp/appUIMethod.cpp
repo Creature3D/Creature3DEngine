@@ -222,7 +222,7 @@ void crCreateItemTalkMethod::operator()(crHandle &handle)
 
 			crData *metierData = me->getMetierDataClass();
 			ref_ptr<crGameTask> gameTask;
-			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			metierData->getParam(WCHDATA_GameTaskMap,param);
 			GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 
@@ -305,7 +305,7 @@ void crCreateItemTalkMethod::operator()(crHandle &handle)
 				talkText = (*m_tasktable)(0,3);
 				option = (*m_tasktable)(0,4);
 			}
-			metierData->excHandle(MAKEINT64(WCH_LockData,0));
+			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			crData *itemData = m_this->getDataClass();
 			itemData->inputParam(WCHDATA_ItemTalk,&talkText);
 			itemData->inputParam(WCHDATA_ItemOption,&option);
@@ -486,12 +486,12 @@ void crShowItemTalkMethod::operator()(crHandle &handle)
 //		void *param;
 //		crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 //		crData *metierData = me->getMetierDataClass();
-//		metierData->excHandle(MAKEINT64(WCH_LockData,1));
+//		metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //		metierData->getParam(WCHDATA_GameTaskMap,param);
 //		GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 //		GameTaskMap::iterator itr = gameTaskMap->find(m_taskid);
 //		ref_ptr<crGameTask> gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-//		metierData->excHandle(MAKEINT64(WCH_LockData,0));
+//		metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //		if(!gameTask.valid())
 //			break;
 //
@@ -800,11 +800,11 @@ void crShowItemTalkMethod::operator()(crHandle &handle)
 //			int taskid = *(int *)param;
 //			ref_ptr<crGameTask> gameTask;
 //			metierData->getParam(WCHDATA_GameTaskMap,param);
-//			metierData->excHandle(MAKEINT64(WCH_LockData,1));
+//			metierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 //			GameTaskMap* gameTaskMap = (GameTaskMap* )param;
 //			GameTaskMap::iterator itr = gameTaskMap->find(taskid);
 //			gameTask = itr!=gameTaskMap->end()?itr->second.get():NULL;
-//			metierData->excHandle(MAKEINT64(WCH_LockData,0));
+//			metierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 //			if(gameTask.valid() && /*gameTask->getActivation() && */!gameTask->isComplete())
 //			{
 //				AwardItemMap &awardItemMap = gameTask->getAwardItemMap();
@@ -1453,7 +1453,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 		void *param;
 		crData *roleData = role->getDataClass();
 		char tmpText[64];
-		roleData->excHandle(MAKEINT64(WCH_LockData,1));
+		roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		roleData->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -1487,7 +1487,7 @@ void crUIUpdateRole2Method::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		roleData->excHandle(MAKEINT64(WCH_LockData,0));
+		roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 
 		if(nameWidget)
 		{
@@ -1923,12 +1923,12 @@ void crBuildTaskListMethod::operator()(crHandle &handle)
 			crRole *me = crMyPlayerData::getInstance()->getCurrentRole();
 			crData *myMetierData = me->getMetierDataClass();
 			void *param;
-			myMetierData->excHandle(MAKEINT64(WCH_LockData,1));
+			myMetierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 			myMetierData->getParam(WCHDATA_GameTaskMap,param);
 			GameTaskMap *gameTaskMap = (GameTaskMap *)param;
 			if(!gameTaskMap||gameTaskMap->empty())
 			{
-				myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+				myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 				return;
 			}
 			std::string str;
@@ -1949,7 +1949,7 @@ void crBuildTaskListMethod::operator()(crHandle &handle)
 				}
 				taskList->addData(str);
 			}
-			myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+			myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		}
 	}
 }
@@ -2029,7 +2029,7 @@ void crUIUpdateMyInfoMethod::operator()(crHandle &handle)
 		std::string str;
 		void *param;
 		crData *roleData = role->getDataClass();
-		roleData->excHandle(MAKEINT64(WCH_LockData,1));
+		roleData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		roleData->getParam(WCHDATA_EquipOnMap,param);
 		crItemChild *itemChild;
 		float equip = 0;
@@ -2049,7 +2049,7 @@ void crUIUpdateMyInfoMethod::operator()(crHandle &handle)
 				equipLvSum+=equip;
 			}
 		}
-		roleData->excHandle(MAKEINT64(WCH_LockData,0));
+		roleData->excHandle(MAKECREPARAM(WCH_LockData,0));
 		
 		if(lvWidget)
 		{
@@ -3702,12 +3702,12 @@ void crUIUpdateTaskTraceMethod::operator()(crHandle &handle)
 		traceWidget->clearText();
 		crData *myMetierData = me->getMetierDataClass();
 		void *param;
-		myMetierData->excHandle(MAKEINT64(WCH_LockData,1));
+		myMetierData->excHandle(MAKECREPARAM(WCH_LockData,1));
 		myMetierData->getParam(WCHDATA_GameTaskMap,param);
 		GameTaskMap *gameTaskMap = (GameTaskMap *)param;
 		if(!gameTaskMap||gameTaskMap->empty())
 		{
-			myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+			myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 			return;
 		}
 		std::string file,ext;
@@ -3873,7 +3873,7 @@ void crUIUpdateTaskTraceMethod::operator()(crHandle &handle)
 				}
 			}
 		}
-		myMetierData->excHandle(MAKEINT64(WCH_LockData,0));
+		myMetierData->excHandle(MAKECREPARAM(WCH_LockData,0));
 	}
 }
 ////////////////////////////////
@@ -4684,7 +4684,7 @@ void crCommandEventMethod::operator()(crHandle &handle)
 	{
 		crCanvasNode *canvas = m_this->getParentCanvas();
 		crData *data = canvas->getDataClass();
-		if(data) data->excHandle(m_msg);
+		if(data) data->excHandle(MAKECREPARAM(m_msg,NULL));
 	}
 }
 ////////////////////////////////
