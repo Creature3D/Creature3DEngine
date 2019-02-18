@@ -527,7 +527,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\3rdParty\FMOD;..\..\3rdParty\rabbitmq-c-master\librabbitmq;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -546,10 +546,10 @@
       </DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>CRCore.lib;CRNet.lib;CRDataBase.lib;gne.lib;CRGUI.lib;ConfigScript.lib;CREncapsulation.lib;CRIOManager.lib;CRPhysics.lib;CRProducer.lib;CRParticle.lib;ReplicantBody.lib;ode_single.lib;CRText.lib;vrutils.lib;CRDownload.lib;CRUI.lib;CRSound.lib;fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CRCore.lib;CRNet.lib;CRDataBase.lib;gne.lib;CRGUI.lib;ConfigScript.lib;CREncapsulation.lib;CRIOManager.lib;CRPhysics.lib;CRProducer.lib;CRParticle.lib;ReplicantBody.lib;ode_single.lib;CRText.lib;vrutils.lib;CRDownload.lib;CRUI.lib;CRSound.lib;fmod_vc.lib;rabbitmq.4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;..\..\3rdparty\ode-0.13\lib\releasesingledll\x86;..\..\3rdParty\FMOD\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;..\..\3rdparty\ode-0.13\lib\releasesingledll\x86;..\..\3rdParty\FMOD\Win32;..\..\3rdParty\rabbitmq-c-master\build\x86\librabbitmq\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -571,7 +571,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\3rdParty\FMOD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\src;..\..\3rdparty\gnelib-0.70\include;..\..\3rdparty\ode-0.13\include;..\..\3rdparty\ode-0.13\src;..\..\3rdparty\cal3d-0.11.0\src;..\..\3rdparty\HawkNL\HawkNL17b1src\HawkNL1.70\include;..\..\3rdParty\FMOD;..\..\3rdParty\rabbitmq-c-master\librabbitmq;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CRNETAPP_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -590,10 +590,10 @@
       </DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>CRCore.lib;CRNet.lib;CRDataBase.lib;gne.lib;CRGUI.lib;ConfigScript.lib;CREncapsulation.lib;CRIOManager.lib;CRPhysics.lib;CRProducer.lib;CRParticle.lib;ReplicantBody.lib;ode_single.lib;CRText.lib;vrutils.lib;CRDownload.lib;CRUI.lib;CRSound.lib;fmod64_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CRCore.lib;CRNet.lib;CRDataBase.lib;gne.lib;CRGUI.lib;ConfigScript.lib;CREncapsulation.lib;CRIOManager.lib;CRPhysics.lib;CRProducer.lib;CRParticle.lib;ReplicantBody.lib;ode_single.lib;CRText.lib;vrutils.lib;CRDownload.lib;CRUI.lib;CRSound.lib;fmod64_vc.lib;rabbitmq.4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../x64/lib;..\..\3rdparty\ode-0.13\lib\releasesingledll\x64;..\..\3rdParty\FMOD\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../x64/lib;..\..\3rdparty\ode-0.13\lib\releasesingledll\x64;..\..\3rdParty\FMOD\Win64;..\..\3rdParty\rabbitmq-c-master\build\x64\librabbitmq\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -1145,6 +1145,7 @@ copy C:\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
     <ClCompile Include="..\..\src\crnetapp\appNetStartLoader.cpp" />
     <ClCompile Include="..\..\src\crnetapp\appNodeCallbacks.cpp" />
     <ClCompile Include="..\..\src\crnetapp\appPathFinding.cpp" />
+    <ClCompile Include="..\..\src\crnetapp\appRabbitMq.cpp" />
     <ClCompile Include="..\..\src\crnetapp\appServerPlayerData.cpp" />
     <ClCompile Include="..\..\src\crnetapp\appSightInfo.cpp" />
     <ClCompile Include="..\..\src\crnetapp\appSingleGameLogic.cpp" />
@@ -1180,6 +1181,7 @@ copy C:\Intermediate\$(TargetName).pdb ..\..\..\Projects\Editor\Creature3DEditor
     <ClInclude Include="..\..\include\crnetapp\appNetStartLoader.h" />
     <ClInclude Include="..\..\include\crnetapp\appNodeCallbacks.h" />
     <ClInclude Include="..\..\include\crnetapp\appPathFinding.h" />
+    <ClInclude Include="..\..\include\crnetapp\appRabbitMq.h" />
     <ClInclude Include="..\..\include\crnetapp\appServerPlayerData.h" />
     <ClInclude Include="..\..\include\crnetapp\appSightInfo.h" />
     <ClInclude Include="..\..\include\crnetapp\appSingleGameLogic.h" />

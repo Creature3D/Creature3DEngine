@@ -98,6 +98,9 @@
     <ClCompile Include="..\..\src\crnetapp\appDataLockManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\crnetapp\appRabbitMq.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\crnetapp\appAccountData.h">
@@ -197,6 +200,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\crnetapp\appDataLockManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\crnetapp\appRabbitMq.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

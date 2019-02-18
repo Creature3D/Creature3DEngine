@@ -299,7 +299,7 @@ int main( int argc, char **argv )
 
 	////_putenv(program.c_str());
 	HANDLE hMutex = NULL;
-	if(runMode > 0/* && runMode < WebGame*/)
+	if(runMode > 0 && runMode <= WebGame)
 	{//Ë«¿ª
 		char buf[64];
 		int i = 0;
@@ -542,7 +542,6 @@ int main( int argc, char **argv )
 	CRCore::crEventCallbackManager::getInstance()->clear();
 	CRCore::crDataManager::getInstance()->clear();
 	CRCore::crHandleManager::getInstance()->clear();
-	//CRAL::crSoundManager::instance()->shutdown();
 	CRCore::crTexture::setImageDataRequestHandler(NULL);
 	CRParticle::crParticleEffect::setLoadNodeCfgHandler(NULL);
 	GL2Extensions::clearExtensions();
