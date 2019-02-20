@@ -597,6 +597,10 @@ void crMyPlayerData::clear()
 	//	}
 	//}
 }
+void crMyPlayerData::cleanup()
+{
+	m_instance = NULL;
+}
 void crMyPlayerData::setPlayerID(int playerid)
 {
 	m_playerID = playerid;

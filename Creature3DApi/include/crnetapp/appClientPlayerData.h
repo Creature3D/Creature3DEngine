@@ -144,6 +144,7 @@ public:
 	void setExitCode(unsigned char exitCode);
 	unsigned char getExitCode();
 	void clear();
+	void cleanup();
 
 	void setPlayerID(int playerid);
 	int getPlayerID();
