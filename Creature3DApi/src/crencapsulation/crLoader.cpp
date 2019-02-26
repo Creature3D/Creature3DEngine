@@ -5469,7 +5469,7 @@ void CREncapsulation::loadParticle(const std::string &fileName,crGroup *group,fl
 					}
 					else
 					{
-					    def_particle.setMass(density*radius*radius*radius*CRCore::PI*4.0f/3.0f);
+					    def_particle.setMass(density*radius*radius*radius*PI*4.0f/3.0f);
 					}
 					if(cfg_script.Get("SizeRange", v_i))
 					{

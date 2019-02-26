@@ -316,13 +316,13 @@ void PrimitiveShapeVisitor::apply(const crSphere& sphere)
     unsigned int numSegments = 40;
     unsigned int numRows = 20;
 
-    float lDelta = CRCore::PI/(float)numRows;
+    float lDelta = PI/(float)numRows;
     float vDelta = 1.0f/(float)numRows;
 
-    float angleDelta = CRCore::PI*2.0f/(float)numSegments;
+    float angleDelta = PI*2.0f/(float)numSegments;
     float texCoordHorzDelta = 1.0f/(float)numSegments;
 
-    float lBase=-CRCore::PI*0.5f;
+    float lBase=-PI*0.5f;
     float rBase=0.0f;
     float zBase=-sphere.getRadius();
     float vBase=0.0f;
@@ -467,7 +467,7 @@ void PrimitiveShapeVisitor::apply(const crCone& cone)
     float normalRatio = 1.0f/(sqrtf(1.0f+normalz*normalz));
     normalz *= normalRatio;
 
-    float angleDelta = 2.0f*CRCore::PI/(float)numSegments;
+    float angleDelta = 2.0f*PI/(float)numSegments;
     float texCoordHorzDelta = 1.0/(float)numSegments;
     float texCoordRowDelta = 1.0/(float)numRows;
     float hDelta = 	cone.getHeight()/(float)numRows;
@@ -519,7 +519,7 @@ void PrimitiveShapeVisitor::apply(const crCone& cone)
     // for each face..
     m_functor.begin(crPrimitive::PT_TRIANGLE_FAN);
 
-    angle = CRCore::PI*2.0f;
+    angle = PI*2.0f;
     texCoord = 1.0f;
     basez = cone.getBaseOffset();
 
@@ -547,7 +547,7 @@ void PrimitiveShapeVisitor::apply(const crCylinder& cylinder)
 
     unsigned int numSegments = 40;
 
-    float angleDelta = 2.0f*CRCore::PI/(float)numSegments;
+    float angleDelta = 2.0f*PI/(float)numSegments;
 
     float texCoordDelta = 1.0/(float)numSegments;
 
@@ -610,7 +610,7 @@ void PrimitiveShapeVisitor::apply(const crCylinder& cylinder)
 
 	m_functor.vertex(crVector3(0.0f,0.0f,basez)*matrix);
 
-    angle = CRCore::PI*2.0f;
+    angle = PI*2.0f;
     texCoord = 1.0f;
     for(unsigned int bottomi=0;
 	   bottomi<numSegments;

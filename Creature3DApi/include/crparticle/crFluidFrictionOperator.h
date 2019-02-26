@@ -134,13 +134,13 @@ namespace CRParticle
     inline void crFluidFrictionOperator::setFluidDensity(float d)
     {
         m_density = d;
-        m_coeff_B = 0.2f * CRCore::PI * m_density;
+        m_coeff_B = 0.2f * PI * m_density;
     }
 
     inline void crFluidFrictionOperator::setFluidViscosity(float v)
     {
         m_viscosity = v;
-        m_coeff_A = 6 * CRCore::PI * m_viscosity;
+        m_coeff_A = 6 * PI * m_viscosity;
     }
     
     inline void crFluidFrictionOperator::setFluidToAir()

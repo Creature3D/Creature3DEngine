@@ -259,7 +259,7 @@ osgAnimation::Channel* readFbxChannelsQuat(
     pChannel->setName("quaternion");
     typedef std::vector<osgAnimation::TemplateKeyframe<CRCore::crVector3> > KeyFrameCntr;
     KeyFrameCntr eulerFrameCntr;
-    readKeys(curveX, curveY, curveZ, defaultValue, eulerFrameCntr, static_cast<float>(CRCore::PI / 180.0));
+    readKeys(curveX, curveY, curveZ, defaultValue, eulerFrameCntr, static_cast<float>(PI / 180.0));
 
     osgAnimation::QuatSphericalLinearSampler::KeyframeContainerType& quatFrameCntr =
         *pChannel->getOrCreateSampler()->getOrCreateKeyframeContainer();

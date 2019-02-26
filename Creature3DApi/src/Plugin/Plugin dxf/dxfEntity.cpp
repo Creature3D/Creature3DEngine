@@ -196,9 +196,9 @@ dxfCircle::drawScene(scene* sc)
     theta=CRCore::DegreesToRadians(theta);
 
     // We create an anglestep<=theta so that the line's points are evenly distributed around the circle
-    unsigned int numsteps=static_cast<unsigned int>(floor(CRCore::PI*2/theta));
+    unsigned int numsteps=static_cast<unsigned int>(floor(PI*2/theta));
     if (numsteps<3) numsteps=3; // Sanity check: minimal representation of a circle is a tri 
-    double anglestep=CRCore::PI*2/numsteps;
+    double anglestep=PI*2/numsteps;
 
     double angle1 = 0.0;
     crVector3d a = _center;

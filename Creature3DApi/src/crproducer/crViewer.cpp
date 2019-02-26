@@ -549,7 +549,7 @@ void crViewer::frame()
 //    CRCore::crVector3 axis;
 //    
 //    CRCore::crQuat roll;
-//    roll.makeRotate(-CRCore::PI/2.0f,1,0,0);
+//    roll.makeRotate(-PI/2.0f,1,0,0);
 //    
 //    m_orientation = roll*m_orientation;
 //    

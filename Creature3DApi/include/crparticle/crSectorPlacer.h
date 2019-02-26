@@ -92,7 +92,7 @@ namespace CRParticle
     // INLINE FUNCTIONS
     
     inline crSectorPlacer::crSectorPlacer()
-    : crCenteredPlacer(), m_rad_range(0, 1), m_phi_range(0, CRCore::PI*2)
+    : crCenteredPlacer(), m_rad_range(0, 1), m_phi_range(0, PI*2)
     {
     }
     

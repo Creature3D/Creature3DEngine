@@ -6271,7 +6271,7 @@ void crRotNodeMethod::operator()(crHandle &handle)
 			}
 			else
 			{
-				//speed = CRCore::PI_4;
+				//speed = PI_4;
 				speed = CRCore::DegreesToRadians(float((int)speed * m_keyboard));
 				if(speed!=0)
 				{

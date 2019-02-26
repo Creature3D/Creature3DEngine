@@ -33,7 +33,7 @@ public:
 	virtual ~crSmoothingVisitor();
 
     /// smooth geoset by creating per vertex normals.
-    static void smooth(CRCore::crGeometry& geoset, double creaseAngle=CRCore::PI);
+    static void smooth(CRCore::crGeometry& geoset, double creaseAngle=PI);
 
     /// apply smoothing method to all geode geosets.
     virtual void apply(CRCore::crObject& object);

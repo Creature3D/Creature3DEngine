@@ -39401,7 +39401,7 @@ void crTankMoveMethod::operator()(crHandle &handle)
 crRotateEmplacementLogic::crRotateEmplacementLogic():
 m_dt(0.0f),
 m_lastroll(0.0f),
-m_lastpitch(0.0f){m_rollRange.set(-CRCore::PI,CRCore::PI);}
+m_lastpitch(0.0f){m_rollRange.set(-PI,PI);}
 crRotateEmplacementLogic::crRotateEmplacementLogic(const crRotateEmplacementLogic& handle):
 crLogic(handle),
 m_dt(0.0f),
@@ -40214,8 +40214,8 @@ void crCarSlopeAdaptMethod::operator()(crHandle &handle)
 		else
 		{
 			float angle = atanf(dir[1]/dir[0]);
-			float pi_8 = CRCore::PI * 0.125;
-			float pi38 = CRCore::PI_2 - pi_8; 
+			float pi_8 = PI * 0.125;
+			float pi38 = PI_2 - pi_8; 
 			if(angle>-pi_8 && angle<pi_8)
 			{
 				newCoord[0] += dir[0]>0.0f?1:-1;

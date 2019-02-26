@@ -1610,9 +1610,9 @@ void crViewMatterObject::updateViewRoll( float delta )
 	if(!m_lockViewRoll && !m_adjustViewRoll)
 	{
 		m_viewRoll += delta;
-		if(fabs(m_viewRoll)>CRCore::PI)
+		if(fabs(m_viewRoll)>PI)
 		{
-			m_viewRoll = m_viewRoll>0.0f?(m_viewRoll - 2.0f*CRCore::PI):(m_viewRoll+2.0f*CRCore::PI);
+			m_viewRoll = m_viewRoll>0.0f?(m_viewRoll - 2.0f*PI):(m_viewRoll+2.0f*PI);
 		}
 	}
 	//CRCore::notify(CRCore::FATAL)<<"crMatterObject::updateViewRoll: m_viewRoll = "<<m_viewRoll<<std::endl;

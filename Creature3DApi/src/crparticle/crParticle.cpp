@@ -25,8 +25,8 @@
 namespace
 {
 
-    const float cosPI3 = cosf(CRCore::PI / 3.0f);
-    const float sinPI3 = sinf(CRCore::PI / 3.0f);
+    const float cosPI3 = cosf(PI / 3.0f);
+    const float sinPI3 = sinf(PI / 3.0f);
     const float hex_texcoord_x1 = 0.5f + 0.5f * cosPI3;
     const float hex_texcoord_x2 = 0.5f - 0.5f * cosPI3;
     const float hex_texcoord_y1 = 0.5f + 0.5f * sinPI3;
@@ -77,12 +77,12 @@ CRParticle::crParticle::crParticle()
 void CRParticle::crParticle::setStaticAngle(const CRCore::crVector3& angle)
 {
 	m_staticAngle = angle;
-	if (m_staticAngle.x() > CRCore::PI*2) m_staticAngle.x() -= CRCore::PI*2;
-	if (m_staticAngle.x() < -CRCore::PI*2) m_staticAngle.x() += CRCore::PI*2;
-	if (m_staticAngle.y() > CRCore::PI*2) m_staticAngle.y() -= CRCore::PI*2;
-	if (m_staticAngle.y() < -CRCore::PI*2) m_staticAngle.y() += CRCore::PI*2;
-	if (m_staticAngle.z() > CRCore::PI*2) m_staticAngle.z() -= CRCore::PI*2;
-	if (m_staticAngle.z() < -CRCore::PI*2) m_staticAngle.z() += CRCore::PI*2;
+	if (m_staticAngle.x() > PI*2) m_staticAngle.x() -= PI*2;
+	if (m_staticAngle.x() < -PI*2) m_staticAngle.x() += PI*2;
+	if (m_staticAngle.y() > PI*2) m_staticAngle.y() -= PI*2;
+	if (m_staticAngle.y() < -PI*2) m_staticAngle.y() += PI*2;
+	if (m_staticAngle.z() > PI*2) m_staticAngle.z() -= PI*2;
+	if (m_staticAngle.z() < -PI*2) m_staticAngle.z() += PI*2;
 }
 CRCore::crVector3& CRParticle::crParticle::getStaticAngle()
 {
@@ -163,12 +163,12 @@ bool CRParticle::crParticle::update(double dt)
     m_prev_angle = m_angle;
     m_angle += m_angul_arvel * dt;
 
-    if (m_angle.x() > CRCore::PI*2) m_angle.x() -= CRCore::PI*2;
-    if (m_angle.x() < -CRCore::PI*2) m_angle.x() += CRCore::PI*2;
-    if (m_angle.y() > CRCore::PI*2) m_angle.y() -= CRCore::PI*2;
-    if (m_angle.y() < -CRCore::PI*2) m_angle.y() += CRCore::PI*2;
-    if (m_angle.z() > CRCore::PI*2) m_angle.z() -= CRCore::PI*2;
-    if (m_angle.z() < -CRCore::PI*2) m_angle.z() += CRCore::PI*2;
+    if (m_angle.x() > PI*2) m_angle.x() -= PI*2;
+    if (m_angle.x() < -PI*2) m_angle.x() += PI*2;
+    if (m_angle.y() > PI*2) m_angle.y() -= PI*2;
+    if (m_angle.y() < -PI*2) m_angle.y() += PI*2;
+    if (m_angle.z() > PI*2) m_angle.z() -= PI*2;
+    if (m_angle.z() < -PI*2) m_angle.z() += PI*2;
 
     return true;
 }

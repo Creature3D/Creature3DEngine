@@ -682,7 +682,7 @@ static void smooth_new(CRCore::crGeometry& geom, double creaseAngle)
 
 
 crSmoothingVisitor::crSmoothingVisitor():
-    m_creaseAngle(CRCore::PI)
+    m_creaseAngle(PI)
 {
     setTraversalMode(CRCore::crNodeVisitor::TRAVERSE_ALL_CHILDREN);
 }
@@ -693,7 +693,7 @@ crSmoothingVisitor::~crSmoothingVisitor()
 
 void crSmoothingVisitor::smooth(CRCore::crGeometry& geom, double creaseAngle)
 {
-    if (creaseAngle==CRCore::PI)
+    if (creaseAngle==PI)
     {
         Smoother::smooth_old(geom);
     }

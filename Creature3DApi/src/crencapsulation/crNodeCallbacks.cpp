@@ -624,14 +624,14 @@ void crLightPositionRandomCallback::operator()(CRCore::crNode *node, CRCore::crN
 //	if (cv && ls && cv->getRenderMode() == CRUtil::crCullVisitor::NormalRender)
 //	{
 //		m_currentRot += m_rotSpeed * nv->getFrameStamp()->getFrameInterval();
-//		if(m_currentRot>CRCore::PI)
+//		if(m_currentRot>PI)
 //		{
-//			m_currentRot = CRCore::PI;
+//			m_currentRot = PI;
 //			m_rotSpeed *= -1.0f;
 //		}
 //		else if(m_currentRot<0.0f)
 //		{
-//			m_currentRot = CRCore::PI;
+//			m_currentRot = PI;
 //			m_rotSpeed *= -1.0f;
 //		}
 //		m_sunRotMatrix = CRCore::crMatrix::rotate(m_currentRot, 0.0, 0.0, 1.0);

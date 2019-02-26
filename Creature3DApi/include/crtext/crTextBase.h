@@ -48,7 +48,7 @@ public:
       * setFont("") sets the use of the default font.
       * See the CRText::readFontFile function for how the font file will be located. */
     void setFont(const std::string& fontfile);
-
+	const std::string &getFontName()const { return m_fontName; }
     /** Get the font. Return 0 if default is being used.*/
     const crFont* getFont() const { return m_font.get(); }
 
@@ -148,7 +148,7 @@ public:
       * least 25% (i.e. set line spacing to 0.25) is recommended. */
     void setLineSpacing(float lineSpacing);
 	void setUnderLineSpacing(float underLineSpacing);
-
+	float getUnderLineSpacing() const { return m_underLineSpacing; }
     /** Get the line spacing of the text box. */
     float getLineSpacing() const { return m_lineSpacing; }
 

@@ -185,7 +185,7 @@ void crRenderToTexture::computeMVP(/*const crVector3 & eyePoint,const crVector3 
 		m_cameraFov = RadiansToDegrees(acos(dir1 * dir2));
 		m_cameraDir = (dir1 + dir2) * 0.5;
 		//m_cameraUp
-        crVector3 lv2 = lv*crMatrix::rotate(CRCore::PI_2,CRCore::Z_AXIS);
+        crVector3 lv2 = lv*crMatrix::rotate(PI_2,CRCore::Z_AXIS);
 		crVector3 centerpos = (epos + spos) * 0.5f;
 		crVector3 hpos0 = centerpos + lv2;
 		crVector3 hpos1 = centerpos - lv2;
@@ -238,7 +238,7 @@ void crRenderToTexture::computeMVP(/*const crVector3 & eyePoint,const crVector3 
 		m_cameraFov = RadiansToDegrees(acos(dir1 * dir2));
 		m_cameraDir = (dir1 + dir2) * 0.5;
 		//m_cameraUp
-		crVector3 lv2 = lv*crMatrix::rotate(CRCore::PI_2,CRCore::Z_AXIS);
+		crVector3 lv2 = lv*crMatrix::rotate(PI_2,CRCore::Z_AXIS);
 		crVector3 centerpos = (epos + spos) * 0.5f;
 		crVector3 hpos0 = centerpos + lv2;
 		crVector3 hpos1 = centerpos - lv2;

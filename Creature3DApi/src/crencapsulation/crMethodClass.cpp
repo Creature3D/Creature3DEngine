@@ -22921,7 +22921,7 @@ void crDisplayParticleParamMethod::operator()(crHandle &handle)
 				gridElement->addData("半径",crArgumentParser::appFtoa(def_particle.getRadius()),"Red13");
 				float radius = def_particle.getRadius();
 				float mass = def_particle.getMass();
-				float density = mass/(radius*radius*radius*CRCore::PI*4.0f/3.0f);
+				float density = mass/(radius*radius*radius*PI*4.0f/3.0f);
 				gridElement->addData("密度",crArgumentParser::appFtoa(density),"Red13");
 				gridElement->addData("大小范围1",crArgumentParser::appVectoa(crVector3(def_particle.getSizeRange().minimum)),"Red13");
 				gridElement->addData("大小范围2",crArgumentParser::appVectoa(crVector3(def_particle.getSizeRange().maximum)),"Red13");
@@ -23386,7 +23386,7 @@ void crModifyParticleParamMethod::operator()(crHandle &handle)
 					str = keyValueNode->getValue();
 					float density = atof(str.c_str());
 					float radius = def_particle.getRadius();
-				    def_particle.setMass(density*radius*radius*radius*CRCore::PI*4.0f/3.0f);
+				    def_particle.setMass(density*radius*radius*radius*PI*4.0f/3.0f);
 					//def_particle.setMass(atof(str.c_str()));
 					//"大小范围"
 					crVector3 minsize, maxsize;

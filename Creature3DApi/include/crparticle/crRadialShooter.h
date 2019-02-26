@@ -117,8 +117,8 @@ namespace CRParticle
 
     inline crRadialShooter::crRadialShooter()
     :    crShooter(), 
-        m_theta_range(0, 0.5f*CRCore::PI_4), 
-        m_phi_range(0, 2*CRCore::PI), 
+        m_theta_range(0, 0.5f*PI_4), 
+        m_phi_range(0, 2*PI), 
         m_speed_range(10, 10),
         m_rot_speed_range(CRCore::crVector3(0,0,0), CRCore::crVector3(0,0,0))
     {

@@ -102,20 +102,20 @@
 namespace CRCore {
 
 // define the stand trig values
-#ifdef PI
-#undef PI
-#undef PI_2
-#undef PI_4
-#undef PI_INV
-#endif
-const double PI   = 3.14159265358979323846;
-const double PI_2 = 1.57079632679489661923;
-const double PI_4 = 0.78539816339744830962;
-const double PI_INV = 0.31830988618;
+//#ifdef PI
+//#undef PI
+//#undef PI_2
+//#undef PI_4
+//#undef PI_INV
+//#endif
+//const double PI   = 3.14159265358979323846;
+//const double PI_2 = 1.57079632679489661923;
+//const double PI_4 = 0.78539816339744830962;
+//const double PI_INV = 0.31830988618;
 
 // Constants.
-#define SMALL_NUMBER		(1.e-8)
-#define KINDA_SMALL_NUMBER	(1.e-4)
+#define SMALL_NUMBER		(1.e-8f)
+#define KINDA_SMALL_NUMBER	(1.e-4f)
 #define BIG_NUMBER			(3.4e+38f)
 // Magic numbers for numerical precision.
 #define DELTA			(0.00001f)
@@ -124,10 +124,10 @@ const double PI_INV = 0.31830988618;
 #define NearColor(a,b) (fabs(a-b)<0.003f)
 #define CollideMapNear(a,b) (fabs(a-b)<0.00002f)
 //// Aux constants.
-//#define PI 			(3.1415926535897932)
-//#define INV_PI		(0.31830988618)
-//#define PI_2			(1.57079632679)
-//#define PI_4			(0.78539816339)
+#define PI 				(3.1415926535897932f)
+#define PI_INV			(0.31830988618f)
+#define PI_2			(1.57079632679f)
+#define PI_4			(0.78539816339f)
 
 
 

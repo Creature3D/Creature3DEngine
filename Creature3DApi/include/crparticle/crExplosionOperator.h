@@ -144,7 +144,7 @@ inline void crExplosionOperator::beginOperate( crProgram* prg )
     
     float oneOverSigma = (m_sigma!=0.0f ? (1.0f / m_sigma) : 1.0f);
     m_inexp = -0.5f * oneOverSigma * oneOverSigma;
-    m_outexp = oneOverSigma / sqrt(CRCore::PI * 2.0f);
+    m_outexp = oneOverSigma / sqrt(PI * 2.0f);
 }
 
 

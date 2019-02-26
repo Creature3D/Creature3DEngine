@@ -66,7 +66,7 @@ protected:
 
 void DrawShapeVisitor::drawCylinderBody(unsigned int numSegments, float radius, float height)
 {
-	const float angleDelta = 2.0f*CRCore::PI/(float)numSegments;
+	const float angleDelta = 2.0f*PI/(float)numSegments;
 	const float texCoordDelta = 1.0f/(float)numSegments;
 
 	const float r = radius;
@@ -149,7 +149,7 @@ void DrawShapeVisitor::drawCylinderBody(unsigned int numSegments, float radius, 
 
 void DrawShapeVisitor::drawHalfSphere(unsigned int numSegments, unsigned int numRows, float radius, SphereHalf which, float zOffset)
 {
-	float lDelta = CRCore::PI/(float)numRows;
+	float lDelta = PI/(float)numRows;
 	float vDelta = 1.0f/(float)numRows;
 
 	bool top = (which==SphereTopHalf);
@@ -157,10 +157,10 @@ void DrawShapeVisitor::drawHalfSphere(unsigned int numSegments, unsigned int num
 	bool drawFrontFace = m_hints ? m_hints->getCreateFrontFace() : true;
 	bool drawBackFace = m_hints ? m_hints->getCreateBackFace() : false;
 
-	float angleDelta = CRCore::PI*2.0f/(float)numSegments;
+	float angleDelta = PI*2.0f/(float)numSegments;
 	float texCoordHorzDelta = 1.0f/(float)numSegments;
 
-	float lBase=-CRCore::PI*0.5f + (top?(lDelta*(numRows/2)):0.0f);
+	float lBase=-PI*0.5f + (top?(lDelta*(numRows/2)):0.0f);
 	float rBase=(top?(cosf(lBase)*radius):0.0f);
 	float zBase=(top?(sinf(lBase)*radius):-radius);
 	float vBase=(top?(vDelta*(numRows/2)):0.0f);
@@ -289,15 +289,15 @@ void DrawShapeVisitor::apply(const crSphere& sphere)
 			numSegments = MIN_NUM_SEGMENTS;
 	}
 
-	float lDelta = CRCore::PI/(float)numRows;
+	float lDelta = PI/(float)numRows;
 	float vDelta = 1.0f/(float)numRows;
 
-	float angleDelta = CRCore::PI*2.0f/(float)numSegments;
+	float angleDelta = PI*2.0f/(float)numSegments;
 	float texCoordHorzDelta = 1.0f/(float)numSegments;
 
 	if (drawBackFace)
 	{
-		float lBase=-CRCore::PI*0.5f;
+		float lBase=-PI*0.5f;
 		float rBase=0.0f;
 		float zBase=-sphere.getRadius();
 		float vBase=0.0f;
@@ -367,7 +367,7 @@ void DrawShapeVisitor::apply(const crSphere& sphere)
 
 	if (drawFrontFace)
 	{
-		float lBase=-CRCore::PI*0.5f;
+		float lBase=-PI*0.5f;
 		float rBase=0.0f;
 		float zBase=-sphere.getRadius();
 		float vBase=0.0f;
@@ -596,7 +596,7 @@ void DrawShapeVisitor::apply(const crCone& cone)
 	float normalRatio = 1.0f/(sqrtf(1.0f+normalz*normalz));
 	normalz *= normalRatio;
 
-	float angleDelta = 2.0f*CRCore::PI/(float)numSegments;
+	float angleDelta = 2.0f*PI/(float)numSegments;
 	float texCoordHorzDelta = 1.0/(float)numSegments;
 	float texCoordRowDelta = 1.0/(float)numRows;
 	float hDelta = 	cone.getHeight()/(float)numRows;
@@ -652,7 +652,7 @@ void DrawShapeVisitor::apply(const crCone& cone)
 	if (createBottom) {
 		glBegin(GL_TRIANGLE_FAN);
 
-		angle = CRCore::PI*2.0f;
+		angle = PI*2.0f;
 		texCoord = 1.0f;
 		basez = cone.getBaseOffset();
 
@@ -709,7 +709,7 @@ void DrawShapeVisitor::apply(const crCylinder& cylinder)
 	if (createBody) 
 		drawCylinderBody(numSegments, cylinder.getRadius(), cylinder.getHeight());
 
-	float angleDelta = 2.0f*CRCore::PI/(float)numSegments;
+	float angleDelta = 2.0f*PI/(float)numSegments;
 	float texCoordDelta = 1.0f/(float)numSegments;
 
 	float r = cylinder.getRadius();
@@ -756,7 +756,7 @@ void DrawShapeVisitor::apply(const crCylinder& cylinder)
 		glTexCoord2f(0.5f,0.5f);
 		glVertex3f(0.0f,0.0f,basez);
 
-		angle = CRCore::PI*2.0f;
+		angle = PI*2.0f;
 		texCoord = 1.0f;
 		for(unsigned int bottomi=0;
 			bottomi<numSegments;

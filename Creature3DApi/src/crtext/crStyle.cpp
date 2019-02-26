@@ -58,7 +58,7 @@ void crBevel::roundedBevel(float width, unsigned int numSteps)
     unsigned int i = 0;
     for(; i<=numSteps; ++i)
     {
-        float angle = float(CRCore::PI)*0.5f*(float(i)/float(numSteps));
+        float angle = float(PI)*0.5f*(float(i)/float(numSteps));
         m_vertices.push_back( CRCore::crVector2((1.0f-cosf(angle))*width, sinf(angle)) );
     }
 
@@ -66,7 +66,7 @@ void crBevel::roundedBevel(float width, unsigned int numSteps)
     i = width<0.5f ? 0 : 1;
     for(; i<=numSteps; ++i)
     {
-        float angle = float(CRCore::PI)*0.5f*(float(numSteps-i)/float(numSteps));
+        float angle = float(PI)*0.5f*(float(numSteps-i)/float(numSteps));
         m_vertices.push_back( CRCore::crVector2(1.0-(1.0f-cosf(angle))*width, sin(angle)) );
     }
 }
@@ -85,7 +85,7 @@ void crBevel::roundedBevel2(float width, unsigned int numSteps)
     unsigned int i = 0;
     for(; i<=numSteps; ++i)
     {
-        float angle = float(CRCore::PI)*0.5f*(float(i)/float(numSteps));
+        float angle = float(PI)*0.5f*(float(i)/float(numSteps));
         m_vertices.push_back( CRCore::crVector2((1.0f-cosf(angle))*width, h + sinf(angle)*r) );
     }
 
@@ -93,7 +93,7 @@ void crBevel::roundedBevel2(float width, unsigned int numSteps)
     i = width<0.5f ? 0 : 1;
     for(; i<=numSteps; ++i)
     {
-        float angle = float(CRCore::PI)*0.5f*(float(numSteps-i)/float(numSteps));
+        float angle = float(PI)*0.5f*(float(numSteps-i)/float(numSteps));
         m_vertices.push_back( CRCore::crVector2(1.0-(1.0f-cosf(angle))*width, h + sin(angle)*r) );
     }
 

@@ -47,7 +47,7 @@ void crCubeMapGenerator::generateMap(bool use_osg_system)
     
     if (use_osg_system) 
 	{
-        M = CRCore::crMatrix::rotate(CRCore::PI_2, CRCore::crVector3(1, 0, 0));
+        M = CRCore::crMatrix::rotate(PI_2, CRCore::crVector3(1, 0, 0));
     } 
 	else 
 	{

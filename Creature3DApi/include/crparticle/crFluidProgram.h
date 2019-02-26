@@ -40,7 +40,7 @@ namespace CRParticle
         inline void setFluidViscosity(float v)
         {
             m_viscosity = v;
-            m_viscosityCoefficient = 6 * CRCore::PI * m_viscosity;
+            m_viscosityCoefficient = 6 * PI * m_viscosity;
         }
        
         /// Get the viscosity of the fluid.
@@ -50,7 +50,7 @@ namespace CRParticle
         inline void setFluidDensity(float d)
         {
             m_density = d;
-            m_densityCoefficeint = 0.2f * CRCore::PI * m_density;
+            m_densityCoefficeint = 0.2f * PI * m_density;
         }
 
         /// Get the density of the fluid.

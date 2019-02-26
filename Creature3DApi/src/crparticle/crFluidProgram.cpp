@@ -43,7 +43,7 @@ void CRParticle::crFluidProgram::execute(double dt)
         if (particle->isAlive())
         {
             float radius = particle->getRadius();
-            float Area = CRCore::PI*radius*radius;
+            float Area = PI*radius*radius;
             float Volume = Area*radius*four_over_three;
         
             // compute force due to gravity + boyancy of displacing the fluid that the particle is emersed in.

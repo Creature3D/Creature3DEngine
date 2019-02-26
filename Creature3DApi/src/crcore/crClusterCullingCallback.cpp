@@ -132,8 +132,8 @@ void crClusterCullingCallback::computeFrom(const CRCore::crDrawable* drawable)
     if (m_normal.length2()==0.0) m_deviation = -1.0f;
     else 
     {
-        float angle = acosf(cdf.m_deviation)+CRCore::PI*0.5f;
-        if (angle<CRCore::PI) m_deviation = cosf(angle);
+        float angle = acosf(cdf.m_deviation)+PI*0.5f;
+        if (angle<PI) m_deviation = cosf(angle);
         else m_deviation = -1.0f;
     }
     
