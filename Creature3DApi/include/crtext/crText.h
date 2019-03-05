@@ -295,6 +295,8 @@ public:
 	virtual int getCursorIndex(const CRCore::crVector2& cursorPos);
 	bool hitTest(const CRCore::crVector2& cursorPos);
 	const CRCore::Vec2Array &getUnderLineCoords() const;
+	int getUnderLineCoordSize()const;
+	const CRCore::crVector2& getUnderLineCoord(int index)const;
 	//inline virtual void swapBuffers(int frameNumber=0)
 	//{//该函数由渲染系统内部调用，外部调用有风险，只有在LOADING时刻，为获得文本正确的BoundBox才可以调用
 	//	//CRCore::notify(CRCore::WARN)<<"crText::swapBuffers"<<getName()<<std::endl;
