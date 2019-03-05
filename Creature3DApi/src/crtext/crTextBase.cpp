@@ -429,10 +429,27 @@ void crTextBase::setStartCoord(const CRCore::crVector2& coord)
 	m_startCoord = coord;
 	m_needReCompute = 1;
 }
-const CRCore::crVector2& crTextBase::getEndCoord()
+const CRCore::crVector2& crTextBase::getStartCoord() const
+{
+	return m_startCoord;
+}
+const CRCore::crVector2& crTextBase::getEndCoord() const
 {
 	return m_endCoord;
 }
+float crTextBase::getCharacterHeight() const { return m_characterHeight; }
+float crTextBase::getCharacterAspectRatio() const { return m_style.valid() ? m_style->getWidthRatio() : 1.0f; }
+float crTextBase::getCharacterWidth() const { return m_characterHeight / getCharacterAspectRatio(); }
+float crTextBase::getUnderLineSpacing() const { return m_underLineSpacing; }
+/** Get the line spacing of the text box. */
+float crTextBase::getLineSpacing() const { return m_lineSpacing; }
+
+float crTextBase::getLineHeight() const { return m_characterHeight + m_lineSpacing; }
+const CRCore::crVector3& crTextBase::getPosition() const { return m_position; }
+unsigned int crTextBase::getDrawMode() const { return m_drawMode; }
+const std::string &crTextBase::getFontName()const { return m_fontName; }
+/** Get the font. Return 0 if default is being used.*/
+const crFont* crTextBase::getFont() const { return m_font.get(); }
 void crTextBase::positionCursor(const CRCore::crVector2 & endOfLine_coords, CRCore::crVector2 & cursor, unsigned int linelength)
 {
     switch(m_layout)

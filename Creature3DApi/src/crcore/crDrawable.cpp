@@ -151,7 +151,11 @@ void crDrawable::addParent(crNode* node)
 {
     m_parents.push_back(node);    
 }
-
+void crDrawable::setColor(const crVector4& color) { m_color = color; }
+void crDrawable::setColor(const crVector4& color)const { m_color = color; }
+const crVector4& crDrawable::getColor()const { return m_color; }
+crVector4& crDrawable::getColor() { return m_color; }
+const CRCore::crVector3& crDrawable::getPosition() const { return m_bbox.m_max; }//对于drawable是无意义的
 void crDrawable::removeParent(crNode* node)
 {
     ParentList::iterator pitr = find(m_parents.begin(),m_parents.end(),node);

@@ -509,7 +509,7 @@ class CR_EXPORT crDrawable : public crBase
 	inline virtual void setText(const std::string& text){};//对于drawable是无意义的
 	inline virtual void setText(const wchar_t* text){};//对于drawable是无意义的
 	inline virtual void setPosition(const CRCore::crVector3& position){};//对于drawable是无意义的
-	inline virtual const CRCore::crVector3& getPosition() const { return m_bbox.m_max; }//对于drawable是无意义的
+	virtual const CRCore::crVector3& getPosition() const;//对于drawable是无意义的
 
 	inline virtual void swapBuffers(int frameNumber)
 	{
@@ -520,9 +520,10 @@ class CR_EXPORT crDrawable : public crBase
 		}
 	}
 
-	inline void setColor(const crVector4& color) { m_color = color; }
-	inline void setColor(const crVector4& color)const { m_color = color; }
-	inline crVector4& getColor(){ return m_color; }
+	void setColor(const crVector4& color);
+	void setColor(const crVector4& color)const;
+	const crVector4& getColor()const;
+	crVector4& getColor();
 	inline bool isAbortCurrentRendering() { return m_abortCurrentRendering; }
 	inline void resumeRendering() { m_abortCurrentRendering = false; }
 	static void flushAllDeletedDisplayLists(unsigned int contextID);

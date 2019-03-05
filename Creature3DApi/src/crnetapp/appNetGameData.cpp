@@ -6056,10 +6056,13 @@ void crRoom::sendPacketToItemNeighbor(crInstanceItem *item, CRNet::crStreamPacke
 			if (roomPlayer->isInCamera(item))
 			{
 				playerData = dynamic_cast<crSceneServerPlayerData *>(netDataManager->getPlayerData(playerid));
-				packetStream->seekBegin();
-				packetStream->_writeInt(playerid);
-				packetStream->setBufSize(bufsize);
-				netManager->sendPacket(playerData->getPlayerConnectServerAddress(), packet);
+				if (playerData.valid())
+				{
+					packetStream->seekBegin();
+					packetStream->_writeInt(playerid);
+					packetStream->setBufSize(bufsize);
+					netManager->sendPacket(playerData->getPlayerConnectServerAddress(), packet);
+				}
 			}
 		}
 	}

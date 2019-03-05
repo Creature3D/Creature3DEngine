@@ -48,9 +48,9 @@ public:
       * setFont("") sets the use of the default font.
       * See the CRText::readFontFile function for how the font file will be located. */
     void setFont(const std::string& fontfile);
-	const std::string &getFontName()const { return m_fontName; }
+	const std::string &getFontName()const;
     /** Get the font. Return 0 if default is being used.*/
-    const crFont* getFont() const { return m_font.get(); }
+	const crFont* getFont() const;
 
 
     /** Set the text style.*/
@@ -106,9 +106,9 @@ public:
     /** Set the rendered character size in object coordinates.*/
     void setCharacterSize(float height, float aspectRatio);
 
-    float getCharacterHeight() const { return m_characterHeight; }
-    float getCharacterAspectRatio() const { return m_style.valid()? m_style->getWidthRatio() : 1.0f; }
-	float getCharacterWidth() const { return m_characterHeight/getCharacterAspectRatio(); }
+	float getCharacterHeight() const;
+	float getCharacterAspectRatio() const;
+	float getCharacterWidth() const;
 
     enum CharacterSizeMode
     {
@@ -148,17 +148,17 @@ public:
       * least 25% (i.e. set line spacing to 0.25) is recommended. */
     void setLineSpacing(float lineSpacing);
 	void setUnderLineSpacing(float underLineSpacing);
-	float getUnderLineSpacing() const { return m_underLineSpacing; }
+	float getUnderLineSpacing() const;
     /** Get the line spacing of the text box. */
-    float getLineSpacing() const { return m_lineSpacing; }
+	float getLineSpacing() const;
 
-	float getLineHeight() const { return m_characterHeight + m_lineSpacing; }
+	float getLineHeight() const;
 
     /** Set the position of text.*/
     void setPosition(const CRCore::crVector3& pos);
     
     /** Get the position of text.*/
-    const CRCore::crVector3& getPosition() const { return m_position; }
+	const CRCore::crVector3& getPosition() const;
     
 
     enum AlignmentType
@@ -235,7 +235,7 @@ public:
 
     void setDrawMode(unsigned int mode);
     
-    unsigned int getDrawMode() const { return m_drawMode; }
+	unsigned int getDrawMode() const;
 
     void setBoundingBoxMargin(float margin);
     
@@ -335,7 +335,8 @@ public:
 		}
 	}
 	void setStartCoord(const CRCore::crVector2& coord);
-	const CRCore::crVector2& getEndCoord();
+	const CRCore::crVector2& getStartCoord() const;
+	const CRCore::crVector2& getEndCoord() const;
 protected:
     virtual ~crTextBase();
 	void setFont(crFont *font);

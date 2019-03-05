@@ -1114,6 +1114,10 @@ bool crText::hitTest(const CRCore::crVector2& cursorPos)
 	}
 	return false;
 }
+const CRCore::Vec2Array &crText::getUnderLineCoords() const
+{
+	return m_underLineCoords;
+}
 // Returns false if there are no glyphs and the width/height values are invalid.
 // Also sets avg_width and avg_height to 0.0f if the value is invalid.
 // This method is used several times in a loop for the same object which will produce the same values. 
