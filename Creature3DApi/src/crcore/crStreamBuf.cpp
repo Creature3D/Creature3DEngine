@@ -1148,6 +1148,9 @@ bool crStreamBuf::loadFromFile2(const std::string &filename)
 	std::ifstream fin(filename.c_str(), std::ios::in | std::ios::binary);
 	if(!fin)
 	{
+		char gbuf[256];
+		sprintf(gbuf, "crStreamBuf::loadFromFile2 文件没有找到:%s\n\0", filename.c_str());
+		gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		//CRCore::notify(CRCore::NOTICE)<<"crStreamBuf::loadFromFile2 文件没有找到: "<<filename<<std::endl;
 		return false;
 	}
@@ -1163,7 +1166,10 @@ bool crStreamBuf::loadFromFile2(const std::string &filename)
 	}
 	else
 	{
-		CRCore::notify(CRCore::NOTICE)<<"crStreamBuf::loadFromFile2 文件打开出错: "<<filename<<std::endl;
+		char gbuf[256];
+		sprintf(gbuf, "crStreamBuf::loadFromFile2 文件打开出错:%s\n\0", filename.c_str());
+		gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
+		//CRCore::notify(CRCore::NOTICE)<<"crStreamBuf::loadFromFile2 文件打开出错: "<<filename<<std::endl;
 	}
 	return true;
 }
