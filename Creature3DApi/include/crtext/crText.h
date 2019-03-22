@@ -364,7 +364,7 @@ public:
 	
 protected:
 
-    virtual ~crText();
+    //virtual ~crText();
 
     crFont* getActiveFont();
     const crFont* getActiveFont() const;

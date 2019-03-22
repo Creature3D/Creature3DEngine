@@ -61,9 +61,6 @@ crText::crText(const crText& text,const CRCore::crCopyOp& copyop):
 	m_needReCompute = 1;
 }
 
-crText::~crText()
-{
-}
 //void crText::setFont(crFont* font)
 //{
 //    if (m_font==font) return;
