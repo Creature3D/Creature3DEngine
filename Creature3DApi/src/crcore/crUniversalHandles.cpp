@@ -1115,7 +1115,7 @@ void crBaseEventContainerMethod::operator()(crHandle &handle)
 		CRCore::ScopedLock<crMutex> lock(m_eventListBufMutex);
 
 		m_eventListMutex.lock();
-		int hparam = HICREPARAM(m_param);
+		_crInt64 hparam = HICREPARAM(m_param);
 		m_param = NULLPARAM;
 		m_eventList_buf.swap(m_eventList);
 		m_eventListMutex.unlock();
