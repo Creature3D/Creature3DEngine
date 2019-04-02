@@ -1493,9 +1493,9 @@ public:
 	static const int ID = WCHNET_DBSAVE;
 public:
 	virtual void parsePacket(const std::string &sender);
-	static void buildRequestPacket(crDBSavePacket &packet,CRDataBase::crUpdateSql *sql,char flg = 0);//flg = -1表示account,0表示GlobalDB
-	static void buildRequestPacket(crDBSavePacket &packet,unsigned short enumid, CRDataBase::crUpdateSql *sql);//DBVec
-	static void buildRequestPacket(crDBSavePacket &packet,unsigned short enumid, unsigned short dbid, CRDataBase::crUpdateSql *sql);//DBMapVec
+	static void buildRequestPacket(crDBSavePacket &packet,CRDataBase::crUpdateSql *sql,char flg = 0);//flg = -1表示AccountDB,0表示GlobalDB
+	static void buildRequestPacket(crDBSavePacket &packet,unsigned short enumid, CRDataBase::crUpdateSql *sql);//DBVec enumid:ResDB=0,GameGlobalDB=1
+	static void buildRequestPacket(crDBSavePacket &packet,unsigned short enumid, unsigned short dbid, CRDataBase::crUpdateSql *sql);//DBMapVec enumid=GameDB(0)
 };
 /////////////////////////
 class CRNETAPP_EXPORT crServerListUpdatePacket : public CRNet::crStreamPacket
