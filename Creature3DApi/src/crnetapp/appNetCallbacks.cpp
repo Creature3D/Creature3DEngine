@@ -135,7 +135,7 @@ void crLoginServerCallback::clientUpdateImplementation(float dt)
 				std::string logdata = "与LoginServer重连次数超过3次"+m_netConductor->getName()+"自动重启！";
 				CRCore::notify(CRCore::ALWAYS)<<logdata<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
-				DebugBreak();
+				__debugbreak();
 			}
 			m_reconnectCount++;
 			crNetCallbackManager::getInstance()->insertNeedReconnectCallback(this);
@@ -1413,7 +1413,7 @@ void crGameServerCallback::clientUpdateImplementation(float dt)
 					std::string logdata = "与GameServer重连次数超过3次"+m_netConductor->getName()+" 自动重启！";
 					CRCore::notify(CRCore::ALWAYS)<<logdata<<std::endl;
 					//_asm   int   3   //只是为了让程序崩溃
-					DebugBreak();
+					__debugbreak();
 				}
 				m_reconnectCount++;
 				connectServer->getNetManager()->disconnectAll();
@@ -1424,7 +1424,7 @@ void crGameServerCallback::clientUpdateImplementation(float dt)
 				std::string logdata = "与GameServer断开连接"+m_netConductor->getName()+" 自动重启！";
 				CRCore::notify(CRCore::ALWAYS)<<logdata<<std::endl;
 				//_asm   int   3   //只是为了让程序崩溃
-				DebugBreak();
+				__debugbreak();
 			}
 			m_needReconnect = true;
 		}
@@ -1459,7 +1459,7 @@ bool crGameServerCallback::clientReconnectToServer()
 	{
 		CRCore::notify(CRCore::FATAL)<<"SceneServer服务器与GameServer断开，自动重启！"<<std::endl;
 		//_asm   int   3   
-		DebugBreak();
+		__debugbreak();
 	}
 	else
 	{

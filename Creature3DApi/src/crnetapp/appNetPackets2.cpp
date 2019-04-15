@@ -12200,12 +12200,12 @@ void crThrowServerPacket::parsePacket(const std::string &sender)
 	if(netType == DBServer)
 	{
 		//_asm   int   3   //只是为了让程序崩溃
-		DebugBreak();
+		__debugbreak();
 	}
 	else if(netType == SceneServerClient_Game)
 	{
 		//_asm   int   3   //只是为了让程序崩溃
-		DebugBreak();
+		__debugbreak();
 	}
 }
 /////////////////////////////////////////

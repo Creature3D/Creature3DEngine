@@ -452,7 +452,7 @@ void crNetBridge::sendPacket( const std::string &address, GNE::Packet &packet, b
 			{
 				DeleteFile(filename.c_str());
 				//_asm   int   3   //只是为了让程序崩溃
-				DebugBreak();
+				__debugbreak();
 			}
 			//ref_ptr<crStreamBuf> stream = ((crStreamPacket &)packet).getStreamBuf();
 			//int playerid = stream->_readInt();
