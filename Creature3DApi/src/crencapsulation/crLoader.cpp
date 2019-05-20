@@ -7819,6 +7819,7 @@ void crNeedInitLoadPageVisitor::apply(CRCore::crPagedLOD& node)
 {
 	ref_ptr<crNode> loadedScene;
 	CRIOManager::crDatabasePager* dp = CRIOManager::crRegistry::instance()->getOrCreateDatabasePager();
+	CRCore::ScopedLock<CRCore::crMutex> lock(dp->getLoadedMapMutex());
 	CRIOManager::crDatabasePager::LoadedMap &loadedMap = dp->getLoadedMap();
 	CRIOManager::crDatabasePager::LoadedMap::iterator loadedMapItr;
 	if(CRCore::crBrain::getInstance()->checkPageNeedInitLoad(node.getName()))

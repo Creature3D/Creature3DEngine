@@ -242,6 +242,7 @@ class CRIOMANAGER_EXPORT crDatabasePager : public CRCore::crNodeVisitor::Databas
 		void setRenderInitVisitor(CRCore::crNodeVisitor* pv);
 		CRCore::crNodeVisitor* getRenderInitVisitor();
 		typedef std::map< std::string, CRCore::ref_ptr<CRCore::crNode> > LoadedMap;
+		CRCore::crMutex& getLoadedMapMutex() { return m_loadedMapMutex; }
         LoadedMap &getLoadedMap();
 		void inited(){ m_inited = true; }
 		inline bool getInited(){ return m_inited; }
@@ -293,6 +294,7 @@ class CRIOMANAGER_EXPORT crDatabasePager : public CRCore::crNodeVisitor::Databas
 		ChildRemovedMap m_childRemovedMap;
 		CRCore::crMutex              m_childremovedmap_mutex;
 
+		CRCore::crMutex              m_loadedMapMutex;
 		LoadedMap m_loadedMap;
 
         //// forward declare inner helper classes

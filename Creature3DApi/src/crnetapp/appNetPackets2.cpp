@@ -12407,10 +12407,10 @@ void crQueryGameInfoPacket::parsePacket(const std::string &sender)
 			std::string platform = m_streamBuf->_readString();
 			selectedGame->setCName(cname);
 			selectedGame->setPlatform(platform);
+			char gbuf[256];
+			sprintf(gbuf, "%s,%s\n\0", selectedGame->getCName().c_str(), selectedGame->getPlatform().c_str());
+			gDebugInfo->debugInfo(CRCore::NOTICE, gbuf);
 		}
-		char gbuf[256];
-		sprintf(gbuf,"%s,%s\n\0",selectedGame->getCName().c_str(),selectedGame->getPlatform().c_str());
-		gDebugInfo->debugInfo(CRCore::NOTICE,gbuf);
 	}
 }
 /////////////////////////////////////////

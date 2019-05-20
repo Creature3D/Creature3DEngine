@@ -16,6 +16,8 @@
 #include <CRNetApp/appExport.h>
 #include <CRCore/ref_ptr.h>
 #include <CRCore/Referenced.h>
+#include <CRCore/thread/crThread.h>
+#include <CRCore/crTimer.h>
 #include "amqp_tcp_socket.h"
 #include <vector>
 #include <list>
@@ -23,12 +25,16 @@
 #include <map>
 namespace CRNetApp {
 
-class CRNETAPP_EXPORT crRabbitmq : public CRCore::Referenced
+class CRNETAPP_EXPORT crRabbitmq :public CRCore::crThread, public CRCore::Referenced
 {
 public:
 	crRabbitmq();
 	static crRabbitmq *getInstance();
 	virtual void clear();
+	virtual void run();
+	void done();
+	void setFpsControl(float fps);
+	inline float getFpsControl() { return m_fpsControl; }//·µ»Øms fps = 1000.0f/ms
 
 	int connect(const std::string &strHostname, int iPort, const std::string &strUser, const std::string &strPasswd);
 	int disconnect();
@@ -100,7 +106,9 @@ public:
 protected:
 	virtual ~crRabbitmq();
 	static CRCore::ref_ptr<crRabbitmq> m_instance;
-
+	bool m_done;
+	CRCore::Timer_t m_time;
+	float m_fpsControl;
 	int errorMsg(amqp_rpc_reply_t x, char const *context);
 
 	std::string                 m_strHostname;      // amqpÖ÷»ú

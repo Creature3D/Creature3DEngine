@@ -185,6 +185,7 @@ void crLoadManager::requestNode(const std::string& fileName,CRCore::crGroup* par
 			dp->requestNodeFile(fileName,parent,0);
 			break;
 		}
+		CRCore::ScopedLock<CRCore::crMutex> lock(dp->getLoadedMapMutex());
 		crDatabasePager::LoadedMap &loadedMap = dp->getLoadedMap();
 		if(!reload)
 		{

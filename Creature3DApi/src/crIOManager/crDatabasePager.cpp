@@ -211,11 +211,14 @@ void crDatabasePager::clear()
 		CRCore::ScopedLock<CRCore::crMutex> lock(m_safeDeleteListMutex);
 		m_safeDeleteList.clear();
 	}
+	{
+		CRCore::ScopedLock<CRCore::crMutex> lock(m_loadedMapMutex);
+		m_loadedMap.clear();
+	}
     // no mutex??
     m_activePagedLODList.clear();
     m_inactivePagedLODList.clear();
     
-	m_loadedMap.clear();
 	m_childRemovedMap.clear();
     // ??
     // m_activeGraphicsContexts
@@ -237,8 +240,8 @@ void crDatabasePager::requestNodeFile(const std::string& fileName,CRCore::crGrou
     bool foundEntry = false;
 	{
 		CRCore::crPagedLOD* plod;
-        CRCore::ScopedLock<CRCore::crMutex> lock1(m_childrenToDeleteListMutex);
-		CRCore::ScopedLock<CRCore::crMutex> lock2(m_dataToMergeListMutex);
+        //CRCore::ScopedLock<CRCore::crMutex> lock1(m_childrenToDeleteListMutex);
+		CRCore::ScopedLock<CRCore::crMutex> lock1(m_loadedMapMutex);
 		for(LoadedMap::iterator litr = m_loadedMap.begin();
 			litr != m_loadedMap.end() && !foundEntry;
 			++litr)
@@ -253,9 +256,10 @@ void crDatabasePager::requestNodeFile(const std::string& fileName,CRCore::crGrou
 					plod->setTimeStamp(plod->getChildIndex(litr->second.get()),timestamp);
 					//CRCore::notify(CRCore::NOTICE)<<"crDatabasePager::requestNodeFile "<<fileName<<" referenceCount= "<<litr->second->referenceCount()<<std::endl;
 				}
+				break;
 			}
 		}
-
+		CRCore::ScopedLock<CRCore::crMutex> lock2(m_dataToMergeListMutex);
 		for(DatabaseRequestList::iterator litr = m_dataToMergeList.begin();
 			litr != m_dataToMergeList.end() && !foundEntry;
 			++litr)
@@ -777,7 +781,9 @@ void crDatabasePager::addLoadedDataToSceneGraph(double timeStamp)
 			//databaseRequest->m_loadedModel->accept(searchByClassNameVisitor);
 			//if(!searchByClassNameVisitor.getResult())
 			//{
+				m_loadedMapMutex.lock();
 		        m_loadedMap[databaseRequest->m_fileName] = databaseRequest->m_loadedModel.get();
+				m_loadedMapMutex.unlock();
 			//}
 		}
 
@@ -862,55 +868,57 @@ void crDatabasePager::removeExpiredSubgraphs(double currentFrameTime)
     
 
     // filter out singly referenced crPagedLOD and move reactivated crPagedLOD into the active list
-    for(PagedLODList::iterator inactive_itr = m_inactivePagedLODList.begin();
-        inactive_itr!=m_inactivePagedLODList.end();
-        )
-    {
-        const CRCore::crPagedLOD* plod = inactive_itr->get();
-        bool remove_plod = false;
-        if (plod->referenceCount()<=1)
-        {
-            // prune PageLOD's that are no longer externally referenced
-            childrenRemoved.push_back(const_cast<CRCore::crPagedLOD*>(plod));
-            //CRCore::notify(CRCore::NOTICE)<<"m_activePagedLODList : pruning no longer externally referenced"<<std::endl;
-            remove_plod = true;
-        }
-        else if (plod->getFrameNumberOfLastTraversal()>=m_frameNumber-1)
-        {
-            //CRCore::notify(CRCore::NOTICE)<<"m_inactivePagedLODList : moving PageLOD to active list"<<std::endl;
-            // found a reactivated pagedLOD's need to put it back in the active list.                
-            m_activePagedLODList.insert(*inactive_itr);
-            remove_plod = true;
-        }
-        
-        if (remove_plod)
-        {
-            PagedLODList::iterator itr_to_erase = inactive_itr;
-            ++inactive_itr;
-            
-            m_inactivePagedLODList.erase(itr_to_erase);            
-        }
-        else
-        {
-//            if (i<numberOfPagedLODToTest)
-            if (childrenRemoved.size()<targetNumOfRemovedChildPagedLODs)
-            {
-                // check for removing expired children.
-                if (const_cast<CRCore::crPagedLOD*>(plod)->removeExpiredChildren(expiryTime,childrenRemoved,m_loadedMap))
-                {
-                    //CRCore::notify(CRCore::NOTICE)<<"Some children removed from PLod "<<plod->getName()<<std::endl;
-                }
-                else
-                {
-                    //CRCore::notify(CRCore::NOTICE)<<"no children removed from PLod"<<std::endl;
-                }
-            }
-			//const_cast<CRCore::crPagedLOD*>(plod)->removeExpiredChildren(expiryTime,childrenRemoved);
-            ++inactive_itr;
-            ++i;
-        }
-    }
+	{
+		CRCore::ScopedLock<CRCore::crMutex> lock(m_loadedMapMutex);
+		for (PagedLODList::iterator inactive_itr = m_inactivePagedLODList.begin();
+			inactive_itr != m_inactivePagedLODList.end();
+			)
+		{
+			const CRCore::crPagedLOD* plod = inactive_itr->get();
+			bool remove_plod = false;
+			if (plod->referenceCount() <= 1)
+			{
+				// prune PageLOD's that are no longer externally referenced
+				childrenRemoved.push_back(const_cast<CRCore::crPagedLOD*>(plod));
+				//CRCore::notify(CRCore::NOTICE)<<"m_activePagedLODList : pruning no longer externally referenced"<<std::endl;
+				remove_plod = true;
+			}
+			else if (plod->getFrameNumberOfLastTraversal() >= m_frameNumber - 1)
+			{
+				//CRCore::notify(CRCore::NOTICE)<<"m_inactivePagedLODList : moving PageLOD to active list"<<std::endl;
+				// found a reactivated pagedLOD's need to put it back in the active list.                
+				m_activePagedLODList.insert(*inactive_itr);
+				remove_plod = true;
+			}
 
+			if (remove_plod)
+			{
+				PagedLODList::iterator itr_to_erase = inactive_itr;
+				++inactive_itr;
+
+				m_inactivePagedLODList.erase(itr_to_erase);
+			}
+			else
+			{
+				//            if (i<numberOfPagedLODToTest)
+				if (childrenRemoved.size() < targetNumOfRemovedChildPagedLODs)
+				{
+					// check for removing expired children.
+					if (const_cast<CRCore::crPagedLOD*>(plod)->removeExpiredChildren(expiryTime, childrenRemoved, m_loadedMap))
+					{
+						//CRCore::notify(CRCore::NOTICE)<<"Some children removed from PLod "<<plod->getName()<<std::endl;
+					}
+					else
+					{
+						//CRCore::notify(CRCore::NOTICE)<<"no children removed from PLod"<<std::endl;
+					}
+				}
+				//const_cast<CRCore::crPagedLOD*>(plod)->removeExpiredChildren(expiryTime,childrenRemoved);
+				++inactive_itr;
+				++i;
+			}
+		}
+	}
     //CRCore::notify(CRCore::NOTICE)<<"m_activePagedLODList.size()="<<m_activePagedLODList.size()<<"\t_inactivePagedLODList.size()="<<m_inactivePagedLODList.size()<<std::endl;
 
 
@@ -985,19 +993,9 @@ void crDatabasePager::removeExpiredSubgraphs(double currentFrameTime)
 			childRemove->accept(*preRemove);
 			parent = const_cast<crGroup *>(itr->second.get());
 			parent->removeChild(childRemove.get());
-			if(childRemove->getNumParents()==0)
-			    m_childrenToDeleteList.push_back(childRemove.get());
-   //         volumeNode = dynamic_cast<crVolumeNode *>(childRemove);
-			//if(volumeNode && childRemove->referenceCount()<=2)
-			//{
-			//	m_childrenToDeleteList.push_back(childRemove);
-			//}
-			//else if(childRemove->referenceCount()<=1)
-			//{
-			//	m_childrenToDeleteList.push_back(childRemove);
-			//	//childRemove->accept(*physicsRelease);
-			//	//childRemove->releaseObjects();
-			//}
+			//LoadedMap中的模型，保留在内存中
+			//if(childRemove->getNumParents()==0)
+			//    m_childrenToDeleteList.push_back(childRemove.get());
 		}
 		//updateDatabasePagerThreadBlock();
 		m_childRemovedMap.clear();

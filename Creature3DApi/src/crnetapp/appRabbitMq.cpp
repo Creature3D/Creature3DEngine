@@ -11,7 +11,10 @@
 * Lesser General Public License for more details.
 */
 #include <CRNetApp/appRabbitmq.h>
-#include <CRCore/thread/crThread.h>
+#include <CRNetApp/appNetGameData.h>
+#include <CRNetApp/appGlobalHandle.h>
+#include <CRNetApp/appServerPlayerData.h>
+#include <CRNetApp/appMsg.h>
 using namespace CRNetApp;
 using namespace CRCore;
 
@@ -34,19 +37,77 @@ crRabbitmq::crRabbitmq() :
 m_iPort(0),
 m_iChannel(1), //默认用1号通道，通道无所谓 
 m_pSock(NULL),
-m_pConn(NULL)
+m_pConn(NULL),
+m_done(true),
+m_time(0L)
 {
+	setFpsControl(10);
 }
 
 crRabbitmq::~crRabbitmq()
 {
+	m_done = true;
+	while (isRunning()) 
+	{
+		CRCore::crThread::sleep(10);
+	}
 	if (NULL != m_pConn)
 	{
 		disconnect();
 		m_pConn = NULL;
 	}
 }
-
+void crRabbitmq::done()
+{
+	m_done = true;
+}
+void crRabbitmq::setFpsControl(float fps)
+{
+	if(fps<=0.0f)
+		m_fpsControl = 0.0f;
+	else
+		m_fpsControl = CRCore::clampTo(1000.0f/fps,0.0f,100.0f);
+}
+void crRabbitmq::run()
+{
+#ifdef _DEBUG
+	try
+	{
+#endif
+		m_done = false;
+		CRCore::Timer_t t1;
+		while(!m_done)
+		{
+			t1 = CRCore::Timer::instance()->tick();
+			if(m_time == 0)
+			{
+				m_time = t1;
+				CRCore::crThread::sleep(m_fpsControl);
+				continue;
+			}
+			float dt = CRCore::Timer::instance()->delta_m( m_time, t1 );
+			if(dt<m_fpsControl)
+			{
+				CRCore::crThread::sleep(dt<0.0f?m_fpsControl:m_fpsControl - dt);
+			}
+			t1 = CRCore::Timer::instance()->tick();
+			dt = CRCore::Timer::instance()->delta_s( m_time, t1 );
+			m_time = t1;
+			if (dt < 0.0f)
+			{
+				continue;
+			}
+			crServerBrainHandle::getInstance()->doEvent(WCH_RabbitmqUpdate,MAKECREPARAM(&dt,NULL));
+		}
+#ifdef _DEBUG
+		CRCore::notify(CRCore::ALWAYS)<<"crRabbitmq end"<<std::endl;
+	}
+	catch (...)
+	{
+		CRCore::notify(CRCore::ALWAYS)<<"crRabbitmq::run() error "<<std::endl;
+	}
+#endif
+}
 int crRabbitmq::connect(const std::string &strHostname, int iPort, const std::string &strUser, const std::string &strPasswd) 
 {
 	m_strHostname = strHostname;
@@ -277,12 +338,13 @@ int crRabbitmq::consumer(const std::string &strQueueName, std::string &message, 
 		return -1;
 	}
 
-	//amqp_basic_qos(m_pConn, m_iChannel, 0, 1, 0);
-	int ack = 1; // no_ack    是否需要确认消息后再从队列中删除消息
+	////amqp_basic_qos(m_pConn, m_iChannel, 0, 1, 0);
+	int no_ack = 1; // no_ack    是否需要确认消息后再从队列中删除消息
 	amqp_bytes_t queuename = amqp_cstring_bytes(strQueueName.c_str());
-	amqp_basic_consume(m_pConn, m_iChannel, queuename, amqp_empty_bytes, 0, ack, 0, amqp_empty_table);
+	amqp_basic_consume(m_pConn, m_iChannel, queuename, amqp_empty_bytes, 0, no_ack, 0, amqp_empty_table);
 	if (0 != errorMsg(amqp_get_rpc_reply(m_pConn), "Consuming")) 
 	{
+		//fprintf(stderr, "Consumer amqp_basic_consume failed -3\n");
 		return -3;
 	}
 
@@ -293,16 +355,16 @@ int crRabbitmq::consumer(const std::string &strQueueName, std::string &message, 
 	res = amqp_consume_message(m_pConn, &envelope, timeout, 0);
 	if (AMQP_RESPONSE_NORMAL != res.reply_type) 
 	{
-		fprintf(stderr, "Consumer amqp_channel_close failed\n");
+		//fprintf(stderr, "Consumer amqp_channel_close failed %d\n", res.reply_type);
 		return -res.reply_type;
 	}
 	message.assign((char *)envelope.message.body.bytes, (char *)envelope.message.body.bytes + envelope.message.body.len);
-	int rtn = amqp_basic_ack(m_pConn, m_iChannel, envelope.delivery_tag, 1);
+	//int rtn = amqp_basic_ack(m_pConn, m_iChannel, envelope.delivery_tag, 1);
 	amqp_destroy_envelope(&envelope);
-	if (rtn != 0) 
-	{
-		return -4;
-	}
+	//if (rtn != 0) 
+	//{
+	//	return -4;
+	//}
 	return 0;
 }
 
