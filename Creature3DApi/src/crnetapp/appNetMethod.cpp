@@ -6713,7 +6713,7 @@ void crRunNetGameMethod::operator()(crHandle &handle)
 		sceneServer->getNetManager()->sendPacket("all",packet);
 	}
 	crRunGameHandle::getInstance()->setRunningCode(crRunGameHandle::SwitchScene);
-	crShaderManager::getInstance()->clear();
+	//crShaderManager::getInstance()->clear();
 	crLightSourceManager::getInstance()->clear();
 	CRNetApp::crScene::clearCollideMap();
 
@@ -6875,7 +6875,7 @@ void crRunGameMethod::operator()(crHandle &handle)
 		CREncapsulation::crStartHandler::getInstance()->run();
 		crRunGameHandle::getInstance()->setRunningCode(crRunGameHandle::SwitchScene);
 		crMyPlayerData::getInstance()->clear();
-		crShaderManager::getInstance()->clear();
+		//crShaderManager::getInstance()->clear();
 		crLightSourceManager::getInstance()->clear();
 
 		//CRAL::crSoundManager::instance()->loadSound("script/sound0.cfg");
@@ -6986,7 +6986,7 @@ void crRunGame2Method::operator()(crHandle &handle)
 		CREncapsulation::crStartHandler::getInstance()->run();
 		crRunGameHandle::getInstance()->setRunningCode(crRunGameHandle::SwitchScene);
 		crMyPlayerData::getInstance()->clear();
-		crShaderManager::getInstance()->clear();
+		//crShaderManager::getInstance()->clear();
 		crLightSourceManager::getInstance()->clear();
 		CREncapsulation::crStartHandler::getInstance()->end();
 	}
@@ -7111,7 +7111,7 @@ void crRunNetGame2Method::operator()(crHandle &handle)
 	}
 	crRunGameHandle::getInstance()->setRunningCode(crRunGameHandle::SwitchScene);
 	crMyPlayerData::getInstance()->clear();
-	crShaderManager::getInstance()->clear();
+	//crShaderManager::getInstance()->clear();
 	crLightSourceManager::getInstance()->clear();
 	CRNetApp::crScene::clearCollideMap();
 

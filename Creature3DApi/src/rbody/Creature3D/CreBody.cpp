@@ -151,7 +151,7 @@ void CreBodyNode::initDrawables(CRCore::crGroup *copyNode/*,const CRCore::crCopy
 	bool needloadImage = false;
 	std::string filename;
 	CalSubmesh *core_submesh;
-	SubMeshDrawable *submesh_drawable;
+	ref_ptr<SubMeshDrawable> submesh_drawable;
 	for (int mesh_id = 0; mesh_id < mesh_count; mesh_id++) 
 	{
         submesh_count = cal_renderer->getSubmeshCount(mesh_id);
@@ -196,10 +196,10 @@ void CreBodyNode::initDrawables(CRCore::crGroup *copyNode/*,const CRCore::crCopy
 						submesh_drawable->setStateSet(drawableState);
 						obj->removeDrawable(0,obj->getNumDrawables());
 						obj->setName(submesh_drawable->getName());
-						obj->addDrawable(submesh_drawable);
+						obj->addDrawable(submesh_drawable.get());
 
 						m_subMeshDrawableListMutex.lock();
-						m_subMeshDrawableList.push_back(submesh_drawable);
+						m_subMeshDrawableList.push_back(submesh_drawable.get());
 						m_subMeshDrawableListMutex.unlock();
 
 					}
@@ -207,11 +207,11 @@ void CreBodyNode::initDrawables(CRCore::crGroup *copyNode/*,const CRCore::crCopy
 					{
 						obj = new crObject;
 						obj->setName(submesh_drawable->getName());
-						obj->addDrawable(submesh_drawable);
+						obj->addDrawable(submesh_drawable.get());
 
 						m_subMeshDrawableListMutex.lock();
-						m_subMeshDrawableList.push_back(submesh_drawable);
-						parseMeshMaterial(submesh_drawable);
+						m_subMeshDrawableList.push_back(submesh_drawable.get());
+						parseMeshMaterial(submesh_drawable.get());
 						m_subMeshDrawableListMutex.unlock();
 					}
 					//obj->setCullingActive(false);

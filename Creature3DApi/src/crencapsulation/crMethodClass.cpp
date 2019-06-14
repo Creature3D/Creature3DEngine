@@ -25293,7 +25293,7 @@ void crRunSingleGameMethod::operator()(crHandle &handle)
 		crBrain::getInstance()->doEvent(WCH_SceneStart);
 		//crFilterRenderManager::getInstance()->closeCanvas("LoadingUI");
 		CREncapsulation::crStartHandler::getInstance()->run();
-		crShaderManager::getInstance()->clear();
+		//crShaderManager::getInstance()->clear();
 		crLightSourceManager::getInstance()->clear();
 		//CRAL::crSoundManager::instance()->loadSound("script/sound0.cfg");
 		//crBrain::getInstance()->pushInstance(CRAL::crSoundManager::instance());

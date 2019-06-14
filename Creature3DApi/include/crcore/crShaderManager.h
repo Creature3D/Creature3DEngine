@@ -60,7 +60,7 @@ public :
 	
 	inline crStateSet *getShaderStateSet( const std::string& name )
 	{
-		//CRCore::ScopedLock<crMutex> lock(m_mutex);
+		CRCore::ScopedLock<crCriticalMutex> lock(m_mutex);
 		if(!m_sssmapbuf.empty())
 		{
 			ShaderStateSetHashMap::iterator itr = m_sssmapbuf.find(name);
@@ -71,6 +71,7 @@ public :
 		{
 			//m_sssmapbuf.insert(std::make_pair(itr->first,itr->second));
 			m_sssmapbuf[itr->first] = itr->second;
+			itr->second->setCanRelease(false);
 			//CRCore::notify(CRCore::WARN) << "crShaderManager m_sssmapbuf = "<<m_sssmapbuf.size()<<std::endl;
 			//CRCore::notify(CRCore::WARN) << "crShaderManager m_shaderStateSetMap = "<<m_shaderStateSetMap.size()<<std::endl;
             return itr->second.get();
@@ -165,6 +166,7 @@ public :
 	inline crStateSet *getOrCreateIdleStateSet()
 	{//复用有可能造成不稳定
 		//modify 20140421
+		CRCore::ScopedLock<crCriticalMutex> lock(m_mutex);
 		while (m_currentReuseStateSetIndex<m_buf.size() && 
 			m_buf[m_currentReuseStateSetIndex]->referenceCount()>1)
 		{
@@ -184,6 +186,7 @@ public :
 
 		crStateSet *idle = new crStateSet;
 		idle->setName("#buf");
+		idle->setCanRelease(false);
 		m_buf.push_back(idle);
 		++m_currentReuseStateSetIndex;
 		//CRCore::notify(CRCore::WARN) << "getOrCreateIdleStateSet = "<<m_buf.size()<<" currentReuseStateSetIndex = "<<m_currentReuseStateSetIndex<<std::endl;
@@ -252,7 +255,7 @@ protected :
 	CRCore::crVector2 m_sunShadowDistanceOffset;
 	CRCore::crVector2 m_sunShadowDistance;
 	StrVec m_stringVec;
-	crMutex                  m_mutex;
+	crCriticalMutex   m_mutex;
 	ShadowStateSetMap m_shadowStateSetMap;
 	ref_ptr<crTexture> m_giTexture;
 	//ref_ptr<crTexture> m_upperSkyTexture;

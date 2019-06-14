@@ -476,6 +476,7 @@ class CR_EXPORT crStateSet : public crBase
 		};
 		inline void setStateSetMode(unsigned char mode) { m_statesetMode = mode; }
 		inline unsigned char getStateSetMode()const { return m_statesetMode; }
+		inline void setCanRelease(bool canrelease) { m_canRelease = canrelease; }
     protected :
 
         virtual ~crStateSet();
@@ -575,6 +576,7 @@ class CR_EXPORT crStateSet : public crBase
 		unsigned char                      m_textureOperate[16];//0:add, 1:mult, 2:Replace, 3:Ignore, 4:AddETTo, 5:MultETTo, 6:ET3ToLM
 		unsigned char                      m_alphaOperate[16];//0:Ignore,1:add, 2:mult, 3:Replace, 
 		unsigned char                      m_textureUV[16];//0Ä¬ÈÏ£¬1£ºUV1
+		bool                               m_canRelease;
 		//bool m_renderInited;
 };
 

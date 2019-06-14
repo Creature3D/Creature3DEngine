@@ -117,6 +117,10 @@ crGlobalHandle* crGlobalHandle::getInstance()
 
 void crGlobalHandle::clear()
 {
+	s_recycleItemIDDeque.clear();
+	s_recycleItemChildIDDeque.clear();
+	s_recycleRoomIDDeque.clear();
+	s_recycleHttpDownloadIDDeque.clear();
 	m_dataClass = NULL;
 	m_instance = NULL;
 }

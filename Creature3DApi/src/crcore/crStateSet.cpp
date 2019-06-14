@@ -86,6 +86,7 @@ crStateSet::crStateSet()
 	setAlphaOperate(TEXTURE_BASEMAP,3);
 	//m_renderInited = false;
 	memset(m_textureUV,0,16);
+	m_canRelease = true;
 }
 
 crStateSet::crStateSet(const crStateSet& rhs,const crCopyOp& copyop):crBase(rhs,copyop)
@@ -165,6 +166,7 @@ crStateSet::crStateSet(const crStateSet& rhs,const crCopyOp& copyop):crBase(rhs,
 	memcpy(m_alphaOperate,rhs.m_alphaOperate,16);
 	memcpy(m_textureUV,rhs.m_textureUV,16);
 	//m_renderInited = false;
+	m_canRelease = true;
 }
 
 crStateSet::~crStateSet()
@@ -1649,7 +1651,7 @@ void crStateSet::compile(crState& state) const
 
 void crStateSet::releaseObjects(crState* state)
 {
-	if (m_name != "#buf")
+	if (m_canRelease)
 	{
 		for (AttributeList::iterator itr = m_attributeList.begin();
 			itr != m_attributeList.end();

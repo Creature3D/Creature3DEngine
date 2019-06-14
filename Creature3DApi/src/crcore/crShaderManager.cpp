@@ -58,7 +58,7 @@ crShaderManager* crShaderManager::getInstance()
 
 void crShaderManager::clear()
 {//shaderManager 不需要重新载入
-	//m_instance = NULL;
+	m_instance = NULL;
 	//CRCore::ScopedLock<crMutex> lock(m_mutex);
 	//m_sssmapbuf.clear();
 	//for( ShaderStateSetMap::iterator itr = m_shaderStateSetMap.begin();
@@ -94,14 +94,15 @@ crShaderManager::ShaderStateSetMap &crShaderManager::getShaderStateSetMap()
 
 void crShaderManager::releaseObjects(crState* state)
 {
-	//CRCore::ScopedLock<crMutex> lock(m_mutex);
+	CRCore::ScopedLock<crCriticalMutex> lock(m_mutex);
 	for (ShaderStateSetMap::iterator itr = m_shaderStateSetMap.begin();
 		itr != m_shaderStateSetMap.end();
 		++itr)
 	{
+		itr->second->setCanRelease(true);
 		itr->second->releaseObjects(state);
 	}
-
+	//m_shaderStateSetMap.clear();
 	m_sssmapbuf.clear();
 	
 	m_currentActiveStateSets->clear();
@@ -112,7 +113,8 @@ void crShaderManager::releaseObjects(crState* state)
 		itr != m_buf.end();
 		++itr )
 	{
-		(*itr)->setName("buf");
+		//(*itr)->setName("buf");
+		(*itr)->setCanRelease(true);
 		(*itr)->releaseObjects(state);
 	}
     m_buf.clear();//getOrCreateIdleStateSet
@@ -149,6 +151,7 @@ void crShaderManager::insertShaderStateSet( crStateSet *stateset )
 {
 	if(stateset)
 	{
+		//CRCore::ScopedLock<crCriticalMutex> lock(m_mutex);
 		if(stateset->getName().empty())
 		{
 			CRCore::notify(CRCore::WARN)<<"crShaderManager::insertShaderStateSet(): 材质没有被命名"<<std::endl;
@@ -169,6 +172,7 @@ void crShaderManager::insertShaderStateSet( crStateSet *stateset )
 				return;
 			}
 		}
+		stateset->setCanRelease(false);
 	    m_shaderStateSetMap[stateset->getName()] = stateset;
 	}
 }

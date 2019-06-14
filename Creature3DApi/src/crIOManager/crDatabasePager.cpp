@@ -981,6 +981,7 @@ void crDatabasePager::removeExpiredSubgraphs(double currentFrameTime)
 	{
 		CRCore::ScopedLock<CRCore::crMutex> lock(m_childremovedmap_mutex);
 		CRCore::ScopedLock<CRCore::crMutex> lock2(m_childrenToDeleteListMutex);
+		CRCore::ScopedLock<CRCore::crMutex> lock3(m_loadedMapMutex);
 		ref_ptr<crNode> childRemove;
 		ref_ptr<crGroup> parent;
 		//crVolumeNode *volumeNode;
@@ -990,12 +991,23 @@ void crDatabasePager::removeExpiredSubgraphs(double currentFrameTime)
 			++itr )
 		{
 			childRemove = const_cast<crNode *>(itr->first.get());
-			childRemove->accept(*preRemove);
 			parent = const_cast<crGroup *>(itr->second.get());
 			parent->removeChild(childRemove.get());
-			//LoadedMap中的模型，保留在内存中
-			//if(childRemove->getNumParents()==0)
-			//    m_childrenToDeleteList.push_back(childRemove.get());
+			if (childRemove->getNumParents() == 0)
+			{
+				for (LoadedMap::iterator litr = m_loadedMap.begin();
+					litr != m_loadedMap.end();
+					++litr)
+				{
+					if (litr->second == childRemove)
+					{
+						m_loadedMap.erase(litr);
+						break;
+					}
+				}
+				m_childrenToDeleteList.push_back(childRemove.get());
+			}
+			childRemove->accept(*preRemove);
 		}
 		//updateDatabasePagerThreadBlock();
 		m_childRemovedMap.clear();

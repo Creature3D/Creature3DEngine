@@ -271,6 +271,8 @@ void crCullVisitor::reset()
 }
 void crCullVisitor::addDrawable(const CRCore::crObject *obj, CRCore::crDrawable* drawable, CRCore::RefMatrix* matrix, bool effectByShadow, CRCore::crNode *needUnLockNode)
 {
+	if (!obj || !drawable)
+		return;
 	drawable->resumeRendering();
 	//int popAlphaShadowFlg;
 	CRCore::crStateSet *drawabless = drawable->getStateSet();
@@ -504,6 +506,8 @@ void crCullVisitor::addDrawableAndDepth(const CRCore::crObject *obj, CRCore::crD
 	//int popAlphaShadowFlg;
 	//try
 	//{
+	if (!obj || !drawable)
+		return;
 	drawable->resumeRendering();
 	bool stateset_pushed = false;
 	CRCore::crStateSet *drawabless = drawable->getStateSet();

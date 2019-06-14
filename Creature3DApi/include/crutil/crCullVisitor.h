@@ -265,10 +265,10 @@ class CRUTIL_EXPORT crCullVisitor : public CRCore::crNodeVisitor, public CRCore:
     	void updateCalculatedNearFar(const CRCore::crVector3& pos);
 		
         /** Add a drawable to current render graph.*/
-        inline void addDrawable(const CRCore::crObject *obj,CRCore::crDrawable* drawable,CRCore::RefMatrix* matrix,bool effectByShadow, CRCore::crNode *needUnLockNode = 0);
+        void addDrawable(const CRCore::crObject *obj,CRCore::crDrawable* drawable,CRCore::RefMatrix* matrix,bool effectByShadow, CRCore::crNode *needUnLockNode = 0);
 
         /** Add a drawable and depth to current render graph.*/
-		inline void addDrawableAndDepth(const CRCore::crObject *obj,CRCore::crDrawable* drawable,CRCore::RefMatrix* matrix,float depth,bool effectByShadow, CRCore::crNode *needUnLockNode = 0);
+		void addDrawableAndDepth(const CRCore::crObject *obj,CRCore::crDrawable* drawable,CRCore::RefMatrix* matrix,float depth,bool effectByShadow, CRCore::crNode *needUnLockNode = 0);
 
         /** Add an attribute which is positioned related to the modelview matrix.*/
         inline void addPositionedAttribute(CRCore::RefMatrix* matrix,const CRCore::crStateAttribute* attr);

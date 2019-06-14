@@ -2128,11 +2128,11 @@ void crText::accept(CRCore::crDrawable::PrimitiveFunctor& pf) const
 void crText::releaseObjects(CRCore::crState* state)
 {
 	CRCore::ScopedLock<CRCore::crCriticalMutex> lock(m_computeGlyphMutex);
-	if (m_font.valid())
-	{
-		m_font->releaseObjects(state);
-		m_font = NULL;
-	}
+	//if (m_font.valid())
+	//{
+	//	m_font->releaseObjects(state);
+	//	m_font = NULL;
+	//}
     crTextBase::releaseObjects(state);
  //   crFont *font = getActiveFont();
 	//if(font) font->releaseObjects(state);
