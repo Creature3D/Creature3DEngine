@@ -30,7 +30,21 @@
     <LocalDebuggerCommand>$(TargetPath)</LocalDebuggerCommand>
     <LocalDebuggerAttach>false</LocalDebuggerAttach>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release2015|Win32'">
+    <LocalDebuggerWorkingDirectory>../../../../Projects/Editor/Creature3DEditor</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>Editor</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommand>$(TargetPath)</LocalDebuggerCommand>
+    <LocalDebuggerAttach>false</LocalDebuggerAttach>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SSDRelease|x64'">
+    <LocalDebuggerWorkingDirectory>../../../../Projects/Editor/Creature3DEditor</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>Editor</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommand>$(TargetPath)</LocalDebuggerCommand>
+    <LocalDebuggerAttach>false</LocalDebuggerAttach>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release2015|x64'">
     <LocalDebuggerWorkingDirectory>../../../../Projects/Editor/Creature3DEditor</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommandArguments>Editor</LocalDebuggerCommandArguments>

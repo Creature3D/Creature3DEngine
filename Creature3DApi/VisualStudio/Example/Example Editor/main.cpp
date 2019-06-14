@@ -299,37 +299,40 @@ int main( int argc, char **argv )
 
 	////_putenv(program.c_str());
 	HANDLE hMutex = NULL;
-	if(runMode > 0 && runMode <= WebGame)
-	{//双开
-		char buf[64];
-		int i = 0;
-		for (; i < 3/*10*/; i++)
-		{
-			sprintf(buf, "Creature3D%d\0", i);
-			hMutex = CreateMutex(NULL, false, buf);
-			if (GetLastError() == ERROR_ALREADY_EXISTS)
+	if (argvstr.find("NoLimit") == std::string::npos)
+	{
+		if (runMode > 0 && runMode <= WebGame)
+		{//双开
+			char buf[64];
+			int i = 0;
+			for (; i < 10; i++)
 			{
-				CloseHandle(hMutex);
-				hMutex = NULL;
+				sprintf(buf, "Creature3D%d\0", i);
+				hMutex = CreateMutex(NULL, false, buf);
+				if (GetLastError() == ERROR_ALREADY_EXISTS)
+				{
+					CloseHandle(hMutex);
+					hMutex = NULL;
+				}
+				else
+				{
+					break;
+				}
 			}
-			else
+			if (!hMutex)
 			{
-				break;
+				MessageBox(::GetActiveWindow(), "程序已经在运行中，不能重复启动！", "Creature3D", MB_OK);
+				return 0;
 			}
-		}
-		if (!hMutex)
-		{
-			MessageBox(::GetActiveWindow(), "程序已经在运行中，不能重复启动！", "Creature3D", MB_OK);
-			return 0;
-		}
 #ifndef _ACTIVEX
-		if (i > 0)
-		{//多开
-			//_putenv("MoreOpen=1\0");
-			crDisplaySettings::instance()->setGameMoreOpened(true);
-		}
+			if (i > 0)
+			{//多开
+				//_putenv("MoreOpen=1\0");
+				crDisplaySettings::instance()->setGameMoreOpened(true);
+			}
 #endif
-		//CRNetApp::crGlobalHandle::setRunProtectHandle(hMutex);
+			//CRNetApp::crGlobalHandle::setRunProtectHandle(hMutex);
+		}
 	}
 #ifdef CookFile
 	CRIOManager::SetCooked(true);
@@ -537,6 +540,8 @@ int main( int argc, char **argv )
 		CRGUI::cr2DStageManager::getInstance()->setParentWnd((Producer::Window)hWndParent);
 		CRGUI::cr2DStageManager::getInstance()->doModal(stage);
 	}
+	CRNetApp::crGlobalHandle::getInstance()->clear();
+	CRCore::crShaderManager::getInstance()->clear();
 	CRIOManager::crLoadManager::getInstance()->clear();
 	CRGUI::cr2DStageManager::getInstance()->clear();
 	CRCore::crEventCallbackManager::getInstance()->clear();
@@ -547,6 +552,7 @@ int main( int argc, char **argv )
 	GL2Extensions::clearExtensions();
 	CRIOManager::crScriptLoadManager::getInstance()->clear();
 	CRSound::crSoundSystem::getInstance()->shutdown();
+	CRIOManager::crRegistry::instance()->clear();
 #ifdef _ACTIVEX
 	CRIOManager::crRegistry::instance()->closeAllLibraries();
 #endif

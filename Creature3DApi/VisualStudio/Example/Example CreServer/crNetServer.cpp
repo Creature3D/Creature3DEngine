@@ -33,6 +33,7 @@
 #include <CRNetApp/appDataClass.h>
 #include <CREncapsulation/crLoader.h>
 #include <CRIOManager/crLoadManager.h>
+#include <CRNetApp/appRabbitmq.h>
 using namespace CRCore;
 using namespace CRNet;
 using namespace CRNetApp;
@@ -1174,6 +1175,7 @@ void startGameServer(std::string cfgfile/*,int serverid*/)
 	}
 	crBlockDetectThread::getInstance()->clear();
 	CRNet::crNetWorkReconnecter::getInstance()->clear();
+	crRabbitmq::getInstance()->clear();
 }
 
 void startGameConnectServer(std::string cfgfile,int serverid)
