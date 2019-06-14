@@ -1,5 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "libpng\libpng.vcxproj", "{D6973076-9317-4EF2-A0B8-B7A18AC0713E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033} = {B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}
@@ -32,6 +34,8 @@ Global
 		Debug|x64 = Debug|x64
 		Release Library|Win32 = Release Library|Win32
 		Release Library|x64 = Release Library|x64
+		Release Library2015|Win32 = Release Library2015|Win32
+		Release Library2015|x64 = Release Library2015|x64
 		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 	EndGlobalSection
@@ -48,6 +52,10 @@ Global
 		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library|Win32.Build.0 = Release Library|Win32
 		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library|x64.ActiveCfg = Release Library|x64
 		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library|x64.Build.0 = Release Library|x64
+		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library2015|Win32.ActiveCfg = Release Library2015|Win32
+		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library2015|Win32.Build.0 = Release Library2015|Win32
+		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library2015|x64.ActiveCfg = Release Library2015|x64
+		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release Library2015|x64.Build.0 = Release Library2015|x64
 		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release|Win32.ActiveCfg = Release|Win32
 		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release|Win32.Build.0 = Release|Win32
 		{D6973076-9317-4EF2-A0B8-B7A18AC0713E}.Release|x64.ActiveCfg = Release|x64
@@ -64,6 +72,9 @@ Global
 		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release Library|Win32.Build.0 = Release Library|Win32
 		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release Library|x64.ActiveCfg = Release Library|x64
 		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release Library|x64.Build.0 = Release Library|x64
+		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release Library2015|Win32.ActiveCfg = Release Library2015|Win32
+		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release Library2015|Win32.Build.0 = Release Library2015|Win32
+		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release Library2015|x64.ActiveCfg = Release Library2015|x64
 		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release|Win32.ActiveCfg = Release|Win32
 		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release|Win32.Build.0 = Release|Win32
 		{228BA965-50D5-42B2-8BCF-AFCC227E3C1D}.Release|x64.ActiveCfg = Release|x64
@@ -80,6 +91,10 @@ Global
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library|Win32.Build.0 = Release Library|Win32
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library|x64.ActiveCfg = Release Library|x64
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library|x64.Build.0 = Release Library|x64
+		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library2015|Win32.ActiveCfg = Release Library2015|Win32
+		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library2015|Win32.Build.0 = Release Library2015|Win32
+		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library2015|x64.ActiveCfg = Release Library2015|x64
+		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release Library2015|x64.Build.0 = Release Library2015|x64
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release|Win32.ActiveCfg = Release|Win32
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release|Win32.Build.0 = Release|Win32
 		{B990B8F9-1AA1-7999-4A05-9E7E3FFCC033}.Release|x64.ActiveCfg = Release|x64
@@ -96,6 +111,9 @@ Global
 		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release Library|Win32.Build.0 = Release Library|Win32
 		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release Library|x64.ActiveCfg = Release Library|x64
 		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release Library|x64.Build.0 = Release Library|x64
+		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release Library2015|Win32.ActiveCfg = Release Library2015|Win32
+		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release Library2015|Win32.Build.0 = Release Library2015|Win32
+		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release Library2015|x64.ActiveCfg = Release Library2015|x64
 		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release|Win32.ActiveCfg = Release|Win32
 		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release|Win32.Build.0 = Release|Win32
 		{9B36B6FE-7FC0-434F-A71F-BBEF8099F1D8}.Release|x64.ActiveCfg = Release|x64
@@ -112,6 +130,9 @@ Global
 		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release Library|Win32.Build.0 = Release|Win32
 		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release Library|x64.ActiveCfg = Release|x64
 		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release Library|x64.Build.0 = Release|x64
+		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release Library2015|Win32.ActiveCfg = Release Library2015|Win32
+		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release Library2015|Win32.Build.0 = Release Library2015|Win32
+		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release Library2015|x64.ActiveCfg = Release Library2015|x64
 		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release|Win32.ActiveCfg = Release|Win32
 		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release|Win32.Build.0 = Release|Win32
 		{EB33566E-DA7F-4D28-9077-88C0B7C77E35}.Release|x64.ActiveCfg = Release|x64
@@ -119,5 +140,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40BD1757-32CF-42F6-88EC-A563A2EC7C74}
 	EndGlobalSection
 EndGlobal
