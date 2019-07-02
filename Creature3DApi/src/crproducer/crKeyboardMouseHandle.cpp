@@ -268,13 +268,13 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 				if(ea->getEventType() == crGUIEventAdapter::PUSH || ea->getEventType()== crGUIEventAdapter::RELEASE || ea->getEventType()== crGUIEventAdapter::DOUBLECLICK)
 				{
 					unsigned short msgflg = pickUI->getMsgTraverse();
-					if(msgflg == KM_None)
-					{
-						if(pickUI->getParentCanvas())
-						{
-							msgflg = pickUI->getParentCanvas()->getMsgTraverse();
-						}
-					}
+					//if(msgflg == KM_None)
+					//{
+					//	if(pickUI->getParentCanvas())
+					//	{
+					//		msgflg = pickUI->getParentCanvas()->getMsgTraverse();
+					//	}
+					//}
 					if(!(msgflg & CRCore::KM_LeftMouse) && ea->getButton() == crGUIEventAdapter::LEFT_MOUSE_BUTTON)
 					{
 						if(!((msgflg & CRCore::KM_LBtnUp) && ea->getEventType() == crGUIEventAdapter::RELEASE))
@@ -290,8 +290,8 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 							return;
 					}
 				}
-				if(!dynamic_cast<CRCore::crCanvasNode *>(pickUI) && ea->getButton() == crGUIEventAdapter::LEFT_MOUSE_BUTTON && (ea->getEventType() == crGUIEventAdapter::PUSH || ea->getEventType() == crGUIEventAdapter::RELEASE))
-					return;
+				//if(!dynamic_cast<CRCore::crCanvasNode *>(pickUI) && ea->getButton() == crGUIEventAdapter::LEFT_MOUSE_BUTTON && (ea->getEventType() == crGUIEventAdapter::PUSH || ea->getEventType() == crGUIEventAdapter::RELEASE))
+				//	return;
 			}
 			else
 			{
@@ -370,13 +370,13 @@ void crKeyboardMouseHandle::handle(CRProducer::crGUIEventAdapter* ea)
 					}
 				}
 				unsigned short msgflg = inputWidget->getMsgTraverse();
-				if(msgflg == KM_None)
-				{
-					if(inputWidget->getParentCanvas())
-					{
-						msgflg = inputWidget->getParentCanvas()->getMsgTraverse();
-					}
-				}
+				//if (msgflg == KM_None)
+				//{
+				//	if (inputWidget->getParentCanvas())
+				//	{
+				//		msgflg = inputWidget->getParentCanvas()->getMsgTraverse();
+				//	}
+				//}
 				if( !(msgflg & CRCore::KM_Keyboard)
 					&&(ea->getEventType() == crGUIEventAdapter::KEYDOWN 
 					|| ea->getEventType() == crGUIEventAdapter::KEYUP
