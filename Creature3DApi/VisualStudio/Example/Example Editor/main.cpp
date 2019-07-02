@@ -305,7 +305,7 @@ int main( int argc, char **argv )
 		{//Ë«¿ª
 			char buf[64];
 			int i = 0;
-			for (; i < 10; i++)
+			for (; i <3/* 10*/; i++)
 			{
 				sprintf(buf, "Creature3D%d\0", i);
 				hMutex = CreateMutex(NULL, false, buf);
