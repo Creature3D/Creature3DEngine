@@ -1,0 +1,6 @@
+widget	script
+UI_Country3_Houxuanren	UI_Country3_Houxuanren.cfg
+Houxuanren_Drag	UI_frame.cfg
+Houxuanren_Close	UI_Close.cfg
+Houxuanren_Chengweihouxuanren	Houxuanren_Chengweihouxuanren.cfg
+Houxuanren_Giveup	Houxuanren_Giveup.cfg

@@ -1,0 +1,41 @@
+id	0科技ID	1领主等级	2完成副本ID	3兵种ID	4完成建国之路	打开窗口名	图片控件名	图片名字	文本控件名	文字说明	是否跳转	跳转窗口名	切页控件名	页码	建筑ID
+1	21217					UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_JiangKa_Normal.img|T_UI_LingDi_JiangKa_Click.img	NewActionOpen_Input	开启将卡兑换，有钱任性	1	UI_Jk	UI_JkRaido	2	
+2	21226					UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_Ronglian_Normal.img|T_UI_LingDi_Ronglian_Click.img	NewActionOpen_Input	开启工坊熔炼，八卦石获取和升级	1	UI_Gongfang	RongLian		4
+3	21223					UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_Fulian_Normal.img|T_UI_LingDi_Fulian_Click.img	NewActionOpen_Input	工坊附炼开启，开启装备的属性附炼	1	UI_Gongfang	FuLian		4
+4	21222					UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_Jinglian_Normal.img|T_UI_LingDi_Jinglian_Click.img	NewActionOpen_Input	装备精炼功能开启，装备属性的大提升	1	UI_Gongfang	ZhuangBeiJingLian		4
+5	21216					UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_JiangKa_Normal.img|T_UI_LingDi_JiangKa_Click.img	NewActionOpen_Input	橙卡升级功能开启，将卡属性质变再次开启！	1	UI_Jk			
+6		19				UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_Meiridenglu_Normal.img|T_UI_LingDi_Meiridenglu_Click.img	NewActionOpen_Input	每日登陆抽奖，大量奖励等你拿	1	UI_LogReward			
+7		21				UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_Fushui_Normal.img|T_UI_LingDi_Fushui_Click.img	NewActionOpen_Input	征税开启，从此数钱数到手抽筋	1	UI_AncientHouse_Revenue			
+8		24				UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_WeiRen_Normal.img|T_UI_LingDi_WeiRen_Click.img	NewActionOpen_Input	开启人卡委托功能，强化资源增产	1	UI_Appoint			
+9		32				UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_ShiJi_Normal.img|T_UI_LingDi_ShiJi_Click.img	NewActionOpen_Input	开启市集，兑换资源开启	1	UI_Market			5
+10		20				UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_JunTuan_Normal.img|T_UI_LingDi_JunTuan_Click.img	NewActionOpen_Input	军团功能开启，快招呼小伙伴们入伙吧	1	UI_Corps			
+11					1	UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_GuoJia_Normal.img|T_UI_LingDi_GuoJia_Click.img	NewActionOpen_Input	国家功能开启，从此当上三国丞相不是梦！	1	UI_Country1			
+12		23				UI_NewActionOpen	NewActionOpen_Button	T_UI_LingDi_XiaoGuanJia_Normal.img|T_UI_LingDi_XiaoGuanJia_Click.img	NewActionOpen_Input	小管家开启	1	UI_Xiaoguanjia			
+14				20002		UI_NewArmsOpen	NewArmsOpen_Icon	兵种图片不需要填写直接从troops表里读	NewArmsOpen_Input	开启二级兵种飞刀兵	0	UI_Gongfang	UI_GongFang_GongBing		4
+15				20507		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启二级兵种黑山弩兵	0	UI_Gongfang	UI_GongFang_GongBing		4
+16				20505		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种镖枪兵	0	UI_Gongfang	UI_GongFang_GongBing		4
+17				20003		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种弩兵	0	UI_Gongfang	UI_GongFang_GongBing		4
+18				20005		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种神射营	0	UI_Gongfang	UI_GongFang_GongBing		4
+19				20004		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种先登强弩	0	UI_Gongfang	UI_GongFang_GongBing		4
+20				20023		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种无当飞军	0	UI_Gongfang	UI_GongFang_GongBing		4
+21				20006		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种元戎弩	0	UI_Gongfang	UI_GongFang_GongBing		4
+22				20501		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启二级黑山步兵	0	UI_Gongfang	UI_GongFang_BuBing		4
+23				20008		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启二级重步兵	0	UI_Gongfang	UI_GongFang_BuBing		4
+24				20504		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种铁甲军	0	UI_Gongfang	UI_GongFang_BuBing		4
+25				20009		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种虎卫营	0	UI_Gongfang	UI_GongFang_BuBing		4
+26				20010		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种丹阳兵	0	UI_Gongfang	UI_GongFang_BuBing		4
+27				20011		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种白毦兵	0	UI_Gongfang	UI_GongFang_BuBing		4
+28				20012		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种陷阵营	0	UI_Gongfang	UI_GongFang_BuBing		4
+29				20503		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种藤甲兵	0	UI_Gongfang	UI_GongFang_BuBing		4
+30				20013		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启二级轻骑兵	0	UI_Gongfang	UI_GongFang_QiBing		4
+31				20509		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启二级黑山骑兵	0	UI_Gongfang	UI_GongFang_QiBing		4
+32				20015		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种突骑兵	0	UI_Gongfang	UI_GongFang_QiBing		4
+33				20014		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种重骑兵	0	UI_Gongfang	UI_GongFang_QiBing		4
+34				20510		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种飞熊军	0	UI_Gongfang	UI_GongFang_QiBing		4
+35				20016		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种西凉铁骑	0	UI_Gongfang	UI_GongFang_QiBing		4
+36				20018		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种虎豹骑	0	UI_Gongfang	UI_GongFang_QiBing		4
+37				20017		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种象兵	0	UI_Gongfang	UI_GongFang_QiBing		4
+38				20021		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启二级兵种冲车	0	UI_Gongfang	UI_GongFang_JiXie		4
+39				20022		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启三级兵种木兽	0	UI_Gongfang	UI_GongFang_JiXie		4
+40				20020		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启四级兵种井阑	0	UI_Gongfang	UI_GongFang_JiXie		4
+41				20019		UI_NewArmsOpen	NewArmsOpen_Icon		NewArmsOpen_Input	开启五级兵种投石车	0	UI_Gongfang	UI_GongFang_JiXie		4

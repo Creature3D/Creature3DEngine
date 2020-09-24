@@ -1,0 +1,6 @@
+widget	script
+UI_Corps_GreatGroup	UI_Corps_GreatGroup.cfg
+UI_Corps_GreatGroup_Drag	ui_frame.cfg
+UI_Corps_GreatGroup_Close	UI_Close.cfg
+UI_Creat_	UI_Creat_Group.cfg
+UI_YBCreat	UI_YBCreat.cfg

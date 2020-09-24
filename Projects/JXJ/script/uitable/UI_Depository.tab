@@ -1,0 +1,6 @@
+widget	script
+UI_Depository	UI_DepositoryCanvas.cfg
+UI_Depository_Close	UI_close.cfg
+UI_Depository_Upgrade	UI_TerritoryBuilding_Upgrade.cfg
+UI_Depository_Drag	UI_frame.cfg
+UI_Depository_Yjsm	UI_Yjsm.cfg

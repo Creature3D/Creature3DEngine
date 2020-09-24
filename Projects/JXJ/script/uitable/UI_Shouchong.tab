@@ -1,0 +1,12 @@
+widget	script
+UI_Shouchong	UI_Shouchong.cfg
+Drag	UI_frame.cfg
+Close	UI_Close.cfg
+Chongqian	UI_ChongZhi.cfg
+Lingqu	UI_Lingqu.cfg
+Icon1	UI_ShouchongIcon1.cfg
+Icon2	UI_ShouchongIcon2.cfg
+Icon3	UI_ShouchongIcon3.cfg
+Icon4	UI_ShouchongIcon4.cfg
+Icon5	UI_ShouchongIcon5.cfg
+Icon6	UI_ShouchongIcon6.cfg

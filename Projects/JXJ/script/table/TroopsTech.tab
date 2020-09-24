@@ -1,0 +1,63 @@
+id	name	icon	icon灰	兵种	级别	前置ID	buttonname	iconname	lvname	swname	介绍
+30000	青铜铸造术	T_Icon_Gongfang_qingtongzhuzaoshu.img	T_Icon_Gongfang_qingtongzhuzaoshu_D.img	0	0	0	Bb_Sign_1	Bb_1_1	Bb_Mark1_1	sw284_1	上古流传下来的金属冶炼技术，铸造的戟刃锋利耐用。
+30001	韧性铸铁法	T_Icon_Gongfang_renxingzhutiefa.img	T_Icon_Gongfang_renxingzhutiefa_D.img	0	1	30000	Bb_Sign_3	Bb_2_2	Bb_Mark2_2	sw284_3	通过脱碳、热处理等办法，铸成的铁器锋锐冰冷，看上去让人不寒而栗。
+30002	坩埚炼铁法	T_Icon_Gongfang_qianguoliantiefa.img	T_Icon_Gongfang_qianguoliantiefa_D.img	0	2	30001	Bb_Sign_6	Bb_3_2	Bb_Mark3_2	sw284_15	特制坩埚成为了冶炼炉的重要组成部分，能够让铁与其他金属液体完美的融合在一起，制作出特色的合金！
+30003	炒钢法	T_Icon_Gongfang_chaogangfa.img	T_Icon_Gongfang_chaogangfa_D.img	0	3	30002	Bb_Sign_10	Bb_4_3	Bb_Mark4_3	sw284_9	像炒菜一样不断的搅拌液态的生铁，通过秘术处理后得到黑色坚硬的钢铁。因为质量好，产量高，因此在军中得到广泛的应用。
+30004	百炼钢秘术	T_Icon_Gongfang_bailiangangmishu.img	T_Icon_Gongfang_bailiangangmishu_D.img	0	4	30003	Bb_Sign_15	Bb_5_3	Bb_Mark5_3		以炒钢法得到的铁块，烧红后再捶打，为一炼。百炼，就是对折一百次！以此法练出的钢，即为百炼钢！百炼钢细密而有弹性，乃是铸造兵甲的上好材料！
+30005	黑山铁甲	T_Icon_Gongfang_heishantiejia.img	T_Icon_Gongfang_heishantiejia_D.img	0	1	0	Bb_Sign_4	Bb_2_3	Bb_Mark2_3	sw284_4	黑山军自己摸索出的铁甲，单薄而脆，但已经给黑山勇士带来很大的安全感。
+30006	玄铁甲	T_Icon_Gongfang_xuanguangkai.img	T_Icon_Gongfang_xuanguangkai_D.img	0	2	30005	Bb_Sign_7	Bb_3_3	Bb_Mark3_3	sw284_19	以坩埚炼铁法研制出的特殊合金制作成的铠甲，冰冷嗜血，威武雄壮。
+30007	明光铠	T_Icon_Gongfang_mingguangkai.img	T_Icon_Gongfang_mingguangkai_D.img	0	3	0	Bb_Sign_11	Bb_4_4	Bb_Mark4_4	sw284_10	炒钢法秘练而出的钢片编织而成的铠甲，轻便的同时又有不错的防御力，是丹阳兵征战沙场必需物品！
+30008	黑光铠	T_Icon_Gongfang_heiguangkai.img	T_Icon_Gongfang_heiguangkai_D.img	0	4	0	Bb_Sign_16	Bb_5_4	Bb_Mark5_4		百炼钢片编织而成，通体黝黑。在阳光下却闪烁着一样的光泽，故名黑光。
+30009	虎头刀	T_Icon_Gongfang_hutoudao.img	T_Icon_Gongfang_hutoudao_D.img	0	3	0	Bb_Sign_12	Bb_4_5	Bb_Mark4_5	sw284_11	有虎头装饰的战刀，重达三十六斤，削铁如泥，挥舞起来威风八面，虎虎生风。
+30010	百炼狼牙棒	T_Icon_Gongfang_bailianlangya.img	T_Icon_Gongfang_bailianlangya_D.img	0	4	0	Bb_Sign_17	Bb_5_5	Bb_Mark5_5		百炼钢制成的狼牙棒，棒身沉重，非军中力士不能用。一棒下去，杀伤力惊人，非死即伤。
+30011	包铁木盾	T_Icon_Gongfang_baotiemudun.img	T_Icon_Gongfang_baotiemudun_D.img	0	1	0	Bb_Sign_2	Bb_2_1	Bb_Mark2_1	sw284_2	大汉朝重步兵标准装备，木盾外包了层铁，轻便又坚固。
+30012	虎卫盾	T_Icon_Gongfang_huweidun.img	T_Icon_Gongfang_huweidun_D.img	0	2	30011	Bb_Sign_5	Bb_3_1	Bb_Mark3_1	sw284_18	以坩埚炼铁发研制出的特殊合金制作成的盾牌，光泽有弹性，给人安全感。
+30013	精钢盾	T_Icon_Gongfang_jinggangdun.img	T_Icon_Gongfang_jinggangdun_D.img	0	3	0	Bb_Sign_9	Bb_4_2	Bb_Mark4_2	sw284_8	炒钢法秘炼而成的钢块捶打成的盾牌，异常坚固，长刀劈砍却只有一丝白线！持刀的虎口却已然裂开！
+30014	秘制藤甲	T_Icon_Gongfang_mizhitengjia.img	T_Icon_Gongfang_mizhitengjia_D.img	0	4	0	Bb_Sign_14	Bb_5_2	Bb_Mark5_2		西南蛮荒之地所生野藤，经能工巧匠制作而成的藤甲。在制作时掺入了百炼钢丝，更增加了藤甲的防御力！因为曾被桐油浸泡，因此战斗时请万万小心火焰！
+30015	钢矛	T_Icon_Gongfang_gangmao.img	T_Icon_Gongfang_gangmao_D.img	0	3	0	Bb_Sign_8	Bb_4_1	Bb_Mark4_1	sw284_7	精钢直接捶打而成的钢矛，通体闪亮，锋锐无匹，势大力沉。
+30016	百锻钢叉	T_Icon_Gongfang_bailiangangcha.img	T_Icon_Gongfang_bailiangangcha_D.img	0	4	0	Bb_Sign_13	Bb_5_1	Bb_Mark5_1		百炼钢捶制的钢叉，轻便锋利，兼顾坚硬与柔韧，与之对战一不留神就会被钢叉穿透！
+30100	铜首羽箭	T_Icon_Gongfang_tongshouyujian.img	T_Icon_Gongfang_tongshouyujian_D.img	1	0	0	Bb_Sign_1	Bb_1_1	Bb_Mark1_1	sw284_1	铜制成的箭头，鸟羽制成箭羽，轻盈却不可小视。
+30101	淬毒术	T_Icon_Gongfang_cuidushu.img	T_Icon_Gongfang_cuidushu_D.img	1	1	30100	Bb_Sign_3	Bb_2_2	Bb_Mark2_2	sw284_3	在兵刃上涂抹毒液的技术，由于用量巨大，毒液大抵是山中毒草的汁液，中者轻则头晕，重则昏迷，却没有性命之忧。
+30102	打磨开刃法	T_Icon_Gongfang_damokairenfa.img	T_Icon_Gongfang_damokairenfa_D.img	1	2	30101	Bb_Sign_6	Bb_3_2	Bb_Mark3_2	sw284_15	用粗粝的石轮对武器刃部进行打磨开刃，有效的增强了武器的穿透性，使其更有杀伤力！
+30103	锥头箭	T_Icon_Gongfang_zhuitoujian.img	T_Icon_Gongfang_zhuitoujian_D.img	1	3	30102	Bb_Sign_10	Bb_4_3	Bb_Mark4_3	sw284_9	剑尖为锥形，可以轻易穿透铠甲，射速快，飞行轨迹平稳并伴有尖啸声，摄人心魄。
+30104	倒刺箭	T_Icon_Gongfang_daocijian.img	T_Icon_Gongfang_daocijian_D.img	1	4	30103	Bb_Sign_15	Bb_5_3	Bb_Mark5_3		继承了锥头箭的杀伤力的特制铁箭，但是两翼很长，形成倒刺，拔出则会产生撕裂，流血不止。中者非死即伤，乃是远程箭矢之王者！
+30105	柳叶刀	T_Icon_Gongfang_liuyedao.img	T_Icon_Gongfang_liuyedao_D.img	1	1	0	Bb_Sign_4	Bb_2_3	Bb_Mark2_3	sw284_4	取铁片二三钱，打磨成柳叶状的飞刀。迅不可及，防不胜防。
+30106	三尾标枪	T_Icon_Gongfang_sanweibiaoqiang.img	T_Icon_Gongfang_sanweibiaoqiang_D.img	1	2	30105	Bb_Sign_7	Bb_3_3	Bb_Mark3_3	sw284_19	标枪尾部有三只羽翼用来平衡，状如大号的箭矢，虽然射程不远，但是攻击力非常高！
+30107	虎贲弓	T_Icon_Gongfang_hubenggong.img	T_Icon_Gongfang_hubenggong_D.img	1	3	0	Bb_Sign_11	Bb_4_4	Bb_Mark4_4	sw284_10	虎贲弓，非军中虎贲而不能开的四石强弓，神射营中人人都是神射手，故而这虎贲弓竟然成了神射营的常备武器。
+30108	角端弓	T_Icon_Gongfang_jiaoduangong.img	T_Icon_Gongfang_jiaoduangong_D.img	1	4	0	Bb_Sign_16	Bb_5_4	Bb_Mark5_4		取羊角或牛角，乃至犀牛角，精心打磨而成的弓，得名角端弓。轻盈坚固又有韧性，远射是极好的弓，近战又是坚固的盾，是最适合无当飞军的武器。
+30109	鱼鳞甲	T_Icon_Gongfang_yulinjia.img	T_Icon_Gongfang_yulinjia_D.img	1	3	0	Bb_Sign_12	Bb_4_5	Bb_Mark4_5	sw284_11	古人发现，鱼鳞的构造和排列既保护了身体又可以随意活动，于是模仿鱼鳞的布局和结构发明了鱼鳞甲。可以有效的防止弓箭射击。正所谓善游者溺，善射者也常中箭。因此特地为神射手们准备了鱼鳞甲！
+30110	蒲元刀	T_Icon_Gongfang_puyuandao.img	T_Icon_Gongfang_puyuandao_D.img	1	4	0	Bb_Sign_17	Bb_5_5	Bb_Mark5_5		名匠蒲元所督造的最锋锐的量产兵刃。挥刀去砍装满铁珠的粗竹筒，如同斩断细草般简单。乃是专为无当飞军准备的近战武器。
+30111	损弩	T_Icon_Gongfang_sunnu.img	T_Icon_Gongfang_sunnu_D.img	1	1	0	Bb_Sign_2	Bb_2_1	Bb_Mark2_1	sw284_2	黑山军在战场上缴获的弩，大多损坏，被勉强修复，因此得名。是黑山军在山中捕猎时常用的武器，因此涂抹了些许毒药。
+30112	汉弩	T_Icon_Gongfang_hannu.img	T_Icon_Gongfang_hannu_D.img	1	2	30111	Bb_Sign_5	Bb_3_1	Bb_Mark3_1	sw284_18	大汉朝制式强弩，制作工序繁多，耗时长久，但是射程很远，乃是三国时期超远程打击的利器！
+30113	先登强弩	T_Icon_Gongfang_xiandengqiangnu.img	T_Icon_Gongfang_xiandengqiangnu_D.img	1	3	0	Bb_Sign_9	Bb_4_2	Bb_Mark4_2	sw284_8	双曲大弩，非臂力过人者不能打开，因而射速较慢，但攻击力极强。
+30114	元戎弩	T_Icon_Gongfang_yuanrongnu.img	T_Icon_Gongfang_yuanrongnu_D.img	1	4	0	Bb_Sign_14	Bb_5_2	Bb_Mark5_2		黄月英发明的连弩机关，可以连续发射十只箭，火力强横，射速极高。
+30115	兽筋弦	T_Icon_Gongfang_Shoujinxian.img	T_Icon_Gongfang_Shoujinxian_D.img	1	3	0	Bb_Sign_8	Bb_4_1	Bb_Mark4_1	sw284_7	"筋者，以为深也.采用强韧的兽筋制成,可以有效提高暴击."
+30116	复合弦	T_Icon_Gongfang_Fuhexian.img	T_Icon_Gongfang_Fuhexian_D.img	1	4	0	Bb_Sign_13	Bb_5_1	Bb_Mark5_1		"采用多种材料复合而成,一根复合弦往往要花费数年才能完成制作.可以有效提高射程."
+30200	驱马术	T_Icon_Gongfang_yumashu.img	T_Icon_Gongfang_yumashu_D.img	2	1	0	Qb_Upgrade2	Qb_ICON10	Qb_Make2	sw374	把细小的铁环，环环相扣编织成铠甲，外罩青色蜀锦，美观之余有效的抵御箭伤与刀上，穿在身上又几乎感觉不到重量。初名青环，后改为青寰。、
+30201	燕云骑术	T_Icon_Gongfang_yanyuqishu.img	T_Icon_Gongfang_yanyuqishu_D.img	2	2	30200	Qb_Upgrade5	Qb_ICON13	Qb_Make5	sw385	燕云之地，自古与胡人交战，总结出一套高深骑术。此法经汉武帝派人总结后，散播天下，成为提高汉人骑术的核心功法。因此得名燕云骑术。
+30202	伯乐相马术	T_Icon_Gongfang_bolexiangmashu.img	T_Icon_Gongfang_bolexiangmashu_D.img	2	3	30201	Qb_Upgrade9	Qb_ICON17	Qb_Make9	sw380	只有上等良马才能承受飞熊马铠的重量，才能带动西凉战车正常移动。因此为了找到更好的战马，维持军队的战斗力，一定要对伯乐相马术有一定的研究！
+30203	驭兽术	T_Icon_Gongfang_qushoushu.img	T_Icon_Gongfang_qushoushu_D.img	2	4	30202	Qb_Upgrade14	Qb_ICON22	Qb_Make14		不管是烈马还是战象，只要学会此法，就可以轻松驾驭。因此是顶级骑兵必不可缺的技能！ 
+30204	皮制马具	T_Icon_Gongfang_pizhimaju.img	T_Icon_Gongfang_pizhimaju_D.img	2	1	0	Qb_Upgrade3	Qb_ICON11	Qb_Make3	sw375	粗糙皮革制成的马具，只有简单的驭马功能，提供聊胜于无的防御力。
+30205	明光马铠	T_Icon_Gongfang_mingguangmakai.img	T_Icon_Gongfang_mingguangmakai_D.img	2	2	30204	Qb_Upgrade6	Qb_ICON14	Qb_Make6	sw389	银光闪闪的马甲，在阳光下反射耀眼的光芒，既能为战马提供防护，又能通过刺目的反光影响敌人的视野。
+30206	飞熊马铠	T_Icon_Gongfang_feixiongmakai.img	T_Icon_Gongfang_feixiongmakai_D.img	2	3	0	Qb_Upgrade10	Qb_ICON15	Qb_Make10	sw381	飞熊军特制马铠，在有效防止飞熊双刃的反伤同时，还有着不错的防御力。
+30207	精钢马铠	T_Icon_Gongfang_jinggangmakai.img	T_Icon_Gongfang_jinggangmakai_D.img	2	4	0	Qb_Upgrade15	Qb_ICON23	Qb_Make15		精钢制作的全身马铠，给骑士与战马全方面的保护，虽然异常沉重，但是对虎豹骑来说却绰绰有余。
+30208	飞熊双刃	T_Icon_Gongfang_feixiongshuangren.img	T_Icon_Gongfang_feixiongshuangren_D.img	2	3	0	Qb_Upgrade11	Qb_ICON19	Qb_Make11	sw382	飞熊军特制武器，状如弯刀，异常锋锐，一不小心就会反伤自身，使用者必需具有高超的技巧，才能运用自如。
+30209	眉尖刀	T_Icon_Gongfang_meijiandao.img	T_Icon_Gongfang_meijiandao_D.img	2	4	0	Qb_Upgrade16	Qb_ICON24	Qb_Make16		刀身狭窄，刀剑锋利，沉重有力，能时十分武力发挥出十二分，是最适合虎豹骑的兵刃！
+30210	皮装马甲	T_Icon_Gongfang_zhongpimajia.img	T_Icon_Gongfang_zhongpimajia_D.img	2	1	0	Qb_Upgrade1	Qb_ICON9	Qb_Make1	sw373	多层皮革重叠鞣制成的马甲，可以有效保护战马的致命部位，但是过于沉重，降低了战马的速度。
+30211	铁制马铠	T_Icon_Gongfang_tiezhimakai.img	T_Icon_Gongfang_tiezhimakai_D.img	2	2	30210	Qb_Upgrade4	Qb_ICON12	Qb_Make4	sw388	精铁打造的全身重铠，厚重坚固，气势浑厚，让人望而生畏。
+30212	西凉战车	T_Icon_Gongfang_zhanche.img	T_Icon_Gongfang_zhanche_D.img	2	3	0	Qb_Upgrade8	Qb_ICON16	Qb_Make8	sw379	狰狞的单人战车，车轮与车壁都镶嵌着钢刺，冲锋中带来巨大的杀伤，并附有超高的防御力。
+30213	南蛮象甲	T_Icon_Gongfang_nanmanxiangjia.img	T_Icon_Gongfang_nanmanxiangjia_D.img	2	4	0	Qb_Upgrade13	Qb_ICON21	Qb_Make13		专门为南蛮战象准备的铠甲，庞然大物，阳光下闪烁着冰冷刺骨的寒光，增加了战象的防御力与冲撞力。
+30214	西凉战枪	T_Icon_Gongfang_xiliangzhanqiang.img	T_Icon_Gongfang_xiliangzhanqiang_D.img	2	3	0	Qb_Upgrade7	Qb_ICON18	Qb_Make7	sw378	专门为西凉战车配套设计的战枪，反手使用，上有倒刺，入肉极深，中者倍感疼痛。
+30215	精钢象角	T_Icon_Gongfang_xiangjia.img	T_Icon_Gongfang_xiangjia_D.img	2	4	0	Qb_Upgrade12	Qb_ICON20	Qb_Make12		独立于象甲外的精钢撞角，被安放在战象头部，锐利坚固，常常被用来撞击栅栏，更有甚者被象鼻卷起甩在象角上，哀号而死。
+30300	器械入门	T_Icon_Gongfang_qixierumen.img	T_Icon_Gongfang_qixierumen_D.img	3	1	0	Qx_Upgrade1	Qx_ICON1	Qx_Make1	sw426	攻城器械的入门，仔细研读便可以领会其中要点，仿造出冲车。
+30301	机甲术	T_Icon_Gongfang_jijiashu.img	T_Icon_Gongfang_jijiashu_D.img	3	2	30300	Qx_Upgrade3	Qx_ICON3	Qx_Make3	sw428	将如何运用各种材料，制造出可以自由移动的木兽的技术，略微有些晦涩，需要经验丰富的匠师仔细分析。
+30302	墨子机械篇	T_Icon_Gongfang_mozijixiepian.img	T_Icon_Gongfang_mozijixiepian_D.img	3	3	30301	Qx_Upgrade6	Qx_ICON6	Qx_Make10	sw431	专门记录墨家机械技术的书籍，学习的人不光要有深厚的制造经验，更需要一定的天分，才可以融会贯通。
+30303	鲁公秘录	T_Icon_Gongfang_lugongmiji.img	T_Icon_Gongfang_lugongmiji_D.img	3	4	30302	Qx_Upgrade10	Qx_ICON10	Qx_Make14		记载古代器械的无上秘籍，传说修习到深处，可以造出木鸟，人坐在上面，一日就可以游遍千山万水。
+30304	铁蒙皮	T_Icon_Gongfang_tiemengpi.img	T_Icon_Gongfang_tiemengpi_D.img	3	2	0	Qx_Upgrade4	Qx_ICON4	Qx_Make4	sw430	木兽关键部位安置的铁壳，有效增强了木兽的防御力。
+30305	特质火矢	T_Icon_Gongfang_tezhihuoshi.img	T_Icon_Gongfang_tezhihuoshi_D.img	3	3	30304	Qx_Upgrade7	Qx_ICON7	Qx_Make11	sw432	特别制造的火矢，箭头涂抹一层厚厚的油脂，水泼不灭。
+30306	杠杆	T_Icon_Gongfang_tanxingganggan.img	T_Icon_Gongfang_tanxingganggan_D.img	3	4	0	Qx_Upgrade11	Qx_ICON11	Qx_Make15		弹性很好的软木制作成的杠杆，可以用很小的力气投掷巨大的石头。
+30307	圆石	T_Icon_Gongfang_yuanshi.img	T_Icon_Gongfang_yuanshi_D.img	3	4	0	Qx_Upgrade12	Qx_ICON12	Qx_Make16		取坚硬岩石打磨而成，巨大而通体浑圆，发射出去落在地上还会滚动，造成巨大的伤害。
+30308	火药	T_Icon_Gongfang_huoyao.img	T_Icon_Gongfang_huoyao_D.img	3	2	0	Qx_Upgrade2	Qx_ICON2	Qx_Make2	sw427	道家方士炼丹时无意中发明的物什，虽然看上去黑漆漆的不觉得有多厉害，但是一点即燃，是好的引燃物，甚至会引起爆炸！
+30309	铁胎弓	T_Icon_Gongfang_tietaigong.img	T_Icon_Gongfang_tietaigong_D.img	3	3	0	Qx_Upgrade5	Qx_ICON5	Qx_Make9	sw429	二石强弓，弓臂较长，以之使用特质火矢不会烧伤自己。
+30310	牛皮索	T_Icon_Gongfang_niupisuo.img	T_Icon_Gongfang_niupisuo_D.img	3	4	0	Qx_Upgrade9	Qx_ICON9	Qx_Make13		结实了牛皮编制成的绳索，无比牢固。
+30311	石轮	T_Icon_Gongfang_shilun.img	T_Icon_Gongfang_shilun_D.img	3	4	0	Qx_Upgrade8	Qx_ICON8	Qx_Make12		投石车太重，木轮已经无法承受，用铁制作又有些浪费，因此专门打磨出石头做的轮子。

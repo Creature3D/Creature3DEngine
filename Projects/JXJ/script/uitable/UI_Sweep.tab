@@ -1,0 +1,13 @@
+widget	script
+UI_Sweep	UI_Sweep.cfg
+UI_Sweep_Close	UI_Sweep_End.cfg
+UI_Sweep_Drag	ui_frame.cfg
+UI_Sweep_Input4	UI_Sweep_Input4.cfg
+UI_Sweep_Start	UI_Sweep_Start.cfg
+UI_Sweep_Stop	UI_Sweep_Stop.cfg
+UI_Sweep_Continue	UI_Sweep_Continue.cfg
+UI_Sweep_End	UI_Sweep_End.cfg
+UI_Sweep_Input1	ui_frame.cfg
+UI_Sweep_PromptlyEnd1	UI_Sweep_PromptlyEnd1.cfg
+UI_Sweep_PromptlyEnd2	UI_Sweep_PromptlyEnd1.cfg
+UI_Sweep_ListScroll2	UI_Sweep_ListScroll2.cfg

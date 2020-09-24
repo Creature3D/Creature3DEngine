@@ -1,0 +1,7 @@
+widget	script
+CreatJunTuan__Corps	CreatJunTuan__Corps.cfg
+CreatJunTuan_Beats_Drag	ui_frame.cfg
+CreatJunTuan__Close	UI_Close.cfg
+CreatJunTuan_Tongqian	CreatJunTuan_Tongqian.cfg
+CreatJunTuan__Yuanbao	CreatJunTuan__Yuanbao.cfg
+CreatJunTuan_Input1	CreatJunTuan_Input1.cfg

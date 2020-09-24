@@ -1,0 +1,10 @@
+widget	script
+UI_Battleground_LineUp	UI_Battleground_LineUp.cfg
+Close	UI_Battleground_Jr2_Close.cfg
+LineUp	UI_Battleground_Group.cfg
+Solo	LineUp.cfg
+Renyifangshou	LineUp.cfg
+FangshouShu1	Fangshoushu.cfg
+FangshouWu1	Fangshouwu.cfg
+FangshouWei2	Fangshouwei.cfg
+FangshouShu2	Fangshoushu.cfg

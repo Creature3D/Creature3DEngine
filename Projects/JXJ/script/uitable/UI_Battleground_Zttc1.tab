@@ -1,0 +1,5 @@
+widget	script
+UI_Battleground_Zttc1	UI_Battleground_Zttc1Canvas.cfg
+UI_Battleground_Zttc1_Close	UI_Battleground_Zttc1_Close.cfg
+UI_Battleground_Zttc1_Qd	UI_Battleground_Zttc1_Qd.cfg
+UI_Battleground_Zttc1_Qx	UI_Battleground_Zttc1_Qx.cfg

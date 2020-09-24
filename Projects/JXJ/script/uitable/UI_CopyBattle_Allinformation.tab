@@ -1,0 +1,4 @@
+widget	script
+UI_CopyBattle_Allinformation	UI_CopyBattle_AllinformationCanvas.cfg
+UI_CopyBattle_Prompt	UI_CopyBattle_UserHelp.cfg
+CopyBattle_AddFriend_Widget	CopyBattle_AddFriend_Widget.cfg

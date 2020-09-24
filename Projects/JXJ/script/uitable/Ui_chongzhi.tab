@@ -1,0 +1,7 @@
+widget	script
+close	UI_Close.cfg
+chong50	UI_TX_Recharge1.cfg
+chong1000	UI_TX_Recharge2.cfg
+chong5000	UI_TX_Recharge3.cfg
+chong20000	UI_TX_Recharge4.cfg
+UI_huanzhuan	Yellow.cfg

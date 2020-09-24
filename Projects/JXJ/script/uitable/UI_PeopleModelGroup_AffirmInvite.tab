@@ -1,0 +1,5 @@
+widget	script
+UI_PeopleModelGroup_AffirmInvite	UI_PeopleModelGroup_AffirmInviteCanvas.cfg
+UI_AffirmInvite_drag	UI_frame.cfg
+UI_AffirmInvite_close	UI_Close.cfg
+UI_PeopleModelGroup_AffirmInvite_confirm	UI_Close.cfg

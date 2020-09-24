@@ -1,0 +1,8 @@
+widget	script
+UI_Lunhui	UI_LunhuiCanvas.cfg
+UI_Lunhui_Drag	ui_frame.cfg
+UI_Lunhui_Close	Ui_Close.cfg
+Lunhui	UI_Lunhui_Radio.cfg
+UI_Warehouse_Button1	UI_LunHui_Button1.cfg
+UI_Warehouse_Button2	UI_LunHui_Button2.cfg
+UI_Welfare_ListScroll1	UI_Welfare_ListScroll1.cfg

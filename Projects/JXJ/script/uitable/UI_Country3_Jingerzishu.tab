@@ -1,0 +1,7 @@
+widget	script
+UI_Guojia_Juntuan	ui_frame.cfg
+UI_Guojia_Close	UI_Close.cfg
+UI_Guojia_Jianshe	UI_Guojia_Jianshec.cfg
+UI_Country3_Jingerzishu	UI_Country3_Jingerzishu.cfg
+UI_Guojia_Add2	UI_Guojia_Add2.cfg
+UI_Guojia_Add1	UI_Guojia_Add1.cfg

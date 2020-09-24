@@ -1,0 +1,1547 @@
+BufID	BufferIcon	Buffer描述	BufferTime	Buf类型	备注	abstractid
+10|0	UI_Buff_GuWu.img	获得5%攻击力和5%生命上限加成	30	5	犒赏	0
+102|0	UI_Buff_GuWu.img	激励/n提升10%血量和攻击		5	战场1级buff	0
+12|0	UI_Buff_GuWu.img	鼓舞提升2%血量和攻击		5	1级鼓舞	0
+13|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	2	1	张角光环	0
+16|0	UI_Buff_GuWu.img	鼓舞提升4%血量和攻击		5	2级鼓舞	0
+17|0	UI_Buff_GuWu.img	鼓舞提升6%血量和攻击		5	3级鼓舞	0
+18|0	UI_Buff_GuWu.img	鼓舞提升8%血量和攻击		5	4级鼓舞	0
+19|0	UI_Buff_GuWu.img	鼓舞提升10%血量和攻击		5	5级鼓舞	0
+20|0	UI_Buff_GuWu.img	鼓舞提升12%血量和攻击		5	6级鼓舞	0
+21|0	UI_Buff_GuWu.img	鼓舞提升14%血量和攻击		5		0
+22|0	UI_Buff_GuWu.img	鼓舞提升16%血量和攻击		5		0
+23|0	UI_Buff_GuWu.img	鼓舞提升18%血量和攻击		5		0
+24|0	UI_Buff_GuWu.img	鼓舞提升20%血量和攻击		5		0
+25|0	UI_Buff_GuWu.img	鼓舞提升22%血量和攻击		5		0
+26|0	UI_Buff_GuWu.img	鼓舞提升24%血量和攻击		5		0
+27|0	UI_Buff_GuWu.img	鼓舞提升26%血量和攻击		5		0
+28|0	UI_Buff_GuWu.img	鼓舞提升28%血量和攻击		5		0
+29|0	UI_Buff_GuWu.img	鼓舞提升30%血量和攻击		5		0
+3|0	UI_Buff_WuLiMianYi.img	无敌	5	6	无敌	0
+9|0	UI_Buff_GuWu.img	您犒赏了全军，获得5%攻击力和5%生命上限加成	0	6	犒赏	0
+77|0	UI_Buff_LiuXue.img	每2秒受到一次伤害	2	6	名将之路1	24700
+78|0	UI_Buff_ZengJiaGongJiLi.img	攻击力增加50%	20	6	名将之路2	24701
+701|0	UI_Buff_ZengJiaGongJiLi.img	自身6米范围内所有队友增加50%攻击力	2	6		24705
+30000|0	UI_Buff_JiangDiGongJiLi.img	攻击力降低50%	10	1		24712
+30001|0	UI_Buff_JiangDiGongSu.img	攻击速度和移动速度降低70%	15	1		24713
+30002|0	UI_Buff_HunLuan.img	混乱	10	1		24714
+30003|0	UI_Buff_MaBi.img	中毒	5	1		24715
+30004|0	UI_Buff_XuanYun.img	眩晕	10	1		24716
+432|0	UI_Buff_WuShangJianMian.img	伤害减免20%	5	7	地6	28433
+432|1	UI_Buff_WuShangJianMian.img	伤害减免25%	5	7	地7	28434
+432|2	UI_Buff_WuShangJianMian.img	伤害减免30%	5	7	地8	28435
+433|0	UI_Buff_CDSuoJian.img	CD缩减20%	20	7	风6	28436
+433|1	UI_Buff_CDSuoJian.img	CD缩减25%	25	7	风7	28437
+433|2	UI_Buff_CDSuoJian.img	CD缩减30%	35	7	风8	28438
+434|0	UI_Buff_MaBi.img	麻痹	1.2	7	雷6	28439
+434|1	UI_Buff_MaBi.img	麻痹	1.3	7	雷7	28440
+434|2	UI_Buff_MaBi.img	麻痹	1.5	7	雷8	28441
+437|0	UI_Buff_HuiFuShengMing.img	生命上限提高5%	5	7	山6	28448
+437|1	UI_Buff_HuiFuShengMing.img	生命上限提高10%	5	7	山7	28449
+437|2	UI_Buff_HuiFuShengMing.img	生命上限提高15%	5	7	山8	28450
+438|0	UI_Buff_BaoJi.img	基础暴击提高100%，攻速提高50%	5	7	泽6	28451
+438|1	UI_Buff_BaoJi.img	基础暴击提高200%，攻速提高50%	7	7	泽7	28452
+438|2	UI_Buff_BaoJi.img	基础暴击提高400%，攻速提高50%	10	7	泽8	28453
+500|0			5	6		24900
+501|0			5	6		24901
+502|0			5	6		24902
+503|0			5	6		24903
+504|0			5	6		24904
+505|0			5	6		24905
+506|0			5	6		24906
+507|0			5	6		24907
+508|0			5	6		24908
+509|0			5	6		24909
+510|0			2	6	击晕	24910
+611|0	UI_Buff_BaoJi.img	无双：提升200%基础暴击，\n50%攻击，暴击伤害提升为250%	5	6	无双	24911
+612|0	UI_Buff_ChaoFeng.img	双雄：嘲讽目标5秒，\n同时提升自身100%攻击	5	6	双雄	24913
+613|0	UI_Buff_WuLiChuanTou.img	武圣：提升50%攻击，\n100%法术加成，100%护甲穿透	5	6	武圣	24914
+614|0	UI_Buff_XiangWei.img	溃围：相位移动状态，\n提升50%攻击，35%移动速度	5	6	溃围	24915
+10010|0	UI_Buff_ZengJiaHuJia.img	提升20%护甲	5	2	曹仁0	25010
+10010|1	UI_Buff_ZengJiaHuJia.img	提升40%护甲	5.5	2	曹仁1	25011
+10010|2	UI_Buff_ZengJiaHuJia.img	提升60%护甲	6	2	曹仁2	25012
+10010|3	UI_Buff_ZengJiaHuJia.img	提升80%护甲	6.5	2	曹仁3	25013
+10010|4	UI_Buff_ZengJiaHuJia.img	提升100%护甲	7	2	曹仁4	25014
+10010|5	UI_Buff_ZengJiaHuJia.img	提升100%护甲，10%减伤	7.5	2	曹仁5	25015
+10010|6	UI_Buff_ZengJiaHuJia.img	提升100%护甲，15%减伤	8	2	曹仁6	25016
+10010|7	UI_Buff_ZengJiaHuJia.img	提升100%护甲，20%减伤	8.5	2	曹仁7	25017
+10010|8	UI_Buff_ZengJiaHuJia.img	提升100%护甲，30%减伤	9	2	曹仁8	25018
+10010|9	UI_Buff_ZengJiaHuJia.img	提升100%护甲，50%减伤	10	2	曹仁9	25019
+20001|0	UI_Buff_HuJia.img	"受到攻击时,获得1士气"	0	3	曹洪0	25020
+20001|1	UI_Buff_HuJia.img	"受到攻击时,获得1.5士气"	0	3	曹洪1	25021
+20001|2	UI_Buff_HuJia.img	"受到攻击时,获得2士气"	0	3	曹洪2	25022
+20001|3	UI_Buff_HuJia.img	"受到攻击时,获得2.5士气"	0	3	曹洪3	25023
+20001|4	UI_Buff_HuJia.img	"受到攻击时,获得3士气"	0	3	曹洪4	25024
+20001|5	UI_Buff_HuJia.img	"受到攻击时,获得3.5士气"	0	3	曹洪5	25025
+20001|6	UI_Buff_HuJia.img	"受到攻击时,获得4士气"	0	3	曹洪6	25026
+20001|7	UI_Buff_HuJia.img	"受到攻击时,获得4.5士气"	0	3	曹洪7	25027
+20001|8	UI_Buff_HuJia.img	"受到攻击时,获得5士气"	0	3	曹洪8	25028
+20001|9	UI_Buff_HuJia.img	"受到攻击时,获得6士气"	0	3	曹洪9	25029
+10002|0	UI_Buff_WuShangFanTan.img	反弹10%物理伤害	5	2	夏侯惇0	25070
+10002|1	UI_Buff_WuShangFanTan.img	反弹15%物理伤害	5	2	夏侯惇1	25071
+10002|2	UI_Buff_WuShangFanTan.img	反弹20%物理伤害	5	2	夏侯惇2	25072
+10002|3	UI_Buff_WuShangFanTan.img	反弹25%物理伤害	5	2	夏侯惇3	25073
+10002|4	UI_Buff_WuShangFanTan.img	反弹30%物理伤害	5	2	夏侯惇4	25074
+10002|5	UI_Buff_WuShangFanTan.img	反弹30%物理伤害20%法术伤害	5.5	2	夏侯惇5	25075
+10002|6	UI_Buff_WuShangFanTan.img	反弹30%物理伤害35%法术伤害	6	2	夏侯惇6	25076
+10002|7	UI_Buff_WuShangFanTan.img	反弹30%物理伤害50%法术伤害	6.5	2	夏侯惇7	25077
+10002|8	UI_Buff_WuShangFanTan.img	反弹30%物理伤害65%法术伤害	7	2	夏侯惇8	25078
+10002|9	UI_Buff_WuShangFanTan.img	反弹30%物理伤害80%法术伤害	8	2	夏侯惇9	25079
+20003|0	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	4	2	夏侯渊3	25083
+20003|1	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	5	2	夏侯渊4	25084
+20003|2	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	6	2	夏侯渊5	25085
+20003|3	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	7	2	夏侯渊6	25086
+20003|4	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	8	2	夏侯渊7	25087
+20003|5	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	9	2	夏侯渊8	25088
+20003|6	UI_Buff_ZengJiaGongSu.img	提升40%攻击速度	10	2	夏侯渊9	25089
+1000|0	UI_Buff_JiangDiGongSu.img	攻速降低50%	5	1	张辽0	25090
+10001|0	UI_Buff_XuanYun.img	眩晕	1	1	张辽0	25090
+10001|1	UI_Buff_XuanYun.img	眩晕	2	1	张辽1	25091
+1001|0	UI_Buff_JiangDiGongSu.img	攻速降低80%	5	1	张辽1	25091
+10001|2	UI_Buff_XuanYun.img	眩晕	3	1	张辽2	25092
+1002|0	UI_Buff_JiangDiGongSu.img	攻速降低120%	5	1	张辽2	25092
+10001|3	UI_Buff_XuanYun.img	眩晕	4	1	张辽3	25093
+1003|0	UI_Buff_JiangDiGongSu.img	攻速降低160%	5	1	张辽3	25093
+10001|4	UI_Buff_XuanYun.img	眩晕	5	1	张辽4	25094
+1004|0	UI_Buff_JiangDiGongSu.img	攻速降低200%	5	1	张辽4	25094
+10001|5	UI_Buff_XuanYun.img	眩晕	5	1	张辽5	25095
+10001|6	UI_Buff_XuanYun.img	眩晕	5	1	张辽6	25096
+10001|7	UI_Buff_XuanYun.img	眩晕	5	1	张辽7	25097
+10001|8	UI_Buff_XuanYun.img	眩晕	5	1	张辽8	25098
+10001|9	UI_Buff_XuanYun.img	眩晕	5	1	张辽9	25099
+10004|0	UI_Buff_ZengJiaGongSu.img	提升50%攻击速度	5	2	徐晃0	25100
+10004|1	UI_Buff_ZengJiaGongSu.img	提升50%攻击速度	6	2	徐晃1	25101
+10004|2	UI_Buff_ZengJiaGongSu.img	提升50%攻击速度	7	2	徐晃2	25102
+10004|3	UI_Buff_ZengJiaGongSu.img	提升50%攻击速度	8	2	徐晃3	25103
+10004|4	UI_Buff_ZengJiaGongSu.img	提升50%攻击速度	9	2	徐晃4	25104
+10004|5	UI_Buff_ZengJiaGongSu.img	提升58%攻击速度，20%物伤加成	9	2	徐晃5	25105
+10004|6	UI_Buff_ZengJiaGongSu.img	提升66%攻击速度，25%物伤加成	9	2	徐晃6	25106
+10004|7	UI_Buff_ZengJiaGongSu.img	提升74%攻击速度，30%物伤加成	9	2	徐晃7	25107
+10004|8	UI_Buff_ZengJiaGongSu.img	提升82%攻击速度，35%物伤加成	9	2	徐晃8	25108
+10004|9	UI_Buff_ZengJiaGongSu.img	提升100%攻击速度，50%物伤加成	9	2	徐晃9	25109
+1110|0	UI_Buff_ZengJiaHuJia.img	护甲提高20%	5	0	于禁0	25120
+1111|0	UI_Buff_ZengJiaHuJia.img	护甲提高30%	5	0	于禁1	25121
+1112|0	UI_Buff_ZengJiaHuJia.img	护甲提高40%	5	0	于禁2	25122
+1113|0	UI_Buff_ZengJiaHuJia.img	护甲提高50%	5	0	于禁3	25123
+1114|0	UI_Buff_ZengJiaHuJia.img	护甲提高60%	5	0	于禁4	25124
+1115|0	UI_Buff_ZengJiaHuJia.img	"护甲提高70%,格挡提高40%"	5.5	0	于禁5	25125
+1116|0	UI_Buff_ZengJiaHuJia.img	"护甲提高80%,格挡提高50%"	6	0	于禁6	25126
+1117|0	UI_Buff_ZengJiaHuJia.img	"护甲提高90%,格挡提高60%"	6.5	0	于禁7	25127
+1118|0	UI_Buff_ZengJiaHuJia.img	"护甲提高100%,格挡提高70%"	7	0	于禁8	25128
+1119|0	UI_Buff_ZengJiaHuJia.img	"护甲提高110%,格挡提高90%"	8	0	于禁9	25129
+20013|0	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+30%	3	2	乐进0	25130
+20013|1	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+35%	3.5	2	乐进1	25131
+20013|2	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+40%	4	2	乐进2	25132
+20013|3	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+45%	4.5	2	乐进3	25133
+20013|4	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+50%	5	2	乐进4	25134
+20013|5	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+55%	5.5	2	乐进5	25135
+20013|6	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+60%	6	2	乐进6	25136
+20013|7	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+65%	6.5	2	乐进7	25137
+20013|8	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+70%	7	2	乐进8	25138
+20013|9	UI_Buff_NingZhi.img	霸体状态，免疫部分控制效果，攻速+80%	8	2	乐进9	25139
+1005|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加20%	3	1	乐进5	25135
+1006|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加25%	3.5	1	乐进6	25136
+1007|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加30%	4	1	乐进7	25137
+1008|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加35%	4.5	1	乐进8	25138
+1009|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加45%	5.5	1	乐进9	25139
+20011|0	UI_Buff_BaoJiJian.img	每次攻击附带5%当前生命伤害	12	2	典韦4	25144
+20011|1	UI_Buff_BaoJiJian.img	每次攻击附带6%当前生命伤害	12	2	典韦5	25145
+20011|2	UI_Buff_BaoJiJian.img	每次攻击附带7%当前生命伤害	12	2	典韦6	25146
+20011|3	UI_Buff_BaoJiJian.img	每次攻击附带8%当前生命伤害	12	2	典韦7	25147
+20011|4	UI_Buff_BaoJiJian.img	每次攻击附带9%当前生命伤害	12	2	典韦8	25148
+20011|5	UI_Buff_BaoJiJian.img	每次攻击附带10%当前生命伤害	12	2	典韦9	25149
+20012|0	UI_Buff_ZengJiaMingZhong.img	提升30%物理溅射	5	2	典韦0	25140
+20012|1	UI_Buff_ZengJiaMingZhong.img	提升35%物理溅射	5	2	典韦1	25141
+20012|2	UI_Buff_ZengJiaMingZhong.img	提升40%物理溅射	5	2	典韦2	25142
+20012|3	UI_Buff_ZengJiaMingZhong.img	提升45%物理溅射	5	2	典韦3	25143
+20012|4	UI_Buff_ZengJiaMingZhong.img	提升50%物理溅射	5	2	典韦4	25144
+20012|5	UI_Buff_ZengJiaMingZhong.img	提升60%物理溅射	5.5	2	典韦5	25145
+20012|6	UI_Buff_ZengJiaMingZhong.img	提升70%物理溅射	6	2	典韦6	25146
+20012|7	UI_Buff_ZengJiaMingZhong.img	提升80%物理溅射	6.5	2	典韦7	25147
+20012|8	UI_Buff_ZengJiaMingZhong.img	提升90%物理溅射	7	2	典韦8	25148
+20012|9	UI_Buff_ZengJiaMingZhong.img	提升100%物理溅射	8	2	典韦9	25149
+10005|0	UI_Buff_ZengJiaGongJiLi.img	攻击力提升300%，护甲减少90%	8	2	许褚0	25150
+10005|1	UI_Buff_ZengJiaGongJiLi.img	攻击力提升330%，护甲减少90%	8	2	许褚1	25151
+10005|2	UI_Buff_ZengJiaGongJiLi.img	攻击力提升360%，护甲减少90%	8	2	许褚2	25152
+10005|3	UI_Buff_ZengJiaGongJiLi.img	攻击力提升390%，护甲减少90%	8	2	许褚3	25153
+10005|4	UI_Buff_ZengJiaGongJiLi.img	攻击力提升420%，护甲减少90%	8	2	许褚4	25154
+10005|5	UI_Buff_ZengJiaGongJiLi.img	攻击力提升450%，护甲减少80%	8	2	许褚5	25155
+10005|6	UI_Buff_ZengJiaGongJiLi.img	攻击力提升480%，护甲减少70%	8	2	许褚6	25156
+10005|7	UI_Buff_ZengJiaGongJiLi.img	攻击力提升510%，护甲减少60%	8	2	许褚7	25157
+10005|8	UI_Buff_ZengJiaGongJiLi.img	攻击力提升540%，护甲减少50%	8	2	许褚8	25158
+10005|9	UI_Buff_ZengJiaGongJiLi.img	攻击力提升600%，护甲减少30%	9	2	许褚9	25159
+20006|0	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得50%伤害加成	0	3	李典0	25160
+20006|1	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得60%伤害加成	0	3	李典1	25161
+20006|2	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得70%伤害加成	0	3	李典2	25162
+20006|3	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得80%伤害加成	0	3	李典3	25163
+20006|4	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得90%伤害加成	0	3	李典4	25164
+20006|5	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得100%伤害加成	0	3	李典5	25165
+20006|6	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得110%伤害加成	0	3	李典6	25166
+20006|7	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得120%伤害加成	0	3	李典7	25167
+20006|8	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得130%伤害加成	0	3	李典8	25168
+20006|9	UI_Buff_ZengJiaGongJiLi.img	背后攻击敌方获得140%伤害加成	0	3	李典9	25169
+10006|0	UI_Buff_QianXing.img	提升潜行1000	5	0	邓艾0	25200
+10006|1	UI_Buff_QianXing.img	提升潜行1000	6	0	邓艾1	25201
+10006|2	UI_Buff_QianXing.img	提升潜行1100	7	0	邓艾2	25202
+10006|3	UI_Buff_QianXing.img	提升潜行1150	8	0	邓艾3	25203
+10006|4	UI_Buff_QianXing.img	提升潜行1200	9	0	邓艾4	25204
+10006|5	UI_Buff_QianXing.img	提升潜行1250	10	0	邓艾5	25205
+10006|6	UI_Buff_QianXing.img	提升潜行1300	11	0	邓艾6	25206
+10006|7	UI_Buff_QianXing.img	提升潜行1350	12	0	邓艾7	25207
+10006|8	UI_Buff_QianXing.img	提升潜行1400	13	0	邓艾8	25208
+10006|9	UI_Buff_QianXing.img	提升潜行1500	14	0	邓艾9	25209
+10008|0	UI_Buff_ZengJiaYiSu.img	增加20%攻速移速	3	2	荀彧0	25260
+10008|1	UI_Buff_ZengJiaYiSu.img	增加25%攻速移速	3.5	2	荀彧1	25261
+10008|2	UI_Buff_ZengJiaYiSu.img	增加30%攻速移速	4	2	荀彧2	25262
+10008|3	UI_Buff_ZengJiaYiSu.img	增加35%攻速移速	4.5	2	荀彧3	25263
+10008|4	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速	5	2	荀彧4	25264
+10008|5	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速，每秒恢复3点士气	5.5	2	荀彧5	25265
+10008|6	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速，每秒恢复4点士气	6	2	荀彧6	25266
+10008|7	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速，每秒恢复5点士气	6.5	2	荀彧7	25267
+10008|8	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速，每秒恢复6点士气	7	2	荀彧8	25268
+10008|9	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速，每秒恢复7点士气	8	2	荀彧9	25269
+20002|0	UI_Buff_FaShangFanTan.img	反弹所受10%法术伤害	0	3	荀攸0	25270
+20002|1	UI_Buff_FaShangFanTan.img	反弹所受20%法术伤害	0	3	荀攸1	25271
+20002|2	UI_Buff_FaShangFanTan.img	反弹所受30%法术伤害	0	3	荀攸2	25272
+20002|3	UI_Buff_FaShangFanTan.img	反弹所受40%法术伤害	0	3	荀攸3	25273
+20002|4	UI_Buff_FaShangFanTan.img	反弹所受50%法术伤害	0	3	荀攸4	25274
+20002|5	UI_Buff_FaShangFanTan.img	反弹所受60%法术伤害	0	3	荀攸5	25275
+20002|6	UI_Buff_FaShangFanTan.img	反弹所受70%法术伤害	0	3	荀攸6	25276
+20002|7	UI_Buff_FaShangFanTan.img	反弹所受80%法术伤害	0	3	荀攸7	25277
+20002|8	UI_Buff_FaShangFanTan.img	反弹所受90%法术伤害	0	3	荀攸8	25278
+20002|9	UI_Buff_FaShangFanTan.img	反弹所受100%法术伤害	0	3	荀攸9	25279
+10000|0	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒30%的普通攻击伤害	0	2	郭嘉0	25280
+10000|1	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒40%的普通攻击伤害	0	2	郭嘉1	25281
+10000|2	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒50%的普通攻击伤害	0	2	郭嘉2	25282
+10000|3	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒60%的普通攻击伤害	0	2	郭嘉3	25283
+10000|4	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒70%的普通攻击伤害	0	2	郭嘉4	25284
+10000|5	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒75%的普通攻击伤害，无视碰撞，增加20%移速	0	2	郭嘉5	25285
+10000|6	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒80%的普通攻击伤害，无视碰撞，增加25%移速	0	2	郭嘉6	25286
+10000|7	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒85%的普通攻击伤害，无视碰撞，增加30%移速	0	2	郭嘉7	25287
+10000|8	UI_Buff_LiuXue.img	对自身周围6米范围内的敌方部队造成每秒90%的普通攻击伤害，无视碰撞，增加35%移速	0	2	郭嘉8	25288
+10000|9	UI_Buff_LiuXue.img	对自身周围7米范围内的敌方部队造成每秒100%的普通攻击伤害，无视碰撞，增加40%移速	0	2	郭嘉9	25289
+10007|0	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加20%	5	1	贾诩5	25295
+10007|1	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加30%	5	1	贾诩6	25296
+10007|2	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加40%	5	1	贾诩7	25297
+10007|3	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加50%	5	1	贾诩8	25298
+10007|4	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加60%	5	1	贾诩9	25299
+20008|0	UI_Buff_JiangDiGongJiLi.img	攻击力降低50%	4	1	司马懿5	25305
+20008|1	UI_Buff_JiangDiGongJiLi.img	攻击力降低60%	4	1	司马懿6	25306
+20008|2	UI_Buff_JiangDiGongJiLi.img	攻击力降低70%	4	1	司马懿7	25307
+20008|3	UI_Buff_JiangDiGongJiLi.img	攻击力降低80%	4	1	司马懿8	25308
+20008|4	UI_Buff_JiangDiGongJiLi.img	攻击力降低90%	4	1	司马懿9	25309
+10009|0	UI_Buff_FaShuChuanTou.img	提升10%法术穿透	0	3	程昱0	25310
+10009|1	UI_Buff_FaShuChuanTou.img	提升20%法术穿透	0	3	程昱1	25311
+10009|2	UI_Buff_FaShuChuanTou.img	提升30%法术穿透	0	3	程昱2	25312
+10009|3	UI_Buff_FaShuChuanTou.img	提升40%法术穿透	0	3	程昱3	25313
+10009|4	UI_Buff_FaShuChuanTou.img	提升50%法术穿透	0	3	程昱4	25314
+10009|5	UI_Buff_FaShuChuanTou.img	提升60%法术穿透，20%法术吸血	0	3	程昱5	25315
+10009|6	UI_Buff_FaShuChuanTou.img	提升70%法术穿透，30%法术吸血	0	3	程昱6	25316
+10009|7	UI_Buff_FaShuChuanTou.img	提升80%法术穿透，40%法术吸血	0	3	程昱7	25317
+10009|8	UI_Buff_FaShuChuanTou.img	提升90%法术穿透，50%法术吸血	0	3	程昱8	25318
+10009|9	UI_Buff_FaShuChuanTou.img	提升100%法术穿透，60%法术吸血	0	3	程昱9	25319
+21501|0	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命10%和50000点伤害	8	0	曹冲0	25340
+21501|1	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命12%和80000点伤害	8	0	曹冲1	25341
+21501|2	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命14%和100000点伤害	8	0	曹冲2	25342
+21501|3	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命16%和150000点伤害	8	0	曹冲3	25343
+21501|4	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命18%和200000点伤害	8	0	曹冲4	25344
+21501|5	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命20%和300000点伤害	8	0	曹冲5	25345
+21501|6	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命22%和400000点伤害	8	0	曹冲6	25346
+21501|7	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命24%和500000点伤害	8	0	曹冲7	25347
+21501|8	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命26%和600000点伤害	8	0	曹冲8	25348
+21501|9	UI_Buff_XiShouShangHai.img	仁心：吸收当前生命30%和800000点伤害	8	0	曹冲9	25349
+27503|0	UI_Buff_ChenMo.img	无法释放技能	10	1	蔡文姬0	25490
+27503|1	UI_Buff_ChenMo.img	无法释放技能	13	1	蔡文姬1	25491
+27503|2	UI_Buff_ChenMo.img	无法释放技能	16	1	蔡文姬2	25492
+27503|3	UI_Buff_ChenMo.img	无法释放技能	19	1	蔡文姬3	25493
+27503|4	UI_Buff_ChenMo.img	无法释放技能	22	1	蔡文姬4	25494
+27503|5	UI_Buff_ChenMo.img	无法释放技能，且无法获得士气	25	1	蔡文姬5	25495
+27503|6	UI_Buff_ChenMo.img	无法释放技能，且无法获得士气	28	1	蔡文姬6	25496
+27503|7	UI_Buff_ChenMo.img	无法释放技能，且无法获得士气	31	1	蔡文姬7	25497
+27503|8	UI_Buff_ChenMo.img	无法释放技能，且无法获得士气	34	1	蔡文姬8	25498
+27503|9	UI_Buff_ChenMo.img	无法释放技能，且无法获得士气	37	1	蔡文姬9	25499
+21502|0	UI_Buff_FaShangJianMian.img	法术减伤10%	0	0	甄姬0	25500
+21502|1	UI_Buff_FaShangJianMian.img	法术减伤15%	0	0	甄姬1	25501
+21502|2	UI_Buff_FaShangJianMian.img	法术减伤20%	0	0	甄姬2	25502
+21502|3	UI_Buff_FaShangJianMian.img	法术减伤25%	0	0	甄姬3	25503
+21502|4	UI_Buff_FaShangJianMian.img	法术减伤30%	0	0	甄姬4	25504
+21502|5	UI_Buff_FaShangJianMian.img	法术减伤35%	0	0	甄姬5	25505
+21502|6	UI_Buff_FaShangJianMian.img	法术减伤40%	0	0	甄姬6	25506
+21502|7	UI_Buff_FaShangJianMian.img	法术减伤45%	0	0	甄姬7	25507
+21502|8	UI_Buff_FaShangJianMian.img	法术减伤50%	0	0	甄姬8	25508
+21502|9	UI_Buff_FaShangJianMian.img	法术减伤55%	0	0	甄姬9	25509
+12500|0	UI_Buff_ZengJiaGongJiLi.img	攻击附带30%溅射效果	5	2	关羽0	26010
+12500|1	UI_Buff_ZengJiaGongJiLi.img	攻击附带35%溅射效果	6	2	关羽1	26011
+12500|2	UI_Buff_ZengJiaGongJiLi.img	攻击附带40%溅射效果	7	2	关羽2	26012
+12500|3	UI_Buff_ZengJiaGongJiLi.img	攻击附带45%溅射效果	8	2	关羽3	26013
+12500|4	UI_Buff_ZengJiaGongJiLi.img	攻击附带60%溅射效果	9	2	关羽4	26014
+12600|0	UI_Buff_DingShen.img	定身，无法移动	1	1	关羽0	26010
+12600|1	UI_Buff_DingShen.img	定身，无法移动	1.5	1	关羽1	26011
+12600|2	UI_Buff_DingShen.img	定身，无法移动	2	1	关羽2	26012
+12600|3	UI_Buff_DingShen.img	定身，无法移动	2.5	1	关羽3	26013
+12600|4	UI_Buff_DingShen.img	定身，无法移动	3	1	关羽4	26014
+12600|5	UI_Buff_DingShen.img	定身，无法移动，护甲降低30%	3	1	关羽5	26015
+12600|6	UI_Buff_DingShen.img	定身，无法移动，护甲降低35%	3	1	关羽6	26016
+12600|7	UI_Buff_DingShen.img	定身，无法移动，护甲降低40%	3	1	关羽7	26017
+12600|8	UI_Buff_DingShen.img	定身，无法移动，护甲降低45%	3	1	关羽8	26018
+12600|9	UI_Buff_DingShen.img	定身，无法移动，护甲降低50%	3	1	关羽9	26019
+12501|0	UI_Buff_BaoJi.img	攻击必定暴击	3	2	张飞0	26020
+12501|1	UI_Buff_BaoJi.img	攻击必定暴击	4	2	张飞1	26021
+12501|2	UI_Buff_BaoJi.img	攻击必定暴击	5	2	张飞2	26022
+12501|3	UI_Buff_BaoJi.img	攻击必定暴击	6	2	张飞3	26023
+12501|4	UI_Buff_BaoJi.img	攻击必定暴击	8	2	张飞4	26024
+12501|5	UI_Buff_BaoJi.img	攻击必定暴击，提升30%暴击伤害	8	2	张飞5	26025
+12501|6	UI_Buff_BaoJi.img	攻击必定暴击，提升60%暴击伤害	8	2	张飞6	26026
+12501|7	UI_Buff_BaoJi.img	攻击必定暴击，提升90%暴击伤害	8	2	张飞7	26027
+12501|8	UI_Buff_BaoJi.img	攻击必定暴击，提升130%暴击伤害	8	2	张飞8	26028
+12501|9	UI_Buff_BaoJi.img	攻击必定暴击，提升180%暴击伤害	9	2	张飞9	26029
+12502|0	UI_Buff_ZengJiaYiSu.img	增加20%攻速移速	5	2	赵云0	26030
+12502|1	UI_Buff_ZengJiaYiSu.img	增加25%攻速移速	5	2	赵云1	26031
+12502|2	UI_Buff_ZengJiaYiSu.img	增加30%攻速移速	5	2	赵云2	26032
+12502|3	UI_Buff_ZengJiaYiSu.img	增加35%攻速移速	5	2	赵云3	26033
+12502|4	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速	5	2	赵云4	26034
+12502|5	UI_Buff_ZengJiaYiSu.img	增加40%攻速移速	6	2	赵云5	26035
+12502|6	UI_Buff_ZengJiaYiSu.img	增加50%攻速和40%移速	6.5	2	赵云6	26036
+12502|7	UI_Buff_ZengJiaYiSu.img	增加60%攻速和40%移速	7	2	赵云7	26037
+12502|8	UI_Buff_ZengJiaYiSu.img	增加70%攻速和40%移速	7.5	2	赵云8	26038
+12502|9	UI_Buff_ZengJiaYiSu.img	增加100%攻速和40%移速	8	2	赵云9	26039
+12503|0	UI_Buff_BaoJi.img	骑神状态	0	2	马超0	26040
+12503|1	UI_Buff_BaoJi.img	骑神状态	0	2	马超1	26041
+12503|2	UI_Buff_BaoJi.img	骑神状态	0	2	马超2	26042
+12503|3	UI_Buff_BaoJi.img	骑神状态	0	2	马超3	26043
+12503|4	UI_Buff_BaoJi.img	骑神状态	0	2	马超4	26044
+12503|5	UI_Buff_BaoJi.img	每2秒提升10%基础暴击和1%物理吸血	0	2	马超5	26045
+12503|6	UI_Buff_BaoJi.img	每2秒提升20%基础暴击和2%物理吸血	0	2	马超6	26046
+12503|7	UI_Buff_BaoJi.img	每2秒提升30%基础暴击和3%物理吸血	0	2	马超7	26047
+12503|8	UI_Buff_BaoJi.img	每2秒提升40%基础暴击和4%物理吸血	0	2	马超8	26048
+12503|9	UI_Buff_BaoJi.img	每2秒提升60%基础暴击和6%物理吸血	0	2	马超9	26049
+12603|0	UI_Buff_XuanYun.img	眩晕	2	1	马超0	26040
+12603|1	UI_Buff_XuanYun.img	眩晕	2	1	马超1	26041
+12603|2	UI_Buff_XuanYun.img	眩晕	2	1	马超2	26042
+12603|3	UI_Buff_XuanYun.img	眩晕	2	1	马超3	26043
+12603|4	UI_Buff_XuanYun.img	眩晕	2	1	马超4	26044
+12603|5	UI_Buff_XuanYun.img	眩晕	2	1	马超5	26045
+12603|6	UI_Buff_XuanYun.img	眩晕	2	1	马超6	26046
+12603|7	UI_Buff_XuanYun.img	眩晕	2	1	马超7	26047
+12603|8	UI_Buff_XuanYun.img	眩晕	2	1	马超8	26048
+12603|9	UI_Buff_XuanYun.img	眩晕	2	1	马超9	26049
+12508|0	UI_Buff_ChaoFeng.img	嘲讽	5	1	魏延0	26060
+12508|1	UI_Buff_ChaoFeng.img	嘲讽	6	1	魏延1	26061
+12508|2	UI_Buff_ChaoFeng.img	嘲讽	7	1	魏延2	26062
+12508|3	UI_Buff_ChaoFeng.img	嘲讽	8	1	魏延3	26063
+12508|4	UI_Buff_ChaoFeng.img	嘲讽	9	1	魏延4	26064
+12608|0	UI_Buff_WuShangFanTan.img	物伤反弹	9	2	魏延5	26065
+12608|1	UI_Buff_WuShangFanTan.img	物伤反弹	9	2	魏延6	26066
+12608|2	UI_Buff_WuShangFanTan.img	物伤反弹	9	2	魏延7	26067
+12608|3	UI_Buff_WuShangFanTan.img	物伤反弹	9	2	魏延8	26068
+12608|4	UI_Buff_WuShangFanTan.img	物伤反弹	9	2	魏延9	26069
+22502|0	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升10%	0	3	陈到0	26080
+22502|1	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升20%	0	3	陈到1	26081
+22502|2	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升30%	0	3	陈到2	26082
+22502|3	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升40%	0	3	陈到3	26083
+22502|4	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升50%	0	3	陈到4	26084
+22502|5	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升55%	0	3	陈到5	26085
+22502|6	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升60%	0	3	陈到6	26086
+22502|7	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升65%	0	3	陈到7	26087
+22502|8	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升70%	0	3	陈到8	26088
+22502|9	UI_Buff_ZengJiaGongJiLi.img	步兵攻击力提升80%	0	3	陈到9	26089
+22503|0	UI_Buff_XuanYun.img	眩晕	2	1	陈到5	26085
+22503|1	UI_Buff_XuanYun.img	眩晕	2	1	陈到6	26086
+22503|2	UI_Buff_XuanYun.img	眩晕	2	1	陈到7	26087
+22503|3	UI_Buff_XuanYun.img	眩晕	2	1	陈到8	26088
+22503|4	UI_Buff_XuanYun.img	眩晕	2	1	陈到9	26089
+12506|0	UI_Buff_XuanYun.img	眩晕	1	1	廖化0	26090
+12506|1	UI_Buff_XuanYun.img	眩晕	1.5	1	廖化1	26091
+12506|2	UI_Buff_XuanYun.img	眩晕	2	1	廖化2	26092
+12506|3	UI_Buff_XuanYun.img	眩晕	2.5	1	廖化3	26093
+12506|4	UI_Buff_XuanYun.img	眩晕	3	1	廖化4	26094
+12506|5	UI_Buff_XuanYun.img	眩晕	3.5	1	廖化5	26095
+12506|6	UI_Buff_XuanYun.img	眩晕	4	1	廖化6	26096
+12506|7	UI_Buff_XuanYun.img	眩晕	4.5	1	廖化7	26097
+12506|8	UI_Buff_XuanYun.img	眩晕	5	1	廖化8	26098
+12506|9	UI_Buff_XuanYun.img	眩晕	6	1	廖化9	26099
+24000|0	UI_Buff_CDSuoJian.img	CD缩减5%	30	0	关平0	26100
+24000|1	UI_Buff_CDSuoJian.img	CD缩减5.5%	30	0	关平1	26101
+24000|2	UI_Buff_CDSuoJian.img	CD缩减6%	30	0	关平2	26102
+24000|3	UI_Buff_CDSuoJian.img	CD缩减6.5%	30	0	关平3	26103
+24000|4	UI_Buff_CDSuoJian.img	CD缩减7%	30	0	关平4	26104
+24000|5	UI_Buff_CDSuoJian.img	CD缩减7%	30	0	关平5	26105
+24000|6	UI_Buff_CDSuoJian.img	CD缩减7%	30	0	关平6	26106
+24000|7	UI_Buff_CDSuoJian.img	CD缩减7%	30	0	关平7	26107
+24000|8	UI_Buff_CDSuoJian.img	CD缩减7%	30	0	关平8	26108
+24000|9	UI_Buff_CDSuoJian.img	CD缩减7%	30	0	关平9	26109
+1020|0	UI_Buff_JiaSu.img	提升4%移动速度	5	0	关索0	26110
+1020|1	UI_Buff_JiaSu.img	提升8%移动速度	5	0	关索1	26111
+1020|2	UI_Buff_JiaSu.img	提升12%移动速度	5	0	关索2	26112
+1020|3	UI_Buff_JiaSu.img	提升16%移动速度	5	0	关索3	26113
+1020|4	UI_Buff_JiaSu.img	提升20%移动速度	5	0	关索4	26114
+1020|4	UI_Buff_JiaSu.img	提升20%移动速度	5	0	关索5	26115
+1020|4	UI_Buff_JiaSu.img	提升20%移动速度	5	0	关索6	26116
+1020|4	UI_Buff_JiaSu.img	提升20%移动速度	5	0	关索7	26117
+1020|4	UI_Buff_JiaSu.img	提升20%移动速度	5	0	关索8	26118
+1020|4	UI_Buff_JiaSu.img	提升20%移动速度	5	0	关索9	26119
+22504|0	UI_Buff_ZengJiaGongSu.img	提升50%攻击速度	5	0	张苞0	26120
+22504|1	UI_Buff_ZengJiaGongSu.img	提升60%攻击速度	5	0	张苞1	26121
+22504|2	UI_Buff_ZengJiaGongSu.img	提升70%攻击速度	5	0	张苞2	26122
+22504|3	UI_Buff_ZengJiaGongSu.img	提升80%攻击速度	5	0	张苞3	26123
+22504|4	UI_Buff_ZengJiaGongSu.img	提升90%攻击速度	5	0	张苞4	26124
+22504|5	UI_Buff_ZengJiaGongSu.img	提升90%攻击速度和2%物理吸血	5	0	张苞5	26125
+22504|6	UI_Buff_ZengJiaGongSu.img	提升90%攻击速度和4%物理吸血	5	0	张苞6	26126
+22504|7	UI_Buff_ZengJiaGongSu.img	提升90%攻击速度和6%物理吸血	5	0	张苞7	26127
+22504|8	UI_Buff_ZengJiaGongSu.img	提升90%攻击速度和8%物理吸血	5	0	张苞8	26128
+22504|9	UI_Buff_ZengJiaGongSu.img	提升100%攻击速度和10%物理吸血	6	0	张苞9	26129
+22506|0	UI_Buff_JiaSu.img	减速	10	1	严颜0	26150
+22506|1	UI_Buff_JiaSu.img	减速	10	1	严颜1	26151
+22506|2	UI_Buff_JiaSu.img	减速	10	1	严颜2	26152
+22506|3	UI_Buff_JiaSu.img	减速	10	1	严颜3	26153
+22506|4	UI_Buff_JiaSu.img	减速	10	1	严颜4	26154
+22606|0	UI_Buff_HunLuan.img	混乱	3	1	严颜5	26155
+22606|1	UI_Buff_HunLuan.img	混乱	3	1	严颜6	26156
+22606|2	UI_Buff_HunLuan.img	混乱	3	1	严颜7	26157
+22606|3	UI_Buff_HunLuan.img	混乱	3	1	严颜8	26158
+22606|4	UI_Buff_HunLuan.img	混乱	4	1	严颜9	26159
+1022|0	UI_Buff_WeiYa.img	提升4%攻击速度	5	0	张嶷0	26190
+1022|1	UI_Buff_WeiYa.img	提升8%攻击速度	5	0	张嶷1	26191
+1022|2	UI_Buff_WeiYa.img	提升12%攻击速度	5	0	张嶷2	26192
+1022|3	UI_Buff_WeiYa.img	提升16%攻击速度	5	0	张嶷3	26193
+1022|4	UI_Buff_WeiYa.img	提升20%攻击速度	5	0	张嶷4	26194
+1022|4	UI_Buff_WeiYa.img	提升20%攻击速度	5	0	张嶷5	26195
+1022|4	UI_Buff_WeiYa.img	提升20%攻击速度	5	0	张嶷6	26196
+1022|4	UI_Buff_WeiYa.img	提升20%攻击速度	5	0	张嶷7	26197
+1022|4	UI_Buff_WeiYa.img	提升20%攻击速度	5	0	张嶷8	26198
+1022|4	UI_Buff_WeiYa.img	提升20%攻击速度	5	0	张嶷9	26199
+1023|0	UI_Buff_HuJia.img	提升4%护甲	5	0	罗宪0	26230
+1023|1	UI_Buff_HuJia.img	提升8%护甲	5	0	罗宪1	26231
+1023|2	UI_Buff_HuJia.img	提升12%护甲	5	0	罗宪2	26232
+1023|3	UI_Buff_HuJia.img	提升16%护甲	5	0	罗宪3	26233
+1023|4	UI_Buff_HuJia.img	提升20%护甲	5	0	罗宪4	26234
+1023|4	UI_Buff_HuJia.img	提升20%护甲	5	0	罗宪5	26235
+1023|4	UI_Buff_HuJia.img	提升20%护甲	5	0	罗宪6	26236
+1023|4	UI_Buff_HuJia.img	提升20%护甲	5	0	罗宪7	26237
+1023|4	UI_Buff_HuJia.img	提升20%护甲	5	0	罗宪8	26238
+1023|4	UI_Buff_HuJia.img	提升20%护甲	5	0	罗宪9	26239
+1024|0	UI_Buff_JiaSu.img	移动速度降低30%	5	1	周仓0	26250
+1024|1	UI_Buff_JiaSu.img	移动速度降低35%	5	1	周仓1	26251
+1024|2	UI_Buff_JiaSu.img	移动速度降低40%	5	1	周仓2	26252
+1024|3	UI_Buff_JiaSu.img	移动速度降低45%	5	1	周仓3	26253
+1024|4	UI_Buff_JiaSu.img	移动速度降低50%	5	1	周仓4	26254
+1024|4	UI_Buff_JiaSu.img	移动速度降低50%	5	1	周仓5	26255
+1024|4	UI_Buff_JiaSu.img	移动速度降低50%	5	1	周仓6	26256
+1024|4	UI_Buff_JiaSu.img	移动速度降低50%	5	1	周仓7	26257
+1024|4	UI_Buff_JiaSu.img	移动速度降低50%	5	1	周仓8	26258
+1024|4	UI_Buff_JiaSu.img	移动速度降低50%	5	1	周仓9	26259
+990|0	UI_Buff_JiangDiMingZhong.img	命中降低50%	2	1	诸葛亮5	26265
+991|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	2	1	诸葛亮5	26265
+992|0	UI_Buff_JiangDiMingZhong.img	命中降低60%	2.5	1	诸葛亮6	26266
+993|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	2.5	1	诸葛亮6	26266
+994|0	UI_Buff_JiangDiMingZhong.img	命中降低70%	3	1	诸葛亮7	26267
+995|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	3	1	诸葛亮7	26267
+996|0	UI_Buff_JiangDiMingZhong.img	命中降低80%	3.5	1	诸葛亮8	26268
+997|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	3.5	1	诸葛亮8	26268
+998|0	UI_Buff_JiangDiMingZhong.img	命中降低100%	4	1	诸葛亮9	26269
+999|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	4	1	诸葛亮9	26269
+12505|0	UI_Buff_FaShangJianMian.img	法术伤害减少30%	5	2	庞统0	26270
+12505|1	UI_Buff_FaShangJianMian.img	法术伤害减少40%	5	2	庞统1	26271
+12505|2	UI_Buff_FaShangJianMian.img	法术伤害减少50%	5	2	庞统2	26272
+12505|3	UI_Buff_FaShangJianMian.img	法术伤害减少60%	5	2	庞统3	26273
+12505|4	UI_Buff_FaShangJianMian.img	法术伤害减少70%	5	2	庞统4	26274
+12505|5	UI_Buff_FaShangJianMian.img	法术伤害减少70%，法伤加成+20%	5	2	庞统5	26275
+12505|6	UI_Buff_FaShangJianMian.img	法术伤害减少70%，法伤加成+25%	5	2	庞统6	26276
+12505|7	UI_Buff_FaShangJianMian.img	法术伤害减少70%，法伤加成+30%	5	2	庞统7	26277
+12505|8	UI_Buff_FaShangJianMian.img	法术伤害减少70%，法伤加成+35%	5	2	庞统8	26278
+12505|9	UI_Buff_FaShangJianMian.img	法术伤害减少70%，法伤加成+50%	5	2	庞统9	26279
+12515|0	UI_Buff_JiNengMianYi.img	法术免疫	5	2	庞统5	26275
+12515|1	UI_Buff_JiNengMianYi.img	法术免疫	6	2	庞统6	26276
+12515|2	UI_Buff_JiNengMianYi.img	法术免疫	7	2	庞统7	26277
+12515|3	UI_Buff_JiNengMianYi.img	法术免疫	8	2	庞统8	26278
+12515|4	UI_Buff_JiNengMianYi.img	法术免疫	9	2	庞统9	26279
+12509|0	UI_Buff_JingXia.img	恐惧	2	1	法正0	26280
+12509|1	UI_Buff_JingXia.img	恐惧	2.5	1	法正1	26281
+12509|2	UI_Buff_JingXia.img	恐惧	3	1	法正2	26282
+12509|3	UI_Buff_JingXia.img	恐惧	3.5	1	法正3	26283
+12509|4	UI_Buff_JingXia.img	恐惧	4	1	法正4	26284
+12509|5	UI_Buff_JingXia.img	恐惧	4.5	1	法正5	26285
+12509|6	UI_Buff_JingXia.img	恐惧	5	1	法正6	26286
+12509|7	UI_Buff_JingXia.img	恐惧	5.5	1	法正7	26287
+12509|8	UI_Buff_JingXia.img	恐惧	6	1	法正8	26288
+12509|9	UI_Buff_JingXia.img	恐惧	7	1	法正9	26289
+1026|0	UI_Buff_DingShen.img	不可移动	5	1	张松0	26300
+1026|1	UI_Buff_DingShen.img	不可移动	5	1	张松1	26301
+1026|2	UI_Buff_DingShen.img	不可移动	5	1	张松2	26302
+1026|3	UI_Buff_DingShen.img	不可移动	5	1	张松3	26303
+1026|4	UI_Buff_DingShen.img	不可移动	5	1	张松4	26304
+1026|4	UI_Buff_DingShen.img	不可移动	5	1	张松5	26305
+1026|4	UI_Buff_DingShen.img	不可移动	5	1	张松6	26306
+1026|4	UI_Buff_DingShen.img	不可移动	5	1	张松7	26307
+1026|4	UI_Buff_DingShen.img	不可移动	5	1	张松8	26308
+1026|4	UI_Buff_DingShen.img	不可移动	5	1	张松9	26309
+980|0	UI_Buff_ZengJiaYiSu.img	移动速度提升10%	5	0	马谡0	26310
+981|0	UI_Buff_ZengJiaYiSu.img	移动速度提升12%	5	0	马谡1	26311
+982|0	UI_Buff_ZengJiaYiSu.img	移动速度提升14%	5	0	马谡2	26312
+983|0	UI_Buff_ZengJiaYiSu.img	移动速度提升16%	5	0	马谡3	26313
+984|0	UI_Buff_ZengJiaYiSu.img	移动速度提升18%	5	0	马谡4	26314
+985|0	UI_Buff_ZengJiaYiSu.img	移动速度提升20%	5	0	马谡5	26315
+986|0	UI_Buff_ZengJiaYiSu.img	移动速度提升22%	5	0	马谡6	26316
+987|0	UI_Buff_ZengJiaYiSu.img	移动速度提升24%	5	0	马谡7	26317
+988|0	UI_Buff_ZengJiaYiSu.img	移动速度提升26%	5	0	马谡8	26318
+989|0	UI_Buff_ZengJiaYiSu.img	移动速度提升30%	5	0	马谡9	26319
+22508|5	UI_Buff_ZengJiaGongSu.img	增加30%攻速	5	0	黄月英5	26325
+22508|6	UI_Buff_ZengJiaGongSu.img	增加35%攻速	5	0	黄月英6	26326
+22508|7	UI_Buff_ZengJiaGongSu.img	增加40%攻速	5	0	黄月英7	26327
+22508|8	UI_Buff_ZengJiaGongSu.img	增加45%攻速	5	0	黄月英8	26328
+22508|9	UI_Buff_ZengJiaGongSu.img	增加60%攻速	5	0	黄月英9	26329
+12514|0	UI_Buff_ChenMo.img	无法回复生命	1	1	徐庶0	26360
+12514|1	UI_Buff_ChenMo.img	无法回复生命	2	1	徐庶1	26361
+12514|2	UI_Buff_ChenMo.img	无法回复生命	3	1	徐庶2	26362
+12514|3	UI_Buff_ChenMo.img	无法回复生命	4	1	徐庶3	26363
+12514|4	UI_Buff_ChenMo.img	无法回复生命	5	1	徐庶4	26364
+12514|5	UI_Buff_ChenMo.img	无法回复生命	5.5	1	徐庶5	26365
+12514|6	UI_Buff_ChenMo.img	无法回复生命	6	1	徐庶6	26366
+12514|7	UI_Buff_ChenMo.img	无法回复生命	6.5	1	徐庶7	26367
+12514|8	UI_Buff_ChenMo.img	无法回复生命	7	1	徐庶8	26368
+12514|9	UI_Buff_ChenMo.img	无法回复生命	8	1	徐庶9	26369
+12524|0	UI_Buff_ZengJiaGongSu.img	提升30%攻速和物伤加成	10	2	徐庶5	26365
+12524|1	UI_Buff_ZengJiaGongSu.img	提升40%攻速和物伤加成	10	2	徐庶6	26366
+12524|2	UI_Buff_ZengJiaGongSu.img	提升50%攻速和物伤加成	10	2	徐庶7	26367
+12524|3	UI_Buff_ZengJiaGongSu.img	提升60%攻速和物伤加成	10	2	徐庶8	26368
+12524|4	UI_Buff_ZengJiaGongSu.img	提升80%攻速和物伤加成	10	2	徐庶9	26369
+1027|0	UI_Buff_HunDun.img	不可攻击	5	1	秦宓0	26410
+1027|1	UI_Buff_HunDun.img	不可攻击	5	1	秦宓1	26411
+1027|2	UI_Buff_HunDun.img	不可攻击	5	1	秦宓2	26412
+1027|3	UI_Buff_HunDun.img	不可攻击	5	1	秦宓3	26413
+1027|4	UI_Buff_HunDun.img	不可攻击	5	1	秦宓4	26414
+1027|4	UI_Buff_HunDun.img	不可攻击	5	1	秦宓5	26415
+1027|4	UI_Buff_HunDun.img	不可攻击	5	1	秦宓6	26416
+1027|4	UI_Buff_HunDun.img	不可攻击	5	1	秦宓7	26417
+1027|4	UI_Buff_HunDun.img	不可攻击	5	1	秦宓8	26418
+1027|4	UI_Buff_HunDun.img	不可攻击	5	1	秦宓9	26419
+1089|0	UI_Buff_HuJia.img	护甲降低2%	5	1	李恢0	26450
+1089|1	UI_Buff_HuJia.img	护甲降低4%	5	1	李恢1	26451
+1089|2	UI_Buff_HuJia.img	护甲降低6%	5	1	李恢2	26452
+1089|3	UI_Buff_HuJia.img	护甲降低8%	5	1	李恢3	26453
+1089|4	UI_Buff_HuJia.img	护甲降低10%	5	1	李恢4	26454
+1089|4	UI_Buff_HuJia.img	护甲降低10%	5	1	李恢5	26455
+1089|4	UI_Buff_HuJia.img	护甲降低10%	5	1	李恢6	26456
+1089|4	UI_Buff_HuJia.img	护甲降低10%	5	1	李恢7	26457
+1089|4	UI_Buff_HuJia.img	护甲降低10%	5	1	李恢8	26458
+1089|4	UI_Buff_HuJia.img	护甲降低10%	5	1	李恢9	26459
+22507|0	UI_Buff_ZengJiaGongJiLi.img	每层提升2%攻击	8	0	邓芝0	26460
+22507|1	UI_Buff_ZengJiaGongJiLi.img	每层提升3%攻击	9	0	邓芝1	26461
+22507|2	UI_Buff_ZengJiaGongJiLi.img	每层提升4%攻击	10	0	邓芝2	26462
+22507|3	UI_Buff_ZengJiaGongJiLi.img	每层提升5%攻击	11	0	邓芝3	26463
+22507|4	UI_Buff_ZengJiaGongJiLi.img	每层提升6%攻击	12	0	邓芝4	26464
+22507|5	UI_Buff_ZengJiaGongJiLi.img	每层提升7%攻击和5%攻速	13	0	邓芝5	26465
+22507|6	UI_Buff_ZengJiaGongJiLi.img	每层提升8%攻击和7%攻速	14	0	邓芝6	26466
+22507|7	UI_Buff_ZengJiaGongJiLi.img	每层提升9%攻击和9%攻速	15	0	邓芝7	26467
+22507|8	UI_Buff_ZengJiaGongJiLi.img	每层提升10%攻击和11%攻速	16	0	邓芝8	26468
+22507|9	UI_Buff_ZengJiaGongJiLi.img	每层提升12%攻击和15%攻速	18	0	邓芝9	26469
+15102|0	UI_Buff_BaoJi.img	每层增加10%基础暴击加成	5	2	孙策0	27010
+15102|1	UI_Buff_BaoJi.img	每层增加20%基础暴击加成	5	2	孙策1	27011
+15102|2	UI_Buff_BaoJi.img	每层增加30%基础暴击加成	5	2	孙策2	27012
+15102|3	UI_Buff_BaoJi.img	每层增加40%基础暴击加成	5	2	孙策3	27013
+15102|4	UI_Buff_BaoJi.img	每层增加50%基础暴击加成	5	2	孙策4	27014
+15102|5	UI_Buff_BaoJi.img	每层增加60%基础暴击加成	5.5	2	孙策5	27015
+15102|6	UI_Buff_BaoJi.img	每层增加70%基础暴击加成	6	2	孙策6	27016
+15102|7	UI_Buff_BaoJi.img	每层增加80%基础暴击加成	6.5	2	孙策7	27017
+15102|8	UI_Buff_BaoJi.img	每层增加90%基础暴击加成	7	2	孙策8	27018
+15102|9	UI_Buff_BaoJi.img	每层增加120%基础暴击加成	8	2	孙策9	27019
+15003|0	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	2	1	孙尚香0	27020
+15003|1	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	3	1	孙尚香1	27021
+15003|2	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	4	1	孙尚香2	27022
+15003|3	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	5	1	孙尚香3	27023
+15003|4	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	6	1	孙尚香4	27024
+15003|5	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	6	1	孙尚香5	27025
+15020|0	UI_Buff_ZengJiaGongJiLi.img	提升30%普通攻击或攻城攻击，10%生命上限	5	2	孙尚香5	27025
+15003|6	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	6	1	孙尚香6	27026
+15020|1	UI_Buff_ZengJiaGongJiLi.img	提升35%普通攻击或攻城攻击，15%生命上限	6	2	孙尚香6	27026
+15003|7	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	6	1	孙尚香7	27027
+15020|2	UI_Buff_ZengJiaGongJiLi.img	提升40%普通攻击或攻城攻击，20%生命上限	7	2	孙尚香7	27027
+15003|8	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	6	1	孙尚香8	27028
+15020|3	UI_Buff_ZengJiaGongJiLi.img	提升45%普通攻击或攻城攻击，25%生命上限	8	2	孙尚香8	27028
+15003|9	UI_Buff_HunDun.img	被缴械，无法进行普通攻击	6	1	孙尚香9	27029
+15020|4	UI_Buff_ZengJiaGongJiLi.img	提升50%普通攻击或攻城攻击，30%生命上限	9	2	孙尚香9	27029
+15004|0	UI_Buff_HuJia.img	提升4%护甲	5	0	孙桓0	27030
+15004|1	UI_Buff_HuJia.img	提升8%护甲	5	0	孙桓1	27031
+15004|2	UI_Buff_HuJia.img	提升12%护甲	5	0	孙桓2	27032
+15004|3	UI_Buff_HuJia.img	提升16%护甲	5	0	孙桓3	27033
+15004|4	UI_Buff_HuJia.img	提升20%护甲	5	0	孙桓4	27034
+15004|5	UI_Buff_HuJia.img	提升20%护甲	5	0	孙桓5	27035
+15004|6	UI_Buff_HuJia.img	提升20%护甲	5	0	孙桓6	27036
+15004|7	UI_Buff_HuJia.img	提升20%护甲	5	0	孙桓7	27037
+15004|8	UI_Buff_HuJia.img	提升20%护甲	5	0	孙桓8	27038
+15004|9	UI_Buff_HuJia.img	提升20%护甲	5	0	孙桓9	27039
+15005|0	UI_Buff_WuLiChuanTou.img	提升15%攻击和物理穿透	5	2	太史慈0	27060
+15005|1	UI_Buff_WuLiChuanTou.img	提升20%攻击和物理穿透	6	2	太史慈1	27061
+15005|2	UI_Buff_WuLiChuanTou.img	提升25%攻击和物理穿透	7	2	太史慈2	27062
+15005|3	UI_Buff_WuLiChuanTou.img	提升30%攻击和物理穿透	8	2	太史慈3	27063
+15005|4	UI_Buff_WuLiChuanTou.img	提升35%攻击和物理穿透	9	2	太史慈4	27064
+15005|5	UI_Buff_WuLiChuanTou.img	提升40%攻击和物理穿透	9	2	太史慈5	27065
+15005|6	UI_Buff_WuLiChuanTou.img	提升45%攻击和物理穿透	9	2	太史慈6	27066
+15005|7	UI_Buff_WuLiChuanTou.img	提升50%攻击和物理穿透	9	2	太史慈7	27067
+15005|8	UI_Buff_WuLiChuanTou.img	提升55%攻击和物理穿透	9	2	太史慈8	27068
+15005|9	UI_Buff_WuLiChuanTou.img	提升70%攻击和物理穿透	9	2	太史慈9	27069
+15015|0	UI_Buff_XiShouShangHai.img	提升5%生命上限	10	2	太史慈5	27065
+15015|1	UI_Buff_XiShouShangHai.img	提升10%生命上限	10	2	太史慈6	27066
+15015|2	UI_Buff_XiShouShangHai.img	提升15%生命上限	10	2	太史慈7	27067
+15015|3	UI_Buff_XiShouShangHai.img	提升20%生命上限	10	2	太史慈8	27068
+15015|4	UI_Buff_XiShouShangHai.img	提升30%生命上限	10	2	太史慈9	27069
+25001|0	UI_Buff_JiangDiHuJia.img	护甲降低20%	5	1	程普0	27070
+25001|1	UI_Buff_JiangDiHuJia.img	护甲降低30%	5	1	程普1	27071
+25001|2	UI_Buff_JiangDiHuJia.img	护甲降低40%	5	1	程普2	27072
+25001|3	UI_Buff_JiangDiHuJia.img	护甲降低50%	5	1	程普3	27073
+25001|4	UI_Buff_JiangDiHuJia.img	护甲降低60%	5	1	程普4	27074
+25001|5	UI_Buff_JiangDiHuJia.img	护甲降低75%	5	1	程普5	27075
+25001|6	UI_Buff_JiangDiHuJia.img	护甲降低90%	5	1	程普6	27076
+25001|7	UI_Buff_JiangDiHuJia.img	护甲降低105%	5	1	程普7	27077
+25001|8	UI_Buff_JiangDiHuJia.img	护甲降低120%	5	1	程普8	27078
+25001|9	UI_Buff_JiangDiHuJia.img	护甲降低150%	5	1	程普9	27079
+25005|0	UI_Buff_ZengJiaGongSu.img	器械部队提高100%攻速，弓兵部队攻击附带火矢效果	6	2	黄盖0	27080
+25005|1	UI_Buff_ZengJiaGongSu.img	器械部队提高100%攻速，弓兵部队攻击附带火矢效果	7.5	2	黄盖1	27081
+25005|2	UI_Buff_ZengJiaGongSu.img	器械部队提高100%攻速，弓兵部队攻击附带火矢效果	9	2	黄盖2	27082
+25005|3	UI_Buff_ZengJiaGongSu.img	器械部队提高100%攻速，弓兵部队攻击附带火矢效果	10.5	2	黄盖3	27083
+25005|4	UI_Buff_ZengJiaGongSu.img	器械部队提高120%攻速，弓兵部队攻击附带火矢效果	12	2	黄盖4	27084
+25002|0	UI_Buff_DingShen.img	定身	1	1	祖茂0	27100
+25002|1	UI_Buff_DingShen.img	定身	1	1	祖茂1	27101
+25002|2	UI_Buff_DingShen.img	定身	1	1	祖茂2	27102
+25002|3	UI_Buff_DingShen.img	定身	1	1	祖茂3	27103
+25002|4	UI_Buff_DingShen.img	定身	1	1	祖茂4	27104
+25002|5	UI_Buff_DingShen.img	定身	1	1	祖茂5	27105
+25002|6	UI_Buff_DingShen.img	定身	1	1	祖茂6	27106
+25002|7	UI_Buff_DingShen.img	定身	1	1	祖茂7	27107
+25002|8	UI_Buff_DingShen.img	定身	1	1	祖茂8	27108
+25002|9	UI_Buff_DingShen.img	定身	2	1	祖茂9	27109
+1040|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加5%	2	1	甘宁0	27110
+15006|0	UI_Buff_XiangWei.img	无视碰撞，移速提高20%	2	2	甘宁0	27110
+1041|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加10%	2.5	1	甘宁1	27111
+15006|1	UI_Buff_XiangWei.img	无视碰撞，移速提高25%	3	2	甘宁1	27111
+1042|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加15%	3	1	甘宁2	27112
+15006|2	UI_Buff_XiangWei.img	无视碰撞，移速提高30%	4	2	甘宁2	27112
+1043|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加20%	3.5	1	甘宁3	27113
+15006|3	UI_Buff_XiangWei.img	无视碰撞，移速提高35%	5	2	甘宁3	27113
+1044|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加25%	4	1	甘宁4	27114
+15006|4	UI_Buff_XiangWei.img	无视碰撞，移速提高40%	6	2	甘宁4	27114
+1045|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加30%	4	1	甘宁5	27115
+15006|5	UI_Buff_XiangWei.img	无视碰撞，移速提高45%	6	2	甘宁5	27115
+1046|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加35%	4	1	甘宁6	27116
+15006|6	UI_Buff_XiangWei.img	无视碰撞，移速提高50%	6	2	甘宁6	27116
+1047|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加40%	4	1	甘宁7	27117
+15006|7	UI_Buff_XiangWei.img	无视碰撞，移速提高55%	6	2	甘宁7	27117
+1048|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加45%	4	1	甘宁8	27118
+15006|8	UI_Buff_XiangWei.img	无视碰撞，移速提高60%	6	2	甘宁8	27118
+1049|0	UI_Buff_WuLiJiaCheng.img	受到的物理伤害增加50%	4	1	甘宁9	27119
+15006|9	UI_Buff_XiangWei.img	无视碰撞，移速提高65%	7	2	甘宁9	27119
+15007|0	UI_Buff_WuLiXiXue.img	物理吸血提高5%	5	2	周泰0	27120
+15007|1	UI_Buff_WuLiXiXue.img	物理吸血提高7%	5.5	2	周泰1	27121
+15007|2	UI_Buff_WuLiXiXue.img	物理吸血提高9%	6	2	周泰2	27122
+15007|3	UI_Buff_WuLiXiXue.img	物理吸血提高11%	6.5	2	周泰3	27123
+15007|4	UI_Buff_WuLiXiXue.img	物理吸血提高13%	7	2	周泰4	27124
+15007|5	UI_Buff_WuLiXiXue.img	物理吸血提高15%	7.5	2	周泰5	27125
+15007|6	UI_Buff_WuLiXiXue.img	物理吸血提高18%	8	2	周泰6	27126
+15007|7	UI_Buff_WuLiXiXue.img	物理吸血提高21%	8.5	2	周泰7	27127
+15007|8	UI_Buff_WuLiXiXue.img	物理吸血提高24%	9	2	周泰8	27128
+15007|9	UI_Buff_WuLiXiXue.img	物理吸血提高30%	10	2	周泰9	27129
+15002|0	UI_Buff_XuanYun.img	眩晕	0.2	1	周泰10	
+15002|1	UI_Buff_XuanYun.img	眩晕	0.3	1	周泰11	
+15002|2	UI_Buff_XuanYun.img	眩晕	0.4	1	周泰12	
+15002|3	UI_Buff_XuanYun.img	眩晕	0.5	1	周泰13	
+15002|4	UI_Buff_XuanYun.img	眩晕	0.6	1	周泰14	
+15002|5	UI_Buff_XuanYun.img	眩晕	0.7	1	周泰15	
+15002|6	UI_Buff_XuanYun.img	眩晕	0.8	1	周泰16	
+15002|7	UI_Buff_XuanYun.img	眩晕	0.9	1	周泰17	
+15002|8	UI_Buff_XuanYun.img	眩晕	1	1	周泰18	
+15002|9	UI_Buff_XuanYun.img	眩晕	1.2	1	周泰19	
+16501|0	UI_Buff_ZengJiaGongJiLi.img	攻击增加20%	3	0	丁奉0	27140
+16501|1	UI_Buff_ZengJiaGongJiLi.img	攻击增加30%	3	0	丁奉1	27141
+16501|2	UI_Buff_ZengJiaGongJiLi.img	攻击增加40%	3	0	丁奉2	27142
+16501|3	UI_Buff_ZengJiaGongJiLi.img	攻击增加50%	3	0	丁奉3	27143
+16501|4	UI_Buff_ZengJiaGongJiLi.img	攻击增加60%	3	0	丁奉4	27144
+16501|5	UI_Buff_ZengJiaGongJiLi.img	攻击增加70%	4	0	丁奉5	27145
+16501|6	UI_Buff_ZengJiaGongJiLi.img	攻击增加80%	5	0	丁奉6	27146
+16501|7	UI_Buff_ZengJiaGongJiLi.img	攻击增加90%	6	0	丁奉7	27147
+16501|8	UI_Buff_ZengJiaGongJiLi.img	攻击增加100%	7	0	丁奉8	27148
+16501|9	UI_Buff_ZengJiaGongJiLi.img	攻击增加120%	9	0	丁奉9	27149
+1010|0	UI_Buff_JianSu.img	移动速度降低30%	5	1	朱桓0	27210
+1010|1	UI_Buff_JianSu.img	移动速度降低35%	5	1	朱桓1	27211
+1010|2	UI_Buff_JianSu.img	移动速度降低40%	5	1	朱桓2	27212
+1010|3	UI_Buff_JianSu.img	移动速度降低45%	5	1	朱桓3	27213
+1010|4	UI_Buff_JianSu.img	移动速度降低50%	5	1	朱桓4	27214
+1010|4	UI_Buff_JianSu.img	移动速度降低50%	5	1	朱桓5	27215
+1010|4	UI_Buff_JianSu.img	移动速度降低50%	5	1	朱桓6	27216
+1010|4	UI_Buff_JianSu.img	移动速度降低50%	5	1	朱桓7	27217
+1010|4	UI_Buff_JianSu.img	移动速度降低50%	5	1	朱桓8	27218
+1010|4	UI_Buff_JianSu.img	移动速度降低50%	5	1	朱桓9	27219
+15000|0	UI_Buff_ZengJiaGongSu.img	攻速提升40%	5	2	沈莹0	27220
+15000|1	UI_Buff_ZengJiaGongSu.img	攻速提升50%	6	2	沈莹1	27221
+15000|2	UI_Buff_ZengJiaGongSu.img	攻速提升60%	7	2	沈莹2	27222
+15000|3	UI_Buff_ZengJiaGongSu.img	攻速提升70%	8	2	沈莹3	27223
+15000|4	UI_Buff_ZengJiaGongSu.img	攻速提升80%	9	2	沈莹4	27224
+15000|5	UI_Buff_ZengJiaGongSu.img	攻速提升80%，提升丹阳兵10%攻击护甲生命	9	2	沈莹5	27225
+15001|1	UI_Buff_XuanYun.img	眩晕	2	1	沈莹5	27225
+15000|6	UI_Buff_ZengJiaGongSu.img	攻速提升80%，提升丹阳兵15%攻击护甲生命	9	2	沈莹6	27226
+15001|2	UI_Buff_XuanYun.img	眩晕	2	1	沈莹6	27226
+15000|7	UI_Buff_ZengJiaGongSu.img	攻速提升80%，提升丹阳兵20%攻击护甲生命	9	2	沈莹7	27227
+15001|3	UI_Buff_XuanYun.img	眩晕	2	1	沈莹7	27227
+15000|8	UI_Buff_ZengJiaGongSu.img	攻速提升80%，提升丹阳兵25%攻击护甲生命	9	2	沈莹8	27228
+15001|4	UI_Buff_XuanYun.img	眩晕	2	1	沈莹8	27228
+15000|9	UI_Buff_ZengJiaGongSu.img	攻速提升80%，提升丹阳兵40%攻击护甲生命	9	2	沈莹9	27229
+15001|5	UI_Buff_XuanYun.img	眩晕	2	1	沈莹9	27229
+15230|0	UI_Buff_YinShen.img	隐身，移速降低100%/n基础暴击+100%	1	2	吕蒙0	27230
+15230|1	UI_Buff_YinShen.img	隐身，移速降低90%/n基础暴击+150%	2	2	吕蒙1	27231
+15230|2	UI_Buff_YinShen.img	隐身，移速降低80%/n基础暴击+200%	3	2	吕蒙2	27232
+15230|3	UI_Buff_YinShen.img	隐身，移速降低70%/n基础暴击+250%	4	2	吕蒙3	27233
+15230|4	UI_Buff_YinShen.img	隐身，移速降低60%/n基础暴击+300%	5	2	吕蒙4	27234
+15230|5	UI_Buff_YinShen.img	隐身，移速降低50%/n基础暴击+350%/n每秒回复0.3%最大生命	6	2	吕蒙5	27235
+15230|6	UI_Buff_YinShen.img	隐身，移速降低40%/n基础暴击+400%/n每秒回复0.5%最大生命	7	2	吕蒙6	27236
+15230|7	UI_Buff_YinShen.img	隐身，移速降低30%/n基础暴击+450%/n每秒回复0.8%最大生命	8	2	吕蒙7	27237
+15230|8	UI_Buff_YinShen.img	隐身，移速降低20%/n基础暴击+500%/n每秒回复1.1%最大生命	9	2	吕蒙8	27238
+15230|9	UI_Buff_YinShen.img	隐身，基础暴击+600%/n每秒回复1.5%最大生命	10	2	吕蒙9	27239
+1012|0	UI_Buff_JiaSu.img	提升4%攻击	5	0	孙权0	27260
+1012|1	UI_Buff_JiaSu.img	提升8%攻击	5	0	孙权1	27261
+1012|2	UI_Buff_JiaSu.img	提升12%攻击	5	0	孙权2	27262
+1012|3	UI_Buff_JiaSu.img	提升16%攻击	5	0	孙权3	27263
+1012|4	UI_Buff_JiaSu.img	提升20%攻击	5	0	孙权4	27264
+1012|4	UI_Buff_JiaSu.img	提升20%攻击	5	0	孙权5	27265
+1012|4	UI_Buff_JiaSu.img	提升20%攻击	5	0	孙权6	27266
+1012|4	UI_Buff_JiaSu.img	提升20%攻击	5	0	孙权7	27267
+1012|4	UI_Buff_JiaSu.img	提升20%攻击	5	0	孙权8	27268
+1012|4	UI_Buff_JiaSu.img	提升20%攻击	5	0	孙权9	27269
+1015|0	UI_Buff_ShiMing.img	失明	5	1	鲁肃0	27300
+1015|1	UI_Buff_ShiMing.img	失明	5	1	鲁肃1	27301
+1015|2	UI_Buff_ShiMing.img	失明	5	1	鲁肃2	27302
+1015|3	UI_Buff_ShiMing.img	失明	5	1	鲁肃3	27303
+1015|4	UI_Buff_ShiMing.img	失明	5	1	鲁肃4	27304
+1015|4	UI_Buff_ShiMing.img	失明	5	1	鲁肃5	27305
+1015|4	UI_Buff_ShiMing.img	失明	5	1	鲁肃6	27306
+1015|4	UI_Buff_ShiMing.img	失明	5	1	鲁肃7	27307
+1015|4	UI_Buff_ShiMing.img	失明	5	1	鲁肃8	27308
+1015|4	UI_Buff_ShiMing.img	失明	5	1	鲁肃9	27309
+1030|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	1	1	陆逊0	27310
+1031|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	1.5	1	陆逊1	27311
+1032|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	2	1	陆逊2	27312
+1033|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	2.5	1	陆逊3	27313
+1034|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	3	1	陆逊4	27314
+1035|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	4	1	陆逊5	27315
+1036|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	5	1	陆逊6	27316
+1037|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	6	1	陆逊7	27317
+1038|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	7	1	陆逊8	27318
+1039|0	UI_Buff_FaShangJiaCheng.img	火焰印记，受到的火属性伤害加倍，每秒降低5点士气	9	1	陆逊9	27319
+1099|0	UI_Buff_MianYi.img	清除	5	0	陆抗0	27320
+1099|1	UI_Buff_MianYi.img	清除	5	0	陆抗1	27321
+1099|2	UI_Buff_MianYi.img	清除	5	0	陆抗2	27322
+1099|3	UI_Buff_MianYi.img	清除	5	0	陆抗3	27323
+1099|4	UI_Buff_MianYi.img	清除	5	0	陆抗4	27324
+1099|4	UI_Buff_MianYi.img	清除	5	0	陆抗5	27325
+1099|4	UI_Buff_MianYi.img	清除	5	0	陆抗6	27326
+1099|4	UI_Buff_MianYi.img	清除	5	0	陆抗7	27327
+1099|4	UI_Buff_MianYi.img	清除	5	0	陆抗8	27328
+1099|4	UI_Buff_MianYi.img	清除	5	0	陆抗9	27329
+15010|0	UI_Buff_ZengJiaGongSu.img	增加30%攻速	5	0	诸葛瑾0	27330
+15010|1	UI_Buff_ZengJiaGongSu.img	增加40%攻速	5	0	诸葛瑾1	27331
+15010|2	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	0	诸葛瑾2	27332
+15010|3	UI_Buff_ZengJiaGongSu.img	增加60%攻速	5	0	诸葛瑾3	27333
+15010|4	UI_Buff_ZengJiaGongSu.img	增加80%攻速	5	0	诸葛瑾4	27334
+15011|0	UI_Buff_JiaoXie.img	被缴械，无法进行普通攻击	2	1	诸葛恪0	27340
+15011|1	UI_Buff_JiaoXie.img	被缴械，无法进行普通攻击	3	1	诸葛恪1	27341
+15011|2	UI_Buff_JiaoXie.img	被缴械，无法进行普通攻击	4	1	诸葛恪2	27342
+15011|3	UI_Buff_JiaoXie.img	被缴械，无法进行普通攻击	5	1	诸葛恪3	27343
+15011|4	UI_Buff_JiaoXie.img	被缴械，无法进行普通攻击	6	1	诸葛恪4	27344
+15011|5	UI_Buff_JiaoXie.img	5%物理吸血	6	0	诸葛恪5	27345
+15011|6	UI_Buff_JiaoXie.img	10%物理吸血	6	0	诸葛恪6	27346
+15011|7	UI_Buff_JiaoXie.img	15%物理吸血	6	0	诸葛恪7	27347
+15011|8	UI_Buff_JiaoXie.img	20%物理吸血	6	0	诸葛恪8	27348
+15011|9	UI_Buff_JiaoXie.img	30%物理吸血	6	0	诸葛恪9	27349
+15012|0	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	2	0	阚泽0	27400
+15012|1	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	3	0	阚泽1	27401
+15012|2	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	4	0	阚泽2	27402
+15012|3	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	5	0	阚泽3	27403
+15012|4	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	6	0	阚泽4	27404
+15012|5	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	7	0	阚泽5	27405
+15012|6	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	8	0	阚泽6	27406
+15012|7	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	9	0	阚泽7	27407
+15012|8	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	10	0	阚泽8	27408
+15012|9	UI_Buff_WuShangFanTan.img	物理伤害反弹20%	12	0	阚泽9	27409
+15014|0	UI_Buff_GuWu.img	每2秒提升1士气	0	3	小乔0	27500
+15014|1	UI_Buff_GuWu.img	每2秒提升2士气	0	3	小乔1	27501
+15014|2	UI_Buff_GuWu.img	每2秒提升3士气	0	3	小乔2	27502
+15014|3	UI_Buff_GuWu.img	每2秒提升4士气	0	3	小乔3	27503
+15014|4	UI_Buff_GuWu.img	每2秒提升5士气	0	3	小乔4	27504
+15014|5	UI_Buff_GuWu.img	每2秒提升6士气	0	3	小乔5	27505
+15014|6	UI_Buff_GuWu.img	每2秒提升7士气	0	3	小乔6	27506
+15014|7	UI_Buff_GuWu.img	每2秒提升8士气	0	3	小乔7	27507
+15014|8	UI_Buff_GuWu.img	每2秒提升9士气	0	3	小乔8	27508
+15014|9	UI_Buff_GuWu.img	每2秒提升10士气	0	3	小乔9	27509
+16511|0	UI_Buff_ZengJiaGongSu.img	攻速移速增加50%	3	0	陈武5	27175
+16511|1	UI_Buff_ZengJiaGongSu.img	攻速移速增加80%	3	0	陈武6	27176
+16511|2	UI_Buff_ZengJiaGongSu.img	攻速移速增加110%	3	0	陈武7	27177
+16511|3	UI_Buff_ZengJiaGongSu.img	攻速移速增加140%	3	0	陈武8	27178
+16511|4	UI_Buff_ZengJiaGongSu.img	攻速移速增加200%	3	0	陈武9	27179
+16522|9	UI_Buff_XuWu.img	回复效果增加100%	10	0	徐盛9	
+27500|0	UI_Buff_WuLiChuanTou.img	30%护甲穿透	5	2	吕布5	28005
+27500|1	UI_Buff_WuLiChuanTou.img	35%护甲穿透	6	2	吕布6	28006
+27500|2	UI_Buff_WuLiChuanTou.img	40%护甲穿透	7	2	吕布7	28007
+27500|3	UI_Buff_WuLiChuanTou.img	45%护甲穿透	8	2	吕布8	28008
+27500|4	UI_Buff_WuLiChuanTou.img	50%护甲穿透	9	2	吕布9	28009
+19000|0	UI_Buff_XuanYun.img	眩晕	2	1	高顺0	28010
+19000|1	UI_Buff_XuanYun.img	眩晕	2	1	高顺1	28011
+19000|2	UI_Buff_XuanYun.img	眩晕	2	1	高顺2	28012
+19000|3	UI_Buff_XuanYun.img	眩晕	2	1	高顺3	28013
+19000|4	UI_Buff_XuanYun.img	眩晕	2	1	高顺4	28014
+1350|0	UI_Buff_WuLiChuanTou.img	提升30%物理穿透和物伤加成	8	0	高顺5	28015
+1351|0	UI_Buff_WuLiChuanTou.img	提升40%物理穿透和物伤加成	8	0	高顺6	28016
+1352|0	UI_Buff_WuLiChuanTou.img	提升50%物理穿透和物伤加成	8	0	高顺7	28017
+1353|0	UI_Buff_WuLiChuanTou.img	提升60%物理穿透和物伤加成	8	0	高顺8	28018
+1354|0	UI_Buff_WuLiChuanTou.img	提升80%物理穿透和物伤加成	8	0	高顺9	28019
+14|0	UI_Buff_ZengJiaGongJiLi.img	鼓舞光环，提升5%攻击力		6	攻击光环	28024
+17510|0	UI_Buff_JiangDiGongJiLi.img	攻击力降低10%	5	1	董卓0	28030
+17510|1	UI_Buff_JiangDiGongJiLi.img	攻击力降低15%	5	1	董卓1	28031
+17510|2	UI_Buff_JiangDiGongJiLi.img	攻击力降低20%	5	1	董卓2	28032
+17510|3	UI_Buff_JiangDiGongJiLi.img	攻击力降低25%	5	1	董卓3	28033
+17510|4	UI_Buff_JiangDiGongJiLi.img	攻击力降低30%	5	1	董卓4	28034
+17510|5	UI_Buff_JiangDiGongJiLi.img	攻击力降低35%	5	1	董卓5	28035
+17510|6	UI_Buff_JiangDiGongJiLi.img	攻击力降低40%	5	1	董卓6	28036
+17510|7	UI_Buff_JiangDiGongJiLi.img	攻击力降低45%	5	1	董卓7	28037
+17510|8	UI_Buff_JiangDiGongJiLi.img	攻击力降低50%	5	1	董卓8	28038
+17510|9	UI_Buff_JiangDiGongJiLi.img	攻击力降低55%	5	1	董卓9	28039
+27504|0	UI_Buff_JiaSu.img	移动速度降低30%	2	1	李傕0	28040
+27504|1	UI_Buff_JiaSu.img	移动速度降低40%	2	1	李傕1	28041
+27504|2	UI_Buff_JiaSu.img	移动速度降低50%	2	1	李傕2	28042
+27504|3	UI_Buff_JiaSu.img	移动速度降低60%	2	1	李傕3	28043
+27504|4	UI_Buff_JiaSu.img	移动速度降低70%	2	1	李傕4	28044
+27504|5	UI_Buff_WuShangFanTan.img	反弹受到的20%普通攻击伤害	2	0	李傕5	28045
+27504|6	UI_Buff_WuShangFanTan.img	反弹受到的20%普通攻击伤害	3	0	李傕6	28046
+27504|7	UI_Buff_WuShangFanTan.img	反弹受到的20%普通攻击伤害	4	0	李傕7	28047
+27504|8	UI_Buff_WuShangFanTan.img	反弹受到的20%普通攻击伤害	5	0	李傕8	28048
+27504|9	UI_Buff_WuShangFanTan.img	反弹受到的20%普通攻击伤害	6	0	李傕9	28049
+17506|0	UI_Buff_ZengJiaHuJia.img	提升10%生命上限和物理溅射	5	2	颜良0	28060
+17506|1	UI_Buff_ZengJiaHuJia.img	提升15%生命上限和物理溅射	6	2	颜良1	28061
+17506|2	UI_Buff_ZengJiaHuJia.img	提升20%生命上限和物理溅射	7	2	颜良2	28062
+17506|3	UI_Buff_ZengJiaHuJia.img	提升25%生命上限和物理溅射	8	2	颜良3	28063
+17506|4	UI_Buff_ZengJiaHuJia.img	提升30%生命上限和物理溅射	9	2	颜良4	28064
+17506|5	UI_Buff_ZengJiaHuJia.img	提升30%生命上限和物理溅射	9	2	颜良5	28065
+17506|6	UI_Buff_ZengJiaHuJia.img	提升30%生命上限和物理溅射	9	2	颜良6	28066
+17506|7	UI_Buff_ZengJiaHuJia.img	提升30%生命上限和物理溅射	9	2	颜良7	28067
+17506|8	UI_Buff_ZengJiaHuJia.img	提升30%生命上限和物理溅射	9	2	颜良8	28068
+17506|9	UI_Buff_ZengJiaHuJia.img	提升30%生命上限和物理溅射	9	2	颜良9	28069
+19001|0	UI_Buff_XuanYun.img	眩晕	2	1	文丑0	28070
+19001|1	UI_Buff_XuanYun.img	眩晕	2	1	文丑1	28071
+19001|2	UI_Buff_XuanYun.img	眩晕	2	1	文丑2	28072
+19001|3	UI_Buff_XuanYun.img	眩晕	2	1	文丑3	28073
+19001|4	UI_Buff_XuanYun.img	眩晕	2	1	文丑4	28074
+19001|5	UI_Buff_XuanYun.img	眩晕	2	1	文丑5	28075
+19001|6	UI_Buff_XuanYun.img	眩晕	2	1	文丑6	28076
+19001|7	UI_Buff_XuanYun.img	眩晕	2	1	文丑7	28077
+19001|8	UI_Buff_XuanYun.img	眩晕	2	1	文丑8	28078
+19001|9	UI_Buff_XuanYun.img	眩晕	2	1	文丑9	28079
+17502|0	UI_Buff_ZengJiaGongJiLi.img	提升弓兵40%攻击力	10	2	沮授0	28100
+17502|1	UI_Buff_ZengJiaGongJiLi.img	提升弓兵55%攻击力	10	2	沮授1	28101
+17502|2	UI_Buff_ZengJiaGongJiLi.img	提升弓兵70%攻击力	10	2	沮授2	28102
+17502|3	UI_Buff_ZengJiaGongJiLi.img	提升弓兵85%攻击力	10	2	沮授3	28103
+17502|4	UI_Buff_ZengJiaGongJiLi.img	提升弓兵100%攻击力	10	2	沮授4	28104
+17502|5	UI_Buff_ZengJiaGongJiLi.img	提升弓兵100%攻击力30%攻速	10	2	沮授5	28105
+17502|6	UI_Buff_ZengJiaGongJiLi.img	提升弓兵100%攻击力40%攻速	10	2	沮授6	28106
+17502|7	UI_Buff_ZengJiaGongJiLi.img	提升弓兵100%攻击力50%攻速	10	2	沮授7	28107
+17502|8	UI_Buff_ZengJiaGongJiLi.img	提升弓兵100%攻击力60%攻速	10	2	沮授8	28108
+17502|9	UI_Buff_ZengJiaGongJiLi.img	提升弓兵130%攻击力70%攻速	10	2	沮授9	28109
+17500|0	UI_Buff_CDZengJia.img	无法获得士气	1	1	孟获0	28120
+17500|1	UI_Buff_CDZengJia.img	无法获得士气	2	1	孟获1	28121
+17500|2	UI_Buff_CDZengJia.img	无法获得士气	3	1	孟获2	28122
+17500|3	UI_Buff_CDZengJia.img	无法获得士气	4	1	孟获3	28123
+17500|4	UI_Buff_CDZengJia.img	无法获得士气	5	1	孟获4	28124
+17500|5	UI_Buff_ZengJiaGongJiLi.img	每层提高3%血量上限和普通攻击	5	2	孟获5	28125
+17500|6	UI_Buff_ZengJiaGongJiLi.img	每层提高3.5%血量上限和普通攻击	5.5	2	孟获6	28126
+17500|7	UI_Buff_ZengJiaGongJiLi.img	每层提高4%血量上限和普通攻击	6	2	孟获7	28127
+17500|8	UI_Buff_ZengJiaGongJiLi.img	每层提高4.5%血量上限和普通攻击	6.5	2	孟获8	28128
+17500|9	UI_Buff_ZengJiaGongJiLi.img	每层提高5%血量上限和普通攻击	7	2	孟获9	28129
+19004|0	UI_Buff_ZengJiaGongJiLi.img	攻击力提高5%，攻速提高30%	5	0	祝融0	28130
+19004|1	UI_Buff_ZengJiaGongJiLi.img	攻击力提高10%，攻速提高35%	5	0	祝融1	28131
+19004|2	UI_Buff_ZengJiaGongJiLi.img	攻击力提高15%，攻速提高40%	5	0	祝融2	28132
+19004|3	UI_Buff_ZengJiaGongJiLi.img	攻击力提高20%，攻速提高45%	5	0	祝融3	28133
+19004|4	UI_Buff_ZengJiaGongJiLi.img	攻击力提高25%，攻速提高50%	5	0	祝融4	28134
+19004|5	UI_Buff_ZengJiaGongJiLi.img	攻击力提高30%，攻速提高55%	5	0	祝融5	28135
+19004|6	UI_Buff_ZengJiaGongJiLi.img	攻击力提高35%，攻速提高60%	5	0	祝融6	28136
+19004|7	UI_Buff_ZengJiaGongJiLi.img	攻击力提高40%，攻速提高65%	5	0	祝融7	28137
+19004|8	UI_Buff_ZengJiaGongJiLi.img	攻击力提高50%，攻速提高70%	5	0	祝融8	28138
+19004|9	UI_Buff_ZengJiaGongJiLi.img	攻击力提高65%，攻速提高80%	5	0	祝融9	28139
+17501|5	UI_Buff_LiuXue.img	中毒，致盲	1.5	1	带来洞主5	28145
+17501|6	UI_Buff_LiuXue.img	中毒，致盲	1.5	1	带来洞主6	28146
+17501|7	UI_Buff_LiuXue.img	中毒，致盲	1.5	1	带来洞主7	28147
+17501|8	UI_Buff_LiuXue.img	中毒，致盲	1.5	1	带来洞主8	28148
+17501|9	UI_Buff_LiuXue.img	中毒，致盲	1.5	1	带来洞主9	28149
+1000|0	UI_Buff_ZengJiaGongJiLi.img	提升100%攻击力	100		刘备	28172
+27502|0	UI_Buff_ZengJiaGongSu.img	攻击速度提升100%	5	0	华雄0	28190
+27502|1	UI_Buff_ZengJiaGongSu.img	攻击速度提升100%	5.5	0	华雄1	28191
+27502|2	UI_Buff_ZengJiaGongSu.img	攻击速度提升100%	6	0	华雄2	28192
+27502|3	UI_Buff_ZengJiaGongSu.img	攻击速度提升100%	6.5	0	华雄3	28193
+27502|4	UI_Buff_ZengJiaGongSu.img	攻击速度提升100%	7	0	华雄4	28194
+27502|5	UI_Buff_ZengJiaGongSu.img	每层攻击速度提升100%	7	0	华雄5	28195
+27502|6	UI_Buff_ZengJiaGongSu.img	每层攻击速度提升100%	8	0	华雄6	28196
+27502|7	UI_Buff_ZengJiaGongSu.img	每层攻击速度提升100%	9	0	华雄7	28197
+27502|8	UI_Buff_ZengJiaGongSu.img	每层攻击速度提升100%	10	0	华雄8	28198
+27502|9	UI_Buff_ZengJiaGongSu.img	每层攻击速度提升100%	12	0	华雄9	28199
+27512|0	UI_Buff_JiangDiHuJia.img	护甲降低50%	3	1	华雄5	28195
+27512|1	UI_Buff_JiangDiHuJia.img	护甲降低80%	3	1	华雄6	28196
+27512|2	UI_Buff_JiangDiHuJia.img	护甲降低110%	3	1	华雄7	28197
+27512|3	UI_Buff_JiangDiHuJia.img	护甲降低140%	3	1	华雄8	28198
+27512|4	UI_Buff_JiangDiHuJia.img	护甲降低200%	3	1	华雄9	28199
+17503|0	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	1	1	张角0	28200
+17503|1	UI_Buff_MaBi.img	麻痹，攻速移速降低91%	1	1	张角1	28201
+17503|2	UI_Buff_MaBi.img	麻痹，攻速移速降低92%	1	1	张角2	28202
+17503|3	UI_Buff_MaBi.img	麻痹，攻速移速降低93%	1	1	张角3	28203
+17503|4	UI_Buff_MaBi.img	麻痹，攻速移速降低94%	1.5	1	张角4	28204
+17503|5	UI_Buff_MaBi.img	麻痹，攻速移速降低90%	2	1	张角5	28205
+17503|6	UI_Buff_MaBi.img	麻痹，攻速移速降低91%	3	1	张角6	28206
+17503|7	UI_Buff_MaBi.img	麻痹，攻速移速降低92%	4	1	张角7	28207
+17503|8	UI_Buff_MaBi.img	麻痹，攻速移速降低93%	5	1	张角8	28208
+17503|9	UI_Buff_MaBi.img	麻痹，攻速移速降低94%	7	1	张角9	28209
+17505|0	UI_Buff_GongChengGongJiLi.img	器械攻击增加30%	5	2	田丰0	28220
+17505|1	UI_Buff_GongChengGongJiLi.img	器械攻击增加30%	6	2	田丰1	28221
+17505|2	UI_Buff_GongChengGongJiLi.img	器械攻击增加30%	7	2	田丰2	28222
+17505|3	UI_Buff_GongChengGongJiLi.img	器械攻击增加30%	8	2	田丰3	28223
+17505|4	UI_Buff_GongChengGongJiLi.img	器械攻击增加30%	9	2	田丰4	28224
+17505|5	UI_Buff_GongChengGongJiLi.img	器械攻击增加40%	9	2	田丰5	28225
+17505|6	UI_Buff_GongChengGongJiLi.img	器械攻击增加50%	9	2	田丰6	28226
+17505|7	UI_Buff_GongChengGongJiLi.img	器械攻击增加60%	9	2	田丰7	28227
+17505|8	UI_Buff_GongChengGongJiLi.img	器械攻击增加75%	9	2	田丰8	28228
+17505|9	UI_Buff_GongChengGongJiLi.img	器械攻击增加100%	9	2	田丰9	28229
+17507|0	UI_Buff_XuWu.img	虚无，法术抗性降低20%	3	1	于吉0	28230
+17507|1	UI_Buff_XuWu.img	虚无，法术抗性降低25%	3.5	1	于吉1	28231
+17507|2	UI_Buff_XuWu.img	虚无，法术抗性降低30%	4	1	于吉2	28232
+17507|3	UI_Buff_XuWu.img	虚无，法术抗性降低35%	4.5	1	于吉3	28233
+17507|4	UI_Buff_XuWu.img	虚无，法术抗性降低40%	5	1	于吉4	28234
+17507|5	UI_Buff_XuWu.img	虚无，法术抗性降低45%	5.5	1	于吉5	28235
+17507|6	UI_Buff_XuWu.img	虚无，法术抗性降低50%	6	1	于吉6	28236
+17507|7	UI_Buff_XuWu.img	虚无，法术抗性降低55%	6.5	1	于吉7	28237
+17507|8	UI_Buff_XuWu.img	虚无，法术抗性降低60%	7	1	于吉8	28238
+17507|9	UI_Buff_XuWu.img	虚无，法术抗性降低65%	8	1	于吉9	28239
+17513|0	UI_Buff_ZengJiaGongJiLi.img	每层2%普通攻击	0	0	张梁0	28280
+17513|1	UI_Buff_ZengJiaGongJiLi.img	每层4%普通攻击	0	0	张梁1	28281
+17513|2	UI_Buff_ZengJiaGongJiLi.img	每层6%普通攻击	0	0	张梁2	28282
+17513|3	UI_Buff_ZengJiaGongJiLi.img	每层8%普通攻击	0	0	张梁3	28283
+17513|4	UI_Buff_ZengJiaGongJiLi.img	每层10%普通攻击	0	0	张梁4	28284
+17513|5	UI_Buff_ZengJiaGongJiLi.img	"每层10.5%普通攻击,2%攻速"	0	0	张梁5	28285
+17513|6	UI_Buff_ZengJiaGongJiLi.img	"每层11%普通攻击,4%攻速"	0	0	张梁6	28286
+17513|7	UI_Buff_ZengJiaGongJiLi.img	"每层11.5%普通攻击,6%攻速"	0	0	张梁7	28287
+17513|8	UI_Buff_ZengJiaGongJiLi.img	"每层12%普通攻击,8%攻速"	0	0	张梁8	28288
+17513|9	UI_Buff_ZengJiaGongJiLi.img	"每层13%普通攻击,10%攻速"	0	0	张梁9	28289
+19002|0	UI_Buff_JiangDiHuJia.img	护甲降低30%	3	1	张牛角5	28245
+19002|1	UI_Buff_JiangDiHuJia.img	护甲降低40%	3	1	张牛角6	28246
+19002|2	UI_Buff_JiangDiHuJia.img	护甲降低50%	3	1	张牛角7	28247
+19002|3	UI_Buff_JiangDiHuJia.img	护甲降低60%	3	1	张牛角8	28248
+19002|4	UI_Buff_JiangDiHuJia.img	护甲降低70%	3	1	张牛角9	28249
+19003|0	UI_Buff_ZengJiaGongSu.img	攻速增加30%	5	0	张牛角0	28240
+19003|1	UI_Buff_ZengJiaGongSu.img	攻速增加35%	5	0	张牛角1	28241
+19003|2	UI_Buff_ZengJiaGongSu.img	攻速增加40%	5	0	张牛角2	28242
+19003|3	UI_Buff_ZengJiaGongSu.img	攻速增加45%	5	0	张牛角3	28243
+19003|4	UI_Buff_ZengJiaGongSu.img	攻速增加50%	5	0	张牛角4	28244
+19003|5	UI_Buff_ZengJiaGongSu.img	攻速增加55%	5	0	张牛角5	28245
+19003|6	UI_Buff_ZengJiaGongSu.img	攻速增加60%	5	0	张牛角6	28246
+19003|7	UI_Buff_ZengJiaGongSu.img	攻速增加65%	5	0	张牛角7	28247
+19003|8	UI_Buff_ZengJiaGongSu.img	攻速增加70%	5	0	张牛角8	28248
+19003|9	UI_Buff_ZengJiaGongSu.img	攻速增加80%	5	0	张牛角9	28249
+17508|0	UI_Buff_XuWu.img	妖术，失去攻击能力	1	1	张宝0	28250
+17508|1	UI_Buff_XuWu.img	妖术，失去攻击能力	2	1	张宝1	28251
+17508|2	UI_Buff_XuWu.img	妖术，失去攻击能力	3	1	张宝2	28252
+17508|3	UI_Buff_XuWu.img	妖术，失去攻击能力	4	1	张宝3	28253
+17508|4	UI_Buff_XuWu.img	妖术，失去攻击能力	5	1	张宝4	28254
+17508|5	UI_Buff_XuWu.img	妖术，失去攻击能力	5	1	张宝5	28255
+17508|6	UI_Buff_XuWu.img	妖术，失去攻击能力	5	1	张宝6	28256
+17508|7	UI_Buff_XuWu.img	妖术，失去攻击能力	5	1	张宝7	28257
+17508|8	UI_Buff_XuWu.img	妖术，失去攻击能力	5	1	张宝8	28258
+17508|9	UI_Buff_XuWu.img	妖术，失去攻击能力	6	1	张宝9	28259
+17509|0	UI_Buff_JiangDiGongSu.img	攻击速度降低10%	5	0	阿会喃0	28260
+17509|1	UI_Buff_JiangDiGongSu.img	攻击速度降低20%	5	0	阿会喃1	28261
+17509|2	UI_Buff_JiangDiGongSu.img	攻击速度降低30%	5	0	阿会喃2	28262
+17509|3	UI_Buff_JiangDiGongSu.img	攻击速度降低40%	5	0	阿会喃3	28263
+17509|4	UI_Buff_JiangDiGongSu.img	攻击速度降低50%	5	0	阿会喃4	28264
+17509|5	UI_Buff_JiangDiGongSu.img	攻击速度降低60%	5	0	阿会喃5	28265
+17509|6	UI_Buff_JiangDiGongSu.img	攻击速度降低70%	5	0	阿会喃6	28266
+17509|7	UI_Buff_JiangDiGongSu.img	攻击速度降低80%	5	0	阿会喃7	28267
+17509|8	UI_Buff_JiangDiGongSu.img	攻击速度降低90%	5	0	阿会喃8	28268
+17509|9	UI_Buff_JiangDiGongSu.img	攻击速度降低100%	5	0	阿会喃9	28269
+1016|0	UI_Buff_BaoJi.img	增加100%基础暴击	5	2	马超5	
+1017|0	UI_Buff_BaoJi.img	增加200%基础暴击	6	2	马超6	
+1018|0	UI_Buff_BaoJi.img	增加300%基础暴击	7	2	马超7	
+1019|0	UI_Buff_BaoJi.img	增加450%基础暴击	8	2	马超8	
+1020|0	UI_Buff_BaoJi.img	增加600%基础暴击	9	2	马超9	
+103|0	UI_Buff_ZengJiaGongJiLi.img	攻击提高10%	30			
+104|0	UI_Buff_ZengJiaGongSu.img	攻击提高30%	30			
+105|0	UI_Buff_HuoGong.img	攻击提高30%、攻速提高30%	30			
+1050|0	UI_Buff_ZengJiaGongJiLi.img	审配光环，增加5%攻击	5	2	审配4	
+1051|0	UI_Buff_ZengJiaGongJiLi.img	审配光环，增加6%攻击	5	2	审配5	
+1052|0	UI_Buff_ZengJiaGongJiLi.img	审配光环，增加7%攻击	5	2	审配6	
+1053|0	UI_Buff_ZengJiaGongJiLi.img	审配光环，增加8%攻击	5	2	审配7	
+1054|0	UI_Buff_ZengJiaGongJiLi.img	审配光环，增加9%攻击	5	2	审配8	
+1055|0	UI_Buff_ZengJiaGongJiLi.img	审配光环，增加10%攻击	5	2	审配9	
+106|0	UI_Buff_LongDan.img	攻击提高50%、攻速提高50%	30			
+12510|0	UI_Buff_WuLiChuanTou.img	弓兵穿透10%，步兵5%生命上限，骑兵10%攻击，器械10%攻速	5	2	姜维0	
+12510|1	UI_Buff_WuLiChuanTou.img	弓兵穿透20%，步兵10%生命上限，骑兵20%攻击，器械20%攻速	5	2	姜维1	
+12510|2	UI_Buff_WuLiChuanTou.img	弓兵穿透30%，步兵15%生命上限，骑兵30%攻击，器械30%攻速	5	2	姜维2	
+12510|3	UI_Buff_WuLiChuanTou.img	弓兵穿透40%，步兵20%生命上限，骑兵40%攻击，器械40%攻速	5	2	姜维3	
+12510|4	UI_Buff_WuLiChuanTou.img	弓兵穿透50%，步兵25%生命上限，骑兵50%攻击，器械50%攻速	5	2	姜维4	
+12510|5	UI_Buff_WuLiChuanTou.img	弓兵穿透55%，步兵27.5%生命上限，骑兵55%攻击，器械55%攻速	5.5	2	姜维5	
+12510|6	UI_Buff_WuLiChuanTou.img	弓兵穿透60%，步兵30%生命上限，骑兵60%攻击，器械60%攻速	6	2	姜维6	
+12510|7	UI_Buff_WuLiChuanTou.img	弓兵穿透65%，步兵32.5%生命上限，骑兵70%攻击，器械65%攻速	6.5	2	姜维7	
+12510|8	UI_Buff_WuLiChuanTou.img	弓兵穿透70%，步兵35%生命上限，骑兵75%攻击，器械70%攻速	7	2	姜维8	
+12510|9	UI_Buff_WuLiChuanTou.img	弓兵穿透80%，步兵40%生命上限，骑兵80%攻击，器械80%攻速	8	2	姜维9	
+15|0	UI_Buff_ZengJiaYiSu.img	移速增加10%	3			
+15013|5	UI_Buff_CDSuoJian.img	每层2%CD缩减	15	0	大乔5	
+15013|6	UI_Buff_CDSuoJian.img	每层3%CD缩减	17	0	大乔6	
+15013|7	UI_Buff_CDSuoJian.img	每层4%CD缩减	19	0	大乔7	
+15013|8	UI_Buff_CDSuoJian.img	每层5%CD缩减	21	0	大乔8	
+15013|9	UI_Buff_CDSuoJian.img	每层6%CD缩减	25	0	大乔9	
+16|0	UI_Buff_ZengJiaYiSu.img	移速增加20%	3			
+17514|0	UI_Buff_BaoJi.img	增加50%基础暴击	5	0	麹义0	
+17514|1	UI_Buff_BaoJi.img	每层增加50%基础暴击	6	0	麹义1	
+17514|2	UI_Buff_BaoJi.img	每层增加50%基础暴击	7	0	麹义2	
+17514|3	UI_Buff_BaoJi.img	每层增加50%基础暴击	8	0	麹义3	
+17514|4	UI_Buff_BaoJi.img	每层增加50%基础暴击	9	0	麹义4	
+17514|5	UI_Buff_BaoJi.img	每层增加50%基础暴击	10	0	麹义5	
+17514|6	UI_Buff_BaoJi.img	每层增加50%基础暴击	11	0	麹义6	
+17514|7	UI_Buff_BaoJi.img	每层增加50%基础暴击	12	0	麹义7	
+17514|8	UI_Buff_BaoJi.img	每层增加50%基础暴击	13	0	麹义8	
+17514|9	UI_Buff_BaoJi.img	每层增加50%基础暴击	15	0	麹义9	
+17520|0	UI_Buff_GeDang.img	降低30%护甲和基础格挡	5	1	潘凤0	
+17520|1	UI_Buff_GeDang.img	降低40%护甲和基础格挡	5	1	潘凤1	
+17520|2	UI_Buff_GeDang.img	降低50%护甲和基础格挡	5	1	潘凤2	
+17520|3	UI_Buff_GeDang.img	降低60%护甲和基础格挡	5	1	潘凤3	
+17520|4	UI_Buff_GeDang.img	降低70%护甲和基础格挡	5	1	潘凤4	
+17520|5	UI_Buff_GeDang.img	降低75%护甲和基础格挡	5	1	潘凤5	
+17520|6	UI_Buff_GeDang.img	降低80%护甲和基础格挡	5	1	潘凤6	
+17520|7	UI_Buff_GeDang.img	降低85%护甲和基础格挡	5	1	潘凤7	
+17520|8	UI_Buff_GeDang.img	降低90%护甲和基础格挡	5	1	潘凤8	
+17520|9	UI_Buff_GeDang.img	降低100%护甲和基础格挡	5	1	潘凤9	
+17521|0	UI_Buff_BaoJiJian.img	攻击附带0.5*护甲*当前兵力的额外伤害	12	2	潘凤5	
+17521|1	UI_Buff_BaoJiJian.img	攻击附带0.8*护甲*当前兵力的额外伤害	12	2	潘凤6	
+17521|2	UI_Buff_BaoJiJian.img	攻击附带1.1*护甲*当前兵力的额外伤害	12	2	潘凤7	
+17521|3	UI_Buff_BaoJiJian.img	攻击附带1.4*护甲*当前兵力的额外伤害	12	2	潘凤8	
+17521|4	UI_Buff_BaoJiJian.img	攻击附带2*护甲*当前兵力的额外伤害	12	2	潘凤9	
+17522|0	UI_Buff_XiShouShangHai.img	每秒回复1%已损失血量	5	2	华佗0	
+17522|1	UI_Buff_XiShouShangHai.img	每秒回复2%已损失血量	5	2	华佗1	
+17522|2	UI_Buff_XiShouShangHai.img	每秒回复3%已损失血量	5	2	华佗2	
+17522|3	UI_Buff_XiShouShangHai.img	每秒回复4%已损失血量	5	2	华佗3	
+17522|4	UI_Buff_XiShouShangHai.img	每秒回复5%已损失血量	5	2	华佗4	
+17522|5	UI_Buff_XiShouShangHai.img	每秒回复6%已损失血量和1点士气	5	2	华佗5	
+17522|6	UI_Buff_XiShouShangHai.img	每秒回复7%已损失血量和2点士气	5	2	华佗6	
+17522|7	UI_Buff_XiShouShangHai.img	每秒回复8%已损失血量和3点士气	5	2	华佗7	
+17522|8	UI_Buff_XiShouShangHai.img	每秒回复9%已损失血量和4点士气	5	2	华佗8	
+17522|9	UI_Buff_XiShouShangHai.img	每秒回复11%已损失血量和6点士气	5	2	华佗9	
+20007|0	UI_Buff_FaShuChuanTou.img	每层10%攻击和法术穿透	15	2	贾诩10	
+20007|1	UI_Buff_FaShuChuanTou.img	每层10%攻击和法术穿透	16	2	贾诩11	
+20007|2	UI_Buff_FaShuChuanTou.img	每层10%攻击和法术穿透	17	2	贾诩12	
+20007|3	UI_Buff_FaShuChuanTou.img	每层10%攻击和法术穿透	18	2	贾诩13	
+20007|4	UI_Buff_FaShuChuanTou.img	每层10%攻击和法术穿透	19	2	贾诩14	
+20007|5	UI_Buff_FaShuChuanTou.img	每层10%攻击和法术穿透	20	2	贾诩15	
+21503|0	UI_Buff_ZengJiaGongJiLi.img	每层5%普通攻击和3%攻速	0	0	牛金0	
+21503|1	UI_Buff_ZengJiaGongJiLi.img	每层5%普通攻击和3%攻速	0	0	牛金1	
+21503|2	UI_Buff_ZengJiaGongJiLi.img	每层6%普通攻击和3%攻速	0	0	牛金2	
+21503|3	UI_Buff_ZengJiaGongJiLi.img	每层7%普通攻击和3%攻速	0	0	牛金3	
+21503|4	UI_Buff_ZengJiaGongJiLi.img	每层8%普通攻击和4%攻速	0	0	牛金4	
+21503|5	UI_Buff_ZengJiaGongJiLi.img	每层9%普通攻击和5%攻速	0	0	牛金5	
+21503|6	UI_Buff_ZengJiaGongJiLi.img	每层10%普通攻击和6%攻速	0	0	牛金6	
+21503|7	UI_Buff_ZengJiaGongJiLi.img	每层11%普通攻击和7%攻速	0	0	牛金7	
+21503|8	UI_Buff_ZengJiaGongJiLi.img	每层12%普通攻击和8%攻速	0	0	牛金8	
+21503|9	UI_Buff_ZengJiaGongJiLi.img	每层15%普通攻击和10%攻速	0	0	牛金9	
+21504|0	UI_Buff_ZengJiaHuJia.img	提高30%护甲	0	0	牛金5	
+21504|1	UI_Buff_ZengJiaHuJia.img	提高40%护甲	0	0	牛金6	
+21504|2	UI_Buff_ZengJiaHuJia.img	提高50%护甲	0	0	牛金7	
+21504|3	UI_Buff_ZengJiaHuJia.img	提高60%护甲	0	0	牛金8	
+21504|4	UI_Buff_ZengJiaHuJia.img	提高70%护甲	0	0	牛金9	
+21511|0	UI_Buff_ZengJiaGongSu.img	提高30%攻速和5%物理吸血	0	5	曹彰5	
+21511|1	UI_Buff_ZengJiaGongSu.img	提高40%攻速和10%物理吸血	0	5	曹彰6	
+21511|2	UI_Buff_ZengJiaGongSu.img	提高50%攻速和15%物理吸血	0	5	曹彰7	
+21511|3	UI_Buff_ZengJiaGongSu.img	提高60%攻速和20%物理吸血	0	5	曹彰8	
+21511|4	UI_Buff_ZengJiaGongSu.img	提高80%攻速和30%物理吸血	0	5	曹彰9	
+22509|0	UI_Buff_JiangDiGongSu.img	降低15%攻速	2	1	王平0	
+22509|1	UI_Buff_JiangDiGongSu.img	降低20%攻速	2	1	王平1	
+22509|2	UI_Buff_JiangDiGongSu.img	降低25%攻速	2	1	王平2	
+22509|3	UI_Buff_JiangDiGongSu.img	降低30%攻速	2	1	王平3	
+22509|4	UI_Buff_JiangDiGongSu.img	降低35%攻速	2	1	王平4	
+22509|5	UI_Buff_JiangDiGongSu.img	降低40%攻速	2	1	王平5	
+22509|6	UI_Buff_JiangDiGongSu.img	降低45%攻速	2	1	王平6	
+22509|7	UI_Buff_JiangDiGongSu.img	降低50%攻速	2	1	王平7	
+22509|8	UI_Buff_JiangDiGongSu.img	降低55%攻速	2	1	王平8	
+22509|9	UI_Buff_JiangDiGongSu.img	降低60%攻速	2	1	王平9	
+22510|0	UI_Buff_CDSuoJian.img	每层5%CD缩减	15	2	姜维10	
+22510|1	UI_Buff_CDSuoJian.img	每层5%CD缩减	16	2	姜维11	
+22510|2	UI_Buff_CDSuoJian.img	每层5%CD缩减	17	2	姜维12	
+22510|3	UI_Buff_CDSuoJian.img	每层5%CD缩减	18	2	姜维13	
+22510|4	UI_Buff_CDSuoJian.img	每层5%CD缩减	19	2	姜维14	
+22510|5	UI_Buff_CDSuoJian.img	每层5%CD缩减	20	2	姜维15	
+22520|0	UI_Buff_BaoJi.img	增加15%攻击、30%基础暴击值	3	0	刘禅0	
+22520|1	UI_Buff_BaoJi.img	增加16%攻击、35%基础暴击值	3.5	0	刘禅1	
+22520|2	UI_Buff_BaoJi.img	增加17%攻击、40%基础暴击值	4	0	刘禅2	
+22520|3	UI_Buff_BaoJi.img	增加18%攻击、45%基础暴击值	4.5	0	刘禅3	
+22520|4	UI_Buff_BaoJi.img	增加19%攻击、50%基础暴击值	5	0	刘禅4	
+22520|5	UI_Buff_BaoJi.img	每层增加20%攻击、50%基础暴击值	6	0	刘禅5	
+22520|6	UI_Buff_BaoJi.img	每层增加22%攻击、50%基础暴击值	7	0	刘禅6	
+22520|7	UI_Buff_BaoJi.img	每层增加24%攻击、50%基础暴击值	8	0	刘禅7	
+22520|8	UI_Buff_BaoJi.img	每层增加26%攻击、50%基础暴击值	9	0	刘禅8	
+22520|9	UI_Buff_BaoJi.img	每层增加28%攻击、50%基础暴击值	10	0	刘禅9	
+22522|0	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	3	0	关兴0	
+22522|1	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	4	0	关兴1	
+22522|2	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	5	0	关兴2	
+22522|3	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	6	0	关兴3	
+22522|4	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	7	0	关兴4	
+22522|5	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	8	0	关兴5	
+22522|6	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	9	0	关兴6	
+22522|7	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	10	0	关兴7	
+22522|8	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	11	0	关兴8	
+22522|9	UI_Buff_BaoJi.img	增加100%暴击和30%攻击	12	0	关兴9	
+27511|0	UI_Buff_ZengJiaGongJiLi.img	5%攻击光环，范围10米	8	2	审配4	
+27511|1	UI_Buff_ZengJiaGongJiLi.img	6%攻击光环，范围10米	10	2	审配5	
+27511|2	UI_Buff_ZengJiaGongJiLi.img	7%攻击光环，范围10米	12	2	审配6	
+27511|3	UI_Buff_ZengJiaGongJiLi.img	8%攻击光环，范围10米	14	2	审配7	
+27511|4	UI_Buff_ZengJiaGongJiLi.img	9%攻击光环，范围10米	16	2	审配8	
+27511|5	UI_Buff_ZengJiaGongJiLi.img	10%攻击光环，范围10米	18	2	审配9	
+30005|0	UI_Buff_JiangDiGongJiLi.img	攻击力减少50%	10	1	名将之路	
+30006|0	UI_Buff_JiaSu.img	移动速度减少50%	10	1	名将之路	
+30007|0	UI_Buff_XuanYun.img	眩晕	10	1	名将之路	
+30008|0	UI_Buff_ZengJiaGongJiLi.img	增加友军攻击力+吸血	10	0	名将之路	
+30009|0	UI_Buff_XuanYun.img	眩晕	5	1	名将之路	
+32|0	UI_Buff_ZengJiaGongJiLi.img	"提升30%攻防属性,提升士气100点"		1	击杀郭汜	
+35|0	UI_Buff_ZengJiaGongJiLi.img	提升100%攻击	60	0		
+36|0	UI_Buff_JiaSu.img	减少50%攻击		1		
+37|0	UI_Buff_ZengJiaHuJia.img	护甲提高100%		0		
+38|0				5		
+39|0				5		
+512|0		鼓舞光环，提升5%攻击力		5		
+515|0	UI_Buff_ZengJiaYiSu.img	增加自身4米范围内器械20%移动速度，每0.5秒生效一次	0	5		
+615|0	UI_Buff_ZengJiaYiSu.img	增加30%移动速度	3	5		
+617|0	UI_Buff_ZengJiaGongJiLi.img	增加50%攻击力	10	5		
+618|0	UI_Buff_ZengJiaYiSu.img	增加自身4米范围内步兵10%移动速度，每0.5秒生效一次	0	5		
+619|0	UI_Buff_ZengJiaGongSu.img	增加50%攻击速度	10	5		
+620|0	UI_Buff_GuWu.img	每秒增加2点士气	0	5		
+621|0	UI_Buff_JiNengMianYi.img	法术免疫	5	5		
+625|0	UI_Buff_DingShen.img	定身	1.5	1		
+79|0	UI_Buff_LiuXue.img	每两秒受到一次伤害	2	1		
+80|0	UI_Buff_LiuXue.img	每两秒受到一次伤害	3	1		
+1100|0	UI_Buff_BaoJi.img	基础暴击提高50%	5	0	马忠0	
+1101|0	UI_Buff_BaoJi.img	基础暴击提高80%	6	0	马忠1	
+1102|0	UI_Buff_BaoJi.img	基础暴击提高110%	7	0	马忠2	
+1103|0	UI_Buff_BaoJi.img	基础暴击提高140%	8	0	马忠3	
+1104|0	UI_Buff_BaoJi.img	基础暴击提高170%	9	0	马忠4	
+1105|0	UI_Buff_BaoJi.img	基础暴击提高200%，暴击伤害提高20%	10	0	马忠5	
+1106|0	UI_Buff_BaoJi.img	基础暴击提高230%，暴击伤害提高25%	11	0	马忠6	
+1107|0	UI_Buff_BaoJi.img	基础暴击提高260%，暴击伤害提高30%	12	0	马忠7	
+1108|0	UI_Buff_BaoJi.img	基础暴击提高290%，暴击伤害提高35%	13	0	马忠8	
+1109|0	UI_Buff_BaoJi.img	基础暴击提高350%，暴击伤害提高40%	15	0	马忠9	
+550|0	UI_Buff_JiaSu.img	速度降低50%	5	1	碧水滔天	
+551|0	UI_Buff_LiuXue.img	每秒损失5%现有兵力	10	1	掠如火	
+552|0	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击和攻速	8	0	无双	
+553|0	UI_Buff_WuLiXiXue.img	增加10%物理吸血	5	0	嗜血	
+554|0	UI_Buff_XuanYun.img	眩晕	4	1	横扫千军	
+110|0	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	90	5	战场buff	
+111|0	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击，100%攻速	90	5	战场buff	
+112|0	UI_Buff_ZengJiaGongJiLi.img	"增加200%攻击,500%基础暴击"	90	5	战场buff	
+113|0	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击，每3秒+10士气	90	5	战场buff	
+114|0	UI_Buff_JiaSu.img	增加100%攻速	90	5	战场buff	
+115|0	UI_Buff_ZengJiaGongJiLi.img	增加50%攻击，持续90秒	90	5	战场buff	
+120|0	UI_Buff_ZengJiaGongJiLi.img	增加10%攻击，持续180秒	180	5	战场buff	
+121|0	UI_Buff_JiaSu.img	增加15%攻速，持续180秒	180	5	战场buff	
+122|0	UI_Buff_HuiFuShengMing.img	增加10%生命，持续180秒	180	5	战场buff	
+123|0	UI_Buff_GuWu.img	每5秒增加2点士气，持续180秒	180	5	战场buff	
+23000|0	UI_Buff_ZengJiaGongJiLi.img	增加10%攻击	5	4	孙策神器0	
+23000|1	UI_Buff_ZengJiaGongJiLi.img	增加15%攻击	6	4	孙策神器1	
+23000|2	UI_Buff_ZengJiaGongJiLi.img	增加20%攻击	7	4	孙策神器2	
+23000|3	UI_Buff_ZengJiaGongJiLi.img	增加25%攻击	8	4	孙策神器3	
+23000|4	UI_Buff_ZengJiaGongJiLi.img	增加30%攻击	9	4	孙策神器4	
+23000|5	UI_Buff_ZengJiaGongJiLi.img	增加35%攻击	10	4	孙策神器5	
+23000|6	UI_Buff_ZengJiaGongJiLi.img	增加40%攻击	12	4	孙策神器6	
+23000|7	UI_Buff_ZengJiaGongJiLi.img	增加45%攻击	14	4	孙策神器7	
+23010|0	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加20%	5	1	周瑜神器0	
+23010|1	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加25%	5	1	周瑜神器1	
+23010|2	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加30%	5	1	周瑜神器2	
+23010|3	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加35%	5	1	周瑜神器3	
+23010|4	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加40%	5	1	周瑜神器4	
+23010|5	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加45%	5	1	周瑜神器5	
+23010|6	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加50%	5	1	周瑜神器6	
+23010|7	UI_Buff_FaShangJiaCheng.img	受到的法术伤害增加55%	5	1	周瑜神器7	
+23020|0	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器0	
+23020|1	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器1	
+23020|2	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器2	
+23020|3	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器3	
+23020|4	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器4	
+23020|5	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器5	
+23020|6	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器6	
+23020|7	UI_Buff_ZengJiaGongJiLi.img	增加100%攻击	5	4	周泰神器7	
+23040|0	UI_Buff_ZengJiaGongJiLi.img	增加20%攻击	5	4	沈莹神器0	
+23040|1	UI_Buff_ZengJiaGongJiLi.img	增加25%攻击	5	4	沈莹神器1	
+23040|2	UI_Buff_ZengJiaGongJiLi.img	增加30%攻击	5	4	沈莹神器2	
+23040|3	UI_Buff_ZengJiaGongJiLi.img	增加35%攻击	5	4	沈莹神器3	
+23040|4	UI_Buff_ZengJiaGongJiLi.img	增加40%攻击	5	4	沈莹神器4	
+23040|5	UI_Buff_ZengJiaGongJiLi.img	增加50%攻击	5	4	沈莹神器5	
+23040|6	UI_Buff_ZengJiaGongJiLi.img	增加60%攻击	5	4	沈莹神器6	
+23040|7	UI_Buff_ZengJiaGongJiLi.img	增加70%攻击	5	4	沈莹神器7	
+23060|0	UI_Buff_ChenMo.img	无法释放技能	1	1	孙尚香神器0	
+23060|1	UI_Buff_ChenMo.img	无法释放技能	1.5	1	孙尚香神器1	
+23060|2	UI_Buff_ChenMo.img	无法释放技能	2	1	孙尚香神器2	
+23060|3	UI_Buff_ChenMo.img	无法释放技能	2.5	1	孙尚香神器3	
+23060|4	UI_Buff_ChenMo.img	无法释放技能	3	1	孙尚香神器4	
+23060|5	UI_Buff_ChenMo.img	无法释放技能	4	1	孙尚香神器5	
+23060|6	UI_Buff_ChenMo.img	无法释放技能	5	1	孙尚香神器6	
+23060|7	UI_Buff_ChenMo.img	无法释放技能	6	1	孙尚香神器7	
+23070|0	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器0	
+23070|1	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器1	
+23070|2	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器2	
+23070|3	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器3	
+23070|4	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器4	
+23070|5	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器5	
+23070|6	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器6	
+23070|7	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	太史慈神器7	
+23100|0	UI_Buff_FuJiaShangHai.img	生命上限降低10%	5	1	董卓神器0	
+23100|1	UI_Buff_FuJiaShangHai.img	生命上限降低15%	5	1	董卓神器1	
+23100|2	UI_Buff_FuJiaShangHai.img	生命上限降低20%	5	1	董卓神器2	
+23100|3	UI_Buff_FuJiaShangHai.img	生命上限降低25%	5	1	董卓神器3	
+23100|4	UI_Buff_FuJiaShangHai.img	生命上限降低30%	5	1	董卓神器4	
+23100|5	UI_Buff_FuJiaShangHai.img	生命上限降低35%	5	1	董卓神器5	
+23100|6	UI_Buff_FuJiaShangHai.img	生命上限降低40%	5	1	董卓神器6	
+23100|7	UI_Buff_FuJiaShangHai.img	生命上限降低45%	5	1	董卓神器7	
+23110|0	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器0	
+23110|1	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器1	
+23110|2	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器2	
+23110|3	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器3	
+23110|4	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器4	
+23110|5	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器5	
+23110|6	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器6	
+23110|7	UI_Buff_ZengJiaGongSu.img	增加50%攻速	8	4	颜良神器7	
+23120|0	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器0	
+23120|1	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器1	
+23120|2	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器2	
+23120|3	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器3	
+23120|4	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器4	
+23120|5	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器5	
+23120|6	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器6	
+23120|7	UI_Buff_CDSuoJian.img	CD缩减30%	15	4	沮授神器7	
+23130|0	UI_Buff_ZengJiaHuJia.img	护甲提高5%	5	4	孟获神器0	
+23130|1	UI_Buff_ZengJiaHuJia.img	护甲提高10%	5	4	孟获神器1	
+23130|2	UI_Buff_ZengJiaHuJia.img	护甲提高15%	5	4	孟获神器2	
+23130|3	UI_Buff_ZengJiaHuJia.img	护甲提高20%	5	4	孟获神器3	
+23130|4	UI_Buff_ZengJiaHuJia.img	护甲提高25%	5	4	孟获神器4	
+23130|5	UI_Buff_ZengJiaHuJia.img	护甲提高30%	5	4	孟获神器5	
+23130|6	UI_Buff_ZengJiaHuJia.img	护甲提高35%	5	4	孟获神器6	
+23130|7	UI_Buff_ZengJiaHuJia.img	护甲提高40%	5	4	孟获神器7	
+23140|0	UI_Buff_ZengJiaGongJiLi.img	提高5%血量上限和攻击力	6	4	洞主神器0	
+23140|1	UI_Buff_ZengJiaGongJiLi.img	提高10%血量上限和攻击力	6	4	洞主神器1	
+23140|2	UI_Buff_ZengJiaGongJiLi.img	提高15%血量上限和攻击力	6	4	洞主神器2	
+23140|3	UI_Buff_ZengJiaGongJiLi.img	提高20%血量上限和攻击力	6	4	洞主神器3	
+23140|4	UI_Buff_ZengJiaGongJiLi.img	提高25%血量上限和攻击力	6	4	洞主神器4	
+23140|5	UI_Buff_ZengJiaGongJiLi.img	提高30%血量上限和攻击力	6	4	洞主神器5	
+23140|6	UI_Buff_ZengJiaGongJiLi.img	提高35%血量上限和攻击力	6	4	洞主神器6	
+23140|7	UI_Buff_ZengJiaGongJiLi.img	提高40%血量上限和攻击力	6	4	洞主神器7	
+1120|0	UI_Buff_ZengJiaGongSu.img	增加20%攻速	5	4	田丰神器0	
+1121|0	UI_Buff_ZengJiaGongSu.img	增加30%攻速	5	4	田丰神器1	
+1122|0	UI_Buff_ZengJiaGongSu.img	增加40%攻速	5	4	田丰神器2	
+1123|0	UI_Buff_ZengJiaGongSu.img	增加50%攻速	5	4	田丰神器3	
+1124|0	UI_Buff_ZengJiaGongSu.img	增加60%攻速	5	4	田丰神器4	
+1125|0	UI_Buff_ZengJiaGongSu.img	增加70%攻速	5	4	田丰神器5	
+1126|0	UI_Buff_ZengJiaGongSu.img	增加80%攻速	5	4	田丰神器6	
+1127|0	UI_Buff_ZengJiaGongSu.img	增加90%攻速	5	4	田丰神器7	
+23170|0	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器0	
+23170|1	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器1	
+23170|2	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器2	
+23170|3	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器3	
+23170|4	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器4	
+23170|5	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器5	
+23170|6	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器6	
+23170|7	UI_Buff_HuiFuShengMing.img	增加20%生命上限	10	4	审配神器7	
+23180|0	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器0	
+23180|1	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器1	
+23180|2	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器2	
+23180|3	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器3	
+23180|4	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器4	
+23180|5	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器5	
+23180|6	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器6	
+23180|7	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击力	10	4	左慈神器7	
+1130|0	UI_Buff_HuiFuShengMing.img	提高5%生命上限	5	4	曹仁神器0	
+1131|0	UI_Buff_HuiFuShengMing.img	提高10%生命上限	5	4	曹仁神器1	
+1132|0	UI_Buff_HuiFuShengMing.img	提高15%生命上限	5	4	曹仁神器2	
+1133|0	UI_Buff_HuiFuShengMing.img	提高20%生命上限	5	4	曹仁神器3	
+1134|0	UI_Buff_HuiFuShengMing.img	提高25%生命上限	5	4	曹仁神器4	
+1135|0	UI_Buff_HuiFuShengMing.img	提高30%生命上限	5	4	曹仁神器5	
+1136|0	UI_Buff_HuiFuShengMing.img	提高35%生命上限	5	4	曹仁神器6	
+1137|0	UI_Buff_HuiFuShengMing.img	提高40%生命上限	5	4	曹仁神器7	
+23220|0	UI_Buff_ZengJiaGongSu.img	增加30%攻速	10	4	夏侯渊神器0	
+23220|1	UI_Buff_ZengJiaGongSu.img	增加35%攻速	10	4	夏侯渊神器1	
+23220|2	UI_Buff_ZengJiaGongSu.img	增加40%攻速	10	4	夏侯渊神器2	
+23220|3	UI_Buff_ZengJiaGongSu.img	增加45%攻速	10	4	夏侯渊神器3	
+23220|4	UI_Buff_ZengJiaGongSu.img	增加50%攻速	10	4	夏侯渊神器4	
+23220|5	UI_Buff_ZengJiaGongSu.img	增加55%攻速	10	4	夏侯渊神器5	
+23220|6	UI_Buff_ZengJiaGongSu.img	增加60%攻速	10	4	夏侯渊神器6	
+23220|7	UI_Buff_ZengJiaGongSu.img	增加65%攻速	10	4	夏侯渊神器7	
+23230|0	UI_Buff_ZengJiaGongJiLi.img	提高5%血量上限和攻击力	5	4	张辽神器0	
+23230|1	UI_Buff_ZengJiaGongJiLi.img	提高10%血量上限和攻击力	5	4	张辽神器1	
+23230|2	UI_Buff_ZengJiaGongJiLi.img	提高15%血量上限和攻击力	5	4	张辽神器2	
+23230|3	UI_Buff_ZengJiaGongJiLi.img	提高20%血量上限和攻击力	5	4	张辽神器3	
+23230|4	UI_Buff_ZengJiaGongJiLi.img	提高25%血量上限和攻击力	5	4	张辽神器4	
+23230|5	UI_Buff_ZengJiaGongJiLi.img	提高30%血量上限和攻击力	5	4	张辽神器5	
+23230|6	UI_Buff_ZengJiaGongJiLi.img	提高35%血量上限和攻击力	5	4	张辽神器6	
+23230|7	UI_Buff_ZengJiaGongJiLi.img	提高40%血量上限和攻击力	5	4	张辽神器7	
+23250|0	UI_Buff_ZengJiaGongSu.img	提升50%攻速和5%物理吸血	5	4	许褚神器0	
+23250|1	UI_Buff_ZengJiaGongSu.img	提升50%攻速和7%物理吸血	5	4	许褚神器1	
+23250|2	UI_Buff_ZengJiaGongSu.img	提升50%攻速和9%物理吸血	5	4	许褚神器2	
+23250|3	UI_Buff_ZengJiaGongSu.img	提升50%攻速和11%物理吸血	5	4	许褚神器3	
+23250|4	UI_Buff_ZengJiaGongSu.img	提升50%攻速和13%物理吸血	5	4	许褚神器4	
+23250|5	UI_Buff_ZengJiaGongSu.img	提升50%攻速和15%物理吸血	5	4	许褚神器5	
+23250|6	UI_Buff_ZengJiaGongSu.img	提升50%攻速和17%物理吸血	5	4	许褚神器6	
+23250|7	UI_Buff_ZengJiaGongSu.img	提升50%攻速和21%物理吸血	5	4	许褚神器7	
+23260|0	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器0	
+23260|1	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器1	
+23260|2	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器2	
+23260|3	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器3	
+23260|4	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器4	
+23260|5	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器5	
+23260|6	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器6	
+23260|7	UI_Buff_CDSuoJian.img	CD缩减50%	30	4	荀彧神器7	
+23270|0	UI_Buff_HuiFuShengMing.img	提升5%生命上限	6	4	郭嘉神器0	
+23270|1	UI_Buff_HuiFuShengMing.img	提升10%生命上限	6	4	郭嘉神器1	
+23270|2	UI_Buff_HuiFuShengMing.img	提升15%生命上限	6	4	郭嘉神器2	
+23270|3	UI_Buff_HuiFuShengMing.img	提升20%生命上限	6	4	郭嘉神器3	
+23270|4	UI_Buff_HuiFuShengMing.img	提升25%生命上限	6	4	郭嘉神器4	
+23270|5	UI_Buff_HuiFuShengMing.img	提升30%生命上限	6	4	郭嘉神器5	
+23270|6	UI_Buff_HuiFuShengMing.img	提升35%生命上限	6	4	郭嘉神器6	
+23270|7	UI_Buff_HuiFuShengMing.img	提升40%生命上限	6	4	郭嘉神器7	
+23300|0	UI_Buff_ZengJiaGongJiLi.img	提高5%攻击力和攻速	5	4	关羽神器0	
+23300|1	UI_Buff_ZengJiaGongJiLi.img	提高10%攻击力和攻速	5	4	关羽神器1	
+23300|2	UI_Buff_ZengJiaGongJiLi.img	提高15%攻击力和攻速	5	4	关羽神器2	
+23300|3	UI_Buff_ZengJiaGongJiLi.img	提高20%攻击力和攻速	5	4	关羽神器3	
+23300|4	UI_Buff_ZengJiaGongJiLi.img	提高25%攻击力和攻速	5	4	关羽神器4	
+23300|5	UI_Buff_ZengJiaGongJiLi.img	提高30%攻击力和攻速	5	4	关羽神器5	
+23300|6	UI_Buff_ZengJiaGongJiLi.img	提高35%攻击力和攻速	5	4	关羽神器6	
+23300|7	UI_Buff_ZengJiaGongJiLi.img	提高40%攻击力和攻速	5	4	关羽神器7	
+23320|0	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高20%攻击力	5	4	赵云神器0	
+23320|1	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高30%攻击力	6	4	赵云神器1	
+23320|2	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高40%攻击力	7	4	赵云神器2	
+23320|3	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高50%攻击力	8	4	赵云神器3	
+23320|4	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高60%攻击力	9	4	赵云神器4	
+23320|5	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高70%攻击力	10	4	赵云神器5	
+23320|6	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高80%攻击力	11	4	赵云神器6	
+23320|7	UI_Buff_ZengJiaGongJiLi.img	清除自身不利效果，提高90%攻击力	12	4	赵云神器7	
+1150|0	UI_Buff_HuiFuShengMing.img	提高10%血量和攻速	10	4	马超神器0	
+1151|0	UI_Buff_HuiFuShengMing.img	提高15%血量和攻速	10	4	马超神器1	
+1152|0	UI_Buff_HuiFuShengMing.img	提高20%血量和攻速	10	4	马超神器2	
+1153|0	UI_Buff_HuiFuShengMing.img	提高25%血量和攻速	10	4	马超神器3	
+1154|0	UI_Buff_HuiFuShengMing.img	提高30%血量和攻速	10	4	马超神器4	
+1155|0	UI_Buff_HuiFuShengMing.img	提高35%血量和攻速	10	4	马超神器5	
+1156|0	UI_Buff_HuiFuShengMing.img	提高40%血量和攻速	10	4	马超神器6	
+1157|0	UI_Buff_HuiFuShengMing.img	提高45%血量和攻速	10	4	马超神器7	
+23350|0	UI_Buff_HuiFuShengMing.img	提高5%生命上限	10	4	魏延神器0	
+23350|1	UI_Buff_HuiFuShengMing.img	提高10%生命上限	10	4	魏延神器1	
+23350|2	UI_Buff_HuiFuShengMing.img	提高15%生命上限	10	4	魏延神器2	
+23350|3	UI_Buff_HuiFuShengMing.img	提高20%生命上限	10	4	魏延神器3	
+23350|4	UI_Buff_HuiFuShengMing.img	提高25%生命上限	10	4	魏延神器4	
+23350|5	UI_Buff_HuiFuShengMing.img	提高30%生命上限	10	4	魏延神器5	
+23350|6	UI_Buff_HuiFuShengMing.img	提高35%生命上限	10	4	魏延神器6	
+23350|7	UI_Buff_HuiFuShengMing.img	提高40%生命上限	10	4	魏延神器7	
+10011|0	UI_Buff_ZengJiaGongJiLi.img	提高20%攻击和攻速	5	0	刘晔0	
+10011|1	UI_Buff_ZengJiaGongJiLi.img	提高25%攻击和攻速	5	0	刘晔1	
+10011|2	UI_Buff_ZengJiaGongJiLi.img	提高30%攻击和攻速	5	0	刘晔2	
+10011|3	UI_Buff_ZengJiaGongJiLi.img	提高35%攻击和攻速	5	0	刘晔3	
+10011|4	UI_Buff_ZengJiaGongJiLi.img	提高40%攻击和攻速	5	0	刘晔4	
+10011|5	UI_Buff_ZengJiaGongJiLi.img	提高45%攻击和攻速	5	0	刘晔5	
+10011|6	UI_Buff_ZengJiaGongJiLi.img	提高50%攻击和攻速	5	0	刘晔6	
+10011|7	UI_Buff_ZengJiaGongJiLi.img	提高55%攻击和攻速	5	0	刘晔7	
+10011|8	UI_Buff_ZengJiaGongJiLi.img	提高60%攻击和攻速	5	0	刘晔8	
+10011|9	UI_Buff_ZengJiaGongJiLi.img	提高70%攻击和攻速	5	0	刘晔9	
+19101|0	UI_Buff_ZengJiaGongSu.img	提高30%攻速	5	0	文丑5	
+19101|1	UI_Buff_ZengJiaGongSu.img	提高35%攻速	5	0	文丑6	
+19101|2	UI_Buff_ZengJiaGongSu.img	提高40%攻速	5	0	文丑7	
+19101|3	UI_Buff_ZengJiaGongSu.img	提高45%攻速	5	0	文丑8	
+19101|4	UI_Buff_ZengJiaGongSu.img	提高50%攻速	5	0	文丑9	
+1200|0	UI_Buff_BaoJiJian.img	提高20%暴击	15	0	曹纯0	
+1201|0	UI_Buff_BaoJiJian.img	提高40%暴击	15	0	曹纯1	
+1202|0	UI_Buff_BaoJiJian.img	提高60%暴击	15	0	曹纯2	
+1203|0	UI_Buff_BaoJiJian.img	提高80%暴击	15	0	曹纯3	
+1204|0	UI_Buff_BaoJiJian.img	提高100%暴击	15	0	曹纯4	
+1205|0	UI_Buff_BaoJiJian.img	提高150%暴击，虎豹骑额外提高40%暴击伤害和5%护甲生命	15	0	曹纯5	
+1206|0	UI_Buff_BaoJiJian.img	提高200%暴击，虎豹骑额外提高80%暴击伤害和10%护甲生命	15	0	曹纯6	
+1207|0	UI_Buff_BaoJiJian.img	提高250%暴击，虎豹骑额外提高120%暴击伤害和15%护甲生命	15	0	曹纯7	
+1208|0	UI_Buff_BaoJiJian.img	提高300%暴击，虎豹骑额外提高160%暴击伤害和20%护甲生命	15	0	曹纯8	
+1209|0	UI_Buff_BaoJiJian.img	提高400%暴击，虎豹骑额外提高200%暴击伤害和30%护甲生命	15	0	曹纯9	
+1300|0	UI_Buff_ZengJiaGongJiLi.img	提高2%攻击护甲生命	5	0	貂蝉5	
+1301|0	UI_Buff_ZengJiaGongJiLi.img	提高4%攻击护甲生命	5.5	0	貂蝉6	
+1302|0	UI_Buff_ZengJiaGongJiLi.img	提高6%攻击护甲生命	6	0	貂蝉7	
+1303|0	UI_Buff_ZengJiaGongJiLi.img	提高8%攻击护甲生命	6.5	0	貂蝉8	
+1304|0	UI_Buff_ZengJiaGongJiLi.img	提高12%攻击护甲生命	8	0	貂蝉9	
+23031|0	UI_Buff_ZengJiaGongSu.img	提高30%攻速	5	4	吕蒙神器0	
+23031|1	UI_Buff_ZengJiaGongSu.img	提高40%攻速	5	4	吕蒙神器1	
+23031|2	UI_Buff_ZengJiaGongSu.img	提高50%攻速	5	4	吕蒙神器2	
+23031|3	UI_Buff_ZengJiaGongSu.img	提高60%攻速	5	4	吕蒙神器3	
+23031|4	UI_Buff_ZengJiaGongSu.img	提高70%攻速	5	4	吕蒙神器4	
+23031|5	UI_Buff_ZengJiaGongSu.img	提高80%攻速	5	4	吕蒙神器5	
+23031|6	UI_Buff_ZengJiaGongSu.img	提高100%攻速	5	4	吕蒙神器6	
+23031|7	UI_Buff_ZengJiaGongSu.img	提高120%攻速	5	4	吕蒙神器7	
+24300|0	UI_Buff_WuShiShanBi.img	无视闪避	5	8	神射特技0	
+24301|0	UI_Buff_WuShiShanBi.img	无视闪避	5	8	神射特技1	
+24312|0	UI_Buff_BaoJiJian.img	暴击伤害降低50%	5	1	白毦特技2	
+24312|1	UI_Buff_BaoJiJian.img	暴击伤害降低50%，攻击降低30%	5	1	白毦特技3	
+24320|0	UI_Buff_WuLiXiXue.img	物理吸血+15%	3	8	丹阳特技0	
+24321|0	UI_Buff_WuLiXiXue.img	物理吸血+15%	3	8	丹阳特技1	
+24322|0	UI_Buff_JiangDiHuJia.img	护甲降低50%	3	1	丹阳特技2	
+24322|1	UI_Buff_LiuXue.img	护甲降低50%移速降低20%，每秒降低1%最大生命	5	1	丹阳特技3	
+57|0	UI_Buff_ZengJiaYiSu.img	移速+30%	3	8	丹阳特技1	
+58|0	UI_Buff_GongJiJuLi.img	攻击距离+1米	10	8	井阑特技0	
+24330|0	UI_Buff_GongJiJuLi.img	攻击距离+1米	10	8	井阑特技0	
+24331|0	UI_Buff_GongJiJuLi.img	攻击距离+3米	10	8	井阑特技1	
+24350|0	UI_Buff_ZengJiaGongJiLi.img	攻击+30%	5	8	无当特技0	
+24351|0	UI_Buff_ZengJiaGongJiLi.img	攻击+50%	5	8	无当特技1	
+24362|0	UI_Buff_BaoJiJian.img	暴击伤害降低50%	5	1	藤甲特技2	
+24362|1	UI_Buff_BaoJiJian.img	暴击伤害降低50%，攻击降低50%	5	1	藤甲特技3	
+24364|0	UI_Buff_HuiFuShengMing.img	法术抗性+200%	3	8	藤甲特技4	
+24364|1	UI_Buff_HuiFuShengMing.img	法术抗性+200%，生命上限+5%	3	8	藤甲特技5	
+24364|2	UI_Buff_HuiFuShengMing.img	法术抗性+200%，生命上限+5%	3	8	藤甲特技6	
+24370|0	UI_Buff_XuanYun.img	眩晕	1.5	1	陷阵特技0	
+24370|1	UI_Buff_XuanYun.img	眩晕2秒，护甲降低50%	3	1	陷阵特技1	
+24370|2	UI_Buff_XuanYun.img	眩晕2秒，护甲降低50%	3	1	陷阵特技2	
+24370|3	UI_Buff_XuanYun.img	眩晕2秒，护甲降低50%	3	1	陷阵特技3	
+24371|0	UI_Buff_WuLiXiXue.img	物理吸血+15%	3	8	陷阵特技2	
+24371|1	UI_Buff_WuLiXiXue.img	物理吸血+15%	3	8	陷阵特技3	
+24374|0	UI_Buff_ZengJiaGongSu.img	攻速+50%	5	8	陷阵特技4	
+24374|1	UI_Buff_ZengJiaGongSu.img	攻速+50%，生命上限+20%	5	8	陷阵特技5	
+24374|2	UI_Buff_ZengJiaGongSu.img	攻速+50%，生命上限+20%	5	8	陷阵特技6	
+24380|0	UI_Buff_WuShangJianMian.img	物理伤害减免+10%	5	8	象兵特技0	
+24380|1	UI_Buff_WuShangJianMian.img	物理伤害减免+10%，物理反弹+10%	5	8	象兵特技1	
+24382|0	UI_Buff_HunLuan.img	恐惧	1.5	1	象兵特技2	
+24382|1	UI_Buff_HunLuan.img	恐惧	1.5	1	象兵特技3	
+24382|2	UI_Buff_HunLuan.img	恐惧	1.5	1	象兵特技4	
+24383|0	UI_Buff_ZengJiaHuJia.img	护甲+25%	3	8	象兵特技3	
+24383|1	UI_Buff_ZengJiaHuJia.img	护甲+50%，攻击+30%	5	8	象兵特技4	
+24393|0	UI_Buff_FaShuXiXue.img	法术穿透+30%，法术吸血+30%	10	8	虎豹特技4	
+24393|1	UI_Buff_FaShuXiXue.img	法术穿透+30%，法术吸血+30%，暴击+200%	10	8	虎豹特技5	
+24393|2	UI_Buff_FaShuXiXue.img	法术穿透+30%，法术吸血+30%，暴击+200%，每秒恢复1%最大血量	10	8	虎豹特技6	
+1330|0	UI_Buff_WuLiJiaCheng.img	物伤加成+10%	5	0	向宠0	
+1331|0	UI_Buff_WuLiJiaCheng.img	物伤加成+15%	5	0	向宠1	
+1332|0	UI_Buff_WuLiJiaCheng.img	物伤加成+20%	5	0	向宠2	
+1333|0	UI_Buff_WuLiJiaCheng.img	物伤加成+25%	5	0	向宠3	
+1334|0	UI_Buff_WuLiJiaCheng.img	物伤加成+30%	5	0	向宠4	
+1335|0	UI_Buff_WuLiJiaCheng.img	物伤加成+35%	5	0	向宠5	
+1336|0	UI_Buff_WuLiJiaCheng.img	物伤加成+40%	5	0	向宠6	
+1337|0	UI_Buff_WuLiJiaCheng.img	物伤加成+45%	5	0	向宠7	
+1338|0	UI_Buff_WuLiJiaCheng.img	物伤加成+50%	5	0	向宠8	
+1339|0	UI_Buff_WuLiJiaCheng.img	物伤加成+60%	5	0	向宠9	
+1340|0	UI_Buff_JiangDiGongJiLi.img	物伤加成-10%	5	1	向宠5	
+1341|0	UI_Buff_JiangDiGongJiLi.img	物伤加成-20%	5	1	向宠6	
+1342|0	UI_Buff_JiangDiGongJiLi.img	物伤加成-30%	5	1	向宠7	
+1343|0	UI_Buff_JiangDiGongJiLi.img	物伤加成-40%	5	1	向宠8	
+1344|0	UI_Buff_JiangDiGongJiLi.img	物伤加成-60%	5	1	向宠9	
+1360|0	UI_Buff_FanQianXing.img	反潜行和视野+100	5	2	潘璋0	
+1361|0	UI_Buff_FanQianXing.img	反潜行和视野+120	5	2	潘璋1	
+1362|0	UI_Buff_FanQianXing.img	反潜行和视野+140	5	2	潘璋2	
+1363|0	UI_Buff_FanQianXing.img	反潜行和视野+160	5	2	潘璋3	
+1364|0	UI_Buff_FanQianXing.img	反潜行和视野+180	5	2	潘璋4	
+1365|0	UI_Buff_FanQianXing.img	反潜行和视野+200，每秒回复1点士气，攻击攻速+10%	5	2	潘璋5	
+1366|0	UI_Buff_FanQianXing.img	反潜行和视野+220，每秒回复2点士气，攻击攻速+20%	5	2	潘璋6	
+1367|0	UI_Buff_FanQianXing.img	反潜行和视野+240，每秒回复3点士气，攻击攻速+30%	5	2	潘璋7	
+1368|0	UI_Buff_FanQianXing.img	反潜行和视野+260，每秒回复4点士气，攻击攻速+40%	5	2	潘璋8	
+1369|0	UI_Buff_FanQianXing.img	反潜行和视野+300，每秒回复6点士气，攻击攻速+60%	5	2	潘璋9	
+1370|0	UI_Buff_QianXing.img	潜行数值降低100	5	1	潘璋0	
+1371|0	UI_Buff_QianXing.img	潜行数值降低120	5	1	潘璋1	
+1372|0	UI_Buff_QianXing.img	潜行数值降低140	5	1	潘璋2	
+1373|0	UI_Buff_QianXing.img	潜行数值降低160	5	1	潘璋3	
+1374|0	UI_Buff_QianXing.img	潜行数值降低180	5	1	潘璋4	
+1375|0	UI_Buff_QianXing.img	潜行数值降低200	5	1	潘璋5	
+1376|0	UI_Buff_QianXing.img	潜行数值降低220	5	1	潘璋6	
+1377|0	UI_Buff_QianXing.img	潜行数值降低240	5	1	潘璋7	
+1378|0	UI_Buff_QianXing.img	潜行数值降低260	5	1	潘璋8	
+1379|0	UI_Buff_QianXing.img	潜行数值降低300	5	1	潘璋9	
+1380|0	UI_Buff_WuLiXiXue.img	攻击+30%物理吸血+10%	5	4	典韦神器0	
+1381|0	UI_Buff_WuLiXiXue.img	攻击+40%物理吸血+15%	5	4	典韦神器1	
+1382|0	UI_Buff_WuLiXiXue.img	攻击+50%物理吸血+20%	5	4	典韦神器2	
+1383|0	UI_Buff_WuLiXiXue.img	攻击+80%物理吸血+30%	5	4	典韦神器3	
+1384|0	UI_Buff_WuLiXiXue.img	攻击+90%物理吸血+35%	5	4	典韦神器4	
+1385|0	UI_Buff_WuLiXiXue.img	攻击+100%物理吸血+40%	6	4	典韦神器5	
+1386|0	UI_Buff_WuLiXiXue.img	攻击+110%物理吸血+45%	7	4	典韦神器6	
+1387|0	UI_Buff_WuLiXiXue.img	攻击+120%物理吸血+50%	8	4	典韦神器7	
+1390|0	UI_Buff_ChenMo.img	无法释放技能	5	1	徐庶神器0	
+1391|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低30%	5	1	徐庶神器1	
+1392|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低40%	5	1	徐庶神器2	
+1393|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低50%	5	1	徐庶神器3	
+1394|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低60%	5	1	徐庶神器4	
+1395|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低70%	5	1	徐庶神器5	
+1396|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低80%	5	1	徐庶神器6	
+1397|0	UI_Buff_ChenMo.img	无法释放技能，法抗降低100%	5	1	徐庶神器7	
+23430|0	UI_Buff_ChaoFeng.img	被嘲讽	3	1	潘凤神器0	
+23430|1	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低30%	3	1	潘凤神器1	
+23430|2	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低40%	3	1	潘凤神器2	
+23430|3	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低40%	3	1	潘凤神器3	
+23430|4	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低40%	3	1	潘凤神器4	
+23430|5	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低40%	4	1	潘凤神器5	
+23430|6	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低40%	5	1	潘凤神器6	
+23430|7	UI_Buff_ChaoFeng.img	被嘲讽，护甲降低40%	6	1	潘凤神器7	
+23431|0	UI_Buff_ZengJiaHuJia.img	护甲提高30%	3	4	潘凤神器3	
+23431|1	UI_Buff_ZengJiaHuJia.img	护甲提高40%	3	4	潘凤神器4	
+23431|2	UI_Buff_ZengJiaHuJia.img	护甲提高40%	4	4	潘凤神器5	
+23431|3	UI_Buff_ZengJiaHuJia.img	护甲提高40%	5	4	潘凤神器6	
+23431|4	UI_Buff_ZengJiaHuJia.img	护甲提高40%	6	4	潘凤神器7	
+1400|0	UI_Buff_WuLiChuanTou.img	物伤加成+20%	5	4	潘璋神器0	
+1401|0	UI_Buff_WuLiChuanTou.img	物伤加成+25%	5	4	潘璋神器1	
+1402|0	UI_Buff_WuLiChuanTou.img	物伤加成+30%，生命+5%	5	4	潘璋神器2	
+1403|0	UI_Buff_WuLiChuanTou.img	物伤加成+35%，生命+10%	5	4	潘璋神器3	
+1404|0	UI_Buff_WuLiChuanTou.img	物伤加成+40%，生命+15%	5	4	潘璋神器4	
+1405|0	UI_Buff_WuLiChuanTou.img	物伤加成+45%，生命+20%，基础暴击+50%	5	4	潘璋神器5	
+1406|0	UI_Buff_WuLiChuanTou.img	物伤加成+50%，生命+25%，基础暴击+100%	5	4	潘璋神器6	
+1407|0	UI_Buff_WuLiChuanTou.img	物伤加成+60%，生命+30%，基础暴击+200%	5	4	潘璋神器7	
+1410|0	UI_Buff_ZengJiaYiSu.img	提升10%护甲和移速	5	4	华佗神器0	
+1411|0	UI_Buff_ZengJiaYiSu.img	提升15%护甲和移速	5	4	华佗神器1	
+1412|0	UI_Buff_ZengJiaYiSu.img	提升20%护甲和移速	5	4	华佗神器2	
+1413|0	UI_Buff_ZengJiaYiSu.img	提升25%护甲和移速	5	4	华佗神器3	
+1414|0	UI_Buff_ZengJiaYiSu.img	提升30%护甲和移速	5	4	华佗神器4	
+1415|0	UI_Buff_ZengJiaYiSu.img	提升35%护甲和移速	5	4	华佗神器5	
+1416|0	UI_Buff_ZengJiaYiSu.img	提升40%护甲和移速	5	4	华佗神器6	
+1417|0	UI_Buff_ZengJiaYiSu.img	提升50%护甲和法术抗性和40%移速	5	4	华佗神器7	
+23460|0	UI_Buff_ZengJiaGongJiLi.img	提升5%攻击	5	4	乐进神器0	
+23460|1	UI_Buff_ZengJiaGongJiLi.img	提升10%攻击和护甲	5	4	乐进神器1	
+23460|2	UI_Buff_ZengJiaGongJiLi.img	提升15%攻击和护甲	5	4	乐进神器2	
+23460|3	UI_Buff_ZengJiaGongJiLi.img	提升20%攻击和护甲，+5%生命上限	5	4	乐进神器3	
+23460|4	UI_Buff_ZengJiaGongJiLi.img	提升25%攻击和护甲，+10%生命上限	5	4	乐进神器4	
+23460|5	UI_Buff_ZengJiaGongJiLi.img	提升30%攻击和护甲，+15%生命上限	5	4	乐进神器5	
+23460|6	UI_Buff_ZengJiaGongJiLi.img	提升35%攻击和护甲，+20%生命上限	5	4	乐进神器6	
+23460|7	UI_Buff_ZengJiaGongJiLi.img	提升40%攻击和护甲，+30%生命上限	5	4	乐进神器7	
+1500|0	UI_Buff_JiangDiHuJia.img	无法回复生命且护甲降低100%	5	1	潘凤张牛角组合	
+1600|0	UI_Buff_WuLiChuanTou.img	物伤加成+20%	4	0	李典5	
+1601|0	UI_Buff_WuLiChuanTou.img	物伤加成+30%	4	0	李典6	
+1602|0	UI_Buff_WuLiChuanTou.img	物伤加成+40%	4	0	李典7	
+1603|0	UI_Buff_WuLiChuanTou.img	物伤加成+50%	4	0	李典8	
+1604|0	UI_Buff_WuLiChuanTou.img	物伤加成+70%	4	0	李典9	
+1700|0	UI_Buff_ZengJiaYiSu.img	攻速移速+20%	5	0	韩当5	
+1701|0	UI_Buff_ZengJiaYiSu.img	攻速移速+25%	5	0	韩当6	
+1702|0	UI_Buff_ZengJiaYiSu.img	攻速移速+30%	5	0	韩当7	
+1703|0	UI_Buff_ZengJiaYiSu.img	攻速移速+35%	5	0	韩当8	
+1704|0	UI_Buff_ZengJiaYiSu.img	攻速移速+45%	5	0	韩当9	
+16530|0	UI_Buff_ZengJiaGongSu.img	攻速+20%	9	2	徐盛0	
+16530|1	UI_Buff_ZengJiaGongSu.img	攻速+30%	9	2	徐盛1	
+16530|2	UI_Buff_ZengJiaGongSu.img	攻速+40%	9	2	徐盛2	
+16530|3	UI_Buff_ZengJiaGongSu.img	攻速+50%	9	2	徐盛3	
+16530|4	UI_Buff_ZengJiaGongSu.img	攻速+60%	9	2	徐盛4	
+16530|5	UI_Buff_ZengJiaGongSu.img	攻速+70%，回复效果+20%	9	2	徐盛5	
+16530|6	UI_Buff_ZengJiaGongSu.img	攻速+80%，回复效果+30%	9	2	徐盛6	
+16530|7	UI_Buff_ZengJiaGongSu.img	攻速+90%，回复效果+40%	9	2	徐盛7	
+16530|8	UI_Buff_ZengJiaGongSu.img	攻速+100%，回复效果+50%	9	2	徐盛8	
+16530|9	UI_Buff_ZengJiaGongSu.img	攻速+120%，回复效果+70%	9	2	徐盛9	
+23470|0	UI_Buff_JiaSu.img	移速降低50%	0.5	1	徐盛神器0	
+23470|1	UI_Buff_JiaSu.img	移速降低51%	0.6	1	徐盛神器1	
+23470|2	UI_Buff_JiaSu.img	移速降低52%	0.7	1	徐盛神器2	
+23470|3	UI_Buff_JiaSu.img	移速降低53%	0.8	1	徐盛神器3	
+23470|4	UI_Buff_JiaSu.img	移速降低54%	0.9	1	徐盛神器4	
+23470|5	UI_Buff_JiaSu.img	移速降低55%	1	1	徐盛神器5	
+23470|6	UI_Buff_JiaSu.img	移速降低56%	1.5	1	徐盛神器6	
+23470|7	UI_Buff_JiaSu.img	移速降低57%	2	1	徐盛神器7	
+26131|0	UI_Buff_ZengJiaHuJia.img	护甲+30%	5	2	马岱0	
+26131|1	UI_Buff_ZengJiaHuJia.img	护甲+40%	5	2	马岱1	
+26131|2	UI_Buff_ZengJiaHuJia.img	护甲+50%	5	2	马岱2	
+26131|3	UI_Buff_ZengJiaHuJia.img	护甲+60%	5	2	马岱3	
+26131|4	UI_Buff_ZengJiaHuJia.img	护甲+70%	5	2	马岱4	
+26131|5	UI_Buff_ZengJiaHuJia.img	护甲+80%	5	2	马岱5	
+26131|6	UI_Buff_ZengJiaHuJia.img	护甲+90%	5	2	马岱6	
+26131|7	UI_Buff_ZengJiaHuJia.img	护甲+100%	5	2	马岱7	
+26131|8	UI_Buff_ZengJiaHuJia.img	护甲+110%	5	2	马岱8	
+26131|9	UI_Buff_ZengJiaHuJia.img	护甲+130%	5	2	马岱9	
+27130|0	UI_Buff_NingZhi.img	印记叠加到5层后会受到额外伤害	5	1	蒋钦0	
+27130|1	UI_Buff_NingZhi.img	印记叠加到6层后会受到额外伤害	5	1	蒋钦1	
+27130|2	UI_Buff_NingZhi.img	印记叠加到7层后会受到额外伤害	5	1	蒋钦2	
+27130|3	UI_Buff_NingZhi.img	印记叠加到8层后会受到额外伤害	5	1	蒋钦3	
+27130|4	UI_Buff_NingZhi.img	印记叠加到9层后会受到额外伤害	5	1	蒋钦4	
+27130|5	UI_Buff_NingZhi.img	印记叠加到5层后受到的物理伤害增加10%	5	1	蒋钦5	
+27130|6	UI_Buff_NingZhi.img	印记叠加到5层后受到的物理伤害增加20%	5	1	蒋钦6	
+27130|7	UI_Buff_NingZhi.img	印记叠加到5层后受到的物理伤害增加30%	5	1	蒋钦7	
+27130|8	UI_Buff_NingZhi.img	印记叠加到5层后受到的物理伤害增加40%	5	1	蒋钦8	
+27130|9	UI_Buff_NingZhi.img	印记叠加到5层后受到的物理伤害增加60%	5	1	蒋钦9	

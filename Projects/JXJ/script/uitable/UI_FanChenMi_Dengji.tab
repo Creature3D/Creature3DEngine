@@ -1,0 +1,5 @@
+widget	script
+UI_FanChenMi_Dengji_Close	UI_Close.cfg
+UI_FanChenMi_Dengji_QU	UI_FanChenMi_Dengji_QU.cfg
+UI_FanChenMi_Dengji_Deng	UI_Close.cfg
+UI_FanChenMi_Dengji_Drag	ui_frame.cfg

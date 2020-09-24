@@ -1,0 +1,8 @@
+widget	script
+UI_Yueka	UI_YueKa.cfg
+Drag	UI_frame.cfg
+Close	UI_Close.cfg
+Goumai	UI_YuekaGoumai.cfg
+Lingqu	UI_YuekaLingqu.cfg
+Xufei	UI_YuekaXufei.cfg
+Icon	UI_YuekaIcon.cfg

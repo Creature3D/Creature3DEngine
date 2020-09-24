@@ -1,0 +1,13 @@
+widget	script
+UI_CopyBattle_System	UI_CopyBattle_System.cfg
+UI_CopyBattle_System_Close	UI_Close.cfg
+UI_CopyBattle_System_Drag	ui_frame.cfg
+UI_CopyBattle_System_Return	UI_Close.cfg
+UI_CopyBattle_System_Return2	UI_CopyBattle_System_Return2.cfg
+UI_CopyBattle_System_Quit	UI_SystemExit.cfg
+SystemScroll	UI_BKSoundScroll.cfg
+SystemScroll_1	UI_EfxSoundScroll.cfg
+UI_CopyBattle_System_Check	UI_SoundSetting.cfg
+GotoForum	UI_BattleSystemSound.cfg
+Mouse	UI_BattleSystemMouse.cfg
+GotoOperation	GotoOperation.cfg

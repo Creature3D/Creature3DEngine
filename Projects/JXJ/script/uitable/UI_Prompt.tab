@@ -1,0 +1,7 @@
+widget	script
+UI_Prompt	UI_PromptCanvas.cfg
+UI_Prompt_Close	UI_Prompt_Close.cfg
+UI_Prompt_Confirm	UI_Prompt_Confirm.cfg
+UI_Prompt_Cancel	UI_Prompt_Cancel.cfg
+UI_Prompt_Drag	ui_frame.cfg
+UI_Prompt_CheckBox	UI_Prompt_CheckBox.cfg

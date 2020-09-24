@@ -1,0 +1,6 @@
+widget	script
+JunTuanFuBen	JunTuanFuBen.cfg
+JunTuanFuBen_Drag	ui_frame.cfg
+JunTuanFuBen_Close	Button_Linqujiangli.cfg
+Button_Linqujiangli	Button_Linqujiangli.cfg
+Button_Shangbiaojungong	Button_Shangbiaojungong.cfg

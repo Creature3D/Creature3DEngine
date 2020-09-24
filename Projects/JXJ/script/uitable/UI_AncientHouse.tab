@@ -1,0 +1,10 @@
+widget	script
+UI_AncientHouse	UI_AncientHouseCanvas.cfg
+UI_AncientHouse_Drag	UI_frame.cfg
+UI_AncientHouse_Close	UI_AncientHouse_Close.cfg
+UI_AncientHouse_Upgrade	UI_TerritoryBuilding_Upgrade.cfg
+UI_AncientHouse_GovernmentPost_1	UI_AncientHouse_GovernmentPost_1.cfg
+UI_AncientHouse_Revenue_1	UI_AncientHouse_Revenue_1.cfg
+UI_AncientHouse_Technology	UI_AncientHouse_Technology.cfg
+UI_AncientHouse_Force	
+UI_AncientHouse_Yjsm	UI_Yjsm.cfg

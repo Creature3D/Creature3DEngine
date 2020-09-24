@@ -1,0 +1,25 @@
+widget	script
+UI_ManorStair_SpeedUp	UI_CDCanvas.cfg
+SpeedUp1	UI_CD_BuildingSpeed_01.cfg
+SpeedUp2	UI_CD_BuildingSpeed_02.cfg
+SpeedUp3	UI_CD_BuildingSpeed_03.cfg
+SpeedUp4	UI_CD_BuildingSpeed_04.cfg
+SpeedUp5	UI_CD_Speed_01.cfg
+SpeedUp6	UI_CD_Speed_02.cfg
+SpeedUp7	UI_CD_Speed_03.cfg
+SpeedUp8	UI_CD_Speed_04.cfg
+SpeedUp2_Input	
+SpeedUp3_Input	
+SpeedUp4_Input	
+SpeedUp6_Input	
+SpeedUp7_Input	
+SpeedUp8_Input	
+Add2	UI_BuyBuildingTimer_01.cfg
+Add3	UI_BuyBuildingTimer_02.cfg
+Add4	UI_BuyBuildingTimer_03.cfg
+Add6	UI_BuyConscriptionTimer_01.cfg
+Add7	UI_BuyConscriptionTimer_02.cfg
+Add8	UI_BuyConscriptionTimer_03.cfg
+SpeedUp_Meiri1_Ban	SpeedUp_Meiri1_Ban.cfg
+SpeedUp_Meiri2_Ban	SpeedUp_Meiri2_Ban.cfg
+SpeedUp_Meiri3_Ban	SpeedUp_Meiri3_Ban.cfg

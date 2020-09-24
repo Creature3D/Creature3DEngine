@@ -1,0 +1,13 @@
+widget	script
+HuangZuanShengJiLiBao_Drag_1	ui_frame.cfg
+HuangZuanShengJiLiBao_Close_1	UI_Close.cfg
+UI_HZ_NF_MRLB	UI_HZ_NF_MRLB.cfg
+HuangZuanShengJiLiBao_Linqu_1	HuangZuanNianFeiMeiRiLiBao_Linqu.cfg
+HuangZuanShengJiLiBao_Icon1_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon2_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon3_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon4_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon5_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon6_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon7_1	HuangZuanIcon.cfg
+HuangZuanShengJiLiBao_Icon8_1	HuangZuanIcon.cfg

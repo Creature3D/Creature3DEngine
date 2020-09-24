@@ -1,0 +1,6 @@
+widget	script	
+UI_Beta2_Knapsack_Czan	UI_Beta2_Knapsack_Czan.cfg	
+UI_Beta2_Knapsack_Czan_Sy	UI_Beta2_Knapsack_Czan_Sy.cfg	//使用
+UI_Beta2_Knapsack_Czan_Zs	UI_Beta2_Knapsack_Czan_Zs.cfg	//展示
+UI_Beta2_Knapsack_Czan_Cs	UI_Beta2_Knapsack_Czan_Cs.cfg	//出售
+UI_Beta2_Knapsack_Czan_Cf	UI_Beta2_Knapsack_Czan_Cf.cfg	//拆分

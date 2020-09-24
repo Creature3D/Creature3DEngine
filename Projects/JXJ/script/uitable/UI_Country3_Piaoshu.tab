@@ -1,0 +1,5 @@
+widget	script
+UI_Country3_Piaoshu	UI_Country3_Piaoshu.cfg
+Piaoshu_Close	UI_Close.cfg
+Piaoshu_Drag	UI_frame.cfg
+Piaoshu_Yiyue	UI_Close.cfg

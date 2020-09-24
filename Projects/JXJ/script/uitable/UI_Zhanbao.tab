@@ -1,0 +1,4 @@
+widget	script
+UI_Zhanbao	UI_ZhanbaoCanvas.cfg
+Zhanbao_Zhanshi	Zhanbao_Zhanshi.cfg
+Zhanbao_Queding	UI_Close.cfg

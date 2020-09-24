@@ -1,0 +1,7 @@
+widget	script
+UI_CopyBattle_System_Operation	UI_CopyBattle_System_Operation.cfg
+Close	UI_Close.cfg
+Drag_1	ui_frame.cfg
+System_Operation1	RadioSelectChange.cfg
+System_Operation2	RadioSelectChange.cfg
+System_Operation3	RadioSelectChange.cfg

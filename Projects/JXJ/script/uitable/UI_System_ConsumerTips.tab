@@ -1,0 +1,6 @@
+widget	script
+UI_System_ConsumerTips_Confirm	UI_System_ConsumerTips_Confirm.cfg
+UI_System_ConsumerTips_Close	UI_Close.cfg
+UI_System_ConsumerTips_Drag	UI_frame.cfg
+UI_System_ConsumerTips_Click13	UI_System_ConsumerTips_Click13.cfg
+UI_System_ConsumerTips	UI_System_ConsumerTips.cfg

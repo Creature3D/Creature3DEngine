@@ -1,0 +1,5 @@
+widget	script
+Can_Chanchanxinxi	UI_Battleground_BaseNoticeCanv.cfg
+UI_Chanqo	UI_Battleground_BaseNoticeHide.cfg
+UI_Chanqc	UI_Battleground_BaseNoticeShow.cfg
+UI_Chanchanxinxi	UI_lTXinxi.cfg

@@ -1,0 +1,6 @@
+widget	script
+UI_Battleground_Yqhylb1	UI_Battleground_Yqhylb1Canvas.cfg
+UI_Battleground_Yqhylb1_Close	UI_PeopleModelGroup_close.cfg
+UI_Battleground_Yqhylb1_Drag	ui_frame.cfg
+UI_Battleground_Yqhylb1_Yqhy	UI_Battleground_Yqhylb1_Yqhy.cfg
+UI_Battleground_Yqhylb1_Qxzd	UI_PeopleModelGroup_close.cfg

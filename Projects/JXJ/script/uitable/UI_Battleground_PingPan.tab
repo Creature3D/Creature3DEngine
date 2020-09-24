@@ -1,0 +1,5 @@
+widget	script
+UI_Battleground_PingPan	UI_Battleground_PingPan.cfg
+Close	UI_Close.cfg
+PingPan	UI_BT_PingPan.cfg
+PiLiang	UI_BT_PiLiangPingPan.cfg

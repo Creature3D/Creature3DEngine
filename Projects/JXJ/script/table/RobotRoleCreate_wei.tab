@@ -1,0 +1,5 @@
+state	steps	¿ÉÌø¹ı	canvas	widget	GMOrder
+1	1	0	UI_SelectCharacter	NameRandom	
+1	2	0	UI_SelectCharacter	Wei	
+1	3	0	UI_SelectCharacter	Setup	
+1	4	0	UI_Xinshouyindao31	Enter	

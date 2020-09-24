@@ -1,0 +1,10 @@
+widget	script
+UI_Country	UI_Country.cfg
+UI_Country_Drag	UI_frame.cfg
+UI_Country_Close	UI_Close.cfg
+CountryRaido	CountryRaido.cfg
+UI_Country_Build_Js1	UI_Country_Build_Js1.cfg
+UI_Country_Build_Js2	UI_Country_Build_Js2.cfg
+UI_Country_Build_Js3	UI_Country_Build_Js3.cfg
+UI_Country_Build_Js4	UI_Country_Build_Js4.cfg
+UI_Country_Build_Js5	UI_Country_Build_Js5.cfg

@@ -1,0 +1,6 @@
+widget	script
+UI_TerritoryBuilding	UI_TerritoryBuildingCanvas.cfg
+UI_TerritoryBuilding_Drag	UI_frame.cfg
+UI_TerritoryBuilding_Close	UI_TerritoryBuilding_Close.cfg
+UI_TerritoryBuilding_Upgrade	UI_TerritoryBuilding_Upgrade.cfg
+UI_TerritoryBuilding_Yjsm	UI_Yjsm.cfg

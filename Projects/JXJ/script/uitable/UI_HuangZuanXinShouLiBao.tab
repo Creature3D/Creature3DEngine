@@ -1,0 +1,12 @@
+widget	script
+HuangZuanXinShouLiBao_Drag	ui_frame.cfg
+HuangZuanXinShouLiBao_Close	UI_Close.cfg
+UI_HuangZuanXinShouLiBao	UI_HuangZuanXinShouLiBao.cfg
+HuangZuanXinShouLiBao_Lijilinqu	HuangZuanXinShouLiBao_Lijilinqu.cfg
+HuangZuanXinShouLiBao_Xufei	Yellow.cfg
+HuangZuanXinShouLiBao_Kaitong	Yellow.cfg
+HuangZuanXinShouLiBao_IKnow	UI_Close.cfg
+HuangZuanXinShouLiBao_Icon1	HuangZuanIcon.cfg
+HuangZuanXinShouLiBao_Icon2	HuangZuanIcon.cfg
+HuangZuanXinShouLiBao_Icon3	HuangZuanIcon.cfg
+HuangZuanXinShouLiBao_Icon4	HuangZuanIcon.cfg

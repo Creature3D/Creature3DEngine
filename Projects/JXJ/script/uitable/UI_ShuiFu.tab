@@ -1,0 +1,4 @@
+widget	script
+UI_ShuiFu_Drag	ui_frame.cfg
+UI_ShuiFu_Close	UI_Close.cfg
+UI_ShuiFu_Determine	UI_Close.cfg

@@ -1,0 +1,5 @@
+id	name	icon	默认城池	flag	国都	陪都
+10	魏	UI_Caocao_Normal.img	2004	UI_Flag_Cao.img	3009	2004
+11	蜀	UI_Liubei_Normal.img	15006	UI_Flag_Liu.img	14003	15006
+12	吴	UI_Sunjian_Normal.img	19014	UI_Flag_Sun.img	18004	19014
+2	群	UI_Yuanshao_Normal.img	0	UI_Flag_Yuan.img	0	0

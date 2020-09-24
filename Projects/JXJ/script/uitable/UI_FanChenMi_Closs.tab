@@ -1,0 +1,4 @@
+widget	script
+UI_FanChenMi_Closs	UI_FanChenMi_Closs.cfg
+UI_FanChenMi_Closs_Drag	ui_frame.cfg
+UI_FanChenMi_Closs_Qued	UI_SystemExit.cfg

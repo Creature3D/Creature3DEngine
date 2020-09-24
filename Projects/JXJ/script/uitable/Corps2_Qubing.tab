@@ -1,0 +1,6 @@
+widget	script
+Corps2_Qubing	Corps2_Qubing.cfg
+Qubing_Drag	ui_frame.cfg
+Qubing_Close	UI_Close.cfg
+Qubing_Queding	Qubing_Queding.cfg
+Qubing_ListScroll	Qubing_ListScroll.cfg

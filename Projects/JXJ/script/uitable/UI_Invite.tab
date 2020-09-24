@@ -1,0 +1,14 @@
+widget	script
+UI_Invite	UI_InviteCanvas.cfg
+UI_Invite_drag	UI_frame.cfg
+UI_Invite_close	UI_Invite_close.cfg
+GameList_1	UI_Invite_gamelist.cfg
+UI_Beta2_GotoBattle_Yq_FarLeft	UI_Beta2_GotoBattle_Yq_FarLeft.cfg
+UI_Beta2_GotoBattle_Yq_Left	UI_Beta2_GotoBattle_Yq_Left.cfg
+UI_Beta2_GotoBattle_Yq_Right	UI_Beta2_GotoBattle_Yq_Right.cfg
+UI_Beta2_GotoBattle_Yq_FarRight	UI_Beta2_GotoBattle_Yq_FarRight.cfg
+UI_Invite_invite1	UI_Invite_invite1.cfg
+UI_Beta2_GotoBattle_Yq2	UI_Invite_invite2.cfg
+UI_Beta2_GotoBattle_Yq3	UI_Invite_invite3.cfg
+UI_Beta2_GotoBattle_Yq4	UI_Invite_invite4.cfg
+UI_Beta2_GotoBattle_Yq5	UI_Invite_invite5.cfg

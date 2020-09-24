@@ -1,0 +1,8 @@
+widget	script
+UI_ManorStair_RenWu	UI_ManorStair_RenWuCanvas.cfg
+UI_Fold	UI_Fold.cfg
+EnterForum	UI_Luntan.cfg
+Button_Renwu	Button_Renwu.cfg
+HaoYou	UI_HaoYou.cfg
+AddFriend_DongHua	AddFriend_DongHua.cfg
+AddFriend_Widget	AddFriend_DongHua.cfg

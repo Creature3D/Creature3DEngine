@@ -1,0 +1,4 @@
+widget	script
+UI_GM	UI_GMCanvas.cfg
+Close	UI_Close.cfg
+Send	UI_SystermMailSend.cfg

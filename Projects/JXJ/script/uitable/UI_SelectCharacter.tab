@@ -1,0 +1,9 @@
+widget	script
+UI_SelectCharacter	UI_SelectCharacterCanvas.cfg
+FaceLeft	UI_SelectCharacterFaceLeft.cfg
+FaceRight	UI_SelectCharacterFaceRight.cfg
+NameRandom	UI_NameRandom.cfg
+Setup	UI_Setup.cfg
+Name_1	UI_SelectCharacterName.cfg
+PowerRaido	PowerRaido.cfg
+SexRadio	SexRadio.cfg

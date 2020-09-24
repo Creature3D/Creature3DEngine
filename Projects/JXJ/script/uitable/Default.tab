@@ -1,0 +1,10 @@
+widget	script
+Default	Default.cfg
+UI_Event_Drag	UI_frame.cfg
+UI_Close	UI_Close.cfg
+UI_Event_Icon1	HuangZuanIcon.cfg
+UI_Event_Icon2	HuangZuanIcon.cfg
+UI_Event_Icon3	HuangZuanIcon.cfg
+UI_Event_Icon4	HuangZuanIcon.cfg
+UI_Click	UI_Huoqu.cfg
+UI_Huoqu	UI_ChongZhi.cfg

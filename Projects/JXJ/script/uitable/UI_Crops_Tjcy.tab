@@ -1,0 +1,6 @@
+widget	script
+UI_Crops_Tjcy	UI_Crops_Tjcy.cfg
+UI_Crops_Tjcy_Drag	ui_frame.cfg
+UI_Crops_Tjcy_Close	UI_Close.cfg
+UI_Crops_Tjcy_Add	UI_Crops_Tjcy_Add.cfg
+UI_Crops_Tjcy_Cancel	UI_Close.cfg

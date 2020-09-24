@@ -1,0 +1,4 @@
+widget	script
+UI_Battleground_Invite_invite	UI_Battleground_Invite_invite.cfg
+GameList_1	UI_Battleground_Invite_gamelist.cfg
+UI_Battleground_Invite_drag	ui_frame.cfg

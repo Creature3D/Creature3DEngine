@@ -1,0 +1,4 @@
+widget	script
+UI_LogReward	UI_LogReward.cfg
+UI_LogReward_Close	UI_Close.cfg
+UI_LogReward_Draw	UI_LogReward_Draw.cfg

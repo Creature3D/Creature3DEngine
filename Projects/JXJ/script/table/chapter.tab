@@ -1,0 +1,21 @@
+id	mode	chaptericon	chaptericon高亮	chaptericon灰	前置id	备注
+1000	0	T_FB_Name_BZ_Normal.img	T_FB_Name_BZ_Click.img		0	并州
+1001	0	T_FB_Name_QZ_Normal.img	T_FB_Name_QZ_Click.img		1000	青州
+1002	0	T_FB_Name_JB_Normal.img	T_FB_Name_JB_Click.img		1003	荆北
+1003	0	T_FB_Name_JN_Normal.img	T_FB_Name_JN_Click.img		1034	荆南
+1004	0	T_FB_Name_YiZ_Normal.img	T_FB_Name_YiZ_Click.img		1041	益州
+1005	0	T_FB_Name_YangZ_Normal.img	T_FB_Name_YangZ_Click.img		1047	扬州
+1006	0	T_FB_Name_YongZ_Normal.img	T_FB_Name_YongZ_Click.img		1062	雍州
+1007	0	T_FB_Name_SL_Normal.img	T_FB_Name_SL_Click.img		1070	司隶
+2000	1	T_FB_Name_Guangzongzhanzhangjiao_Normal.img	T_FB_Name_Guangzongzhanzhangjiao_Click.img		0	
+2001	1	T_FB_Name_Bianshuizhanxurong_Normal.img	T_FB_Name_Bianshuizhanxurong_Click.img		2000	
+2002	1	T_FB_Name_Hulaozhanlvbu_Normal.img	T_FB_Name_Hulaozhanlvbu_Click.img		2001	
+2003	1	T_FB_Name_Nanyangzhanjiling_Normal.img	T_FB_Name_Nanyangzhanjiling_Click.img		2002	
+2004	1	T_FB_Name_wanchengzhanzhangxiu_Normal.img	T_FB_Name_wanchengzhanzhangxiu_Click.img		2003	
+2005	1	T_FB_Name_baimazhanyanliang_Normal.img	T_FB_Name_baimazhanyanliang_Click.img		2004	
+2006	1	T_FB_Name_yanjinpowenchou_Normal.img	T_FB_Name_yanjinpowenchou_Click.img		2005	
+2007	1	T_FB_Name_liangzhouzhanmateng_Normal.img	T_FB_Name_liangzhouzhanmateng_Click.img		2006	
+2008	1	T_FB_Name_puyangpolvbu_Normal.img	T_FB_Name_puyangpolvbu_Click.img		2007	
+2009	1	T_FB_Name_Guanzhongcheng_Normal.img	T_FB_Name_Guanzhongcheng_Click.img		2008	
+2010	1	T_FB_Name_Jingzhoukua_Normal.img	T_FB_Name_Jingzhoukua_Click.img		2009	
+2011	1	T_FB_Name_Sanxiongzheng_Normal.img	T_FB_Name_Sanxiongzheng_Click.img		2010	

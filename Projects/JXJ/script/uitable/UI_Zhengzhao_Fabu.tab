@@ -1,0 +1,7 @@
+widget	script
+UI_Zhengzhao_Fabu	
+UI_Drag	ui_frame_zhengzhao.cfg
+Icon_Queding	Icon_Queding_zhengzhao.cfg
+Icon_Quxiao	Icon_Quxiao_zhengzhao.cfg
+Icon_Guanbi	Icon_Guanbi_zhengzhao.cfg
+Fuyan	Fuyan.cfg

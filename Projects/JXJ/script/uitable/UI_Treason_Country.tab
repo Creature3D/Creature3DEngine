@@ -1,0 +1,6 @@
+widget	script
+UI_Treason_Country	UI_Treason_CountryCanvas.cfg
+UI_Treason_Join	UI_Treason_Join.cfg
+UI_Treason_Close	UI_panguoClose.cfg
+UI_Treason_Drag	ui_frame.cfg
+UI_Treason_Tishi1	UI_Treason_Tishi1.cfg

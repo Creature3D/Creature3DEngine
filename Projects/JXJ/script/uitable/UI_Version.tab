@@ -1,0 +1,4 @@
+widget	script
+UI_Version	UI_Version.cfg
+UI_Version_Close	UI_Close.cfg
+UI_Version_Drag	ui_frame.cfg

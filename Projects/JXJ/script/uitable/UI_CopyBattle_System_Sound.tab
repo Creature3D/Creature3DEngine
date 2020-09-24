@@ -1,0 +1,9 @@
+widget	script
+UI_CopyBattle_System_Sound	UI_CopyBattle_System.cfg
+Close1	UI_Close.cfg
+Close_2	UI_Close.cfg
+Drag	ui_frame.cfg
+BKSoundScroll	UI_BKSoundScroll.cfg
+EfxSoundScroll	UI_EfxSoundScroll.cfg
+SoundSetting	UI_SoundSetting.cfg
+Use	UI_Close.cfg

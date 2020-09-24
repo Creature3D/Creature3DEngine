@@ -1,0 +1,5 @@
+widget	script
+UI_Prompt1	UI_PromptCanvas.cfg
+UI_Prompt1_Drag	UI_frame.cfg
+UI_Prompt1_Close	UI_Prompt_Close.cfg
+UI_Prompt1_OK	UI_Prompt_Close.cfg

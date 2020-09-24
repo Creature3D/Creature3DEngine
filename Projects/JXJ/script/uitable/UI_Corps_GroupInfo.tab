@@ -1,0 +1,10 @@
+widget	script
+UI_Corps_GroupInfo	UI_Corps_GroupInfo.cfg
+UI_Corps_GroupInfo_Drag	ui_frame.cfg
+UI_Corps_GroupInfo_Close	UI_Close.cfg
+UI_Corps_GroupInfo_FarLeft	UI_Corps_GroupInfo_FarLeft.cfg
+UI_Corps_GroupInfo_Left	UI_Corps_GroupInfo_Left.cfg
+UI_Corps_GroupInfo_Right	UI_Corps_GroupInfo_Right.cfg
+UI_Corps_GroupInfo_FarRight	UI_Corps_GroupInfo_FarRight.cfg
+UI_Corps_GroupInfo_Ask	UI_Corps1_Shenqing1.cfg
+UI_Corps_GroupInfo_Asked	UI_Corps1_YiShenqing1.cfg

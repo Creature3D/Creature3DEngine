@@ -1,0 +1,16 @@
+widget	script
+UI_ChatSet	UI_ChatSetCanvas.cfg
+ChatSet_Radio	ChatSet_Radio.cfg
+UI_ChatSet_Close	UI_Close.cfg
+UI_ChatSet_Drag	ui_frame.cfg
+Chice1	UI_ChatSet_Chice1.cfg
+Chice2	UI_ChatSet_Chice2.cfg
+Chice3	UI_ChatSet_Chice3.cfg
+Chice4	UI_ChatSet_Chice4.cfg
+Chice5	UI_ChatSet_Chice5.cfg
+Chice6	UI_ChatSet_Chice6.cfg
+Chice7	UI_ChatSet_Chice7.cfg
+Chice8	UI_ChatSet_Chice8.cfg
+Chice9	UI_ChatSet_Chice9.cfg
+Moren	UI_ChatSet_Moren.cfg
+Baocun	UI_ChatSet_Baocun.cfg

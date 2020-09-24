@@ -1,0 +1,10 @@
+widget	script
+UI_ShenQi_JingYanDan	UI_ShenQi_JingYanDanCanvas.cfg
+UI_ShenQi_Close_1	UI_Close.cfg
+UI_ShenQi_loging_1	ui_frame.cfg
+UI_JingYanDan_goumai1	UI_JingYanDan_goumai1.cfg
+UI_JingYanDan_goumai2	UI_JingYanDan_goumai1.cfg
+UI_JingYanDan_goumai3	UI_JingYanDan_goumai1.cfg
+ShenQi_icon1	ShenQi_icon1.cfg
+ShenQi_icon2	ShenQi_icon1.cfg
+ShenQi_icon3	ShenQi_icon1.cfg

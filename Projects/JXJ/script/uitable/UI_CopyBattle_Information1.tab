@@ -1,0 +1,6 @@
+widget	script
+UI_CopyBattle_Information	UI_CopyBattle_InformationCanvas.cfg
+UI_CopyBattle_Minimap	UI_Map.cfg
+UI_CopyBattle_Sign	UI_CopyBattle_Sign.cfg
+UI_CopyBattle_Backdrop	UI_CopyBattle_Backdrop.cfg
+UI_CopyBattle_Mark	UI_CopyBattle_Mark.cfg

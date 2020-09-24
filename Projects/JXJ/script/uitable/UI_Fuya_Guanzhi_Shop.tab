@@ -1,0 +1,17 @@
+widget	script
+UI_Fuya_Guanzhi_Shop	UI_Fuya_Guanzhi_Shop.cfg
+Close	UI_Close.cfg
+Drag	UI_frame.cfg
+Icon1	UI_GuanzhiShop_Icon1.cfg
+Icon2	UI_GuanzhiShop_Icon2.cfg
+Icon3	UI_GuanzhiShop_Icon3.cfg
+Icon4	UI_GuanzhiShop_Icon4.cfg
+Icon5	UI_GuanzhiShop_Icon5.cfg
+Buy1	UI_GuanzhiShop_Buy1.cfg
+Buy2	UI_GuanzhiShop_Buy2.cfg
+Buy3	UI_GuanzhiShop_Buy3.cfg
+Buy4	UI_GuanzhiShop_Buy4.cfg
+Buy5	UI_GuanzhiShop_Buy5.cfg
+Left	UI_GuanzhiShop_Left.cfg
+Right	UI_GuanzhiShop_Right.cfg
+Hit	UI_GuanzhiShop_Hit.cfg

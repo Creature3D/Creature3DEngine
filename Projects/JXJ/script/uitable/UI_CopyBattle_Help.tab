@@ -1,0 +1,4 @@
+widget	script
+UI_CopyBattle_Help_Drag	UI_frame.cfg
+UI_CopyBattle_Help	UI_CopyBattle_HelpCanvas.cfg
+UI_CopyBattle_Help_Close	UI_Close.cfg

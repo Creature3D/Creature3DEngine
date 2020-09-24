@@ -1,0 +1,3 @@
+widget	script
+UI_CopyBattle_Lord	UI_CopyBattle_LordCanvas.cfg
+UI_CopyBattle_Lord_Close	UI_Close.cfg

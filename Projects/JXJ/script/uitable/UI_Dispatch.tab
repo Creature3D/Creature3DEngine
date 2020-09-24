@@ -1,0 +1,6 @@
+Canvas	script
+UI_Dispatch	UI_DispatchCanvas.cfg
+UI_Dispatch_Close	UI_Dispatch_Close.cfg
+UI_Dispatch_Determine	UI_Dispatch_Determine.cfg
+UI_Dispatch_WuJiang	UI_Dispatch_WuJiang.cfg
+UI_Dispatch_Drag	ui_frame.cfg

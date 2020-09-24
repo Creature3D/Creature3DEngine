@@ -1,0 +1,14 @@
+id	Name	icon	说明	等级	可完成次数	活跃值
+1	活跃度1	T_Icon_ItemBox_White.img	参加国战并获得积分	1	3	100
+2	活跃度2	T_Icon_ItemBox_White.img	抽取将卡	1	30	10
+3	活跃度3	T_Icon_ItemBox_White.img	扫荡副本	1	50	5
+4	活跃度4	T_Icon_ItemBox_White.img	招募任意数量士兵	1	2	25
+5	活跃度5	T_Icon_ItemBox_White.img	市集购买资源	1	5	10
+6	活跃度6	T_Icon_ItemBox_White.img	精炼任意一件装备	39	1	30
+7	活跃度7	T_Icon_ItemBox_White.img	通关名将之路	50	9	30
+8	活跃度8	T_Icon_ItemBox_White.img	每日登陆抽奖	1	3	10
+9	活跃度9	T_Icon_ItemBox_White.img	领取官职俸禄	1	1	30
+10	活跃度10	T_Icon_ItemBox_White.img	进行一次军团捐献	1	1	50
+11	活跃度11	T_Icon_ItemBox_White.img	进行国家建设	1	5	10
+12	活跃度12	T_Icon_ItemBox_White.img	征收	1	30	10
+13	活跃度13	T_Icon_ItemBox_White.img	VIP赠送活跃度	1	15	10

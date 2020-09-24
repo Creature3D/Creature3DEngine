@@ -1,0 +1,13 @@
+widget	script
+UI_Beta3_ManorStair_Zxjl	UI_Beta3_ManorStair_ZxjlCanvas.cfg
+UI_Zxjl_Close	UI_Close.cfg
+Get	UI_OnlineRewardGet.cfg
+UI_Zxjl_Drag	ui_frame.cfg
+UI_Zxjl_Icon1	UI_Zxjl_Icon1.cfg
+UI_Zxjl_Icon2	UI_Zxjl_Icon2.cfg
+UI_Zxjl_Icon3	UI_Zxjl_Icon3.cfg
+UI_Zxjl_Icon4	UI_Zxjl_Icon4.cfg
+UI_Zxjl_Input1	UI_Zxjl_Icon1.cfg
+UI_Zxjl_Input2	UI_Zxjl_Icon2.cfg
+UI_Zxjl_Input3	UI_Zxjl_Icon3.cfg
+UI_Zxjl_Input4	UI_Zxjl_Icon4.cfg

@@ -1,0 +1,6 @@
+widget	script
+UI_Corps_Prompt	UI_Corps_Prompt.cfg
+UI_Corps_Prompt_Drag	UI_frame.cfg
+UI_Corps_Prompt_Close	UI_Close.cfg
+UI_Corps_Prompt_Confirm	UI_Corps_Prompt_Confirm.cfg
+UI_Corps_Prompt_Cancel	UI_Corps_Prompt_Cancel.cfg

@@ -1,0 +1,4 @@
+widget	script
+UI_JiuSi_Set	UI_JiuSi_Set.cfg
+UI_JiuSi_Set_Close	UI_Close.cfg
+UI_JiuSi_Set_Confirm	UI_JiuSi_Set_Confirm.cfg

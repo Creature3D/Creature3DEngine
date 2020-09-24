@@ -1,0 +1,13 @@
+widget	script
+Return	UI_SystemReturn.cfg
+GotoForum	UI_SystemGotoForum.cfg
+GotoWebsite	UI_SystemGotoWebsite.cfg
+Exit	UI_SystemExit.cfg
+Close_2	UI_Close.cfg
+SoundSetting	UI_SoundSetting.cfg
+BKSoundScroll	UI_BKSoundScroll.cfg
+EfxSoundScroll	UI_EfxSoundScroll.cfg
+Drag	UI_frame.cfg
+UI_Beta2_System_Xssz	UI_Beta2_System_Xssz.cfg
+UI_System_Sound	UI_System.cfg
+Use	UI_Close.cfg

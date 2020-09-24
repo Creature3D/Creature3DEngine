@@ -1,0 +1,5 @@
+state	steps	type	canvas	widget	GMOrder
+1	1	1	UI_Battleground_Xzcsd	UI_Beta2_Battleground_Csd_Shou	
+1	2	1	UI_Battleground_Xzcsd2	UI_Csd2_Shou	
+1	3	1	UI_Battleground_Xzcsd_ShuXing	UI_Battleground_Xzcsd_ShuXing_You	
+1	4	3			/AI

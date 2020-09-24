@@ -1,0 +1,285 @@
+id	title1	title2	Name	icon	说明	HyperText	Steps	成就	脚本	备注
+1	副本	征战天下	旗开得胜	T_Icon_ItemBox_White.img	赢得1场征战天下副本的胜利	accomplish/A_qikaidesheng.cfg	1	10	A_zhengzhantianxia.cfg	0
+2	副本	征战天下	长驱直入	T_Icon_ItemBox_White.img	赢得10场征战天下副本的胜利	accomplish/A_changquzhiru.cfg	10	10	A_zhengzhantianxia.cfg	0
+3	副本	征战天下	势如破竹	T_Icon_ItemBox_White.img	赢得20场征战天下副本的胜利	accomplish/A_changquzhiru.cfg	20	20	A_zhengzhantianxia.cfg	0
+4	副本	征战天下	扫清六合	T_Icon_ItemBox_White.img	赢得30场征战天下副本的胜利	accomplish/A_changquzhiru.cfg	30	50	A_zhengzhantianxia.cfg	0
+5	副本	征战天下	剑指天下	T_Icon_ItemBox_White.img	赢得40场征战天下副本的胜利	accomplish/A_changquzhiru.cfg	40	80	A_zhengzhantianxia.cfg	0
+6	副本	征战天下	出师未捷	T_Icon_ItemBox_White.img	第一次在征战天下副本中失败		1	10	A_mingjiangworldpass.cfg	1
+7	副本	征战天下	节节败退	T_Icon_ItemBox_White.img	在征战天下中失败3次		3	10	A_mingjiangworldpass.cfg	1
+8	副本	征战天下	无力回天	T_Icon_ItemBox_White.img	在征战天下中失败5次		5	20	A_mingjiangworldpass.cfg	1
+10	副本	征战天下	并州攻略	T_Icon_ItemBox_White.img	通关并州的所有城池副本		2	20	A_zhengzhantianxia_zhou.cfg	2|1000
+11	副本	征战天下	青州攻略	T_Icon_ItemBox_White.img	通关青州的所有城池副本		3	30	A_zhengzhantianxia_zhou.cfg	2|1001
+19	副本	征战天下	荆北攻略	T_Icon_ItemBox_White.img	通关荆北的所有城池副本		4	40	A_zhengzhantianxia_zhou.cfg	2|1002
+20	副本	征战天下	荆南攻略	T_Icon_ItemBox_White.img	通关荆南的所有城池副本		2	20	A_zhengzhantianxia_zhou.cfg	2|1003
+21	副本	征战天下	益州攻略	T_Icon_ItemBox_White.img	通关益州的所有城池副本		6	60	A_zhengzhantianxia_zhou.cfg	2|1004
+23	副本	征战天下	扬州攻略	T_Icon_ItemBox_White.img	通关扬州的所有城池副本		9	90	A_zhengzhantianxia_zhou.cfg	2|1005
+25	副本	征战天下	雍州攻略	T_Icon_ItemBox_White.img	通关雍州的所有城池副本		4	40	A_zhengzhantianxia_zhou.cfg	2|1006
+26	副本	征战天下	司隶攻略	T_Icon_ItemBox_White.img	通关司隶的所有城池副本		3	30	A_zhengzhantianxia_zhou.cfg	2|1007
+27	副本	征战天下	雄才伟略	T_Icon_ItemBox_White.img	征战天下所有副本达到3星评价		34	100	A_zhengzhantianxia_star.cfg	3
+28	副本	名将之路	广宗战张角	UI_Chenjiu_Icon1.img	通过名将之路广宗战张角		1	10	A_mingjiangfinish.cfg	2000
+29	副本	名将之路	汴水战徐荣	UI_Chenjiu_Icon1.img	通过名将之路汴水战徐荣		1	10	A_mingjiangfinish.cfg	2001
+30	副本	名将之路	虎牢战吕布	UI_Chenjiu_Icon1.img	通过名将之路虎牢战吕布		1	10	A_mingjiangfinish.cfg	2002
+31	副本	名将之路	南阳战纪灵	UI_Chenjiu_Icon1.img	通过名将之路南阳战纪灵		1	10	A_mingjiangfinish.cfg	2003
+32	副本	名将之路	宛城战张绣	UI_Chenjiu_Icon1.img	通过名将之路宛城战张绣		1	10	A_mingjiangfinish.cfg	2004
+33	副本	名将之路	白马斩颜良	UI_Chenjiu_Icon1.img	通过名将之路白马斩颜良		1	10	A_mingjiangfinish.cfg	2005
+34	副本	名将之路	延津破文丑	UI_Chenjiu_Icon1.img	通过名将之路延津破文丑		1	10	A_mingjiangfinish.cfg	2006
+35	副本	名将之路	凉州战马腾	UI_Chenjiu_Icon1.img	通过名将之路凉州战马腾		1	10	A_mingjiangfinish.cfg	2007
+36	副本	名将之路	濮阳破吕布	UI_Chenjiu_Icon1.img	通过名将之路濮阳破吕布		1	10	A_mingjiangfinish.cfg	2008
+37	副本	名将之路	关中呈武勇	UI_Chenjiu_Icon1.img	通过名将之路关中呈武勇		1	10	A_mingjiangfinish.cfg	2009
+38	副本	名将之路	荆州夸奇谋	UI_Chenjiu_Icon1.img	通过名将之路荆州夸奇谋		1	10	A_mingjiangfinish.cfg	2010
+39	副本	名将之路	三雄争禹鼎	UI_Chenjiu_Icon1.img	通过名将之路三雄争禹鼎		1	10	A_mingjiangfinish.cfg	2011
+40	副本	名将之路	折戟名将	UI_Chenjiu_Icon1.img	名将之路副本失败3次		3	10	A_mingjiangworldpass.cfg	
+41	副本	名将之路	血战名将	UI_Chenjiu_Icon1.img	通关名将之路50次		50	30	A_mingjiangworldpass.cfg	
+42	副本	名将之路	名将功成	UI_Chenjiu_Icon1.img	通关名将之路150次		150	50	A_mingjiangworldpass.cfg	
+43	副本	世界战场	初识三国	UI_Chenjiu_Icon1.img	参加一次世界战场活动		1	10	A_mingjiangworldpass.cfg	
+44	副本	世界战场	混战三国	UI_Chenjiu_Icon1.img	参加10次数世界战场活动		10	30	A_mingjiangworldpass.cfg	
+45	副本	世界战场	三国老将	UI_Chenjiu_Icon1.img	参加50次世界战场活动		50	50	A_mingjiangworldpass.cfg	
+46	副本	世界战场	给人点赞	UI_Chenjiu_Icon1.img	给别人点赞10次		10	10	A_guozhanachieve.cfg	10|22647|0|0
+47	副本	世界战场	只会点赞	UI_Chenjiu_Icon1.img	给别人点赞50次		50	20	A_guozhanachieve.cfg	50|22647|0|0
+48	副本	世界战场	点赞高手	UI_Chenjiu_Icon1.img	给别人点赞100次		100	30	A_guozhanachieve.cfg	100|22647|0|0
+49	副本	世界战场	被人点赞	UI_Chenjiu_Icon1.img	获得点赞10次		10	10	A_guozhanachieve.cfg	10|22640|0|0
+50	副本	世界战场	集赞高手	UI_Chenjiu_Icon1.img	获得点赞50次		50	20	A_guozhanachieve.cfg	50|22640|0|0
+51	副本	世界战场	众人中心	UI_Chenjiu_Icon1.img	获得点赞100次		100	30	A_guozhanachieve.cfg	100|22640|0|0
+52	副本	世界战场	万众瞩目	UI_Chenjiu_Icon1.img	获得点赞500次		255	50	A_guozhanachieve.cfg	500|22640|0|0
+200	国战	战场	拔得头筹	T_Icon_ItemBox_White.img	赢得1场国战中攻城战场胜利		1	10	A_GuozhanAttackVictoryTimes.cfg	0
+201	国战	战场	战争狂人	T_Icon_ItemBox_White.img	赢得80场国战中攻城战场胜利		80	50	A_GuozhanAttackVictoryTimes.cfg	0
+202	国战	战场	一鼓作气	T_Icon_ItemBox_White.img	所属国家成功占领1座城池		1	10	A_BattleGround.cfg	1
+203	国战	战场	步步为营	T_Icon_ItemBox_White.img	所属国家成功占领10座城池		10	20	A_BattleGround.cfg	1
+204	国战	战场	攻城略地	T_Icon_ItemBox_White.img	所属国家成功占领30座城池		30	30	A_BattleGround.cfg	1
+190	国战	战场	偏霸一方	T_Icon_ItemBox_White.img	所属国家成功占领60座城池		60	40	A_BattleGround.cfg	1
+191	国战	战场	虎视中原	T_Icon_ItemBox_White.img	所属国家成功占领100座城池		100	50	A_BattleGround.cfg	1
+192	国战	战场	三分有二	T_Icon_ItemBox_White.img	所属国家成功占领150座城池		150	60	A_BattleGround.cfg	1
+193	国战	战场	大局已定	T_Icon_ItemBox_White.img	所属国家成功占领200座城池		200	70	A_BattleGround.cfg	1
+205	国战	战场	一统天下	T_Icon_ItemBox_White.img	占领所有敌对势力的城池		206	100	A_BattleGround.cfg	2
+206	国战	战场	固若金汤	T_Icon_ItemBox_White.img	赢得1场国战中守城战场胜利		1	10	A_GuozhanDefendVictoryTimes.cfg	3
+207	国战	战场	坚如磐石	T_Icon_ItemBox_White.img	赢得40场国战中守城战场胜利		40	30	A_GuozhanDefendVictoryTimes.cfg	3
+208	国战	战场	初识国战	T_Icon_ItemBox_White.img	参加10场国战		10	10	A_GuozhanTimes.cfg	
+209	国战	战场	国战高手	T_Icon_ItemBox_White.img	参加50场国战		50	30	A_GuozhanTimes.cfg	
+210	国战	战场	国战大师	T_Icon_ItemBox_White.img	参加100场国战		100	50	A_GuozhanTimes.cfg	
+211	国战	战场	国战宗师	T_Icon_ItemBox_White.img	参加250场国战		250	100	A_GuozhanTimes.cfg	
+212	国战	血战沙场	初出茅庐	UI_Chenjiu_Icon5.img	击杀玩家士兵数量达到10000		255	10	A_guozhanachieve.cfg	10000|22650|0|0
+213	国战	血战沙场	杀心渐起	UI_Chenjiu_Icon5.img	击杀玩家士兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22650|0|0
+214	国战	血战沙场	杀戮高手	UI_Chenjiu_Icon5.img	击杀玩家士兵数量达到50W		255	30	A_guozhanachieve.cfg	500000|22650|0|0
+215	国战	血战沙场	战场杀神	UI_Chenjiu_Icon5.img	击杀玩家士兵数量达到100W		255	50	A_guozhanachieve.cfg	1000000|22650|0|0
+216	国战	血战沙场	死神来了	UI_Chenjiu_Icon5.img	击杀玩家士兵数量达到300W		255	70	A_guozhanachieve.cfg	3000000|22650|0|0
+217	国战	血战沙场	人屠	UI_Chenjiu_Icon5.img	击杀玩家3级兵种以上（包含）士兵数量达到500W		255	100	A_guozhanachieve.cfg	5000000|22649|3|0
+218	国战	血战沙场	刽子手	UI_Chenjiu_Icon5.img	击杀战场NPC士兵数量达到50W		255	10	A_guozhanachieve.cfg	500000|22651|0|0
+219	国战	血战沙场	专虐NPC	UI_Chenjiu_Icon5.img	击杀战场NPC士兵数量达到100W		255	20	A_guozhanachieve.cfg	1000000|22651|0|0
+220	国战	血战沙场	NPC的噩梦	UI_Chenjiu_Icon5.img	击杀战场NPC士兵数量达到300W		255	30	A_guozhanachieve.cfg	3000000|22651|0|0
+221	国战	血战沙场	人见人怕	UI_Chenjiu_Icon5.img	击杀战场NPC士兵数量达到800W		255	50	A_guozhanachieve.cfg	8000000|22651|0|0
+222	国战	血战沙场	击毁城门	UI_Chenjiu_Icon5.img	战场中击毁城门数量达到1		1	10	A_guozhanachieve.cfg	1|22672|1|0
+223	国战	血战沙场	长驱直入	UI_Chenjiu_Icon5.img	战场中击毁城门数量达到10		10	30	A_guozhanachieve.cfg	10|22672|1|0
+224	国战	血战沙场	别挡道	UI_Chenjiu_Icon5.img	战场中击毁城门数量达到30		30	80	A_guozhanachieve.cfg	30|22672|1|0
+225	国战	血战沙场	击毁政厅	UI_Chenjiu_Icon5.img	战场中击毁政厅数量达到1		1	10	A_guozhanachieve.cfg	1|22672|2|0
+226	国战	血战沙场	政厅毁灭者	UI_Chenjiu_Icon5.img	战场中击毁政厅数量达到5		5	30	A_guozhanachieve.cfg	5|22672|2|0
+227	国战	血战沙场	我爱政厅	UI_Chenjiu_Icon5.img	战场中击毁政厅数量达到10		10	80	A_guozhanachieve.cfg	10|22672|2|0
+228	国战	血战沙场	击毁箭塔	UI_Chenjiu_Icon5.img	战场中击毁箭塔数量达到1		1	10	A_guozhanachieve.cfg	1|22672|3|0
+229	国战	血战沙场	箭塔多多	UI_Chenjiu_Icon5.img	战场中击毁箭塔数量达到5		5	30	A_guozhanachieve.cfg	5|22672|3|0
+230	国战	血战沙场	辣手催塔	UI_Chenjiu_Icon5.img	战场中击毁箭塔数量达到10		10	50	A_guozhanachieve.cfg	10|22672|3|0
+231	国战	血战沙场	箭塔终结者	UI_Chenjiu_Icon5.img	战场中击毁箭塔数量达到35		35	100	A_guozhanachieve.cfg	35|22672|3|0
+232	国战	血战沙场	击杀Boss	UI_Chenjiu_Icon5.img	战场中击杀Boss数量达到1		1	10	A_guozhanachieve.cfg	1|22672|4|0
+233	国战	血战沙场	Boss都怕我	UI_Chenjiu_Icon5.img	战场中击杀Boss数量达到10		10	50	A_guozhanachieve.cfg	10|22672|4|0
+234	国战	血战沙场	Boss我来杀	UI_Chenjiu_Icon5.img	战场中击杀Boss数量达到50		50	100	A_guozhanachieve.cfg	50|22672|4|0
+235	国战	血战沙场	壮士别哭	UI_Chenjiu_Icon5.img	战场死伤士兵数量达到2W		255	10	A_guozhanachieve.cfg	20000|22691|0|0
+236	国战	血战沙场	尸横遍野	UI_Chenjiu_Icon5.img	战场死伤士兵数量达到10W		255	10	A_guozhanachieve.cfg	100000|22691|0|0
+237	国战	血战沙场	流血漂橹	UI_Chenjiu_Icon5.img	战场死伤士兵数量达到50W		255	20	A_guozhanachieve.cfg	500000|22691|0|0
+238	国战	血战沙场	伏尸百万	UI_Chenjiu_Icon5.img	战场死伤士兵数量达到100W		255	30	A_guozhanachieve.cfg	1000000|22691|0|0
+239	国战	血战沙场	人间地狱	UI_Chenjiu_Icon5.img	战场死伤士兵数量达到300W		255	50	A_guozhanachieve.cfg	3000000|22691|0|0
+240	国战	血战沙场	地狱已满	UI_Chenjiu_Icon5.img	战场死伤士兵数量达到500W		255	100	A_guozhanachieve.cfg	5000000|22691|0|0
+241	国战	兵种耀武	击杀长戟兵	UI_Chenjiu_Icon5.img	战场击杀玩家长戟兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20007|0
+242	国战	兵种耀武	击杀重步兵	UI_Chenjiu_Icon5.img	战场击杀玩家重步兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20008|0
+243	国战	兵种耀武	击杀黑山步兵	UI_Chenjiu_Icon5.img	战场击杀玩家黑山步兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20501|0
+244	国战	兵种耀武	击杀虎卫营	UI_Chenjiu_Icon5.img	战场击杀玩家虎卫营数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20009|0
+245	国战	兵种耀武	击杀铁甲军	UI_Chenjiu_Icon5.img	战场击杀玩家铁甲军数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20504|0
+246	国战	兵种耀武	击杀白毦兵	UI_Chenjiu_Icon5.img	战场击杀玩家白毦兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20011|0
+247	国战	兵种耀武	击杀丹阳兵	UI_Chenjiu_Icon5.img	战场击杀玩家丹阳兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20010|0
+248	国战	兵种耀武	击杀藤甲兵	UI_Chenjiu_Icon5.img	战场击杀玩家藤甲兵数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20503|0
+249	国战	兵种耀武	击杀陷阵营	UI_Chenjiu_Icon5.img	战场击杀玩家陷阵营数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20012|0
+250	国战	兵种耀武	击杀弓箭兵	UI_Chenjiu_Icon5.img	战场击杀玩家弓箭兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20001|0
+251	国战	兵种耀武	击杀飞刀兵	UI_Chenjiu_Icon5.img	战场击杀玩家飞刀兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20002|0
+252	国战	兵种耀武	击杀黑山弩兵	UI_Chenjiu_Icon5.img	战场击杀玩家黑山弩兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20507|0
+253	国战	兵种耀武	击杀标枪兵	UI_Chenjiu_Icon5.img	战场击杀玩家标枪兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20505|0
+254	国战	兵种耀武	击杀弩兵	UI_Chenjiu_Icon5.img	战场击杀玩家弩兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20003|0
+255	国战	兵种耀武	击杀神射营	UI_Chenjiu_Icon5.img	战场击杀玩家神射营数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20005|0
+256	国战	兵种耀武	击杀先登强弩	UI_Chenjiu_Icon5.img	战场击杀玩家先登强弩数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20004|0
+257	国战	兵种耀武	击杀无当飞军	UI_Chenjiu_Icon5.img	战场击杀玩家无当飞军数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20023|0
+258	国战	兵种耀武	击杀元戎弩	UI_Chenjiu_Icon5.img	战场击杀玩家元戎弩数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20006|0
+259	国战	兵种耀武	击杀轻骑兵	UI_Chenjiu_Icon5.img	战场击杀玩家轻骑兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20013|0
+260	国战	兵种耀武	击杀黑山骑兵	UI_Chenjiu_Icon5.img	战场击杀玩家黑山骑兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20509|0
+261	国战	兵种耀武	击杀重骑兵	UI_Chenjiu_Icon5.img	战场击杀玩家重骑兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20014|0
+262	国战	兵种耀武	击杀突骑兵	UI_Chenjiu_Icon5.img	战场击杀玩家突骑兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20015|0
+263	国战	兵种耀武	击杀西凉铁骑	UI_Chenjiu_Icon5.img	战场击杀玩家西凉铁骑数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20016|0
+264	国战	兵种耀武	击杀飞熊军	UI_Chenjiu_Icon5.img	战场击杀玩家飞熊军数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20510|0
+265	国战	兵种耀武	击杀象兵	UI_Chenjiu_Icon5.img	战场击杀玩家象兵数量达到3W		255	20	A_guozhanachieve.cfg	30000|22649|20017|0
+266	国战	兵种耀武	击杀虎豹骑	UI_Chenjiu_Icon5.img	战场击杀玩家虎豹骑数量达到3W		255	20	A_guozhanachieve.cfg	30000|22649|20018|0
+267	国战	兵种耀武	击杀冲车	UI_Chenjiu_Icon5.img	战场击杀玩家冲车数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20021|0
+268	国战	兵种耀武	击杀木兽	UI_Chenjiu_Icon5.img	战场击杀玩家木兽数量达到8W		255	20	A_guozhanachieve.cfg	80000|22649|20022|0
+269	国战	兵种耀武	击杀井阑	UI_Chenjiu_Icon5.img	战场击杀玩家井阑数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20020|0
+270	国战	兵种耀武	击杀投石车	UI_Chenjiu_Icon5.img	战场击杀玩家投石车数量达到3W		255	20	A_guozhanachieve.cfg	30000|22649|20019|0
+271	国战	兵种耀武	专杀弓手	UI_Chenjiu_Icon5.img	国战单场战斗中击杀10W弓兵系士兵		255	50	A_guozhanachieve.cfg	100000|22671|1|0
+272	国战	兵种耀武	专杀步兵	UI_Chenjiu_Icon5.img	国战单场战斗中击杀10W步兵系士兵		255	50	A_guozhanachieve.cfg	100000|22671|2|0
+273	国战	兵种耀武	专杀骑兵	UI_Chenjiu_Icon5.img	国战单场战斗中击杀8W骑兵系士兵		255	50	A_guozhanachieve.cfg	80000|22671|3|0
+274	国战	兵种耀武	专杀器械	UI_Chenjiu_Icon5.img	国战单场战斗中击杀5W器械系士兵		255	50	A_guozhanachieve.cfg	50000|22671|4|0
+275	国战	兵种耀武	屠杀弓手	UI_Chenjiu_Icon5.img	战场击杀弓兵系士兵数量达到100W		255	50	A_guozhanachieve.cfg	1000000|22655|1|0
+276	国战	兵种耀武	屠杀步兵	UI_Chenjiu_Icon5.img	战场击杀步兵系士兵数量达到100W		255	50	A_guozhanachieve.cfg	1000000|22655|2|0
+277	国战	兵种耀武	屠杀骑兵	UI_Chenjiu_Icon5.img	战场击杀骑兵系士兵数量达到30W		255	50	A_guozhanachieve.cfg	300000|22655|3|0
+278	国战	兵种耀武	屠杀器械	UI_Chenjiu_Icon5.img	战场击杀器械系士兵数量达到30W		255	50	A_guozhanachieve.cfg	300000|22655|4|0
+279	国战	兵种专家	弩兵专家	UI_Chenjiu_Icon5.img	战场中使用弩兵击杀士兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20003|2
+280	国战	兵种专家	标枪专家	UI_Chenjiu_Icon5.img	战场中使用标枪兵击杀士兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20505|2
+281	国战	兵种专家	强弩专家	UI_Chenjiu_Icon5.img	战场中使用先等强弩击杀士兵数量达到50W		255	30	A_guozhanachieve.cfg	500000|22649|20004|2
+282	国战	兵种专家	神射专家	UI_Chenjiu_Icon5.img	战场中使用神射手击杀士兵数量达到50W		255	30	A_guozhanachieve.cfg	500000|22649|20005|2
+283	国战	兵种专家	无当专家	UI_Chenjiu_Icon5.img	战场中使用无当飞军击杀士兵数量达到80W		255	50	A_guozhanachieve.cfg	800000|22649|20023|2
+284	国战	兵种专家	元戎专家	UI_Chenjiu_Icon5.img	战场中使用元戎弩击杀士兵数量达到80W		255	50	A_guozhanachieve.cfg	800000|22649|20006|2
+285	国战	兵种专家	虎卫专家	UI_Chenjiu_Icon5.img	战场中使用虎卫营击杀士兵数量达到3W		255	20	A_guozhanachieve.cfg	30000|22649|20009|2
+286	国战	兵种专家	铁甲专家	UI_Chenjiu_Icon5.img	战场中使用铁甲军击杀士兵数量达到3W		255	20	A_guozhanachieve.cfg	30000|22649|20504|2
+287	国战	兵种专家	白毦专家	UI_Chenjiu_Icon5.img	战场中使用白毦兵击杀士兵数量达到15W		255	30	A_guozhanachieve.cfg	150000|22649|20011|2
+288	国战	兵种专家	丹阳专家	UI_Chenjiu_Icon5.img	战场中使用丹阳兵击杀士兵数量达到15W		255	30	A_guozhanachieve.cfg	150000|22649|20010|2
+289	国战	兵种专家	藤甲专家	UI_Chenjiu_Icon5.img	战场中使用藤甲兵击杀士兵数量达到20W		255	50	A_guozhanachieve.cfg	200000|22649|20503|2
+290	国战	兵种专家	陷阵专家	UI_Chenjiu_Icon5.img	战场中使用陷阵营击杀士兵数量达到30W		255	50	A_guozhanachieve.cfg	300000|22649|20012|2
+291	国战	兵种专家	重骑专家	UI_Chenjiu_Icon6.img	战场中使用重骑兵击杀士兵数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20014|2
+292	国战	兵种专家	突骑专家	UI_Chenjiu_Icon5.img	战场中使用突骑兵击杀士兵数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20015|2
+293	国战	兵种专家	飞熊专家	UI_Chenjiu_Icon5.img	战场中使用飞熊军击杀士兵数量达到10W		255	30	A_guozhanachieve.cfg	100000|22649|20510|2
+294	国战	兵种专家	西凉专家	UI_Chenjiu_Icon5.img	战场中使用西凉骑兵击杀士兵数量达到10W		255	30	A_guozhanachieve.cfg	100000|22649|20016|2
+295	国战	兵种专家	象兵专家	UI_Chenjiu_Icon5.img	战场中使用象兵击杀士兵数量达到20W		255	30	A_guozhanachieve.cfg	200000|22649|20017|2
+296	国战	兵种专家	虎豹专家	UI_Chenjiu_Icon5.img	战场中使用虎豹骑击杀士兵数量达到20W		255	50	A_guozhanachieve.cfg	200000|22649|20018|2
+297	国战	兵种专家	冲车专家	UI_Chenjiu_Icon5.img	战场中使用冲车击毁箭塔数量达到10		10	20	A_guozhanachieve.cfg	10|22649|20021|2
+298	国战	兵种专家	木兽专家	UI_Chenjiu_Icon5.img	战场中使用木兽击毁箭塔数量达到10		10	30	A_guozhanachieve.cfg	10|22649|20022|2
+299	国战	兵种专家	井阑专家	UI_Chenjiu_Icon5.img	战场中使用井阑击毁箭塔数量达到10		10	50	A_guozhanachieve.cfg	10|22649|20020|2
+300	国战	兵种专家	投石车专家	UI_Chenjiu_Icon5.img	战场中使用投石车击毁箭塔数量达到20		20	100	A_guozhanachieve.cfg	20|22649|20019|2
+301	国战	马革裹尸	死伤长戟兵	UI_Chenjiu_Icon3.img	战场死伤长戟兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20007|1
+302	国战	马革裹尸	死伤重步兵	UI_Chenjiu_Icon3.img	战场死伤重步兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20008|1
+303	国战	马革裹尸	死伤黑山步兵	UI_Chenjiu_Icon3.img	战场死伤黑山步兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20501|1
+304	国战	马革裹尸	死伤虎卫营	UI_Chenjiu_Icon3.img	战场死伤虎卫营数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20009|1
+305	国战	马革裹尸	死伤铁甲军	UI_Chenjiu_Icon3.img	战场死伤铁甲军数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20504|1
+306	国战	马革裹尸	死伤白毦兵	UI_Chenjiu_Icon3.img	战场死伤白毦兵数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20011|1
+307	国战	马革裹尸	死伤丹阳兵	UI_Chenjiu_Icon3.img	战场死伤丹阳兵数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20010|1
+308	国战	马革裹尸	死伤藤甲兵	UI_Chenjiu_Icon3.img	战场死伤藤甲兵数量达到15W		255	20	A_guozhanachieve.cfg	150000|22649|20503|1
+309	国战	马革裹尸	死伤陷阵营	UI_Chenjiu_Icon3.img	战场死伤陷阵营数量达到15W		255	20	A_guozhanachieve.cfg	150000|22649|20012|1
+310	国战	马革裹尸	死伤弓箭兵	UI_Chenjiu_Icon3.img	战场死伤弓箭兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20001|1
+311	国战	马革裹尸	死伤飞刀兵	UI_Chenjiu_Icon3.img	战场死伤飞刀兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20002|1
+312	国战	马革裹尸	死伤黑山弩兵	UI_Chenjiu_Icon3.img	战场死伤黑山弩兵数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20507|1
+313	国战	马革裹尸	死伤标枪兵	UI_Chenjiu_Icon3.img	战场死伤标枪兵数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20505|1
+314	国战	马革裹尸	死伤弩兵	UI_Chenjiu_Icon3.img	战场死伤弩兵数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20003|1
+315	国战	马革裹尸	死伤神射营	UI_Chenjiu_Icon3.img	战场死伤神射营数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20005|1
+316	国战	马革裹尸	死伤先登强弩	UI_Chenjiu_Icon3.img	战场死伤先登强弩数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20004|1
+317	国战	马革裹尸	死伤无当飞军	UI_Chenjiu_Icon3.img	战场死伤无当飞军数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20023|1
+318	国战	马革裹尸	死伤元戎弩	UI_Chenjiu_Icon3.img	战场死伤元戎弩数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20006|1
+319	国战	马革裹尸	死伤轻骑兵	UI_Chenjiu_Icon3.img	战场死伤轻骑兵数量达到5W		255	10	A_guozhanachieve.cfg	50000|22649|20013|1
+320	国战	马革裹尸	死伤黑山骑兵	UI_Chenjiu_Icon3.img	战场死伤黑山骑兵数量达到5W		255	10	A_guozhanachieve.cfg	50000|22649|20509|1
+321	国战	马革裹尸	死伤重骑兵	UI_Chenjiu_Icon3.img	战场死伤重骑兵数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20014|1
+322	国战	马革裹尸	死伤突骑兵	UI_Chenjiu_Icon3.img	战场死伤突骑兵数量达到20W		255	20	A_guozhanachieve.cfg	200000|22649|20015|1
+323	国战	马革裹尸	死伤西凉铁骑	UI_Chenjiu_Icon3.img	战场死伤西凉铁骑数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20016|1
+324	国战	马革裹尸	死伤飞熊军	UI_Chenjiu_Icon3.img	战场死伤飞熊军数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20510|1
+325	国战	马革裹尸	死伤象兵	UI_Chenjiu_Icon3.img	战场死伤象兵数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20017|1
+326	国战	马革裹尸	死伤虎豹骑	UI_Chenjiu_Icon3.img	战场死伤虎豹骑数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20018|1
+327	国战	马革裹尸	死伤冲车	UI_Chenjiu_Icon3.img	战场死伤冲车数量达到5W		255	20	A_guozhanachieve.cfg	50000|22649|20021|1
+328	国战	马革裹尸	死伤木兽	UI_Chenjiu_Icon3.img	战场死伤木兽数量达到15W		255	20	A_guozhanachieve.cfg	150000|22649|20022|1
+329	国战	马革裹尸	死伤井阑	UI_Chenjiu_Icon3.img	战场死伤井阑数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20020|1
+330	国战	马革裹尸	死伤投石车	UI_Chenjiu_Icon3.img	战场死伤投石车数量达到10W		255	20	A_guozhanachieve.cfg	100000|22649|20019|1
+331	国战	马革裹尸	被屠杀的弓手	UI_Chenjiu_Icon3.img	战场死伤弓兵系士兵数量达到100W		255	50	A_guozhanachieve.cfg	1000000|22656|1|0
+332	国战	马革裹尸	被屠杀的步兵	UI_Chenjiu_Icon3.img	战场死伤步兵系士兵数量达到100W		255	50	A_guozhanachieve.cfg	1000000|22656|2|0
+333	国战	马革裹尸	被屠杀的骑兵	UI_Chenjiu_Icon3.img	战场死伤骑兵系士兵数量达到50W		255	50	A_guozhanachieve.cfg	500000|22656|3|0
+334	国战	马革裹尸	被屠杀的器械	UI_Chenjiu_Icon3.img	战场死伤器械系士兵数量达到50W		255	50	A_guozhanachieve.cfg	500000|22656|4|0
+400	国战	轮回	灭亡魏国	UI_Chenjiu_Icon1.img	己方国家灭亡魏国（未叛国玩家才能完成）		1	50	A_destroyotherland.cfg	
+401	国战	轮回	灭亡蜀国	UI_Chenjiu_Icon1.img	己方国家灭亡蜀国（未叛国玩家才能完成）		1	50	A_destroyotherland.cfg	
+402	国战	轮回	灭亡吴国	UI_Chenjiu_Icon1.img	己方国家灭亡吴国（未叛国玩家才能完成）		1	50	A_destroyotherland.cfg	
+403	国战	轮回	亡国了	UI_Chenjiu_Icon1.img	己方所在国家灭亡（未叛国玩家才能完成）		1	50	A_destroyotherland.cfg	
+404	国战	轮回	统一大业	UI_Chenjiu_Icon1.img	己方国家完成统一（未叛国玩家才能完成）		2	100	A_destroyotherland.cfg	
+405	国战	轮回	快速统一	UI_Chenjiu_Icon1.img	30天内完成统一（未叛国玩家才能完成）		3	100	A_destroyotherland.cfg	
+500	领主	等级	小有所成	T_Icon_ItemBox_White.img	领主达到10级		10	10	A_lingzhudengji.cfg	0
+501	领主	等级	一鸣惊人	T_Icon_ItemBox_White.img	领主达到20级		20	10	A_lingzhudengji.cfg	0
+502	领主	等级	出类拔萃	T_Icon_ItemBox_White.img	领主达到30级		30	10	A_lingzhudengji.cfg	0
+503	领主	等级	名动一方	T_Icon_ItemBox_White.img	领主达到40级		40	10	A_lingzhudengji.cfg	0
+504	领主	等级	闻名遐迩	T_Icon_ItemBox_White.img	领主达到50级		50	20	A_lingzhudengji.cfg	0
+505	领主	等级	威震四方	T_Icon_ItemBox_White.img	领主达到60级		60	20	A_lingzhudengji.cfg	0
+506	领主	等级	傲视群雄	T_Icon_ItemBox_White.img	领主达到70级		70	20	A_lingzhudengji.cfg	0
+507	领主	等级	登峰造极	T_Icon_ItemBox_White.img	领主达到80级		80	20	A_lingzhudengji.cfg	0
+508	领主	财富	日进斗金	T_Icon_ItemBox_White.img	拥有100000铜币		1	10	A_CopperCash.cfg	1
+509	领主	财富	财大气粗	T_Icon_ItemBox_White.img	拥有1000000铜币		10	20	A_CopperCash.cfg	1
+510	领主	财富	富甲天下	T_Icon_ItemBox_White.img	拥有5000000铜币		50	50	A_CopperCash.cfg	1
+511	领主	财富	明智之举	T_Icon_ItemBox_White.img	第一次购买元宝		1	20	A_Gold.cfg	2
+512	领主	装备	趁手兵刃	T_Icon_ItemBox_White.img	获得1件蓝色装备		1	10	A_BlueEquip.cfg	3
+513	领主	装备	装备精良	T_Icon_ItemBox_White.img	获得1件紫色装备		1	10	A_PurpleEquip.cfg	4
+514	领主	装备	稀世兵甲	T_Icon_ItemBox_White.img	获得1件橙色装备		1	10	A_OrangeEquip.cfg	5
+515	领主	装备	传奇神兵	T_Icon_ItemBox_White.img	获得1整套橙色套装		1	20	A_OrangeSuitEquip.cfg	6
+516	领主	爵位	加官进爵	UI_Chenjiu_Icon2.img	提升1次爵位官职		1	10	A_GovPost.cfg	7
+517	领主	爵位	拜将封侯	UI_Chenjiu_Icon2.img	提升10次爵位官职		10	20	A_GovPost.cfg	7
+518	领主	爵位	封狼居胥	UI_Chenjiu_Icon2.img	官职升级到骠骑将军		20	50	A_GovPost.cfg	7
+519	领主	爵位	世为三公	UI_Chenjiu_Icon2.img	官职升级到太尉		21	100	A_GovPost.cfg	7
+520	领主	爵位	万人之上	UI_Chenjiu_Icon2.img	官职升级到宇宙大将军		22	200	A_GovPost.cfg	7
+521	领主	爵位	VIP1	VIP.img	VIP等级升到1级		1	20	A_viplv.cfg	
+522	领主	爵位	VIP2	VIP.img	VIP等级升到2级		2	20	A_viplv.cfg	
+523	领主	爵位	VIP3	VIP.img	VIP等级升到3级		3	20	A_viplv.cfg	
+524	领主	爵位	VIP4	VIP.img	VIP等级升到4级		4	20	A_viplv.cfg	
+525	领主	爵位	VIP5	VIP.img	VIP等级升到5级		5	20	A_viplv.cfg	
+526	领主	爵位	VIP6	VIP.img	VIP等级升到6级		6	20	A_viplv.cfg	
+527	领主	爵位	VIP7	VIP.img	VIP等级升到7级		7	20	A_viplv.cfg	
+528	领主	爵位	VIP8	VIP.img	VIP等级升到8级		8	20	A_viplv.cfg	
+529	领主	爵位	VIP9	VIP.img	VIP等级升到9级		9	20	A_viplv.cfg	
+530	领主	爵位	VIP10	VIP.img	VIP等级升到10级		10	20	A_viplv.cfg	
+531	领主	爵位	VIP11	VIP.img	VIP等级升到11级		11	20	A_viplv.cfg	
+532	领主	爵位	VIP12	VIP.img	VIP等级升到12级		12	20	A_viplv.cfg	
+533	领主	爵位	VIP13	VIP.img	VIP等级升到13级		13	20	A_viplv.cfg	
+534	领主	爵位	VIP14	VIP.img	VIP等级升到14级		14	20	A_viplv.cfg	
+535	领主	爵位	VIP15	VIP.img	VIP等级升到15级		15	20	A_viplv.cfg	
+550	领主	奇遇	时来运转	UI_Chenjiu_Icon2.img	完成1次奇遇任务		1	10	A_qiyu.cfg	
+551	领主	奇遇	好运连连	UI_Chenjiu_Icon2.img	完成3次奇遇任务		3	10	A_qiyu.cfg	
+552	领主	奇遇	顺风顺水	UI_Chenjiu_Icon2.img	完成7次奇遇任务		7	20	A_qiyu.cfg	
+553	领主	奇遇	吉人天相	UI_Chenjiu_Icon2.img	完成15次奇遇任务		15	20	A_qiyu.cfg	
+554	领主	奇遇	洪福齐天	UI_Chenjiu_Icon2.img	完成30次奇遇任务		30	50	A_qiyu.cfg	
+619	领主	军备科技	青铜铸造术	UI_Chenjiu_Icon4.img	青铜铸造术升级到20		20	10	A_troopstechachieve.cfg	30000
+620	领主	军备科技	韧性铸铁法	UI_Chenjiu_Icon4.img	韧性铸铁法升级到15		15	10	A_troopstechachieve.cfg	30001
+621	领主	军备科技	坩埚炼铁法	UI_Chenjiu_Icon4.img	坩埚炼铁法升级到15		15	10	A_troopstechachieve.cfg	30002
+622	领主	军备科技	炒钢法	UI_Chenjiu_Icon4.img	炒钢法升级到10		10	10	A_troopstechachieve.cfg	30003
+623	领主	军备科技	百炼钢秘术	UI_Chenjiu_Icon4.img	百炼钢秘术升级到15		15	10	A_troopstechachieve.cfg	30004
+624	领主	军备科技	铜首羽箭	UI_Chenjiu_Icon4.img	铜首羽箭升级到20		20	10	A_troopstechachieve.cfg	30100
+625	领主	军备科技	淬毒术	UI_Chenjiu_Icon4.img	淬毒术升级到15		15	10	A_troopstechachieve.cfg	30101
+626	领主	军备科技	打磨开刃法	UI_Chenjiu_Icon4.img	打磨开刃法升级到15		15	10	A_troopstechachieve.cfg	30102
+627	领主	军备科技	锥头箭	UI_Chenjiu_Icon4.img	锥头箭升级到10		10	10	A_troopstechachieve.cfg	30103
+628	领主	军备科技	倒刺箭	UI_Chenjiu_Icon4.img	倒刺箭升级到15		15	10	A_troopstechachieve.cfg	30104
+629	领主	军备科技	驱马术	UI_Chenjiu_Icon4.img	驱马术升级到15		15	10	A_troopstechachieve.cfg	30200
+630	领主	军备科技	燕云骑术	UI_Chenjiu_Icon4.img	燕云骑术升级到15		15	10	A_troopstechachieve.cfg	30201
+631	领主	军备科技	伯乐相马术	UI_Chenjiu_Icon4.img	伯乐相马术升级到10		10	10	A_troopstechachieve.cfg	30202
+632	领主	军备科技	驭兽术	UI_Chenjiu_Icon4.img	驭兽术升级到15		15	10	A_troopstechachieve.cfg	30203
+633	领主	军备科技	器械入门	UI_Chenjiu_Icon4.img	器械入门升级到15		15	10	A_troopstechachieve.cfg	30300
+634	领主	军备科技	机甲术	UI_Chenjiu_Icon4.img	机甲术升级到15		15	10	A_troopstechachieve.cfg	30301
+635	领主	军备科技	墨子机械篇	UI_Chenjiu_Icon4.img	墨子机械篇升级到15		15	10	A_troopstechachieve.cfg	30302
+636	领主	军备科技	鲁公秘录	UI_Chenjiu_Icon4.img	鲁公秘录升级到15		15	10	A_troopstechachieve.cfg	30303
+637	领主	军备科技	弓兵科技	UI_Chenjiu_Icon4.img	弓兵系军备科技全部点满		1	200	A_troopstechfinish.cfg	30100|30116
+638	领主	军备科技	步兵科技	UI_Chenjiu_Icon4.img	步兵系军备科技全部点满		1	200	A_troopstechfinish.cfg	30000|30016
+639	领主	军备科技	骑兵科技	UI_Chenjiu_Icon4.img	骑兵系军备科技全部点满		1	200	A_troopstechfinish.cfg	30200|30215
+640	领主	军备科技	器械科技	UI_Chenjiu_Icon4.img	器械系军备科技全部点满		1	200	A_troopstechfinish.cfg	30300|30311
+1001	封地		勤政治国	UI_Chenjiu_Icon2.img	将府衙升级到30级		30	10	A_fuyalv.cfg	0
+1002	封地		政治中心	UI_Chenjiu_Icon2.img	将府衙升级到80级		80	20	A_fuyalv.cfg	0
+1003	封地		安居乐业	UI_Chenjiu_Icon2.img	将民居升级到30级		30	10	A_minjulv.cfg	1
+1004	封地		大户人家	UI_Chenjiu_Icon2.img	将民居升级到80级		80	20	A_minjulv.cfg	1
+1005	封地		村野小驿	UI_Chenjiu_Icon2.img	将酒肆升级到30级		30	10	A_jiusilv.cfg	2
+1006	封地		卧虎藏龙	UI_Chenjiu_Icon2.img	将酒肆升级到80级		80	20	A_jiusilv.cfg	2
+1007	封地		充足库存	UI_Chenjiu_Icon2.img	将府库升级到30级		30	10	A_fukulv.cfg	3
+1008	封地		天下粮仓	UI_Chenjiu_Icon2.img	将府库升级到80级		80	20	A_fukulv.cfg	3
+1009	封地		人来人往	UI_Chenjiu_Icon2.img	将集市升级到30级		30	10	A_shijilv.cfg	4
+1010	封地		贸易中心	UI_Chenjiu_Icon2.img	将集市升级到80级		80	20	A_shijilv.cfg	4
+1011	封地		能工巧匠	UI_Chenjiu_Icon2.img	将工坊升级到30级		30	10	A_gongfanglv.cfg	5
+1012	封地		冶炼大师	UI_Chenjiu_Icon2.img	将工坊升级到80级		80	20	A_gongfanglv.cfg	5
+1013	封地		大营初成	UI_Chenjiu_Icon2.img	将兵营升级到30级		30	10	A_bingyinglv.cfg	6
+1014	封地		兵强将勇	UI_Chenjiu_Icon2.img	将兵营升级到80级		80	20	A_bingyinglv.cfg	6
+1015	封地		充足马匹	UI_Chenjiu_Icon2.img	将牧场升级到30级		30	10	A_muchanglv.cfg	7
+1016	封地		宝马良驹	UI_Chenjiu_Icon2.img	将牧场升级到80级		80	20	A_muchanglv.cfg	7
+1017	封地		一亩三分	UI_Chenjiu_Icon2.img	将农田升级到30级		30	10	A_nongtianlv.cfg	8
+1018	封地		沃野千里	UI_Chenjiu_Icon2.img	将农田升级到80级		80	20	A_nongtianlv.cfg	8
+1019	封地		植树造林	UI_Chenjiu_Icon2.img	将林地升级到30级		30	10	A_lindilv.cfg	9
+1020	封地		郁郁葱葱	UI_Chenjiu_Icon2.img	将林地升级到80级		80	20	A_lindilv.cfg	9
+1021	封地		开山采石	UI_Chenjiu_Icon2.img	将矿山升级到30级		30	10	A_kuangshanlv.cfg	10
+1022	封地		点石成金	UI_Chenjiu_Icon2.img	将矿山升级到80级		80	20	A_kuangshanlv.cfg	10
+1501	将卡		骁勇之士	UI_Chenjiu_Icon2.img	获得任意1张紫色将卡		1	10	A_PurpleCard.cfg	0
+1502	将卡		大将风范	UI_Chenjiu_Icon2.img	获得任意1张橙色将卡		1	15	A_OrangeCard.cfg	1
+1503	将卡		卧龙在世	UI_Chenjiu_Icon2.img	获得橙色诸葛亮将卡		1	15	A_OrangeZhugeliang.cfg	2
+1504	将卡		人中吕布	UI_Chenjiu_Icon2.img	获得橙色吕布将卡		1	15	A_OrangeLvbu.cfg	3
+1505	将卡		江东都督	UI_Chenjiu_Icon2.img	获得橙色周瑜将卡		1	15	A_OrangeZhouyu.cfg	4
+1506	将卡		曹魏鬼才	UI_Chenjiu_Icon2.img	获得橙色司马懿将卡		1	15	A_OrangeSimayi.cfg	5
+1507	将卡		传世情缘	UI_Chenjiu_Icon2.img	获得橙色吕布，貂蝉将卡各1张		2	15	A_OrangeChuanshi.cfg	6
+1508	将卡		一星半点	UI_Chenjiu_Icon2.img	获得任意1张橙色1星将卡		1	15	A_GainStarCard1.cfg	
+1509	将卡		星星点点	UI_Chenjiu_Icon2.img	获得任意1张橙色2星将卡		1	20	A_GainStarCard2.cfg	
+1510	将卡		吉星高照	UI_Chenjiu_Icon2.img	获得任意1张橙色3星将卡		1	30	A_GainStarCard3.cfg	
+1511	将卡		灿若繁星	UI_Chenjiu_Icon2.img	获得任意1张橙色4星将卡		1	40	A_GainStarCard4.cfg	
+1512	将卡		星火燎原	UI_Chenjiu_Icon2.img	获得任意1张橙色5星将卡		1	50	A_GainStarCard5.cfg	

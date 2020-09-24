@@ -1,0 +1,6 @@
+widget	script
+UI_AncientHouse_Revenue	UI_AncientHouse_RevenuetCanvas.cfg
+UI_AncientHouse_Revenue_Close	UI_AncientHouse_Revenue_Close.cfg
+UI_AncientHouse_Revenue_Drag	ui_frame.cfg
+UI_AncientHouse_Revenue_Levy	UI_AncientHouse_Revenue_Levy.cfg
+UI_AncientHouse_Revenue_Impress	UI_AncientHouse_Revenue_Impress.cfg

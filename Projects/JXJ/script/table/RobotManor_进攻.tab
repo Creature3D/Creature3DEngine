@@ -1,0 +1,16 @@
+state	steps	type	canvas	widget	GMOrder
+1	1	2			/robotlv
+1	2	2			/jxjresetchengchiid2
+1	3	2			/robotgiftgold
+1	4	2			/robotformation
+1	5	1	UI_Prize	Done	
+1	6	1	UI_Prize_2	Done_1	
+1	7	1	guozhantanchu	Shijie_Buqu	
+1	8	1	guozhantanchu	buqu	
+1	9	1	UI_Battleground_Deserter	ClearTime	
+1	10	1	UI_Prompt	UI_Prompt_Confirm	
+1	11	1	UI_Battleground_Jr1_Cz	UI_Battleground_Jr3_Tuichu	
+1	12	0	UI_ManorStair_Taskbar	UI_Guozhan	
+1	13	0	UI_Battleground_Jr1	Enter1_1	
+1	14	0	UI_Battleground_LineUp	Solo	
+1	15	0	UI_Battleground_Jr4	UI_Battleground_Jr4_Jr	

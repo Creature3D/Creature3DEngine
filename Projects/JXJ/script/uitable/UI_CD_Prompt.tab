@@ -1,0 +1,5 @@
+widget	script
+UI_Confirm	UI_CD_PromptI_Confirm.cfg
+UI_Cancel	UI_CD_PromptI_Cancel.cfg
+UI_Beta3_ManorStair_XFTS_Close	UI_CD_PromptI_Cancel.cfg
+Choice	UI_CD_PromptI_Choose.cfg

@@ -1,0 +1,6 @@
+widget	script
+UI_Country3_Toupiaojieguo	UI_Country3_Toupiaojieguo.cfg
+Toupiaojieguo_Drag	UI_frame.cfg
+Toupiaojieguo_Close	UI_Close.cfg
+Toupiaojieguo_Yiyue	UI_Close.cfg
+Toupiaojieguo_Chakandepiao	Toupiaojieguo_Chakandepiao.cfg

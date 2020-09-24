@@ -1,0 +1,4 @@
+widget	script
+UI_ManorStair_Panguo	UI_ManorStair_PanguoCanvas.cfg
+Panguo_Close	CanclePamguo.cfg
+Panguo_MiaoCD	ClearPanGuoBuffTime.cfg

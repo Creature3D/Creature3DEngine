@@ -1,0 +1,11 @@
+widget	script
+UI_Qiridenglu	UI_Qiridenglu.cfg
+UI_Drag	UI_frame.cfg
+UI_Close	UI_Close.cfg
+UI_Icon1	UI_Icon1.cfg
+UI_Icon2	UI_Icon2.cfg
+UI_Icon3	UI_Icon3.cfg
+UI_Icon4	UI_Icon4.cfg
+UI_Icon5	UI_Icon5.cfg
+UI_Icon6	UI_Icon6.cfg
+UI_Card	UI_Card_2.cfg

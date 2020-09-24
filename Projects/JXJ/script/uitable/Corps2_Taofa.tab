@@ -1,0 +1,8 @@
+widget	script
+Corps2_Taofa	Corps2_Taofa.cfg
+Taofa_Drag	ui_frame.cfg
+Taofa_Close	UI_Close.cfg
+TaofaRaido1	TaofaRaido1.cfg
+TaofaRaido2	TaofaRaido1.cfg
+Taofa_Button	Taofa_Button.cfg
+Taofa_Button_1	Taofa_Button.cfg

@@ -1,0 +1,9 @@
+widget	script
+UI_Battleground_Xzcsd2	UI_Battleground_Xzcsd2Canvas.cfg
+UI_Csd2_Time	UI_Beta2_Battleground_Csd_Input1_Time.cfg
+UI_Xzcsd2_Qd	UI_Battleground_Xzcsd2_Qd.cfg
+UI_Csd2_Gong	UI_Beta2_Battleground_Csd_Gong.cfg
+UI_Csd2_Shou	UI_Beta2_Battleground_Csd_Shou.cfg
+UI_Xzcsd2_Csd1	UI_Battleground_Xzcsd2_Csd1.cfg
+UI_Xzcsd2_Csd2	UI_Battleground_Xzcsd2_Csd2.cfg
+UI_Xzcsd2_Csd3	UI_Battleground_Xzcsd2_Csd3.cfg

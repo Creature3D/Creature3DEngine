@@ -1,0 +1,4 @@
+widget	script
+UI_MessageBox	UI_ServerMessageBoxCanvas.cfg
+UI_MessageBox_Close	UI_ServerMessageBox_Close.cfg
+UI_MessageBox_Confirm	UI_ServerMessageBox_Confirm.cfg

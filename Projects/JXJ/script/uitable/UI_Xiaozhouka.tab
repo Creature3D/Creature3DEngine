@@ -1,0 +1,13 @@
+widget	script
+UI_Xiaozhouka	UI_Xiaozhouka.cfg
+Drag	UI_frame.cfg
+Close	UI_Close.cfg
+Chongzhi	UI_ChongZhi.cfg
+Icon1	UI_XiaozhoukaIcon1.cfg
+Icon2	UI_XiaozhoukaIcon2.cfg
+Icon3	UI_XiaozhoukaIcon3.cfg
+Icon4	UI_XiaozhoukaIcon4.cfg
+Icon5	UI_XiaozhoukaIcon5.cfg
+Icon6	UI_XiaozhoukaIcon6.cfg
+Icon7	UI_XiaozhoukaIcon7.cfg
+Lingqu	UI_Xiaozhoukalingqu.cfg

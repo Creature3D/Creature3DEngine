@@ -1,0 +1,1585 @@
+id	人物名称	内容对白	脚本对白	图片名称	talkid	对话类型
+1			task/dialogue/Dxumu01.cfg		1	
+2			task/dialogue/Dxumu02.cfg		2	
+3			task/dialogue/Dxumu03.cfg		3	
+4			task/dialogue/Dxumu04.cfg		4	
+5			task/dialogue/Dxumu05.cfg		5	
+6			task/dialogue/Dxumu06.cfg		6	
+7			task/dialogue/Dxumu07.cfg		7	
+8			task/dialogue/Dxumu08.cfg		7	
+9			task/dialogue/Dxumu09.cfg		1	
+10			task/dialogue/Dxumu10.cfg		1	
+11			task/dialogue/Dxumu11.cfg		8	
+20		前方黄巾作乱，将军请务必小心！		UI_Juqing_T_Chuanlingbing.img	20	1
+21	Player	在下初临战阵，难免不知所措，还请兄弟指点一二！			20	2
+22		将军可听我指引，乱军之中杀条出路，率领我等攻破城门即可！		UI_Juqing_T_Chuanlingbing.img	20	1
+23		将军，城门已经攻破，黄巾贼子人多势众、来势汹汹，请您暂入城中躲避，我和众位兄弟誓为将军断后！		UI_Juqing_T_Chuanlingbing.img	21	1
+24	Player	城内黄巾余党尚存，是否已经被攻占了？			21	2
+25		城中政厅未破，此城还属我方势力。希望将军入城之后励精图治，广积兵马，助我大王早日一统天下。		UI_Juqing_T_Chuanlingbing.img	21	1
+26	Player	董卓乱政，天怒人怨。我也当助一臂之力，替天行道！			26	2
+63	萌萌		task/dialogue/Dxumu12.cfg	UI_Juqing_T_XiaoChi.img	26	
+62	斥候	前方发现敌军！		UI_Juqing_T_Chuanlingbing.img	28	1
+27	萌萌		task/dialogue/Dxumu14.cfg	UI_Juqing_T_XiaoChi.img		
+28	斥候	干的不错！继续前进！		UI_Juqing_T_Chuanlingbing.img		1
+29	萌萌		task/dialogue/Dxumu17.cfg	UI_Juqing_T_XiaoChi.img	30	
+30	刘备	董卓手下大将华雄就在关下，小将军随我速速击之。		UI_Juqing_T_Liubei.img	31	1
+31	Player	刘备大人在此安心等候，待我直取华雄首级！			31	2
+49	华雄	汝等敢以多欺少！给我放箭！！		UI_Juqing_T_Huaxiong.img	38	1
+50	Player	汝助纣为虐，人人得而诛之！			38	2
+51	华雄	啊……天亡我也！		UI_Juqing_T_Huaxiong.img	39	1
+52	刘备	敌方群龙无首，乘此良机一举攻进城门吧！		UI_Juqing_T_Liubei.img	39	1
+	斥候	董卓已退，乘此良机一举攻入关内吧！		UI_Juqing_T_Chuanlingbing.img		
+53	斥候	击败守军，攻占虎牢关。		UI_Juqing_T_Chuanlingbing.img	40	1
+54	Player	我军占领了虎牢关，接下来……			41	2
+55	斥候	将军！领地有变，还请将军速速返回！		UI_Juqing_T_Chuanlingbing.img	41	1
+57	刘备	城门固若金汤，需配合攻城器械方可攻破。		UI_Juqing_T_Liubei.img	43	1
+59		朝地图右上方进军，击败华雄吧！			44	0
+60		朝地图左边进军，击败战神吕布吧！			45	0
+61	华雄	我乃大将华雄！汝又是何方无名小卒？		UI_Juqing_T_Huaxiong.img	46	1
+	Player	联军一路追杀董卓，我也得加快行军步伐和大家汇合，只是此地未曾来过…				
+100	斥候	主公，前方有一路人马疑似西凉军余部！		UI_Juqing_T_Chuanlingbing.img	100	1
+	Player	赶上去正好问个究竟！				
+102	萌萌		task/dialogue/Dxumu12.cfg	UI_Juqing_T_XiaoChi.img	100	
+103		朝地图左方移动！			101	0
+104	Player	董卓现在何处？			102	2
+105	西凉军	……		UI_Juqing_T_Tufei.img	102	1
+112	萌萌		task/dialogue/Dxumu14.cfg	UI_Juqing_T_XiaoChi.img	102	
+106	西凉军	郭汜大人会替我们报仇的…		UI_Juqing_T_Tufei.img	103	1
+107		往地图上方过桥继续追击郭汜军！			104	0
+108	郭汜	哈哈，我家主公不在此地，今天就让我们在这里做个了断吧！		UI_Juqing_T_Chenlan.img	105	1
+109	Player	哼！			105	2
+110	郭汜	看来胜负已分，此乃天意…		UI_Juqing_T_Chenlan.img	106	1
+111	Player	此处地势陡峭，看来董卓未必会走此路，我们从左边继续追击吧！			106	2
+200	Player	总有种不祥的预感……			200	2
+201		朝地图左方界桥移动！			201	0
+202	李傕	我乃西凉大将李傕！想过桥？问过俺没？		UI_Juqing_T_Jiling.img	202	1
+203	Player	废话少说！			202	2
+204	李傕	让汝等过桥又何妨~（阴笑）		UI_Juqing_T_Jiling.img	203	1
+205		通过界桥继续追击董卓！			204	0
+207	Player	董贼今天你的死期到了！			205	2
+208	伪董卓	给我一起上！		UI_Juqing_T_Dongzhuo.img	205	1
+209	伪董卓	呵呵，太师早已退至长安，尔等别在白费心机了。		UI_Juqing_T_Dongzhuo.img	206	1
+210	Player	可恶！			206	2
+211	斥候	主公，前方似乎有座城池，待我前去打探一下虚实。		UI_Juqing_T_Chuanlingbing.img	206	1
+212	Player	嗯，事到如今只好如此了…			206	2
+213	萌萌		task/dialogue/Dxumu12.cfg	UI_Juqing_T_XiaoChi.img	200	
+50000	董卓	"你们中埋伏了,那只是我的一个替身"		UI_Juqing_T_Dongzhuo.img	50000	1
+50001	荀彧	"后路敌军势大,我们走北面的桥撤退"		UI_Juqing_T_Xunyu.img	50001	1
+50002	荀彧	"我军已经人困马乏,前方有个小村庄,可以稍作休息"		UI_Juqing_T_Xunyu.img	50002	1
+51000	卫兵	敌军狙击部队在城南城东出现		UI_Juqing_T_Chuanlingbing.img	51000	1
+51001	高干	"请将军出南门,引开敌军,我出城东沿小路走"		UI_Juqing_T_Gaogan.img	51000	1
+51002		消灭敌军			51001	0
+51003	严纲	想从西桥走?随我去拿下他!		UI_Juqing_T_Yangang.img	51002	1
+51004		严纲部队向我军移动			51003	0
+51005	高干	"敌军都被引开了,我们出发!"		UI_Juqing_T_Gaogan.img	51004	1
+51006		高干部向城东移动			51005	0
+51007	公孙瓒	"都攻到这里来了?白马义从,突击!"		UI_Juqing_T_Gongsunzan.img	51006	1
+51008	赵云	"赵云在此,休走!"		UI_Juqing_T_Zhaoyun.img	51006	1
+51009		赵云部向我军移动			51007	0
+51010		高干部继续前进.			51008	0
+51011	高干	"看来敌军都被引走了,我们继续前进"		UI_Juqing_T_Gaogan.img	51009	1
+51012	高干	"已经顺利达到目的地,多谢将军"		UI_Juqing_T_Gaogan.img	51010	1
+51013	高干	居然是赵云...快撤退!!		UI_Juqing_T_Gaogan.img	51011	1
+51014	高干	"敌军太多了,我们先撤."		UI_Juqing_T_Gaogan.img	51012	1
+52000	袁绍	"韩馥已经归降,但麾下大将鞠义孤身对抗公孙军,被抓往河间.请将军将他救出."		UI_Juqing_T_Yuanshao.img	52000	1
+52001	张郃	"当日在韩馥麾下,我与鞠义乃是好友,愿助将军一臂之力."		UI_Juqing_T_Zhanghe.img	52000	1
+52002	单经	"袁绍没有亲自来吗?真是可惜.包围起来,一个不留!"		UI_Juqing_T_Shanjing.img	52001	1
+52003	赵云	"这2人为了朋友不惜舍身涉险,公孙大人却为了杀袁绍而牺牲自己的弟弟.罢了,这仗打完,我自投明主去吧."		UI_Juqing_T_Zhaoyun.img	52001	1
+52004	传令兵	友军死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	52002	1
+53000	高干	"邺城就在前方,不过似乎韩馥手下有不少人对我主有误解.烦请将军打通前往邺城的道路."		UI_Juqing_T_Gaogan.img	53000	1
+53001		耿武部出现			53001	0
+53002		闵纯部出现			53001	0
+53003		沮授部出现			53001	0
+53004	传令兵	发现公孙瓒使者达到邺城附近.		UI_Juqing_T_Chuanlingbing.img	53002	1
+53005	高干	一定要抢在他们前面进入邺城!		UI_Juqing_T_Gaogan.img	53002	1
+53006		公孙范部出现!			53003	0
+53007		赶在公孙范之前进入邺城!			53003	0
+53008	鞠义	袁公才是河北之主.		UI_Juqing_T_Quyi.img	53004	1
+53009		鞠义部出现!			53005	0
+53010		鞠义开始和公孙范交战!			53005	0
+53011	传令兵	敌方已经攻占政厅位置，游戏失败！		UI_Juqing_T_Chuanlingbing.img	53006	1
+54000	萌萌	"张曼成伙同一群贼寇占据了这片山林,强占了原本属于官府的矿场和木场.消灭他们,就可以恢复生产."		UI_Juqing_T_XiaoChi.img	54000	1
+54001		击退张曼成.			54001	0
+54002	萌萌	"水井可以恢复兵力,靠近水井,左键点击即可."		UI_Juqing_T_XiaoChi.img	54002	1
+55000	斥候	禀告将军，前方匈奴百人围困了马邑城门，既然董卓不在此处，我们先击退他们从长计议吧！		UI_Juqing_T_Chuanlingbing.img	55000	1
+55006	萌萌		task/dialogue/Dxumu13.cfg	UI_Juqing_T_XiaoChi.img	55000	
+55001		击败去卑			55001	0
+55002	去卑	我家单于即将南侵，一定会给我报仇的！		UI_Juqing_T_Qubei.img	55002	1
+55003	斥候	匈奴南下，第一战一定在上郡！大人怎么办？		UI_Juqing_T_Chuanlingbing.img	55002	2
+55004	Player	快去上党给并州刺史丁原报讯！			55002	1
+55005	斥候	主公，前方有水井！使用之后可以回复我军兵力！		UI_Juqing_T_Chuanlingbing.img	55003	1
+56000	斥候	将军，前面就是上党了！我们赶快去向并州刺史丁原大人求援吧！		UI_Juqing_T_Chuanlingbing.img	56000	1
+56013	萌萌		task/dialogue/Dxumu16.cfg	UI_Juqing_T_XiaoChi.img	56000	
+56001		前往上党求援！			56001	0
+56002	山贼	此路是我开，此树是我栽！		UI_Juqing_T_Shanzei.img	56002	1
+56003	土匪	要想过此路，留下买路财！		UI_Juqing_T_Tufei.img	56002	1
+56012	Player	谁敢拦我！（士气满！）			56002	2
+56004	Player	这位大人，我等求见丁原大人！			56003	1
+56005	丁芳	少说废话，丁原大人又岂是你等说见就见的？		UI_Juqing_T_Dingfang.img	56003	2
+56006	Player	匈奴即将南下，情况危急！如此只好得罪了！			56003	2
+56007	丁芳	呦呵？还敢强闯？左右与我拿下了！		UI_Juqing_T_Dingfang.img	56003	1
+56008		击败丁芳！			56004	0
+56009	丁芳	哎呦呦，疼死我了，好汉手下留情，手下留情！		UI_Juqing_T_Dingfang.img	56005	1
+56010	丁芳	实不相瞒，刺史去了洛阳，并州不剩下多少兵力了T_T		UI_Juqing_T_Dingfang.img	56005	2
+56011	Player	这可如何是好？根本不能阻止匈奴南侵啊！不行，我要去上郡看看！			56005	2
+57000	Player	前方就是晋阳了，大伙加把劲！			57000	2
+57015	萌萌		task/dialogue/Dxumu18.cfg	UI_Juqing_T_XiaoChi.img	57000	
+57001		护送百姓前往晋阳			57001	0
+57002	山贼	站住！你们踩脏了我的山！快赔钱！		UI_Juqing_T_Shanzei.img	57002	1
+57003	Player	无耻山贼，速速受死！			57002	2
+57004	山贼	点子扎手，风紧扯呼！		UI_Juqing_T_Shanzei.img	57003	1
+57005	Player	哼！这次先饶过你们！			57003	2
+57006	王宏	站住！你们是干什么的？		UI_Juqing_T_Wanghong.img	57004	1
+57007	Player	匈奴即将南下，我等带领百姓迁移到此！			57004	2
+57008	王宏	不行！谁知道你们之中有没有匈奴的奸细！		UI_Juqing_T_Wanghong.img	57004	1
+57009	Player	如此只好得罪了！			57004	2
+57010	Player	乡亲们，入城吧，入城就安全了！			57005	2
+57011	斥候	百姓们终于安全了！		UI_Juqing_T_Chuanlingbing.img	57006	1
+57012	Player	晋阳太守爱民如子，定然不会将百姓赶走。			57006	2
+57013	Player	只是我们得罪了城门将王宏，还是快走吧！			57006	2
+57014	传令兵	百姓全部死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	57007	1
+58000	斥候	将军，那只无名军队又来了！请将军出兵击退他们吧！		UI_Juqing_T_Chuanlingbing.img	58000	1
+58001	Player	犯我城池者死！			58001	1
+58002	斥候	将军，我们也使用技能！按Q、W、E键可以使用相应的技能！		UI_Juqing_T_Chuanlingbing.img	58002	1
+58003	Player	犯我城池者死！！！			58003	1
+59000	斥候	终于说服了上郡的百姓，现在他们都决定跟随主公逃离！请将军这就护送他们前往晋阳吧！		UI_Juqing_T_Chuanlingbing.img	59000	1
+59013	萌萌		task/dialogue/Dxumu15.cfg	UI_Juqing_T_XiaoChi.img	59000	
+59001		护送百姓前往晋阳			59001	0
+59002	卫兵	发现一队汉人！快拦住他们！		UI_Juqing_T_Xiongnuzabing.img	59002	1
+59003	Player	大家走了这么远，先休息一下吧！			59003	2
+59004	斥候	大人，有匈奴兵赶过来了！		UI_Juqing_T_Chuanlingbing.img	59003	1
+59005	Player	不好！一定是刚才逃走的匈奴兵通风报讯！我去拦住他们！			59003	2
+59006	于夫罗	就是你击退了我的部下？速速投降，饶你不死！		UI_Juqing_T_Yufuluo.img	59004	1
+59007	Player	投降？哼，先问问我手中的兵刃吧！			59004	2
+59008	于夫罗	痛煞我也！！这次出来匆忙，带的都是普通士兵！		UI_Juqing_T_Yufuluo.img	59005	1
+59009	于夫罗	等我带王帐精锐回来，定将你五马分尸！		UI_Juqing_T_Yufuluo.img	59005	1
+59010	Player	快走，朝晋阳出发！			59005	2
+59011		击败于夫罗！			59006	0
+59012	传令兵	百姓全部死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	59007	1
+60000	斥候	启禀将军！敌军就在城外，正在攻击城门，请将军速速出兵！！		UI_Juqing_T_Chuanlingbing.img	60000	1
+60001		击退敌军！			60001	0
+60002	无名校尉	无名小辈，竟敢杀我攻城部队？		UI_Juqing_T_Tufei.img	60002	1
+60003	斥候	敌军退了！		UI_Juqing_T_Chuanlingbing.img	60003	1
+61000	Player	太守，黄巾围困北海，坐守孤城不是办法啊！			61000	2
+61001	孔融	刘备在黄巾贼中素有威望，定然可解此围。		UI_Juqing_T_Kongrong.img	61000	1
+61002	孔融	闻太史慈与其有旧，请你去请他说服刘备吧！		UI_Juqing_T_Kongrong.img	61000	1
+61003		欲往东莱，还是先出城吧！			61001	0
+61004	管巳	城里的狗官兵又出来送死了！孩儿们上！		UI_Juqing_T_Shanzei.img	61002	1
+61005	Player	黄巾贼首，速来我刀下受死！			61002	2
+61006	管巳	狗官军等着，父亲会为我报仇的！		UI_Juqing_T_Shanzei.img	61003	1
+61007	Player	城南黄巾势大，还是从北面小道走吧！			61003	2
+61008	管亥	狗官军！就是你杀了我的爱子？		UI_Juqing_T_Guanhai.img	61004	1
+61009	Player	黄巾贼子，犯我州郡，死有余辜！			61004	2
+61010	管亥	哇呀呀呀，我要替我儿报仇！		UI_Juqing_T_Guanhai.img	61004	1
+61011	管亥	你给我等着！今日之仇，来日必报！		UI_Juqing_T_Guanhai.img	61005	1
+61012	Player	哼，乱臣贼子，人人得而诛之！			61005	2
+61013	Player	终于突围出来了，接下来前往东莱！			61006	2
+62000	Player	终于到了东莱！听说太史慈住在城外！			62000	2
+62001		找到太史慈			62001	0
+62002	Player	阁下可是东莱太史慈？			62002	2
+62003	太史慈	正是。黄巾贼已经攻占东莱，正在洗劫百姓。		UI_Juqing_T_Taishici.img	62002	1
+62004	太史慈	闲话少说，先去赶走这群匪徒，再说其他。		UI_Juqing_T_Taishici.img	62002	1
+62005	太史慈	贼军势大，待我整军再战！		UI_Juqing_T_Taishici.img	62003	1
+62006	管正	哈哈哈哈，又来了一个送死的蠢货！		UI_Juqing_T_Shanzei.img	62004	1
+62007	管正	快，小的们退守政厅！		UI_Juqing_T_Shanzei.img	62005	1
+62008	太史慈	哼，加把劲，击破政厅！		UI_Juqing_T_Taishici.img	62005	1
+62009	太史慈	我的家乡又恢复了安宁！我该如何报答你？		UI_Juqing_T_Taishici.img	62006	1
+62010	Player	太史将军，孔太守被围困，请您向刘备求援！			62006	2
+62011	太史慈	好，咱们这就出发！		UI_Juqing_T_Taishici.img	62006	1
+63000	刘备	没想到孔大人居然知道天下之间有我刘备！！		UI_Juqing_T_Liubei.img	63000	1
+63001	Player	请刘大人速速出兵！			63000	2
+63002	刘备	近日我军与袁谭鏖战正酣……		UI_Juqing_T_Liubei.img	63000	1
+63003	Player	小心！			63000	2
+63004		袁军突袭！保护刘备！			63001	0
+63005	袁谭	唔？刘备麾下竟然有如此大将？		UI_Juqing_T_Yuantan.img	63002	1
+63006	袁谭	罢了罢了，撤军！		UI_Juqing_T_Yuantan.img	63003	1
+63007	刘备	多谢将军仗义相助，我们这就启程前往北海吧！		UI_Juqing_T_Liubei.img	63003	1
+64000	斥候	将军！据探得知，吕布等人密谋篡夺徐州！		UI_Juqing_T_Chuanlingbing.img	64000	1
+64001	Player	不好！刘大人外出讨伐袁术了！快去报讯！			64000	2
+64002		赶往平原			64001	0
+64003	高顺	消息走漏了么？哼，我不会让你过去的！		UI_Juqing_T_Gaoshun.img	64002	1
+64004	高顺	呵呵，我封住了城门，你过不去的！		UI_Juqing_T_Gaoshun.img	64003	1
+64005	魏续	卧槽！敌军来的这么快！我还没来得及封门！		UI_Juqing_T_Weixu.img	64004	1
+64006	魏续	你敢打伤我！我可是吕布的亲戚！你等着！		UI_Juqing_T_Weixu.img	64005	1
+64007	曹性	不能让你们破坏吕将军的大业！		UI_Juqing_T_Caoxing.img	64006	1
+64008	曹性	今日一箭之仇，来日必报！		UI_Juqing_T_Caoxing.img	64007	1
+64009	张辽	张辽在此，来将止步！		UI_Juqing_T_Zhangliao.img	64008	1
+64010	Player	张将军，得罪了！			64008	2
+64011	张辽	果然厉害，难怪能得温侯另眼相待！		UI_Juqing_T_Zhangliao.img	64009	1
+64012	Player	……			64009	2
+64013	吕布	哼，想去给刘备通风报信？打败我再说！		UI_Juqing_T_Lvbu.img	64010	1
+64014	Player	温侯武艺，天下无双，正要领教！			64010	2
+64015	Player	多谢温侯手下留情！			64011	2
+64016	吕布	还不快走！		UI_Juqing_T_Lvbu.img	64011	1
+65000	Player	前面就是下邳了！快去通知刘备大人！			65000	2
+65001	陈宫	嗯？是要去给下邳报讯的么？给我拦住他！		UI_Juqing_T_Chengong.img	65001	1
+65002	陈宫	好厉害！可惜你迟了，徐州定为我主公所有！		UI_Juqing_T_Chengong.img	65002	1
+65003	Player	吕布阴谋篡徐，还请许将军通报刘大人！			65003	2
+65004	许耽	一派胡言，不要捣乱，快走快走！		UI_Juqing_T_Wanghong.img	65003	1
+65005	Player	哼，如此心虚，定然叛变了是不是！			65003	2
+65006	许耽	被看穿了……		UI_Juqing_T_Wanghong.img	65003	1
+65007	许耽	有人冲撞城门啦！快去通知张飞大人！		UI_Juqing_T_Wanghong.img	65004	1
+65008	Player	恶人先告状……看来刘大人不在……			65004	2
+65009	醉张飞	哇呀呀呀！小贼，矛下受死！		UI_Juqing_T_Zhangfei.img	65005	1
+65010	Player	看来解释不通……先打败他吧……			65005	2
+65011		吕布军出现			65006	0
+65012	醉张飞	啊，都怪我饮酒误事，误会了壮士！		UI_Juqing_T_Zhangfei.img	65007	1
+65013	Player	事到如今，还是先行撤退吧！			65007	2
+66000	张飞	咳咳，之前逃出下邳时我被吕布那厮打伤了。		UI_Juqing_T_Zhangfei.img	66000	1
+66001	张飞	大哥的家眷就拜托你帮我送到淮阴T_T		UI_Juqing_T_Zhangfei.img	66000	1
+66002	Player	义之所向，义不容辞！			66000	2
+66003		护送刘备家眷前往淮阴			66001	0
+66004	张飞	北面琅琊已经叛变，不要惊动城内守将。		UI_Juqing_T_Zhangfei.img	66002	1
+66005	张辽	奉温侯之命，你可以走，刘备的家眷留下！		UI_Juqing_T_Zhangliao.img	66003	1
+66006	Player	受人之托，忠人之事，得罪了！			66003	2
+66007		侯成部出现			66004	0
+66008	张辽	虏人家眷，我不屑为之，你们走吧！		UI_Juqing_T_Zhangliao.img	66005	1
+66009	侯成	哼，刘备军的漏网之鱼！活捉刘备家眷！		UI_Juqing_T_Houcheng.img	66006	1
+66010	侯成	文远，我来祝你一臂之力！		UI_Juqing_T_Houcheng.img	66007	1
+66011	侯成	算你们运气好，我昨晚吃坏了肚子T_T		UI_Juqing_T_Houcheng.img	66008	1
+66012	Player	呼，终于摆脱了追兵。			66009	2
+66013	张飞	真是刺激！走，去淮阴找大哥！		UI_Juqing_T_Zhangfei.img	66009	1
+67000	Player	终于到了淮阴，快去通知刘大人！			67000	2
+67001		前往刘备军大营			67001	0
+67002	Player	刘大人，徐州已失，后路已丢，速速撤军！			67002	2
+67003	刘备	多谢将军提醒，只是纪灵等人虎视眈眈啊！		UI_Juqing_T_Liubei.img	67002	1
+67004	Player	愿为将军把守大营，将军速去！			67002	2
+67005		保护大营不失，刘备安全撤离			67003	0
+67006		雷薄部、陈兰部出现			67004	0
+67007	雷薄	刘备已退，你我二人快去抢了刘备大营！		UI_Juqing_T_Shanzei.img	67005	1
+67008	陈兰	好嘞！动作快点，别让纪灵抢了首功！		UI_Juqing_T_Chenlan.img	67005	1
+67009	陈兰	这家伙好厉害！我们快逃！		UI_Juqing_T_Chenlan.img	67006	1
+67010	刘备	大营被破，后路已绝，前途莫测，吾命休矣！		UI_Juqing_T_Liubei.img	67007	1
+67011		纪灵部出现			67008	0
+67012	纪灵	咦？刘备大营方向为何有喊杀声？		UI_Juqing_T_Jiling.img	67009	1
+67013	纪灵	糟了！刘备要跑！		UI_Juqing_T_Jiling.img	67009	1
+67014	纪灵	好强！小心无大错，还是先撤退吧！		UI_Juqing_T_Jiling.img	67010	1
+67015		获得徐鼎的认同			67011	0
+67016	雷薄	哎，这下子要被袁术大人惩罚了T_T		UI_Juqing_T_Shanzei.img	67012	1
+67017	传令兵	大营被毁，游戏失败！		UI_Juqing_T_Chuanlingbing.img	67013	1
+67018	传令兵	刘备死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	67014	1
+68000	袁绍	引诱公孙瓒部队来攻，我们一一消灭他们！		UI_Juqing_T_Yuanshao.img	68000	1
+68001	Player	袁公竟然以身为饵，如此豪气干云！			68000	2
+68002	张郃	我等必以死保护主公！		UI_Juqing_T_Zhanghe.img	68000	1
+68003	公孙瓒	袁绍困守孤城，此战我赢定了！传令出兵！		UI_Juqing_T_Gongsunzan.img	68000	1
+68004		单经部出现!			68001	0
+68005		严纲部出现!			68002	0
+68006		公孙续部出现!			68003	0
+68007		公孙越部出现!			68003	0
+68008	公孙瓒	真是没用，就让我来给袁绍最后一击吧！！		UI_Juqing_T_Gongsunzan.img	68004	1
+68009	众将	义之所在，白马为誓！		UI_Juqing_T_Chuanlingbing.img	68004	1
+68010	公孙瓒	全军出击！		UI_Juqing_T_Gongsunzan.img	68004	1
+68011		 公孙瓒本队出现!			68005	0
+68012	袁绍	哈哈哈哈，公孙瓒败北，冀州为我囊中之物！		UI_Juqing_T_Yuanshao.img	68006	1
+68013		获得冀鼎的认同			68007	0
+68014	传令兵	袁绍死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	68008	1
+69000	Player	天水就在前面，快去见见韩遂吧！			69000	2
+69001		前往天水政厅			69001	0
+69002	阎行	没想到你竟然是马超的使者？速来再战一番！		UI_Juqing_T_Yanxing.img	69002	1
+69003	阎行	哼，要不是我之前讨伐山贼受了伤……		UI_Juqing_T_Yanxing.img	69003	1
+69004		天水城门开启			69004	0
+69005	韩遂	你的来意我已知晓，只是……		UI_Juqing_T_Hansui.img	69005	1
+69006	Player	不知韩公有何指教？			69005	2
+69007	韩遂	算了，你去把西北的山贼剿灭即可。		UI_Juqing_T_Hansui.img	69005	1
+69008		剿灭山贼			69006	0
+69009	山贼头	呦呵！又来了一个送死的！兄弟们上！		UI_Juqing_T_Shanzei.img	69007	1
+69010	山贼头	啊……		UI_Juqing_T_Shanzei.img	69008	1
+69011	Player	终于扫灭了这伙山贼。至于缴获的财物……			69009	2
+69012		剿灭了山贼，快去回禀韩遂吧！			69010	0
+69013	韩遂	将军果然神勇，既然如此，这盟约我就答应了！		UI_Juqing_T_Hansui.img	69011	1
+69014	Player	多谢韩公仗义相助！			69011	2
+69015		与韩遂结盟成功			69012	0
+70000	马超	家父被困许都，我决定起兵去救援！		UI_Juqing_T_Machao.img	70000	1
+70001	Player	愿为大人使者，前往天水与韩遂结盟！			70000	2
+70002	马超	多谢将军相助T_T		UI_Juqing_T_Machao.img	70000	1
+70003		赶往天水			70001	0
+70004	侯选	哼，长得倒是不错，难怪主公让你来做使者。		UI_Juqing_T_Chengyin.img	70002	1
+70005	侯选	让我来试试你手头功夫，别丢了主公的脸面！		UI_Juqing_T_Chengyin.img	70002	1
+70006	侯选	啧，功夫不错，我就饶过你这次！走了走了！		UI_Juqing_T_Chengyin.img	70003	1
+70007	程银	此路不通！别问为什么，我守门，任性！		UI_Juqing_T_Chengyin.img	70004	1
+70008	程银	你为什么非走这条路！绕远路啊你不知道么！		UI_Juqing_T_Chengyin.img	70005	1
+70009	庞德	此事本不想干涉，但既然相见，还请留下吧！		UI_Juqing_T_Pangde.img	70006	1
+70010	庞德	罢了罢了，看来天意如此……		UI_Juqing_T_Pangde.img	70007	1
+70011	马岱	不能过去！如果真的起兵，曹操会杀掉父亲的！		UI_Juqing_T_Madai.img	70008	1
+70012	马岱	该死……不能阻止你……希望是我错了……		UI_Juqing_T_Madai.img	70009	1
+70013	Player	接下来，会路过安定，要小心了！			70010	2
+71000	斥候	将军，前面一伙军队正在屠杀安定百姓！		UI_Juqing_T_Chuanlingbing.img	71000	1
+71001	Player	速速前往救援！			71000	2
+71002		在敌军击破政厅或杀光百姓前击败敌军			71001	0
+71003	斥候	启禀将军，这是韩遂的兵痞，是否退让？		UI_Juqing_T_Chuanlingbing.img	71002	1
+71004	Player	……继续前进！			71002	2
+71005	杨秋	我军在征粮，识相的快闪一边去！		UI_Juqing_T_Yangqiu.img	71003	1
+71006	Player	见义不为，无勇也！看招！			71003	2
+71007	杨秋	哼，等着瞧！我家将军马上就到！		UI_Juqing_T_Yangqiu.img	71004	1
+71008	Player	住手！肆意屠杀百姓，你算什么英雄好汉？			71005	2
+71009	成公英	你算那颗葱？快来我刀下受死吧！		UI_Juqing_T_Chenggongying.img	71005	1
+71010	成公英	我只是听命行事，为韩大人征粮罢了T_T		UI_Juqing_T_Chenggongying.img	71006	1
+71011	百姓	多谢将军救命之恩T_T		UI_Juqing_T_Jiading.img	71006	1
+71012		阎行部出现			71007	0
+71013	阎行	何方小贼，偷袭于我？		UI_Juqing_T_Yanxing.img	71008	1
+71014	Player	哼，无耻小人，屠戮百姓，速来刀下受死！			71008	2
+71015	阎行	我军维护一方和平，征些粮草有何不妥？		UI_Juqing_T_Yanxing.img	71009	1
+71016	阎行	哼，这次就先绕过你，下次见面小心点！		UI_Juqing_T_Yanxing.img	71009	1
+71017		前往天水			71010	0
+71018	传令兵	百姓全部死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	71011	1
+71019	传令兵	政厅被击毁，游戏失败！		UI_Juqing_T_Chuanlingbing.img	71012	1
+72000	Player	（上回助刘玄德一臂之力，如今时过境迁…）			72000	2
+72001	曹操	典韦征讨何仪、黄劭，竟然久去不归……		UI_Juqing_T_Caocao.img	72000	1
+72002	Player	愿去为曹大人探寻。			72000	2
+72003		离开许昌！			72001	0
+72004	于禁	城门重地，不可轻入！		UI_Juqing_T_Yujin.img	72002	1
+72005	于禁	你要出城？城门检修，你还是换条路吧！		UI_Juqing_T_Yujin.img	72003	1
+72006	李典	那边的，怎可冲撞过往商旅？快快束手就擒！		UI_Juqing_T_Lidian.img	72004	1
+72007	李典	好吧好吧，只此一次，下不为例，快快出城！		UI_Juqing_T_Lidian.img	72005	1
+72008		城门已开			72006	0
+72009	黄巾斥候	不好，是官军来了！快去报告老大！		UI_Juqing_T_Chuanlingbing.img	72007	1
+72010	Player	（除恶务尽……）你们的据点在哪儿？			72008	2
+72011	黄巾斥候	就在这条路再往前一点，大人饶命T_T		UI_Juqing_T_Chuanlingbing.img	72008	1
+72012		除恶务尽，清除黄巾贼			72009	0
+72013	黄巾斥候	老大！！官军来啦！		UI_Juqing_T_Chuanlingbing.img	72010	1
+72014	何一	官军何在？我的大刀已经饥渴难耐了！		UI_Juqing_T_Heyi1.img	72010	1
+72015	Player	黄巾贼子，速速来我刀下受死！			72011	2
+72016	何一	看来不能继续监视许昌了，撤！		UI_Juqing_T_Heyi1.img	72012	1
+73000	Player	咦？舞阳城头怎么挂的是黄巾大旗？			73000	2
+73001	Player	为何此地有黄巾贼把守？			73001	2
+73002	斥候	禀报主公，舞阳已经被黄巾贼攻占了！		UI_Juqing_T_Chuanlingbing.img	73002	1
+73003	Player	果然如此！！快随我出兵，夺回舞阳！			73002	2
+73004	黄劭	舞阳已被我太平道所占，贼官军死来！		UI_Juqing_T_Guanhai.img	73003	1
+73005	黄劭	好厉害的狗官！先饶你这回！		UI_Juqing_T_Guanhai.img	73004	1
+73006		黄劭遁逃，速速击破政厅，夺回舞阳			73005	0
+73007		发现逃跑的黄劭，不要让他跑了！			73006	0
+73008	黄劭	(X_X)你等着给典韦收尸吧，哼哼哈哈！		UI_Juqing_T_Guanhai.img	73007	1
+73009	Player	糟了！快去救援典韦！			73007	2
+73010	黄劭	哈哈哈，你跑的真慢！等着给典韦收尸吧！		UI_Juqing_T_Guanhai.img	73008	1
+73011	Player	可恶，看箭！！			73008	2
+73012	黄劭	(X_X)啊……		UI_Juqing_T_Guanhai.img	73008	1
+74000	斥候	主公，典韦将军正在被围攻，速速救援！		UI_Juqing_T_Chuanlingbing.img	74000	1
+74001		救援典韦！			74001	0
+74002	黄劭	没想到你竟然追到了这里！给我留下吧！		UI_Juqing_T_Guanhai.img	74002	1
+74003	黄劭	啊！好……快……的……刀……		UI_Juqing_T_Guanhai.img	74003	1
+74004	Player	典将军，我来助你！			74004	2
+74005	典韦	要不是我没吃饱，早就解决他们了！		UI_Juqing_T_Dianwei.img	74004	1
+74006	典韦	肚子好饿……T_T		UI_Juqing_T_Dianwei.img	74005	1
+74007	何仪	哪里来的人马，破坏我黄巾大计！		UI_Juqing_T_Heyi2.img	74006	1
+74008	何仪	贼军势大，走为上策！		UI_Juqing_T_Heyi2.img	74006	1
+74009		追杀何仪			74007	0
+74010	许褚	黄巾贼子，哪里跑！！		UI_Juqing_T_Xuchu.img	74008	1
+74011	许褚	哼，不堪一击！给我带回谯县与城守换粮！		UI_Juqing_T_Xuchu.img	74009	1
+74012	许褚	你也是黄巾贼吗？		UI_Juqing_T_Xuchu.img	74010	1
+74013	典韦	哼我可杀了几百个黄巾贼呢！		UI_Juqing_T_Dianwei.img	74010	1
+74014	许褚	哈哈哈，我最讨厌你们这些吹牛的了！看刀！		UI_Juqing_T_Xuchu.img	74010	1
+74015		击败许褚			74011	0
+74016	许褚	果然厉害！待我换了兵刃再战！		UI_Juqing_T_Xuchu.img	74012	1
+74017	典韦	怕你不成？		UI_Juqing_T_Dianwei.img	74012	1
+74018		再次击败许褚			74013	0
+74019	许褚	好，你赢了我，我以后就听你的了！		UI_Juqing_T_Xuchu.img	74014	1
+74020	典韦	好兄弟，讲义气！以后我有肉吃，你就有肉！		UI_Juqing_T_Dianwei.img	74014	1
+75000	Player	前面就是谯县，去带走被许褚抓住的黄巾贼吧！			75000	2
+75001		前往谯县政厅			75001	0
+75002	家丁	快跑啊！黄巾贼夺城啦！		UI_Juqing_T_Jiading.img	75002	1
+75003	许褚	何事如此慌张？真是不成体统！		UI_Juqing_T_Xuchu.img	75002	1
+75004	家丁	家主，从许都逃来的黄巾贼攻破了县城啦！		UI_Juqing_T_Jiading.img	75003	1
+75005	许褚	什么？那之前被我抓到的黄巾贼……		UI_Juqing_T_Xuchu.img	75003	1
+75006	家丁	都被放出来啦T_T		UI_Juqing_T_Jiading.img	75003	1
+75007	Player	看来谯郡的确被黄巾贼攻占了！			75004	2
+75008	许褚	都怪我……		UI_Juqing_T_Xuchu.img	75004	1
+75009	典韦	别灰心，我们会帮你夺回来的！		UI_Juqing_T_Dianwei.img	75004	1
+75010	何一	怎么样？没想到吧？这次我不会输给你了！		UI_Juqing_T_Heyi1.img	75005	1
+75011	Player	当日能败你，这次也能！不会再让你逃了！			75005	2
+75012	何一	为什么……你怎么变这么强……		UI_Juqing_T_Heyi1.img	75006	1
+75013	Player	击破政厅，夺回谯郡！			75007	2
+75014	Player	说！你们老大在哪儿？			75008	2
+75015	黄巾贼	何仪老大从东门跑了T_T		UI_Juqing_T_Shanzei.img	75008	1
+75016		不要让黄巾贼首跑了！			75009	0
+75017	何仪	哼，老虎不发威，你以为我是病猫！		UI_Juqing_T_Heyi2.img	75010	1
+75018	何仪	好……快……的……刀……		UI_Juqing_T_Heyi2.img	75011	1
+75019		获得豫鼎			75012	0
+75020	何仪	好慢、好慢！想抓住本大爷，再练三百年吧！		UI_Juqing_T_Heyi2.img	75013	1
+75021		获得豫鼎			75014	0
+76000	曹操	吕布夺我州郡，我决定出兵讨伐！		UI_Juqing_T_Caocao.img	76000	1
+76001	Player	愿为曹公效力！			76000	2
+76002	曹操	嗯，就请你去看下我麾下大将休整的如何吧!		UI_Juqing_T_Caocao.img	76000	1
+76003		与曹军将领一一过招			76001	0
+76004	于禁	呵呵，我等的实力，将军一试便知！		UI_Juqing_T_Yujin.img	76002	1
+76005	于禁	果然还是打不过将军啊……		UI_Juqing_T_Yujin.img	76003	1
+76006	李典	唔……藏在这里还被发现了么？还想偷袭来的……		UI_Juqing_T_Lidian.img	76004	1
+76007	李典	呵呵呵呵，下次不会被你发现啦！		UI_Juqing_T_Lidian.img	76005	1
+76008	夏侯惇	我军占据地利，全速射击！		UI_Juqing_T_Xiahoudun.img	76006	1
+76009	李典	就是此刻，全军突击！		UI_Juqing_T_Lidian.img	76007	1
+76010	夏侯渊	百里奔袭，正待此时！		UI_Juqing_T_Xiahouyuan.img	76008	1
+76011	夏侯惇	天时不如地利，地利不如人和啊……		UI_Juqing_T_Xiahoudun.img	76009	1
+76012	典韦	唔……尝尝我们虎卫营的厉害吧！		UI_Juqing_T_Dianwei.img	76010	1
+76013	典韦	好饿啊我还没吃饱，你等我吃完再打！		UI_Juqing_T_Dianwei.img	76011	1
+76014	夏侯渊	让你看看我的厉害！！		UI_Juqing_T_Xiahouyuan.img	76012	1
+76015	夏侯渊	哼，我擅长长途奔袭，这地方太小而已！		UI_Juqing_T_Xiahouyuan.img	76013	1
+76016		找曹操复命！			76014	0
+76017	曹操	这样说来，诸将都为战争做好准备了。		UI_Juqing_T_Caocao.img	76015	1
+76018	Player	可是还有一人并未检验。			76015	2
+76019	曹操	哦？呵呵，那就让我来试试将军的实力吧！		UI_Juqing_T_Caocao.img	76015	1
+76020		击败曹操，证明自己的实力			76016	0
+76021	曹操	哈哈哈哈，有将军在，我军必胜！		UI_Juqing_T_Caocao.img	76017	1
+77000	Player	此战我军兵分两路，典韦许褚缠住吕布！			77000	2
+77001	Player	我走另一侧偷袭濮阳！全军出击！			77000	2
+77002	吕布	曹操又派人来送死了么？		UI_Juqing_T_Lvbu.img	77001	1
+77003	典韦	三姓家奴，速来受死！		UI_Juqing_T_Dianwei.img	77001	1
+77004	许褚	速来受死！		UI_Juqing_T_Xuchu.img	77001	1
+77005	李丰	啊？敌军是怎么到达这里的……		UI_Juqing_T_Lifeng.img	77002	1
+77006	李丰	快逃啊！		UI_Juqing_T_Lifeng.img	77003	1
+77007	田氏	敌人竟然从背后来袭……		UI_Juqing_T_Tianshi.img	77004	1
+77008	田氏	我投降！曹操大人才是兖州之主！		UI_Juqing_T_Tianshi.img	77005	1
+77009	Player	典韦许褚，我来啦！！			77006	2
+77010	吕布	什么？城里来了敌军？莫非……		UI_Juqing_T_Lvbu.img	77006	2
+77011	吕布	啧…全军退往定陶，往徐州撤退！		UI_Juqing_T_Lvbu.img	77007	1
+77012	Player	接下来只要攻占政厅，濮阳就是我军的了！			77007	2
+77013		攻破政厅			77008	0
+77014	吕布	什么？濮阳被攻占了？？全军撤退！		UI_Juqing_T_Lvbu.img	77009	1
+77015	Player	政厅已经攻破了，濮阳是我军到了！			77010	2
+78000	Player	濮阳吕布溃败，荥阳望风而降，曹公令我来接收			78000	2
+78001	Player	希望一切顺利……			78000	2
+78002		前往荥阳政厅受降			78001	0
+78003	斥候	启禀将军，成廉正在城门口等候将军。		UI_Juqing_T_Chuanlingbing.img	78002	1
+78004	Player	附近可有异常？			78002	2
+78005	斥候	并未发现埋伏。		UI_Juqing_T_Chuanlingbing.img	78002	1
+78006	成廉	将军可是来接收荥阳？魏续大人正在城中等候。		UI_Juqing_T_Chenglian.img	78003	1
+78007	魏续	我为吕将军亲戚，岂能背叛？中计了吧！哈哈哈哈！		UI_Juqing_T_Weixu.img	78004	1
+78008		遭到埋伏，逃走或攻占荥阳？			78005	0
+78009	魏续	哼，算你命大，下次不会这么简单了！		UI_Juqing_T_Weixu.img	78006	1
+78010	成廉	哎呀呀，这次准备不足，你给我等着！		UI_Juqing_T_Chenglian.img	78007	1
+78011	Player	真是惊险……			78008	2
+78012	Player	真是惊险……先去回报曹公吧！			78009	2
+79000	Player	这是兖州最后一战，一定要把吕布赶出兖州！			79000	2
+79001		追杀吕布及其部署			79001	0
+79002	张辽	停下！我不会让你过去的！		UI_Juqing_T_Zhangliao.img	79002	1
+79003	张辽	呃……温侯，我已经尽力了……		UI_Juqing_T_Zhangliao.img	79003	1
+79004	吕布	唔……		UI_Juqing_T_Lvbu.img	79003	1
+79005	高顺	你来晚了，定陶的财物已经运走了。		UI_Juqing_T_Gaoshun.img	79004	1
+79006	高顺	哼哼，如果你不死，我们来日再战。		UI_Juqing_T_Gaoshun.img	79005	1
+79007	陈宫	这个距离刚好，全军射击		UI_Juqing_T_Chengong.img	79006	1
+79008	陈宫	今天就打到这里，我等先走一步！		UI_Juqing_T_Chengong.img	79007	1
+79009	吕布	接二连三打败我军的你，到底有什么力量？		UI_Juqing_T_Lvbu.img	79008	1
+79010	吕布	没想到你竟然能把我逼到这种地步……		UI_Juqing_T_Lvbu.img	79009	1
+79011	吕布	呵呵呵，看来这天下还不是那么无聊！		UI_Juqing_T_Lvbu.img	79009	1
+79012	Player	……			79009	2
+79013	斥候	将军，这些都是敌将吕布的家眷！		UI_Juqing_T_Chuanlingbing.img	79010	1
+79014	Player	两军交战，祸不及家人！我们护送他们离开吧！			79010	2
+79015		护送吕布家眷离开定陶			79011	0
+79016	曹操	嗯…把吕布的家眷留下！		UI_Juqing_T_Caocao.img	79012	1
+79017	Player	两军交战，祸不及家人！			79012	2
+79018	曹操	呵呵，你竟然敢违背我的命令？		UI_Juqing_T_Caocao.img	79012	1
+79019	曹操	唔……没想到你竟然要背叛我……		UI_Juqing_T_Caocao.img	79013	1
+79020	曹操	算了，你们走吧……		UI_Juqing_T_Caocao.img	79013	1
+79021	Player	……			79013	2
+79022		你获得了兖鼎的认同			79014	0
+79023	传令兵	家眷全灭，游戏失败！		UI_Juqing_T_Chuanlingbing.img	79015	1
+80000	Player	代郡新来的乌桓骑兵实力不弱，如果能够招降……			80000	2
+80001		攻破乌桓营寨			80001	0
+80002	Player	嗯？前面的地形很适合埋伏嘛……			80002	2
+80003		前面有两条路，小心埋伏！			80003	0
+80004	丘力居	哈哈，从汉人的背后偷袭！全军出击！		UI_Juqing_T_Qiuliju.img	80004	1
+80005	Player	什么？竟然中伏了么？			80004	2
+80006		丘力居伏兵出现！			80005	0
+80007	丘力居	汉人真是厉害啊……		UI_Juqing_T_Qiuliju.img	80006	1
+80008	丘力居	该死，竟然被看穿我的埋伏了么？撤退！		UI_Juqing_T_Qiuliju.img	80007	1
+80009		丘力居伏兵撤退			80008	0
+80010	蹋顿	已经没有退路了！乌桓的子民由我守护！		UI_Juqing_T_Tadun.img	80009	1
+80011	Player	那家伙看上去是条汉子……			80009	2
+80012	蹋顿	我败了……希望你不要伤害其他人！		UI_Juqing_T_Tadun.img	80010	1
+80013	Player	乌桓人，可愿随我效力于公孙瓒大人？			80010	2
+80014	蹋顿	既然输了，草原上的规矩，任凭您处置！		UI_Juqing_T_Tadun.img	80010	1
+80015		乌桓人归降			80011	0
+81000	Player	前方就是蓟县，去与公孙续将军会和吧！			81000	2
+81001		与公孙续会面。			81001	0
+81002	Player	既然已经会和，还是快快出兵前去支援公孙瓒大人吧！			81002	2
+81003	公孙续	等等！先让我试试你这些乌合之众的实力！		UI_Juqing_T_Gongsunxu.img	81002	1
+81004		击败公孙续，证明自己的实力			81003	0
+81005	公孙续	原来看走了眼，手底下还是有两下子！		UI_Juqing_T_Gongsunxu.img	81004	1
+81006	Player	我们还是先去与公孙瓒大人会和吧！			81004	2
+81007	斥候	报！袁绍军文丑正率军前来！		UI_Juqing_T_Chuanlingbing.img	81004	1
+81008	公孙续	咳咳，我先去易京，这里就交给你了！		UI_Juqing_T_Gongsunxu.img	81004	1
+81009	Player	……			81004	2
+81010		文丑军出现！			81005	0
+81011	文丑	没想到公孙瓒麾下竟然有你这等人物…		UI_Juqing_T_Wenchou.img	81006	1
+81012	Player	已经击退了文丑，接下来前往易京吧！			81006	2
+81013		离开蓟县，前往易京			81007	0
+81014	麹义	就是此时，全速射击！		UI_Juqing_T_Quyi.img	81008	1
+81015	颜良	前后夹击，全军突袭！		UI_Juqing_T_Yanliang.img	81008	1
+81016		遭到麹义军射击			81009	0
+81017		颜良伏军出现			81010	0
+81018	麹义	看来先登强弩的射速还要改进！		UI_Juqing_T_Quyi.img	81011	1
+81019	颜良	这次就先让你得意一回！		UI_Juqing_T_Yanliang.img	81012	1
+81020	Player	终于摆脱了袁军，速速赶往易京！			81013	2
+82000	Player	终于到了易京！希望还来得及！			82000	2
+82001		前往易京拜访公孙瓒			82001	0
+82002	文丑	从蓟县到易京，终于追到了！全军突击！		UI_Juqing_T_Wenchou.img	82002	1
+82003		文丑部追兵出现！			82003	0
+82004	文丑	咳咳，多日不见竟然又变强了这么多…		UI_Juqing_T_Wenchou.img	82004	1
+82005	Player	咦？为何城门紧闭不开？			82005	2
+82006		袁绍军出现！			82006	0
+82007	Player	不管了，先击退敌人再说！			82007	2
+82008	Player	呼，击退了这波敌军，先去休整一下！			82008	2
+82009	Player	我记得附近有个水井…			82008	2
+82010		到达水井			82009	0
+82011	Player	咦？怎么城门忽然开了？城内浓烟滚滚…			82010	2
+82012		快去政厅看看！			82011	0
+82013	麹义	全军射击！		UI_Juqing_T_Quyi.img	82012	1
+82014		遭到麹义部的埋伏！			82013	0
+82015	麹义	啧，射速还是不够快么？		UI_Juqing_T_Quyi.img	82014	1
+82016	斥候	启禀将军，公孙瓒大人纵火自尽了！！！		UI_Juqing_T_Chuanlingbing.img	82015	1
+82017	Player	没想到一代枭雄竟落得如此下场……			82015	2
+82018	Player	此处兵荒马乱，我们还是先离开吧！			82015	2
+82019		离开易京！			82016	0
+82020	严纲	公孙瓒已死，我等投了袁绍大人！快快下马受降！		UI_Juqing_T_Yangang.img	82017	1
+82021	Player	无耻小人！			82017	2
+82022	严纲	啊X_X		UI_Juqing_T_Yangang.img	82018	1
+82023	Player	哼，死不足惜！			82018	2
+82024	Player	放心吧公孙大人，我会保护好你的家人的！			82019	2
+83000	斥候	北平太守邹丹叛变，囚禁了公孙瓒大人的家眷！		UI_Juqing_T_Chuanlingbing.img	83000	1
+83001	Player	毕竟君臣一场，一定要保他家眷安全！			83000	2
+83002		救出公孙瓒家眷！			83001	0
+83003	Player	嗯？为何此处有乌桓骑兵？			83002	2
+83004	丘力居	我还准备偷袭，没想到被发现了！		UI_Juqing_T_Qiuliju.img	83003	1
+83005	丘力居	乌桓人的未来，究竟在哪里呢……		UI_Juqing_T_Qiuliju.img	83004	1
+83006	邹朱	放信号，让乌桓人突袭！		UI_Juqing_T_Zouzhu.img	83005	1
+83007	Player	你是等不到他了！			83006	2
+83008	邹朱	什么？？可恶……		UI_Juqing_T_Zouzhu.img	83006	1
+83009	Player	什么？竟然有埋伏？			83007	2
+83010		丘力居伏兵出现！			83008	0
+83011	Player	咦？太守邹丹竟然不在么？			83009	2
+83012		击破箭塔与政厅，解救公孙瓒家眷！			83010	0
+83013	斥候	启禀主公，我们已经救出了公孙瓒的家眷！		UI_Juqing_T_Chuanlingbing.img	83011	1
+83014	Player	速速离开这里吧！			83011	2
+83015		护送公孙瓒家眷离开北平			83012	0
+83016	邹丹	竟然差点让你们跑掉！给我拿下！		UI_Juqing_T_Zoudan.img	83013	1
+83017	邹丹	唾手可得的大功就这么跑了……		UI_Juqing_T_Zoudan.img	83014	1
+83018	家丁	好累，我们休息一下吧……		UI_Juqing_T_Jiading.img	83015	1
+83019	颜良	站住！公孙瓒的家眷可以走，你留下！！		UI_Juqing_T_Yanliang.img	83016	1
+83020	颜良	多次败于你手，我心中不甘！！		UI_Juqing_T_Yanliang.img	83016	1
+83021	Player	你们先走，我解决他！			83016	2
+83022	颜良	还是输给你了啊……这次我心服口服……		UI_Juqing_T_Yanliang.img	83017	1
+83023	传令兵	公孙瓒家眷死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	83018	1
+84000	Player	两军相持不下，司马懿大人令我等绕过柳城。			84000	2
+84001	Player	希望一切顺利……			84000	2
+84002		绕过柳城！			84001	0
+84003	Player	前方有两条路，走哪条呢……			84002	2
+84004	柳毅	咦？埋伏竟然被发现了？		UI_Juqing_T_Wanghong.img	84003	1
+84005	Player	果然有埋伏！			84003	2
+84006	柳毅	埋伏失败，回去杨祚也不会责怪我吧？		UI_Juqing_T_Wanghong.img	84004	12
+84007	柳毅	敌军进入了埋伏圈！全军出击！		UI_Juqing_T_Wanghong.img	84005	1
+84008		柳毅部、阳仪部出击！！			84006	0
+84009	阳仪	哎？哎？？怎么没有收到信号？		UI_Juqing_T_Dingfang.img	84007	1
+84010	阳仪	剧本不是这么写的…		UI_Juqing_T_Dingfang.img	84008	1
+84011	阳仪	敌军竟然跑到了那里！为什么没有人发信号？		UI_Juqing_T_Dingfang.img	84009	1
+84012	辽东斥候	什么？敌军已经到这里了？快去报讯！		UI_Juqing_T_Chuanlingbing.img	84010	1
+84013	杨祚	哈哈哈哈，这里怎么可能有敌军？		UI_Juqing_T_Yangzuo.img	84011	1
+84014	杨祚	怎……怎么会……		UI_Juqing_T_Yangzuo.img	84012	1
+84015	杨祚	撤回柳城！放他们去襄平送死！		UI_Juqing_T_Yangzuo.img	84013	1
+85000	Player	司马大人说，襄平城坚人众，不可强攻。			85000	2
+85001	Player	船到桥头自然直吧！			85000	2
+85002		先出发吧！			85001	0
+85003	辽东斥候	敌军来袭！快给卫演将军发信号！		UI_Juqing_T_Chuanlingbing.img	85002	1
+85004	卫演	哼哼，何方宵小偷袭襄平？全军出击！		UI_Juqing_T_Weiyan.img	85002	1
+85005		卫演部发现你的存在！			85003	0
+85006	Player	敌军势大，不可硬拼！可以走右侧小路绕到敌后！			85004	2
+85007	斥候	将军，敌军势大！不可硬拼啊！！		UI_Juqing_T_Chuanlingbing.img	85005	1
+85008	卫演	哈哈哈，今天将是我卫演扬名天下之日！		UI_Juqing_T_Weiyan.img	85005	1
+85009	斥候	攻破辽东军大营，可以大幅度削弱敌军！		UI_Juqing_T_Chuanlingbing.img	85006	1
+85010	卫演	什么？竟然攻破了我军大营？		UI_Juqing_T_Weiyan.img	85007	1
+85011		卫演军士气动摇，遭到重创			85008	0
+85012	卫演	不该这样的……今日应该是我扬名之日啊……		UI_Juqing_T_Weiyan.img	85009	1
+85013	公孙渊	什么！卫演竟然死了？速速撤军！！		UI_Juqing_T_Gongsunyuan.img	85009	1
+85014		阻止公孙渊部撤离！			85010	0
+85015	百姓	公孙狗贼要逃了！快阻止他！		UI_Juqing_T_Jiading.img	85011	1
+85016	公孙渊	哼，一群贱民，也敢拦我去路？		UI_Juqing_T_Gongsunyuan.img	85011	1
+85017	百姓	公孙狗贼，你不得好死！		UI_Juqing_T_Jiading.img	85012	1
+85018	公孙渊	哼，跑的真慢→_→		UI_Juqing_T_Gongsunyuan.img	85013	1
+85019	公孙渊	唔……竟然被追上来了……		UI_Juqing_T_Gongsunyuan.img	85014	1
+85020	Player	公孙叛逆，速速受死！			85014	2
+85021	公孙渊	我……竟然会败……都怪这群贱民……		UI_Juqing_T_Gongsunyuan.img	85015	1
+85022	Player	失道寡助，正是此理！			85015	2
+86000	司马昭	玄莵太守识相，投降我军。父亲派你我前来接受。		UI_Juqing_T_Simazhao.img	86000	1
+86001	Player	玄莵此番得免战火，愿为将军马首是瞻。			86000	2
+86002	司马昭	哈哈哈哈哈，将军言重了。全军出发！		UI_Juqing_T_Simazhao.img	86000	1
+86003		前往玄菟政厅，接收城池			86001	0
+86004	柳甫	襄平已被你们屠城，还想再屠掉玄莵么？		UI_Juqing_T_Wanghong.img	86002	1
+86005	司马昭	信口雌黄！		UI_Juqing_T_Simazhao.img	86002	1
+86006	柳甫	我已经尽力了……		UI_Juqing_T_Wanghong.img	86003	1
+86007		前往政厅，接受城池！			86004	0
+86008		成功接收玄菟！			86005	0
+86009	毕盛	我们不能坐以待毙！		UI_Juqing_T_Wanghong.img	86006	1
+86010		清除城内叛乱！			86007	0
+86011	毕盛	狗贼，吃我一刀！		UI_Juqing_T_Wanghong.img	86008	1
+86012	毕盛	难道玄菟的百姓，就这样完了么……		UI_Juqing_T_Wanghong.img	86009	1
+86013	Player	城中传来喧哗声，难道……			86009	2
+86014		速去城中查看			86010	0
+86015	司马昭	这些乱臣贼子，都给我杀了！		UI_Juqing_T_Simazhao.img	86011	1
+86016	Player	刀下留人！百姓都是无辜的！			86011	2
+86017	司马昭	给我把他一起干掉！早看他不顺眼了！		UI_Juqing_T_Simazhao.img	86011	1
+86018	司马昭	你给我等着！！		UI_Juqing_T_Simazhao.img	86012	1
+86019	Player	惹怒了司马昭……还是先离开玄菟吧……			86012	2
+86020		逃离玄菟！			86013	0
+86021	陈圭	哼，你这叛逆，还不下马受降？		UI_Juqing_T_Dingfang.img	86014	1
+86022	Player	司马昭残暴不仁，我做的没错！			86014	2
+86023	陈圭	就算你逃到天涯海角，司马大人也会抓到你的！		UI_Juqing_T_Dingfang.img	86015	1
+86024	Player	……			86015	2
+86025	司马懿	哦？你要往哪里去？		UI_Juqing_T_Simayi.img	86016	1
+86026	Player	贵军残杀百姓，我不敢苟同！			86016	2
+86027	司马懿	呵呵，此战如果你赢了，就可以安然离开！		UI_Juqing_T_Simayi.img	86016	1
+86028	司马懿	真是个有趣的人，你可以走了！		UI_Juqing_T_Simayi.img	86017	1
+86029	传令兵	司马昭死亡，保护不力，游戏失败！		UI_Juqing_T_Chuanlingbing.img	86018	1
+87000	Player	前方就是东沓，从东沓出海，便可逃出生天！			87000	2
+87001		通过东沓出海！			87001	0
+87002	卑剧	叛国小儿，刀下受死！		UI_Juqing_T_Wanghong.img	87002	1
+87003	Player	……			87002	2
+87004	Player	司马家视百姓为蝼蚁，我不耻与其为伍！			87003	2
+87005	卑剧	是我等错了！实际上我家太守候君多时了！		UI_Juqing_T_Wanghong.img	87003	1
+87006	卑剧	将军且随我来~~~		UI_Juqing_T_Wanghong.img	87003	1
+87007		跟随卑剧前往城中			87004	0
+87008	卑微	太守公务繁忙，特令我等招待将军！		UI_Juqing_T_weixu.img	87005	1
+87009	卑微	小小特产，不成敬意~~		UI_Juqing_T_weixu.img	87005	1
+87010	Player	不好！！			87006	2
+87011		遭到毒箭袭击！			87007	0
+87012	卑衍	哈哈哈哈，小儿，纳命来！		UI_Juqing_T_Shanjing.img	87008	1
+87013		击败卑衍，杀出血路！			87009	0
+87014	卑衍	(⊙o⊙)…好强…		UI_Juqing_T_Shanjing.img	87010	1
+87015	卑微	啊……		UI_Juqing_T_weixu.img	87011	1
+87016	卑剧	悲剧了……		UI_Juqing_T_Wanghong.img	87012	1
+87017	卑衍	卑职公务繁忙，特令人在城中款待。将军不要客气。		UI_Juqing_T_Shanjing.img	87013	1
+87018		卑衍准备了神秘宝箱！			87014	0
+87019	卑衍	如此正气凛然，两袖清风之人……罢了……		UI_Juqing_T_Shanjing.img	87015	1
+87020	司马昭	唔？埋伏竟然被发现了么？		UI_Juqing_T_Simazhao.img	87016	1
+87021	司马昭	算你厉害！以后别再出现在我眼前！		UI_Juqing_T_Simazhao.img	87017	1
+87022	陈圭	得罪了司马大人，还想逃？		UI_Juqing_T_Dingfang.img	87018	1
+87023	司马昭	哼哼，就是此时，全军出击！		UI_Juqing_T_Simazhao.img	87019	1
+87024		司马昭部出现！			87020	0
+87025	陈圭	实在守不住港口了……快撤！		UI_Juqing_T_Dingfang.img	87021	1
+87026	Player	并不是每个人，都会屈服于暴力！			87021	2
+88000	传令兵	关将军有令：夺下水门！		UI_Juqing_T_Chuanlingbing.img	88000	1
+88001	Player	得令！			88000	2
+88002		夺下水门！			88001	0
+88003	水闸驻军	敌人来袭！！		UI_Juqing_T_Chuanlingbing.img	88002	1
+88004	Player	夺下了水门，接下来要防止被夺回……			88003	2
+88005		保护水门寨不要被攻破！			88004	0
+88006		襄阳斥候出现			88005	0
+88007	曹仁	斥候到期未归，牛金何在，速去查看水门！！		UI_Juqing_T_Caoren.img	88006	1
+88008	牛金	末将得令！		UI_Juqing_T_Niujin.img	88006	1
+88009		牛金部出现			88007	0
+88010	牛金	何方小贼，快快束手就擒！		UI_Juqing_T_Niujin.img	88008	1
+88011	牛金	敌军势大，速速回禀将军！		UI_Juqing_T_Niujin.img	88009	1
+88012	曹仁	什么？敌军果然攻占了水门？		UI_Juqing_T_Caoren.img	88009	1
+88013	曹仁	全军出击！		UI_Juqing_T_Caoren.img	88009	1
+88014		曹仁部出现			88010	0
+88015	曹仁	哼哼，困守孤营，自投死路！		UI_Juqing_T_Caoren.img	88011	1
+88016	牛金	正是此时，全军出击！		UI_Juqing_T_Niujin.img	88011	1
+88017	牛金	敌军好强，速速撤退！		UI_Juqing_T_Niujin.img	88012	1
+88018	曹仁	全军撤退，紧守城门！		UI_Juqing_T_Caoren.img	88013	1
+88019	Player	水攻成功了！			88014	2
+88020	斥候	关羽大人有令，北上捉拿于禁庞德！		UI_Juqing_T_Chuanlingbing.img	88014	1
+88021		捉拿于禁、庞德			88015	0
+88022	于禁	竟然在这个时候遭到突袭……是关羽的计谋么？		UI_Juqing_T_Yujin.img	88016	1
+88023	于禁	我败了……心服口服……		UI_Juqing_T_Yujin.img	88017	1
+88024		生擒于禁			88018	0
+88025	庞德	关羽何在？可敢与我一战？？		UI_Juqing_T_Pangde.img	88019	1
+88026	庞德	马革裹尸，死得其所，快哉快哉！		UI_Juqing_T_Pangde.img	88020	1
+88027	斥候	襄阳城外已无敌踪，关羽大人令将军攻占宛城！		UI_Juqing_T_Chuanlingbing.img	88020	1
+88028	Player	唔……阻断敌人的援军么？			88020	2
+88029		庞德死亡			88021	0
+88030		前往宛城			88022	0
+89000	Player	攻占宛城，阻断曹军的援军，襄阳旦夕可下！			89000	2
+89001	Player	关将军真是好谋略！			89000	2
+89002		攻占宛城！			89001	0
+89003	顾俊	哼，有我在，迈进宛城一步！		UI_Juqing_T_Wanghong.img	89002	1
+89004	顾俊	呃……X_X		UI_Juqing_T_Wanghong.img	89003	1
+89005	山贼	呵呵，又来了一只肥羊！		UI_Juqing_T_Shanzei.img	89004	1
+89006	土匪	交出钱来，我们管埋哦！		UI_Juqing_T_Tufei.img	89004	1
+89007	山贼	快走快走，是个硬茬子！		UI_Juqing_T_Shanzei.img	89005	1
+89008	土匪	不交钱你就走嘛，打什么人T_T		UI_Juqing_T_Tufei.img	89006	1
+89009	乐进	攻占宛城，阻断许都袁军，关羽真是好算计！		UI_Juqing_T_Yuejin.img	89007	1
+89010	乐进	关羽算计的好，可惜人算不如天算，呵呵呵呵……		UI_Juqing_T_Yuejin.img	89008	1
+89011	Player	攻下了宛城，想来关将军那边也一切顺利吧！			89009	2
+89012	斥候	报！孙权大将吕蒙白衣渡江，偷了荆州！		UI_Juqing_T_Chuanlingbing.img	89009	1
+89013	Player	孤军深入太危险了，撤军！不要原路返回！			89009	2
+89014		撤退！			89010	0
+89015	徐晃	你孤军深入，还不快快束手就擒？		UI_Juqing_T_xuhuang.img	89011	1
+89016	Player	糟糕……			89011	2
+89017		徐晃部出现			89012	0
+89018	徐晃	关羽撤军，襄阳之围已解，咱们来日再战！		UI_Juqing_T_Xuhuang.img	89013	1
+89019	Player	关将军前路不通，后路已断，还是去上庸求援吧！			89013	2
+89020		前往上庸求援！			89014	0
+89021	Player	徐晃出现在这里，关将军定然撤退了！			89015	2
+89022	Player	还是去上庸求援吧！			89015	2
+89023	Player	前往上庸求援……希望还来得及……			89016	2
+90000	Player	关将军急需援兵，我要快点赶到上庸才是！			90000	2
+90001		前往上庸！			90001	0
+90002		追兵出现！			90002	0
+90003	Player	糟糕，被追上了！			90003	2
+90004	Player	要加快速度了！			90004	2
+90005		陆逊部出现！			90005	0
+90006	陆逊	休想为关羽找到援兵！		UI_Juqing_T_luxun.img	90006	1
+90007	陆逊	可恶……撤军！		UI_Juqing_T_luxun.img	90007	1
+90008		徐晃部出现！			90008	0
+90009	徐晃	这次可不会让你这么容易跑了！		UI_Juqing_T_xuhuang.img	90009	1
+90010	徐晃	(⊙o⊙)…还是大意了么……		UI_Juqing_T_xuhuang.img	90010	1
+90011		曹仁部出现			90011	0
+90012	李辅	来者何人？		UI_Juqing_T_Wanghong.img	90012	1
+90013	Player	我乃荆州关将军部下，特来上庸求援！			90012	2
+90014	李辅	当我三岁小儿不成？你身后可跟着敌军呢！		UI_Juqing_T_Wanghong.img	90012	1
+90015	Player	什么？又有追兵……待击退了他们再说！			90012	2
+90016	曹仁	上次让你跑了，这次我们再来打过！		UI_Juqing_T_caoren.img	90013	1
+90017	曹仁	技差一招，败得心服口服。全军撤退！		UI_Juqing_T_caoren.img	90014	1
+90018	李辅	将军真是友军，快请进城！		UI_Juqing_T_Wanghong.img	90014	1
+90019		找孟达求援！			90015	0
+90020	孟达	将军来意我已尽知，只是……		UI_Juqing_T_megnda.img	90016	1
+90021	Player	只是如何？			90016	2
+90022	孟达	山城初附，民心未定，不敢造次兴兵啊！		UI_Juqing_T_megnda.img	90016	1
+90023	Player	不过是借口！将来定与你在汉中王面前对质！			90016	2
+90024		离开上庸！			90017	0
+90025		李辅伏军出现！			90018	0
+90026	李辅	哼哼，怎能让你安然离开？		UI_Juqing_T_Wanghong.img	90019	1
+90027	Player	为何埋伏我军？难道你投降了曹军？			90020	2
+90028	李辅	哼！你死也不会知道！看暗器！		UI_Juqing_T_Wanghong.img	90020	1
+90029	Player	该死…竟然暗箭伤人…先离开上庸吧！			90020	2
+90030		离开上庸			90021	0
+90031	Player	先去西城疗伤吧……			90022	2
+90032	李辅	竟然让你跑了！看箭！		UI_Juqing_T_Wanghong.img	90023	1
+90033	Player	(⊙o⊙)…中箭了？箭伤还有毒…先去西城…			90023	2
+91000	Player	在西城耽搁这么久，不知道关将军如何…			91000	2
+91001	Player	就去问问西城太守好了！			91000	2
+91002		前往西城			91001	0
+91003	申仪	何方敌军胆敢犯我州郡？		UI_Juqing_T_Dingfang.img	91002	1
+91004	Player	申将军住手，我是荆州关将军麾下！			91003	2
+91005	申仪	不是敌军么…对不起，是我太紧张了！		UI_Juqing_T_Dingfang.img	91003	1
+91006	申仪	我有公务在身，将军去城内与太守面谈好了。		UI_Juqing_T_Dingfang.img	91003	1
+91007		面见太守申耽			91004	0
+91008	申耽	将军来晚了。关将军已死……		UI_Juqing_T_shendan.img	91005	1
+91009	Player	果然还是晚了么……有什么办法报仇么？			91005	2
+91010	申耽	西城西北有伙山贼，资材颇丰，可助将军复仇！		UI_Juqing_T_shendan.img	91005	1
+91011		剿灭山贼！			91006	0
+91012	山贼	好汉来此，可为入伙？		UI_Juqing_T_Shanzei.img	91007	1
+91013	Player	我是来杀人越货的！			91007	2
+91014	山贼	呦呵？惹到贼祖宗这里了？		UI_Juqing_T_Shanzei.img	91007	1
+91015	Player	终于有粮草可以募兵为关将军报仇了……			91008	2
+91016		离开西城！			91009	0
+91017	孟达	哈哈哈哈，中埋伏了吧？		UI_Juqing_T_megnda.img	91010	1
+91018	Player	糟糕…竟然有埋伏…			91010	2
+91019		孟达伏军出现！			91011	0
+91020	Player	为何埋伏于我？			91012	2
+91021	孟达	关羽因我不肯救援而死，如何能叫你回去与汉中王对质？		UI_Juqing_T_megnda.img	91012	1
+91022	Player	实在可恶……			91012	2
+91023	孟达	哼，事到如今，只有弃刘投曹了！		UI_Juqing_T_megnda.img	91012	1
+91024		孟达逃跑			91013	0
+92000	Player	终于到了江夏！一定要为关将军报仇！			92000	2
+92001		刺杀吕蒙			92001	0
+92002	马忠	何人竟敢冲撞城门？		UI_Juqing_T_Wanghong.img	92002	1
+92003	Player	来取吕蒙性命的人！			92002	2
+92004	马忠	大胆狂徒，你逃不出江夏的！		UI_Juqing_T_Wanghong.img	92003	1
+92005	Player	哼……			92003	2
+92006	吕蒙	壮士来此何事？		UI_Juqing_T_lvmeng.img	92004	1
+92007	Player	取你项上人头，慰藉关将军在天之灵！			92004	2
+92008	吕蒙	哦？大好头颅在此，看你本事了！		UI_Juqing_T_lvmeng.img	92004	1
+92009	吕蒙	竟然败了……		UI_Juqing_T_lvmeng.img	92005	1
+92010	Player	吕蒙已死，速速逃离江夏才是！			92005	2
+92011	斥候	江夏周围重兵把守，要找对路才对！		UI_Juqing_T_Chuanlingbing.img	92005	1
+92012		逃离江夏！			92006	0
+92013	Player	看来此路不通……			92007	2
+92014	凌统	哼，果然厉害……		UI_Juqing_T_lingtong.img	92008	1
+92015	周泰	我不会输！		UI_Juqing_T_zhoutai.img	92009	1
+92016	丁奉	来日再战的时候不要哭哦！		UI_Juqing_T_dingfeng.img	92010	1
+92017	甘宁	有胆来江里与我大战三百回合！		UI_Juqing_T_ganning.img	92011	1
+92018	陆逊	在那么多路中找到了最薄弱的点……		UI_Juqing_T_luxun.img	92012	1
+92019	陆逊	困兽之斗不可欺，便让你走吧！		UI_Juqing_T_luxun.img	92013	1
+93000	Player	刘表病重，刘备大人派我等来长沙求医，希望顺利。			93000	2
+93001		前往长沙！			93001	0
+93002	张曳	何方小贼，窥探城门？吃我一刀！		UI_Juqing_T_Wanghong.img	93002	1
+93003	Player	我是来请张仲景神医出诊的，并非歹人！			93003	2
+93004	张曳	失礼了，不过张太守不在城中，我才如此紧张。		UI_Juqing_T_Wanghong.img	93003	1
+93005	Player	张太守去了哪里？			93003	2
+93006	张曳	我不知道，去政厅问问太守的家丁吧！		UI_Juqing_T_Wanghong.img	93003	1
+93007		前往政厅！			93004	0
+93008	Player	不知神医张仲景大人去了哪里？			93005	2
+93009	张家家丁	太守大人听闻桂阳瘟疫横行，前去救治了！		UI_Juqing_T_Chuanlingbing.img	93005	1
+93010	Player	（看来要赶往桂阳……）			93005	2
+93011		前往桂阳！			93006	0
+93012	Player	咦？这位大人为何拦住我？			93007	2
+93013	韩玄	看你从太守府中出来，定然是小偷！快快束手就擒！		UI_Juqing_T_Hanxuan.img	93007	1
+93014	韩玄	不对不对，哪有这么厉害的小偷，你快走吧！		UI_Juqing_T_Hanxuan.img	93008	1
+93015	Player	（这人怎么怪怪的……）			93008	2
+93016		前往桂阳！			93009	0
+93017	山贼	站住站住！让你过路了么？过路费交了么？		UI_Juqing_T_Shanzei.img	93010	1
+93018	Player	长沙城外竟然就有这么嚣张的山贼嘛…			93010	2
+93019	山贼	老子上面可是有人的，你给我等着！		UI_Juqing_T_Shanzei.img	93011	1
+93020	山贼首领	哪儿来的野小子，打扰了大爷数钱的雅兴？		UI_Juqing_T_Shanzei.img	93012	1
+93021	山贼首领	我就知道这钱不会这么容易拿到…撤了撤了！		UI_Juqing_T_Shanzei.img	93013	1
+93022	Player	（长沙城周围都是这种怪人么……）			93013	2
+94000	Player	到了桂阳。看来瘟疫很严重，都无人守城……			94000	
+94001		前往城中寻找张仲景下落！			94001	0
+94002	Player	这位朋友，不知神医张仲景现在何处？			94002	2
+94003	百姓	神医出城采药去了，不知你找他何事？		UI_Juqing_T_Jiading.img	94002	1
+94004	Player	承蒙相告，荆州刘表大人病重，想请他医治。			94002	2
+94005	百姓	什么？神医跟你走了，我们百姓的病怎么办？？		UI_Juqing_T_Jiading.img	94002	1
+94006		击败百姓，让其冷静。			94003	0
+94007	Player	找到神医，他定有解决办法，我不会直接带走他的。			94004	2
+94008	百姓	谁知道你心里怎么想的？罢了罢了，我们拦不住你。		UI_Juqing_T_Jiading.img	94004	1
+94009		出城寻找张仲景！			94005	0
+94010	山贼头	等桂阳城里人都死光了，咱们进去翻找一番，就发财了！		UI_Juqing_T_Shanzei.img	94006	1
+94011	喽啰	首领英明！		UI_Juqing_T_Tufei.img	94006	1
+94012	Player	……			94006	2
+94013	山贼头	算了算了，这次先撤，半个月之后再派人来看看！		UI_Juqing_T_Shanzei.img	94007	1
+94014	Player	这货山贼打得好算盘…			94008	2
+94015	Player	…………事情就是如此，还请神医相救！			94009	2
+94016	张仲景	唔，只是这桂阳百姓正遭瘟疫荼毒，不忍弃之。		UI_Juqing_T_Zhangzhongjing.img	94009	1
+94017	张仲景	我闻武陵有药名为葛根，对瘟疫有奇效！		UI_Juqing_T_Zhangzhongjing.img	94009	1
+94018	Player	我去为神医取来，神医稍等！！			94009	2
+95000	Player	山中寻药不易，听闻武陵有豪商，正好去看看！			95000	2
+95001		前往武陵！			95001	0
+95002	武留	欢迎欢迎！		UI_Juqing_T_Wanghong.img	95002	1
+95003	武陵商人	你要葛根？这可是我武陵的特产，很贵的哦！		UI_Juqing_T_Wulingshang.img	95003	1
+95004	Player	（价格这么高…听说城东北有伙山贼的说……）			95003	2
+95005		剿灭山贼！			95004	0
+95006	武起	你好你好！		UI_Juqing_T_Dingfang.img	95005	1
+95007	山贼头	这不是桂阳城外多管闲事的家伙嘛？		UI_Juqing_T_Shanzei.img	95006	1
+95008	山贼头	看来做山贼没前途啊……		UI_Juqing_T_Shanzei.img	95007	1
+95009		攻破营寨			95008	0
+95010	Player	钱够了吧……			95009	2
+95011		返回武陵！			95010	0
+95012	武陵商人	我要的钱，你快点去准备！！		UI_Juqing_T_Wulingshang.img	95011	1
+95013	武陵商人	怎么就这么点？还不够啊！		UI_Juqing_T_Wulingshang.img	95012	1
+95014	Player	之前说好的不是这个价格吧？			95012	2
+95015	武陵商人	又涨价了不行啊？爱要不要！		UI_Juqing_T_Wulingshang.img	95012	1
+95016	Player	可恶……看招！			95012	2
+95017	武陵商人	救命啊！杀人啦！		UI_Juqing_T_Wulingshang.img	95012	1
+95018		教训商人！			95013	0
+95019	武陵商人	我投降，我投降！别打了！葛根这东西，武陵到处都是！		UI_Juqing_T_Wulingshang.img	95014	1
+95020	Player	还要钱么？			95014	2
+95021	武陵商人	开业大酬宾，免费送，免费送！！		UI_Juqing_T_Wulingshang.img	95014	1
+96000	Player	张先生，此去襄阳，还是有劳了！			96000	2
+96001	张仲景	治病救人，医者本分。		UI_Juqing_T_Zhangzhongjing.img	96000	1
+96002	Player	到了益阳，正好休息一下！			96000	2
+96003		前往益阳小憩！			96001	0
+96004	Player	（为何他们看到我，一言不发便刀剑相向？）			96002	2
+96005	Player	刘先！刘荆州待你不薄，为何叛乱？			96003	2
+96006	刘先	刘表已死，我这也是为了生存……		UI_Juqing_T_Wanghong.img	96003	1
+96007	Player	刘表大人已死，倒是让张神医白走一场了。			96004	2
+96008	张仲景	不知将军与往何处？		UI_Juqing_T_Zhangzhongjing.img	96004	1
+96009	Player	先回新野找刘备大人。			96004	2
+96010	张仲景	那我们就此别过。		UI_Juqing_T_Zhangzhongjing.img	96004	1
+96011		离开益阳			96005	0
+96012	韩玄	呦！这不是那日强闯长沙的那个谁？		UI_Juqing_T_Hanxuan.img	96006	1
+96013	韩玄	多日不见，你是越来越能耐了！走吧走吧，益阳我接收了！		UI_Juqing_T_Hanxuan.img	96007	1
+96014	Player	……			96007	2
+96015	传令兵	张仲景死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	96008	1
+97000	Player	（先去江陵城中打探下刘备大人的下落吧……）			97000	2
+97001		江陵城中寻找刘备下落！			97001	0
+97002	Player	（江陵守军见面就打，怎么回事？）			97002	2
+97003	Player	我乃刘备大人部下，速速开城！			97003	2
+97004	刘石	刘备背叛，你也是叛徒！快来受死！		UI_Juqing_T_Wanghong.img	97003	1
+97005	Player	刘备大人不会背叛的！这肯定有误会！			97004	2
+97006	刘石	整个荆州在刘琮大人的命令下投降曹操，他却不从！		UI_Juqing_T_Wanghong.img	97004	1
+97007	刘磐	刘备派你来夺江陵么？？		UI_Juqing_T_Liupan.img	97005	1
+97008	Player	刘备大人现在何处？			97006	2
+97009	刘磐	江陵城外长坂坡，正率大军来此……		UI_Juqing_T_Liupan.img	97006	1
+97010	Player	哼……			97006	2
+97011		前往长坂			97007	0
+97012	魏延	江陵城中出来的大军？上！		UI_Juqing_T_Weiyan.img	97008	1
+97013		魏延部出现！			97009	0
+97014	Player	哪里来的莽夫，阻我去接应刘备大人？			97010	2
+97015	魏延	什么？你是去接应刘备大人的？？		UI_Juqing_T_Weiyan.img	97010	1
+97016	魏延	（是我孟浪了……无颜投奔刘备大人，还是去别处吧！）		UI_Juqing_T_Weiyan.img	97010	1
+97017		前往长坂！			97011	0
+97018	曹仁	好不容易绕到刘备前面，可不能让他跑了！		UI_Juqing_T_Caoren.img	97012	1
+97019	曹仁	早晚有一天让你知道我的厉害！		UI_Juqing_T_Caoren.img	97013	1
+98000	Player	终于到了长坂……一片乱军中，刘备大人到底在哪儿？			98000	2
+98001	斥候	启禀将军！前方有敌军，似携有俘虏！		UI_Juqing_T_Chuanlingbing.img	98000	1
+98002		击败敌军！			98001	0
+98003	淳于导	又一份大功撞上来啦，哈哈哈哈！		UI_Juqing_T_Wanghong.img	98002	1
+98004	淳于导	呃……好痛……		UI_Juqing_T_Wanghong.img	98003	1
+98005	糜竺	多谢将军救命之恩！主公已经安全，只是赵云将军带着阿斗不知所往！		UI_Juqing_T_Wulingshang.img	98003	1
+98006		找到赵云！			98004	0
+98007	赵云	我的膝盖被张郃射了一箭，劳烦你护送我和阿斗与主公会和……		UI_Juqing_T_Zhaoyun.img	98005	1
+98008		护送赵云离开长坂！			98006	0
+98009	徐晃	哪里跑！		UI_Juqing_T_Xuhuang.img	98007	1
+98010	徐晃	啊，等我系个鞋带，你先走，哈哈~~		UI_Juqing_T_Xuhuang.img	98008	1
+98011	许褚	谁来与我大战三百回合？		UI_Juqing_T_Xuchu.img	98009	1
+98012	乐进	给我射击！！		UI_Juqing_T_Yuejin.img	98010	1
+98013	乐进	要不是曹操大人下令用木箭……		UI_Juqing_T_Yuejin.img	98011	1
+98014	张辽	将军且留步！		UI_Juqing_T_Zhangliao.img	98012	1
+98015	Player	曹操屠杀百姓，你要助纣为虐吗？			98012	2
+98016	张辽	争霸天下，伤亡必不可少……		UI_Juqing_T_Zhangliao.img	98013	1
+98017	Player	道不同不相为谋！他日再战我可不会手下留情！			98013	2
+98018	传令兵	赵云死亡，游戏失败！		UI_Juqing_T_Chuanlingbing.img	98014	1
+99001	张飞	庞军师遇难，大哥命我为先锋，这就出发吧！		UI_Juqing_T_Zhangfei.img	99001	1
+99002		攻占永安			99002	0
+99003	张飞	此处地势险峻，易守难攻，可下一营寨！		UI_Juqing_T_Zhangfei.img	99003	1
+99004		张飞设寨！			99004	0
+99005	罗令	去禀告兄长，有敌人来袭！		UI_Juqing_T_Wanghong.img	99005	1
+99006	罗令	话说永安归刘备管辖也没什么不好……		UI_Juqing_T_Wanghong.img	99006	1
+99007	罗宪	就先让我试试刘备的的实力吧！		UI_Juqing_T_weixu.img	99007	1
+99008	罗宪	刘备大人麾下如此强大，我心服口服！		UI_Juqing_T_weixu.img	99008	1
+99009		永安投降！			99009	0
+99010		张任部来袭！			99010	0
+99011	张任	来迟一步，永安竟然投降了？		UI_Juqing_T_Yuejin.img	99011	1
+99012	张任	出师不利，全军撤退！		UI_Juqing_T_Yuejin.img	99012	1
+99013	张飞	军情紧急，罗宪请留守永安，我这就动身前往江州！		UI_Juqing_T_Zhangfei.img	99012	1
+99014		前往江州！			99013	0
+99015	严颜	兵贵神速，想去江州？尝尝我的长刀！		UI_Juqing_T_Yanyan.img	99014	1
+99016	严颜	身手不错，咱们江州再见！		UI_Juqing_T_Yanyan.img	99015	1
+100001	Player	张飞将军命我为先锋，攻伐江州，这便出发吧！			100001	2
+100002		攻占江州！			100002	0
+100003	严颜	胆敢犯我州郡，敌将纳命来！		UI_Juqing_T_Yanyan.img	100003	1
+100004	严颜	我已命人堵死城门，你们进不去的，哈哈！		UI_Juqing_T_Yanyan.img	100004	1
+100005	Player	可恶，被这老头跑了……			100004	2
+100006	斥候	启禀将军，我们在山中找到条小路！		UI_Juqing_T_Chuanlingbing.img	100004	1
+100007		走小路攻打江州！			100005	0
+100008	严颜	 哈哈哈哈，就知道你走这条路！全军突击！		UI_Juqing_T_Yanyan.img	100006	1
+100009		遭受埋伏！			100007	0
+100010	Player	严将军愿降否？			100008	2
+100011	严颜	江州有断头的将军，没有投降的老头！		UI_Juqing_T_Yanyan.img	100008	1
+100012	Player	将军真豪杰之士也！			100008	2
+100013	严颜	罢了罢了，只希望你们能善待蜀地百姓！		UI_Juqing_T_Yanyan.img	100008	1
+100014		护送严颜前往城中			100009	0
+100015	严颜	我已投降了刘备军，大家随我一起来吧！		UI_Juqing_T_Yanyan.img	100010	1
+100016		城门大开，攻占江州！			100011	0
+100017	严厉	什么？兄长你竟然投降了？		UI_Juqing_T_Qiuliju.img	100012	1
+100018	严颜	我这是为了江州的百姓！		UI_Juqing_T_Yanyan.img	100012	1
+100019	严厉	好吧……既然兄长已经做出了选择，我自然要遵从……		UI_Juqing_T_Qiuliju.img	100013	1
+101001	刘备	庞军师遇袭身亡，我要涪关周围的人，给庞军师陪葬！！		UI_Juqing_T_liubei.img	101001	1
+101002		杀掉涪关周围所有敌军！			101002	0
+101003	Player	(⊙o⊙)…竟然有暗器？			101003	2
+101004		敌军突袭政厅！保护刘备！			101004	0
+101005	刘备	只有这些还不够，随我攻占敌方据点，再争成都！		UI_Juqing_T_liubei.img	101005	1
+101006		攻破敌军据点！			101006	0
+101007	刘备	任何人，都不能阻止我复仇！		UI_Juqing_T_Liubei.img	101007	1
+101008	刘备	既然已经肃清了涪关周围，全军朝成都进发！！		UI_Juqing_T_Liubei.img	101008	1
+102001	斥候	刘备大人令将军攻破成都东南军寨！		UI_Juqing_T_Chuanlingbing.img	102001	1
+102002	Player	（为张飞将军到来做准备吗？）			102001	2
+102003		攻占成都东南军寨！			102002	0
+102004	张任	想为张飞打通来成都的路？休想！		UI_Juqing_T_Yuejin.img	102003	1
+102005	张任	可恶……		UI_Juqing_T_Yuejin.img	102004	1
+102006	张飞	哈哈哈哈哈，终于到了成都城外！！请将军助我围困成都！		UI_Juqing_T_Zhangfei.img	102005	1
+102007	黄权	全军退回城中！		UI_Juqing_T_houcheng.img	102006	1
+102008	刘巴	封死城门，不要让刘备军进来！		UI_Juqing_T_Wanghong.img	102007	1
+102009	斥候	刘备大人有令！请将军前往北面，迎击马超援军！		UI_Juqing_T_Chuanlingbing.img	102008	1
+102010		马超援军出现！			102009	0
+102011	马岱	嗯？竟然有余力来阻击我军？看来成都已经被围困了……		UI_Juqing_T_Madai.img	102010	1
+102012	马岱	啧，撤退！回去禀报兄长！		UI_Juqing_T_Madai.img	102011	1
+103001	Player	（围困了成都后，刘备大人让我前来劝降马超，这可能么？）			103001	2
+103002	Player	算了，先攻破东南据点，阻止张鲁的援军吧！			103001	2
+103003		攻破据点！			103002	0
+103004	马岱	紧守据点		UI_Juqing_T_Madai.img	103003	1
+103005	马岱	……好强……全军撤回梓潼！		UI_Juqing_T_Madai.img	103004	1
+103006	Player	接下来，就要去会一会西凉锦马超了！			103004	2
+103007		前往梓潼			103005	0
+103008	马岱	可恶……我不会再让你前进一步！		UI_Juqing_T_Madai.img	103006	1
+103009	马岱	就差一招……		UI_Juqing_T_Madai.img	103007	1
+103010	马超	哦？马岱没有打败对方么？		UI_Juqing_T_Machao.img	103008	1
+103011	Player	马超将军，我家刘备大人有意请你共襄盛举，围困成都。			103009	2
+103012	马超	…………好吧……我们走。		UI_Juqing_T_Machao.img	103009	1
+103013	马超	我的家眷……被张鲁扣押在汉中……		UI_Juqing_T_Machao.img	103010	1
+103014	Player	马将军尽管去成都，你的家眷都交给在下吧！			103010	2
+104001	斥候	我已打探到马超将军的家眷被关押在城外几处！		UI_Juqing_T_Chuanlingbing.img	104001	1
+104002	Player	速速出发！			104001	2
+104003		营救马超家眷！			104002	0
+104004	家丁	马超大人的妹妹在城中要被斩首了！		UI_Juqing_T_Jiading.img	104003	1
+104005		营救马超家眷！			104004	0
+104006	Player	杀进城去！			104005	2
+104007		击败杨柏，救出马超家眷！			104006	0
+104008	Player	趁张鲁没反应过来，速速撤离！			104007	2
+105001	孟获	朱提太守欺压我南中百姓，我决定起兵，请将军相助！		UI_Juqing_T_menghuo.img	105001	1
+105002	Player	定不让你受半点伤害！			105001	2
+105003		击败太守雍闿			105002	0
+105004	百姓	哦！孟获大人要来解救我们了！快搬开拒马！		UI_Juqing_T_Jiading.img	105003	1
+105005		击败太守雍闿			105004	0
+105006	鄂焕	你们要造反么！		UI_Juqing_T_Yufuluo.img	105005	1
+105007	鄂焕	一群刁民！		UI_Juqing_T_Yufuluo.img	105006	1
+105008		击败太守雍闿			105007	0
+105009	雍闿	大胆刁民，竟敢冲撞州府！快快受死！		UI_Juqing_T_Yufuluo.img	105008	1
+105010	孟获	我今天就要为民除害！杀了你这狗官！		UI_Juqing_T_menghuo.img	105009	1
+105011	雍闿	哼，建宁太守朱褒会为我报仇的！		UI_Juqing_T_Yufuluo.img	105009	1
+105012	斥候	报，城外有建宁援军到来！		UI_Juqing_T_Chuanlingbing.img	105009	1
+105013	Player	我去攻破据点！			105009	2
+105014		攻破据点，阻止援军到来！			105010	0
+105015	Player	休想助纣为虐！			105011	2
+105016	孟获	哈哈哈，朱提人民从此站起来了！		UI_Juqing_T_menghuo.img	105012	1
+106001	孟获	听说建宁太守朱褒要为雍闿报仇，我决定先下手为强！		UI_Juqing_T_menghuo.img	106001	1
+106002	孟获	请将军助我一臂之力！		UI_Juqing_T_menghuo.img	106001	1
+106003		攻占建宁			106002	0
+106004	朱蒋	什么！竟然是南中军！		UI_Juqing_T_Wanghong.img	106003	1
+106005	Player	快点进城，别被朱褒跑了！			106004	2
+106006	Player	说，朱褒去哪儿了？			106005	2
+106007	斥候	太守他从东门跑啦！		UI_Juqing_T_Chuanlingbing.img	106005	1
+106008		追击朱褒！			106006	0
+106009	朱褒	高定会给我报仇的！！		UI_Juqing_T_weixu.img	106007	1
+106010	朱褒	哈哈，援军到了，我要报仇！		UI_Juqing_T_weixu.img	106008	1
+106011		击败朱褒			106009	0
+106012	朱褒	高定会给我报仇的！！！		UI_Juqing_T_weixu.img	106010	1
+107001	Player	云南太守高定与朱提、建宁的太守狼狈为奸，除恶务尽，不可轻饶！			107001	2
+107002		攻占云南！			107002	0
+107003	山贼	滚开！宝箱是我们先发现的！		UI_Juqing_T_Shanzei.img	107003	1
+107004	Player	狗官受死！			107004	2
+107005	百姓	多谢将军救我等脱离苦海！		UI_Juqing_T_Jiading.img	107005	1
+107006		城门大开，前往城中			107006	0
+107007	斥候	报！城北出现一伙军队，向城中袭来！		UI_Juqing_T_Chuanlingbing.img	107007	1
+107008		防守政厅！			107008	0
+107009	兀突肌	哼，我二哥会给我报仇的！		UI_Juqing_T_Yufuluo.img	107009	1
+107010	兀突骼	哼，我大哥会给我报仇的！		UI_Juqing_T_Yufuluo.img	107010	1
+107011	兀突骨	我投降！我愿意奉孟大王为兄长！		UI_Juqing_T_Yufuluo.img	107011	1
+107012	Player	有劳将军随我去见孟获大人了！			107011	2
+108001	Player	南中独立，阿会喃却驱逐了孟获的使者，孟获大怒，派我前来讨伐。便让我领教一下南中名将阿会喃的勇武吧！			108001	2
+108002		击败阿会喃			108002	0
+108003	Player	先来领教一下阿会喃手下精兵！			108003	2
+108004	Player	阿会喃，看招！			108004	2
+108005	Player	南中名将，怎么如此弱小？			108005	2
+108006	阿会喃	夜郎有毒泉肆虐，已让我军兵力大损，怎可让外乡人误入其中？所以我拒绝了大王派遣的官员……		UI_Juqing_T_Ehuinan.img	108005	1
+108007	Player	夜郎也是南中的一部分，我们可不是外乡人。闲话少说，我去找找原因！			108005	2
+108008		出城寻找毒泉源头			108006	0
+108009	Player	你们在干什么！！			108007	2
+108010	黄巾余孽	被发现了！快灭口！		UI_Juqing_T_Huangjinyunie.img	108007	1
+108011	Player	可恶，竟然有毒！			108008	2
+108012	黄巾渠帅	不能让任何人破坏我黄巾大业！		UI_Juqing_T_Huangjinyunie.img	108009	1
+108013	Player	黄巾的时代已经过去了！			108010	2
+108014	阿会喃	多谢将军！我这就派人去请大王的使者！		UI_Juqing_T_Ehuinan.img	108010	1
+109001	Player	阿会喃说，牂牁遭到五溪蛮族入侵，先进城去看看吧！			109001	2
+109002		前往牂牁			109002	0
+109003	董荼那	你就是孟获派来的援军？先让我看看你的实力吧！		UI_Juqing_T_Yufuluo.img	109003	1
+109004		击败董荼那			109004	0
+109005	董荼那	将军威武，小将甘拜下风。五溪蛮人就在城外，请将军出手相助！攻破敌军三座营寨！		UI_Juqing_T_Yufuluo.img	109005	1
+109006		攻破所有蛮族据点			109006	0
+109007	Player	第一座！			109007	2
+109008	Player	第二座！			109008	2
+109009	沙摩柯	敌将速来一战！		UI_Juqing_T_niujin.img	109009	1
+109010	沙摩柯	我败了……		UI_Juqing_T_niujin.img	109010	1
+109011	Player	攻破了三个据点了！回城复命吧！			109011	2
+109012		回城复命！			109012	0
+109013	董荼那	将军真是威武，请满饮此杯！		UI_Juqing_T_Yufuluo.img	109013	1
+109014	Player	呃……有毒！			109013	2
+109015	Player	将军，为什么我们不能同心协力，为南中百姓谋福呢？			109014	2
+109016	董荼那	是我错了，从今以后唯孟获大王马首是瞻！		UI_Juqing_T_Yufuluo.img	109014	1
+109017	Player	南中统一了！			109014	2
+109018		击败董荼那			109015	0
+110001	孙策	我想为袁伯父打下江东，特意献上玉玺，希望袁伯父借兵！		UI_Juqing_T_Sunce.img	110001	1
+110002	袁术	当然可以，但是你要先帮我打下庐江！		UI_Juqing_T_Yuanshao.img	110001	1
+110003		离开寿春城！			110002	0
+110004	纪灵	汝骗的了俺家主公却骗不到我，休想出城！		UI_Juqing_T_Jiling.img	110003	1
+110005	纪灵	哎，主公糊涂啊…		UI_Juqing_T_Jiling.img	110004	1
+110006	雷薄	未得袁公命令任何人不得出城！		UI_Juqing_T_Shanzei.img	110005	1
+110007	雷薄	今日且放你一马！		UI_Juqing_T_Shanzei.img	110006	1
+110008	孙策	庐江就拜托将军了，兵贵神速，我先走一步！		UI_Juqing_T_Sunce.img	110006	1
+110009		前往庐江！			110007	0
+110010	陈兰	宝藏是我的！		UI_Juqing_T_Chenlan.img	110008	1
+110011	陈兰	好吧好吧，宝藏是你的！		UI_Juqing_T_Chenlan.img	110009	1
+110012	Player	接下来，向庐江进发！			110010	2
+111000	Player	围困庐江，击破两个城门守将！			111000	2
+111001	陆乘	袁术的爪牙打过来了！		UI_Juqing_T_Chenlan.img	111001	1
+111002	陆风	想攻占庐江？从我的尸体上过去吧！		UI_Juqing_T_Shanzei.img	111002	1
+111003	陆乘	你一定不会得逞的！		UI_Juqing_T_Chenlan.img	111003	1
+111004	Player	城门洞开，全军出击！			111004	2
+111005		击破政厅			111005	0
+111006	陆风	我做鬼也不会放过你！		UI_Juqing_T_Shanzei.img	111006	1
+111007	Player	城门洞开，全军出击！			111007	2
+111008	陆康	我绝对不会把庐江让给袁术！		UI_Juqing_T_Lukang.img	111008	1
+111009	Player	终于攻占了庐江！			111009	2
+111010	刘勋	主公有令，攻占庐江后，陆家上下鸡犬不留！		UI_Juqing_T_Dingfang.img	111009	1
+111011	Player	住手！			111009	2
+111012	刘勋	你给我等着！袁术主公会给我做主的！		UI_Juqing_T_Dingfang.img	111010	1
+112000	Player	攻占建业！以此为根基，才能统一江东！			112000	2
+112001		攻破建业政厅！			112001	0
+112002	严白鼠	哎呀！官兵来啦！！		UI_Juqing_T_Dingfang.img	112002	1
+112003	严白鼠	救命啊，快跑啊！		UI_Juqing_T_Dingfang.img	112003	1
+112004		攻破政厅			112004	0
+112005	严白猫	我这里没有财宝！不要打我！！		UI_Juqing_T_Jiling.img	112005	1
+112006	严白猫	好吧财宝给你！不要打我T_T		UI_Juqing_T_Jiling.img	112006	1
+112007	严白虎	建业是我的！谁都不能从我手上夺走他！		UI_Juqing_T_Chenlan.img	112007	1
+112008	严白虎	你给我等着！！我还会回来的！！		UI_Juqing_T_Chenlan.img	112008	1
+112009	Player	攻破了政厅！建业是我军的了！			112009	2
+112010	Player	咦？为什么城外也有敌军？			112010	2
+112011	Player	此处必有蹊跷！			112011	2
+112012	严白龙	唔？建业可是我白家的基业！狗官受死！		UI_Juqing_T_Yuanshao.img	112012	1
+112013	严白龙	X_X		UI_Juqing_T_Yuanshao.img	112013	1
+112014	Player	城南路障消失，可以从南面进城了！			112013	2
+112015		攻占政厅！			112014	0
+113001	Player	丹阳自古出精兵，如果能收复丹阳兵……			113001	2
+113002		收复丹阳兵！			113002	0
+113003	丹阳兵	又是来想收复我们的人么？让我们看看你的力量吧！		UI_Juqing_T_Wanghong.img	113003	1
+113004	丹阳兵	外乡人，你证明了自己的实力！扫清丹阳的盗匪，我们就投靠你！		UI_Juqing_T_Wanghong.img	113004	1
+113005		击败所有盗匪			113005	0
+113006	山贼头领	嘿嘿嘿，我发现了什么？一只大肥羊！		UI_Juqing_T_Shanzei.img	113006	1
+113007	丹阳兵	多谢你恢复了丹阳的宁静，我们愿意投效孙策帐下！		UI_Juqing_T_Wanghong.img	113007	1
+114001	Player	这次一定要彻底击败严白虎，收复吴县！			114001	2
+114002		收复吴县！			114002	0
+114003	严白虎	哈哈，中埋伏了吧？		UI_Juqing_T_Chenlan.img	114003	1
+114004	严白虎	哼，你给我等着！我们还会见面的！		UI_Juqing_T_Chenlan.img	114004	1
+114005	严黑虎	我家兄长不会放过你的！		UI_Juqing_T_weixu.img	114005	1
+114006	Player	咦？严白虎竟然不在？			114006	2
+114007		攻破政厅！			114007	0
+114008	严白虎	哈哈，你以为你要赢了？看招！		UI_Juqing_T_Chenlan.img	114008	1
+114009	Player	受死吧！			114009	2
+114010	严白虎	啊X_X		UI_Juqing_T_Chenlan.img	114009	1
+114011	Player	攻破政厅，收复吴县！			114010	2
+114012		攻破政厅			114011	0
+114013	Player	吴县是我军的了！			114012	2
+114014	严白虎	吴县是我的！去死去死去死！		UI_Juqing_T_Chenlan.img	114013	1
+114015		击败严白虎！			114014	0
+115001	Player	会稽是江东大郡，不容有失！全军出击！			115001	2
+115002		攻占会稽！			115002	0
+115003	太史慈	全军突击！		UI_Juqing_T_taishici.img	115003	1
+115004	太史慈	暂且撤军！		UI_Juqing_T_taishici.img	115004	1
+115005	太史慈	吃我一刀！		UI_Juqing_T_taishici.img	115005	1
+115006	Player	将军威武，何不投降？			115006	2
+115007	太史慈	主公快些开门，咱们据城而守！		UI_Juqing_T_taishici.img	115006	1
+115008	刘繇	废物，从东侧走北门！		UI_Juqing_T_liupan.img	115006	1
+115009		追踪太史慈			115007	0
+115010	神亭小将	来人止步！		UI_Juqing_T_Gongsunzan.img	115008	1
+115011	Player	……			115008	2
+115012	神亭小将	看来将军已经脱离战场了……		UI_Juqing_T_Gongsunzan.img	115009	1
+115013	太史慈	为何不开门……		UI_Juqing_T_taishici.img	115010	1
+115014	Player	太史将军可愿投降？			115011	2
+115015	太史慈	罢了，我不愿与旧主对阵，还请将军相助！		UI_Juqing_T_taishici.img	115011	1
+115016		击败刘繇			115012	0
+115017	刘繇	别过来！我可是汉室宗亲！！		UI_Juqing_T_liupan.img	115013	1
+115018	Player	你徒为扬州刺史，不能保一方安宁，不能人尽其才，也配当汉室宗亲？			115013	2
+115019	刘繇	我……我和你拼了！		UI_Juqing_T_liupan.img	115013	1
+115020	刘繇	你给我等着！		UI_Juqing_T_liupan.img	115014	1
+115021	Player	哼，宵小之徒！			115014	2
+116001	Player	约好了与太史慈兵分两路攻打永宁，我却遭遇风浪被吹至此处。			116001	2
+116002	Player	占领夷洲再想办法查看永宁吧！			116001	2
+116003		攻占夷洲			116002	0
+116004	巴旦木	汉人！离开这里！夷洲是我们的！		UI_Juqing_T_Shanzei.img	116003	1
+116005	Player	夷洲即将被孙策大人统治！			116003	2
+116006	巴旦木	贪婪的汉人，你会遭报应的！		UI_Juqing_T_Shanzei.img	116004	1
+116007	巴桐木	贪婪的汉人！这就是你的报应！		UI_Juqing_T_Tufei.img	116005	1
+116008	斥候	不好！士卒无力，我军攻击力降低了！		UI_Juqing_T_Chuanlingbing.img	116005	1
+116009	Player	诅咒还没有消失么……			116006	2
+116010	巴巫	呵呵呵呵……		UI_Juqing_T_Tufei.img	116007	1
+116011	Player	臣服，还是毁灭？			116008	2
+116012	巴铁木	汉人！问问我的兵刃吧！		UI_Juqing_T_Shanzei.img	116008	1
+116013	巴铁木	我的兵刃告诉我臣服……		UI_Juqing_T_Shanzei.img	116009	1
+117001	Player	终于回到了大陆！咦？前方为何火光冲天？			117001	2
+117002		前去查看！			117002	0
+117003	建安守将	我军要为你等保卫家园，快给我们筹备粮草！		UI_Juqing_T_Lifeng.img	117003	1
+117004	百姓	这些粮食是我们明年的种子啊T_T		UI_Juqing_T_Jiading.img	117003	1
+117005	Player	奸贼受死！			117003	2
+117006	百姓	多谢将军相助！听说太史将军将从东北方向进攻！		UI_Juqing_T_Jiading.img	117004	1
+117007	Player	前方有两条路，是去接应太史将军，还是直接攻城？			117005	2
+117008	Player	全军出击，攻占建安！			117006	2
+117009		击败建安守将！			117007	0
+117010	Player	糟糕，中伏了！			117008	2
+117011	Player	前去攻下东北据点，接应太史将军！			117009	2
+117012	Player	杀！			117010	2
+117013	太史慈	多谢！城西无人守卫，请将军做先锋，进攻建安！！		UI_Juqing_T_taishici.img	117011	1
+117014	Player	不好！好多伏军！			117012	2
+117015	贺齐	想要建安？那就大败我吧！		UI_Juqing_T_taishici.img	117013	1
+117016	贺齐	你击败了我！建安是你的了！		UI_Juqing_T_taishici.img	117014	1
+118000	Player	一伙匪徒霸占了柴桑，正好借此机会统一扬州！			118000	2
+118001		收复柴桑！			118001	0
+118002	蒋石	哪里来的小子，这柴桑被我们占了！快滚！		UI_Juqing_T_Wanghong.img	118002	1
+118003	蒋石	太厉害了，快去通知老大！		UI_Juqing_T_Wanghong.img	118003	1
+118004	Player	哼，连城门都不知道修！			118003	2
+118005	Player	就是你攻占了柴桑？			118004	2
+118006	蒋钦	嘿嘿，可不就是我？		UI_Juqing_T_Wanghong.img	118004	1
+118007	Player	将军武功高强，何不归降我军？			118005	2
+118008	蒋钦	我在鄱阳逍遥自在，谁愿意归降？撤退撤退！		UI_Juqing_T_Wanghong.img	118005	1
+118009	蒋钦	该死，竟然追到了这里……		UI_Juqing_T_Wanghong.img	118006	1
+118010	蒋钦	继续撤退！继续撤退！！		UI_Juqing_T_Wanghong.img	118007	1
+118011	周泰	来着止步！		UI_Juqing_T_zhoutai.img	118008	1
+118012	周泰	唔……好强……		UI_Juqing_T_zhoutai.img	118009	1
+118013	周泰	我绝不甘心失败！		UI_Juqing_T_zhoutai.img	118010	1
+118014	周泰	……		UI_Juqing_T_zhoutai.img	118011	1
+118015	Player	两位壮士，请赐教！			118012	2
+118016	蒋钦	撤退！		UI_Juqing_T_Wanghong.img	118013	1
+118017	周泰	有本事我们鄱阳见！		UI_Juqing_T_zhoutai.img	118013	1
+119001	Player	鄱阳水匪的据点就在山顶，全军出击！			119001	2
+119002	周泰	小子，中埋伏了吧！		UI_Juqing_T_zhoutai.img	119002	1
+119003	周泰	哼，算你厉害！		UI_Juqing_T_zhoutai.img	119003	1
+119004	蒋钦	竟然打到家门口了……		UI_Juqing_T_Wanghong.img	119004	1
+119005	蒋钦	退路已绝，破釜沉舟一战！		UI_Juqing_T_Wanghong.img	119005	1
+119006	周泰	蒋大哥，我来助你！		UI_Juqing_T_zhoutai.img	119006	1
+119007	Player	二位将军，可愿归降我军？			119007	2
+119008	周泰	我等愿降！		UI_Juqing_T_zhoutai.img	119007	1
+119009	蒋钦	我等特献扬州鼎给将军！		UI_Juqing_T_Wanghong.img	119007	1
+119010		获得扬州鼎的认可			119008	0
+120001	步骘	孙权大人派我治理交州，这一切就从苍梧开始吧。有劳将军护送了！		UI_Juqing_T_lvmeng.img	120001	1
+120002	Player	请！			120001	2
+120003		接管苍梧			120002	0
+120004	山贼	嘿嘿嘿，此路不通！！		UI_Juqing_T_Shanzei.img	120003	1
+120005	Player	糟糕，中埋伏了！			120003	2
+120006	山贼头	我们只是受人之托T_T		UI_Juqing_T_Shanzei.img	120004	1
+120007	吴用	嗯？你们一定是城外山贼的密探，快快受死吧！		UI_Juqing_T_Wanghong.img	120005	1
+120008	步骘	我等受孙权大人之令，前来接收苍梧！		UI_Juqing_T_lvmeng.img	120006	1
+120009	吴用	快快开城！！		UI_Juqing_T_Wanghong.img	120006	1
+120010	步骘	还请吴巨太守交出苍梧统治权。		UI_Juqing_T_lvmeng.img	120007	1
+120011	吴巨	哼，我不服！！		UI_Juqing_T_Wanghong.img	120007	1
+120012		击败吴巨			120008	0
+120013	步骘	以此为据点，统一整个交州吧!		UI_Juqing_T_lvmeng.img	120009	1
+121000	Player	合浦太守夷廖拒不听令，新任交州刺史步骘特令我来讨伐，希望一切顺利。			121000	2
+121001		接管合浦！			121001	0
+121002	夷廖	步骘的走狗，受死吧！		UI_Juqing_T_Dingfang.img	121002	1
+121003	小兵	将军饶命，我是假扮的夷廖，夷廖出城去了T_T		UI_Juqing_T_Chuanlingbing.img	121003	1
+121004	Player	哼，全军追击！			121003	2
+121005		追击夷廖！			121004	0
+121006	Player	糟糕，中伏了！			121005	2
+121007	夷廖	可恶，竟然追到了这里……		UI_Juqing_T_Dingfang.img	121006	1
+121008	夷廖	机关算尽……竟然还是失败了……		UI_Juqing_T_Dingfang.img	121007	1
+122001	Player	朱崖太守钱博是夷廖的好兄弟，为了复仇发动了叛乱……			122001	2
+122002	Player	斥候说前方可以突袭他，希望一切顺利……			122001	2
+122003		突袭钱博！			122002	0
+122004	钱博	什么！竟然有埋伏！！		UI_Juqing_T_Dingfang.img	122003	1
+122005	钱博	哈哈，中埋伏了吧！		UI_Juqing_T_Dingfang.img	122004	1
+122006	钱博	哼，你给我等着……		UI_Juqing_T_Dingfang.img	122005	1
+122007		追击钱博			122006	0
+122008	钱博	混蛋！为什么门打不开？		UI_Juqing_T_Dingfang.img	122007	1
+122009	钱国	T_T		UI_Juqing_T_Dingfang.img	122007	1
+122010	钱博	可恶……撤退！！		UI_Juqing_T_Dingfang.img	122008	1
+122011		追击钱博			122009	0
+122012	钱博	竟然无处可逃了……		UI_Juqing_T_Dingfang.img	122010	1
+122013	Player	叛贼，受死！！			122011	2
+122014	钱博	啊X_X		UI_Juqing_T_Dingfang.img	122011	1
+123001	士燮	步骘将军威名远扬，我等愿降。		UI_Juqing_T_Yuantan.img	123001	1
+123002	Player	请将军随我前往苍梧！			123001	2
+123003	士徽	我会守好家的！		UI_Juqing_T_Yuantan.img	123001	1
+123004		护送士燮前往苍梧			123002	0
+123005	Player	嗯？城门口就有山贼伏击？			123003	2
+123006	士燮	将军见笑了，请继续出发吧！		UI_Juqing_T_Yuantan.img	123004	1
+123007	山贼头	呵呵，有人出了重金，士燮狗头留下来吧！		UI_Juqing_T_Shanzei.img	123005	1
+123008	山贼头	我交代，是士徽出钱让我来杀你们的T_T		UI_Juqing_T_Shanzei.img	123006	1
+123009	士燮	什么！这孽障！！家门不幸，请将军出手相助T_T		UI_Juqing_T_Yuantan.img	123006	1
+123010	Player	士燮将军请继续前往苍梧，此处交给我吧！			123006	2
+123011		击败士徽			123007	0
+123012	士徽	哈哈哈哈，孙权的走狗，交趾绝不屈服！		UI_Juqing_T_Yuantan.img	123008	1
+123013		伏兵出现			123009	0
+123014	士徽	我……不……服……		UI_Juqing_T_Yuantan.img	123010	1
+124001	Player	陈仓把守森严，丞相令咱们走小路			124001	2
+124002		走小路偷袭陈仓！			124002	0
+124003	Player	不能走漏消息，杀掉这伙山贼！			124003	2
+124004	张郃	哈哈哈哈，我就知道你们会走小路！		UI_Juqing_T_Zhanghe.img	124004	1
+124005	Player	不好！有埋伏！			124004	2
+124006	张颌	呃……我的膝盖中了一箭……		UI_Juqing_T_Zhanghe.img	124005	1
+124007	Player	胜利在望！			124006	2
+124008	Player	绝对不能走路消息			124007	2
+124009	郝昭	什么！敌军竟然从后面过来了！		UI_Juqing_T_Haozhao.img	124008	1
+124010	郝昭	来让我看看你的力量吧！		UI_Juqing_T_Haozhao.img	124009	1
+124011	郝昭	对不起……我没能守住陈仓……		UI_Juqing_T_Haozhao.img	124010	1
+124012	Player	是诸葛丞相算无遗策！			124010	2
+125001	马谡	街亭山上地势险要，易守难攻，我们去那里驻守好啦！		UI_Juqing_T_Masu.img	125001	1
+125002	Player	这……			125001	2
+125003		护送马谡			125002	0
+125004	马谡	看看，这地方这么好，司马懿竟然不派人来把守，真是便宜了我军，哈哈哈！		UI_Juqing_T_Masu.img	125003	1
+125005	司马昭	呵呵呵，多谢马谡将军提醒！		UI_Juqing_T_Simazhao.img	125003	1
+125006		保护马谡！			125004	0
+125007	马谡	看来司马老贼早有准备，快快撤军！从西边走！！		UI_Juqing_T_Masu.img	125005	1
+125008	马谡	这里也有伏兵！！		UI_Juqing_T_Masu.img	125006	1
+125009	司马师	我等在此恭候多时了！		UI_Juqing_T_Yuantan.img	125007	1
+125010	司马师	呵呵，后会有期！		UI_Juqing_T_Yuantan.img	125008	1
+125011	司马懿	哦？你们就这样走了？不留下点什么么？		UI_Juqing_T_Simayi.img	125009	1
+125012	Player	哼……			125009	2
+125013	司马懿	呵呵呵呵，我们还会再见面的！		UI_Juqing_T_Simayi.img	125010	1
+126001	Player	强出子午，奔袭长安，丞相不听，我们就自己来！			126001	2
+126002		强出子午！			126002	0
+126003	Player	不好，中埋伏了！			126003	2
+126004	魏平	！哪里来的敌军！		UI_Juqing_T_weixu.img	126004	1
+126005	魏续	攻我关隘，真是猖狂！		UI_Juqing_T_weixu.img	126005	1
+126006	魏续	啊X_X		UI_Juqing_T_weixu.img	126006	1
+126007	Player	继续前进！			126006	2
+126008		离开子午谷！			126007	0
+126009	杨仪	站住！未得丞相丞相命令，谁都不许从子午谷出去！		UI_Juqing_T_Yangqiu.img	126008	1
+126010	Player	长安近在咫尺，恕我不能从命！			126008	2
+126011	杨仪	哼，敢抗令不遵？		UI_Juqing_T_Yangqiu.img	126008	1
+126012		击败杨仪			126009	0
+126013	杨仪	你给我等着，丞相会给我做主的！		UI_Juqing_T_Yangqiu.img	126010	1
+126014	Player	全军！朝长安进军！！			126010	2
+127001	Player	长安在望，魏延将军令我等出兵东南之门，声东击西。全军出发！			127001	2
+127002		长安东南安营！			127002	0
+127003	许综	啊？哪里来的敌军？？		UI_Juqing_T_Qiuliju.img	127003	1
+127004	Player	快，通过关隘，速速前去安营！			127004	2
+127005	Player	攻占此处！			127005	2
+127006	典满	什么？竟然有敌军在长安东南出现了？随我去攻破他们！		UI_Juqing_T_Dianwei.img	127006	1
+127007		部分守军被引出			127007	0
+127008	夏侯充	什么？典满竟然败了？全军随我去看看！		UI_Juqing_T_weixu.img	127008	1
+127009		部分守军被引出			127009	0
+127010	夏侯霸	呵呵，这群蠢货，一群流寇都打不过，诸位，随我上！		UI_Juqing_T_Wanghong.img	127010	1
+127011		部分守军被引出			127011	0
+127012	夏侯玄	这伙流寇不简单啊……还是要去探查一番……		UI_Juqing_T_megnda.img	127012	1
+127013		所有守军被引出			127013	0
+127014	魏延	计划成功，所有守军都被击败了！全军出击、攻占长安！		UI_Juqing_T_weiyan.img	127014	1
+127015	魏延	计划失败，算了，全军强行进攻！		UI_Juqing_T_weiyan.img	127015	1
+127016	夏侯楙	卫兵！卫兵！！快来救我！		UI_Juqing_T_yangzuo.img	127016	1
+127017	诸葛亮	看来是我错了，我军马上就可以攻占长安了……		UI_Juqing_T_Zhugeliang.img	127017	1
+127018	斥候	丞相出现，我军士气大振，攻击力提高一倍！		UI_Juqing_T_Chuanlingbing.img	127017	1
+127019	司马懿	差点来不及！！！		UI_Juqing_T_simayi.img	127018	1
+127020		长安援军出现！			127019	0
+127021	司马懿	功亏一篑啊……		UI_Juqing_T_simayi.img	127021	1
+127022	魏延	长安是我军的了！		UI_Juqing_T_weiyan.img	127021	1
+127023	诸葛亮	汉室复兴有望了T_T		UI_Juqing_T_Zhugeliang.img	127021	1
+127024		获得雍鼎的认可！			127022	0
+128001	张扬	我有心出兵勤王，但是白波贼频频来袭，还请将军相助！		UI_Juqing_T_Yuejin.img	128001	1
+128002		抵御白波贼入侵！			128002	0
+128003	张扬	不要放松警惕！		UI_Juqing_T_Yuejin.img	128003	1
+128004	张扬	还有敌军！		UI_Juqing_T_Yuejin.img	128004	1
+128005	张扬	山上就是白波贼据点，还请将军出手，斩草除根！		UI_Juqing_T_Yuejin.img	128005	1
+128006	杨奉	哈哈，中计了吧！我兄弟李乐派兵去偷袭张扬啦！		UI_Juqing_T_Yanliang.img	128006	1
+128007		张扬遭袭！			128007	2
+128008	杨奉	怎么这么强……		UI_Juqing_T_Yanliang.img	128008	1
+128009	李乐	我们老大不会放过你的！X_X		UI_Juqing_T_Wanghong.img	128009	1
+128010	张扬	白波后患已除，我们这就出兵勤王吧！		UI_Juqing_T_Yuejin.img	128009	1
+128011		离开河内！			128010	0
+128012	郭太	站住！伤了我兄弟，竟然想跑么？吃我一刀！		UI_Juqing_T_Hansui.img	128011	1
+128013	Player	最后的障碍也解决了，全军出发！			128012	2
+129001	斥候	启禀将军，据说李儒要毒杀弘农王！请将军速速发兵救援！！		UI_Juqing_T_Chuanlingbing.img	129001	1
+129002		击败李儒！			129002	0
+129003	李肃	董卓大人有令，任何人不得接近弘农！		UI_Juqing_T_Lidian.img	129003	1
+129004	李肃	撤退！带着我的积蓄撤退！		UI_Juqing_T_Lidian.img	129004	1
+129005		弘农南面似有蹊跷！			129005	0
+129006	徐荣	哼，我就知道李肃这家伙不靠谱！		UI_Juqing_T_Xurong.img	129006	1
+129007	Player	李儒就在前面！！			129007	2
+129008	刘辩	速来护驾！！！		UI_Juqing_T_Liupan.img	129007	1
+129009	李儒	嗯？竟然被人闯到这里了……		UI_Juqing_T_Simazhao.img	129008	1
+129010	李儒	罢了，一个废帝而已……撤退！		UI_Juqing_T_Simazhao.img	129009	1
+129011	刘辩	将军，请你将我护送到洛阳！		UI_Juqing_T_Liupan.img	129009	1
+129012		护送刘辩前往洛阳！			129010	0
+129013	张济	来着止步！没有董卓大人的命令，弘农王不许出弘农一步！		UI_Juqing_T_Guanhai.img	129011	1
+129014	Player	放肆！			129011	2
+129015	Player	哼，宵小之徒，不值一提！			129012	2
+129016	吕布	哼，弘农王去哪儿？		UI_Juqing_T_Lvbu.img	129013	1
+129017		吕布军出现！			129014	0
+129018	Player	洛阳……			129015	2
+129019	刘辩	什么！？朕竟然死在这里		UI_Juqing_T_Liupan.img	129016	1
+130001	Player	洛阳……			130001	2
+130002		前往洛阳！			130002	0
+130003	Player	洛阳城外竟然有乱军拦路？			130003	2
+130004		继续前进			130004	0
+130005	牛辅	哈哈，又有肥羊啦！		UI_Juqing_T_niujin.img	130005	1
+130006	Player	天子脚下，竟敢如此！受死！			130005	2
+130007	Player	天子脚下，竟然纷乱丛生，此处必有蹊跷！			130006	2
+130008	胡轸	站住！交过路费！		UI_Juqing_T_megnda.img	130007	1
+130009	Player	……			130007	2
+130010	Player	此处为何会有一个不可复活兵力的据点，实在诡异，到前方查看一番！！			130009	2
+130011	吕布	蝼蚁，止步！		UI_Juqing_T_lvbu.img	130010	1
+130012	吕布	竟然比上次见面还强了么……		UI_Juqing_T_lvbu.img	130011	1
+130013	董卓	哈哈哈哈，中计了！		UI_Juqing_T_Dongzhuo.img	130012	1
+130014	董卓	我的……酒池肉林……		UI_Juqing_T_Dongzhuo.img	130013	1
+130015	吕布	竟然这样也输了……		UI_Juqing_T_lvbu.img	130013	1
+130016	高顺	……		UI_Juqing_T_Gaoshun.img	130013	1
+130017	Player	董卓已死，我军士气大振！			130013	2
+130018	Player	陛下，我们来救您了！			130017	2
+130019	刘协	救朕？朕乃天子，何须别人救？		UI_Juqing_T_Yuanshao.img	130017	1
+130020	Player	陛下……			130017	2
+130021	卫兵	小心！！		UI_Juqing_T_Chuanlingbing.img	130017	1
+130022		制服刘协！			130021	0
+130023	刘协	朕乃万岁！朕不会败！！		UI_Juqing_T_Yuanshao.img	130022	1
+130024	刘协	可恶！		UI_Juqing_T_Yuanshao.img	130023	1
+130025	刘协	我要和你同归于尽！！		UI_Juqing_T_Yuanshao.img	130024	1
+130026	刘辩	皇弟被妖星所附，快击破皇城辟邪！		UI_Juqing_T_Wulingshang.img	130024	1
+130027		攻破辟邪！			130025	0
+130028	刘协	对！这一切都是朕的阴谋！朕不甘心！！		UI_Juqing_T_Yuanshao.img	130026	1
+130029	Player	终于……结束了……			130026	2
+150000	曹操	攻下四个辟邪，就能攻下此城！		UI_Juqing_T_Caocao.img	150000	1
+150001		攻破四个辟邪！			150001	0
+150002	曹操	我军士气大振，护甲上升一倍！		UI_Juqing_T_Caocao.img	150002	1
+150003	曹操	击败三个外城守将，会使城内士兵动摇！攻破三座外城城门，我也会率军前来！		UI_Juqing_T_Caocao.img	150003	1
+150004	曹操	城内士气大跌，伤害降低50%！		UI_Juqing_T_Caocao.img	150004	1
+150005	曹操	击败三个皇城守将，会使城内士兵动摇！攻破三座皇城城门，大事可定！		UI_Juqing_T_Caocao.img	150005	1
+150006	曹操	击败皇城守将，皇城士兵大动摇！！		UI_Juqing_T_Caocao.img	150006	1
+150007	曹操	四个辟邪都已攻破，邺城归属于我军了！！		UI_Juqing_T_Caocao.img	150007	1
+150008	曹操	皇城在前，胜利再往，我在此为诸君擂鼓助威！		UI_Juqing_T_Caocao.img	150008	1
+150009	曹操	我军可以在皇城内出兵，敌军士气大跌！		UI_Juqing_T_Caocao.img	150009	1
+151000	刘备	攻下四个辟邪，就能攻下此城！		UI_Juqing_T_Liubei.img	151000	1
+151001		攻破四个辟邪！			151001	0
+151002	刘备	我军士气大振，护甲上升一倍！		UI_Juqing_T_Liubei.img	151002	1
+151003	刘备	击败三个外城守将，会使城内士兵动摇！攻破三座外城城门，我也会率军前来！		UI_Juqing_T_Liubei.img	151003	1
+151004	刘备	城内士气大跌，伤害降低50%！		UI_Juqing_T_Liubei.img	151004	1
+151005	刘备	击败三个皇城守将，会使城内士兵动摇！攻破三座皇城城门，大事可定！		UI_Juqing_T_Liubei.img	151005	1
+151006	刘备	击败皇城守将，皇城士兵大动摇！！		UI_Juqing_T_Liubei.img	151006	1
+151007	刘备	四个辟邪都已攻破，成都归属于我军了！！		UI_Juqing_T_Liubei.img	151007	1
+151008	刘备	皇城在前，胜利再往，我在此为诸君擂鼓助威！		UI_Juqing_T_Liubei.img	151008	1
+151009	刘备	我军可以在皇城内出兵，敌军士气大跌！		UI_Juqing_T_Liubei.img	151009	1
+152000	孙坚	攻下四个辟邪，就能攻下此城！		UI_Juqing_T_Sunjian.img	152000	1
+152001		攻破四个辟邪！			152001	0
+152002	孙坚	我军士气大振，护甲上升一倍！		UI_Juqing_T_Sunjian.img	152002	1
+152003	孙坚	击败三个外城守将，会使城内士兵动摇！攻破三座外城城门，我也会率军前来！		UI_Juqing_T_Sunjian.img	152003	1
+152004	孙坚	城内士气大跌，伤害降低50%！		UI_Juqing_T_Sunjian.img	152004	1
+152005	孙坚	击败三个皇城守将，会使城内士兵动摇！攻破三座皇城城门，大事可定！		UI_Juqing_T_Sunjian.img	152005	1
+152006	孙坚	击败皇城守将，皇城士兵大动摇！！		UI_Juqing_T_Sunjian.img	152006	1
+152007	孙坚	四个辟邪都已攻破，建业归属于我军了！！		UI_Juqing_T_Sunjian.img	152007	1
+152008	孙坚	皇城在前，胜利再往，我在此为诸君擂鼓助威！		UI_Juqing_T_Sunjian.img	152008	1
+152009	孙坚	我军可以在皇城内出兵，敌军士气大跌！		UI_Juqing_T_Sunjian.img	152009	1
+153000	刘备	是吕布！我们打不过他，快攻破政厅！		UI_Juqing_T_Liubei.img	153000	1
+153001		击破政厅			153001	0
+154000	刘备	小心！黄巾来袭！		UI_Juqing_T_Liubei.img	154000	1
+154001		保护政厅！			154001	0
+155000	曹操	是吕布！我们打不过他，快攻破政厅！		UI_Juqing_T_Caocao.img	155000	1
+155001		击破政厅			155001	0
+156000	曹操	小心！黄巾来袭！		UI_Juqing_T_Caocao.img	156000	1
+156001		保护政厅！			156001	0
+157000	孙坚	是吕布！我们打不过他，快攻破政厅！		UI_Juqing_T_Sunjian.img	157000	1
+157001		击破政厅			157001	0
+158000	孙坚	小心！黄巾来袭！		UI_Juqing_T_Sunjian.img	158000	1
+158001		保护政厅！			158001	0
+200001	吕布	神将护体，全面提升自身属性。		UI_Juqing_T_Lvbu.img	200001	1
+200002	吕布	群魔乱舞，反伤所受伤害。		UI_Juqing_T_Lvbu.img	200002	1
+200003	吕布	十方横扫！		UI_Juqing_T_Lvbu.img	200003	1
+200004	吕布	有吾在此，谁敢放肆！！		UI_Juqing_T_Lvbu.img	200004	1
+200005	吕布	居然有人敢来挑战本将军，看戟！		UI_Juqing_T_Lvbu.img	200005	1
+200006	吕布	十方横扫！		UI_Juqing_T_Lvbu.img	200006	1
+200007	吕布	呃…，我已经尽力了……		UI_Juqing_T_Lvbu.img	200007	1
+200011	张角	急急如律令，落雷术！		UI_Juqing_T_Zhangjiao.img	200011	1
+200012	张角	神兵火急如律令，火帝招来！		UI_Juqing_T_Zhangjiao.img	200012	1
+200013	张角	"漫天雷鼓震,鬼神影无踪，天雷咒！"		UI_Juqing_T_Zhangjiao.img	200013	1
+200014	张角	苍天已死，黄天当立，挡我者死！		UI_Juqing_T_Zhangjiao.img	200014	1
+200015	张角	不自量力！你们这是在逆天行事！		UI_Juqing_T_Zhangjiao.img	200015	1
+200016	张角	天亡我也！！天亡我也！！		UI_Juqing_T_Zhangjiao.img	200016	1
+200021	徐荣	反魂蝶八分咲，盛开吧西行妖！		UI_Juqing_T_Xurong.img	200021	1
+200022	徐荣	我早已饥渴难耐！何人敢来一战！		UI_Juqing_T_Xurong.img	200022	1
+200023	徐荣	百步穿杨！		UI_Juqing_T_Xurong.img	200023	1
+200024	徐荣	自舍其身，施于天下。		UI_Juqing_T_Xurong.img	200024	1
+200025	徐荣	我…永不背弃		UI_Juqing_T_Xurong.img	200025	1
+200031	纪灵	听风吹雪夜，生死共存时~~		UI_Juqing_T_jiling.img	200031	1
+200032	纪灵	君何不惜命~~~~~~		UI_Juqing_T_jiling.img	200032	1
+200033	纪灵	汝之伤，吾与君同承 ！		UI_Juqing_T_jiling.img	200033	1
+200034	纪灵	汝之伤，吾与君同承 ！		UI_Juqing_T_jiling.img	200034	1
+200035	纪灵	好样的！居然妨碍了我列阵！（赞无）		UI_Juqing_T_jiling.img	200035	1
+200036	纪灵	反弹之阵！壹！		UI_Juqing_T_jiling.img	200036	1
+200037	纪灵	反弹之阵！贰！		UI_Juqing_T_jiling.img	200037	1
+200038	纪灵	反弹之阵！叁！		UI_Juqing_T_jiling.img	200038	1
+200039	纪灵	君何不听我一言~~~~~		UI_Juqing_T_jiling.img	200039	1
+200041	张绣	万箭穿！		UI_Juqing_T_Quyi.img	200041	1
+200042	张绣	无双剑雨！		UI_Juqing_T_Quyi.img	200042	1
+200043	张绣	万雷箭！		UI_Juqing_T_Quyi.img	200043	1
+200044	张绣	好久没和人动手了，身体都快生锈了！		UI_Juqing_T_Quyi.img	200044	1
+200045	张绣	就和你过几招当热身吧。		UI_Juqing_T_Quyi.img	200045	1
+200046	张绣	好久没打得这么舒坦了！		UI_Juqing_T_Quyi.img	200046	1
+200051	颜良	结印！列阵！		UI_Juqing_T_Yanliang.img	200051	1
+200052	颜良	上将颜良在此！		UI_Juqing_T_Yanliang.img	200052	1
+200053	颜良	弯弓射大雕！		UI_Juqing_T_Yanliang.img	200053	1
+200054	颜良	蛊惑众生！		UI_Juqing_T_Yanliang.img	200054	1
+200055	颜良	输便是输！		UI_Juqing_T_Yanliang.img	200055	1
+200061	文丑	舍身决！		UI_Juqing_T_Wenchou.img	200061	1
+200062	文丑	尝尝我的反弹之铠吧！		UI_Juqing_T_Wenchou.img	200062	1
+200063	文丑	舍身决！		UI_Juqing_T_Wenchou.img	200063	1
+200064	文丑	袁公帐下上将文丑在此！		UI_Juqing_T_Wenchou.img	200064	1
+200065	文丑	你就是那个不要命的么！		UI_Juqing_T_Wenchou.img	200065	1
+200066	文丑	舍身决！		UI_Juqing_T_Wenchou.img	200066	1
+200067	文丑	我居然输了，我不信！		UI_Juqing_T_Wenchou.img	200067	1
+200071	马腾	吾乃西凉锦马腾，尔等速速离去！		UI_Juqing_T_Yanxing.img	200071	1
+200072	马腾	秉忠贞之志，守谦退之节！		UI_Juqing_T_Yanxing.img	200072	1
+200073	马腾	战，实非吾之真意。		UI_Juqing_T_Yanxing.img	200073	1
+200074	马腾	自舍其身，施于天下。反伤！		UI_Juqing_T_Yanxing.img	200074	1
+200075	马腾	好样的！居然妨碍了我的护体之气！（暂无）		UI_Juqing_T_Yanxing.img	200075	1
+200076	马腾	自舍其身，施于天下。反伤！		UI_Juqing_T_Yanxing.img	200076	1
+200077	马腾	自舍其身，施于天下。反伤！		UI_Juqing_T_Yanxing.img	200077	1
+200078	马腾	自舍其身，施于天下。反伤！		UI_Juqing_T_Yanxing.img	200078	1
+200079	马腾	败，亦顺天意！		UI_Juqing_T_Yanxing.img	200079	1
+200081	吕布	骑兵列队，准备突围！		UI_Juqing_T_Lvbu.img	200081	1
+200082	吕布	"稳重行军,百战不殆! "		UI_Juqing_T_Lvbu.img	200082	1
+200083	吕布	全军突击~终焉乱舞！		UI_Juqing_T_Lvbu.img	200083	1
+200084	吕布	众将听令！摆好阵势，御敌！		UI_Juqing_T_Lvbu.img	200084	1
+200085	吕布	众将听令！摆好阵势，御敌！		UI_Juqing_T_Lvbu.img	200085	1
+200086	吕布	众将听令！摆好阵势，御敌！		UI_Juqing_T_Lvbu.img	200086	1
+200087	吕布	全军突击~终焉乱舞！		UI_Juqing_T_Lvbu.img	200087	1
+200088	吕布	休整片刻，且待我杀出一条血路！		UI_Juqing_T_Lvbu.img	200088	1
+200091	李傕	我乃关中第一猛将！谁敢前来送死？		UI_Juqing_T_Lijue.img	200091	1
+200092	华雄	胡说，我才是关中第一猛将！！		UI_Juqing_T_Huaxiong.img	200091	1
+200093	董卓	老子才是关中第一猛将！！		UI_Juqing_T_Dongzhuo.img	200091	1
+200094	董卓	将军才是真正的关中第一猛将！		UI_Juqing_T_Dongzhuo.img	200094	1
+200101	郭嘉	我料到了你们会来！		UI_Juqing_T_Guojia.img	200101	1
+200102	周瑜	哼，本都督早就料到了郭嘉料到了你们会来！		UI_Juqing_T_Zhouyu.img	200101	1
+200103	诸葛亮	呵呵，吾早已料到公瑾料到了奉孝料到了你们会来……		UI_Juqing_T_Zhugeliang.img	200101	1
+200104	诸葛亮	我早已料到将军会赢…		UI_Juqing_T_Zhugeliang.img	200104	1
+200111	孙坚	我若藏匿玉玺，必万箭穿心而死！		UI_Juqing_T_Sunjian.img	200111	1
+200112	刘备	我乃中山靖王之后，汉室宗亲！		UI_Juqing_T_Liubei.img	200111	1
+200113	曹操	这天下若没有孤，不知会有几人称王？		UI_Juqing_T_Caocao.img	200111	1
+200114	曹操	好吧，维护世界和平就靠你了！！！		UI_Juqing_T_Caocao.img	200114	1
+300001		资源车出现！保护自身势力资源车！			300001	0
+300002		世界战场李傕、郭汜、华雄出现！			300002	0
+300003		世界战场中央区域董卓出现！			300003	0
+300004		世界战场守卫出现！			300004	0
+300005		吴国资源车到达目的地！			300005	0
+300006		魏国资源车到达目的地！			300006	0
+300007		蜀国资源车到达目的地！			300007	0
+300008		吴国资源车被击破！			300008	0
+300009		魏国资源车被击破！			300009	0
+300010		蜀国资源车被击破！			300010	0
+300011		世界战场董卓被击杀！			300011	0
+300012		世界战场李傕被击杀！			300012	0
+300013		世界战场郭汜被击杀！			300013	0
+300014		世界战场华雄被击杀！			300014	0
+300015		世界战场各地出现宝箱！			300015	0
+300016		资源已经装车完毕，准备运往目标点，请将士们前往护送！			300016	0
+300017		李傕、郭汜、华雄已经携带大量奖励出现，请将士们前往挑战吧！			300017	0
+300018		大量蛮夷士兵已经出现，请将士们速速击败他们吧！			300018	0
+300019		大量神秘道具已经出现，请将士们前往探查吧！			300019	0
+300050		世界战场波才出现！			300050	0
+300051		世界战场张曼成出现！			300051	0
+300052		世界战场何仪出现！			300052	0
+300053		世界战场张角出现！			300053	0
+300054		世界战场张宝出现！			300054	0
+300055		世界战场张梁出现！			300055	0
+300056		世界战场张牛角出现！			300056	0
+300057		世界战场张燕出现！			300057	0
+300058		世界战场眭固出现！			300058	0
+300059		世界战场于毒出现！			300059	0
+300060		世界战场孟获出现！			300060	0
+300061		世界战场木鹿大王出现！			300061	0
+300062		世界战场金环三结出现！			300062	0
+300063		世界战场兀突骨出现！			300063	0
+300064		世界战场带来洞主出现！			300064	0
+300065		世界战场韩遂出现！			300065	0
+300066		世界战场边章出现！			300066	0
+300067		世界战场北宫伯玉出现！			300067	0
+300070		世界战场波才被击败！			300070	0
+300071		世界战场张曼成被击败！			300071	0
+300072		世界战场何仪被击败！			300072	0
+300073		世界战场张角被击败！			300073	0
+300074		世界战场张宝被击败！			300074	0
+300075		世界战场张梁被击败！			300075	0
+300076		世界战场张牛角被击败！			300076	0
+300077		世界战场张燕被击败！			300077	0
+300078		世界战场眭固被击败！			300078	0
+300079		世界战场于毒被击败！			300079	0
+300080		世界战场孟获被击败！			300080	0
+300081		世界战场木鹿大王被击败！			300081	0
+300082		世界战场金环三结被击败！			300082	0
+300083		世界战场兀突骨被击败！			300083	0
+300084		世界战场带来洞主被击败！			300084	0
+300085		世界战场韩遂被击败！			300085	0
+300086		世界战场边章被击败！			300086	0
+300087		世界战场北宫伯玉被击败！			300087	0
+601006	城中太守	将军沐森虚中以求治，实赖股肱之任臣；拜手以陈谟，必恃学力之精。特授尔三军大元帅，现保卫国家不容有失。		UI_Juqing_T_Sunjian.img	601006	1
+601007	城中太守	将军果真威武神勇！如此一统天下指日可待！		UI_Juqing_T_Sunjian.img	601009	1
+601008	城中太守	第一波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601010	1
+601009	敌军先锋	弟兄们一起上啊！城里的粮食美女统统都是我们滴！		UI_Juqing_T_Shanzei.img	601010	1
+601010	城中太守	第二波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601011	1
+601011	城中太守	第三波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601012	1
+601012	城中太守	第四波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601013	1
+601013	城中太守	第五波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601014	1
+601014	敌军将领	本将军在此！速速投降否则格杀勿论！		UI_Juqing_T_Weiyan.img	601014	1
+601015	城中太守	第六波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601015	1
+601016	城中太守	第七波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601016	1
+601017	城中太守	第八波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601017	1
+601018	城中太守	第九波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601018	1
+601019	城中太守	第十波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601019	1
+601020	敌军将领	本将军在此！速速投降否则格杀勿论！		UI_Juqing_T_Weiyan.img	601019	1
+601021	城中太守	第十一波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601020	1
+601022	城中太守	第十二波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601021	1
+601023	城中太守	第十三波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601022	1
+601024	城中太守	第十四波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601023	1
+601025	城中太守	最后一波敌军来袭，30秒内到达城下！		UI_Juqing_T_Sunjian.img	601024	1
+601026	敌军首领	一定要本王亲自出马吗！给我全力攻击！		UI_Juqing_T_Weiyan.img	601024	1
+601027	城中太守	少年！政厅被攻击了，在想什么呢！！		UI_Juqing_T_Sunjian.img	601025	1
+601028	城中太守	今日敌方倾巢出动，还望将军能守住城池，他日必有重谢！		UI_Juqing_T_Sunjian.img	606001	1
+601029	城中太守	政厅已破，罢了罢了…来日方长，全军撤退……		UI_Juqing_T_Sunjian.img	601000	1
+606001	城中太守	第1波敌军来袭，5秒内到达城下！		UI_Juqing_T_Sunjian.img	606001	1
+606002	城中太守	第%s波敌军来袭，5秒内到达城下！		UI_Juqing_T_Sunjian.img	606002	1
+606101	城中太守	勇士们！每过一段时间，刷新一波宝箱怪，总共刷十波，击杀后掉落大量宝箱！		UI_Juqing_T_Sunjian.img	606101	1
+606102	城中太守	宝箱怪距离刷新时间还有20秒！		UI_Juqing_T_Sunjian.img	606102	1
+606103	城中太守	宝箱怪刷新！		UI_Juqing_T_Sunjian.img	606103	1
+7000	新手指导官	欢迎进入国战体验副本！通过小地图可快速了解战场战况！		UI_Juqing_T_Chuanlingbing.img	7000	0
+7001		跟随箭头方向前进，击破政厅即可胜利！！			7008	1
+7002	新手指导官	杀死敌军可得功勋，损失士兵可得经验！		UI_Juqing_T_Chuanlingbing.img	7001	1
+7003	新手指导官	箭塔是多重攻击，步兵充当肉盾、其他部队远程攻击，减少损失！		UI_Juqing_T_Chuanlingbing.img	7002	1
+7004	新手指导官	攻城器械可造成多倍伤害，击破政厅即可获得胜利！		UI_Juqing_T_Chuanlingbing.img	7003	1
+7005	新手指导官	遭遇守军，攻击！		UI_Juqing_T_Chuanlingbing.img	7004	1
+7006	新手指导官	前进！		UI_Juqing_T_Chuanlingbing.img	7005	1
+7007	新手指导官	进城攻破政厅吧！		UI_Juqing_T_Chuanlingbing.img	7006	1
+7008	新手指导官	国战体验模拟教学结束！		UI_Juqing_T_Chuanlingbing.img	7007	1
+7009	新手指导官	损失士兵获得80点经验，杀死敌军获得20点功勋！		UI_Juqing_T_Chuanlingbing.img	7009	1
+7010	梁程	先过我这一关看看。		UI_Juqing_T_Weiyan.img	7010	1
+7011	梁程	将军定能有一番大作为！		UI_Juqing_T_Weiyan.img	7011	0
+7011		继续前进，击破政厅即可胜利！			7011	

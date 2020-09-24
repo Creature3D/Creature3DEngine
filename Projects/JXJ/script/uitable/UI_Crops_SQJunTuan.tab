@@ -1,0 +1,8 @@
+widget	script
+UI_Crops_SQJunTuan	UI_Crops_SQJunTuan.cfg
+UI_SQJunTuan_Drag	ui_frame.cfg
+UI_SQJunTuan_Close	UI_Close.cfg
+UI_JIaRu	UI_JIaRu.cfg
+UI_QuXiaoSQ	UI_QuXiaoSQ.cfg
+UI_LeftPage	UI_LeftPage.cfg
+UI_RightPage	UI_RightPage.cfg

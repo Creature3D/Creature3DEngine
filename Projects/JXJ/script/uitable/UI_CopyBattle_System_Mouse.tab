@@ -1,0 +1,5 @@
+widget	script
+UI_CopyBattle_System_Mouse	UI_CopyBattle_System_Mouse.cfg
+Close1	UI_SaveSetting.cfg
+Close2	UI_SaveSetting.cfg
+UI_CopyBattle_Mouse_Drag	ui_frame.cfg

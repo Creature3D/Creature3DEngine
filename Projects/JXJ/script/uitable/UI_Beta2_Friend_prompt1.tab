@@ -1,0 +1,6 @@
+widget	script
+UI_Beta2_Friend_prompt1	UI_Beta2_Friend_prompt1.cfg
+UI_Beta2_Friend_prompt1_Drag	UI_frame.cfg
+UI_Beta2_Friend_prompt1_Close	UI_Beta2_Friend_prompt1_Reject.cfg
+UI_Beta2_Friend_prompt1_Accept	UI_Beta2_Friend_prompt1_Accept.cfg
+UI_Beta2_Friend_prompt1_Reject	UI_Beta2_Friend_prompt1_Reject.cfg

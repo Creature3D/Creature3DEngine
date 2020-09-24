@@ -1,0 +1,6 @@
+widget	script
+UI_Beta2_Friend_AddFriend	UI_Beta2_Friend_AddFriend.cfg
+UI_Beta2_Friend_AddFriend_Drag	ui_frame.cfg
+UI_Beta2_Friend_AddFriend_Close	UI_Close.cfg
+UI_Beta2_Friend_AddFriend_Add	UI_Beta2_Friend_AddFriend_Add.cfg
+UI_Beta2_Friend_AddFriend_Cancel	UI_Prompt_Cancel.cfg

@@ -1,0 +1,5 @@
+widget	script
+UI_Frame	ui_frame.cfg
+UI_confirm	UI_Fuben_confirm.cfg
+UI_close_1	UI_Fuben_cancel.cfg
+UI_cancel	UI_Fuben_cancel.cfg

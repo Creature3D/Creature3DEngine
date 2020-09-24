@@ -1,0 +1,5 @@
+widget	script
+UI_Beta2_Knapsack_Gmbb_Close	UI_Close.cfg
+UI_Beta2_Knapsack_Gmbb_Drag	UI_frame.cfg
+UI_Beta2_Knapsack_Gmbb_Qd	UI_Beta2_Knapsack_Gmbb_Qd.cfg
+UI_Beta2_Knapsack_Gmbb_Qx	UI_Close.cfg

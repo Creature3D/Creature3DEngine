@@ -1,0 +1,113 @@
+id	step	触发控件父窗口名称	触发控件名称	遮罩需聚焦的控件	点击事件	参数	遮罩名称	超文本输入框名	超文本文件名ID	静态文本输入框名	静态文本ID	贴图控件名称	贴图文件名
+1	1						UI_Xinshouyindao3001	Duihua	1				
+1	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	2				
+1	3	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	3				
+1	4	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	4				
+1	5	15		15			UI_Xinshouyindao28001						
+1	6	UI_TerritoryBuilding	UI_TerritoryBuilding_Yjsm	UI_TerritoryBuilding_Yjsm	0	0	UI_Xinshouyindao5001	0	0	0	0	0	0
+1	7	closecanvas	0	0	0	UI_TerritoryBuilding	0	0	0	0	0	0	0
+2	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	5	0	0	0	0
+2	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	6	0	0	0	0
+2	3	2	2	2	0	0	UI_Xinshouyindao28001	0	0	0	0	0	0
+2	4	UI_Barracks	UI_Barracks_Shuliang	UI_Barracks_Shuliang	0	0	UI_Xinshouyindao24001	0	0	0	0	0	0
+2	5	UI_Barracks	UI_Barracks_Recruit	UI_Barracks_Recruit	0	0	UI_Xinshouyindao5001	0	0	0	0	0	0
+2	6	UI_Zhiyuna	UI_Zhiyuna_Confirm	UI_Zhiyuna_Confirm	0	0	UI_Xinshouyindao5001	0	0	0	0	0	0
+2	7	closecanvas				UI_Barracks							
+3	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	7				
+3	2	3	0	3	0	0	UI_Xinshouyindao28001	0	0				
+3	3	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	8				
+3	4	UI_Tavern	UI_Zhitianming	UI_Zhitianming	0	0	UI_Xinshouyindao18001	0	0				
+3	5	UI_Tavern	UI_Zhitianming	UI_Zhitianming	0	0	UI_Xinshouyindao18001	0	0				
+4	1	closecanvas				UI_Tavern		0	0				
+4	2						UI_Xinshouyindao3001	Duihua	9				
+4	3	UI_ManorStair_Taskbar	BianDui	BianDui	0	0	UI_Xinshouyindao8001	0	0	0	0	0	0
+4	4	UI_Beta2_Formation	UI_Beta2_Formation_BingZhong	UI_Beta2_Formation_BingZhong	0	11|20007	UI_Xinshouyindao14001	0	0	0	0	0	0
+4	5	UI_Beta2_Formation	UI_Beta2_Formation_BingZhong	UI_Beta2_Formation_BingZhong	0	11|20007	UI_Xinshouyindao14001	0	0	0	0	0	0
+4	6	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	10	0	0	0	0
+4	7	UI_Beta2_Formation	UI_Beta2_Formation_Jkxz4	UI_Beta2_Formation_Jkxz4	0	0	UI_Xinshouyindao10001						
+4	8	UI_Jk	GameList_1	GameList_1	2	10|10011	UI_Xinshouyindao5001						
+4	9	UI_Beta2_Formation	UI_Beta2_Formation_Jkxz5	UI_Beta2_Formation_Jkxz5	0	0	UI_Xinshouyindao10001						
+4	10	UI_Jk	GameList_1	GameList_1	2	10|10020	UI_Xinshouyindao5001						
+4	11	UI_Beta2_Formation	UI_Beta2_Formation_Qx1	UI_Beta2_Formation_Qx1	0	0	UI_Xinshouyindao5001	0					
+4	12						UI_Xinshouyindao3001	Duihua	11				
+5	1	UI_ManorStair_RenWu	RenWu	RenWu			UI_Xinshouyindao40001						
+5	2	UI_Fuben_Tips	UI_confirm	UI_confirm	0	0	UI_Xinshouyindao5001	0	0				
+6	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	12				
+6	2	UI_ManorStair_RenWu	RenWu	RenWu			UI_Xinshouyindao40001						
+6	3	UI_Barracks	UI_Barracks_B	UI_Barracks_B	0	0	UI_Xinshouyindao5001	0	0				
+6	4	UI_Barracks	UI_Barracks_Recruit	UI_Barracks_Recruit	0	0	UI_Xinshouyindao5001	0	0				
+6	5	UI_Zhiyuna	UI_Zhiyuna_Confirm	UI_Zhiyuna_Confirm	0	0	UI_Xinshouyindao5001						
+6	6	closecanvas	0	0	0	UI_Barracks							
+7	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	13				
+7	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	14				
+7	3	3	0	3	0	0	UI_Xinshouyindao28001	0	0				
+7	4	UI_Tavern	UI_Zhitianming	UI_Zhitianming	0	0	UI_Xinshouyindao18001	0	0				
+7	5	UI_Tavern	UI_Zhitianming	UI_Zhitianming	0	0	UI_Xinshouyindao18001	0	0				
+8	1	closecanvas				UI_Tavern		0	0				
+8	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	15				
+8	3	UI_ManorStair_Taskbar	JiangKa	JiangKa	0	0	UI_Xinshouyindao8001	0	0				
+8	4	UI_Jk	GameList_1	GameList_1	0	10|10011	UI_Xinshouyindao44001	0	0				
+8	5	UI_Jk	UI_Beta2_CardSystem_Jksj_Upgrade	UI_Beta2_CardSystem_Jksj_Upgrade	0	0	UI_Xinshouyindao5001	0	0				
+8	6	UI_Beta2_CardSystem_Sjcg	UI_Beta2_CardSystem_Sjcg_Qd	UI_Beta2_CardSystem_Sjcg_Qd			UI_Xinshouyindao5001						
+8	7	closecanvas				UI_Jk							
+9	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	16				
+9	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	17				
+9	3	UI_ManorStair_Taskbar	BianDui	BianDui	0	0	UI_Xinshouyindao8001						
+9	4	UI_Beta2_Formation	UI_Beta2_Formation_Bztx9	UI_Beta2_Formation_Bztx9	1	11|20007	UI_Xinshouyindao42001	0	0				
+9	5	UI_Beta2_Formation	UI_Beta2_Formation_BingZhong	UI_Beta2_Formation_BingZhong	0	11|20001	UI_Xinshouyindao14001	0	0				
+9	6	UI_Beta2_Formation	UI_Beta2_Formation_Jkxz1	UI_Beta2_Formation_Jkxz1	0	0	UI_Xinshouyindao10001	0	0				
+9	7	UI_Jk	GameList_1	GameList_1	2	10|10200	UI_Xinshouyindao5001	0	0				
+9	8	UI_Beta2_Formation	UI_Beta2_Formation_Jkxz4	UI_Beta2_Formation_Jkxz4	0	0	UI_Xinshouyindao10001	0	0				
+9	9	UI_Jk	GameList_1	GameList_1	2	10|10012	UI_Xinshouyindao41001	0	0				
+9	10	UI_Beta2_Formation	UI_Beta2_Formation_Qx1	UI_Beta2_Formation_Qx1	0	0	UI_Xinshouyindao5001	0	0				
+10	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	18				
+10	2	UI_ManorStair_Taskbar	UI_Fuben	UI_Fuben	0	0	UI_Xinshouyindao8001		0				
+10	3	UI_FuBen	UI_Enter1	UI_Enter1	0	0	UI_Xinshouyindao5001						
+10	4	UI_Fuben_Tips	UI_confirm	UI_confirm	0	0	UI_Xinshouyindao5001	0	0				
+11	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	19				
+11	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	20				
+11	3	4	0	4	0	0	UI_Xinshouyindao28001	0	0				
+11	4	UI_Gongfang	Bb_1_1	Bb_1_1	0	0	UI_Xinshouyindao48001	0	0				
+11	5	closecanvas	0	0	0	UI_Gongfang	0	0	0				
+12	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	21				
+12	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	22				
+12	3	UI_ManorStair_Taskbar	KeJi	KeJi	0	0	UI_Xinshouyindao8001	0	0				
+12	4	UI_Fuya_Keji	UI_Fuya_Keji_Develop4	UI_Fuya_Keji_Develop4	0	0	UI_Xinshouyindao5001	0	0				
+13	1	closecanvas	0	0	0	UI_Fuya_Keji		0	0				
+13	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	23				
+13	3	1	0	1	0	0	UI_Xinshouyindao28001	0	0				
+13	4	UI_AncientHouse	UI_AncientHouse_Yjsm	UI_AncientHouse_Yjsm	0	0	UI_Xinshouyindao5001						
+14	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	24				
+14	2	closecanvas	0	0	0	UI_AncientHouse							
+14	3	4	0	4	0	0	UI_Xinshouyindao28001	0	0				
+14	4	UI_Gongfang	ZhuangBeiDaZao	ZhuangBeiDaZao	0	0	UI_Xinshouyindao5001	0	0				
+14	5	UI_Gongfang	UI_Gongfang_Lzzbdz_Dz	UI_Gongfang_Lzzbdz_Dz	0	0	UI_Xinshouyindao5001	0	0				
+15	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	25				
+15	2	closecanvas				UI_Gongfang							
+15	3	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	26				
+15	4	UI_ManorStair_RenWu	RenWu	RenWu			UI_Xinshouyindao40001						
+15	5	UI_Knapsack	GameList_2	GameList_2	1	10|2097	UI_Xinshouyindao5001						
+16	1	closecanvas				UI_Knapsack							
+16	2	closecanvas				UI_Beta2_FeudalLord							
+16	3	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	27				
+16	4	UI_ManorStair_Taskbar	BianDui	BianDui			UI_Xinshouyindao8001						
+17	1	UI_Beta2_Formation	UI_Beta2_Formation_BingZhong	UI_Beta2_Formation_BingZhong	0	11|20007	UI_Xinshouyindao14001	0	0				
+17	2	UI_Beta2_Formation	UI_Beta2_Formation_Input30	UI_Beta2_Formation_Input30	0	0	UI_Xinshouyindao12001	0	0				
+17	3	UI_Beta2_Formation	UI_Beta2_Formation_Input20	UI_Beta2_Formation_Input20	0	0	UI_Xinshouyindao13001	0	0				
+17	4	UI_Beta2_Formation	UI_Beta2_Formation_Qx1	UI_Beta2_Formation_Qx1	0	0	UI_Xinshouyindao5001	0	0				
+18	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	28				
+18	2	UI_ManorStair_RenWu	RenWu	RenWu	0	0	UI_Xinshouyindao40001						
+18	3	UI_Battleground_Jr1	Enter1_1	Enter1_1	0	0	UI_Xinshouyindao5001						
+19	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	29				
+19	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	30				
+19	3	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	31				
+19	4	UI_ManorStair_Taskbar	UI_Jianguo	UI_Jianguo	0	0	UI_Xinshouyindao8001	0					
+100	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	47	0	0	0	0
+101	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	50				
+102	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	51				
+103	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	52				
+104	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	53				
+105	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	54		  		
+105	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	55				
+106	1	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	56				
+106	2	0	0	0	0	0	UI_Xinshouyindao3001	Duihua	57				

@@ -1,0 +1,6 @@
+widget	script
+UI_Zhiyuna	
+UI_Zhiyuna_Close	ui_close.cfg
+UI_Zhiyuna_Confirm	UI_Zhiyuna_Confirm.cfg
+UI_Zhiyuna_Cancel	ui_close.cfg
+UI_Zhiyuna_Drag	UI_frame.cfg

@@ -1,0 +1,6 @@
+widget	script
+UI_JTGaiMing	UI_JTGaiMing.cfg
+UI_JTGaiMing_Drag	ui_frame.cfg
+UI_JTGaiMing_Close	UI_Close.cfg
+UI_JTGaiMing_Determine	UI_JTGaiMing_Determine.cfg
+UI_JTGaiMing_Name	UI_JTGaiMing_Name.cfg

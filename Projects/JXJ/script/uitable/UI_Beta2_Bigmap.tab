@@ -1,0 +1,7 @@
+widget	script
+UI_Beta2_Bigmap	UI_Beta2_Bigmap.cfg
+UI_Beta2_Bigmap_SmallCity	UI_Beta2_Bigmap_SmallCity.cfg
+UI_Beta2_Bigmap_MedianCity	UI_Beta2_Bigmap_MedianCity.cfg
+UI_Beta2_Bigmap_BigCity	UI_Beta2_Bigmap_BigCity.cfg
+UI_Beta2_Bigmap_Gate	UI_Beta2_Bigmap_Gate.cfg
+UI_Beta2_Bigmap_BackboardW	UI_Beta2_Bigmap_BackboardW.cfg

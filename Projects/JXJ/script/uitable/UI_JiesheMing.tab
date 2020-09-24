@@ -1,0 +1,4 @@
+widget	script
+UI_JSGaiMing_Drag	UI_frame.cfg
+UI_JSGaiMing_Close	UI_Close.cfg
+UI_JSGaiMing_Determine	UI_JSGaiMing_Determine.cfg

@@ -1,0 +1,7 @@
+widget	script
+Corps2_Renming	Corps2_Renming.cfg
+Renming_Drag	ui_frame.cfg
+Renming_Close	UI_Close.cfg
+Renming_Queding	Renming_Queding.cfg
+Left	Corps2_Renming_Left.cfg
+Right	Corps2_Renming_Right.cfg

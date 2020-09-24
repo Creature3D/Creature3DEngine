@@ -1,0 +1,196 @@
+id	Name	HyperText	Circles	Level	PreTask	StepType	Steps	Exp	Exp2	Gold	脚本	过期	参数1	任务描述	奖励描述
+1	开启建设功能	task/Xhuoqulingdi.cfg	1	1|1	0	0	2	100		1000	newguide/T_Xhuoqulingdi.cfg	0			
+2	建设农田	task/Xshengjinongtian01.cfg	1	2|100	1	0	2	500		1000	newguide/T_Xshengjinongtian01.cfg	0			
+3	招募长戟兵	task/Xzhaomu01.cfg	1	2|100	2	0	2	925		1000	newguide/T_Xzhaomu01.cfg	0			
+4	酒肆抽卡	task/Xchouqujiangka.cfg	1	2|100	3	0	2	1450		1000	newguide/T_Xchouqujiangka.cfg	0			
+6	编队出征	task/Xbiandui01.cfg	1	3|100	4	0	2	2075		1000	newguide/T_Xbiandui01.cfg	0			
+7	初试身手	task/Xshaguai03.cfg	1	3|100	6	0	2	2125		1000	newguide/T_Xshaguai03.cfg	0			
+8	招募弓箭兵	task/Xzhaomu02.cfg	1	3|100	7	0	2	2550		1000	newguide/T_Xzhaomu02.cfg	0			
+9	酒肆抽卡	task/Xchouqujiangka.cfg	1	3|100	8	0	2	2975		2000	newguide/T_Xchouqujiangka.cfg	0			
+10	将卡升级	task/Xshengjijiangka.cfg	1	4|100	9	0	2	3300		2000	newguide/T_Xshengjijiangka.cfg	0			
+11	整编再战	task/Xbiandui01.cfg	1	4|100	10	0	2	3725		2000	newguide/T_Xbiandui02.cfg	0			
+12	马邑惊闻	task/Xjinruzhengzhantianxia01.cfg	1	5|100	11	0	2	4150		2000	newguide/T_Xjinruzhengzhantianxia01.cfg	0			
+13	军备升级	task/Xjiesuochangjibing.cfg	1	5|100	12	0	2	4575		2000	newguide/T_Xjiesuochangjibing.cfg	0			
+14	升级科技	task/Xshengjikeji.cfg	1	5|100	13	0	2	4900		2000	newguide/T_Xshengjikeji.cfg	0			
+15	升级府衙	task/Xshengjigongfang.cfg	1	6|100	14	0	2	5425		3000	newguide/T_Xshengjigongfang.cfg	0			
+16	打造装备	task/Xkaiqigongfang.cfg	1	6|100	15	0	2	5650		3000	newguide/T_Xkaiqigongfang.cfg	0			
+17	穿戴装备	task/Xchuandaizhuangbei01.cfg	1	6|100	16	0	2	3175		3000	newguide/T_Xchuandaizhuangbei01.cfg	0			
+18	编队壮大	task/Xbiandui01.cfg	1	6|100	17	0	2	3650		3000	newguide/T_Xbiandui04.cfg	0			
+22	体验国战	task/Xcitybattle.cfg	1	6|100	18	0	2	6100		3000	newguide/T_Xcitybattle.cfg	0			
+500	参加一次国战	task/Xcanjiaguozhan.cfg	1	18|100	0	0	3	2000		30000	metier/T_Xcanjiaguozhan.cfg	0			
+99	晋阳为民	task/Xzhengzhanjinyang.cfg	1	18|100	22	0	2	10000		10000	metier/T_Xzhuxianrenwu01.cfg	0			
+100	北海突围	task/Xzhengzhanbeihai.cfg	1	20|100	99	0	2	10000		12000	metier/T_Xzhuxianrenwu01.cfg	0			
+101	收复东莱	task/Xzhengzhandonglai.cfg	1	22|100	100	0	2	10000		14000	metier/T_Xzhuxianrenwu01.cfg	0			
+102	平原求援	task/Xzhengzhanpingyuan.cfg	1	24|100	101	0	2	10000		16000	metier/T_Xzhuxianrenwu01.cfg	0			
+130	水淹七军	task/Xzhengzhanxiangyang.cfg	1	26|100	102	0	2	10000		18000	metier/T_Xzhuxianrenwu01.cfg	0			
+131	宛城闻讯	task/Xzhengzhanwan.cfg	1	28|100	130	0	2	10000		20000	metier/T_Xzhuxianrenwu01.cfg	0			
+132	上庸求援	task/Xzhengzhanshangyong.cfg	1	30|100	131	0	2	10000		22000	metier/T_Xzhuxianrenwu01.cfg	0			
+133	西城蓄力	task/Xzhengzhanxicheng.cfg	1	32|100	132	0	2	10000		24000	metier/T_Xzhuxianrenwu01.cfg	0			
+139	江陵得讯	task/Xzhengzhanjiangling.cfg	1	34|100	133	0	2	11520		26000	metier/T_Xzhuxianrenwu01.cfg	0			
+140	绝命长坂	task/Xzhengzhanchangban.cfg	1	36|100	139	0	2	11580		28000	metier/T_Xzhuxianrenwu01.cfg	0			
+141	永安入蜀	task/Xzhengzhanyongan.cfg	1	38|100	140	0	2	11640		30000	metier/T_Xzhuxianrenwu01.cfg	0			
+142	江州老将	task/Xzhengzhanjiangzhou.cfg	1	40|100	141	0	2	12000		32000	metier/T_Xzhuxianrenwu01.cfg	0			
+143	涪关祭贤	task/Xzhengzhanfuling.cfg	1	42|100	142	0	2	13200		34000	metier/T_Xzhuxianrenwu01.cfg	0			
+144	围困成都	task/Xzhengzhanchengdu.cfg	1	44|100	143	0	2	14400		36000	metier/T_Xzhuxianrenwu01.cfg	0			
+145	梓潼大战	task/Xzhengzhanzitong.cfg	1	46|100	144	0	2	15600		38000	metier/T_Xzhuxianrenwu01.cfg	0			
+146	汉中救人	task/Xzhengzhanhanzhong.cfg	1	48|100	145	0	2	16800		40000	metier/T_Xzhuxianrenwu01.cfg	0			
+152	寿春借兵	task/Xzhengzhanshouchun.cfg	1	50|100	146	0	2	16800		42000	metier/T_Xzhuxianrenwu01.cfg	0			
+153	庐江诺践	task/Xzhengzhanlujiang.cfg	1	52|100	152	0	2	17400		44000	metier/T_Xzhuxianrenwu01.cfg	0			
+154	建业立身	task/Xzhengzhanjianye.cfg	1	54|100	153	0	2	18000		46000	metier/T_Xzhuxianrenwu01.cfg	0			
+155	丹阳宣威	task/Xzhengzhandanyang.cfg	1	56|100	154	0	2	18600		48000	metier/T_Xzhuxianrenwu01.cfg	0			
+156	吴中屠虎	task/Xzhengzhanwu.cfg	1	58|100	155	0	2	27000		50000	metier/T_Xzhuxianrenwu01.cfg	0			
+157	会稽大战	task/Xzhengzhankuaiji.cfg	1	60|100	156	0	2	33000		52000	metier/T_Xzhuxianrenwu01.cfg	0			
+159	建安趁虚	task/Xzhengzhanjianan.cfg	1	62|100	157	0	2	33300		54000	metier/T_Xzhuxianrenwu01.cfg	0			
+160	柴桑剿匪	task/Xzhengzhanchaisang.cfg	1	64|100	159	0	2	35400		56000	metier/T_Xzhuxianrenwu01.cfg	0			
+161	鄱阳降匪	task/Xzhengzhanpoyang.cfg	1	66|100	160	0	2	36600		58000	metier/T_Xzhuxianrenwu01.cfg	0			
+166	暗度陈仓	task/Xzhengzhanchencang.cfg	1	68|100	161	0	2	62400		60000	metier/T_Xzhuxianrenwu01.cfg	0			
+167	亡命街亭	task/Xzhengzhanjieting.cfg	1	70|100	166	0	2	63600		62000	metier/T_Xzhuxianrenwu01.cfg	0			
+168	强出子午	task/Xzhengzhanwuguan.cfg	1	72|100	167	0	2	66000		64000	metier/T_Xzhuxianrenwu01.cfg	0			
+169	剑指长安	task/Xzhengzhanchangan.cfg	1	74|100	168	0	2	69000		66000	metier/T_Xzhuxianrenwu01.cfg	0			
+170	河内运筹	task/Xzhengzhanhenei.cfg	1	76|100	169	0	2	75000		68000	metier/T_Xzhuxianrenwu01.cfg	0			
+171	弘农救驾	task/Xzhengzhanhongnong.cfg	1	78|100	170	0	2	114000		70000	metier/T_Xzhuxianrenwu01.cfg	0			
+172	洛阳镇妖	task/Xzhengzhanluoyang.cfg	1	80|100	171	0	2	153000		72000	metier/T_Xzhuxianrenwu01.cfg	0			
+20000	加入军团	task/Xjiarujuntuan.cfg	1	20|100	0	0	2	2500		5000	metier/T_Xjiarujuntuan.cfg	0			
+20001	开启装备精炼	task/Xkaiqizhuangbeijinglian.cfg	1	35|100	0	0	2	2000		5000	metier/T_Xkaiqizhuangbeijinglian.cfg	0			
+20002	精炼装备	task/Xjinglianzhuangbei.cfg	1	35|100	20001	0	2	2000		5000	metier/T_Xjinglianzhuangbei.cfg	0			
+20003	开启装备附炼	task/Xkaiqizhuangbeifulian.cfg	1	28|100	0	0	2	2000		5000	metier/T_Xkaiqizhuangbeifulian.cfg	0			
+20004	附炼装备	task/Xfulianzhuangbei.cfg	1	28|100	20003	0	2	2000		5000	metier/T_Xfulianzhuangbei.cfg	0			
+20005	开启熔炼系统	task/Xkaiqironglianxitong.cfg	1	30|100	0	0	2	2000		5000	metier/T_Xkaiqironglianxitong.cfg	0			
+20006	官拜门下督	task/Xtishengguanzhi01.cfg	1	7|100	0	0	2	1035		1000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20007	官拜武卫校尉	task/Xtishengguanzhi02.cfg	1	7|100	20006	0	2	1056		2000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20008	官拜裨将军	task/Xtishengguanzhi03.cfg	1	7|100	20007	0	2	1067		3000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20009	官拜牙门将军	task/Xtishengguanzhi04.cfg	1	7|100	20008	0	2	1072		5000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20010	官拜偏将军	task/Xtishengguanzhi05.cfg	1	7|100	20009	0	2	1078		7000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20011	官拜别部司马	task/Xtishengguanzhi06.cfg	1	7|100	20010	0	2	1084		10000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20012	官拜监军	task/Xtishengguanzhi07.cfg	1	7|100	20011	0	2	1092		15000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20013	官拜荡寇将军	task/Xtishengguanzhi08.cfg	1	7|100	20012	0	2	2100		20000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20014	官拜虎贲中郎将	task/Xtishengguanzhi09.cfg	1	7|100	20013	0	2	2109		25000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20015	官拜护军将军	task/Xtishengguanzhi10.cfg	1	7|100	20014	0	2	2119		30000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20016	官拜征虏将军	task/Xtishengguanzhi11.cfg	1	7|100	20015	0	2	2128		35000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20017	官拜平东将军	task/Xtishengguanzhi12.cfg	1	7|100	20016	0	2	2138		40000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20018	官拜安东将军	task/Xtishengguanzhi13.cfg	1	7|100	20017	0	2	2151		45000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20019	官拜镇东将军	task/Xtishengguanzhi14.cfg	1	7|100	20018	0	2	2166		50000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20020	官拜都督	task/Xtishengguanzhi15.cfg	1	7|100	20019	0	2	2180		55000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20021	官拜前将军	task/Xtishengguanzhi16.cfg	1	7|100	20020	0	2	2197		60000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20022	官拜征东将军	task/Xtishengguanzhi17.cfg	1	7|100	20021	0	2	2215		65000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20023	官拜卫将军	task/Xtishengguanzhi18.cfg	1	7|100	20022	0	2	2223		70000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20024	官拜车骑将军	task/Xtishengguanzhi19.cfg	1	7|100	20023	0	2	2233		75000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20025	官拜骠骑将军	task/Xtishengguanzhi20.cfg	1	7|100	20024	0	2	2244		80000	metier/T_Xtishengguanzhirenwu01.cfg	0			
+20026	收缴晋阳军备	task/Xsaodangjinyang.cfg	1	18|100	99	1	"2,0"	5000		10000	metier/T_Xsaodangrenwu01.cfg	0			
+20027	收缴北海军备	task/Xsaodangbeihai.cfg	1	20|100	100	1	"3,0"	5000		20000	metier/T_Xsaodangrenwu01.cfg	0			
+20028	收缴东莱军备	task/Xsaodangdonglai.cfg	1	22|100	101	1	"4,0"	5000		30000	metier/T_Xsaodangrenwu01.cfg	0			
+20029	收缴平原军备	task/Xsaodangpingyuan.cfg	1	24|100	102	1	"5,0"	5000		31000	metier/T_Xsaodangrenwu01.cfg	0			
+20057	收缴襄阳军备	task/Xsaodangxiangyang.cfg	1	26|100	130	1	"6,0"	5000		32000	metier/T_Xsaodangrenwu01.cfg	0			
+20058	收缴宛军备	task/Xsaodangwan.cfg	1	28|100	131	1	"7,0"	5000		33000	metier/T_Xsaodangrenwu01.cfg	0			
+20059	收缴上庸军备	task/Xsaodangshangyong.cfg	1	30|100	132	1	"8,0"	5000		34000	metier/T_Xsaodangrenwu01.cfg	0			
+20060	收缴西城军备	task/Xsaodangxicheng.cfg	1	32|100	133	1	"9,0"	5000		35000	metier/T_Xsaodangrenwu01.cfg	0			
+20066	收缴江陵军备	task/Xsaodangjiangling.cfg	1	34|100	139	1	"10,0"	5500		41000	metier/T_Xsaodangrenwu01.cfg	0			
+20067	收缴长坂军备	task/Xsaodangchangban.cfg	1	36|100	140	1	"10,0"	6000		42000	metier/T_Xsaodangrenwu01.cfg	0			
+20068	收缴永安军备	task/Xsaodangyongan.cfg	1	38|100	141	1	"10,0"	6500		43000	metier/T_Xsaodangrenwu01.cfg	0			
+20069	收缴江州军备	task/Xsaodangjiangzhou.cfg	1	40|100	142	1	"10,0"	7000		44000	metier/T_Xsaodangrenwu01.cfg	0			
+20070	收缴涪陵军备	task/Xsaodangfuling.cfg	1	42|100	143	1	"10,0"	7500		45000	metier/T_Xsaodangrenwu01.cfg	0			
+20071	收缴成都军备	task/Xsaodangchengdu.cfg	1	44|100	144	1	"10,0"	8000		46000	metier/T_Xsaodangrenwu01.cfg	0			
+20072	收缴梓潼军备	task/Xsaodangzitong.cfg	1	46|100	145	1	"10,0"	8500		47000	metier/T_Xsaodangrenwu01.cfg	0			
+20073	收缴汉中军备	task/Xsaodanghanzhong.cfg	1	48|100	146	1	"10,0"	9000		48000	metier/T_Xsaodangrenwu01.cfg	0			
+20079	收缴寿春军备	task/Xsaodangshouchun.cfg	1	50|100	152	1	"10,0"	11200		54000	metier/T_Xsaodangrenwu01.cfg	0			
+20080	收缴庐江军备	task/Xsaodanglujiang.cfg	1	52|100	153	1	"10,0"	11600		55000	metier/T_Xsaodangrenwu01.cfg	0			
+20081	收缴建业军备	task/Xsaodangjianye.cfg	1	54|100	154	1	"10,0"	12000		56000	metier/T_Xsaodangrenwu01.cfg	0			
+20082	收缴丹阳军备	task/Xsaodangdanyang.cfg	1	56|100	155	1	"10,0"	12400		57000	metier/T_Xsaodangrenwu01.cfg	0			
+20083	收缴吴军备	task/Xsaodangwu.cfg	1	58|100	156	1	"10,0"	18000		58000	metier/T_Xsaodangrenwu01.cfg	0			
+20084	收缴会稽军备	task/Xsaodangkuaiji.cfg	1	60|100	157	1	"10,0"	22000		59000	metier/T_Xsaodangrenwu01.cfg	0			
+20086	收缴建安军备	task/Xsaodangjianan.cfg	1	62|100	159	1	"10,0"	22200		61000	metier/T_Xsaodangrenwu01.cfg	0			
+20087	收缴柴桑军备	task/Xsaodangchaisang.cfg	1	64|100	160	1	"10,0"	23600		62000	metier/T_Xsaodangrenwu01.cfg	0			
+20088	收缴鄱阳军备	task/Xsaodangpoyang.cfg	1	66|100	161	1	"10,0"	24400		63000	metier/T_Xsaodangrenwu01.cfg	0			
+20093	收缴陈仓军备	task/Xsaodangchencang.cfg	1	68|100	166	1	"10,0"	41600		68000	metier/T_Xsaodangrenwu01.cfg	0			
+20094	收缴街亭军备	task/Xsaodangjieting.cfg	1	70|100	167	1	"10,0"	42400		69000	metier/T_Xsaodangrenwu01.cfg	0			
+20095	收缴武关军备	task/Xsaodangwuguan.cfg	1	72|100	168	1	"10,0"	44000		70000	metier/T_Xsaodangrenwu01.cfg	0			
+20096	收缴长安军备	task/Xsaodangchangan.cfg	1	74|100	169	1	"10,0"	46000		71000	metier/T_Xsaodangrenwu01.cfg	0			
+20097	收缴河内军备	task/Xsaodanghenei.cfg	1	76|100	170	1	"10,0"	50000		72000	metier/T_Xsaodangrenwu01.cfg	0			
+20098	收缴弘农军备	task/Xsaodanghongnong.cfg	1	78|100	171	1	"10,0"	76000		73000	metier/T_Xsaodangrenwu01.cfg	0			
+20099	收缴洛阳军备	task/Xsaodangluoyang.cfg	1	80|100	172	1	"10,0"	102000		74000	metier/T_Xsaodangrenwu01.cfg	0			
+21001	升级军备	task/Xshengjijunbei01.cfg	1	18|100	0	0	2	1800		10000	newguide/T_Xshengjijunbei01.cfg				
+21002	将卡抽取	task/Xchouqujiangka02.cfg	1	19|100	0	1	"4,0"	2000		12000	newguide/T_Xchouqujiangka02.cfg				
+21003	打造装备	task/Xkaiqigongfang02.cfg	1	100|100	0	0	2	2000		12000	newguide/T_Xkaiqigongfang02.cfg				
+21004	扩建农田	task/Xkuojiannongtian01.cfg	1	0|100	0	0	2	2000		12000	newguide/T_Xkuojiannongtian01.cfg				
+21005	将卡升级	task/Xshengjijiangka02.cfg	1	22|100	101	0	2	2500		15000	newguide/T_Xshengjijiangka02.cfg				
+21006	开启市集	task/Xkaiqishiji01.cfg	1	32|100	0	0	2	2500		15000	newguide/T_Xkaiqishiji01.cfg				
+21007	将卡抽取	task/Xchouqujiangka03.cfg	1	24|100	0	1	"7,0"	2500		15000	newguide/T_Xchouqujiangka03.cfg				
+21008	委托人卡	task/Xweirenjiangka01.cfg	1	24|100	0	0	2	2000		18000	newguide/T_Xweirenjiangka01.cfg				
+21009	征收	task/Xzhengshou01.cfg	1	25|100	0	0	2	2000		20000	newguide/T_Xzhengshou01.cfg				
+21010	参加一次国战	task/Xcanjiaguozhan.cfg	1	18|100	21	0	3	2000		12000	metier/T_Xcanjiaguozhan.cfg	0			
+22007	每日国战1-lv21	task/Xmeiriguozhan.cfg	1	23|34	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	200		
+22008	每日国战2-lv21	task/Xmeiriguozhan.cfg	1	23|34	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	500		
+22009	每日国战3-lv21	task/Xmeiriguozhan.cfg	1	23|34	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	900		
+22010	每日国战1-lv35	task/Xmeiriguozhan.cfg	1	35|44	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	500		
+22011	每日国战2-lv35	task/Xmeiriguozhan.cfg	1	35|44	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	800		
+22012	每日国战3-lv35	task/Xmeiriguozhan.cfg	1	35|44	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1300		
+22013	每日国战1-lv45	task/Xmeiriguozhan.cfg	1	45|49	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	600		
+22014	每日国战2-lv45	task/Xmeiriguozhan.cfg	1	45|49	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1000		
+22015	每日国战3-lv45	task/Xmeiriguozhan.cfg	1	45|49	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22016	每日国战1-lv50	task/Xmeiriguozhan.cfg	1	50|54	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	800		
+22017	每日国战2-lv50	task/Xmeiriguozhan.cfg	1	50|54	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1200		
+22018	每日国战3-lv50	task/Xmeiriguozhan.cfg	1	50|54	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22019	每日国战1-lv55	task/Xmeiriguozhan.cfg	1	55|57	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	900		
+22020	每日国战2-lv55	task/Xmeiriguozhan.cfg	1	55|57	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1300		
+22021	每日国战3-lv55	task/Xmeiriguozhan.cfg	1	55|57	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2200		
+22022	每日国战1-lv58	task/Xmeiriguozhan.cfg	1	58|60	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1000		
+22023	每日国战2-lv58	task/Xmeiriguozhan.cfg	1	58|60	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1400		
+22024	每日国战3-lv58	task/Xmeiriguozhan.cfg	1	58|60	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2500		
+22025	每日国战1-lv61	task/Xmeiriguozhan.cfg	1	61|63	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1100		
+22026	每日国战2-lv61	task/Xmeiriguozhan.cfg	1	61|63	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22027	每日国战3-lv61	task/Xmeiriguozhan.cfg	1	61|63	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2700		
+22028	每日国战1-lv64	task/Xmeiriguozhan.cfg	1	64|65	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1200		
+22029	每日国战2-lv64	task/Xmeiriguozhan.cfg	1	64|65	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1600		
+22030	每日国战3-lv64	task/Xmeiriguozhan.cfg	1	64|65	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2900		
+22031	每日国战1-lv66	task/Xmeiriguozhan.cfg	1	66|67	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1300		
+22032	每日国战2-lv66	task/Xmeiriguozhan.cfg	1	66|67	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1700		
+22033	每日国战3-lv66	task/Xmeiriguozhan.cfg	1	66|67	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	3100		
+22034	每日国战1-lv68	task/Xmeiriguozhan.cfg	1	68|69	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1400		
+22035	每日国战2-lv68	task/Xmeiriguozhan.cfg	1	68|69	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1800		
+22036	每日国战3-lv68	task/Xmeiriguozhan.cfg	1	68|69	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	3300		
+22037	每日国战1-lv70	task/Xmeiriguozhan.cfg	1	70|70	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22038	每日国战2-lv70	task/Xmeiriguozhan.cfg	1	70|70	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22039	每日国战3-lv70	task/Xmeiriguozhan.cfg	1	70|70	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	3500		
+22040	每日国战1-lv71	task/Xmeiriguozhan.cfg	1	71|72	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22041	每日国战2-lv71	task/Xmeiriguozhan.cfg	1	71|72	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22042	每日国战3-lv71	task/Xmeiriguozhan.cfg	1	71|72	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	3700		
+22043	每日国战1-lv72	task/Xmeiriguozhan.cfg	1	73|73	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22044	每日国战2-lv72	task/Xmeiriguozhan.cfg	1	73|73	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22045	每日国战3-lv72	task/Xmeiriguozhan.cfg	1	73|73	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	3900		
+22046	每日国战1-lv73	task/Xmeiriguozhan.cfg	1	74|75	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22047	每日国战2-lv73	task/Xmeiriguozhan.cfg	1	74|75	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22048	每日国战3-lv73	task/Xmeiriguozhan.cfg	1	74|75	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	4100		
+22049	每日国战1-lv74	task/Xmeiriguozhan.cfg	1	76|76	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22050	每日国战2-lv74	task/Xmeiriguozhan.cfg	1	76|76	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22051	每日国战3-lv74	task/Xmeiriguozhan.cfg	1	76|76	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	4300		
+22052	每日国战1-lv75	task/Xmeiriguozhan.cfg	1	77|78	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22053	每日国战2-lv75	task/Xmeiriguozhan.cfg	1	77|78	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22054	每日国战3-lv75	task/Xmeiriguozhan.cfg	1	77|78	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	4500		
+22055	每日国战1-lv76	task/Xmeiriguozhan.cfg	1	79|79	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22056	每日国战2-lv76	task/Xmeiriguozhan.cfg	1	79|79	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22057	每日国战3-lv76	task/Xmeiriguozhan.cfg	1	79|79	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	4700		
+22058	每日国战1-lv77	task/Xmeiriguozhan.cfg	1	80|80	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	1500		
+22059	每日国战2-lv77	task/Xmeiriguozhan.cfg	1	80|80	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	2000		
+22060	每日国战3-lv77	task/Xmeiriguozhan.cfg	1	80|80	0	0	2	5000		2000	metier/T_Xrichangrenwu.cfg	0	4900		
+9008	攻城略地	task/Xgongchengluedi.cfg	1	0|100	0	0	6	10080		1000	metier/T_Xgongchengluedi.cfg	0			
+9009	激活神器	task/Xjihuoshenqi.cfg	1	50|80	0	0	51	3000		1000		0		击杀世界副本任意小怪50只	
+9010	每日神器	task/Xmeirishenqi.cfg	1	50|80	9009	0	101	3000		1000		0		击杀世界副本任意小怪100只	
+23000	富国强战		0	0|0	0	0	2	100		1000	metier/T_Qiyu.cfg	0	20000	战场击杀玩家士兵数量达到%d/%d	税收增加20%
+23001	屯田除敌		0	0|0	0	0	2	100		1000	metier/T_Qiyu.cfg	0	30000	战场击杀NPC数量达到%d/%d	农田产量增加20%
+23002	密林灭匪		0	0|0	0	0	2	100		1000	metier/T_Qiyu.cfg	0	10000	战场击杀弓兵数量达到%d/%d	林地产量增加20%
+23003	山地练兵		0	0|0	0	0	2	100		1000	metier/T_Qiyu.cfg	0	10000	战场击杀步兵数量达到%d/%d	铁矿产量增加20%
+23004	草原纵马		0	0|0	0	0	2	100		1000	metier/T_Qiyu.cfg	0	10000	战场击杀骑兵数量达到%d/%d	牧场产量增加20%
+600	获得士兵	task/Huodeshibing600.cfg	1	20|80	99	0	5001	5000		3000		0		获得任意士兵数量达到5000	
+601	获得士兵	task/Huodeshibing601.cfg	1	24|80	600	0	10001	5000		3000		0		获得任意士兵数量达到10000	
+602	获得士兵	task/Huodeshibing602.cfg	1	28|80	601	0	20001	5000		3000		0		获得任意士兵数量达到20000	
+603	获得士兵	task/Huodeshibing603.cfg	1	32|80	602	0	50001	5000		3000		0		获得任意士兵数量达到50000	
+604	获得士兵	task/Huodeshibing604.cfg	1	36|80	603	0	100001	5000		3000		0		获得任意士兵数量达到100000	
+605	获得士兵	task/Huodeshibing605.cfg	1	40|80	604	0	200001	5000		3000		0		获得任意士兵数量达到200000	
+610	为国捐躯	task/Weiguojuanqu610.cfg	1	20|80	99	0	5001	5000		3000	metier/T_Weiguojuanqu.cfg	0		在城战或关隘内死伤任意士兵数量达到5000	
+611	为国捐躯	task/Weiguojuanqu611.cfg	1	24|80	610	0	10001	5000		3000	metier/T_Weiguojuanqu.cfg	0		在城战或关隘内死伤任意士兵数量达到10000	
+612	为国捐躯	task/Weiguojuanqu612.cfg	1	28|80	611	0	20001	5000		3000	metier/T_Weiguojuanqu.cfg	0		在城战或关隘内死伤任意士兵数量达到20000	
+613	为国捐躯	task/Weiguojuanqu613.cfg	1	32|80	612	0	50001	5000		3000	metier/T_Weiguojuanqu.cfg	0		在城战或关隘内死伤任意士兵数量达到50000	
+614	为国捐躯	task/Weiguojuanqu614.cfg	1	36|80	613	0	100001	5000		3000	metier/T_Weiguojuanqu.cfg	0		在城战或关隘内死伤任意士兵数量达到100000	
+615	为国捐躯	task/Weiguojuanqu615.cfg	1	40|80	614	0	200001	5000		3000	metier/T_Weiguojuanqu.cfg	0		在城战或关隘内死伤任意士兵数量达到200000	
+620	购买兵符	task/Goumaibingfu.cfg	1	20|80	600	0	2	5000		3000		0		在征战商店购买任意一个兵符	
+621	使用兵符	task/Shiyongbingfu.cfg	1	20|80	620	0	2	5000		3000		0		使用一次兵符	

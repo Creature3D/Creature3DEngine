@@ -1,0 +1,23 @@
+id	parentId	title	chaptericon	chaptericon高亮	
+999	0	空白	T_Achievement_Backboard.img		
+998	1	总览	T_Achievement_Zonglan_Normal.img	T_Achievement_Zonglan_Click.img	
+1001	1	国战	T_Achievement_Guozhan_Normal.img	T_Achievement_Guozhan_Click.img	按需要显示的顺序依次填写
+1002	1	领主	T_Achievement_Lingzhu_Normal.img	T_Achievement_Lingzhu_Click.img	
+1003	1	封地	T_Achievement_Fengdi_Normal.img	T_Achievement_Fengdi_Click.img	
+1004	1	将卡	T_Achievement_Jianka_Normal.img	T_Achievement_Jianka_Click.img	
+1000	1	副本	T_Achievement_Fuben_Normal.img	T_Achievement_Fuben_Click.img	
+2001	1000	征战天下	T_Achievement_Zhengzhan_Normal.img	T_Achievement_Zhengzhan_Click.img	
+2002	1002	等级	T_Achievement_Dengji_Normal.img	T_Achievement_Dengji_Click.img	
+2003	1002	财富	T_Achievement_Caifu_Normal.img	T_Achievement_Caifu_Click.img	
+2004	1002	装备	T_Achievement_Zhunabei_Normal.img	T_Achievement_Zhunabei_Click.img	
+2005	1002	爵位	T_Achievement_Juewei_Normal.img	T_Achievement_Juewei_Click.img	
+2006	1000	名将之路	T_Achievement_Mingjiang_Normal.img	T_Achievement_Mingjiang_Click.img	
+2007	1000	世界战场	T_Achievement_Shijie_Mormal.img	T_Achievement_Shijie_Click.img	
+2008	1002	军备科技	T_Achievement_Junbei_Normal.img	T_Achievement_Junbei_Click.img	
+2009	1001	战场	T_Achievement_zhanchang_Normal.img	T_Achievement_zhanchang_Click.img	
+2010	1001	血战沙场	T_Achievement_xiezhan_Normal.img	T_Achievement_xiezhan_Click.img	
+2011	1001	兵种耀武	T_Achievement_Yaowu_Normal.img	T_Achievement_Yaowu_Click.img	
+2012	1001	兵种专家	T_Achievement_Bingzhong_Normal.img	T_Achievement_Bingzhong_Click.img	
+2013	1001	马革裹尸	T_Achievement_Mage_Normal.img	T_Achievement_Mage_Click.img	
+2014	1001	轮回	T_Achievement_Lunhui_Normal.img	T_Achievement_Lunhui_Click.img	
+2015	1002	奇遇	T_Achievement_Qiyu_Normal.img	T_Achievement_Qiyu_Click.img	

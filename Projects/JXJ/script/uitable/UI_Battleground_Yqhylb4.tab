@@ -1,0 +1,6 @@
+widget	script
+UI_Battleground_Yqhylb4	UI_Battleground_Yqhylb4Canvas.cfg
+UI_Battleground_Yqhylb4_Close	UI_Close.cfg
+UI_Battleground_Yqhylb4_Drag	ui_frame.cfg
+UI_Battleground_Yqhylb4_Js	UI_Battleground_Yqhylb4_Js.cfg
+UI_Battleground_Yqhylb4_Jj	UI_Battleground_Yqhylb4_Jj.cfg

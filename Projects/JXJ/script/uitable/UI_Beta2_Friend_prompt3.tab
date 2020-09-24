@@ -1,0 +1,4 @@
+widget	script
+UI_Beta2_Friend_prompt3_Drag	UI_frame.cfg
+UI_Beta2_Friend_prompt3_Close	UI_Close.cfg
+UI_Beta2_Friend_prompt3_Confirm	UI_Prompt_Cancel.cfg
